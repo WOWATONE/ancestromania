@@ -1,0 +1,19 @@
+Source: ancestromania-data
+Section: database
+Priority: optional
+Maintainer: Matthieu Giroux (Programmer and Writer) <magi@liberlog.fr>
+Build-Depends: flamerobin (>= 0.9.0), debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+
+Package: ancestromania-data
+Version: 2014.1.5.180
+Architecture: all
+Depends: firebird2.5-superclassic (>= 2.5.0) | firebird2.5-super (>= 2.5.0) | firebird2.5-classic (>= 2.5.0) | libfbclient (>= 2.0.0) | libfbembed2.5 (>= 2.5.0)
+Homepage: http://genealogie.liberlog.fr
+Description: Logiciel complet de généalogie, permettant de créer ou d'importer sa généalogie.
+ On exporte aussi vers Geneanet, en GEDCOM et sur son site web. 
+ Il est possible d'imprimer des documents de suivi, des arbres, une roue.
+Description-en: Fully genealogy software which can create or import your family tree.
+ It exports also to Geneanet, in GEDCOM et on its web-site. 
+ You can print monitoring documents, some trees, an arc.
+
