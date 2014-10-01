@@ -998,7 +998,7 @@ begin
 
   if (ssLeft in Shift)and(fMoving) then
   begin
-      //on recalcul le d?calage
+      //on recalcul le décalage
 
     FViewer.ShiftX:=(x-fStartPos.x)+fInitialDecal.x;
     FViewer.ShiftY:=(y-fStartPos.y)+fInitialDecal.y;
