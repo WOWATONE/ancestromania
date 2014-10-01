@@ -113,8 +113,7 @@ type
 
  TGraphComponent = class ( TPaintBox, INoAdaptComponent )
   private
-   fMoving,FReCalculate:boolean;
-//   fMouseMode:TMouseMode;
+   FReCalculate:boolean;
    fCanDraw:TState;
    FFullRect:TFLoatRect;
    fStartPos:TPoint;
@@ -133,7 +132,8 @@ type
   protected
     fLevelTemp: integer;
     procedure GetFullRect(var R: TFloatRect); virtual;
-    procedure MouseDown(Button:TMouseButton;Shift:TShiftState;X,Y:Integer); override;
+    function DoMouseWheelDown(Shift: TShiftState; MousePos: TPoint): Boolean; override;
+    function DoMouseWheelUp(Shift: TShiftState; MousePos: TPoint): Boolean; override;
     procedure MouseMove(Shift:TShiftState;X,Y:Integer); override;
     procedure MouseUp(Button:TMouseButton;Shift:TShiftState;X,Y:Integer); override;
     procedure Paint; override;
@@ -155,6 +155,7 @@ type
     procedure WriteSet ( const AKeyWord : String );virtual;
     procedure ReadBool  ( const AKeyWord : String );virtual;
     procedure WriteBool ( const AKeyWord : String );virtual;
+    procedure MouseDown(Button:TMouseButton; Shift:TShiftState;X,Y:Integer); override;
     procedure ReadIni ; virtual;
     procedure WriteIni ; virtual;
   public
@@ -172,7 +173,6 @@ type
     function IndiDansListe:integer; virtual; abstract;
     function PositionIndi(Indi:Integer):TPoint; virtual; abstract;
     property MaxLevel : Integer read FLevelMax write FLevelMax ;
-    property Moving:boolean read fMoving;
     property CanDraw:TState read fCanDraw;
     property Viewer : TGraphViewer read FViewer;
     property Data: TGraphData read FGraphData;
@@ -208,7 +208,6 @@ type
     fZoomMiniature:single;
     fDecalMiniatureX:integer;
     fDecalMiniatureY:integer;
-    fMovingOnMiniature:boolean;
     fPanelGraph:TCustomPanel;
     fIncrementZoom:integer;
     fFont:TFont;
@@ -273,7 +272,6 @@ type
     property ViewYV:TIntegerList read fTPYV write fTPYV;
     property ActivePersonKey : Integer read FActivePersonKey write FActivePersonKey default -1;
     //les ligne en pointill?s
-    property MovingOnMiniature:boolean read fMovingOnMiniature default GRAPH_DEFAULT_MOVE_MINI;
     property PrintCanvas : TRLGraphicSurface read FPrintCanvas write FPrintCanvas;
    published
     //Le chantier
@@ -320,6 +318,32 @@ begin
   GetRectEncadrement ( R );
   FFullRect:=R;
   FReCalculate:=True;
+end;
+
+function TGraphComponent.DoMouseWheelDown(Shift: TShiftState; MousePos: TPoint
+  ): Boolean;
+begin
+  Result:=inherited DoMouseWheelDown(Shift, MousePos);
+  if assigned ( FViewer )
+   Then
+     Begin
+       FViewer.Zoom := FViewer.Zoom - 10;
+       Refresh;
+       FViewer.RefreshMiniature;
+     end;
+end;
+
+function TGraphComponent.DoMouseWheelUp(Shift: TShiftState; MousePos: TPoint
+  ): Boolean;
+begin
+  Result:=inherited DoMouseWheelUp(Shift, MousePos);
+  if assigned ( FViewer )
+   Then
+     Begin
+      FViewer.Zoom := FViewer.Zoom + 10;
+      Refresh;
+      FViewer.RefreshMiniature;
+    end;
 end;
 
 { TGraphData }
@@ -403,7 +427,6 @@ begin
   fDecalX:=GRAPH_DEFAULT_PAGE_SHIFTX;
 
   fIncrementZoom:=GRAPH_DEFAULT_PAGE_ZOOM_INC;
-  fMovingOnMiniature:=false;
   //en mm
   CallZoomChanged;
 end;
@@ -910,7 +933,6 @@ end;
 procedure TGraphComponent.MouseDown(Button:TMouseButton;Shift:TShiftState;X,Y:Integer);
   procedure Deplace;
   begin
-    fMoving:=true;
     fStartPos.x:=x;
     fStartPos.y:=y;
     fActualPos.x:=x;
@@ -926,7 +948,6 @@ begin
   with FViewer do
     if Self = fGraphMiniature Then
     Begin
-     fMovingOnMiniature := True;
      Exit;
     end;
 //  (fGraph.Owner as TFoGraphGraph).PanReglages.Visible:=false;
@@ -975,7 +996,6 @@ begin
 
   if (FViewer.fGraphMiniature=Self) Then
     with fViewer do
-     if fMovingOnMiniature then
       begin
         //les delta de déplacement dans la miniature
         deltaX:=(x-fStartPos.x);
@@ -996,16 +1016,24 @@ begin
         Exit;
       end;
 
-  if (ssLeft in Shift)and(fMoving) then
-  begin
-      //on recalcul le décalage
+  if (ssLeft in Shift) then
+   begin
+      //on recalcul le d?calage
 
     FViewer.ShiftX:=(x-fStartPos.x)+fInitialDecal.x;
     FViewer.ShiftY:=(y-fStartPos.y)+fInitialDecal.y;
-    fMoving:=true;
     Refresh;
     FViewer.RefreshMiniature;
-  end;
+   end;
+  if (ssRight in Shift) then
+   begin
+      //on recalcul le décalage
+    if x-fStartPos.x > 0
+     Then FViewer.Zoom:=FViewer.Zoom+10
+     Else FViewer.Zoom:=FViewer.Zoom-10;
+    Refresh;
+    FViewer.RefreshMiniature;
+   end;
 end;
 
 procedure TGraphComponent.SetLoadFromIni(const AValue: Boolean);
@@ -1024,14 +1052,9 @@ end;
 procedure TGraphComponent.MouseUp(Button:TMouseButton;Shift:TShiftState;X,Y:Integer);
 begin
   Inherited;
-  if fMoving then
   with FViewer do
   begin
-    fMoving:=false;
     if not assigned (FViewer) Then Exit;
-
-    if Self = fGraphMiniature Then
-     fMovingOnMiniature := True;
 
     Refresh;
     RefreshMiniature;
@@ -1208,7 +1231,6 @@ begin
   FReCalculate:=False;
   FSaveIni:=False;
   FLoadIni:=False;
-  fMoving:=false;
 //  fMouseMode:=mmMoveOrSelect;
   fCanDraw:=TState.Create(true);
   FMargeLeft    := GRAPH_DEFAULT_MARGE_LEFT ;

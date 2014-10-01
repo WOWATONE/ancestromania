@@ -29,7 +29,7 @@ interface
 
 uses
 {$IFDEF FPC}
-  LCLType, LCLIntf, FPCanvas,
+  LCLType, LCLIntf, FPCanvas, lresources,
 {$ELSE}
  Windows,
 {$ENDIF}
@@ -81,8 +81,6 @@ type
   TGraphBoxes=class(TGraphComponent)
 
   private
-    btActivePointIndi:TControl;
-
     FSpaceBetween2Gen,FSpaceBetween2Person,
     FWidthBox,FHeightBox : Integer;
 
@@ -96,9 +94,13 @@ type
     EPrintFont     : TPaintFont;
     EPrintMoveTo   ,
     EPrintLineTo   : TPaintCoord;
-
+    FArrowIndi:TImage;
+    FTimerArrowIndi:TTimer;
+    FArrowActive:Boolean;
 
   protected
+    procedure TimerArrowIndiTimer(Sender:TObject);
+    procedure ActiveArrowIndi; virtual;
     procedure PaintTextXY(const aleft, atop:Double;const s: string;const Angle: Integer=0); virtual;
     procedure PaintTextRect(var ARect : TFloatRect;const aleft, atop:Double;const s: string;const Angle: Integer=0);virtual;
     procedure PaintRect  (const AX1, AY1, AX2, AY2 : Extended ); virtual;
@@ -109,16 +111,18 @@ type
     procedure PaintMoveTo(const AX, AY : Extended ); virtual;
     procedure PaintLineTo(const AX, AY : Extended ); virtual;
 
-    procedure p_setButtonEnabled ( const ab_Enabled : Boolean = True ); virtual;
+    procedure PaintGraph( const DecalX, DecalY: integer ); override;
 
   public
     constructor Create ( Aowner: TComponent ); override;
     procedure ReadSectionIni; override;
     procedure WriteSectionIni; override;
+    property ArrowIndi : TImage read FArrowIndi;
+    property TimerArrowIndi : TTimer read FTimerArrowIndi;
     //disposition
    published
-    property BtnPersonPoint : TControl read btActivePointIndi write btActivePointIndi;
     property BoxWidth  : Integer read FWidthBox write FWidthBox default GRAPH_BOXES_DEFAULT_BOX_WIDTH;
+    property ArrowActive : Boolean read FArrowActive write FArrowActive default True;
     property BoxHeight : Integer read FHeightBox write FHeightBox default GRAPH_BOXES_DEFAULT_BOX_HEIGHT;
     property SpaceGeneration : Integer read FSpaceBetween2Gen write FSpaceBetween2Gen default GRAPH_BOXES_DEFAULT_SPACE_GENERATION;
     property SpacePerson    : Integer read FSpaceBetween2Person write FSpaceBetween2Person default GRAPH_BOXES_DEFAULT_SPACE_PERSON;
@@ -160,6 +164,14 @@ begin
   FSpaceBetween2Gen    := GRAPH_BOXES_DEFAULT_SPACE_GENERATION;
   FSpaceBetween2Person := GRAPH_BOXES_DEFAULT_SPACE_PERSON;
 
+  FArrowIndi:=TImage.Create(Self);
+  FArrowIndi.Width :=18;
+  FArrowIndi.Height:=18;
+  FArrowIndi.Picture.LoadFromLazarusResource ( 'ArrowIndi' );
+  FArrowIndi.Parent := Self.Owner as TWinControl;
+  FTimerArrowIndi:=TTimer.Create(Self);
+  FTimerArrowIndi.Interval:=600;
+  FArrowActive:=True;
 end;
 
 procedure TGraphBoxes.ReadSectionIni;
@@ -178,6 +190,12 @@ begin
   WriteInteger(GRAPH_INI_BOXHEIGHT);
   WriteInteger(GRAPH_INI_SPACEGENERATION);
   WriteInteger(GRAPH_INI_SPACEPERSON);
+end;
+
+procedure TGraphBoxes.PaintGraph( const DecalX, DecalY: integer );
+begin
+  inherited;
+  ActiveArrowIndi;
 end;
 
 
@@ -222,6 +240,37 @@ Begin
     AbortMessage('You have to set PrintMoveTo Event.');
 End;
 
+procedure TGraphBoxes.TimerArrowIndiTimer(Sender: TObject);
+begin
+  FArrowIndi.Visible:=not FArrowIndi.Visible;
+end;
+
+procedure TGraphBoxes.ActiveArrowIndi;
+var
+  IndiEnCours:integer;
+  IndiPos:TPoint;
+  actif : Boolean;
+begin
+  if FArrowActive Then
+    Begin
+      IndiEnCours:=IndiDansListe;
+      if IndiEnCours>-1 then
+        begin
+          IndiPos:=PositionIndi(IndiEnCours);
+          IndiPos:=(Owner as TControl).ScreenToClient(Self.ClientToScreen ( IndiPos ));
+          FArrowIndi.Left:=IndiPos.X;
+          FArrowIndi.Top:=IndiPos.Y;
+          actif:=True;
+        end
+        else
+          actif:=false;
+    end
+   Else actif := False;
+  FArrowIndi.Visible:=actif;
+  FTimerArrowIndi.Enabled:=actif;
+end;
+
+
 procedure TGraphBoxes.PaintLineTo(const AX, AY : Extended );
 Begin
   if assigned ( EPrintLineTo ) Then
@@ -229,13 +278,6 @@ Begin
   else
     AbortMessage('You have to set PrintLineTo Event.');
 End;
-
-procedure TGraphBoxes.p_setButtonEnabled(const ab_Enabled: Boolean);
-begin
-  if assigned ( btActivePointIndi ) Then
-    btActivePointIndi.Enabled:=ab_Enabled;
-
-end;
 
 procedure TGraphBoxes.PaintFont (const AFont : TFont ; const AFontsize : Single );
 Begin
@@ -259,5 +301,10 @@ Begin
     AbortMessage('You have to set PrintRoundRect Event.');
 End;
 
-end.
 
+{$IFDEF FPC}
+initialization
+  {$I *.lrs}
+{$ENDIF}
+end.
+

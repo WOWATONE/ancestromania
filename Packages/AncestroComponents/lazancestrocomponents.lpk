@@ -6,7 +6,7 @@
     <CompilerOptions>
       <Version Value="11"/>
       <SearchPaths>
-        <IncludeFiles Value="components;functions;objects;forms"/>
+        <IncludeFiles Value="components"/>
         <OtherUnitFiles Value="components;functions;objects;forms"/>
         <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>

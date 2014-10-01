@@ -1010,7 +1010,6 @@ begin
 
         end;
       end;
-  p_setButtonEnabled(bIndiPresent);
 end;
 
 procedure TGraphTree.PaintGraphMiniature(const DecalX, DecalY: integer);

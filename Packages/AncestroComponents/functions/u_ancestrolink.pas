@@ -498,7 +498,6 @@ begin
           end;
        end;
     end;
-  p_setButtonEnabled ( bIndiPresent );
 end;
 
 procedure TGraphLink.PaintGraphMiniature(const DecalX, DecalY: integer);
