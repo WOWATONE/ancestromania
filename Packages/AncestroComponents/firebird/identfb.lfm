@@ -1,0 +1,180 @@
+object FBLoginDlg: TFBLoginDlg
+  Left = 1129
+  Height = 165
+  Top = 240
+  Width = 273
+  ActiveControl = Password
+  BorderStyle = bsDialog
+  Caption = 'Connexion à la base de données'
+  ClientHeight = 165
+  ClientWidth = 273
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Position = poScreenCenter
+  LCLVersion = '1.2.0.3'
+  object OKButton: TButton
+    Left = 109
+    Height = 25
+    Top = 136
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = '&OK'
+    Default = True
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    ModalResult = 1
+    ParentFont = False
+    TabOrder = 0
+  end
+  object CancelButton: TButton
+    Left = 190
+    Height = 25
+    Top = 136
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Cancel = True
+    Caption = 'Annuler'
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 1
+  end
+  object Panel: TPanel
+    Left = 8
+    Height = 120
+    Top = 8
+    Width = 259
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BevelInner = bvRaised
+    BevelOuter = bvLowered
+    ClientHeight = 120
+    ClientWidth = 259
+    TabOrder = 2
+    object LabelBase: TLabel
+      Left = 6
+      Height = 14
+      Top = 8
+      Width = 106
+      Caption = 'Base de données :'
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentColor = False
+      ParentFont = False
+    end
+    object DatabaseName: TLabel
+      Left = 100
+      Height = 1
+      Top = 8
+      Width = 1
+      ParentColor = False
+    end
+    object Bevel: TBevel
+      Left = 1
+      Height = 9
+      Top = 24
+      Width = 256
+      Anchors = [akTop, akLeft, akRight]
+      Shape = bsTopLine
+    end
+    object Panel1: TPanel
+      Left = 2
+      Height = 90
+      Top = 28
+      Width = 255
+      Align = alBottom
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      BevelOuter = bvNone
+      ClientHeight = 90
+      ClientWidth = 255
+      TabOrder = 0
+      object LabelUtilisateur: TLabel
+        Left = 8
+        Height = 14
+        Top = 8
+        Width = 65
+        Caption = '&Utilisateur :'
+        FocusControl = UserName
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+      end
+      object LabelMdp: TLabel
+        Left = 8
+        Height = 14
+        Top = 37
+        Width = 83
+        Caption = 'Mot de &passe :'
+        FocusControl = Password
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+      end
+      object LabelRole: TLabel
+        Left = 8
+        Height = 14
+        Top = 66
+        Width = 33
+        Caption = '&Rôle :'
+        FocusControl = RoleName
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+      end
+      object UserName: TEdit
+        Left = 95
+        Height = 24
+        Top = 5
+        Width = 153
+        Anchors = [akTop, akLeft, akRight]
+        CharCase = ecUppercase
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        MaxLength = 31
+        ParentFont = False
+        TabOrder = 0
+      end
+      object Password: TEdit
+        Left = 95
+        Height = 24
+        Top = 33
+        Width = 153
+        Anchors = [akTop, akLeft, akRight]
+        EchoMode = emPassword
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        MaxLength = 31
+        ParentFont = False
+        PasswordChar = '*'
+        TabOrder = 1
+      end
+      object RoleName: TEdit
+        Left = 95
+        Height = 24
+        Top = 62
+        Width = 153
+        Anchors = [akTop, akLeft, akRight]
+        CharCase = ecUppercase
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        MaxLength = 31
+        ParentFont = False
+        TabOrder = 2
+      end
+    end
+  end
+end

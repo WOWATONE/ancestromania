@@ -1,0 +1,61 @@
+package PCM_Perso;
+
+{$R *.res}
+{$R 'u_comp_TInfoVersion.dcr'}
+{$R 'wizardtree.dcr'}
+{$R 'URLLink.dcr'}
+{$R 'u_comp_TScanner.dcr'}
+{$R 'ColorPickerButton.dcr'}
+{$R 'MaxInstance.dcr'}
+{$R 'u_comp_TYLanguage.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'PCM Perso'}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl,
+  vclx,
+  vcljpg,
+  vcldb,
+  bdertl,
+  sggraphicex,
+  VampyreImagingPackage,
+  rtl;
+
+contains
+  WizardTreeList in 'WizardTreeList.pas',
+  u_comp_TInfoVersion in 'u_comp_TInfoVersion.pas',
+  wizardtree in 'wizardtree.pas',
+  PCM_ClasseGlobale in 'PCM_ClasseGlobale.pas',
+  URLLink in 'URLLink.pas',
+  u_comp_TScanner in 'u_comp_TScanner.pas',
+  ColorPickerButton in 'ColorPickerButton.pas',
+  MaxInstance in 'MaxInstance.pas',
+  u_comp_TYLanguage in 'u_comp_TYLanguage.pas',
+  EMailLabel in 'EMailLabel.pas',
+  RunLabel in 'RunLabel.pas',
+  PCM_TDBJPEGImage in 'PCM_TDBJPEGImage.pas',
+  ImageFunctions in 'ImageFunctions.pas',
+  u_common_TWAIN in 'u_common_TWAIN.pas';
+
+end.

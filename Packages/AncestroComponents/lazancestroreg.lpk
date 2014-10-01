@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <Package Version="4">
+    <Name Value="lazancestroreg"/>
+    <AddToProjectUsesSection Value="True"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <SearchPaths>
+        <IncludeFiles Value="components"/>
+        <OtherUnitFiles Value="components"/>
+        <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+      <Other>
+        <CompilerPath Value="$(CompPath)"/>
+      </Other>
+    </CompilerOptions>
+    <Files Count="7">
+      <Item1>
+        <Filename Value="components/u_registercomponents.lrs"/>
+        <Type Value="LRS"/>
+      </Item1>
+      <Item2>
+        <Filename Value="components/u_registercomponents.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="u_registercomponents"/>
+      </Item2>
+      <Item3>
+        <Filename Value="components/u_registerbuttons.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="u_registerbuttons"/>
+      </Item3>
+      <Item4>
+        <Filename Value="components/u_regbfsbuttons.lrs"/>
+        <Type Value="LRS"/>
+      </Item4>
+      <Item5>
+        <Filename Value="components/u_regbfsbuttons.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="u_regbfsbuttons"/>
+      </Item5>
+      <Item6>
+        <Filename Value="components/u_regfbbuttons.lrs"/>
+        <Type Value="LRS"/>
+      </Item6>
+      <Item7>
+        <Filename Value="components/u_regfbbuttons.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="u_regfbbuttons"/>
+      </Item7>
+    </Files>
+    <Type Value="RunAndDesignTime"/>
+    <RequiredPkgs Count="3">
+      <Item1>
+        <PackageName Value="lazancestrobuttons"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="lazancestrocomponents"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="FCL"/>
+        <MinVersion Major="1" Valid="True"/>
+      </Item3>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+    <CustomOptions Items="ExternHelp" Version="2">
+      <_ExternHelp Items="Count"/>
+    </CustomOptions>
+  </Package>
+</CONFIG>

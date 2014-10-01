@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <Package Version="4">
+    <Name Value="ExtHTMLTyphon"/>
+    <AddToProjectUsesSection Value="True"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <SearchPaths>
+        <OtherUnitFiles Value="functions"/>
+        <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+      <Other>
+        <CompilerPath Value="$(CompPath)"/>
+      </Other>
+    </CompilerOptions>
+    <Version Major="1" Minor="3" Release="1"/>
+    <Files Count="3">
+      <Item1>
+        <Filename Value="functions/functions_html.pas"/>
+        <UnitName Value="functions_html"/>
+      </Item1>
+      <Item2>
+        <Filename Value="functions/functions_html_tree.pas"/>
+        <UnitName Value="functions_html_tree"/>
+      </Item2>
+      <Item3>
+        <Filename Value="functions/unite_html_resources.pas"/>
+        <UnitName Value="unite_html_resources"/>
+      </Item3>
+    </Files>
+    <Type Value="RunAndDesignTime"/>
+    <RequiredPkgs Count="3">
+      <Item1>
+        <PackageName Value="typhonextcopy"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="typhonextcomponents"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="FCL"/>
+        <MinVersion Major="1" Valid="True"/>
+      </Item3>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

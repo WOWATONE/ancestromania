@@ -1,0 +1,180 @@
+[Closed Files]
+File_0=SourceModule,'D:\Projets\Ancestrologie 2001\Sources\Main\u_dm.pas',0,1,1,1,1,0,0
+File_1=SourceModule,'D:\Projets\Ancestrologie 2001\Sources\Individus\u_form_individu_identite.pas',0,1,1,1,1,1,0
+File_2=SourceModule,'D:\Projets\Ancestrologie 2001\Sources\Main\u_form_main.pas',0,1,1685,16,1708,1,0
+File_3=SourceModule,'D:\Projets\Ancestrologie 2001\Sources\Divers\u_Form_Liste_Doublons.pas',0,1,49,3,84,1,0
+File_4=SourceModule,'D:\Projets\Ancestrologie 2001\Sources\Divers\u_form_anniversaires.pas',0,1,1,1,1,1,0
+File_5=SourceModule,'D:\Projets\Ancestrologie 2001\Sources\Arbre\u_form_navigation.pas',0,1,259,64,28,1,0
+File_6=SourceModule,'D:\Projets\Ancestrologie 2001\Sources\Editions\u_form_list_report.pas',0,1,1,1,1,1,1
+File_7=SourceModule,'D:\Composant D5\RichView\RVStyle.pas',0,1,1,21,7,0,0
+File_8=SourceModule,'c:\program files\borland\delphi5\RBuilder\EXTRADEV\DELPHI5\SOURCE\TxtraDev.pas',0,1,295,5,309,0,0
+File_9=SourceModule,'D:\Projets\Ancestrologie 2001\Sources\Graph\u_objet_graph_TGraph.pas',0,1,1,55,6,0,0
+
+[Modules]
+Count=0
+EditWindowCount=0
+PackageWindowCount=1
+
+[C:\Program Files\Borland\Delphi6\Projects\ProjectGroup1.bpg]
+FormState=0
+FormOnTop=0
+
+[D:\Projets\Ancestrologie 2001\Sources\Projet\Ancestro2001.dpr]
+FormState=0
+FormOnTop=0
+SymbolFile=D:\Projets\Ancestrologie 2001\Sources\Projet\Ancestro2001.dsm
+ModSinceCompile=0
+
+[D:\Composant D6\Compo_Perso\PCM_Perso.dpk]
+FormState=0
+FormOnTop=0
+
+[PackageWindow0]
+Create=1
+Visible=0
+State=0
+Left=252
+Top=241
+Width=368
+Height=244
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=360
+ClientHeight=218
+TBDockHeight=244
+LRDockWidth=368
+Dockable=1
+StatusBar=0
+TextLabels=1
+Toolbar=1
+SectionWidth0=150
+SectionWidth1=210
+Module=D:\Composant D6\Compo_Perso\PCM_Perso.dpk
+
+[Watches]
+Count=0
+
+[Breakpoints]
+Count=0
+
+[AddressBreakpoints]
+Count=0
+
+[Main Window]
+Create=1
+Visible=1
+State=0
+Left=0
+Top=0
+Width=1280
+Height=134
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1272
+ClientHeight=104
+
+[ProjectManager]
+Create=1
+Visible=1
+State=0
+Left=0
+Top=0
+Width=332
+Height=805
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=332
+ClientHeight=805
+TBDockHeight=305
+LRDockWidth=437
+Dockable=1
+
+[AlignmentPalette]
+Create=1
+Visible=0
+State=0
+Left=200
+Top=109
+Width=156
+Height=84
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=150
+ClientHeight=60
+
+[PropertyInspector]
+Create=1
+Visible=1
+State=0
+Left=0
+Top=0
+Width=332
+Height=805
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=332
+ClientHeight=805
+TBDockHeight=823
+LRDockWidth=424
+Dockable=1
+SplitPos=157
+ArrangeBy=Name
+SelectedItem=
+ExpandedItems=
+HiddenCategories=
+
+[ObjectTree]
+Create=1
+Visible=1
+State=0
+Left=0
+Top=0
+Width=332
+Height=805
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=332
+ClientHeight=805
+TBDockHeight=823
+LRDockWidth=424
+Dockable=1
+
+[fmGrepResults]
+Create=1
+Visible=0
+State=0
+Left=380
+Top=278
+Width=519
+Height=438
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=511
+ClientHeight=412
+TBDockHeight=438
+LRDockWidth=519
+Dockable=1
+
+[DockHosts]
+DockHostCount=1
+
+[DockSite0]
+DockSiteType=1
+Create=1
+Visible=1
+State=0
+Left=0
+Top=134
+Width=348
+Height=860
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=340
+ClientHeight=834
+TBDockHeight=767
+LRDockWidth=432
+Dockable=1
+TabPosition=0
+ActiveTab=Inspecteur d'objets
+TabDockClients=PropertyInspector,ObjectTree,ProjectManager
+

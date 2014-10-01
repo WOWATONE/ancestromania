@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="9"/>
+    <General>
+      <MainUnit Value="0"/>
+      <Title Value="ancestrotree"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <Icon Value="0"/>
+      <ActiveWindowIndexAtStart Value="0"/>
+    </General>
+    <i18n>
+      <EnableI18N LFM="False"/>
+    </i18n>
+    <VersionInfo>
+      <StringTable ProductVersion=""/>
+    </VersionInfo>
+    <BuildModes Count="1" Active="Default">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
+      <ExcludeFileFilter Value="*.(bak|ppu|o|so);*~;backup"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="2">
+      <Item1>
+        <PackageName Value="lazancestrocomponents"/>
+        <MinVersion Valid="True"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="LCL"/>
+      </Item2>
+    </RequiredPackages>
+    <Units Count="40">
+      <Unit0>
+        <Filename Value="ancestrotree.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ancestrotree"/>
+        <EditorIndex Value="4"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="46"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="u_formtree.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_FormTree"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="5"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="126"/>
+        <CursorPos X="1" Y="164"/>
+        <UsageCount Value="46"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="../../components/u_graph_viewer.pas"/>
+        <UnitName Value="u_graph_viewer"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="71"/>
+        <CursorPos X="27" Y="81"/>
+        <UsageCount Value="21"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="../../components/u_ancestrotree.pas"/>
+        <UnitName Value="u_ancestrotree"/>
+        <EditorIndex Value="0"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1396"/>
+        <CursorPos X="58" Y="1402"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="../../components/u_ancestroarc.pas"/>
+        <UnitName Value="u_ancestroarc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="266"/>
+        <CursorPos X="72" Y="288"/>
+        <UsageCount Value="18"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="../../../Ancestromania/Sources490/Context/u_objet_TContext.pas"/>
+        <UnitName Value="u_objet_TContext"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="14"/>
+        <CursorPos X="58" Y="14"/>
+        <UsageCount Value="19"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="../../functions/u_common_ancestro.pas"/>
+        <UnitName Value="u_common_ancestro"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="14"/>
+        <CursorPos X="6" Y="20"/>
+        <UsageCount Value="12"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="../../objects/u_objects_components.pas"/>
+        <UnitName Value="u_objects_components"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="37"/>
+        <CursorPos X="3" Y="59"/>
+        <UsageCount Value="18"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="/usr/lib/lazarus/0.9.30/lcl/extctrls.pp"/>
+        <UnitName Value="ExtCtrls"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="661"/>
+        <CursorPos X="19" Y="686"/>
+        <UsageCount Value="13"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="/usr/lib/lazarus/0.9.30/lcl/controls.pp"/>
+        <UnitName Value="Controls"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1963"/>
+        <CursorPos X="20" Y="1981"/>
+        <UsageCount Value="13"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="../../components/u_registercomponents.pas"/>
+        <UnitName Value="u_registercomponents"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="72" Y="20"/>
+        <UsageCount Value="14"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="u_formtree.lfm"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="19"/>
+        <CursorPos X="1" Y="54"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="/usr/lib/lazarus/0.9.30/lcl/include/graphiccontrol.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="48"/>
+        <CursorPos X="3" Y="57"/>
+        <UsageCount Value="10"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="../../../ConvertQuantum/F_Convert.pas"/>
+        <UnitName Value="F_Convert"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="289"/>
+        <CursorPos X="107" Y="310"/>
+        <UsageCount Value="19"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="../../objects/u_objet_TSingleList.pas"/>
+        <UnitName Value="u_objet_TSingleList"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="13"/>
+        <CursorPos X="9" Y="35"/>
+        <UsageCount Value="10"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="/usr/lib/lazarus/0.9.30/lcl/lclclasses.pp"/>
+        <UnitName Value="LCLClasses"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="16"/>
+        <CursorPos X="28" Y="38"/>
+        <UsageCount Value="10"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="/usr/share/fpcsrc/2.4.4/rtl/objpas/classes/classesh.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1509"/>
+        <CursorPos X="29" Y="1531"/>
+        <UsageCount Value="10"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="../../functions/u_common_const.pas"/>
+        <UnitName Value="u_common_const"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="127"/>
+        <CursorPos X="3" Y="149"/>
+        <UsageCount Value="10"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="../../../Ancestromania/Sources490/Graph/u_objet_TGraphArbre.pas"/>
+        <UnitName Value="u_objet_TGraphArbre"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="71"/>
+        <CursorPos X="21" Y="35"/>
+        <UsageCount Value="10"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="../../../Ancestromania/Sources490/Projet/ConverterBackup/u_form_graph_paintbox.pas"/>
+        <UnitName Value="u_form_graph_paintbox"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="121"/>
+        <CursorPos X="30" Y="143"/>
+        <UsageCount Value="10"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="../../../Ancestromania/Sources490/Graph/u_objet_graph_TViewer.pas"/>
+        <UnitName Value="u_objet_graph_TViewer"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="45" Y="10"/>
+        <UsageCount Value="11"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="../../../Ancestromania/Sources490/Projet/ConverterBackup/u_objet_TGraphRoue.pas"/>
+        <UnitName Value="u_objet_TGraphRoue"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="124"/>
+        <CursorPos X="43" Y="145"/>
+        <UsageCount Value="10"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="../../../Ancestromania/Sources490/Projet/ConverterBackup/u_objet_graph_TViewer.pas"/>
+        <UnitName Value="u_objet_graph_TViewer"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="688"/>
+        <CursorPos X="39" Y="722"/>
+        <UsageCount Value="10"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="/usr/share/fpcsrc/2.4.4/packages/fcl-base/src/contnrs.pp"/>
+        <UnitName Value="contnrs"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="11"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="../../../Ancestromania/Sources490/Graph/u_objet_graph_TChantier.pas"/>
+        <UnitName Value="u_objet_graph_TChantier"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="15"/>
+        <CursorPos X="74" Y="21"/>
+        <UsageCount Value="10"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="../../../Ancestromania/Sources490/Projet/ConverterBackup/u_objet_graph_TGraph.pas"/>
+        <UnitName Value="u_objet_graph_TGraph"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="22"/>
+        <CursorPos X="25" Y="26"/>
+        <UsageCount Value="10"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="../../objects/cMaths.pas"/>
+        <UnitName Value="cMaths"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="641"/>
+        <CursorPos X="13" Y="663"/>
+        <UsageCount Value="10"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="../../../Ancestromania/Sources490/Graph/u_form_graph_paintbox.pas"/>
+        <HasResources Value="True"/>
+        <UnitName Value="u_form_graph_paintbox"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="10"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="../../../../Lazarus/composants/menutbar/menutbar.pas"/>
+        <UnitName Value="menutbar"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="27"/>
+        <CursorPos X="1" Y="46"/>
+        <UsageCount Value="10"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="../../../../Lazarus/composants/menutbar/toolbarmenureg.pas"/>
+        <UnitName Value="toolbarmenureg"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="15" Y="14"/>
+        <UsageCount Value="12"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="../../../Ancestromania/SourcesLaz/Projet/Ancestromania.dpr"/>
+        <UnitName Value="Ancestromania"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="107"/>
+        <CursorPos X="1" Y="143"/>
+        <UsageCount Value="12"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="../../lazancestrobuttons.pas"/>
+        <UnitName Value="lazancestrobuttons"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="3" Y="10"/>
+        <UsageCount Value="10"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="../../components/u_ancestropictbuttons.pas"/>
+        <UnitName Value="u_ancestropictbuttons"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="25"/>
+        <CursorPos X="15" Y="38"/>
+        <UsageCount Value="10"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="../../../Extended/composants/u_buttons_appli.pas"/>
+        <UnitName Value="u_buttons_appli"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="169"/>
+        <CursorPos X="74" Y="36"/>
+        <UsageCount Value="10"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="../../objects/u_objet_graph_TPlot.pas"/>
+        <UnitName Value="u_objet_graph_TPlot"/>
+        <EditorIndex Value="3"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="44"/>
+        <CursorPos X="3" Y="75"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="../../functions/u_ancestrolink.pas"/>
+        <UnitName Value="u_ancestrolink"/>
+        <EditorIndex Value="2"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="49"/>
+        <CursorPos X="36" Y="71"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="../../components/u_ancestroboxes.pas"/>
+        <UnitName Value="u_ancestroboxes"/>
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="91"/>
+        <CursorPos X="3" Y="67"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="../../../Ancestromania/SourcesD7/Graph/u_objet_TGraphLiens.pas"/>
+        <UnitName Value="u_objet_TGraphLiens"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="907"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="10"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="../../../Ancestromania/SourcesD7/Graph/u_form_graph_paintbox.pas"/>
+        <UnitName Value="u_form_graph_paintbox"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1013"/>
+        <CursorPos X="45" Y="1042"/>
+        <UsageCount Value="10"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="../../components/u_ancestroviewer.pas"/>
+        <UnitName Value="u_ancestroviewer"/>
+        <EditorIndex Value="6"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="6" Y="22"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit39>
+    </Units>
+    <JumpHistory Count="29" HistoryIndex="28">
+      <Position1>
+        <Filename Value="../../functions/u_ancestrolink.pas"/>
+        <Caret Line="58" Column="7" TopLine="49"/>
+      </Position1>
+      <Position2>
+        <Filename Value="../../functions/u_ancestrolink.pas"/>
+        <Caret Line="62" Column="18" TopLine="49"/>
+      </Position2>
+      <Position3>
+        <Filename Value="../../functions/u_ancestrolink.pas"/>
+        <Caret Line="70" Column="36" TopLine="49"/>
+      </Position3>
+      <Position4>
+        <Filename Value="../../components/u_ancestrotree.pas"/>
+        <Caret Line="572" Column="1" TopLine="554"/>
+      </Position4>
+      <Position5>
+        <Filename Value="../../components/u_ancestrotree.pas"/>
+        <Caret Line="695" Column="16" TopLine="664"/>
+      </Position5>
+      <Position6>
+        <Filename Value="../../components/u_ancestrotree.pas"/>
+        <Caret Line="769" Column="20" TopLine="738"/>
+      </Position6>
+      <Position7>
+        <Filename Value="../../components/u_ancestrotree.pas"/>
+        <Caret Line="1127" Column="44" TopLine="1096"/>
+      </Position7>
+      <Position8>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="62" Column="1" TopLine="45"/>
+      </Position8>
+      <Position9>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="11" Column="45" TopLine="1"/>
+      </Position9>
+      <Position10>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="18" Column="137" TopLine="121"/>
+      </Position10>
+      <Position11>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="161" Column="1" TopLine="123"/>
+      </Position11>
+      <Position12>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="48" Column="1" TopLine="25"/>
+      </Position12>
+      <Position13>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="49" Column="1" TopLine="25"/>
+      </Position13>
+      <Position14>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="54" Column="1" TopLine="25"/>
+      </Position14>
+      <Position15>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="56" Column="1" TopLine="25"/>
+      </Position15>
+      <Position16>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="57" Column="1" TopLine="25"/>
+      </Position16>
+      <Position17>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="58" Column="1" TopLine="25"/>
+      </Position17>
+      <Position18>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="60" Column="1" TopLine="25"/>
+      </Position18>
+      <Position19>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="67" Column="1" TopLine="29"/>
+      </Position19>
+      <Position20>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="68" Column="1" TopLine="30"/>
+      </Position20>
+      <Position21>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="71" Column="1" TopLine="33"/>
+      </Position21>
+      <Position22>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="72" Column="1" TopLine="34"/>
+      </Position22>
+      <Position23>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="73" Column="1" TopLine="35"/>
+      </Position23>
+      <Position24>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="74" Column="1" TopLine="36"/>
+      </Position24>
+      <Position25>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="75" Column="1" TopLine="37"/>
+      </Position25>
+      <Position26>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="76" Column="1" TopLine="38"/>
+      </Position26>
+      <Position27>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="77" Column="1" TopLine="39"/>
+      </Position27>
+      <Position28>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="141" Column="1" TopLine="119"/>
+      </Position28>
+      <Position29>
+        <Filename Value="u_formtree.pas"/>
+        <Caret Line="163" Column="1" TopLine="125"/>
+      </Position29>
+    </JumpHistory>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <Target>
+      <Filename Value="ancestrotree"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <CodeGeneration>
+      <Optimizations>
+        <OptimizationLevel Value="3"/>
+      </Optimizations>
+    </CodeGeneration>
+    <Linking>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+    <Other>
+      <CompilerPath Value="$(CompPath)"/>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="3">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+    </Exceptions>
+  </Debugging>
+  <EditorMacros Count="0"/>
+</CONFIG>

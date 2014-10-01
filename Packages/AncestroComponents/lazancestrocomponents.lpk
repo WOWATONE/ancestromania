@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="4">
+    <Name Value="lazancestrocomponents"/>
+    <AddToProjectUsesSection Value="True"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <SearchPaths>
+        <IncludeFiles Value="components"/>
+        <OtherUnitFiles Value="components;functions;objects;forms"/>
+        <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+      <Other>
+        <CompilerPath Value="$(CompPath)"/>
+      </Other>
+    </CompilerOptions>
+    <Version Major="1"/>
+    <Files Count="18">
+      <Item1>
+        <Filename Value="components/u_ancestroarc.pas"/>
+        <UnitName Value="u_ancestroarc"/>
+      </Item1>
+      <Item2>
+        <Filename Value="components/u_ancestroviewer.pas"/>
+        <UnitName Value="u_ancestroviewer"/>
+      </Item2>
+      <Item3>
+        <Filename Value="components/u_ancestrotree.pas"/>
+        <UnitName Value="u_ancestrotree"/>
+      </Item3>
+      <Item4>
+        <Filename Value="objects/u_objects_components.pas"/>
+        <UnitName Value="u_objects_components"/>
+      </Item4>
+      <Item5>
+        <Filename Value="functions/u_ancestrolink.pas"/>
+        <UnitName Value="u_ancestrolink"/>
+      </Item5>
+      <Item6>
+        <Filename Value="components/u_ancestroboxes.pas"/>
+        <UnitName Value="u_ancestroboxes"/>
+      </Item6>
+      <Item7>
+        <Filename Value="components/u_extdateedit.pas"/>
+        <UnitName Value="u_extdateedit"/>
+      </Item7>
+      <Item8>
+        <Filename Value="forms/u_form_calendriers.lfm"/>
+        <Type Value="LFM"/>
+      </Item8>
+      <Item9>
+        <Filename Value="forms/u_form_calendriers.pas"/>
+        <UnitName Value="u_form_calendriers"/>
+      </Item9>
+      <Item10>
+        <Filename Value="functions/u_calendriers_gregorien.pas"/>
+        <UnitName Value="u_calendriers_gregorien"/>
+      </Item10>
+      <Item11>
+        <Filename Value="forms/u_form_graph_config_hierarchie.lfm"/>
+        <Type Value="LFM"/>
+      </Item11>
+      <Item12>
+        <Filename Value="forms/u_form_graph_config_hierarchie.pas"/>
+        <UnitName Value="u_form_graph_config_hierarchie"/>
+      </Item12>
+      <Item13>
+        <Filename Value="forms/u_form_graph_config_liens.lfm"/>
+        <Type Value="LFM"/>
+      </Item13>
+      <Item14>
+        <Filename Value="forms/u_form_graph_config_liens.pas"/>
+        <UnitName Value="u_form_graph_config_liens"/>
+      </Item14>
+      <Item15>
+        <Filename Value="forms/u_form_graph_config_roue.lfm"/>
+        <Type Value="LFM"/>
+      </Item15>
+      <Item16>
+        <Filename Value="forms/u_form_graph_config_roue.pas"/>
+        <UnitName Value="u_form_graph_config_roue"/>
+      </Item16>
+      <Item17>
+        <Filename Value="forms/u_printreport.lfm"/>
+        <Type Value="LFM"/>
+      </Item17>
+      <Item18>
+        <Filename Value="forms/u_printreport.pas"/>
+        <UnitName Value="u_printreport"/>
+      </Item18>
+    </Files>
+    <Type Value="RunAndDesignTime"/>
+    <RequiredPkgs Count="7">
+      <Item1>
+        <PackageName Value="lazextreports"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="lazancestrobuttons"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="lazextcomponents"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="CompoPerso"/>
+      </Item4>
+      <Item5>
+        <PackageName Value="lazancestrounits"/>
+      </Item5>
+      <Item6>
+        <PackageName Value="LCL"/>
+      </Item6>
+      <Item7>
+        <PackageName Value="FCL"/>
+        <MinVersion Major="1" Valid="True"/>
+      </Item7>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+    <CustomOptions Items="ExternHelp" Version="2">
+      <_ExternHelp Items="Count"/>
+    </CustomOptions>
+  </Package>
+</CONFIG>
