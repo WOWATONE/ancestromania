@@ -20,6 +20,7 @@ if [ ! -d ./Ancestromania-data/var/ ]; then
 	mkdir Ancestromania-data/var/lib/firebird/
 	mkdir Ancestromania-data/var/lib/firebird/2.5
 	mkdir Ancestromania-data/var/lib/firebird/2.5/data
+	chmod -R 775 Ancestromania-data/var/
 fi
 
 cp ../i386-win32/MaBase.fdb Ancestromania-data/var/lib/firebird/2.5/data/Ancestromania-updated.fdb

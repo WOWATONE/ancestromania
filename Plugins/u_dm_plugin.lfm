@@ -1,0 +1,49 @@
+object DMPlugin: TDMPlugin
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  OldCreateOrder = False
+  left = 109
+  top = 155
+  Height = 408
+  HorizontalOffset = 309
+  VerticalOffset = 132
+  Width = 572
+  object IBT_BASE: TIBTransaction
+    Active = False
+    DefaultDatabase = ibd_BASE
+    DefaultAction = TACommitRetaining
+    left = 104
+    top = 16
+  end
+  object ibd_BASE: TIBDatabase
+    Connected = False
+    LoginPrompt = False
+    AllowStreamedConnected = False
+    Params.Strings = (
+      'user_name=SYSDBA'
+      'password=masterkey'
+    )
+    DefaultTransaction = IBT_BASE
+    IdleTimer = 0
+    TraceFlags = []
+    left = 40
+    top = 16
+  end
+  object IBS_DLL: TIBSQL
+    Database = ibd_BASE
+    ParamCheck = True
+    SQL.Strings = (
+      'SELECT g.dll_dossier'
+      ',g.dll_indi as cle_fiche'
+      ',i.nom'
+      ',i.prenom'
+      ',d.nom_dossier'
+      'from gestion_dll g'
+      'inner join individu i on i.cle_fiche=g.dll_indi'
+      'inner join dossier d on d.cle_dossier=g.dll_dossier'
+    )
+    Transaction = IBT_BASE
+    left = 40
+    top = 80
+  end
+end
