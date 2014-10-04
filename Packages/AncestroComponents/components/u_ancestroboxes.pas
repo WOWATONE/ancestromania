@@ -234,13 +234,15 @@ begin
   if AValue = nil Then
     FTimerArrowIndi.Enabled:=False;
   FArrowIndi:=AValue;
-  if assigned (FArrowIndi) then
+  if ([csLoading,csDesigning] * Owner.ComponentState = [csDesigning])
+  and assigned (FArrowIndi) then
     With FArrowIndi do
-     if Picture.Bitmap.Empty then
+     if assigned ( Parent )
+     and ( Picture.Width = 0 ) then
       Begin
        Visible:=False;
-       Width :=18;
-       Height:=18;
+       Width  := 18 ;
+       Height := 18 ;
        Transparent:=true;
        Picture.LoadFromLazarusResource ( 'ArrowIndi' );
       end;
@@ -265,7 +267,6 @@ procedure TGraphBoxes.GraphMoved;
 var
   IndiEnCours:integer;
   IndiPos:TPoint;
-  AX,AY:Single;
   actif : Boolean;
 begin
   if assigned(FArrowIndi) Then
@@ -275,7 +276,8 @@ begin
         begin
           Indipos:=PositionIndi(IndiEnCours);
           FArrowIndi.Left:=IndiPos.X-FArrowIndi.Width div 2;
-          FArrowIndi.Top:=IndiPos.Y+trunc(FBoxHeight/2*(Viewer.Zoom*Viewer.ScreenRatio));
+          with Viewer do
+            FArrowIndi.Top:=IndiPos.Y+trunc(FBoxHeight/2*(Zoom*ScreenRatio));
           actif:=True;
         end
         else
@@ -317,10 +319,5 @@ Begin
     AbortMessage('You have to set PrintRoundRect Event.');
 End;
 
-
-{$IFDEF FPC}
-initialization
-  {$I u_ancestroboxes.lrs}
-{$ENDIF}
 end.
 

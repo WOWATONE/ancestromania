@@ -28,9 +28,9 @@ Begin
                                  TGraphViewer]);
 end;
 
-initialization
-
 {$IFDEF FPC}
+initialization
+  {$I u_ancestroboxes.lrs}
   {$i *.lrs}
 {$ENDIF}
 end.

@@ -135,6 +135,7 @@ type
     procedure GetFullRect(var R: TFloatRect); virtual;
     function DoMouseWheelDown(Shift: TShiftState; MousePos: TPoint): Boolean; override;
     function DoMouseWheelUp(Shift: TShiftState; MousePos: TPoint): Boolean; override;
+    procedure MouseDown(Button:TMouseButton; Shift:TShiftState;X,Y:Integer); override;
     procedure MouseMove(Shift:TShiftState;X,Y:Integer); override;
     procedure MouseUp(Button:TMouseButton;Shift:TShiftState;X,Y:Integer); override;
     procedure Paint; override;
@@ -156,7 +157,6 @@ type
     procedure WriteSet ( const AKeyWord : String );virtual;
     procedure ReadBool  ( const AKeyWord : String );virtual;
     procedure WriteBool ( const AKeyWord : String );virtual;
-    procedure MouseDown(Button:TMouseButton; Shift:TShiftState;X,Y:Integer); override;
     procedure ReadIni ; virtual;
     procedure WriteIni ; virtual;
   public
@@ -959,16 +959,16 @@ begin
   if  (Owner as TCustomForm).ActiveControl<>Parent then
       (Owner as TCustomForm).ActiveControl:=Parent;
       //ne pas mettre setfocus car reprend le focus apr?s un dblclic
-  if (fCanDraw.Value)and(FViewer.fGraphMiniature<>Self) then
+  if (fCanDraw.Value) then
   begin
         if ( ssQuad in Shift ) then
           for n := 1 to 20 do FViewer.ZoomMoreAtPoint(X,Y)
+        else if ( ssLeft  in Shift ) then
+          Deplace
         else if ( ssDouble in Shift )
         or  ( ssAltGr in Shift )
         or  ( ssAlt in Shift ) then
           Viewer.ZoomMoreAtPoint(X,Y)
-        else if ( ssLeft  in Shift ) then
-          Deplace
         else if ( ssCtrl in Shift )
         or ( ssRight in Shift )then
           FViewer.ZoomLessAtPoint(X,Y)
