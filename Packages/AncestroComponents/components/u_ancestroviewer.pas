@@ -131,6 +131,7 @@ type
    procedure SetSaveToIni(const AValue: Boolean);
   protected
     fLevelTemp: integer;
+    procedure GraphMoved;virtual;
     procedure GetFullRect(var R: TFloatRect); virtual;
     function DoMouseWheelDown(Shift: TShiftState; MousePos: TPoint): Boolean; override;
     function DoMouseWheelUp(Shift: TShiftState; MousePos: TPoint): Boolean; override;
@@ -197,6 +198,7 @@ type
   TGraphViewer=class ( TComponent )
 
   private
+    FCoeffEcran:Single;
     FGraphData: TGraphData;
     fGraphMiniature ,
     fGraph          :TGraphComponent;
@@ -229,11 +231,10 @@ type
     procedure Notification(AComponent: TComponent;
       Operation: TOperation); override;
     procedure CallZoomChanged; virtual;
-
   public
 
-    procedure ZoomMoreAtPoint(x,y:integer);
-    procedure ZoomLessAtPoint(x,y:integer);
+    procedure ZoomMoreAtPoint(const x,y:integer);
+    procedure ZoomLessAtPoint(const x,y:integer);
 
     constructor Create ( AOwner : TComponent ); override;
     destructor Destroy; override;
@@ -273,6 +274,7 @@ type
     property ActivePersonKey : Integer read FActivePersonKey write FActivePersonKey default -1;
     //les ligne en pointill?s
     property PrintCanvas : TRLGraphicSurface read FPrintCanvas write FPrintCanvas;
+    property ScreenRatio : Single read FCoeffEcran;
    published
     //Le chantier
 //    property Chantier:TGraphComponent read fChantier write SetChantier;
@@ -327,7 +329,8 @@ begin
   if assigned ( FViewer )
    Then
      Begin
-       FViewer.Zoom := FViewer.Zoom - 10;
+       with MousePos do
+        FViewer.ZoomLessAtPoint(X,Y);
        Refresh;
        FViewer.RefreshMiniature;
      end;
@@ -340,7 +343,8 @@ begin
   if assigned ( FViewer )
    Then
      Begin
-      FViewer.Zoom := FViewer.Zoom + 10;
+      with MousePos do
+        FViewer.ZoomMoreAtPoint(X,Y);
       Refresh;
       FViewer.RefreshMiniature;
     end;
@@ -376,7 +380,6 @@ begin
 end;
 
 { TGraphViewer }
-var _CoeffEcran:Single;
 
 procedure TGraphViewer.BeginUpdate;
 begin
@@ -410,7 +413,7 @@ begin
   fTPYC:=TSingleList.create;
   fTPXV:=TIntegerList.create;
   fTPYV:=TIntegerList.create;
-  _CoeffEcran:=Screen.PixelsPerInch/2540;
+  FCoeffEcran:=Screen.PixelsPerInch/2540;
 
   //objects init
   FGraphData      :=nil;
@@ -453,12 +456,11 @@ begin
   if (Value>=_ZOOM_MIN)and(Value<=_ZOOM_MAX) then
   begin
     if fGraph<>nil then
-    begin
-      if fGraph<>nil then
-      begin
-        ApplyZoomAtPoint(Value,fGraph.Width div 2,fGraph.Height div 2);
-      end;
-    end;
+    with FGraph do
+     begin
+      ApplyZoomAtPoint(Value,Width div 2,Height div 2);
+      GraphMoved;
+     end;
   end;
 end;
 
@@ -481,8 +483,8 @@ begin
 
         if (wc>0)and(hc>0) then
         begin
-          fZoomW:=fGraph.Width/wc/_CoeffEcran;
-          fZoomH:=fGraph.Height/hc/_CoeffEcran;
+          fZoomW:=fGraph.Width/wc/FCoeffEcran;
+          fZoomH:=fGraph.Height/hc/FCoeffEcran;
 
           if fZoomW>fZoomH then
             fZoom:=trunc(fZoomH-1)
@@ -516,8 +518,8 @@ var
   n:integer;
 begin
   if AZoom > 0
-   Then e:=AZoom*_CoeffEcran
-   Else e:=fZoom*_CoeffEcran;
+   Then e:=AZoom*FCoeffEcran
+   Else e:=fZoom*FCoeffEcran;
   FGraph.InitGraph(e);
 
   for n:=0 to fTPXC.count-1 do
@@ -599,7 +601,7 @@ begin
   RefreshMiniature;
 end;
 
-procedure TGraphViewer.ZoomLessAtPoint(x,y:integer);
+procedure TGraphViewer.ZoomLessAtPoint(const x,y:integer);
 var
   value:integer;
 
@@ -688,7 +690,7 @@ begin
 end;
 
 
-procedure TGraphViewer.ZoomMoreAtPoint(x,y:integer);
+procedure TGraphViewer.ZoomMoreAtPoint(const x,y:integer);
 var
   value:integer;
 
@@ -721,7 +723,7 @@ var
   e:single;
 begin
 //  e:=(fZoom*72)/(100*25.4);
-  e:=fZoom*_CoeffEcran;
+  e:=fZoom*FCoeffEcran;
   xc:=(xv-fDecalX)/e;
   yc:=(yv-fDecalY)/e;
 end;
@@ -731,7 +733,7 @@ var
   e:single;
 begin
 //  e:=(fZoom*72)/(100*25.4);
-  e:=fZoom*_CoeffEcran;
+  e:=fZoom*FCoeffEcran;
   xv:=trunc(xc*e);
   yv:=trunc(yc*e);
 end;
@@ -754,7 +756,7 @@ begin
       pcy:=(R.Bottom+R.Top)/2;
 
       //transformation des coord. pour le viewer
-      //FGraph.InitGraph(fZoom*_CoeffEcran);
+      //FGraph.InitGraph(fZoom*FCoeffEcran);
       CoordChantier_To_CoordViewer(pcx,pcy,x,y);
 
       //Calcul des d?calages
@@ -793,8 +795,8 @@ begin
 
         if (wc>0)and(hc>0) then
         begin
-          fZoomW:=fGraphMiniature.Width/wc/_CoeffEcran;
-          fZoomH:=fGraphMiniature.Height/hc/_CoeffEcran;
+          fZoomW:=fGraphMiniature.Width/wc/FCoeffEcran;
+          fZoomH:=fGraphMiniature.Height/hc/FCoeffEcran;
 
           if fZoomW>fZoomH then
             fZoomMiniature:=fZoomH-0.1
@@ -820,7 +822,7 @@ begin
       end;
 
       //Calcul des coord de tous les pieux, dans le Viewer miniature
-      e:=fZoomMiniature*_CoeffEcran;
+      e:=fZoomMiniature*FCoeffEcran;
       FGraph.InitGraph(e);
       RefreshMiniature;
     end;
@@ -831,14 +833,11 @@ procedure TGraphViewer.Notification(AComponent: TComponent;
   Operation: TOperation);
 begin
   inherited Notification(AComponent, Operation);
-  if (Operation = opRemove) and (Graph <> nil) and
-    (AComponent = Graph) then Graph := nil;
-  if (Operation = opRemove) and (Data <> nil) and
-    (AComponent = Data) then Data := nil;
-  if (Operation = opRemove) and (GraphMiniature <> nil) and
-    (AComponent = GraphMiniature) then GraphMiniature := nil;
-  if (Operation = opRemove) and (PanelGraph <> nil) and
-    (AComponent = PanelGraph) then PanelGraph := nil;
+  if (Operation <> opRemove) Then Exit;
+  if (Graph <> nil) and (AComponent = Graph) then Graph := nil;
+  if (Data  <> nil) and (AComponent = Data ) then Data := nil;
+  if (GraphMiniature <> nil) and (AComponent = GraphMiniature) then GraphMiniature := nil;
+  if (PanelGraph     <> nil) and (AComponent = PanelGraph    ) then PanelGraph := nil;
 end;
 
 procedure TGraphViewer.RefreshMiniature;
@@ -849,7 +848,13 @@ end;
 
 procedure TGraphViewer.RefreshGraph;
 begin
-  if assigned ( fGraph ) Then fGraph.Refresh;
+  if assigned ( fGraph )
+   Then
+    with fGraph do
+     Begin
+       Refresh;
+       GraphMoved;
+     end;
 end;
 
 procedure TGraphViewer.CoordChantier_To_CoordViewerMiniature(const xc,yc:single;var xv,yv:integer);
@@ -857,7 +862,7 @@ var
   e:single;
 begin
 //  e:=(fZoomMiniature*72)/(100*25.4);
-  e:=fZoomMiniature*_CoeffEcran;
+  e:=fZoomMiniature*FCoeffEcran;
   xv:=trunc(xc*e);
   yv:=trunc(yc*e);
 end;
@@ -867,7 +872,7 @@ var
   e:single;
 begin
 //  e:=(fZoomMiniature*72)/(100*25.4);
-  e:=fZoomMiniature*_CoeffEcran;
+  e:=fZoomMiniature*FCoeffEcran;
   xc:=(xv-fDecalMiniatureX)/e;
   yc:=(yv-fDecalMiniatureY)/e;
 end;
@@ -962,11 +967,11 @@ begin
         or  ( ssAltGr in Shift )
         or  ( ssAlt in Shift ) then
           Viewer.ZoomMoreAtPoint(X,Y)
+        else if ( ssLeft  in Shift ) then
+          Deplace
         else if ( ssCtrl in Shift )
         or ( ssRight in Shift )then
           FViewer.ZoomLessAtPoint(X,Y)
-        else if ( ssLeft  in Shift ) then
-          Deplace
         else Refresh;
 {
       mmZoomMore:
@@ -1023,6 +1028,7 @@ begin
     FViewer.ShiftX:=(x-fStartPos.x)+fInitialDecal.x;
     FViewer.ShiftY:=(y-fStartPos.y)+fInitialDecal.y;
     Refresh;
+    GraphMoved;
     FViewer.RefreshMiniature;
    end;
   if (ssRight in Shift) then
@@ -1032,6 +1038,7 @@ begin
      Then FViewer.Zoom:=FViewer.Zoom+10
      Else FViewer.Zoom:=FViewer.Zoom-10;
     Refresh;
+    GraphMoved;
     FViewer.RefreshMiniature;
    end;
 end;
@@ -1046,6 +1053,11 @@ procedure TGraphComponent.SetSaveToIni(const AValue: Boolean);
 begin
   if FSaveIni=AValue then Exit;
   FSaveIni:=AValue;
+end;
+
+procedure TGraphComponent.GraphMoved;
+begin
+
 end;
 
 

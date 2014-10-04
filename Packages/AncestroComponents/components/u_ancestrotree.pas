@@ -1661,6 +1661,7 @@ var
   i: integer;
 begin
   Result := -1;
+  if not assigned ( Data ) then Exit;
   with Data do
     for i := 0 to Persons.Count - 1 do
       begin
