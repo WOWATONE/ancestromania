@@ -1,4 +1,4 @@
 
-var marker[n] = new L.Marker(new L.LatLng([Latitud],[Longitud]), {icon: [Icon]});
-map.addLayer(marker[n]);
-marker[n].bindPopup('[NameOrCity]').openPopup();
+var marker[n] = L.circle([[Latitud],[Longitud]], [Icon]Width, [Icon]Style);
+marker[n].addTo(map);
+var popup[n]=marker[n].bindPopup('[NameOrCity]');

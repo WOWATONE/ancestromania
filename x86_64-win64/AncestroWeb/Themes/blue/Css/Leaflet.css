@@ -1,9 +1,5 @@
 /* required styles */
 
-.leaflet-tile-container img {
--webkit-backface-visibility: hidden;
-}
-
 .leaflet-map-pane,
 .leaflet-tile,
 .leaflet-marker-icon,

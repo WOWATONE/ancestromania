@@ -1,1 +1,1 @@
-map.setView(new L.LatLng([Latitud], [Longitud]), [Zoom]).addLayer(cloudmade);
+map.setView([[Latitud], [Longitud]], [Zoom]);
