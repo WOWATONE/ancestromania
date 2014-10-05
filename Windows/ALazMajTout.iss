@@ -9,10 +9,10 @@ VersionInfoVersion=2014.1.3.1
 ;Attention, toujours 3 décimales pour la version de la base
 ;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 AppPublisher=André Langlet et Matthieu GIROUX
-AppSupportURL=http://ancestrosphere.free.fr/forum/index.php
-AppUpdatesURL=http://ancestrosphere.free.fr/forum/index.php
+AppSupportURL=https://code.google.com/p/ancestromania/issues/list
+AppUpdatesURL=http://genealogie.liberlog.fr/
 DefaultDirName={code:doPathAncestro}
-AppPublisherURL=http://ancestrosphere.free.fr/forum/index.php
+AppPublisherURL=http://genealogie.liberlog.fr/
 DefaultGroupName=Ancestromania
 DisableProgramGroupPage=yes
 OutputBaseFilename=Update_AncestroIntel
@@ -87,8 +87,6 @@ Source: "..\i386-win32\Parances.fdb"; DestDir: "{commonappdata}\Ancestromania\";
 Source: "TablesReference.exe"; DestDir: "{app}"; Flags : 32bit 
 Source: "RestaureBases.exe"; DestDir: "{app}";  Flags : 32bit 
 Source: "Cassinimania.exe"; DestDir: "{app}"; Flags : 32bit 
-Source: "femme.bmp"; DestDir: "{app}"; Flags: onlyifdoesntexist
-Source: "homme.bmp"; DestDir: "{app}"; Flags: onlyifdoesntexist
 
 ;fichiers en attente de transfert ou utilisation
 

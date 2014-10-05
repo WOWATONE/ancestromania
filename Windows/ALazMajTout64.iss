@@ -9,10 +9,10 @@ VersionInfoVersion=2014.1.3.1
 ;Attention, toujours 3 décimales pour la version de la base
 ;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 AppPublisher=André Langlet et Matthieu GIROUX
-AppSupportURL=http://ancestrosphere.free.fr/forum/index.php
-AppUpdatesURL=http://ancestrosphere.free.fr/forum/index.php
+AppSupportURL=https://code.google.com/p/ancestromania/issues/list
+AppUpdatesURL=http://genealogie.liberlog.fr/
 DefaultDirName={code:doPathAncestro}
-AppPublisherURL=http://ancestrosphere.free.fr/forum/index.php
+AppPublisherURL=http://genealogie.liberlog.fr/
 DefaultGroupName=Ancestromania
 DisableProgramGroupPage=yes
 OutputBaseFilename=Update_AncestroIntel64
@@ -58,7 +58,7 @@ Source: "..\x86_64-win64\embed\isql.exe"; DestDir: "{app}"; Flags : 64bit
 Source: "..\x86_64-win64\Ancestromania.exe"; DestDir: "{app}";  BeforeInstall: BeforeInstallExe; Flags : 64bit
 Source: "..\x86_64-win64\Ancestromania.ini"; DestDir: "{app}"; 
 Source: "..\x86_64-win64\Images\*.*"; DestDir: "{app}\Images";
-Source: "..\x86_64-win64\Help\*.*"; DestDir: "{app}\Help";
+Source: "..\i386-win32\Help\*.*"; DestDir: "{app}\Help";
 Source: "..\x86_64-win64\Tables de references\*.*"; DestDir: "{app}\Tables de references";
 Source: "..\x86_64-win64\AncestroWeb\Classes\Box\*.*"; DestDir: "{app}\AncestroWeb\Classes\Box";
 Source: "..\x86_64-win64\AncestroWeb\Classes\Scripts\*.*"; DestDir: "{app}\AncestroWeb\Classes\Scripts";
