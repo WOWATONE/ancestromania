@@ -24,6 +24,9 @@ unit u_genealogy_context;
 {$IFDEF FPC}
   {$MODE Delphi}
 {$ENDIF}
+{$IFDEF WIN32}
+  {$DEFINE WEBMAPS}
+{$ENDIF}
 
 interface
 
@@ -593,7 +596,7 @@ begin
     fPhotos:=fIni.ReadBool('Settings','Photos',True);
     fMontrerRepere:=fIni.ReadBool('Settings','MontrerRepere',True);
     fGarde:=fIni.ReadBool('Settings','Garde',False);
-    fQuelSat:=fIni.ReadInteger('Settings','QuelSat',2);
+    fQuelSat:=fIni.ReadInteger('Settings','QuelSat',  {$IFDEF WEBMAPS}0{$ELSE}3{$ENDIF});
 
     fCanSeeHint:=fIni.ReadBool('Settings','CanSeeHint',True);
     fShowExit:=fIni.ReadBool('Settings','ShowExit',True);
