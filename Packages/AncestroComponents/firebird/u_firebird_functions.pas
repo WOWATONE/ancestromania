@@ -831,11 +831,6 @@ var IBUpdate : TIBSQL; ls_path : String;
 Begin
   Result := '';
 
-  if fb_MediaFieldIBXIsNull (Ibq_mediaa, ibq_mediab, MEDIAS_MULTI_MEDIA)
-   Then
-    Begin
-      Exit;
-    End;
   try
     // Searching original copy with partial name
     if fs_getMultiIBXFieldString ( Ibq_mediaa, ibq_mediab, MEDIAS_NOM ) > '' Then

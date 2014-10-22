@@ -133,9 +133,9 @@ procedure ExecuteChaineDansChaine(UnText:string;Position:integer;Selection:integ
 function FaitDateVille(d,v:string):string;
 function XYZenInt(x,y,z:Smallint):integer;
 procedure IntenXYZ(i:integer;var x,y,z:integer);
-function FichEstImage(NomFichier:string):boolean;//AL2010
-function FichEstSon(NomFichier:string):boolean;//AL2010
-function FichEstVideo(NomFichier:string):boolean;//AL2010
+function FichEstImage(const NomFichier:string):boolean;//MG2014
+function FichEstSon(NomFichier:string):boolean;//MG2014
+function FichEstVideo(NomFichier:string):boolean;//MG2014
 function PosStringDansListe(Chaine:string;Liste:array of string):integer;//AL2010
 function PosIntDansListe(Int:Integer;Liste:array of Integer):integer;//AL2010
 function ConvertStrToFloat(s:string;var F:Extended):Boolean;//AL2010
@@ -167,6 +167,7 @@ uses
   u_common_resources,
   fonctions_file,
   FileUtil,
+  BGRABitmapTypes,
   fonctions_images,
   fonctions_db,
   StrUtils,Math,
@@ -1286,23 +1287,14 @@ begin
   end;
 end;
 
-function FichEstImage(NomFichier:string):boolean;
-const
-  Liste:array[0..5] of string=('.JPG','.JPEG',//Joint Photographic Experts Group
-    '.BMP',//Bitmap
-    '.PNG',//Portable Network Graphics
-    '.TIF','.TIFF'//Tagged Image File Format
-    );
-var
-  s:string;
+function FichEstImage(const NomFichier:string):boolean;
 begin
-  s:=UpperCase(ExtractFileExt(NomFichier));
-  Result:=PosStringDansListe(s,Liste)>-1
+  Result:=SuggestImageFormat(NomFichier)>ifUnknown;
 end;
 
 function FichEstSon(NomFichier:string):boolean;
 const
-  Liste:array[0..2] of string=('.WAV','.MP3','.WMA');
+  Liste:array[0..3] of string=('.WAV','.MP3','.WMA','.OGG');
 var
   s:string;
 begin
@@ -1312,7 +1304,7 @@ end;
 
 function FichEstVideo(NomFichier:string):boolean;
 const
-  Liste:array[0..2] of string=('.AVI','.MP4','.MPEG');
+  Liste:array[0..4] of string=('.AVI','.MP4','.MPEG','.OGV','.OGM');
 var
   s:string;
 begin

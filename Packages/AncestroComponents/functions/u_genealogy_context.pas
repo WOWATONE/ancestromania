@@ -47,6 +47,9 @@ uses
 const CST_BACKUP = 'Backup';
       ANCESTROMANIA = 'Ancestromania';
       ANCESTROMANIA_DATABASE = ANCESTROMANIA+CST_EXTENSION_FIREBIRD;
+      CST_INI_VLC = 'VLC';
+      CST_INI_VLC_PLAYER = 'InternalPlayer';
+      CST_INI_VLC_PLAYER_DEFAULT = {$IFDEF WINDOWS}False{$ELSE}True{$ENDIF};
 
 
 type
