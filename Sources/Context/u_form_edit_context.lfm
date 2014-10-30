@@ -1,0 +1,3214 @@
+inherited FEditContext: TFEditContext
+  Left = 458
+  Height = 501
+  Top = 308
+  Width = 655
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Préférences générales...'
+  ClientHeight = 501
+  ClientWidth = 655
+  Color = clWindow
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  Position = poMainFormCenter
+  object Panel9: TPanel[0]
+    Left = 0
+    Height = 46
+    Top = 0
+    Width = 655
+    Align = alTop
+    BevelOuter = bvNone
+    BorderStyle = bsSingle
+    ClientHeight = 42
+    ClientWidth = 651
+    TabOrder = 0
+    object Image1: TIATitle
+      Left = 6
+      Height = 43
+      Top = 0
+      Width = 95
+      Proportional = True
+      Stretch = True
+      ImageOn = iaAncestromania
+    end
+    object Label8: TLabel
+      Left = 513
+      Height = 42
+      Top = 0
+      Width = 138
+      Align = alRight
+      Alignment = taRightJustify
+      Anchors = [akTop, akRight]
+      Caption = 'Paramètres'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowFrame
+      Font.Height = -24
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+  end
+  object cxPageControl1: TPageControl[1]
+    Left = 0
+    Height = 429
+    Top = 46
+    Width = 655
+    ActivePage = cxTabSheet1
+    Align = alClient
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    Images = ImageList1
+    ParentFont = False
+    TabIndex = 0
+    TabOrder = 1
+    object cxTabSheet1: TTabSheet
+      Caption = 'Divers'
+      ClientHeight = 402
+      ClientWidth = 647
+      object cxGroupBox9: TGroupBox
+        Left = 0
+        Height = 110
+        Top = 0
+        Width = 647
+        Align = alTop
+        Caption = ' Paramètres généraux  '
+        ClientHeight = 88
+        ClientWidth = 643
+        Font.Color = clWindowText
+        ParentFont = False
+        TabOrder = 0
+        object Panel22: TPanel
+          Left = 0
+          Height = 88
+          Top = 0
+          Width = 298
+          Align = alLeft
+          BevelOuter = bvNone
+          ClientHeight = 88
+          ClientWidth = 298
+          TabOrder = 0
+          object Panel23: TPanel
+            Left = 0
+            Height = 20
+            Top = 68
+            Width = 298
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 20
+            ClientWidth = 298
+            TabOrder = 0
+            object Label4: TLabel
+              Left = 0
+              Height = 20
+              Top = 0
+              Width = 65
+              Align = alLeft
+              Caption = 'Consanguinité :'
+              Font.Color = clWindowText
+              Font.Height = -9
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object csSeConsanguinite: TFWSpinEdit
+              Left = 65
+              Height = 20
+              Hint = 'Nombre de générations sur lequel sera fait le calcul...'
+              Top = 0
+              Width = 36
+              Align = alLeft
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 0
+              Value = 1
+            end
+            object Label17: TLabel
+              Left = 101
+              Height = 20
+              Top = 0
+              Width = 138
+              Align = alLeft
+              Caption = '(0=pas de calcul, pas d''affichage)'
+              Font.Color = clWindowText
+              Font.Height = -9
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+          end
+          object cbShowHint: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 0
+            Width = 298
+            Caption = 'Afficher les bulles d''aide'
+            TabOrder = 1
+            ParentColor = False
+            UseDockManager = False
+            Align = alTop
+            Font.Height = -9
+            ParentFont = False
+            OnClick = cbShowHintClick
+          end
+          object chbExit: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 17
+            Width = 298
+            Caption = 'Demander confirmation pour quitter'
+            TabOrder = 2
+            UseDockManager = False
+            Align = alTop
+            Font.Height = -9
+            ParentFont = False
+          end
+          object chVerifMaj: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 34
+            Width = 298
+            Caption = 'Vérifier les mises à jour via internet au lancement'
+            TabOrder = 3
+            UseDockManager = False
+            Align = alTop
+            Font.Color = clWindowText
+            Font.Height = -9
+            ParentFont = False
+          end
+          object cbCalculParenteAuto: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Hint = 'Clic droit pour obtenir des informations'
+            Top = 51
+            Width = 298
+            Caption = 'Calculer la parenté à la volée'
+            TabOrder = 4
+            UseDockManager = False
+            Align = alTop
+            Font.Color = clWindowText
+            Font.Height = -9
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnContextPopup = cbCalculParenteAutoContextPopup
+            OnMouseEnter = cbCalculParenteAutoMouseEnter
+          end
+        end
+        object Panel24: TPanel
+          Left = 298
+          Height = 88
+          Top = 0
+          Width = 345
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 88
+          ClientWidth = 345
+          TabOrder = 1
+          object edArbreShowNbGeneration: TFWSpinEdit
+            Left = 303
+            Height = 21
+            Top = 0
+            Width = 47
+            Anchors = [akTop]
+            AutoSize = False
+            ParentFont = False
+            TabOrder = 0
+            Value = 1
+          end
+          object edRoueShowNbGeneration: TFWSpinEdit
+            Left = 424
+            Height = 21
+            Top = 23
+            Width = 22
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            ParentFont = False
+            TabOrder = 1
+            Value = 1
+          end
+          object cbLangage: TFWComboBox
+            Left = 239
+            Height = 21
+            Top = 46
+            Width = 104
+            Anchors = [akTop, akRight]
+            Font.Height = -11
+            ItemHeight = 13
+            ParentFont = False
+            TabOrder = 2
+          end
+          object LabLangage: TLabel
+            Left = 146
+            Height = 12
+            Hint = 'Pour prendre en compte le nouveau langage.'
+            Top = 73
+            Width = 191
+            Anchors = [akTop, akRight]
+            Caption = 'Redémarrer Ancestromania après changement'
+            Font.Color = clRed
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            Visible = False
+            WordWrap = True
+          end
+          object Label20: TLabel
+            Left = 125
+            Height = 14
+            Top = 50
+            Width = 106
+            Anchors = [akTop, akRight]
+            Caption = 'Langue de l''interface :'
+            Font.Color = clWindowText
+            Font.Height = -11
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label7: TLabel
+            Left = 64
+            Height = 12
+            Top = 30
+            Width = 218
+            Anchors = [akTop, akRight]
+            Caption = 'Nombre de générations pour l''impression de la roue :'
+            Font.Color = clWindowText
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label1: TLabel
+            Left = 64
+            Height = 12
+            Top = 9
+            Width = 218
+            Anchors = [akTop, akRight]
+            Caption = 'Nombre de générations pour l''impression de l''arbre  :'
+            Font.Color = clWindowText
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+      end
+      object cxGroupBox6: TGroupBox
+        Left = 0
+        Height = 279
+        Top = 110
+        Width = 647
+        Align = alTop
+        Caption = ' Options ayant une grande influence sur la vitesse du logiciel '
+        ClientHeight = 257
+        ClientWidth = 643
+        Font.Color = clWindowText
+        ParentFont = False
+        TabOrder = 1
+        object Label22: TLabel
+          Left = 360
+          Height = 12
+          Top = 123
+          Width = 254
+          Anchors = [akTop, akRight]
+          Caption = '(Nécessite la présence de Gbak.exe pour une base en réseau)'
+          Font.Color = clRed
+          Font.Height = -9
+          Font.Name = 'Tahoma'
+          Font.Style = [fsItalic]
+          ParentColor = False
+          ParentFont = False
+          Visible = False
+        end
+        object cbDesactiveMedia: TJvXPCheckbox
+          Left = 14
+          Height = 17
+          Top = 100
+          Width = 598
+          Caption = ' Activer onglet média même en réseau'
+          TabOrder = 1
+          UseDockManager = False
+          Font.Color = clWindowText
+          Font.Height = -9
+          ParentFont = False
+          OnClick = chOuvreHistoireClick
+        end
+        object cbPhotos: TJvXPCheckbox
+          Left = 14
+          Height = 17
+          Top = 80
+          Width = 603
+          Caption = ' Afficher les photos dans la fiche individu et dans la fenêtre de navigation'
+          TabOrder = 0
+          UseDockManager = False
+          Font.Color = clWindowText
+          Font.Height = -9
+          ParentFont = False
+          OnClick = chOuvreHistoireClick
+        end
+        object chbBackup: TJvXPCheckbox
+          Left = 14
+          Height = 17
+          Top = 120
+          Width = 287
+          Caption = ' Sauvegarde automatique de la base de données'
+          TabOrder = 2
+          UseDockManager = False
+          Font.Color = clWindowText
+          Font.Height = -9
+          ParentFont = False
+          OnClick = chbBackupClick
+        end
+        object chOuvreHistoire: TJvXPCheckbox
+          Left = 14
+          Height = 17
+          Top = 61
+          Width = 601
+          Caption = ' Ouvre la fenêtre Histoire au démarrage'
+          TabOrder = 3
+          UseDockManager = False
+          Font.Color = clWindowText
+          Font.Height = -9
+          ParentFont = False
+          OnClick = chOuvreHistoireClick
+        end
+        object MemoSauveAuto: TMemo
+          Left = 0
+          Height = 123
+          Top = 134
+          Width = 643
+          Align = alBottom
+          BorderStyle = bsNone
+          Font.Color = clRed
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Lines.Strings = (
+            'Attention, une copie de sauvegarde (format FBK) est effectuée à chaque connexion à la base de données (une fois par heure au '
+            'maximum), dans le répertoire défini pour la sauvegarde (voir onglet Répertoires).'
+            'Ces fichiers pouvant être de grande taille, en particulier si vous enregistrez des copies des médias images dans la base, il est '
+            'conseillé de visiter régulièrement ce répertoire pour n''y conserver que les sauvegardes qui vous semblent utiles. '
+            'La sauvegarde d''une base en réseau nécessite la présence de Gbak.exe. Cet utilitaire fait partie de l''installation de Firebird version '
+            'serveur. Ancestromania le trouvera automatiquement si cette version de Firebird est installée.'
+          )
+          ParentColor = True
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 4
+          Visible = False
+        end
+        object MemoVitesse: TMemo
+          Left = 0
+          Height = 59
+          Top = 0
+          Width = 643
+          Align = alTop
+          BorderStyle = bsNone
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Lines.Strings = (
+            'Ces options peuvent ralentir le logiciel, particulièrement si votre base de données est située sur un serveur du réseau. Plus encore si '
+            'vous y accédez via internet.'
+            'Si votre base est sur un serveur du réseau, l''affichage des médias images sera particulièrement amélioré si des fichiers de ces médias '
+            'figurent à leurs adresses d''origine sur votre ordinateur.'
+          )
+          ParentColor = True
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 5
+        end
+      end
+    end
+    object cxTabSheet2: TTabSheet
+      Caption = 'Options de saisie'
+      ClientHeight = 391
+      ClientWidth = 647
+      ImageIndex = 1
+      object Panel4: TPanel
+        Left = 348
+        Height = 391
+        Top = 0
+        Width = 299
+        Align = alRight
+        BevelOuter = bvNone
+        ClientHeight = 391
+        ClientWidth = 299
+        TabOrder = 0
+        object cxGroupBox7: TGroupBox
+          Left = 0
+          Height = 176
+          Top = 0
+          Width = 299
+          Align = alTop
+          Caption = ' Aide à la saisie rapide '
+          ClientHeight = 154
+          ClientWidth = 295
+          ParentFont = False
+          TabOrder = 0
+          object Label21: TLabel
+            Left = 0
+            Height = 75
+            Top = 0
+            Width = 295
+            Align = alClient
+            AutoSize = False
+            Caption = 'Listes de choix initialisées à l''ouverture de la fiche de saisie rapide (peut ralentir l''ouverture de la fiche si le dossier contient beaucoup d''individus).'
+            ParentColor = False
+            WordWrap = True
+          end
+          object Label27: TLabel
+            Left = 0
+            Height = 33
+            Top = 126
+            Width = 295
+            Align = alBottom
+            AutoSize = False
+            Caption = 'Une liste non initialisée peut l''être en cliquant sur le bouton en extrémité droite du champ concerné.'
+            ParentColor = False
+            WordWrap = True
+          end
+          object cbAideSaisieRapideNom: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 75
+            Width = 295
+            Caption = 'Liste des noms'
+            TabOrder = 0
+            UseDockManager = False
+            Align = alBottom
+            ParentFont = False
+          end
+          object cbAideSaisieRapidePrenom: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 92
+            Width = 295
+            Caption = 'Liste des prénoms'
+            TabOrder = 1
+            UseDockManager = False
+            Align = alBottom
+            ParentFont = False
+          end
+          object cbAideSaisieRapideProf: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 109
+            Width = 295
+            Caption = 'Liste des professions'
+            TabOrder = 2
+            UseDockManager = False
+            Align = alBottom
+            ParentFont = False
+          end
+        end
+        object cxGroupBox12: TGroupBox
+          Left = 0
+          Height = 130
+          Top = 176
+          Width = 299
+          Align = alTop
+          Caption = ' Création automatique de l''événement Mariage '
+          ClientHeight = 108
+          ClientWidth = 295
+          ParentFont = False
+          TabOrder = 1
+          object Label32: TLabel
+            Left = 0
+            Height = 79
+            Top = 0
+            Width = 295
+            Align = alClient
+            AutoSize = False
+            Caption = 'Ces options permettent de créer automatiquement un événement MARR, événement fondateur de la famille, lors de la création d''une union (famille).'
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+            WordWrap = True
+          end
+          object cbCreationMARRConjoint: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 79
+            Width = 295
+            Caption = 'Lors de l''ajout d''un conjoint'
+            TabOrder = 0
+            UseDockManager = False
+            Align = alBottom
+            ParentFont = False
+            OnClick = cbCreationMARRConjointClick
+          end
+          object cbCreationMARRParent: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 96
+            Width = 295
+            Caption = 'Lors de l''ajout des parents'
+            TabOrder = 1
+            UseDockManager = False
+            Align = alBottom
+            ParentFont = False
+          end
+        end
+      end
+      object Panel5: TPanel
+        Left = 0
+        Height = 391
+        Top = 0
+        Width = 348
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 391
+        ClientWidth = 348
+        TabOrder = 1
+        object cxGroupBox1: TGroupBox
+          Left = 0
+          Height = 80
+          Top = 0
+          Width = 348
+          Align = alTop
+          Caption = ' Saisie des patronymes '
+          ClientHeight = 58
+          ClientWidth = 344
+          Color = clBtnFace
+          Font.Color = clWindowText
+          ParentColor = False
+          ParentFont = False
+          TabOrder = 0
+          object rbPatNormal: TRadioButton
+            Left = 9
+            Height = 24
+            Hint = 'Les noms sont enregistrés tels qu''ils sont saisis'
+            Top = 3
+            Width = 69
+            Caption = 'Normal'
+            Checked = True
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            TabStop = True
+          end
+          object rbPatMaj: TRadioButton
+            Left = 9
+            Height = 24
+            Hint = 'Convertit les mots en majuscules (sauf les mots déclarés comme particules)'
+            Top = 23
+            Width = 141
+            Caption = 'Tout en majuscules'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+          end
+          object rbPatFirst: TRadioButton
+            Left = 9
+            Height = 24
+            Hint = 'Convertit la première lettre de chaque mot en majuscule (sauf dans les mots déclarés comme particules)'
+            Top = 41
+            Width = 283
+            Caption = 'Seulement la première lettre en majuscule'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 2
+          end
+        end
+        object cxGroupBox2: TGroupBox
+          Left = 0
+          Height = 77
+          Top = 80
+          Width = 348
+          Align = alTop
+          Caption = ' Saisie des prénoms '
+          ClientHeight = 55
+          ClientWidth = 344
+          ParentColor = False
+          ParentFont = False
+          TabOrder = 1
+          object prPreNormal: TRadioButton
+            Left = 9
+            Height = 24
+            Hint = 'Les prénoms sont enregistrés tels qu''ils sont saisis'
+            Top = 3
+            Width = 69
+            Caption = 'Normal'
+            Checked = True
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            TabStop = True
+          end
+          object rbPreMaj: TRadioButton
+            Left = 9
+            Height = 24
+            Hint = 'Convertit les prénoms en majuscules'
+            Top = 22
+            Width = 141
+            Caption = 'Tout en majuscules'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+          end
+          object rbPreFirst: TRadioButton
+            Left = 9
+            Height = 24
+            Hint = 'Convertit la première lettre des prénoms en majuscule'
+            Top = 40
+            Width = 283
+            Caption = 'Seulement la première lettre en majuscule'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 2
+          end
+        end
+        object Label13: TLabel
+          Left = 0
+          Height = 14
+          Top = 157
+          Width = 348
+          Align = alTop
+          Caption = 'Nom de l''individu à sa création : '
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object edNomDefaut: TMaskEdit
+          Left = 0
+          Height = 25
+          Top = 171
+          Width = 348
+          Align = alTop
+          CharCase = ecNormal
+          MaxLength = 40
+          ParentFont = False
+          TabOrder = 2
+          SpaceChar = '_'
+        end
+        object gbNouveauxLieux: TGroupBox
+          Left = 0
+          Height = 165
+          Top = 196
+          Width = 348
+          Align = alTop
+          Caption = ' Aide à la saisie des nouveaux lieux'
+          ClientHeight = 143
+          ClientWidth = 344
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 3
+          object Label10: TLabel
+            Left = 0
+            Height = 14
+            Top = 0
+            Width = 344
+            Align = alTop
+            Caption = 'Pays par défaut lors de la sélection des lieux : '
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label9: TLabel
+            Left = 0
+            Height = 14
+            Top = 41
+            Width = 344
+            Align = alTop
+            Caption = 'Identification pour l''accès à la base de référence des lieux:'
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label30: TLabel
+            Left = 9
+            Height = 14
+            Top = 58
+            Width = 108
+            Caption = 'Nom d''utilisateur : '
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label33: TLabel
+            Left = 9
+            Height = 14
+            Top = 110
+            Width = 37
+            Caption = 'Rôle : '
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label34: TLabel
+            Left = 9
+            Height = 14
+            Top = 84
+            Width = 87
+            Caption = 'Mot de passe : '
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object CBPays: TComboBox
+            Left = 0
+            Height = 25
+            Top = 14
+            Width = 344
+            Align = alTop
+            ItemHeight = 17
+            ParentFont = False
+            ParentShowHint = False
+            TabOrder = 0
+          end
+          object edUtilPARANCES: TMaskEdit
+            Left = 141
+            Height = 25
+            Top = 55
+            Width = 152
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 1
+            SpaceChar = '_'
+          end
+          object edRolePARANCES: TMaskEdit
+            Left = 141
+            Height = 25
+            Top = 109
+            Width = 152
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 3
+            SpaceChar = '_'
+          end
+          object edPwUtilPARANCES: TMaskEdit
+            Left = 141
+            Height = 25
+            Top = 81
+            Width = 152
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 2
+            SpaceChar = '_'
+          end
+        end
+      end
+    end
+    object cxTabSheet3: TTabSheet
+      Caption = 'Répertoires'
+      ClientHeight = 391
+      ClientWidth = 647
+      ImageIndex = 2
+      object cxGroupBox10: TGroupBox
+        Left = 0
+        Height = 216
+        Top = 0
+        Width = 647
+        Align = alTop
+        Caption = ' Ancestromania - Répertoires par défaut '
+        ClientHeight = 194
+        ClientWidth = 643
+        TabOrder = 0
+        object Label3: TLabel
+          Left = 0
+          Height = 14
+          Top = 0
+          Width = 643
+          Align = alTop
+          Caption = 'GEDCOM :'
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label26: TLabel
+          Left = 0
+          Height = 14
+          Top = 35
+          Width = 643
+          Align = alTop
+          Caption = 'Documents :'
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label16: TLabel
+          Left = 0
+          Height = 14
+          Top = 70
+          Width = 643
+          Align = alTop
+          Caption = 'Sauvegarde : '
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object lDossiers: TLabel
+          Left = 0
+          Height = 14
+          Top = 122
+          Width = 643
+          Align = alTop
+          Caption = 'Remarque: Le répertoire de base des images et fichiers attachés étant particulier'
+          ParentColor = False
+          WordWrap = True
+        end
+        object slGEDCOMDir: TFWEdit
+          Left = 0
+          Height = 21
+          Top = 14
+          Width = 643
+          Align = alTop
+          AutoSize = False
+          CharCase = ecNormal
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 0
+          SpaceChar = '_'
+        end
+        object edPathDocs: TFWEdit
+          Left = 0
+          Height = 21
+          Top = 49
+          Width = 643
+          Align = alTop
+          AutoSize = False
+          CharCase = ecNormal
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 1
+          SpaceChar = '_'
+        end
+        object Sauvegarde: TFWEdit
+          Left = 0
+          Height = 21
+          Top = 84
+          Width = 643
+          Align = alTop
+          AutoSize = False
+          CharCase = ecNormal
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 2
+          SpaceChar = '_'
+        end
+        object cbCreateDirUTF8: TJvXPCheckbox
+          Left = 0
+          Height = 17
+          Top = 105
+          Width = 643
+          Caption = 'Création automatique des répertoires par défaut'
+          TabOrder = 3
+          UseDockManager = False
+          Align = alTop
+          ParentFont = False
+        end
+        object lDossiers1: TLabel
+          Left = 0
+          Height = 14
+          Top = 136
+          Width = 643
+          Align = alTop
+          Caption = 'à chaque dossier, il doit être défini dans les propriétés particulières à chaque'
+          ParentColor = False
+          WordWrap = True
+        end
+        object lDossiers2: TLabel
+          Left = 0
+          Height = 14
+          Top = 150
+          Width = 643
+          Align = alTop
+          Caption = 'chaque dossier, menu Généalogies / Dossiers de la base / bouton Modifier/détails.'
+          ParentColor = False
+          WordWrap = True
+        end
+      end
+      object cxGroupBox11: TGroupBox
+        Left = 0
+        Height = 86
+        Top = 216
+        Width = 647
+        Align = alTop
+        Caption = ' Plug''ins '
+        ClientHeight = 64
+        ClientWidth = 643
+        ParentColor = False
+        ParentFont = False
+        TabOrder = 1
+        object Label25: TLabel
+          Left = 0
+          Height = 14
+          Top = 0
+          Width = 643
+          Align = alTop
+          Caption = 'Répertoire de Quisontils'
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object QuiSontIls: TFWEdit
+          Left = 0
+          Height = 25
+          Top = 14
+          Width = 643
+          Align = alTop
+          CharCase = ecNormal
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 0
+          SpaceChar = '_'
+        end
+      end
+    end
+    object cxTabSheet4: TTabSheet
+      Caption = 'Visuels'
+      ClientHeight = 391
+      ClientWidth = 647
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ImageIndex = 3
+      ParentFont = False
+      object cxGroupBox13: TGroupBox
+        Left = 0
+        Height = 104
+        Top = 0
+        Width = 647
+        Align = alTop
+        Caption = ' Paramètres visuels divers '
+        ClientHeight = 82
+        ClientWidth = 643
+        TabOrder = 0
+        object Label24: TLabel
+          Left = 596
+          Height = 14
+          Top = 33
+          Width = 10
+          Caption = '%'
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label29: TLabel
+          Left = 596
+          Height = 14
+          Top = 8
+          Width = 10
+          Caption = '%'
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Panel6: TPanel
+          Left = 330
+          Height = 88
+          Top = 0
+          Width = 313
+          Align = alRight
+          BevelOuter = bvNone
+          ClientHeight = 88
+          ClientWidth = 313
+          TabOrder = 0
+          object TauxCompressJpeg: TFWSpinEdit
+            Left = 273
+            Height = 25
+            Top = 0
+            Width = 40
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            TabOrder = 0
+            Value = 1
+          end
+          object Label28: TLabel
+            Left = 96
+            Height = 14
+            Top = 6
+            Width = 173
+            Anchors = [akTop, akRight]
+            Caption = 'Qualité des images chargées :'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label6: TLabel
+            Left = 5
+            Height = 14
+            Top = 30
+            Width = 264
+            Anchors = [akTop, akRight]
+            Caption = 'Taille des fenêtres par rapport à la principale :'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object ltaillefont: TLabel
+            Left = 168
+            Height = 14
+            Top = 58
+            Width = 99
+            Anchors = [akTop, akRight]
+            Caption = 'Taille des fontes :'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object seTailleFont: TFWSpinEdit
+            Left = 273
+            Height = 25
+            Top = 55
+            Width = 40
+            Anchors = [akTop, akRight]
+            MinValue = 5
+            ParentFont = False
+            TabOrder = 1
+            Value = 8
+          end
+          object seTailleFenetre: TFWSpinEdit
+            Left = 273
+            Height = 25
+            Top = 29
+            Width = 40
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            TabOrder = 2
+            Value = 1
+          end
+        end
+        object Panel7: TPanel
+          Left = 0
+          Height = 88
+          Top = 0
+          Width = 330
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 88
+          ClientWidth = 330
+          TabOrder = 1
+          object cbAfficheRegiondansListeEV: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 0
+            Width = 330
+            Caption = 'Voir la région dans la liste des événements'
+            TabOrder = 0
+            UseDockManager = False
+            Align = alTop
+          end
+          object cbAfficheCPdansListeEV: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 17
+            Width = 330
+            Caption = 'Voir le code postal dans la liste des événements'
+            TabOrder = 1
+            UseDockManager = False
+            Align = alTop
+          end
+          object cbAvecLienGene: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 34
+            Width = 330
+            Caption = 'Afficher les liens au Sosa n°1'
+            TabOrder = 2
+            UseDockManager = False
+            Align = alTop
+          end
+        end
+      end
+      object cxGroupBox14: TGroupBox
+        Left = 0
+        Height = 287
+        Top = 104
+        Width = 308
+        Align = alLeft
+        Caption = ' Couleurs '
+        ClientHeight = 265
+        ClientWidth = 304
+        ParentColor = False
+        ParentFont = False
+        TabOrder = 1
+        object Label11: TLabel
+          Left = 5
+          Height = 14
+          Top = 37
+          Width = 99
+          Caption = 'Pour les hommes'
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label12: TLabel
+          Left = 5
+          Height = 14
+          Top = 5
+          Width = 96
+          Caption = 'Pour les femmes'
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label2: TLabel
+          Left = 6
+          Height = 14
+          Top = 70
+          Width = 103
+          Caption = 'Couleur des fonds'
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label5: TLabel
+          Left = 6
+          Height = 14
+          Top = 102
+          Width = 116
+          Caption = 'Couleur de sélection'
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label14: TLabel
+          Left = 6
+          Height = 14
+          Top = 135
+          Width = 113
+          Caption = 'Couleur des onglets'
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object LabelCouleurs: TLabel
+          Left = 5
+          Height = 14
+          Top = 193
+          Width = 259
+          Caption = 'Certains changements de couleurs ne seront '
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+          WordWrap = True
+        end
+        object Label23: TLabel
+          Left = 6
+          Height = 14
+          Top = 168
+          Width = 99
+          Caption = 'Texte des onglets'
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object cpHommes: TExtColorCombo
+          Left = 131
+          Height = 26
+          Top = 32
+          Width = 134
+          HTMLcolor = '#FFFFFF'
+          Color = 11184810
+          ItemHeight = 20
+          ParentFont = False
+          TabOrder = 0
+          TabStop = False
+        end
+        object cpFemmes: TExtColorCombo
+          Left = 131
+          Height = 26
+          Top = 0
+          Width = 134
+          HTMLcolor = '#FFFFFF'
+          Color = 11184810
+          ItemHeight = 20
+          ParentFont = False
+          TabOrder = 1
+          TabStop = False
+        end
+        object cpFondsColor: TExtColorCombo
+          Left = 131
+          Height = 26
+          Top = 63
+          Width = 134
+          HTMLcolor = '#FFFFFF'
+          Color = 11184810
+          ItemHeight = 20
+          ParentFont = False
+          TabOrder = 2
+          TabStop = False
+        end
+        object cpSelectionColor: TExtColorCombo
+          Left = 131
+          Height = 26
+          Top = 95
+          Width = 134
+          HTMLcolor = '#FFFFFF'
+          Color = 11184810
+          ItemHeight = 20
+          ParentFont = False
+          TabOrder = 3
+          TabStop = False
+        end
+        object cpOngletsColor: TExtColorCombo
+          Left = 131
+          Height = 26
+          Top = 127
+          Width = 134
+          HTMLcolor = '#FFFFFF'
+          Color = 11184810
+          ItemHeight = 20
+          ParentFont = False
+          TabOrder = 4
+          TabStop = False
+        end
+        object btInitColorFemmes: TFWInit
+          Left = 272
+          Height = 25
+          Hint = 'Réinitialiser la couleur'
+          Top = 1
+          Width = 19
+          TabOrder = 5
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btInitColorFemmesClick
+        end
+        object cxButton1: TFWInit
+          Tag = 1
+          Left = 272
+          Height = 25
+          Hint = 'Réinitialiser la couleur'
+          Top = 33
+          Width = 19
+          TabOrder = 6
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btInitColorFemmesClick
+        end
+        object cxButton2: TFWInit
+          Tag = 2
+          Left = 272
+          Height = 25
+          Hint = 'Réinitialiser la couleur'
+          Top = 66
+          Width = 19
+          TabOrder = 7
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btInitColorFemmesClick
+        end
+        object cxButton3: TFWInit
+          Tag = 3
+          Left = 272
+          Height = 25
+          Hint = 'Harmoniser avec le fond'
+          Top = 98
+          Width = 19
+          TabOrder = 8
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btInitColorFemmesClick
+        end
+        object cxButton4: TFWInit
+          Tag = 4
+          Left = 272
+          Height = 25
+          Hint = 'Harmoniser avec le fond'
+          Top = 131
+          Width = 19
+          TabOrder = 9
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btInitColorFemmesClick
+        end
+        object cpTexteOngletsColor: TExtColorCombo
+          Left = 131
+          Height = 26
+          Top = 159
+          Width = 134
+          HTMLcolor = '#FFFFFF'
+          Color = 11184810
+          ItemHeight = 20
+          ParentFont = False
+          TabOrder = 10
+          TabStop = False
+        end
+        object cxButton5: TFWInit
+          Tag = 5
+          Left = 271
+          Height = 25
+          Hint = 'Réinitialiser la couleur'
+          Top = 164
+          Width = 19
+          TabOrder = 11
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btInitColorFemmesClick
+        end
+        object LabelCouleurs1: TLabel
+          Left = 6
+          Height = 14
+          Top = 209
+          Width = 273
+          Caption = 'visibles qu''après redémarrage d''Ancestromania'
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+          WordWrap = True
+        end
+      end
+      object Panel2: TPanel
+        Left = 308
+        Height = 287
+        Top = 104
+        Width = 339
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 287
+        ClientWidth = 339
+        TabOrder = 2
+        object cxGroupBox8: TGroupBox
+          Left = 0
+          Height = 135
+          Top = 0
+          Width = 339
+          Align = alClient
+          Caption = 'Affichage de l''identité'
+          ClientHeight = 113
+          ClientWidth = 335
+          TabOrder = 0
+          object Label15: TLabel
+            Left = 0
+            Height = 14
+            Top = 51
+            Width = 335
+            Align = alTop
+            Caption = 'Préfixes des surnoms - masculins:          - féminins:'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object cbCivilite: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 0
+            Width = 335
+            Caption = 'Afficher la civilité'
+            TabOrder = 0
+            UseDockManager = False
+            Align = alTop
+            ParentFont = False
+          end
+          object cbAfficherPatronymes: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 17
+            Width = 335
+            Caption = 'Afficher les patronymes associés avec le nom'
+            TabOrder = 1
+            UseDockManager = False
+            Align = alTop
+            Font.Height = -11
+            ParentFont = False
+          end
+          object cbSurnomApresNom: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 34
+            Width = 335
+            Caption = 'Mettre le surnom juste après le nom '
+            TabOrder = 2
+            UseDockManager = False
+            Align = alTop
+            Font.Height = -15
+            ParentFont = False
+          end
+          object Panel8: TPanel
+            Left = 0
+            Height = 22
+            Top = 65
+            Width = 335
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 22
+            ClientWidth = 335
+            TabOrder = 3
+            object cxFormatSurnomF: TMaskEdit
+              Left = 237
+              Height = 22
+              Top = 0
+              Width = 98
+              Align = alRight
+              CharCase = ecNormal
+              MaxLength = 10
+              ParentFont = False
+              TabOrder = 0
+              SpaceChar = '_'
+            end
+            object cxFormatSurnom: TMaskEdit
+              Left = 139
+              Height = 22
+              Top = 0
+              Width = 98
+              Align = alRight
+              CharCase = ecNormal
+              MaxLength = 10
+              ParentFont = False
+              TabOrder = 1
+              SpaceChar = '_'
+            end
+          end
+        end
+        object Panel3: TPanel
+          Left = 0
+          Height = 152
+          Top = 135
+          Width = 339
+          Align = alBottom
+          BevelOuter = bvNone
+          ClientHeight = 152
+          ClientWidth = 339
+          TabOrder = 1
+          object cxGroupBox3: TGroupBox
+            Left = 174
+            Height = 152
+            Top = 0
+            Width = 165
+            Align = alRight
+            Caption = 'Zodiaque'
+            ClientHeight = 130
+            ClientWidth = 161
+            Color = clBtnFace
+            ParentColor = False
+            ParentFont = False
+            TabOrder = 0
+            object ImageSet0: TImage
+              Left = 4
+              Height = 26
+              Top = 42
+              Width = 26
+              Picture.Data = {
+                07544269746D6170360C0000424D360C00000000000036000000280000002000
+                0000200000000100180000000000000C0000120B0000120B0000000000000000
+                0000C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8
+                F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3BEB9BE9558585500005C00005F00005F00005E00005E0000
+                5E00005C00005C00005C00005D00005D00005C00005B00005C00005E00005F00
+                005D00005E00005E00005E00005C00005B0000560000955858BEB9BEC5E8F3C5
+                E8F3C5E8F3BEB9BEB07F816E0E0E4E00005300005600005800005900005B0000
+                5C00005900005300005000005000005000005200005300005300005400005800
+                005B00005B00005B00005800005300005300004E00006D0E0EB17F81BEB9BEC5
+                E8F3C5E8F39458586D02024300005900005C00005F00006600006E00006F0000
+                6F00006400005C00005700005200005200005700005800005800006200006C00
+                006E00007000006E00006400005B00005B00005600003E00006D0202955858C5
+                E8F3C5E8F35500004F00005B00006400006F00007300008200008E0005890004
+                8400007300006F00006600005C00005900005E00005E00006600007E00008900
+                048900038F00058500007800006800006300005900005300004C0000560000C5
+                E8F3C5E8F35E00005800006200006F0000850001900004AC0019C20F2BBF112C
+                B4001C9D00108100006E00006600006100006500006A00007F00009E0011B903
+                22C21430C3122EB0001D8D00037200006C00006100005400005000005C0000C5
+                E8F3C5E8F35E00005900006500007900009D000FC41630F0616DFF9192FF8F90
+                F67078D92F46AA00177F00006C00006800006C00007C0000A10011D52743FB73
+                7CFF9B9AFF9D9BF46C73C51A359000037800006E00005B00005000005B0000C5
+                E8F3C5E8F3630000620000730000900005C51730FD8083FFB5ADFFAEA8FFA5A1
+                FFB7B1FF9D9BE03E53A400127D00007300007F0000930006CB223BFF8488FFBD
+                B7FF9D9BFFA9A4FFB9B0FF7F83C2122F8500006E00005E00005300005C0000C5
+                E8F3C5E8F36800026A0000830000B00120EF5F6AFFBDB5FF9E9BEF5E68EF5865
+                FF8286FFC5BCFF8D8FCD223C9100057F0000900007B1001BF16872FFBAB1FF91
+                92E6485BE9505EFFA5A1FFB8B1E753649B000C7800006100005600005E0000C5
+                E8F3C5E8F36800036C00008D0001C31733FF9393FFB0AAEC5361D00F2CD41736
+                DA263DFF9B9BFFB5B0E75362A1000E870003900004C3112FFF9296FFB0A9E13B
+                4CCA0F2FCD0A2AF66872FFAAA7F4707BA700107F00006300005600005F0000C5
+                E8F3C5E8F36700026A0000890001C31A36FF9392FFA5A2E94E5FD41A37DA2C46
+                DC3046FF8E8DFFB9B1EC626EA80012900006890002C61D37FF9396FFA19EE035
+                48BF102FC50F2EEF5966FF8889E654639D000D7100005E00005800005F0000C5
+                E8F3C5E8F3690004680000820000B70627F96C77FFC4BAFF8588E3384BE53C4C
+                F3636AFFB8B2FFB2ACE44F5CAA001492000A890002C61731FF8D8FFFA8A2E444
+                56BF0D2AB20120CF273DDC3649BA0F2B8F00067200005E00005600005D0000C5
+                E8F3C5E8F36600026100007300009C0010D52842FF9191FFBFB7FFAAA8FF9C9C
+                FFBDB9FFECE4FFA4A2DC3648A40012880004910007B70122F3717AFFACA7F165
+                70C20E2AA70019A200179E00108900027D00006C00005C00005300005B0000C5
+                E8F3C5E8F36100005C00006A0000820000B0001DD83548FF8588FFB0ACFFB1AD
+                FFCAC5FFE5DDFF8488CB1B359B000D840001890005A4000EE04B59FFA2A1FF89
+                8EC6122FA500178900047A00006F00006800005F00005700005300005C0000C5
+                E8F3C5E8F35D00005B0000650000720000900007A50012D01D3AEC4C5BF97179
+                FFA4A2FFB7B1EF5B68B702229000057F00007F0000960005CF263EFF8D90FFAA
+                A5CF243DA700198700027200006300005B00005600005200005200005D0000C5
+                E8F3C5E8F35D00005400005C0000680000790000880004AD001DCB1130E64859
+                FFADA7FF9696D83349A700148500017100007A00008F0004BC0A2AF9727BFFB5
+                ADDD4356AA001C8900027200005C00005900005300005000005000005C0000C5
+                E8F3C5E8F35C00005200005600005E00006F00007D000096000CBF0C2BF05B6A
+                FFBCB2F47179C514359A000C7C00006D0000720000820000A70014E55361FFB0
+                AAF46872BD0C2A8F00037000005F00005B00005400005200005200005D0000C5
+                E8F3C5E8F35C00005000005300005C00006400006D00008E0002C41731FC777C
+                FFBAB2E54E5CAC001C840000720000660000650000790000A2000FE03E52FF9F
+                9EFF8E90CA223B8F00026E00005F00005900005400005200005000005C0000C5
+                E8F3C5E8F35B00005000005200005600005E00006C00008D0000CB273EFF8E8D
+                FFA9A7DD374BA200147900006500006500006500007900009E000DD82C46FF8D
+                90FFA5A1D02F469200056F00005F00005900005300005200005000005A0000C5
+                E8F3C5E8F35B00005200005200005300005C00006E00008D0000D02F46FF9C98
+                FF9A9BDA2F46A700177D00006500006600006F00007B00009A000ACD1F3CFF7E
+                83FFB0A8D2364C98000D7100005E00005C00005300005200005000005A0000C5
+                E8F3C5E8F35C00005200005300005700005E00006D0000890000CF2C44FF9894
+                FF9D9DD62F44AC001A8900047700006E00007800008000009A000ACB1D3BFF7F
+                82FFB4ACD5384F9A000D7200005C00005B00005400005000005000005B0000C5
+                E8F3C5E8F35C00005200005200005600005E00006E00008E0001CA233CFF8789
+                FFB1AED83547AE001A92000D8100007D00008100008E0007A70010D62B43FF92
+                92FFADA8D230479000036E00005E00005400005200005200005000005A0000C5
+                E8F3C5E8F35B00005200005000005300005F00006F0000870000B80324F36370
+                FFC6BCF4707AC40E2BA9000E9E000E9300059E000FA70011C20424F2646FFFBE
+                B4FF8083BA0F2C8800007100005E00005200005000005000005000005B0000C5
+                E8F3C5E8F35A000050000052000052000059000065000077000098000CD12842
+                FF8F8FFFBAB2FF8687E44C5BD63047D0233ED53149E14758FC8083FFB4AEFF9C
+                9BD631479E00127B00006500005800005300005200005000005000005B0000C5
+                E8F3C5E8F35A00005000005200005200005400005C00006500007F0000AC001B
+                D63146FF9292FFB7B0FFAAA5FF9694FF9494FF9896FFA49FFFB7AEFF9394DC3C
+                50AD001A8800036E00005B00005400005200005200005000005000005B0000C5
+                E8F3C5E8F35B00005000005000005000005300005B00006100007100008E0005
+                A70016C81935EE5C6CFF8E90FFA49EFFA9A4FFA49EFF9090F0616DCA1C37A400
+                0F8F00077A00006500005900005300005000005200005000005000005B0000C5
+                E8F3C5E8F35B0000500000500000520000520000540000580000640000790000
+                890005910006AC0017BF0D2AC31B36C51D38C51B37C2102CAD00199300078600
+                037B00006200005800005600005200005200005000004F00005000005C0000C5
+                E8F3C5E8F35400004C00005200005200005200005200005300005B0000650000
+                6E00007A00008800048D000489000394000A93000A8F00068600027C00006D00
+                006500005C00005300005000005200005200005200005200004B0000540000C5
+                E8F3C5E8F39458586D02023E0000520000520000530000520000540000590000
+                5B00006500006F00006F00006D00006F00006F00006F00006E00006600005B00
+                005900005600005200005200005200005000005300003E00006C0202945858C5
+                E8F3C5E8F3BEB9BEB17F816D0E0E4B0000520000530000520000520000530000
+                5300005900005B00005B00005C00005C00005B00005900005900005800005300
+                005300005200005000005200005200005000004E00006D0E0EB07F81BEB9BEC5
+                E8F3C5E8F3C5E8F3BFB9BE9458585300005B00005C00005C00005C00005B0000
+                5C00005F00005E00005D00006100006400006100005D00005D00005E00005D00
+                005B00005C00005B00005B00005B00005C0000550000955858BEB9BEC5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8
+                F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3
+              }
+              Stretch = True
+            end
+            object ImageSet1: TImage
+              Left = 45
+              Height = 26
+              Top = 42
+              Width = 26
+              Picture.Data = {
+                07544269746D6170360C0000424D360C00000000000036000000280000002000
+                0000200000000100180000000000000C0000232E0000232E0000000000000000
+                00006E97B644B2DD48AAD12DA9D639A9D539A9D539A9D539A9D539A9D53AA8D4
+                2DA9D639A9D539A9D539A9D539A9D539A9D539A9D539A9D539A9D52FA8D539A9
+                D542A9D542A8D539A9D542A9D542A8D53FA7D542A8D548A9D52FA9D336AFDB50
+                A9CC4CA7C7C5FFFFBFF5FFBEFFFFBFFFFFBEFFFFBCFFFFBDFFFFBCFFFFBEFFFF
+                BEFFFFBFFFFFBEFFFFBCFFFFBDFFFFBCFFFFBDFFFFBCFFFFBDFFFFBEFFFFBEFF
+                FFBDFFFFBEFFFFBEFFFFBDFFFFBEFFFFBEFFFFBDFFFFBCFFFFBEFBFFD4FAFF78
+                ECFF67A9C3BAE6F9458EC04E849E4E859D4F859F5085A14F859F5085A14E859E
+                4E849E4E859D4F859F5085A14F859F5085A150859F50859D51859F50849E5287
+                A15187A45087A35287A15187A45087A35085A14F85A257859B367CAD8DD1FCA4
+                F4FF52A4C7A2EEFF0D2C4D17161917161A0000001D1611272527252624252524
+                22232223232223232223232223232222232223222122242321221C1D1A1C384B
+                4E4D707D42646E21231C0000000000000000000000000000000000015DBDF69F
+                F5FF50A8CB9FFCFF0000000000000000000000000000000101030E0E0E191919
+                2121212323232424242323232323232423242224221F1C1D24272D6AAABE69D3
+                F553D5FF3ABCFB45ADE139727900000000000000000000000000000967C4F9A5
+                F6FF52A9CA9CFBFF000726000000000000000000000000000000000000000000
+                0000000101010706070A0A0A0B0B0B0A0A0B05070602000461B5C954E4FF5CD8
+                FF4FAECE4FB7E324A4FF2597FC5A9BB000000000000000000000000367C5F49F
+                F6FF51A8CA9CFBFF000B28000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000001B3D4364EAFF57D5FF3D66
+                740000000C14113D6E7254C0F43D839A00000000000000000000000E69C4F7A4
+                F6FF52A8CA9CFBFF000B27000000000000000000000000000000000000000000
+                00000000000000000000000000000000000000000030697A5DECFF57BCE90000
+                00000000000000000000162B2700000000000000000000000000000368C5F7A5
+                F5FF52A8CB9BFBFF000C2700000000000000000000000000000000000000000B
+                0B1B1F0E1C1F09141C0000000000000000000000002A5F6E5AEFFF56C3E60000
+                000000000000000000000000000000000000000000000000000000006AC8F7A3
+                F6FF51A8CA9DFBFF000B28000000000000000000000000000000235266A5E0EF
+                C6FFFFB2FFFF91FFFF57AEC3070F1D000000000000172C3163E6FF63DEFF142A
+                360000000000000000000000000000000000000000000000000000096EC3F79E
+                F7FF50A8C998FAFF000D28000000000000000000000000366D89F4FFFFAAEAFB
+                45737F3666715999A67AFFFF66E4EE0E151C00000003070F61CFEE5AE7FF447C
+                8D00000000000000000000000000000000000000000000000000000566C5F6A7
+                F2FF4FA8C99DFBFF000000000000000000000000001621E6FFFFA3D4E5000B1C
+                0000000000000000002444546DFFFF5AB5CE000000000000478C9F57E4FF5AC4
+                DE00000000000000000004030517121100000000000000000000000E6EBFEBA7
+                E7F95FAAC99CFAFF00001A0000000000000000005C7580FEFFFF0F3143000000
+                000000000000000000000000459DB565FFFF0D1C2C0000001D364264E1FF64DC
+                FF3859660701001B212225232327232000000000000000000010222E80BEE6A2
+                E6F66CA9C3A3EEFF0000000000000000000000008BA6B8D8F0FD193343180F0D
+                0E0B0F0706060607070100012B565F77FFFF2B434904000014101469B4C663D1
+                F76AAEC7211D2523232123212223201C00000000000000000010232F7BC0E5A4
+                E6FA65A8C4A3E8FC0000000000000000000000008297A4E3FBFF273E46211B19
+                232A28262425282C2A2114125388937EF1FF3A45511F201C1C16154E68756FD1
+                F36EC8EF44585C19171523232523201C00000000000000000010222F7CBFE6A3
+                E6F969A9C5A3E9FD000000000000000000000000415F69F2FFFF7194A6101015
+                1B1815221C1A120D0F32374079DEF26DC5D31F1D22242223201F2022262872BC
+                D45AC2F4659EB11C161820232323211D00000000000000000010232F7CBFE6A4
+                E6FA68A9C4A4EAFF000000000000000000000000191B2098C5D4E8FFFF6C9AAD
+                2B404728353347666F77C7D971EBFF587B8D171512222425242424171212547A
+                8561C4F362BDE6424F491A181825232000000000000000000011222F7BC0E6A4
+                E6F968A9C49EE7FD00000000000000000000000022190F20303999C6D1D9FFFF
+                BDFCFFA4F5FE93E8FF67D9FA73CDE52A2D31201D1A202322242223201D1C2C2F
+                3570BFDA49B0EF5F90A91B151427222100000000000000000011212E7CBFE6A4
+                E6F668A9C4A2E7FD000000000000000000000000261F201F1B1B1B252A4F727E
+                70A3B06A98B081BEDF79E7FF5E879314140F2524252221202222222124241812
+                125F868E4EB1F05FB1D9313B3D21191700000000000000000011212F7CBFE6A4
+                E6F767A8C49FEAFB000000000000000000000000221D1A24232520211D1A1412
+                0F10122A3C4587DBEF7DDEF12F373C1D19192222242221212022202523241B17
+                173D50535FBAE449A8E84F6C701B120F0000000000000000001223307CC0E5A4
+                E5F669A9C4A3E8FD000000000000000000000000231F19212122222122252727
+                1A10125B8D9996F7FF6EA9B51B171D2223222321212021222222212221212220
+                2223221D65AAC83AA2EB54859A2418120000000000000000001423317BBFE6A3
+                E6F76EA9C5A4E8FC000000000000000000000000221C1A232323212223232121
+                1C1F237DB1C098F1FF58889A180F0F2324242221212121212121212121212023
+                22211B1B639DBD3DA3EF5792B8201A150000000000000000001023307CBFE7A3
+                E5F96CAAC5A1EAFB000000000000000000000000241C192021212321231D1F1B
+                23282F83CADA92EAFF49778B1D16122122232021202121202020212120212022
+                211D1C1A619BBB41A5EE5B92B8251C170000000000000000001224307EC0E3A4
+                E5F96FA8C6A4E8FA000000000000000000000000231F1A23252424232524231F
+                21242D80BCCE94F0FF5886931A11122326252323242222232323232324232424
+                2526222061A7CB39A3EF487D8F0400000000000000000000000B1C2E7BC5EC9F
+                F0FF5DA7C7A3EEFF0000000000000000000000000600000B0B0C111012191818
+                0F0C0F6A96A38EF0FF74BBCB1515171B1D191D1F221B1C1C1619171116180000
+                003D585D41BAF733AFFC2A4B4D00000000000000000000000000000E72C8F69F
+                F9FF57A8CB9FFCFF000000000000000000000000000000000000000000000000
+                00000015263684F5FF67F5FF477F8C0000000000000000000000000000001524
+                2B5BC0E320A3FF53B2D100030400000000000000000000000000000971CAF79E
+                F6FF58A8CD9CFBFF000A28000000000000000000000000000000000000000000
+                0000000000003E7A8F73FFFF53F6FF53ADC2325C701A38441F46593E758B65D3
+                FA37C7FF5CCEFA18323C00000000000000000000000000000000000672C8F69F
+                F6FF58AACB9DFCFF000000000000000000000000000000000000000000000000
+                0000000000000000003A566264D6E961FAFF63F7FF66F1FF69F0FF66F0FF66DE
+                FA65AFBF1C2C2A00000000000000000000000000000000000000000A73C9F79F
+                F6FF59ADCB9DFBFF00031D000000000000000006000006000006000006000006
+                00000600000600000600183E0035632C7CB938A4EA32A2E837A4E7369CE01B61
+                8D002853001D4600000600000600000600000600000000000000000073C6F29E
+                F5FF5DAAC89AF2FF000006000006000006000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000600000600225768C2F7A2
+                F4FF49AACDDEFFFFA6EEFFAEFCFFA9FAFFACFAFFACFAFFA9FAFFACFAFFACFAFF
+                A9F9FFA9F9FFACF9FFAAFDFFACFAFFA9FAFFACFAFFACFAFFA9F9FFA9F9FFACF9
+                FFAAFDFFA7FAFFA5F7FFA5F7FFA6F7FFA5F7FFA5F7FFA6F7FF9DEEFFD8F5FF8D
+                F2FF1178A674DEFF88D3FD88D2FE8CD8FA89D4FC8BD4FD8CD8FA89D4FC8BD4FD
+                89D4FC89D5FE89D5FC8ED5FD8BD4FD8CD8FA89D4FC8BD4FD89D4FC89D5FE89D5
+                FC8ED5FD8DD5FD8ED4FC8ED5FD8ED4FC8ED4FC8ED5FD8ED4FC8CD5FE85DCFF38
+                BEF3
+              }
+              Stretch = True
+            end
+            object Image2: TImage
+              Left = 87
+              Height = 26
+              Top = 42
+              Width = 26
+              Picture.Data = {
+                07544269746D6170360C0000424D360C00000000000036000000280000002000
+                0000200000000100180000000000000C0000120B0000120B0000000000000000
+                0000C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3
+                C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C3E7F2C3E8F3C4E7F2C3E6F1C2E6F1C1E7
+                F3C2E9F4C3EAF5C3EAF5C2E7F2C2E6F1C4E7F2C4E8F3C3E7F2C4E7F2C4E8F3C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3
+                C4E8F3C4E8F3C4E8F3C4E8F3C3E7F2C4E8F3C4E7F2C2E6F1C4EBF6CAEEF8CDE8
+                F0CBE3EAC6DFE6C7DFE6CBEBF4C7EEFAC2E7F2C3E7F1C4E8F3C3E8F3C4E7F2C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3
+                C4E8F3C4E8F3C4E8F3C3E7F2C4E8F3C4E7F2C1E6F2C9EBF6C2D4D99FA3A47170
+                6F5351515655546A6868939596B4C1C4CAE7F0C3E9F5C3E6F1C4E8F3C3E8F3C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3
+                C4E8F3C4E8F3C4E8F3C4E8F3C3E7F2C2E7F2CAECF6A9AEB04542401817170C0D
+                0D3230306D6C6B8C8B8B7875754F4A49898989CBE3EAC3E9F5C3E6F1C4E7F2C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3
+                C4E8F3C4E8F3C4E8F3C3E7F2C1E6F1C9EDF7A8AEB02B29280405050D0D0D6463
+                62C1CFD3CDE8F1CEE9F1C9E1E8AEB9BC504C4C7A7978C9E5EEC2E8F3C3E7F2C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3
+                C4E8F3C4E8F3C4E8F3C3E6F1C3EAF6C6DAE04744430506060A0B0B504E4DC9DA
+                DFC8F0FCC1E7F2C1E8F4C4EEFACFF7FFA6B2B6433F3DB5C4C9C7EDF9C2E6F1C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3
+                C4E8F3C4E8F3C4E8F3C2E5F0C8EEF9B1BABE2422210707081A19199EA1A2CCEF
+                FAC0E4F0C4E9F4C9E2EAB8C5C9C2D8DFC9DAE05F5B59A7B0B3CAEFFAC2E5F0C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3
+                C4E8F3C4E8F3C4E8F3C1E6F1C9EEFAACB4B7232120050606222120AFB6B9C9EE
+                F9C1E6F2C8E4EC767473252222504D4D777777333131AAB2B5C9EFFAC2E5F0C4
+                E8F3C4E8F3C4E7F2C3E7F2C4E8F3C4E7F2C3E7F2C3E6F1C3E7F1C3E7F2C4E7F2
+                C3E8F3C3E7F2C4E8F3C2E5F0C6ECF8B9C9CE2C2A290607071010117F7F7ECDE9
+                F1C3EBF8C0D4D92E2C2B00000009090A090A0A474342C2D5DAC4EBF6C3E6F1C4
+                E8F3C4E7F2C3E8F3C4E8F3C3E7F2C2E7F2C4EBF6C7EDF9C6ECF8C3E9F5C2E7F2
+                C3E7F2C4E8F3C3E8F3C3E6F1C3E9F5C7DDE44D4B4A08090A070808464342C8DB
+                E0C3EDF9C7DFE6676463201E1E2321214F4B4AB6BFC2C8EBF6C2E6F2C3E7F2C4
+                E8F3C3E8F3C4E7F2C3E7F2C5EBF7CDEDF6C4DAE1BBCBD0BED1D7C9E2E9CDEEF7
+                C4EBF7C2E6F2C4E8F2C3E7F2C1E6F1CBEDF79A9FA01817170808081C1B1B9EA1
+                A3CBEEF8C3E8F3C6DCE3ADB5B7B0B8BBC6DCE2C7EBF6C2E7F2C4E7F2C4E8F3C4
+                E8F3C4E7F2C2E6F1C6EBF6C2D4DA8A8B8B5D5A593F3A394743425755548F9191
+                C6D7DDC8ECF8C2E6F1C4E7F2C3E6F1C3EAF6C8DCE24C49480808090809094A47
+                46C8DCE2C4EBF7C2E8F3C9EEF9C8EEF9C3EAF5C2E6F1C4E8F2C3E8F3C3E7F2C4
+                E8F3C3E6F1C4EAF6C4DAE05552513C3A39949798A3ACAF9CA1A34E4C4C121212
+                4B4746BAC4C7C9EEF9C1E6F1C4E7F2C1E5F0C9EDF8ABB2B42422210809091414
+                1389898ACDECF6C1E6F1C2E5F0C2E6F1C3E7F2C4E8F2C3E7F2C4E7F2C4E8F3C4
+                E8F3C1E6F1CBEEF99EA2A43B3838AEB6B8D0F1FBC9EFFBCDF1FCC8D9DE5D5B5B
+                050606474443BECCD1C6EBF7C2E6F1C3E6F1C1E7F3CDE9F17472720D0D0E0607
+                072E2C2BB8C3C7C7EDF9C2E6F1C4E7F2C4E7F2C4E8F3C4E8F3C4E8F3C4E8F3C4
+                E8F3C2E7F3CBE8F18B8A8A7E7C7BCDE7EFC0E7F3C1E4EFC0E4EFCBF1FDB7C0C3
+                2523220304045F5C5BC9E1E9C2E8F4C3E6F1C2E6F0C5ECF8C0CFD4413E3D0909
+                0A090A0A5C5959CAE2EAC2E9F5C3E6F1C3E8F3C4E7F2C4E8F3C4E8F3C4E8F3C4
+                E8F3C2E7F3CAE8F29999998C8B8BC9E5EDC2E8F3C3E7F2C3E6F1C5EBF7C0D5DC
+                383434010202272524B5C0C4C8EEF9C2E5F0C4E7F2C1E5F1CBEEF9A4A8AA1C1B
+                1B0506061D1C1BA4AAACCBEEF9C1E6F1C4E7F2C3E8F3C4E8F3C4E8F3C4E8F3C4
+                E8F3C2E6F1C6ECF7BDCBCF867F7DC1D4DAC4EBF7C2E6F1C2E7F2C3EAF6C9DFE6
+                53504F0506061515158D8E8ECCECF5C1E6F2C4E7F2C3E6F1C2E8F5CBE2EA5E5B
+                5A0A0A0A090A0A494645C4D4D9C5EBF7C3E6F1C4E7F2C4E8F3C4E8F3C4E8F3C4
+                E8F3C3E7F2C2E7F2C6E9F3C2CED2C8D6DBC4E9F5C3E7F2C3E6F1C3EAF5CBE1E7
+                5754530707070D0D0D706F6FCBE7F0C1E8F3C3E6F1C4E7F2C2E5F0C7EDF9B8C4
+                C72C2A29050606111211888888CDEAF3C1E7F2C3E7F2C4E7F2C4E8F3C4E8F3C4
+                E8F3C4E8F3C4E7F2C3E8F3C5EBF7C4E9F4C3E7F2C4E7F2C2E7F2C4EBF7C4DAE1
+                423F3E0606060E0E0E737271CCE8F0C1E7F3C4E7F2C3E8F3C3E7F1C1E7F3CDE9
+                F17472720E0E0E0607073F3C3BC1D2D7C4ECF8C2E6F1C3E8F3C4E8F3C4E8F3C4
+                E8F3C3E7F2C3E8F3C4E7F2C3E7F2C3E7F2C4E8F3C3E8F3C3E6F1C6EDF8BED1D7
+                322F2F050506141413888888CDEBF5C1E6F2C4E6F1C4E7F2C4E7F2C2E5F0C8ED
+                F9B4C0C42926260405051B1A1A9FA3A4CBEEF8C1E6F1C4E7F2C4E8F3C4E8F3C4
+                E8F3C4E8F3C4E8F3C3E8F3C4E7F2C4E7F2C3E8F3C3E8F3C2E5F0C9EFFAB2BCBF
+                2422210606071C1B1BA1A5A7CBEEF9C1E5F0C4E7F2C4E8F3C3E8F3C3E6F1C3EA
+                F6C4D9E0403D3D0505060D0E0E72706FCCE7EFC2E8F3C3E6F1C4E8F3C4E8F3C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E7F2C1E6F1CCEFF99FA3A4
+                1A1919050606282625B6C2C6C7EEF9C2E5F0C4E8F3C4E8F3C4E7F2C3E7F1C2E8
+                F4CAE1E95C5958090909080909595656CBE1E8C3E9F5C2E7F2C4E8F3C4E8F3C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C3E6F1C2E8F3CDEAF37D7C7C
+                101010060607363433C0D4DAC5EBF7C3E6F0C4E7F2C4E8F3C4E8F3C4E6F2C1E7
+                F2CEEAF3858483121212050606555252C9DFE6C3E9F5C3E7F2C4E8F3C4E8F3C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C2E7F2C3E9F5CAE1E8595756
+                080808080809535150C9DFE5C2E9F5C2E6F1C4E7F2C4E8F3C4E7F2C3E7F2C1E7
+                F2CDE9F17F7E7D1010100708085C5958CBE1E9C2E8F4C2E6F1C4E8F3C4E8F3C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C3E6F1C3E9F5CBE1E8595655
+                080909080809514E4DCAE0E7C2E8F4C3E6F1C3E8F3C3E7F2C3E8F3C3E6F1C1E7
+                F4C9E2EA595655050606131313919292CCECF6C1E6F2C3E7F2C4E8F3C4E8F3C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C3E7F2C1E7F2CDECF58B8B8B
+                1010100607072D2B2ABAC5C8CAF1FDC0E4F0C3E6F1C3E7F2C3E6F1C0E6F1CCF2
+                FEBBC6C92C2929000000474342C3D4DAC5EBF7C2E6F1C4E7F2C4E8F3C4E8F3C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E7F2C2E6F1C5ECF7C4D5DA
+                524D4C080909060707555353C2D1D6CCEFF9C5ECF8C5EBF7C5ECF8CBEBF5B9C3
+                C64C4A490A0B0B44413FB2BEC1C7ECF7C2E6F1C4E7F2C3E8F3C4E8F3C4E8F3C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C3E8F3C4E7F2C2E6F1C7EBF6
+                C0CFD46866652A2928131313484645A4AAACBACDD3BCD0D6BECDD2A8AAAA4E4B
+                4A292727747272C2D1D6C8ECF7C2E6F1C4E7F2C4E8F3C4E7F2C4E8F3C4E8F3C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E7F2C3E8F3C4E7F2C2E6F1
+                C5EBF7CAE3EBB9C7CB8D8E8F6B6A696B686775706E7C77768D88879B9A99A6AE
+                B0BBCBD0CCE6EEC5ECF7C2E6F1C4E7F2C3E8F3C3E7F2C4E8F3C4E8F3C4E8F3C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E7F2C3E8F3C4E8F3
+                C3E6F1C2E7F3C6ECF8CCECF5CCE6EDC3DAE1C2D3D8BFD4DAC3DCE3CAE5EECAEE
+                F9C5ECF8C1E7F3C3E6F1C4E8F3C3E8F3C3E7F2C4E8F3C4E8F3C4E8F3C4E8F3C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E7F2C3E7F2
+                C4E8F3C3E7F2C2E6F1C1E6F1C1E7F3C4EAF5C5EBF7C5EBF7C4EAF5C2E8F3C2E6
+                F1C3E6F1C3E7F2C4E8F3C3E7F2C4E7F2C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4
+                E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3
+                C4E7F2C3E7F2C4E7F3C4E7F2C3E7F2C3E7F1C3E6F1C3E6F1C3E7F2C4E7F2C4E7
+                F2C3E7F3C4E7F2C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4E8F3C4
+                E8F3
+              }
+              Stretch = True
+            end
+            object Image3: TImage
+              Left = 129
+              Height = 26
+              Top = 42
+              Width = 26
+              Picture.Data = {
+                07544269746D6170360C0000424D360C00000000000036000000280000002000
+                0000200000000100180000000000000C0000120B0000120B0000000000000000
+                0000C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3ADCDD7000000000000000000
+                607177515F64B5D4DF3C474A505F640000000000000000003C474AB5D4DFC5E8
+                F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F36D8086B4D4DF99B6BEB4D4DF
+                A8C6CF8AA2AA778D93A8C6CF6D8086A7C6CF6C8086A7C6CFA8C6CF778D93C5E8
+                F3B5D4DF8AA2AA778D933C474A8AA2AAC5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3A1BEC7A1BEC7C5E8F3C5E8F3
+                C5E8F3778D93B5D4DF8298A0C5E8F3C5E8F3C5E8F3C5E8F38298A06D8086A8C6
+                CF8298A0A1BEC7C5E8F3AECDD7B5D4DF778D93C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                BADBE5A1BEC7C5E8F3BADBE5C5E8F3C5E8F3C5E8F3C5E8F3A1BEC793ACB5AECD
+                D7607177B9DBE5C5E8F3C5E8F3C5E8F393ACB593ACB5C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                C5E8F3C5E8F3C4E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F38AA2AAB5D4
+                DF89A2AA000000A0BEC7C5E8F3C5E8F3BADBE53C474AC5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3B5D4DFC5E8F3C5E8F3C5E8F3
+                C5E8F36C808600000089A2AAC5E8F3C5E8F3C5E8F3AECDD76D8086BADBE56071
+                77C5E8F3ADCDD7515F64BADBE5C5E8F3C5E8F36D8086A8C6CFC5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F36D8086A1BEC7C5E8F3C5E8F3
+                8AA2AA607177ADCDD73C474AAECDD7C5E8F393ACB53C474A8AA2AAC5E8F36D80
+                86A1BEC7C5E8F3A1BEC78298A0C5E8F3C5E8F393ACB58298A0C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3A8C6CF3C474A9AB6BE8AA2AA
+                93ACB5515F6499B6BE778D93A1BEC7A8C6CF778D93A1BEC7C5E8F3C5E8F38AA2
+                AA778D93C5E8F3C5E8F36D8086C5E8F3C5E8F3AECDD76C8086C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3A8C6CF515F64A1BEC7
+                C5E8F389A2AA00000099B6BEC5E8F3C5E8F3C5E8F3C4E8F3BADBE56071779AB6
+                BE3C474AC5E8F3C5E8F393ACB5AECDD7C5E8F3C4E8F3000000C4E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3A1BEC76D8086B9DBE5C5E8F3C5E8F3C5E8F3
+                93ACB5607177B4D4DF000000A0BEC7C5E8F3B4D4DF000000505F6493ACB5C5E8
+                F38298A0AECDD7C5E8F393ACB59AB6BEC5E8F3C4E8F3000000C4E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3BADBE5505F64000000505F64C5E8F3C5E8F3
+                C5E8F38298A0C5E8F3607177C5E8F3C5E8F3C5E8F3C4E8F3C5E8F3C5E8F3C5E8
+                F3B5D4DF8AA2AAC5E8F3AECDD79AB6BEC5E8F3C4E8F3000000C4E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3B4D4DFAECDD7C5E8F3C5E8F3
+                C5E8F3778D93C5E8F3515F64BADBE5C5E8F3C5E8F3C5E8F3C4E8F3BADBE5778D
+                93C5E8F38AA2AAA8C6CF8298A0C5E8F3C5E8F3C4E8F3000000C4E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3AECDD7B9DBE5C4E8F3C5E8F3C5E8F3BADBE5
+                3C474A000000C4E8F33C474A3C474AB5D4DFC5E8F389A2AA0000003C474AA1BE
+                C7C5E8F3C5E8F393ACB5B5D4DFC5E8F3C5E8F3AECDD7505F64C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F33C474A00000000000092ACB5C5E8F39AB6BE
+                9AB6BEC4E8F3C5E8F3C5E8F3A8C6CF93ACB5C5E8F3C5E8F3C4E8F3C5E8F3C5E8
+                F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3A8C6CF6D8086C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3BADBE5ADCDD7ADCDD7C5E8F3C5E8F3C5E8F3
+                C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3BADBE5C5E8F3C5E8F3C5E8
+                F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F38AA2AA9AB6BEC5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3B5D4DFB5D4DF
+                C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F393ACB53C474A9AB6BEADCDD7A1BE
+                C7C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3515F64BADBE5C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3ADCDD73C474AAECDD7
+                C5E8F39AB6BEC5E8F3C5E8F39AB6BEC5E8F3C5E8F38298A03C474A0000008198
+                A0C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3A1BEC78298A0C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3515F64607177000000A0BEC7C5E8F3
+                BADBE5515F64C5E8F3C5E8F33C474A92ACB5C5E8F3C5E8F3C5E8F3C4E8F3C5E8
+                F3C5E8F3C5E8F3C5E8F3C5E8F3B5D4DF515F64C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3A1BEC7AECDD7B9DBE5C5E8F3C5E8F3
+                6D80868298A0C5E8F3C5E8F399B6BE00000099B6BEC5E8F3C5E8F3C5E8F3C5E8
+                F3C5E8F3C5E8F3C5E8F3B5D4DF6D8086B5D4DFC5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F38AA2AA
+                3C474ABADBE5C5E8F3C5E8F3C5E8F3A7C6CF6D80868AA2AAC5E8F3C5E8F3B5D4
+                DF93ACB593ACB58AA2AA607177B5D4DFC5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3AECDD7
+                C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F33C47
+                4A778D9393ACB5A1BEC7C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3B9DBE50000
+                00B9DBE5C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F38AA2AA6C80
+                86C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F39AB6BE3C474ABADB
+                E5C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F39AB6BE515F648298A0C5E8F3C5E8
+                F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                C5E8F3C5E8F3C5E8F3BADBE58298A06D80869AB6BEBADBE5C5E8F3C5E8F3C5E8
+                F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                C5E8F3BADBE58298A08AA2AAB5D4DFBADBE593ACB593ACB59AB6BEBADBE5C5E8
+                F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                C5E8F3778D93AECDD7C5E8F3A8C6CF778D93AECDD7515F646D8086C5E8F3C5E8
+                F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                C4E8F3000000C4E8F3C5E8F36D8086C5E8F3C5E8F3515F64C5E8F3C5E8F3C5E8
+                F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                C5E8F33C474AB5D4DFC5E8F39AB6BEC5E8F3778D93A8C6CFC5E8F3C5E8F3C5E8
+                F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                C5E8F393ACB5607177B5D4DFC4E8F3AECDD7778D93C5E8F3C5E8F3C5E8F3C5E8
+                F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3
+                C5E8F3C5E8F393ACB53C474A0000006C8086C5E8F3C5E8F3C5E8F3C5E8F3C5E8
+                F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5E8F3C5
+                E8F3
+              }
+              Stretch = True
+            end
+            object cbAstro: TJvXPCheckbox
+              Left = 0
+              Height = 30
+              Top = 0
+              Width = 161
+              Caption = 'Afficher les signes'
+              TabOrder = 0
+              UseDockManager = False
+              Align = alTop
+              Font.Height = -13
+              ParentFont = False
+            end
+            object rbSet0: TRadioButton
+              Left = 10
+              Height = 24
+              Top = 76
+              Width = 24
+              Checked = True
+              TabOrder = 1
+              TabStop = True
+            end
+            object rbSet1: TRadioButton
+              Left = 51
+              Height = 24
+              Top = 76
+              Width = 24
+              TabOrder = 2
+            end
+            object rbSet2: TRadioButton
+              Left = 93
+              Height = 24
+              Top = 76
+              Width = 24
+              TabOrder = 3
+            end
+            object rbSet3: TRadioButton
+              Left = 135
+              Height = 24
+              Top = 76
+              Width = 24
+              TabOrder = 4
+            end
+          end
+          object gbSatellites: TGroupBox
+            Left = 0
+            Height = 152
+            Top = 0
+            Width = 174
+            Align = alClient
+            Caption = ' Satellites  '
+            ClientHeight = 130
+            ClientWidth = 170
+            ParentColor = False
+            ParentFont = False
+            TabOrder = 1
+            object cxSatGoogle: TRadioButton
+              Left = 0
+              Height = 24
+              Top = 0
+              Width = 170
+              Align = alTop
+              Caption = 'GoogleMap'
+              Checked = True
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentFont = False
+              TabOrder = 0
+              TabStop = True
+            end
+            object cxSatGeonames: TRadioButton
+              Left = 0
+              Height = 24
+              Top = 24
+              Width = 170
+              Align = alTop
+              Caption = 'Géonames'
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentFont = False
+              TabOrder = 1
+            end
+            object cxSatMapper: TRadioButton
+              Left = 0
+              Height = 24
+              Top = 48
+              Width = 170
+              Align = alTop
+              Caption = 'Mapper.acme'
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentFont = False
+              TabOrder = 2
+            end
+            object cxSatOSM: TRadioButton
+              Left = 0
+              Height = 24
+              Top = 72
+              Width = 170
+              Align = alTop
+              Caption = 'Open Street Map'
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentFont = False
+              TabOrder = 3
+            end
+            object Panel10: TPanel
+              Left = 0
+              Height = 21
+              Top = 96
+              Width = 170
+              Align = alTop
+              BevelOuter = bvNone
+              ClientHeight = 21
+              ClientWidth = 170
+              TabOrder = 4
+              object cxseZoom: TFWSpinEdit
+                Left = 78
+                Height = 25
+                Top = 0
+                Width = 41
+                ParentFont = False
+                TabOrder = 0
+                Value = 1
+              end
+              object Label31: TLabel
+                Left = 14
+                Height = 15
+                Top = 3
+                Width = 34
+                Caption = 'Zoom'
+                ParentColor = False
+              end
+            end
+          end
+        end
+      end
+    end
+    object cxTabSheet5: TTabSheet
+      Caption = 'Contrôles de cohérence'
+      ClientHeight = 391
+      ClientWidth = 647
+      ImageIndex = 4
+      object cbActiveControl: TJvXPCheckbox
+        Left = 0
+        Height = 17
+        Top = 0
+        Width = 647
+        Caption = 'Activer tous les contrôles de cohérence'
+        TabOrder = 0
+        ParentColor = False
+        UseDockManager = False
+        Align = alTop
+        ParentFont = False
+      end
+      object cxGroupBox5: TGroupBox
+        Left = 0
+        Height = 217
+        Top = 17
+        Width = 647
+        Align = alTop
+        Caption = ' Paramètrage des cohérences contrôlées '
+        ClientHeight = 195
+        ClientWidth = 643
+        TabOrder = 1
+        object Panel11: TPanel
+          Left = 0
+          Height = 18
+          Top = 0
+          Width = 643
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 18
+          ClientWidth = 643
+          TabOrder = 0
+          object Panel12: TPanel
+            Left = 0
+            Height = 18
+            Top = 0
+            Width = 266
+            Align = alLeft
+            BevelOuter = bvNone
+            TabOrder = 0
+          end
+          object Label18: TLabel
+            Left = 266
+            Height = 18
+            Top = 0
+            Width = 50
+            Align = alLeft
+            Caption = 'Hommes'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label19: TLabel
+            Left = 316
+            Height = 18
+            Top = 0
+            Width = 55
+            Align = alLeft
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'Femmes'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object Panel13: TPanel
+          Left = 0
+          Height = 21
+          Top = 110
+          Width = 643
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 21
+          ClientWidth = 643
+          TabOrder = 1
+          object CheckEsperanceVie: TJvXPCheckbox
+            Left = 0
+            Height = 21
+            Top = 0
+            Width = 265
+            Caption = 'Espérance de vie'
+            TabOrder = 0
+            UseDockManager = False
+            Align = alLeft
+            ParentFont = False
+          end
+          object edH6: TFWSpinEdit
+            Cursor = crHandPoint
+            Left = 265
+            Height = 21
+            Top = 0
+            Width = 56
+            Align = alLeft
+            ParentFont = False
+            TabOrder = 1
+            Value = 1
+          end
+          object edF6: TFWSpinEdit
+            Cursor = crHandPoint
+            Left = 321
+            Height = 21
+            Top = 0
+            Width = 57
+            Align = alLeft
+            ParentFont = False
+            TabOrder = 2
+            Value = 1
+          end
+        end
+        object Panel14: TPanel
+          Left = 0
+          Height = 23
+          Top = 18
+          Width = 643
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 23
+          ClientWidth = 643
+          TabOrder = 2
+          object CheckAgeMiniMariage: TJvXPCheckbox
+            Left = 0
+            Height = 23
+            Top = 0
+            Width = 266
+            Caption = 'Age minimum pour se marier'
+            TabOrder = 0
+            UseDockManager = False
+            Align = alLeft
+            Font.Height = -12
+            ParentFont = False
+          end
+          object edH1: TFWSpinEdit
+            Cursor = crHandPoint
+            Left = 266
+            Height = 23
+            Top = 0
+            Width = 57
+            Align = alLeft
+            ParentFont = False
+            TabOrder = 1
+            Value = 1
+          end
+          object edF1: TFWSpinEdit
+            Cursor = crHandPoint
+            Left = 323
+            Height = 23
+            Top = 0
+            Width = 55
+            Align = alLeft
+            ParentFont = False
+            TabOrder = 2
+            Value = 1
+          end
+        end
+        object Panel15: TPanel
+          Left = 0
+          Height = 24
+          Top = 41
+          Width = 643
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 24
+          ClientWidth = 643
+          TabOrder = 3
+          object CheckAgeMaxiMariage: TJvXPCheckbox
+            Left = 0
+            Height = 24
+            Top = 0
+            Width = 266
+            Caption = 'Age maximum pour se marier'
+            TabOrder = 0
+            UseDockManager = False
+            Align = alLeft
+            Font.Height = -12
+            ParentFont = False
+          end
+          object edH2: TFWSpinEdit
+            Cursor = crHandPoint
+            Left = 266
+            Height = 24
+            Top = 0
+            Width = 56
+            Align = alLeft
+            ParentFont = False
+            TabOrder = 1
+            Value = 1
+          end
+          object edF2: TFWSpinEdit
+            Cursor = crHandPoint
+            Left = 322
+            Height = 24
+            Top = 0
+            Width = 56
+            Align = alLeft
+            ParentFont = False
+            TabOrder = 2
+            Value = 1
+          end
+        end
+        object Panel16: TPanel
+          Left = 0
+          Height = 24
+          Top = 65
+          Width = 643
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 24
+          ClientWidth = 643
+          TabOrder = 4
+          object CheckAgeMiniNaissanceEnfant: TJvXPCheckbox
+            Left = 0
+            Height = 24
+            Top = 0
+            Width = 266
+            Caption = 'Age minimum pour avoir un enfant'
+            TabOrder = 0
+            UseDockManager = False
+            Align = alLeft
+            Font.Height = -12
+            ParentFont = False
+          end
+          object edH3: TFWSpinEdit
+            Cursor = crHandPoint
+            Left = 266
+            Height = 24
+            Top = 0
+            Width = 56
+            Align = alLeft
+            ParentFont = False
+            TabOrder = 1
+            Value = 1
+          end
+          object edF3: TFWSpinEdit
+            Cursor = crHandPoint
+            Left = 322
+            Height = 24
+            Top = 0
+            Width = 56
+            Align = alLeft
+            ParentFont = False
+            TabOrder = 2
+            Value = 1
+          end
+        end
+        object Panel17: TPanel
+          Left = 0
+          Height = 21
+          Top = 89
+          Width = 643
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 21
+          ClientWidth = 643
+          TabOrder = 5
+          object CheckAgeMaxiNaissanceEnfant: TJvXPCheckbox
+            Left = 0
+            Height = 21
+            Top = 0
+            Width = 266
+            Caption = 'Age maximum pour avoir un enfant'
+            TabOrder = 0
+            UseDockManager = False
+            Align = alLeft
+            Font.Height = -11
+            ParentFont = False
+          end
+          object edH4: TFWSpinEdit
+            Cursor = crHandPoint
+            Left = 266
+            Height = 21
+            Top = 0
+            Width = 55
+            Align = alLeft
+            ParentFont = False
+            TabOrder = 1
+            Value = 1
+          end
+          object edF4: TFWSpinEdit
+            Cursor = crHandPoint
+            Left = 321
+            Height = 21
+            Top = 0
+            Width = 57
+            Align = alLeft
+            ParentFont = False
+            TabOrder = 2
+            Value = 1
+          end
+        end
+        object Panel18: TPanel
+          Left = 0
+          Height = 21
+          Top = 131
+          Width = 643
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 21
+          ClientWidth = 643
+          TabOrder = 6
+          object CheckEcartAgeEpoux: TJvXPCheckbox
+            Left = 0
+            Height = 21
+            Top = 0
+            Width = 291
+            Caption = 'Ecart d''âge entre les époux'
+            TabOrder = 0
+            UseDockManager = False
+            Align = alLeft
+            ParentFont = False
+          end
+          object ed7: TFWSpinEdit
+            Cursor = crHandPoint
+            Left = 291
+            Height = 21
+            Top = 0
+            Width = 55
+            Align = alLeft
+            ParentFont = False
+            TabOrder = 1
+            Value = 1
+          end
+        end
+        object Panel19: TPanel
+          Left = 0
+          Height = 21
+          Top = 152
+          Width = 643
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 21
+          ClientWidth = 643
+          TabOrder = 7
+          object CheckNbJourEntreNaissance: TJvXPCheckbox
+            Left = 0
+            Height = 21
+            Top = 0
+            Width = 290
+            Caption = 'Nombre de jours entre 2 naissances'
+            TabOrder = 0
+            UseDockManager = False
+            Align = alLeft
+            Font.Height = -12
+            ParentFont = False
+          end
+          object edH5: TFWSpinEdit
+            Cursor = crHandPoint
+            Left = 290
+            Height = 21
+            Top = 0
+            Width = 56
+            Align = alLeft
+            ParentFont = False
+            TabOrder = 1
+            Value = 1
+          end
+        end
+      end
+    end
+    object TabSheet1: TTabSheet
+      Caption = 'Rapports'
+      ClientHeight = 391
+      ClientWidth = 647
+      ImageIndex = 2
+      object Panel20: TPanel
+        Left = 436
+        Height = 391
+        Top = 0
+        Width = 211
+        Align = alRight
+        BevelOuter = bvNone
+        ClientHeight = 391
+        ClientWidth = 211
+        TabOrder = 0
+        object gb_borders: TGroupBox
+          Left = 0
+          Height = 80
+          Top = 0
+          Width = 211
+          Align = alTop
+          Caption = 'Bordures'
+          ClientHeight = 58
+          ClientWidth = 207
+          TabOrder = 0
+          object ch_hborders: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 0
+            Width = 207
+            Caption = 'Cadrillage horizontal'
+            TabOrder = 0
+            UseDockManager = False
+            Align = alTop
+          end
+          object ch_vborders: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 17
+            Width = 207
+            Caption = 'Cadrillage vertical'
+            TabOrder = 1
+            UseDockManager = False
+            Align = alTop
+          end
+          object ch_rounded_borders: TJvXPCheckbox
+            Left = 0
+            Height = 17
+            Top = 34
+            Width = 207
+            Caption = 'Bordure délimitante'
+            TabOrder = 2
+            UseDockManager = False
+            Align = alTop
+          end
+        end
+      end
+      object Panel21: TPanel
+        Left = 0
+        Height = 391
+        Top = 0
+        Width = 436
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 391
+        ClientWidth = 436
+        TabOrder = 1
+        object cxGroupBox15: TGroupBox
+          Left = 0
+          Height = 246
+          Top = 0
+          Width = 436
+          Align = alTop
+          Caption = ' Couleurs '
+          ClientHeight = 224
+          ClientWidth = 432
+          ParentColor = False
+          ParentFont = False
+          TabOrder = 0
+          object Label37: TLabel
+            Left = 6
+            Height = 14
+            Top = 4
+            Width = 172
+            Caption = 'Couleur de l''entête de rapport'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object cpRapportHeaderColor: TExtColorCombo
+            Left = 254
+            Height = 26
+            Top = -1
+            Width = 134
+            HTMLcolor = '#FFFFFF'
+            Color = 11184810
+            ItemHeight = 20
+            ParentFont = False
+            TabOrder = 6
+            TabStop = False
+          end
+          object cxButton7: TFWInit
+            Tag = 2
+            Left = 393
+            Height = 25
+            Hint = 'Réinitialiser la couleur'
+            Top = 2
+            Width = 19
+            TabOrder = 7
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = cxButton7Click
+          end
+          object cpRapportFontHeaderColor: TExtColorCombo
+            Left = 254
+            Height = 26
+            Top = 95
+            Width = 134
+            HTMLcolor = '#FFFFFF'
+            Color = 11184810
+            ItemHeight = 20
+            ParentFont = False
+            TabOrder = 3
+            TabStop = False
+          end
+          object cxButton8: TFWInit
+            Tag = 2
+            Left = 393
+            Height = 22
+            Hint = 'Réinitialiser la couleur'
+            Top = 100
+            Width = 19
+            TabOrder = 8
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = cxButton8Click
+          end
+          object Label38: TLabel
+            Left = 6
+            Height = 14
+            Top = 102
+            Width = 163
+            Caption = 'Couleur de la police d''entête'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object cpRapportColumnHeaderColor: TExtColorCombo
+            Left = 254
+            Height = 26
+            Top = 31
+            Width = 134
+            HTMLcolor = '#FFFFFF'
+            Color = 11184810
+            ItemHeight = 20
+            ParentFont = False
+            TabOrder = 5
+            TabStop = False
+          end
+          object cxButton9: TFWInit
+            Tag = 2
+            Left = 393
+            Height = 25
+            Hint = 'Réinitialiser la couleur'
+            Top = 34
+            Width = 19
+            TabOrder = 9
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = cxButton9Click
+          end
+          object Label40: TLabel
+            Left = 6
+            Height = 14
+            Top = 36
+            Width = 174
+            Caption = 'Couleur de l''entête de colonne'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label41: TLabel
+            Left = 6
+            Height = 14
+            Top = 134
+            Width = 229
+            Caption = 'Couleur de la police d''entête de colonne'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object cpRapportFontColumnHeaderColor: TExtColorCombo
+            Left = 254
+            Height = 26
+            Top = 127
+            Width = 134
+            HTMLcolor = '#FFFFFF'
+            Color = 11184810
+            ItemHeight = 20
+            ParentFont = False
+            TabOrder = 2
+            TabStop = False
+          end
+          object cxButton10: TFWInit
+            Tag = 2
+            Left = 393
+            Height = 22
+            Hint = 'Réinitialiser la couleur'
+            Top = 132
+            Width = 19
+            TabOrder = 10
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = cxButton10Click
+          end
+          object cpRapportColumnsColor: TExtColorCombo
+            Left = 254
+            Height = 26
+            Top = 63
+            Width = 134
+            HTMLcolor = '#FFFFFF'
+            Color = 11184810
+            ItemHeight = 20
+            ParentFont = False
+            TabOrder = 4
+            TabStop = False
+          end
+          object Label44: TLabel
+            Left = 6
+            Height = 14
+            Top = 68
+            Width = 110
+            Caption = 'Couleur de colonne'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object cxButton11: TFWInit
+            Tag = 2
+            Left = 393
+            Height = 25
+            Hint = 'Réinitialiser la couleur'
+            Top = 67
+            Width = 19
+            TabOrder = 11
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = cxButton11Click
+          end
+          object cpRapportFontColumnColor: TExtColorCombo
+            Left = 254
+            Height = 26
+            Top = 159
+            Width = 134
+            HTMLcolor = '#FFFFFF'
+            Color = 11184810
+            ItemHeight = 20
+            ParentFont = False
+            TabOrder = 1
+            TabStop = False
+          end
+          object cxButton12: TFWInit
+            Tag = 2
+            Left = 393
+            Height = 22
+            Hint = 'Réinitialiser la couleur'
+            Top = 164
+            Width = 19
+            TabOrder = 12
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = cxButton12Click
+          end
+          object Label45: TLabel
+            Left = 6
+            Height = 14
+            Top = 166
+            Width = 179
+            Caption = 'Couleur de la police de colonne'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label46: TLabel
+            Left = 6
+            Height = 14
+            Top = 197
+            Width = 111
+            Caption = 'Couleur de bordure'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object cpRapportBorderColor: TExtColorCombo
+            Left = 254
+            Height = 26
+            Top = 191
+            Width = 134
+            HTMLcolor = '#FFFFFF'
+            Color = 11184810
+            ItemHeight = 20
+            ParentFont = False
+            TabOrder = 0
+            TabStop = False
+          end
+          object cxButton16: TFWInit
+            Tag = 2
+            Left = 393
+            Height = 22
+            Hint = 'Réinitialiser la couleur'
+            Top = 195
+            Width = 19
+            TabOrder = 13
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = cxButton16Click
+          end
+        end
+        object cxGroupBox16: TGroupBox
+          Left = 0
+          Height = 120
+          Top = 246
+          Width = 436
+          Align = alTop
+          Caption = 'Polices'
+          ClientHeight = 98
+          ClientWidth = 432
+          ParentColor = False
+          ParentFont = False
+          TabOrder = 1
+          object ed_RapportPoliceHeader: TEdit
+            Left = 198
+            Height = 25
+            Top = 5
+            Width = 168
+            TabOrder = 0
+          end
+          object Label39: TLabel
+            Left = 14
+            Height = 14
+            Top = 13
+            Width = 83
+            Caption = 'Police d''entête'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object ed_RapportPoliceColumnHeader: TEdit
+            Left = 198
+            Height = 25
+            Top = 33
+            Width = 168
+            TabOrder = 1
+          end
+          object Label42: TLabel
+            Left = 14
+            Height = 14
+            Top = 39
+            Width = 149
+            Caption = 'Police d''entête de colonne'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label43: TLabel
+            Left = 14
+            Height = 14
+            Top = 67
+            Width = 99
+            Caption = 'Police de colonne'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object ed_RapportPoliceColumn: TEdit
+            Left = 198
+            Height = 25
+            Top = 61
+            Width = 168
+            TabOrder = 2
+          end
+          object cxButton13: TFWInit
+            Tag = 2
+            Left = 374
+            Height = 22
+            Hint = 'Réinitialiser la couleur'
+            Top = 8
+            Width = 19
+            TabOrder = 3
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = cxButton13Click
+          end
+          object cxButton14: TFWInit
+            Tag = 2
+            Left = 374
+            Height = 22
+            Hint = 'Réinitialiser la couleur'
+            Top = 64
+            Width = 19
+            TabOrder = 4
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = cxButton14Click
+          end
+          object cxButton15: TFWInit
+            Tag = 2
+            Left = 374
+            Height = 22
+            Hint = 'Réinitialiser la couleur'
+            Top = 35
+            Width = 19
+            TabOrder = 5
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = cxButton15Click
+          end
+        end
+      end
+    end
+  end
+  object Panel1: TPanel[2]
+    Left = 0
+    Height = 26
+    Top = 475
+    Width = 655
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 26
+    ClientWidth = 655
+    TabOrder = 2
+    object bsfbSelection: TFWOK
+      Cursor = crHandPoint
+      Left = 467
+      Top = 0
+      Width = 94
+      TabStop = False
+      Caption = 'Ok'
+      TabOrder = 0
+      ModalResult = 1
+      Align = alRight
+      Anchors = [akTop, akRight]
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = bsfbSelectionClick
+    end
+    object btnFermer: TFWClose
+      Cursor = crHandPoint
+      Left = 561
+      Hint = 'Ferme cette fenêtre.'
+      Top = 0
+      Width = 94
+      TabStop = False
+      Caption = 'Annuler'
+      TabOrder = 1
+      ModalResult = 2
+      Align = alRight
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+    end
+  end
+  object ColorDialog: TColorDialog[3]
+    Color = clBlack
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    left = 192
+    top = 192
+  end
+  object OpenDialog1: TOpenDialog[4]
+    Title = 'Open file'
+    Filter = 'All files|*.*'
+    left = 520
+    top = 416
+  end
+  object ImageList1: TImageList[5]
+    BkColor = clForeground
+    left = 168
+    top = 248
+    Bitmap = {
+      4C69050000001000000010000000000000000000000000000000000000004480
+      A2FF356C87FF356C87FF356C87FF356C87FF356C87FF356C87FF4480A2FF0000
+      000000000000000000000000000000000000000000004480A2FF356C87FF7DC5
+      D3FF89D6E3FF72B9CAFF62A7BBFF58A1BBFF53A7CAFF4FB0E0FF3C97C8FF356C
+      87FF4480A2FF000000000000000000000000356C87FF65AAC0FF9CE6ECFFA2ED
+      F1FF70A6AAFF23373AFF4B7D88FF1F373DFF0F1E24FF408DB3FF49B6F0FF3AA5
+      E3FF3296D0FF356C87FF000000004480A2FF61A7BEFF9FEAEFFFA3EEF2FFA3EE
+      F2FF446365FF0A1011FF7AC7DAFF68B4CBFF000000FF1C4254FF4AB6F0FF3CAC
+      EDFF36A1DFFF3381B3FF4480A2FF356C87FF89D6E3FFA1ECF1FFA3EEF2FFA2ED
+      F1FF95DBE0FF81C6D0FF85D9EDFF5696A9FF020506FF33708EFF4AB6F0FF3CAC
+      EDFF37A5E5FF358ABBFF356C87FF356C87FF8DDEEDFF9CE8F1FFA0ECF1FFA0EC
+      F1FF9AE8F1FF8FE1F1FF77C7DBFF26444DFF366C83FF54B7E9FF47B4F0FF3BAB
+      EDFF37A3E3FF3399D4FF356C87FF356C87FF83D8EDFF8EE1F1FF93E4F1FF93E3
+      F1FF8EE1F1FF84DBF1FF5999ACFF3B7085FF60C4F1FF51BBF1FF43B1F0FF39A9
+      E9FF36A2E1FF358ABBFF356C87FF356C87FF70C7E2FF80D8F1FF84DAF1FF83DA
+      F1FF80D9F1FF79D4F1FF6CC7E9FF60C0E8FF58BFF1FF4AB6F0FF3DAEEEFF38A6
+      E7FF36A0DEFF3381B3FF4480A2FF4480A2FF4E9CC0FF71CEEEFF75D1F1FF75D1
+      F1FF72D0F1FF6CCCF1FF346579FF2E6179FF4EB8F1FF41B0EFFF39A9EAFF37A3
+      E3FF3296D0FF356C87FF0000000000000000356C87FF4E9CC0FF65C7EFFF66C7
+      F1FF63C6F1FF5EC3F1FF132B36FF102836FF43B1F0FF3AAAECFF37A5E5FF3399
+      D4FF356C87FF00000000000000000000000000000000356C87FF4E9CC0FF4BAA
+      D8FF4EB5E8FF4EB8EFFF44ABE4FF3DA6E3FF3AAAEBFF36A1DFFF3399D4FF356C
+      87FF0000000000000000000000000000000000000000000000004480A2FF356C
+      87FF4E9CC0FF4E9CC0FF4E9CC0FF4E9CC0FF3499D4FF4E9CC0FF356C87FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00004480A2FF356C87FF356C87FF356C87FF3191C8FF356C87FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000356C87FF4E9CC0FF4480A2FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000356C87FF356C87FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000356C87FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000FFFFFFFFFFCFCFFF000000FF000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000FFFF
+      FFFFF0FFFFFFFFCFCFFF9F9F9FFF000000000000000000000000000000000000
+      0000000000FF000000FF00000000000000000000000000000000FFFFFFFFF0FF
+      FFFFFFCFCFFF9F9F9FFF000000FF000000000000000000000000000000000000
+      00FF000000FF000000FF000000000000000000000000FFFFFFFFF0FFFFFFFFCF
+      CFFF9F9F9FFF000000FF000000FF000000000000000000000000000000FF609F
+      CFFF000000FF000000000000000000000000FFFFFFFFF0FFFFFFFFCFCFFF9F9F
+      9FFF000000FF9F9F9FFFDFDFDFFF000000FF9FCFFFFF000000FF609FCFFF0000
+      00FF000000000000000000000000000000FF000000FFFFCFCFFF9F9F9FFF0000
+      00FF9F9F9FFFDFDFDFFFDFDFDFFF9FCFFFFF000000FF609FCFFF000000FF0000
+      00FF000000000000000000000000707070FFA0A0A0FF000000FF000000FF9F9F
+      9FFFDFDFDFFFDFDFDFFF9FCFFFFF000000FF609FCFFF000000FF609FCFFF9FCF
+      FFFF000000FF0000000000000000000000FFDFDFDFFF000000FFDFDFDFFFDFDF
+      DFFFDFDFDFFFDFDFDFFF000000FF000000FF000000FF000000FF9FCFFFFF9FCF
+      FFFF9FCFFFFF000000FF000000FF00000000FFFFFFFFDFDFDFFFDFDFDFFFDFDF
+      DFFFDFDFDFFFF0FFFFFF609FCFFF000000FF609FCFFF609FCFFF9FCFFFFF9FCF
+      FFFF9FCFFFFF000000FF000000FF0000000000000000FFFFFFFFDFDFDFFFDFDF
+      DFFFF0FFFFFF000000FFFFFFFFFFDFDFDFFFA0A0A0FF00000000000000FF0000
+      00FF609FCFFF000000FF000000FF000000000000000000000000FFFFFFFFF0FF
+      FFFFF0FFFFFFFFFFFFFFDFDFDFFFA0A0A0FF000000FF00000000000000000000
+      000000000000000000FF000000FF00000000000000000000000000000000FFFF
+      FFFFFFFFFFFFDFDFDFFFA0A0A0FF000000FF0000000000000000000000000000
+      00000000000000000000000000000000000000000000000000009F9F9FFF0000
+      00FFDFDFDFFFA0A0A0FF000000FF000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000FFA0A0A0FFFFCF
+      CFFFA0A0A0FF000000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000FFCFCFFFFFCF
+      CFFF000000FF0000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000AF5F2FFFAF5F2FFF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000AF5F2FFFAF5F2FFFAF9F50FFAF9F50FFAF5F2FFF00000000000000000000
+      0000000000000000000000000000000000000000000000000000AF5F2FFFAF5F
+      2FFFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF5F2FFF000000000000
+      000000000000000000000000000000000000AF5F2FFFAF5F2FFFAF9F50FFAF9F
+      50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF5F2FFF0000
+      0000000000000000000000000000AF5F2FFFF0CFA0FFAF9F50FFAF9F50FFAF9F
+      50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF5F
+      2FFF000000000000000000000000AF5F2FFFAF9F50FFF0CFA0FFAF9F50FFAF9F
+      50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F
+      50FFAF5F2FFF0000000000000000AF5F2FFFAF9F50FFAF9F50FFF0CFA0FFAF9F
+      50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F
+      50FFAF9F50FFAF5F2FFF00000000AF5F2FFFAF9F50FFAF9F50FFAF9F50FFFFCF
+      CFFFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F
+      50FFAF9F50FFAF5F2FFFAF5F2FFFAF5F2FFFAF9F50FFAF9F50FFAF9F50FFAF9F
+      50FFF0CFA0FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF9F50FFAF5F
+      2FFFAF5F2FFFA0A0A0FF0000000000000000AF5F2FFFAF9F50FFAF9F50FFAF9F
+      50FFAF9F50FFF0CFA0FFAF9F50FFAF9F50FFAF9F50FFAF5F2FFFAF5F2FFFA0A0
+      A0FF00000000AF9FAFFF000000000000000000000000AF5F2FFFAF9F50FFAF9F
+      50FFAF9F50FFAF9F50FFFFCFCFFFAF5F2FFFAF5F2FFFA0A0A0FFF0FFFFFF0000
+      0000FFDFD0FFAF5F2FFFAF5F2FFF000000000000000000000000AF5F2FFFAF9F
+      50FFAF9F50FFAF9F50FFAF5F2FFFA0A0A0FFF0FFFFFFFFDFFFFFF0FFFFFFF0FF
+      FFFFAF5F2FFFAF5F2FFF0000000000000000000000000000000000000000AF5F
+      2FFFAF9F50FFAF9F50FFAF5F2FFF00000000F0FFFFFF00000000AF5F2FFFAF5F
+      2FFF000000000000000000000000000000000000000000000000000000000000
+      0000AF5F2FFFAF9F50FFAF5F2FFFA0A0A0FFAF5F2FFFAF5F2FFF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000AF5F2FFFAF5F2FFFAF5F2FFF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000EFEFEFFFD5D5D5FFD1D1D1FFD5D5
+      D5FFE9E9E9FFFCFCFCFF00000000000000000000000000000000000000000000
+      000000000000000000000000000000000000C8C8C8FFE0E0E0FFFFFFFFFFF2F2
+      F2FFDDDDDDFFCBCBCBFFD7D7D7FFECECECFF0000000000000000000000000000
+      000000000000000000000000000000000000BFBFBFFFDFDFDFFFE3D7BCFFF3EF
+      E4FFFFFFFFFFFBFBFBFFE8E8E8FFCBCBCBFFC6C6C6FFD9D9D9FFF6F6F6FF0000
+      000000000000000000000000000000000000B6B6B6FFDBDBDBFFBA9C53FFA279
+      06FFC1A666FFDFD2B2FFFFFFFFFFFFFFFFFFF6F6F6FFD7D7D7FFBBBBBBFFC7C7
+      C7FFE2E2E2FF000000000000000000000000ADADADFFD7D7D7FFBA9C53FFA47C
+      0FFFAA841DFFAF8B27FFB8983FFFD7C596FFF2EDDDFFFFFFFFFFFFFFFFFFE7E7
+      E7FFBDBDBDFFD1D1D1FF0000000000000000A4A4A4FFD2D2D2FFBC9F57FFAA85
+      1DFFB18D2AFFB69536FFBB9B3FFFBDA046FFBFA249FFCBB470FFE8DDBFFFFFFF
+      FFFFB0B0B0FFA4A4A4FF00000000000000009A9A9AFFCECECEFFBFA45EFFAF8D
+      28FFB69637FFBD9E43FFC2A54EFFC6AB56FFC8AD59FFC7AD58FFC4A953FFF0E9
+      D6FFA2A2A2FF9A9A9AFF0000000000000000919191FFCACACAFFC2A763FFB492
+      31FFBC9C41FFC3A64FFFC9AE5BFFCEB664FFD1B869FFD0B767FFCCB361FFF2EB
+      D8FFB4B4B4FF919191FF00000000000000009F9F9FFFA6A6A6FFF0EADBFFD2BE
+      8AFFBFA249FFC7AD58FFCFB666FFD5BE71FFD8C478FFD7C376FFD3BC6DFFF3ED
+      DBFFC4C4C4FF888888FF0000000000000000EFEFEFFF969696FF9F9F9FFFD0D0
+      D0FFF3F2EDFFE8DDBCFFD8C480FFDAC57AFFE0CE85FFDECB82FFD7C276FFF3EE
+      DCFFD5D5D5FF7E7E7EFF00000000000000000000000000000000D5D5D5FF9696
+      96FF7A7A7AFFBDBDBDFFF4F4F4FFF8F5E8FFEEE3B7FFE2D08CFFD7C377FFF3EE
+      DDFFE6E6E6FF757575FF00000000000000000000000000000000E6E6E6FFCCCC
+      CCFF888888FFD9D9D9FFDEDEDEFFD9D9D9FFE9E9E9FFF7F6F2FFEFE7CCFFF9F6
+      EEFFF6F6F6FF6B6B6BFF000000000000000000000000F9F9F9FFCCCCCCFFCCCC
+      CCFF787878FFFFFFFFFFFFFFFFFFF7F7F7FFD7D7D7FFD4D4D4FFDEDEDEFFDEDE
+      DEFFE5E5E5FF616161FF000000000000000000000000E9E9E9FFCCCCCCFFCCCC
+      CCFF999999FFADADADFFEEEEEEFFFFFFFFFFECECECFFCECECEFFADADADFF9191
+      91FF5A5A5AFFA1A1A1FF000000000000000000000000F0F0F0FFCCCCCCFFCCCC
+      CCFFC9C9C9FFA3A3A3FF7C7C7CFF787878FF787878FF787878FF939393FFECEC
+      ECFF000000000000000000000000000000000000000000000000E3E3E3FFCCCC
+      CCFFCCCCCCFFCCCCCCFFCCCCCCFFCCCCCCFFCCCCCCFFCCCCCCFFECECECFF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000983000FF983000FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000983000FFFEFEFEFFF9F6F4FF694731FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000983000FFFDFAF8FFC86000FFC86000FFF2EDEAFF694731FF000000000000
+      0000000000000000000000000000000000000000000000000000000000009830
+      00FFFEFEFEFFC86000FFFFFFFFFFFFFFFFFF983000FFF2ECE9FF694731FF0000
+      0000000000000000000000000000000000000000000000000000983000FFFFFF
+      FFFFC86000FFFBC39FFFFFFFFFFFFFFFFFFFAA6644FF983000FFF2ECE9FF6947
+      31FF0000000000000000000000000000000000000000983000FFFEFEFEFFC860
+      00FFFBC39FFFFBC39FFFC49375FFC49375FFF9AC81FFF79B6CFF983000FFF2EC
+      E9FF694731FF000000000000000000000000983000FFFDFAF8FFC86000FFFBC3
+      9FFFFBC39FFFFFFFFFFFFFFFFFFFFFFFFFFFAA6644FFF79B6CFFF79260FF9830
+      00FFF2ECE9FF694731FF00000000983000FFFEFEFEFFC86000FFFBC39FFFFBC3
+      9FFFFABA93FFF9B187FFFFFFFFFFFFFFFFFFAA6644FFF79260FFF68D59FFF686
+      50FF983000FFF2ECE9FF694731FF983000FFF9F6F4FFC86000FFFBC39FFFFABA
+      93FFF9B187FFF9AC81FFFFFFFFFFFFFFFFFFAA6644FFF68D59FFF68650FFF57C
+      43FF983000FFF2ECE9FF694731FF00000000694731FFF2ECE9FF983000FFF9B1
+      87FFF9AC81FFF79B6CFFFFFFFFFFFFFFFFFFAA6644FFF68650FFF57C43FF9830
+      00FFF2ECE9FF694731FF000000000000000000000000694731FFF2EEEAFF9830
+      00FFF79B6CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAA6644FF983000FFF2EC
+      E9FF694731FF0000000000000000000000000000000000000000694731FFF2EC
+      E9FF983000FFC49375FFC49375FFC49375FFC49375FF983000FFF2ECE9FF6947
+      31FF000000000000000000000000000000000000000000000000000000006947
+      31FFF2ECE9FF983000FFF68650FFF57C43FF983000FFF2ECE9FF694731FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000694731FFF2ECE9FF983000FF983000FFF2ECE9FF694731FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000694731FFF2ECE9FFF2ECE9FF694731FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000694731FF694731FF0000000000000000000000000000
+      0000000000000000000000000000
+    }
+  end
+end

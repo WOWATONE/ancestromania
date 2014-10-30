@@ -1,0 +1,1902 @@
+inherited FIndividuEditEventLife: TFIndividuEditEventLife
+  Left = 838
+  Height = 514
+  Top = 160
+  Width = 420
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
+  BorderWidth = 1
+  Caption = 'Détails de l''événement'
+  ClientHeight = 514
+  ClientWidth = 420
+  Color = clWindow
+  Constraints.MaxWidth = 420
+  Constraints.MinHeight = 500
+  Constraints.MinWidth = 420
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnDeactivate = SuperFormDeactivate
+  OnHide = SuperFormHide
+  OnKeyDown = SuperFormKeyDown
+  OnResize = SuperFormResize
+  OnShow = SuperFormShow
+  object dxStatusBar: TStatusBar[0]
+    Left = 1
+    Height = 23
+    Top = 490
+    Width = 418
+    Panels = <    
+      item
+        Width = 50
+      end>
+  end
+  object pGlobal: TPanel[1]
+    Left = 1
+    Height = 489
+    Top = 1
+    Width = 418
+    Align = alClient
+    BevelOuter = bvNone
+    BorderWidth = 2
+    ClientHeight = 489
+    ClientWidth = 418
+    TabOrder = 1
+    object panDock: TPanel
+      Left = 2
+      Height = 460
+      Top = 2
+      Width = 414
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 460
+      ClientWidth = 414
+      TabOrder = 0
+      object PanelEdits: TGroupBox
+        Left = 0
+        Height = 204
+        Top = 25
+        Width = 414
+        Align = alTop
+        ClientHeight = 186
+        ClientWidth = 410
+        ParentColor = False
+        TabOrder = 1
+        OnResize = SuperFormResize
+        object PanLieu: TPanel
+          Left = 73
+          Height = 186
+          Top = 0
+          Width = 337
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 186
+          ClientWidth = 337
+          PopupMenu = pmVideLieu
+          TabOrder = 0
+          object edSubdi: TFWDBEdit
+            Left = 0
+            Height = 21
+            Top = 117
+            Width = 337
+            DataField = 'EV_IND_SUBD'
+            DataSource = DataSourceEve
+            CharCase = ecNormal
+            Font.Height = -11
+            MaxLength = 50
+            ParentFont = False
+            ParentShowHint = False
+            PopupMenu = pmGoogle
+            TabOrder = 0
+            OnMouseLeave = EffaceBarreEtat
+            Align = alTop
+          end
+          object edDesc: TExtSearchDBEdit
+            Left = 0
+            Height = 21
+            Top = 0
+            Width = 337
+            DataField = 'ev_ind_description'
+            DataSource = DataSourceEve
+            Anchors = [akLeft, akRight]
+            CharCase = ecNormal
+            Font.Height = -11
+            MaxLength = 0
+            ParentFont = False
+            ParentShowHint = False
+            TabOrder = 1
+            OnEnter = edDescEnter
+            OnExit = edDescExit
+            Align = alTop
+            SearchDisplay = 'profession'
+            SearchSource = DsJobs
+          end
+          object Panel4: TPanel
+            Left = 0
+            Height = 24
+            Top = 21
+            Width = 337
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 24
+            ClientWidth = 337
+            TabOrder = 2
+            object edDate: TExtDBDateEdit
+              Left = 0
+              Height = 24
+              Top = 0
+              Width = 122
+              Align = alLeft
+              CharCase = ecNormal
+              MaxLength = 0
+              TabOrder = 0
+              SpaceChar = '_'
+              OnSetDate = fbChangeDate
+              OnChangeLabel = edDateChangeLabel
+              LabelDay = DBTextJour
+              FontError.Color = clRed
+              FontError.Style = [fsBold]
+              DataField = 'EV_IND_DATE_WRITEN'
+              DataSource = DataSourceEve
+            end
+            object edHeure: TFWDBDateTimePicker
+              Left = 287
+              Height = 24
+              Top = 0
+              Width = 50
+              CenturyFrom = 1941
+              MaxDate = 2958465
+              MinDate = -53780
+              Font.Height = -11
+              ParentFont = False
+              TabOrder = 2
+              Color = 11184810
+              TrailingSeparator = False
+              TextForNullDate = 'NULL'
+              LeadingZeros = True
+              Align = alRight
+              PopupMenu = pmHeure
+              Kind = dtkTime
+              TimeFormat = tf24
+              TimeDisplay = tdHM
+              DateMode = dmUpDown
+              UseDefaultSeparators = True
+              DataField = 'EV_IND_HEURE'
+              DataSource = DataSourceEve
+            end
+            object Label13: TFWLabel
+              Left = 278
+              Height = 24
+              Top = 0
+              Width = 9
+              Align = alRight
+              AutoSize = False
+              Caption = 'à'
+              Font.Color = clWindowText
+              Font.Height = 15
+              ParentColor = False
+              ParentFont = False
+              ColorFocus = clActiveText
+            end
+            object DBTextAge: TLabel
+              Left = 102
+              Height = 24
+              Top = 0
+              Width = 176
+              Align = alRight
+              Alignment = taRightJustify
+              AutoSize = False
+              ParentColor = False
+            end
+          end
+          object Panel6: TPanel
+            Left = 0
+            Height = 24
+            Top = 45
+            Width = 337
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 24
+            ClientWidth = 337
+            TabOrder = 3
+            object btnVillesVoisines: TXANeighbor
+              Left = 303
+              Height = 24
+              Top = 0
+              Width = 17
+              Caption = 'btnVillesVoisines'
+              TabOrder = 0
+              Align = alRight
+              Anchors = [akTop, akRight]
+              ParentFont = False
+              OnContextPopup = btnVillesVoisinesContextPopup
+              GlyphSize = 16
+            end
+            object btnVillesFavoris: TXAFavorite
+              Left = 286
+              Height = 24
+              Top = 0
+              Width = 17
+              TabOrder = 1
+              Align = alRight
+              Anchors = [akTop, akRight]
+              ParentFont = False
+              OnClick = btnVillesFavorisClick
+              GlyphSize = 16
+            end
+            object fbInfosVilles: TXAInfo
+              Left = 269
+              Height = 24
+              Top = 0
+              Width = 17
+              TabOrder = 2
+              Align = alRight
+              Anchors = [akTop, akRight]
+              ParentFont = False
+              OnClick = fbInfosVillesClick
+              GlyphSize = 16
+            end
+            object btnInternet: TXAWeb
+              Left = 320
+              Height = 24
+              Top = 0
+              Width = 17
+              TabOrder = 3
+              Align = alRight
+              Anchors = [akTop, akRight]
+              ParentFont = False
+              GlyphSize = 16
+              OnPopup = btnInternetPopupMenuPopup
+            end
+            object edVille: TExtSearchDBEdit
+              Left = 83
+              Height = 24
+              Top = 0
+              Width = 186
+              DataField = 'EV_IND_VILLE'
+              DataSource = DataSourceEve
+              Anchors = [akTop, akLeft, akRight]
+              CharCase = ecNormal
+              Font.Height = -11
+              MaxLength = 0
+              ParentFont = False
+              ParentShowHint = False
+              PopupMenu = pmGoogle
+              TabOrder = 4
+              OnEnter = edVilleEnter
+              OnExit = edVilleExit
+              OnKeyPress = edCommentairesKeyPress
+              OnMouseEnter = edVilleMouseEnter
+              OnMouseLeave = EffaceBarreEtat
+              Align = alClient
+              ModeFormat = mftFirstIsMaj
+              SearchDisplay = 'ville'
+              SearchList = 'ville;departement'
+              SearchSource = DsCities
+              OnLocate = edVilleLocate
+              OnSet = edVilleSet
+            end
+            object edCP: TExtSearchDBEdit
+              Left = 0
+              Height = 24
+              Top = 0
+              Width = 50
+              DataField = 'EV_IND_CP'
+              DataSource = DataSourceEve
+              CharCase = ecNormal
+              Font.Height = -11
+              MaxLength = 10
+              ParentFont = False
+              ParentShowHint = False
+              PopupMenu = pmGoogle
+              TabOrder = 5
+              OnEnter = edCPEnter
+              OnExit = edCPExit
+              OnMouseEnter = InfoCopie
+              OnMouseLeave = EffaceBarreEtat
+              Align = alLeft
+              SearchDisplay = 'code'
+              SearchList = 'code;departement'
+              SearchSource = DsCities
+            end
+            object Label5: TFWLabel
+              Left = 50
+              Height = 24
+              Top = 0
+              Width = 33
+              Align = alLeft
+              AutoSize = False
+              Caption = 'Ville'
+              Font.Color = clWindowText
+              Font.Height = 10
+              ParentColor = False
+              ParentFont = False
+              ColorFocus = clActiveText
+            end
+          end
+          object Panel7: TPanel
+            Left = 0
+            Height = 24
+            Top = 69
+            Width = 337
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 24
+            ClientWidth = 337
+            TabOrder = 4
+            object edInsee: TExtSearchDBEdit
+              Left = 0
+              Height = 24
+              Top = 0
+              Width = 50
+              DataField = 'EV_IND_INSEE'
+              DataSource = DataSourceEve
+              CharCase = ecNormal
+              Font.Height = -11
+              MaxLength = 10
+              ParentFont = False
+              ParentShowHint = False
+              PopupMenu = pmGoogle
+              TabOrder = 0
+              OnEnter = edInseeEnter
+              OnExit = edInseeExit
+              OnMouseEnter = InfoCopie
+              OnMouseLeave = EffaceBarreEtat
+              Align = alLeft
+              SearchDisplay = 'insee'
+              SearchList = 'insee;departement'
+              SearchSource = DsCities
+            end
+            object Label9: TFWLabel
+              Left = 50
+              Height = 24
+              Top = 0
+              Width = 81
+              Align = alLeft
+              AutoSize = False
+              Caption = 'Département'
+              Font.Color = clWindowText
+              Font.Height = 12
+              ParentColor = False
+              ParentFont = False
+              ColorFocus = clActiveText
+            end
+            object edDept: TFWDBEdit
+              Left = 131
+              Height = 24
+              Top = 0
+              Width = 206
+              DataField = 'EV_IND_DEPT'
+              DataSource = DataSourceEve
+              Anchors = [akTop, akLeft, akRight]
+              CharCase = ecNormal
+              Font.Height = -11
+              MaxLength = 30
+              ParentFont = False
+              ParentShowHint = False
+              PopupMenu = pmGoogle
+              TabOrder = 1
+              OnMouseEnter = InfoCopie
+              OnMouseLeave = EffaceBarreEtat
+              Align = alClient
+            end
+          end
+          object Panel8: TPanel
+            Left = 0
+            Height = 24
+            Top = 93
+            Width = 337
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 24
+            ClientWidth = 337
+            TabOrder = 5
+            object edPays: TExtSearchDBEdit
+              Left = 198
+              Height = 24
+              Top = 0
+              Width = 139
+              DataField = 'EV_IND_PAYS'
+              DataSource = DataSourceEve
+              Anchors = [akTop, akLeft, akRight]
+              CharCase = ecNormal
+              Font.Height = -11
+              MaxLength = 0
+              ParentFont = False
+              ParentShowHint = False
+              PopupMenu = pmGoogle
+              TabOrder = 0
+              OnMouseEnter = InfoCopie
+              OnMouseLeave = EffaceBarreEtat
+              Align = alRight
+              SearchDisplay = 'pays'
+              SearchSource = DSCountries
+            end
+            object Label2: TFWLabel
+              Left = 167
+              Height = 24
+              Top = 0
+              Width = 31
+              Align = alRight
+              AutoSize = False
+              Caption = 'Pays'
+              Color = clDefault
+              Font.Color = clWindowText
+              Font.Height = 14
+              ParentColor = False
+              ParentFont = False
+              Transparent = False
+              ColorFocus = clActiveText
+            end
+            object edRegion: TFWDBEdit
+              Left = 0
+              Height = 24
+              Top = 0
+              Width = 167
+              DataField = 'EV_IND_REGION'
+              DataSource = DataSourceEve
+              CharCase = ecNormal
+              Font.Height = -11
+              MaxLength = 30
+              ParentFont = False
+              ParentShowHint = False
+              PopupMenu = pmGoogle
+              TabOrder = 1
+              OnMouseEnter = InfoCopie
+              OnMouseLeave = EffaceBarreEtat
+              Align = alClient
+            end
+          end
+          object Panel9: TPanel
+            Left = 0
+            Height = 24
+            Top = 138
+            Width = 337
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 24
+            ClientWidth = 337
+            TabOrder = 6
+            object edLatitude: TExtDBNumEdit
+              Left = 0
+              Height = 24
+              Top = 0
+              Width = 83
+              NbBeforeComma = 3
+              NbAfterComma = 8
+              ColorLabel = clActiveText
+              Max = 0
+              Min = 0
+              CharCase = ecNormal
+              Color = 11184810
+              Font.Height = -11
+              MaxLength = 15
+              ParentFont = False
+              ParentShowHint = False
+              PopupMenu = pmGoogle
+              TabOrder = 0
+              Text = 'edLatitude'
+              OnExit = edLatitudePropertiesValidate
+              OnMouseEnter = InfoCopie
+              OnMouseLeave = EffaceBarreEtat
+              Align = alLeft
+              DataField = 'EV_IND_LATITUDE'
+              DataSource = DataSourceEve
+            end
+            object Label11: TFWLabel
+              Left = 83
+              Height = 24
+              Top = 0
+              Width = 65
+              Align = alRight
+              AutoSize = False
+              Caption = 'Longitude'
+              Font.Color = clWindowText
+              Font.Height = 13
+              ParentColor = False
+              ParentFont = False
+              ColorFocus = clActiveText
+            end
+            object edLongitude: TExtDBNumEdit
+              Left = 148
+              Height = 24
+              Top = 0
+              Width = 86
+              NbBeforeComma = 3
+              NbAfterComma = 8
+              ColorLabel = clActiveText
+              Max = 0
+              Min = 0
+              CharCase = ecNormal
+              Color = 11184810
+              Font.Height = -11
+              MaxLength = 15
+              ParentFont = False
+              ParentShowHint = False
+              PopupMenu = pmGoogle
+              TabOrder = 1
+              Text = 'edLongitude'
+              OnExit = edLatitudePropertiesValidate
+              OnMouseEnter = InfoCopie
+              OnMouseLeave = EffaceBarreEtat
+              Align = alRight
+              DataField = 'EV_IND_LONGITUDE'
+              DataSource = DataSourceEve
+            end
+            object cxComboBoxActe: TFWDBComboBox
+              Left = 234
+              Height = 21
+              Top = 0
+              Width = 103
+              Anchors = [akTop, akRight]
+              Font.Height = -11
+              ItemHeight = 13
+              Items.Strings = (
+                'Acte absent'
+                'Acte à chercher'
+                'Acte demandé'
+                'Acte trouvé'
+                'Acte à ignorer'
+              )
+              MaxLength = 0
+              OnExit = cxComboBoxActeExit
+              ParentFont = False
+              TabOrder = 2
+              Align = alRight
+            end
+          end
+          object Panel10: TPanel
+            Left = 0
+            Height = 26
+            Top = 162
+            Width = 337
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 26
+            ClientWidth = 337
+            TabOrder = 7
+            object edCause: TFWDBEdit
+              Left = 0
+              Height = 26
+              Top = 0
+              Width = 337
+              DataField = 'EV_IND_CAUSE'
+              DataSource = DataSourceEve
+              Anchors = [akTop, akRight]
+              CharCase = ecNormal
+              Font.Height = -11
+              MaxLength = 90
+              ParentFont = False
+              ParentShowHint = False
+              TabOrder = 0
+              Align = alClient
+            end
+          end
+        end
+        object DBTextJour: TLabel
+          Left = 345
+          Height = 16
+          Top = 30
+          Width = 56
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = False
+          Font.Color = clWindowText
+          Font.Height = -11
+          ParentColor = False
+          ParentFont = False
+        end
+        object Panel1: TPanel
+          Left = 0
+          Height = 186
+          Top = 0
+          Width = 73
+          Align = alLeft
+          BevelOuter = bvNone
+          ClientHeight = 186
+          ClientWidth = 73
+          TabOrder = 1
+          object Label1: TFWLabel
+            Left = 5
+            Height = 13
+            Top = 7
+            Width = 56
+            AutoSize = False
+            Caption = 'Description'
+            Font.Color = clWindowText
+            Font.Height = 9
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clActiveText
+          end
+          object Label7: TFWLabel
+            Left = 5
+            Height = 18
+            Top = 29
+            Width = 32
+            AutoSize = False
+            Caption = 'Date'
+            Font.Color = clWindowText
+            Font.Height = 13
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clActiveText
+          end
+          object Label8: TFWLabel
+            Left = 5
+            Height = 13
+            Top = 57
+            Width = 57
+            AutoSize = False
+            Caption = 'Code Postal'
+            Font.Color = clWindowText
+            Font.Height = 9
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clActiveText
+          end
+          object Label6: TFWLabel
+            Left = 5
+            Height = 18
+            Top = 80
+            Width = 36
+            AutoSize = False
+            Caption = 'Insee'
+            Font.Color = clWindowText
+            Font.Height = 13
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clActiveText
+          end
+          object Label3: TFWLabel
+            Left = 5
+            Height = 18
+            Top = 104
+            Width = 45
+            AutoSize = False
+            Caption = 'Région'
+            Font.Color = clWindowText
+            Font.Height = 13
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clActiveText
+          end
+          object Label4: TFWLabel
+            Left = 7
+            Height = 13
+            Top = 130
+            Width = 56
+            AutoSize = False
+            Caption = 'Subdivision'
+            Font.Color = clWindowText
+            Font.Height = 10
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clActiveText
+          end
+          object Label14: TFWLabel
+            Left = 7
+            Height = 18
+            Top = 170
+            Width = 41
+            AutoSize = False
+            Caption = 'Cause'
+            Font.Color = clWindowText
+            Font.Height = 13
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clActiveText
+          end
+          object Label15: TFWLabel
+            Left = 8
+            Height = 26
+            Top = 146
+            Width = 54
+            AutoSize = False
+            Caption = 'Latitude'
+            Font.Color = clWindowText
+            Font.Height = 13
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clActiveText
+          end
+        end
+      end
+      object Panel3: TPanel
+        Left = 0
+        Height = 25
+        Top = 0
+        Width = 414
+        Align = alTop
+        ClientHeight = 25
+        ClientWidth = 414
+        Color = 8244198
+        ParentColor = False
+        TabOrder = 2
+        object Panel5: TPanel
+          Left = 29
+          Height = 23
+          Top = 1
+          Width = 384
+          Align = alRight
+          Anchors = [akTop, akLeft, akBottom]
+          BevelOuter = bvNone
+          ClientHeight = 23
+          ClientWidth = 384
+          TabOrder = 0
+          object DBText1: TLabel
+            Left = 24
+            Height = 23
+            Top = 0
+            Width = 360
+            Align = alRight
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object dxDBImageEdit1: TExtDBImageList
+            Left = 0
+            Height = 18
+            Top = 4
+            Width = 21
+            OnPictureChanged = dxDBImageEdit1PictureChanged
+            Picture.Data = {
+              07544269746D617000000000
+            }
+            Images = dm.ImgCat
+            Datafield = 'ev_ind_type'
+            Datasource = DataSourceEve
+          end
+        end
+      end
+      object dbcbDivers: TFWDBComboBox
+        Left = 213
+        Height = 23
+        Top = 0
+        Width = 201
+        DataField = 'EV_IND_TITRE_EVENT'
+        DataSource = DataSourceEve
+        DropDownCount = 13
+        ItemHeight = 15
+        MaxLength = 0
+        OnChange = dbcbDiversChange
+        OnEnter = dbcbDiversEnter
+        OnExit = dbcbDiversExit
+        ParentFont = False
+        TabOrder = 0
+      end
+      object Panel11: TPanel
+        Left = 0
+        Height = 231
+        Top = 229
+        Width = 414
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 231
+        ClientWidth = 414
+        TabOrder = 3
+        object PageControl: TPageControl
+          Left = 0
+          Height = 211
+          Top = 20
+          Width = 414
+          ActivePage = OngletNotes
+          Align = alClient
+          Anchors = [akTop, akLeft, akBottom]
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          Images = dm.ImageListMenu
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabIndex = 0
+          TabOrder = 0
+          OnChange = PageControlChange
+          object OngletNotes: TTabSheet
+            Caption = 'Notes'
+            ClientHeight = 184
+            ClientWidth = 406
+            ImageIndex = 66
+            object edCommentaires: TFWDBMemo
+              Left = 0
+              Height = 184
+              Top = 0
+              Width = 406
+              Align = alClient
+              DataField = 'EV_IND_COMMENT'
+              DataSource = DataSourceEve
+              OnDblClick = edCommentairesDblClick
+              OnKeyDown = edCommentairesKeyDown
+              OnKeyPress = edCommentairesKeyPress
+              ParentFont = False
+              TabOrder = 0
+              OnMouseEnter = edCommentairesMouseEnter
+            end
+          end
+          object OngletSources: TTabSheet
+            Caption = 'Sources'
+            ClientHeight = 184
+            ClientWidth = 406
+            ImageIndex = 66
+            object edSources: TFWDBMemo
+              Left = 0
+              Height = 225
+              Top = 0
+              Width = 410
+              Align = alClient
+              DataField = 'EV_IND_SOURCE'
+              DataSource = DataSourceEve
+              OnDblClick = edSourcesDblClick
+              OnKeyDown = edSourcesKeyDown
+              OnKeyPress = edCommentairesKeyPress
+              ParentFont = False
+              TabOrder = 0
+              Tabstop = False
+            end
+          end
+          object OngletTemoins: TTabSheet
+            Caption = 'Pers. citées'
+            ClientHeight = 184
+            ClientWidth = 406
+            ImageIndex = 66
+            object cxGridTemoins: TExtDBGrid
+              Left = 0
+              Height = 147
+              Top = 0
+              Width = 406
+              TitleButtons = False
+              AutoSort = False
+              Columns = <              
+                item
+                  ReadOnly = True
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Témoins'
+                  Title.Orientation = toHorizontal
+                  Width = 341
+                  FieldName = 'NOM_PRENOM'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Rôles et relations'
+                  Title.Orientation = toHorizontal
+                  Width = 341
+                  FieldName = 'ASSOC_LIBELLE'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Caption = 'SEXE'
+                  Title.Orientation = toHorizontal
+                  Visible = False
+                  FieldName = 'SEXE'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end>
+              KeyStrokes = <              
+                item
+                  Command = rxgcShowFindDlg
+                  ShortCut = 16454
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowColumnsDlg
+                  ShortCut = 16471
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowFilterDlg
+                  ShortCut = 16468
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowSortDlg
+                  ShortCut = 16467
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowQuickFilter
+                  ShortCut = 16465
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcHideQuickFilter
+                  ShortCut = 16456
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcSelectAll
+                  ShortCut = 16449
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcDeSelectAll
+                  ShortCut = 16429
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcInvertSelection
+                  ShortCut = 16426
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcOptimizeColumnsWidth
+                  ShortCut = 16427
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcCopyCellValue
+                  ShortCut = 16451
+                  Enabled = True
+                end>
+              OptionsRx = []
+              Align = alClient
+              Color = clWindow
+              DrawFullLine = False
+              FocusColor = clRed
+              SelectedColor = clHighlight
+              GridLineStyle = psSolid
+              DataSource = DSTemoins
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+              ParentColor = False
+              ParentFont = False
+              PopupMenu = PmChangeFiche
+              Scrollbars = ssAutoBoth
+              TabOrder = 0
+              TitleFont.CharSet = ANSI_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -11
+              TitleFont.Name = 'Tahoma'
+              OnDblClick = cxGridTableTemoinsDblClick
+              OnExit = cxGridTemoinsExit
+            end
+          end
+          object OngletMedias: TTabSheet
+            Caption = 'Médias'
+            ClientHeight = 184
+            ClientWidth = 406
+            ImageIndex = 66
+            object cxGridMedias: TExtDBGrid
+              Left = 0
+              Height = 175
+              Hint = 'Double-cliquer sur l''image pour la visualiser.'
+              Top = 0
+              Width = 406
+              TitleButtons = False
+              AutoSort = False
+              Columns = <              
+                item
+                  ReadOnly = True
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Informations'
+                  Title.Orientation = toHorizontal
+                  Width = 171
+                  FieldName = 'MULTI_PATH'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Mémo'
+                  Title.Orientation = toHorizontal
+                  Width = 141
+                  FieldName = 'MULTI_MEMO'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end              
+                item
+                  ReadOnly = True
+                  Title.Alignment = taCenter
+                  Title.Caption = 'MULTI_REDUITE'
+                  Title.Orientation = toHorizontal
+                  Width = 30
+                  FieldName = 'MULTI_REDUITE'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end>
+              KeyStrokes = <              
+                item
+                  Command = rxgcShowFindDlg
+                  ShortCut = 16454
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowColumnsDlg
+                  ShortCut = 16471
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowFilterDlg
+                  ShortCut = 16468
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowSortDlg
+                  ShortCut = 16467
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowQuickFilter
+                  ShortCut = 16465
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcHideQuickFilter
+                  ShortCut = 16456
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcSelectAll
+                  ShortCut = 16449
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcDeSelectAll
+                  ShortCut = 16429
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcInvertSelection
+                  ShortCut = 16426
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcOptimizeColumnsWidth
+                  ShortCut = 16427
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcCopyCellValue
+                  ShortCut = 16451
+                  Enabled = True
+                end>
+              OptionsRx = []
+              Align = alClient
+              Anchors = []
+              Color = clWindow
+              DrawFullLine = False
+              FocusColor = clRed
+              SelectedColor = clHighlight
+              GridLineStyle = psSolid
+              DataSource = DSMedias
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+              ParentColor = False
+              ParentFont = False
+              PopupMenu = pmImage
+              Scrollbars = ssAutoBoth
+              TabOrder = 0
+              TitleFont.CharSet = ANSI_CHARSET
+              TitleFont.Color = clBlack
+              TitleFont.Height = -11
+              TitleFont.Name = 'Tahoma'
+              OnDblClick = cxGridTableMediasCellDblClick
+              OnExit = colMemoPropertiesEditValueChanged
+              OptionsExt = [eoPaintEdits, eoPaintBlobs]
+            end
+          end
+        end
+        object PanButtons: TPanel
+          Left = 0
+          Height = 20
+          Top = 0
+          Width = 414
+          Align = alTop
+          Anchors = [akTop, akRight]
+          BevelOuter = bvNone
+          ClientHeight = 20
+          ClientWidth = 414
+          TabOrder = 1
+          object bsfbRetirer: TFWDelete
+            Left = 386
+            Height = 20
+            Top = 0
+            Width = 28
+            TabOrder = 0
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            GlyphSize = 16
+          end
+          object bsfbAjout: TFWAdd
+            Cursor = crHandPoint
+            Left = 359
+            Height = 20
+            Hint = 'Ajoute un témoin à cet événement'
+            Top = 0
+            Width = 27
+            TabStop = False
+            TabOrder = 1
+            Layout = blGlyphTop
+            Spacing = 240
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = bsfbAjoutClick
+            ColorFrameFocus = clWhite
+            GlyphSize = 16
+          end
+          object btnDetail: TFWXPButton
+            Left = 334
+            Height = 20
+            Top = 0
+            Width = 25
+            Caption = '...'
+            TabOrder = 2
+            Glyph.Data = {
+              07544269746D617000000000
+            }
+            Align = alRight
+            Anchors = [akTop, akRight]
+            OnClick = btnDetailClick
+          end
+        end
+      end
+    end
+    object Panel2: TPanel
+      Left = 2
+      Height = 25
+      Top = 462
+      Width = 414
+      Align = alBottom
+      BevelOuter = bvNone
+      BevelWidth = 3
+      ClientHeight = 25
+      ClientWidth = 414
+      TabOrder = 1
+      object btnPrecedent: TXAPrior
+        Cursor = crHandPoint
+        Left = 0
+        Height = 25
+        Hint = 'Événement précédent...'
+        Top = 0
+        Width = 19
+        Align = alLeft
+        Enabled = False
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        Margin = 0
+        Spacing = -18
+        OnClick = btnPrecedentClick
+        ShowHint = True
+        ParentFont = False
+        ParentShowHint = False
+      end
+      object btnSuivant: TXANext
+        Cursor = crHandPoint
+        Left = 19
+        Height = 25
+        Hint = 'Événement suivant...'
+        Top = 0
+        Width = 19
+        Align = alLeft
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        Margin = 0
+        Spacing = -18
+        OnClick = btnSuivantClick
+        ShowHint = True
+        ParentFont = False
+        ParentShowHint = False
+      end
+      object Label17: TFWLabel
+        Left = 38
+        Height = 25
+        Top = 0
+        Width = 282
+        Align = alClient
+        Anchors = [akTop, akLeft, akRight]
+        AutoSize = False
+        Font.Color = clWindowText
+        ParentColor = False
+        ParentFont = False
+        Visible = False
+        ColorFocus = clActiveText
+      end
+      object btnFermer: TFWClose
+        Cursor = crHandPoint
+        Left = 320
+        Height = 25
+        Hint = 'Ferme cette fenêtre.'
+        Top = 0
+        Width = 94
+        Caption = 'Fermer'
+        TabOrder = 0
+        Cancel = True
+        Spacing = 10
+        Align = alRight
+        ParentShowHint = False
+        OnClick = btnFermerClick
+      end
+    end
+  end
+  object DataSourceEve: TDataSource[2]
+    OnStateChange = DataSourceEveStateChange
+    OnDataChange = DataSourceEveDataChange
+    left = 200
+    top = 352
+  end
+  object IBTemoins: TIBQuery[3]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BeforeClose = IBTemoinsMediasBeforeClose
+    BeforeScroll = IBTemoinsMediasBeforeClose
+    OnCalcFields = IBTemoinsCalcFields
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DataSourceEve
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select a.*'
+      ',i.nom'
+      ',i.prenom'
+      ',i.sexe'
+      ',i.annee_naissance'
+      ',i.annee_deces'
+      'from t_associations a'
+      'inner join individu i on i.cle_fiche=a.assoc_kle_associe'
+      'where a.assoc_table=''I'' and a.assoc_evenement=:ev_ind_clef'
+      'order by a.assoc_clef'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ev_ind_clef'
+        ParamType = ptUnknown
+      end>
+    UpdateObject = IBUTemoins
+    left = 64
+    top = 288
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'ev_ind_clef'
+        ParamType = ptUnknown
+      end>
+    object IBTemoinsASSOC_CLEF: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ASSOC_CLEF'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBTemoinsASSOC_KLE_IND: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ASSOC_KLE_IND'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBTemoinsASSOC_KLE_ASSOCIE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ASSOC_KLE_ASSOCIE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBTemoinsASSOC_KLE_DOSSIER: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ASSOC_KLE_DOSSIER'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBTemoinsASSOC_EVENEMENT: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ASSOC_EVENEMENT'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBTemoinsASSOC_TABLE: TStringField
+      DisplayWidth = 1
+      FieldKind = fkData
+      FieldName = 'ASSOC_TABLE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object IBTemoinsASSOC_LIBELLE: TStringField
+      DisplayWidth = 90
+      FieldKind = fkData
+      FieldName = 'ASSOC_LIBELLE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 90
+    end
+    object IBTemoinsNOM: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object IBTemoinsPRENOM: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'PRENOM'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object IBTemoinsSEXE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SEXE'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBTemoinsANNEE_NAISSANCE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ANNEE_NAISSANCE'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBTemoinsANNEE_DECES: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ANNEE_DECES'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBTemoinsNOM_PRENOM: TStringField
+      DisplayWidth = 120
+      FieldKind = fkCalculated
+      FieldName = 'NOM_PRENOM'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 120
+    end
+  end
+  object pmDate: TPopupMenu[4]
+    left = 152
+    top = 408
+    object MenuItem1: TMenuItem
+      Caption = 'New Item1'
+    end
+  end
+  object Language: TYLanguage[5]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 120
+    top = 280
+  end
+  object pmHeure: TPopupMenu[6]
+    left = 296
+    top = 376
+    object mSupprimerheure: TMenuItem
+      Caption = 'Supprimer l''heure de l''événement'
+      OnClick = mSupprimerheureClick
+    end
+  end
+  object pmVideLieu: TPopupMenu[7]
+    left = 64
+    top = 416
+    object mEffacerlelieu: TMenuItem
+      Caption = 'Effacer le lieu'
+      OnClick = mEffacerlelieuClick
+    end
+  end
+  object DSTemoins: TDataSource[8]
+    DataSet = IBTemoins
+    OnStateChange = DSTemoinsStateChange
+    left = 28
+    top = 292
+  end
+  object IBUTemoins: TIBUpdateSQL[9]
+    ModifySQL.Strings = (
+      'update t_associations'
+      'set assoc_libelle=:assoc_libelle'
+      'where assoc_clef=:assoc_clef'
+    )
+    InsertSQL.Strings = (
+      'insert into t_associations ('
+      'ASSOC_CLEF'
+      ',ASSOC_KLE_IND'
+      ',ASSOC_KLE_ASSOCIE'
+      ',ASSOC_KLE_DOSSIER'
+      ',ASSOC_NOTES'
+      ',ASSOC_SOURCES'
+      ',ASSOC_EVENEMENT'
+      ',ASSOC_TABLE'
+      ',ASSOC_LIBELLE'
+      ')'
+      'values('
+      ':ASSOC_CLEF'
+      ',:ASSOC_KLE_IND'
+      ',:ASSOC_KLE_ASSOCIE'
+      ',:ASSOC_KLE_DOSSIER'
+      ',:ASSOC_NOTES'
+      ',:ASSOC_SOURCES'
+      ',:ASSOC_EVENEMENT'
+      ',:ASSOC_TABLE'
+      ',:ASSOC_LIBELLE'
+      ')'
+    )
+    DeleteSQL.Strings = (
+      'delete from t_associations'
+      'where assoc_clef=:assoc_clef'
+    )
+    left = 56
+    top = 352
+  end
+  object PmChangeFiche: TPopupMenu[10]
+    Images = dm.ImageListMenu
+    OnPopup = PmChangeFichePopup
+    left = 176
+    top = 292
+    object Ouvrirlafiche1: TMenuItem
+      Caption = 'Ouvrir la fiche (ou dbl-click)'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        000000000000000000000000000000000000999999FF666666FF8D8D8DFFB3B3
+        B3FFC0C0C0FF0000000000000000000000000000000000000000000000000000
+        00000000000000000000999999FF337373FF0080A6FF0080FFFF0000C0FF7373
+        73FF999999FFB3B3B3FF00000000000000000000000000000000000000000000
+        00000000000000000000666666FF00FFFFFF0080CCFF0080FFFF0000FFFF4D4D
+        4DFF999999FF999999FF999999FFB3B3B3FF0000000000000000000000000000
+        00000000000000000000666666FF00FFFFFF0080CCFF0080FFFF0000FFFF4D4D
+        4DFF999999FF999999FF999999FFB3B3B3FF0000000000000000000000000000
+        00000000000000000000666666FF00FFFFFF0080CCFF0080FFFF0000FFFF4D4D
+        4DFF999999FFB3B3B3FF00000000000000000000000000000000000000000000
+        00000000000000000000666666FF00FFFFFF0080CCFF00C0E6FF0000B3FF5A5A
+        5AFF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000666666FF00FFFFFF00FFFFFF00FFFFFF0000E6FF3333
+        5AFF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000008080FF00FFFFFF00FFFFFF00FFFFFF0000FFFF0000
+        80FF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000008080FF00FFFFFF00FFFFFF00FFFFFF0000FFFF0000
+        80FF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000008080FF00FFFFFF00FFFFFF80FFFFFF0040FFFF0000
+        80FF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000008080FF80FFFFFF8080FFFF0080FFFF0080FFFF0040
+        80FF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000737373FF0080C0FF4D4D4DFF4D4D4DFF333373FF9999
+        99FF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000000000005A5A5AFFE6E6E6FFB3B3B3FF4D4D4DFF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000808080FFFFFFFFFFE6E6E6FF4D4D4DFF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000999999FF737373FF737373FF999999FF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 86
+      OnClick = Ouvrirlafiche1Click
+    end
+    object mAjouterTemoin: TMenuItem
+      Caption = 'Ajouter un témoin'
+      ShortCut = 45
+      OnClick = bsfbAjoutClick
+    end
+    object mEnleverTemoin: TMenuItem
+      Caption = 'Enlever ce témoin'
+      ShortCut = 16430
+      OnClick = bsfbRetirerClick
+    end
+  end
+  object IBUMedias: TIBUpdateSQL[11]
+    ModifySQL.Strings = (
+      'update multimedia'
+      'set multi_memo=:multi_memo'
+      'where multi_clef=:mp_media'
+    )
+    DeleteSQL.Strings = (
+      'delete from media_pointeurs'
+      'where mp_clef=:mp_clef'
+    )
+    left = 327
+    top = 315
+  end
+  object IBMedias: TIBQuery[12]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BeforeClose = IBTemoinsMediasBeforeClose
+    BeforeScroll = IBTemoinsMediasBeforeClose
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DataSourceEve
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select p.*'
+      ',m.multi_path'
+      ',m.multi_memo'
+      ',m.multi_reduite'
+      ',m.multi_image_rtf'
+      'from media_pointeurs p'
+      'inner join multimedia m on m.multi_clef=p.mp_media'
+      'where p.mp_type_image=''A'''
+      '  and p.mp_table=''I'''
+      '  and p.mp_pointe_sur=:ev_ind_clef'
+      'order by p.mp_clef'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ev_ind_clef'
+        ParamType = ptUnknown
+      end>
+    UpdateObject = IBUMedias
+    left = 312
+    top = 283
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'ev_ind_clef'
+        ParamType = ptUnknown
+      end>
+  end
+  object DSMedias: TDataSource[13]
+    DataSet = IBMedias
+    OnStateChange = DSMediasStateChange
+    left = 256
+    top = 296
+  end
+  object pmImage: TPopupMenu[14]
+    Images = dm.ImageListMenu
+    OnPopup = pmImagePopup
+    left = 364
+    top = 285
+    object mAjouterDocument: TMenuItem
+      Caption = 'Ajouter un document'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000FF0000
+        00FF008484FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF000000FF00000000000000000000000000000000000000FF00FF
+        FFFF000000FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF000000FF000000000000000000000000000000FFFFFF
+        FFFF00FFFFFF000000FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF008484FF000000FF0000000000000000000000FF00FF
+        FFFFFFFFFFFF00FFFFFF000000FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF008484FF008484FF000000FF00000000000000FFFFFF
+        FFFF00FFFFFFFFFFFFFF00FFFFFF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF00FF
+        FFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FF
+        FFFF000000FF0000000000000000000000000000000000000000000000FFFFFF
+        FFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFF
+        FFFF000000FF0000000000000000000000000000000000000000000000FF00FF
+        FFFFFFFFFFFF00FFFFFF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000000000
+        00FF000000FF000000FF00000000000000000000000000000000000000000000
+        00000000000000000000000000FF000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00000000000000000000000000FF00000000000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00FF000000FF000000FF00000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 5
+      ShortCut = 45
+      OnClick = bsfbAjoutClick
+    end
+    object mEnleverDocument: TMenuItem
+      Caption = 'Enlever ce document'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        00000000000000000000000000000000000000000000424A42FF424A42FF424A
+        42FF000000FF000000FF00000000000000000000000000000000000000000000
+        0000000000000000000000000000424A42FF424A42FFCECECEFFCECECEFF8484
+        84FF424A42FF424A42FF181818FF000000000000000000000000000000000000
+        000000000000424A42FF424A42FFCECECEFFCECECEFFCECECEFFCECECEFFCECE
+        CEFF424A42FF424A42FF000000FF000000000000000000000000000000000000
+        0000848484FFCECECEFFCECECEFFD6E7E7FF007B00FFD6E7E7FFCECECEFFCECE
+        CEFF5A635AFF424A42FF424A42FF000000FF0000000000000000000000000000
+        0000848484FFD6E7E7FFD6E7E7FF007B00FF007B00FF007B00FF5A945AFFCECE
+        CEFF848484FF5A635AFF424A42FF000000FF0000000000000000000000000000
+        00006B736BFFD6E7E7FF219421FFBDBDBDFF007B00FFD6E7E7FF007B00FFCECE
+        CEFF848484FF5A635AFF5A635AFF424A42FF000000FF00000000000000006B73
+        6BFFD6E7E7FFBDBDBDFF007B00FFBDBDBDFFD6E7E7FFCECECEFFD6E7E7FFCECE
+        CEFFCECECEFF5A635AFF5A635AFF5A635AFF000000FF00000000000000008484
+        84FFD6E7E7FF219421FF007B00FF007B00FFBDBDBDFF007B00FF007B00FFD6E7
+        E7FFCECECEFF848484FF5A635AFF5A635AFF000000FF424A42FF000000006B73
+        6BFFD6E7E7FFD6E7E7FF007B00FFBDBDBDFFD6E7E7FF848484FF007B00FFBDBD
+        BDFFCECECEFF848484FF6B736BFF5A635AFF5A635AFF424A42FF848484FFD6E7
+        E7FFD6E7E7FFCECECEFFD6E7E7FF219421FF219421FFCECECEFFF7F7F7FFD6E7
+        E7FFF7F7F7FFF7F7F7FF848484FF848484FF5A635AFF424A42FF6B736BFFD6E7
+        E7FFCECECEFFCECECEFFCECECEFFCECECEFFF7F7F7FFF7F7F7FFBDBDBDFFBDBD
+        BDFFBDBDBDFFBDBDBDFFF7F7F7FF6B736BFF848484FF424A42FF848484FFCECE
+        CEFFCECECEFFF7F7F7FFF7F7F7FF848484FFBDBDBDFFBDBDBDFF6B736BFFD6E7
+        E7FFD6E7E7FF6B736BFFD6E7E7FFF7F7F7FF6B736BFF424A42FF848484FFF7F7
+        F7FFF7F7F7FF848484FF6B736BFFBDBDBDFFD6E7E7FF6B736BFFF7F7F7FFF7F7
+        F7FFD6E7E7FF848484FF6B736BFF848484FF00000000000000006B736BFF8484
+        84FFBDBDBDFFBDBDBDFFD6E7E7FFF7F7F7FF6B736BFFF7F7F7FFF7F7F7FF8484
+        84FF6B736BFF848484FF00000000000000000000000000000000000000000000
+        0000848484FF6B736BFF848484FF848484FFF7F7F7FF6B736BFF848484FF8484
+        84FF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000848484FF6B736BFF848484FF848484FF000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 2
+      ShortCut = 16430
+      OnClick = bsfbRetirerClick
+    end
+    object mRemplacerDocument: TMenuItem
+      Caption = 'Remplacer ce document'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000286E2DFF256929FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000000000002D7533FF296F2EFF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000038833EFF569D5EFF53995AFF2A712FFF266B2BFF2366
+        27FF206223FF1D5E20FF00000000000000000000000000000000000000000000
+        00000000000042924AFF60A768FF8DCD97FF8ACB94FF87CA91FF84C98EFF81C8
+        8CFF60A768FF206324FF1D5F21FF000000000000000000000000000000000000
+        0000000000000000000043944BFF62A96AFF5DA465FF35803BFF317A36FF5197
+        58FF82C88DFF5BA163FF216425FF000000000000000000000000000000000000
+        0000000000004EA257FF499C52FF45954CFF408F47FF0000000000000000327B
+        38FF2D7533FF296F2EFF256A2AFF000000000000000000000000000000000000
+        00000000000000000000000000000000000046974EFF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        000000000000000000000000000050A659FF000000000000000042924AFF3D8C
+        45FF000000000000000000000000000000000000000000000000000000000000
+        000061BD6CFF5DB868FF5AB364FF56AD5FFF0000000000000000489A50FF4394
+        4BFF3F8D46FF3A8741FF00000000000000000000000000000000000000000000
+        000065C270FF8ECF97FFAAD9B1FF7AC383FF57AF61FF52A95CFF6FB778FF6BB3
+        74FF45954CFF0000000000000000000000000000000000000000000000000000
+        000068C673FF65C371FF94D29CFFABDAB2FFA8D9AFFFA5D8ADFFA2D6AAFF9FD5
+        A7FF6CB474FF46974EFF00000000000000000000000000000000000000000000
+        00000000000068C774FF66C472FF63C06FFF60BC6BFF5DB767FF79C282FF75BE
+        7EFF50A659FF0000000000000000000000000000000000000000000000000000
+        00000000000000000000000000000000000000000000000000005DB868FF5AB3
+        64FF000000000000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000000000000000000062BE6DFF5EB9
+        69FF000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 107
+      OnClick = mRemplacerDocumentClick
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object mVisualiseActe: TMenuItem
+      Caption = 'Visualiser ce document (ou dbl-click)'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000848484FF000000FF000000FF8484
+        84FF000000000000000000000000000000000000000000000000000000008484
+        84FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF848484FF00000000000000000000
+        00FF848484FF848484FF000000FF000000FF848484FF848484FF848484FF8484
+        84FF000000FF000000FF848484FF848484FF000000FF00000000000000000000
+        00FF848484FF848484FF000000FF848484FF848484FF848484FF848484FF8484
+        84FF848484FF000000FF848484FF848484FF000000FF00000000000000000000
+        00FF848484FF848484FF000000FF848484FFC6C6C6FF848484FF848484FF8484
+        84FF848484FF000000FF848484FF848484FF000000FF00000000000000000000
+        00FF848484FF848484FF000000FF848484FFFFFF00FFC6C6C6FF848484FF8484
+        84FF848484FF000000FF848484FF848484FF000000FF00000000000000000000
+        00FFFFFFFFFFFFFFFFFF000000FF000000FF848484FF848484FF848484FF8484
+        84FF000000FF000000FFFFFFFFFFFFFFFFFF000000FF00000000000000000000
+        00FFFFFFFFFFFFFFFFFFFFFFFFFF000000FF000000FF000000FF000000FF0000
+        00FF000000FFFFFFFFFFFFFFFFFFFFFFFFFF000000FF00000000000000000000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF00000000000000000000
+        0000000000FF000000FF00000000848484FF000000FFFFFFFFFFFFFFFFFF0000
+        00FF848484FF00000000000000FF000000FF0000000000000000000000000000
+        000000000000000000000000000000000000848484FF000000FF000000FF8484
+        84FF000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 34
+      OnClick = mVisualiseActeClick
+    end
+    object mImprimeActe: TMenuItem
+      Caption = 'Imprimer l''image de ce document'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000000000000000000000000000000000
+        00FFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBD
+        BDFFBDBDBDFF000000FFBDBDBDFF000000FF0000000000000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FFBDBDBDFF000000FF00000000000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFF00FFFFFF00FFFFFF00FF
+        FFFFBDBDBDFFBDBDBDFF000000FF000000FF000000FF00000000000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFF7B7B7BFF7B7B7BFF7B7B
+        7BFFBDBDBDFFBDBDBDFF000000FFBDBDBDFF000000FF00000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FFBDBDBDFFBDBDBDFF000000FF000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBD
+        BDFFBDBDBDFF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000000000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000FF000000000000
+        0000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000000000
+        000000000000000000FFFFFFFFFF000000FF000000FF000000FF000000FF0000
+        00FFFFFFFFFF000000FF000000FF000000FF000000FF00000000000000000000
+        000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFF000000FF000000000000000000000000000000000000
+        00000000000000000000000000FFFFFFFFFF000000FF000000FF000000FF0000
+        00FF000000FFFFFFFFFF000000FF000000000000000000000000000000000000
+        00000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF0000000000000000000000000000
+        0000000000000000000000000000000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF0000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 6
+      OnClick = mImprimeActeClick
+    end
+  end
+  object IBJobs: TIBQuery[15]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BeforeClose = IBTemoinsMediasBeforeClose
+    BeforeScroll = IBTemoinsMediasBeforeClose
+    OnCalcFields = IBTemoinsCalcFields
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DataSourceEve
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select distinct profession from proc_prep_professions(:i_dossier)'
+      'order by profession'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_dossier'
+        ParamType = ptInput
+      end>
+    left = 328
+    top = 416
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_dossier'
+        ParamType = ptInput
+      end>
+  end
+  object DsJobs: TDataSource[16]
+    DataSet = IBJobs
+    left = 256
+    top = 400
+  end
+  object DsCities: TDataSource[17]
+    left = 128
+    top = 344
+  end
+  object pmGoogle: TPopupMenu[18]
+    AutoPopup = False
+    OnPopup = pmGooglePopup
+    left = 208
+    top = 432
+    object mAcquerir: TMenuItem
+      Caption = 'Coordonnées Google Maps'
+      Hint = 'Appuyer sur Maj en cliquant pour voir la réponse complète de Google Maps'
+      ShortCut = 16455
+      OnClick = mAcquerirClick
+    end
+  end
+  object DSCountries: TDataSource[19]
+    left = 360
+    top = 368
+  end
+end

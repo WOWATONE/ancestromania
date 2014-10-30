@@ -1,0 +1,844 @@
+inherited FListeUnions: TFListeUnions
+  Left = 752
+  Height = 500
+  Top = 366
+  Width = 735
+  ActiveControl = dxDBGridUnions
+  BorderWidth = 1
+  Caption = 'Liste des unions'
+  ClientHeight = 500
+  ClientWidth = 735
+  Color = clWhite
+  Constraints.MinHeight = 500
+  Constraints.MinWidth = 735
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnShow = SuperFormShow
+  Position = poScreenCenter
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 498
+    Top = 1
+    Width = 733
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 498
+    ClientWidth = 733
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 3
+      Height = 492
+      Top = 3
+      Width = 727
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 492
+      ClientWidth = 727
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 1
+        Height = 490
+        Top = 1
+        Width = 725
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 490
+        ClientWidth = 725
+        TabOrder = 0
+        object pBottom: TPanel
+          Left = 3
+          Height = 3
+          Top = 455
+          Width = 719
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 1
+        end
+        object dxDBGridUnions: TExtDBGrid
+          Left = 3
+          Height = 392
+          Top = 63
+          Width = 719
+          TitleButtons = False
+          AutoSort = False
+          Columns = <          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Nom du mari'
+              Title.Orientation = toHorizontal
+              Width = 111
+              FieldName = 'MARI_NOM'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Prénom du mari'
+              Title.Orientation = toHorizontal
+              Width = 140
+              FieldName = 'MARI_PRENOM'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Nom de la femme'
+              Title.Orientation = toHorizontal
+              Width = 105
+              FieldName = 'FEMME_NOM'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Prénom de la femme'
+              Title.Orientation = toHorizontal
+              Width = 134
+              FieldName = 'FEMME_PRENOM'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Mariés à'
+              Title.Orientation = toHorizontal
+              Width = 103
+              FieldName = 'VILLE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Subdivision'
+              Title.Orientation = toHorizontal
+              Width = 0
+              Visible = False
+              FieldName = 'SUBD'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Département'
+              Title.Orientation = toHorizontal
+              Width = 0
+              Visible = False
+              FieldName = 'DEPT'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Région'
+              Title.Orientation = toHorizontal
+              Width = 0
+              Visible = False
+              FieldName = 'REGION'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Pays'
+              Title.Orientation = toHorizontal
+              Width = 0
+              Visible = False
+              FieldName = 'PAYS'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Date'
+              Title.Orientation = toHorizontal
+              Width = 100
+              FieldName = 'DATE_MARR'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Alignment = taCenter
+              Title.Alignment = taCenter
+              Title.Caption = 'Année'
+              Title.Orientation = toHorizontal
+              Width = 65
+              FieldName = 'AN_MARR'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Alignment = taCenter
+              Title.Alignment = taCenter
+              Title.Caption = 'Mois'
+              Title.Orientation = toHorizontal
+              Width = 0
+              Visible = False
+              FieldName = 'MOIS_MARR'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Alignment = taCenter
+              Title.Alignment = taCenter
+              Title.Caption = 'Age mari'
+              Title.Orientation = toHorizontal
+              Width = 0
+              Visible = False
+              FieldName = 'AGE_MARI'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Alignment = taCenter
+              Title.Alignment = taCenter
+              Title.Caption = 'Age femme'
+              Title.Orientation = toHorizontal
+              Width = 0
+              Visible = False
+              FieldName = 'AGE_FEMME'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'MARI_NUM_SOSA'
+              Title.Orientation = toHorizontal
+              Width = 0
+              Visible = False
+              FieldName = 'MARI_NUM_SOSA'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'FEMME_NUM_SOSA'
+              Title.Orientation = toHorizontal
+              Width = 0
+              Visible = False
+              FieldName = 'FEMME_NUM_SOSA'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end>
+          KeyStrokes = <          
+            item
+              Command = rxgcShowFindDlg
+              ShortCut = 16454
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowColumnsDlg
+              ShortCut = 16471
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowFilterDlg
+              ShortCut = 16468
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowSortDlg
+              ShortCut = 16467
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowQuickFilter
+              ShortCut = 16465
+              Enabled = True
+            end          
+            item
+              Command = rxgcHideQuickFilter
+              ShortCut = 16456
+              Enabled = True
+            end          
+            item
+              Command = rxgcSelectAll
+              ShortCut = 16449
+              Enabled = True
+            end          
+            item
+              Command = rxgcDeSelectAll
+              ShortCut = 16429
+              Enabled = True
+            end          
+            item
+              Command = rxgcInvertSelection
+              ShortCut = 16426
+              Enabled = True
+            end          
+            item
+              Command = rxgcOptimizeColumnsWidth
+              ShortCut = 16427
+              Enabled = True
+            end>
+          OptionsRx = []
+          Align = alClient
+          Color = clWindow
+          DrawFullLine = False
+          FocusColor = clRed
+          SelectedColor = clHighlight
+          GridLineStyle = psSolid
+          DataSource = DSUnions
+          FixedCols = 0
+          Options = [dgEditing, dgTitles, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+          ParentColor = False
+          PopupMenu = pmUnions
+          Scrollbars = ssAutoBoth
+          TabOrder = 2
+          TitleFont.CharSet = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+          OnDblClick = dxDBGridUnionsDBTableView1CellDblClick
+        end
+        object Panel3: TPanel
+          Left = 3
+          Height = 55
+          Top = 3
+          Width = 719
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 55
+          ClientWidth = 719
+          TabOrder = 3
+          object Image1: TIATitle
+            Left = 0
+            Top = 0
+            Align = alLeft
+            AutoSize = True
+            ImageOn = iaPeople
+          end
+          object Label1: TLabel
+            Left = 168
+            Height = 55
+            Top = 0
+            Width = 551
+            Align = alRight
+            Alignment = taRightJustify
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Caption = 'Liste des Unions'
+            Color = clWindow
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -35
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            Transparent = False
+          end
+        end
+        object Panel2: TPanel
+          Left = 3
+          Height = 5
+          Top = 58
+          Width = 719
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 4
+        end
+        object fpBoutons: TPanel
+          Left = 3
+          Height = 29
+          Top = 458
+          Width = 719
+          Align = alBottom
+          BevelInner = bvLowered
+          ClientHeight = 29
+          ClientWidth = 719
+          TabOrder = 0
+          object GoodBtn7: TFWClose
+            Cursor = crHandPoint
+            Left = 623
+            Height = 25
+            Top = 2
+            Width = 94
+            Caption = 'Fermer'
+            TabOrder = 0
+            Align = alRight
+            Anchors = [akRight, akBottom]
+            OnClick = sbCloseClick
+          end
+          object btnPrint: TFWPrintGrid
+            Cursor = crHandPoint
+            Left = 529
+            Height = 25
+            Hint = 'Imprime la liste ci dessus....'
+            Top = 2
+            Width = 94
+            Caption = 'Imprimer'
+            TabOrder = 1
+            Align = alRight
+            Anchors = [akRight, akBottom]
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = btnPrintClick
+            DBGrid = dxDBGridUnions
+          end
+        end
+      end
+    end
+  end
+  object IBQUnions: TIBQuery[1]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select union_cle'
+      ',mari_cle'
+      ',mari_nom'
+      ',mari_prenom'
+      ',mari_num_sosa'
+      ',femme_cle'
+      ',femme_nom'
+      ',femme_prenom'
+      ',femme_num_sosa'
+      ',subd'
+      ',ville'
+      ',dept'
+      ',region'
+      ',pays'
+      ',an_marr'
+      ',mois_marr'
+      ',date_marr'
+      ',age_mari'
+      ',age_femme'
+      'from proc_liste_unions(:dossier) p'
+      'order by mari_nom,mari_prenom'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'dossier'
+        ParamType = ptInput
+      end>
+    left = 30
+    top = 79
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'dossier'
+        ParamType = ptInput
+      end>
+    object IBQUnionsUNION_CLE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UNION_CLE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQUnionsMARI_CLE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MARI_CLE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQUnionsMARI_NOM: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'MARI_NOM'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object IBQUnionsMARI_PRENOM: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'MARI_PRENOM'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object IBQUnionsFEMME_CLE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'FEMME_CLE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQUnionsFEMME_NOM: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'FEMME_NOM'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object IBQUnionsFEMME_PRENOM: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'FEMME_PRENOM'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object IBQUnionsVILLE: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'VILLE'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQUnionsMARI_NUM_SOSA: TFloatField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MARI_NUM_SOSA'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object IBQUnionsFEMME_NUM_SOSA: TFloatField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'FEMME_NUM_SOSA'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object IBQUnionsAN_MARR: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'AN_MARR'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQUnionsMOIS_MARR: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MOIS_MARR'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQUnionsAGE_MARI: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'AGE_MARI'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQUnionsAGE_FEMME: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'AGE_FEMME'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQUnionsPAYS: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'PAYS'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQUnionsDATE_MARR: TStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'DATE_MARR'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object IBQUnionsDEPT: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'DEPT'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQUnionsSUBD: TStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'SUBD'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQUnionsREGION: TStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'REGION'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+  end
+  object DSUnions: TDatasource[2]
+    DataSet = IBQUnions
+    left = 30
+    top = 47
+  end
+  object pmUnions: TPopupMenu[3]
+    Images = dm.ImageSexe
+    OnPopup = pmUnionsPopup
+    left = 30
+    top = 151
+    object mMari: TMenuItem
+      Caption = 'Ouvrir la fiche du mari (ou dbl-click)'
+      Default = True
+      Enabled = False
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000AD5A29FFAD5A29FFAD5A29FFAD5A29FF000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        000000000000AD5A29FFAD5A29FFAD5A29FFAD5A29FFAD5A29FFAD5A29FF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000AD5A29FFAD5A29FFAD5A29FF0000000000000000AD5A29FFAD5A29FFAD5A
+        29FF000000000000000000000000000000000000000000000000000000000000
+        0000AD5A29FFAD5A29FF00000000000000000000000000000000AD5A29FFAD5A
+        29FF000000000000000000000000000000000000000000000000000000000000
+        0000AD5A29FFAD5A29FF00000000000000000000000000000000AD5A29FFAD5A
+        29FF000000000000000000000000000000000000000000000000000000000000
+        0000AD5A29FFAD5A29FFAD5A29FF0000000000000000AD5A29FFAD5A29FFAD5A
+        29FF000000000000000000000000000000000000000000000000000000000000
+        000000000000AD5A29FFAD5A29FFAD5A29FFAD5A29FFAD5A29FFAD5A29FF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000AD5A29FFAD5A29FFAD5A29FFAD5A29FFAD5A29FFAD5A
+        29FF00000000AD5A29FFAD5A29FF000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000AD5A29FFAD5A
+        29FFAD5A29FFAD5A29FFAD5A29FF000000000000000000000000000000000000
+        000000000000000000000000000000000000000000000000000000000000AD5A
+        29FFAD5A29FFAD5A29FFAD5A29FF000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000AD5A29FFAD5A
+        29FFAD5A29FFAD5A29FFAD5A29FF000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000AD5A29FFAD5A
+        29FFAD5A29FFAD5A29FFAD5A29FF000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 1
+      ShortCut = 16454
+      OnClick = mMariClick
+    end
+    object mFemme: TMenuItem
+      Caption = 'Ouvrir la fiche de la femme'
+      Enabled = False
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000000000005218ADFF5218ADFF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000000000005218ADFF5218ADFF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000000000005218ADFF5218ADFF5218ADFF5218ADFF5218
+        ADFF5218ADFF0000000000000000000000000000000000000000000000000000
+        00000000000000000000000000005218ADFF5218ADFF5218ADFF5218ADFF5218
+        ADFF5218ADFF0000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000000000005218ADFF5218ADFF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000000000005218ADFF5218ADFF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000005218ADFF5218ADFF5218ADFF5218
+        ADFF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000000000005218ADFF5218ADFF5218ADFF5218ADFF5218
+        ADFF5218ADFF0000000000000000000000000000000000000000000000000000
+        000000000000000000005218ADFF5218ADFF5218ADFF00000000000000005218
+        ADFF5218ADFF5218ADFF00000000000000000000000000000000000000000000
+        000000000000000000005218ADFF5218ADFF0000000000000000000000000000
+        00005218ADFF5218ADFF00000000000000000000000000000000000000000000
+        000000000000000000005218ADFF5218ADFF0000000000000000000000000000
+        00005218ADFF5218ADFF00000000000000000000000000000000000000000000
+        000000000000000000005218ADFF5218ADFF5218ADFF00000000000000005218
+        ADFF5218ADFF5218ADFF00000000000000000000000000000000000000000000
+        00000000000000000000000000005218ADFF5218ADFF5218ADFF5218ADFF5218
+        ADFF5218ADFF0000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000005218ADFF5218ADFF5218ADFF5218
+        ADFF000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 0
+      OnClick = mFemmeClick
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object ExporterenHTML1: TMenuItem
+      Caption = 'Exporter en HTML'
+      Enabled = False
+      OnClick = ExporterenHTML1Click
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object mSupprimerTris: TMenuItem
+      Caption = 'Supprimer les tris'
+      OnClick = mSupprimerTrisClick
+    end
+  end
+  object SaveDialog: TSaveDialog[4]
+    DefaultExt = '.htm'
+    Filter = '*.htm|*.htm'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    left = 65
+    top = 153
+  end
+  object Language: TYLanguage[5]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+  end
+  object dxComponentPrinter1: TPrinterSetupDialog[6]
+    left = 32
+    top = 256
+  end
+  object OnFormInfoIni: TOnFormInfoIni[7]
+    SaveEdits = [feTGrid]
+    SaveForm = [sfSavePos, sfSaveSize]
+    left = 320
+    top = 242
+  end
+end

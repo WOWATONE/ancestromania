@@ -1,0 +1,61 @@
+object FChercheNIP: TFChercheNIP
+  Left = 1022
+  Height = 70
+  Top = 306
+  Width = 138
+  AutoSize = True
+  BorderIcons = []
+  BorderStyle = bsDialog
+  Caption = 'Recherche par code'
+  ClientHeight = 70
+  ClientWidth = 138
+  Color = clWindow
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  FormStyle = fsStayOnTop
+  OnCreate = FormCreate
+  Position = poMainFormCenter
+  LCLVersion = '1.2.0.3'
+  object Label1: TLabel
+    Left = 0
+    Height = 14
+    Top = 0
+    Width = 138
+    Align = alTop
+    Caption = 'Entrez un code NIP'
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    ParentColor = False
+    ParentFont = False
+  end
+  object bsfbAppliquer: TFWOK
+    Cursor = crHandPoint
+    Left = 0
+    Height = 28
+    Top = 42
+    Width = 138
+    TabStop = False
+    Caption = 'Chercher'
+    TabOrder = 0
+    Default = True
+    Align = alBottom
+    Anchors = [akRight, akBottom]
+    ParentFont = False
+    ParentShowHint = False
+    OnClick = bsfbAppliquerClick
+  end
+  object eNIP: TMaskEdit
+    Left = 0
+    Height = 28
+    Top = 14
+    Width = 138
+    Align = alClient
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentFont = False
+    TabOrder = 1
+    SpaceChar = '_'
+  end
+end

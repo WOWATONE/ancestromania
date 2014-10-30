@@ -1,0 +1,927 @@
+inherited FModifFavoris: TFModifFavoris
+  Left = 788
+  Height = 491
+  Top = 74
+  Width = 496
+  ActiveControl = btnInternet
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Modification d''un lieu utilisé'
+  ClientHeight = 491
+  ClientWidth = 496
+  Color = clWhite
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnCreate = SuperFormCreate
+  Position = poOwnerFormCenter
+  object pBorder: TPanel[0]
+    Left = 0
+    Height = 470
+    Top = 0
+    Width = 496
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 470
+    ClientWidth = 496
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object Panel7: TPanel
+      Left = 3
+      Height = 464
+      Top = 3
+      Width = 490
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 464
+      ClientWidth = 490
+      TabOrder = 0
+      object Panel9: TPanel
+        Left = 1
+        Height = 59
+        Top = 1
+        Width = 488
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 59
+        ClientWidth = 488
+        TabOrder = 0
+        object Image2: TIATitle
+          Left = 2
+          Top = 0
+          AutoSize = True
+          ImageOn = iaGlobe
+        end
+        object Label14: TLabel
+          Cursor = crArrow
+          Left = 159
+          Height = 59
+          Top = 0
+          Width = 329
+          Align = alRight
+          AutoSize = False
+          Caption = 'La modification d''un lieu se répercute dans tous les événements et les domiciles où il est utilisé.'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clRed
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+          WordWrap = True
+        end
+        object Panel10: TPanel
+          Left = 3
+          Height = 3
+          Top = 52
+          Width = 483
+          Anchors = [akTop, akLeft, akRight]
+          BevelOuter = bvNone
+          Color = 12558466
+          ParentColor = False
+          TabOrder = 0
+        end
+      end
+      object Panel11: TPanel
+        Left = 1
+        Height = 403
+        Top = 60
+        Width = 488
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 403
+        ClientWidth = 488
+        TabOrder = 1
+        object Label13: TLabel
+          Cursor = crArrow
+          Left = 8
+          Height = 14
+          Top = 8
+          Width = 220
+          Caption = 'Caractéristiques actuelles du lieu : '
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = 12673280
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label12: TLabel
+          Cursor = crArrow
+          Left = 8
+          Height = 14
+          Top = 188
+          Width = 220
+          Caption = 'Nouvelles caractéristiques du lieu :'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = 12673280
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object fpAdresses: TPanel
+          Left = 3
+          Height = 149
+          Top = 209
+          Width = 476
+          ClientHeight = 149
+          ClientWidth = 476
+          TabOrder = 1
+          object Label1: TLabel
+            Left = 9
+            Height = 14
+            Top = 9
+            Width = 47
+            Caption = 'Code p.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label3: TLabel
+            Left = 9
+            Height = 14
+            Top = 104
+            Width = 43
+            Caption = 'Région'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label4: TLabel
+            Left = 9
+            Height = 14
+            Top = 125
+            Width = 29
+            Caption = 'Pays'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label2: TLabel
+            Left = 9
+            Height = 14
+            Top = 56
+            Width = 33
+            Caption = 'Dépt.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label9: TLabel
+            Left = 138
+            Height = 14
+            Top = 9
+            Width = 28
+            Caption = 'Ville'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label15: TLabel
+            Left = 9
+            Height = 14
+            Top = 33
+            Width = 33
+            Caption = 'Insee'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label17: TLabel
+            Left = 9
+            Height = 14
+            Top = 79
+            Width = 36
+            Caption = 'Subd.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label20: TLabel
+            Left = 141
+            Height = 14
+            Top = 33
+            Width = 23
+            Caption = 'Lat.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label21: TLabel
+            Left = 292
+            Height = 14
+            Top = 33
+            Width = 35
+            Caption = 'Long.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object fbInfosVilles: TFWXPButton
+            Cursor = crHandPoint
+            Left = 440
+            Height = 18
+            Hint = 'Ouvre la fenêtre des villes et codes postaux'
+            Top = 6
+            Width = 18
+            TabStop = False
+            Caption = '?'
+            TabOrder = 9
+            Glyph.Data = {
+              07544269746D617000000000
+            }
+            Layout = blGlyphTop
+            Spacing = 240
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = fbInfosVillesClick
+          end
+          object edCP: TFWEdit
+            Left = 66
+            Height = 21
+            Top = 6
+            Width = 65
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 10
+            ParentFont = False
+            PopupMenu = pmGoogle
+            TabOrder = 0
+            OnChange = doBoutons
+            OnKeyDown = BasKeyDown
+            OnMouseEnter = InfoCopieBas
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object edRegion: TFWEdit
+            Left = 66
+            Height = 21
+            Top = 99
+            Width = 370
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 40
+            ParentFont = False
+            PopupMenu = pmGoogle
+            TabOrder = 7
+            OnChange = doBoutons
+            OnKeyDown = BasKeyDown
+            OnMouseEnter = InfoCopieBas
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object edDept: TFWEdit
+            Left = 66
+            Height = 21
+            Top = 52
+            Width = 370
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 40
+            ParentFont = False
+            PopupMenu = pmGoogle
+            TabOrder = 5
+            OnChange = doBoutons
+            OnKeyDown = BasKeyDown
+            OnMouseEnter = InfoCopieBas
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object edVille_f: TFWEdit
+            Left = 166
+            Height = 25
+            Top = 6
+            Width = 269
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            PopupMenu = pmGoogle
+            TabOrder = 1
+            OnChange = doBoutons
+            OnKeyDown = BasKeyDown
+            OnMouseEnter = InfoCopieBas
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object dxInsee: TFWEdit
+            Left = 66
+            Height = 21
+            Top = 29
+            Width = 65
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 10
+            ParentFont = False
+            PopupMenu = pmGoogle
+            TabOrder = 2
+            OnChange = doBoutons
+            OnKeyDown = BasKeyDown
+            OnMouseEnter = InfoCopieBas
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object dxSubd: TFWEdit
+            Left = 66
+            Height = 21
+            Top = 75
+            Width = 370
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 40
+            ParentFont = False
+            PopupMenu = pmGoogle
+            TabOrder = 6
+            OnChange = doBoutons
+            OnKeyDown = BasKeyDown
+            OnMouseEnter = InfoCopieBas
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object dxLATITUDE: TFWEdit
+            Left = 166
+            Height = 21
+            Top = 29
+            Width = 110
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 13
+            ParentFont = False
+            PopupMenu = pmGoogle
+            TabOrder = 3
+            OnChange = doBoutons
+            OnExit = edLATITUDEPropertiesExit
+            OnKeyDown = BasKeyDown
+            OnMouseEnter = InfoCopieBas
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object dxLONGITUDE: TFWEdit
+            Left = 325
+            Height = 21
+            Top = 29
+            Width = 110
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 13
+            ParentFont = False
+            PopupMenu = pmGoogle
+            TabOrder = 4
+            OnChange = doBoutons
+            OnExit = edLATITUDEPropertiesExit
+            OnKeyDown = BasKeyDown
+            OnMouseEnter = InfoCopieBas
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object edPays: TExtSearchDBEdit
+            Left = 66
+            Height = 25
+            Top = 122
+            Width = 370
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            PopupMenu = pmGoogle
+            TabOrder = 8
+            OnChange = doBoutons
+            OnKeyDown = BasKeyDown
+            OnMouseEnter = InfoCopieBas
+            OnMouseLeave = EffaceBarreEtat
+            SearchDisplay = 'pays'
+            SearchSource = DSCountries
+          end
+          object btnInternet: TXAWeb
+            Cursor = crHandPoint
+            Left = 438
+            Height = 21
+            Hint = 'Le lieu sur internet'
+            Top = 28
+            Width = 24
+            TabStop = False
+            TabOrder = 10
+            Layout = blGlyphTop
+            Anchors = [akTop, akRight]
+            ParentShowHint = False
+            ShowHint = True
+            Visible = False
+            GlyphSize = 20
+          end
+          object btnVillesVoisines: TXANeighbor
+            Cursor = crHandPoint
+            Left = 438
+            Height = 21
+            Hint = 'Affiche les villes voisines'
+            Top = 51
+            Width = 24
+            TabStop = False
+            TabOrder = 11
+            Layout = blGlyphTop
+            Spacing = 2
+            Anchors = [akTop, akRight]
+            ParentShowHint = False
+            ShowHint = True
+            Visible = False
+            GlyphSize = 20
+          end
+        end
+        object FlatPanel2: TPanel
+          Left = 3
+          Height = 149
+          Top = 32
+          Width = 476
+          ClientHeight = 149
+          ClientWidth = 476
+          TabOrder = 3
+          object Label5: TLabel
+            Left = 9
+            Height = 14
+            Top = 9
+            Width = 47
+            Caption = 'Code p.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label6: TLabel
+            Left = 9
+            Height = 14
+            Top = 105
+            Width = 43
+            Caption = 'Région'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label7: TLabel
+            Left = 9
+            Height = 14
+            Top = 126
+            Width = 29
+            Caption = 'Pays'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label8: TLabel
+            Left = 9
+            Height = 14
+            Top = 56
+            Width = 33
+            Caption = 'Dépt.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label11: TLabel
+            Left = 138
+            Height = 14
+            Top = 9
+            Width = 28
+            Caption = 'Ville'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label16: TLabel
+            Left = 9
+            Height = 14
+            Top = 33
+            Width = 33
+            Caption = 'Insee'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label10: TLabel
+            Left = 9
+            Height = 14
+            Top = 80
+            Width = 36
+            Caption = 'Subd.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label18: TLabel
+            Left = 140
+            Height = 14
+            Top = 33
+            Width = 23
+            Caption = 'Lat.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label19: TLabel
+            Left = 292
+            Height = 14
+            Top = 33
+            Width = 35
+            Caption = 'Long.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 9392965
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object dxCPr: TFWEdit
+            Left = 66
+            Height = 21
+            Top = 6
+            Width = 65
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 10
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 0
+            TabStop = False
+            OnDblClick = CopyVersBas
+            OnKeyDown = HautKeyDown
+            OnMouseEnter = InfoCopieHaut
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object dxRegionr: TFWEdit
+            Left = 66
+            Height = 21
+            Top = 100
+            Width = 370
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 40
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 4
+            TabStop = False
+            OnDblClick = CopyVersBas
+            OnKeyDown = HautKeyDown
+            OnMouseEnter = InfoCopieHaut
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object dxPaysr: TFWEdit
+            Left = 66
+            Height = 21
+            Top = 123
+            Width = 370
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 40
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 3
+            TabStop = False
+            OnDblClick = CopyVersBas
+            OnKeyDown = HautKeyDown
+            OnMouseEnter = InfoCopieHaut
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object dxDeptr: TFWEdit
+            Left = 66
+            Height = 21
+            Top = 52
+            Width = 370
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 40
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 2
+            TabStop = False
+            OnDblClick = CopyVersBas
+            OnKeyDown = HautKeyDown
+            OnMouseEnter = InfoCopieHaut
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object dxViller: TFWEdit
+            Left = 167
+            Height = 25
+            Top = 6
+            Width = 269
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 1
+            TabStop = False
+            OnDblClick = CopyVersBas
+            OnKeyDown = HautKeyDown
+            OnMouseEnter = InfoCopieHaut
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object dxInseer: TFWEdit
+            Left = 66
+            Height = 21
+            Top = 29
+            Width = 65
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 10
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 5
+            TabStop = False
+            OnDblClick = CopyVersBas
+            OnKeyDown = HautKeyDown
+            OnMouseEnter = InfoCopieHaut
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object dxSubdr: TFWEdit
+            Left = 66
+            Height = 21
+            Top = 76
+            Width = 370
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 40
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 6
+            TabStop = False
+            OnDblClick = CopyVersBas
+            OnKeyDown = HautKeyDown
+            OnMouseEnter = InfoCopieHaut
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object dxLatituder: TFWEdit
+            Left = 166
+            Height = 21
+            Top = 29
+            Width = 110
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 10
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 7
+            TabStop = False
+            OnDblClick = CopyVersBas
+            OnExit = edLATITUDEPropertiesExit
+            OnKeyDown = HautKeyDown
+            OnMouseEnter = InfoCopieHaut
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+          object dxLongituder: TFWEdit
+            Left = 325
+            Height = 21
+            Top = 29
+            Width = 110
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 10
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 8
+            TabStop = False
+            OnDblClick = CopyVersBas
+            OnExit = edLATITUDEPropertiesExit
+            OnKeyDown = HautKeyDown
+            OnMouseEnter = InfoCopieHaut
+            OnMouseLeave = EffaceBarreEtat
+            SpaceChar = '_'
+          end
+        end
+        object GoodBtnToutCopier: TFWCopy
+          Left = 372
+          Height = 24
+          Top = 183
+          Width = 107
+          TabStop = False
+          Caption = 'Tout copier'
+          TabOrder = 0
+          Cancel = True
+          Layout = blGlyphTop
+          Spacing = 237
+          Anchors = [akTop, akRight]
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = GoodBtnToutCopierClick
+          GlyphSize = 20
+        end
+        object FlatPanel1: TPanel
+          Left = 3
+          Height = 30
+          Top = 370
+          Width = 482
+          Align = alBottom
+          BevelInner = bvLowered
+          ClientHeight = 30
+          ClientWidth = 482
+          TabOrder = 2
+          object btnFermer: TFWClose
+            Left = 386
+            Top = 2
+            Width = 94
+            Caption = 'Fermer'
+            TabOrder = 3
+            ModalResult = 2
+            Spacing = 8
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+          end
+          object btnTousSaufCord: TJvXPButton
+            Tag = 2
+            Left = 2
+            Height = 26
+            Hint = 'Le contrôle se fait : sur tout sauf les coordonnées géographiques...'
+            Top = 2
+            Width = 108
+            Caption = 'Tous sauf Coord.'
+            Enabled = False
+            TabOrder = 0
+            Cancel = True
+            Default = True
+            Layout = blGlyphTop
+            Align = alLeft
+            Anchors = [akTop, akRight]
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = btnTousSaufCordClick
+          end
+          object btnCPVilleSubd: TXAWorld
+            Tag = 1
+            Left = 110
+            Hint = 'Le contrôle se fait : sur le CP, Ville et subdivision...'
+            Top = 2
+            Width = 121
+            Caption = 'CP, Ville et Subd.'
+            Enabled = False
+            TabOrder = 1
+            Cancel = True
+            Default = True
+            Align = alLeft
+            Anchors = [akTop, akRight]
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = btnTousSaufCordClick
+          end
+          object btnVilleSubd: TXAWorld
+            Left = 231
+            Hint = 'Le contrôle se fait : Ville et subdivision...'
+            Top = 2
+            Width = 98
+            Caption = 'Ville et Subd.'
+            Enabled = False
+            TabOrder = 2
+            Cancel = True
+            Default = True
+            Align = alLeft
+            Anchors = [akTop, akRight]
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = btnTousSaufCordClick
+          end
+        end
+      end
+    end
+  end
+  object dxStatusBar: TStatusBar[1]
+    Left = 0
+    Height = 21
+    Top = 470
+    Width = 496
+    Panels = <    
+      item
+        Width = 50
+      end>
+  end
+  object Language: TYLanguage[2]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 8
+    top = 8
+  end
+  object pmGoogle: TPopupMenu[3]
+    AutoPopup = False
+    OnPopup = pmGooglePopup
+    left = 216
+    top = 320
+    object mAcquerir: TMenuItem
+      Caption = 'Coordonnées Google Maps (Ctrl+G)'
+      Hint = 'Appuyer sur Maj en cliquant pour voir la réponse complète de Google Maps'
+      OnClick = mAcquerirClick
+    end
+  end
+  object DSCountries: TDatasource[4]
+    left = 388
+    top = 396
+  end
+  object IBQCountries: TIBQuery[5]
+    Database = dm.IBBaseParam
+    Transaction = dm.IBTransParam
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT RPA_CODE,RPA_LIBELLE as pays  FROM REF_PAYS'
+      'ORDER BY RPA_LIBELLE'
+    )
+    Params = <>
+    left = 132
+    top = 340
+  end
+end

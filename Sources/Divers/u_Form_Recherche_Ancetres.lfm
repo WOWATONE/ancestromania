@@ -1,0 +1,755 @@
+inherited FRechercheAncetres: TFRechercheAncetres
+  Left = 229
+  Height = 582
+  Top = 197
+  Width = 684
+  BorderWidth = 1
+  Caption = 'Liste des ancêtres...'
+  ClientHeight = 582
+  ClientWidth = 684
+  Color = clWhite
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnShow = SuperFormShow
+  Position = poScreenCenter
+  Visible = True
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 580
+    Top = 1
+    Width = 682
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 580
+    ClientWidth = 682
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 3
+      Height = 574
+      Top = 3
+      Width = 676
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 574
+      ClientWidth = 676
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 1
+        Height = 483
+        Top = 61
+        Width = 674
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 483
+        ClientWidth = 674
+        TabOrder = 1
+        object pBottom: TPanel
+          Left = 3
+          Height = 3
+          Top = 477
+          Width = 668
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 1
+        end
+        object dxDBGrid1: TExtDBGrid
+          Cursor = crHandPoint
+          Left = 3
+          Height = 474
+          Top = 3
+          Width = 668
+          TitleButtons = False
+          AutoSort = False
+          Columns = <          
+            item
+              Alignment = taCenter
+              Title.Alignment = taCenter
+              Title.Caption = 'Géné.'
+              Title.Orientation = toHorizontal
+              Width = 49
+              FieldName = 'GENERATION'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Alignment = taCenter
+              Title.Alignment = taCenter
+              Title.Caption = 'Sosa'
+              Title.Orientation = toHorizontal
+              Width = 45
+              FieldName = 'SOSA'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'CLE_INDI'
+              Title.Orientation = toHorizontal
+              Width = 0
+              Visible = False
+              FieldName = 'CLE_INDI'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Nom, Prénom'
+              Title.Orientation = toHorizontal
+              Width = 109
+              FieldName = 'INDIVIDU'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Parent connu'
+              Title.Orientation = toHorizontal
+              Width = 127
+              FieldName = 'PARENT_CONNU'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Conjoint'
+              Title.Orientation = toHorizontal
+              Width = 127
+              FieldName = 'CONJOINT'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Alignment = taCenter
+              Title.Alignment = taCenter
+              Title.Caption = 'Année'
+              Title.Orientation = toHorizontal
+              Width = 44
+              FieldName = 'PREM_DATE_CONNUE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Subdivision'
+              Title.Orientation = toHorizontal
+              Width = 0
+              Visible = False
+              FieldName = 'PREM_SUBD_CONNU'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Ville'
+              Title.Orientation = toHorizontal
+              Width = 55
+              FieldName = 'PREM_VILLE_CONNUE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Départ|ement'
+              Title.Orientation = toHorizontal
+              Width = 45
+              FieldName = 'PREM_DEPT_CONNU'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'SEXE'
+              Title.Orientation = toHorizontal
+              Visible = False
+              FieldName = 'SEXE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              Images = dm.ImageSexe
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'SEXE_PARENT'
+              Title.Orientation = toHorizontal
+              Visible = False
+              FieldName = 'SEXE_PARENT'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              Images = dm.ImageSexe
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Commen|taire'
+              Title.Orientation = toHorizontal
+              Width = 45
+              FieldName = 'COMMENT'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end>
+          KeyStrokes = <          
+            item
+              Command = rxgcShowFindDlg
+              ShortCut = 16454
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowColumnsDlg
+              ShortCut = 16471
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowFilterDlg
+              ShortCut = 16468
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowSortDlg
+              ShortCut = 16467
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowQuickFilter
+              ShortCut = 16465
+              Enabled = True
+            end          
+            item
+              Command = rxgcHideQuickFilter
+              ShortCut = 16456
+              Enabled = True
+            end          
+            item
+              Command = rxgcSelectAll
+              ShortCut = 16449
+              Enabled = True
+            end          
+            item
+              Command = rxgcDeSelectAll
+              ShortCut = 16429
+              Enabled = True
+            end          
+            item
+              Command = rxgcInvertSelection
+              ShortCut = 16426
+              Enabled = True
+            end          
+            item
+              Command = rxgcOptimizeColumnsWidth
+              ShortCut = 16427
+              Enabled = True
+            end>
+          OptionsRx = []
+          Align = alClient
+          Color = clWindow
+          DrawFullLine = False
+          FocusColor = clRed
+          SelectedColor = clHighlight
+          GridLineStyle = psSolid
+          DataSource = DSAncetres
+          FixedCols = 0
+          Options = [dgEditing, dgTitles, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+          ParentColor = False
+          ParentShowHint = False
+          PopupMenu = pmExporter
+          ReadOnly = True
+          Scrollbars = ssAutoBoth
+          ShowHint = True
+          TabOrder = 0
+          TitleFont.CharSet = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+          OnDblClick = dxDBGrid1DBTableView1CellDblClick
+        end
+      end
+      object Panel3: TPanel
+        Left = 1
+        Height = 55
+        Top = 1
+        Width = 674
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 55
+        ClientWidth = 674
+        TabOrder = 3
+        object Image1: TIATitle
+          Left = 1
+          Hint = 'Cliquer pour supprimer le tri.'
+          Top = 1
+          AutoSize = True
+          OnClick = Image1Click
+          ParentShowHint = False
+          ShowHint = True
+          ImageOn = iaWho
+        end
+        object Title: TLabel
+          Left = 474
+          Height = 55
+          Top = 0
+          Width = 200
+          Align = alRight
+          Alignment = taRightJustify
+          Anchors = [akTop, akRight]
+          Caption = 'Ancêtres sans parent.'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowFrame
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+      object Panel2: TPanel
+        Left = 1
+        Height = 5
+        Top = 56
+        Width = 674
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 2
+      end
+      object fpBoutons: TPanel
+        Left = 1
+        Height = 29
+        Top = 544
+        Width = 674
+        Align = alBottom
+        BevelInner = bvLowered
+        ClientHeight = 29
+        ClientWidth = 674
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        ParentFont = False
+        TabOrder = 0
+        object GoodBtn7: TFWClose
+          Cursor = crHandPoint
+          Left = 578
+          Height = 25
+          Top = 2
+          Width = 94
+          Caption = 'Fermer'
+          TabOrder = 0
+          Align = alRight
+          Anchors = [akTop, akRight]
+          ParentShowHint = False
+          OnClick = sbCloseClick
+        end
+        object btnPrint: TFWPrintGrid
+          Cursor = crHandPoint
+          Left = 468
+          Height = 25
+          Hint = 'Imprime la liste ci dessus....'
+          Top = 2
+          Width = 110
+          Caption = 'Imprimer...'
+          TabOrder = 1
+          Align = alRight
+          Anchors = [akTop, akRight]
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnPrintClick
+          DBGrid = dxDBGrid1
+        end
+      end
+    end
+  end
+  object IBQAncetres: TIBQuery[1]
+    Database = dm.ibd_BASE
+    Transaction = IBTransactionPropre
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select cast(a.tq_niveau+1 as integer) as GENERATION'
+      ',iif(a.tq_sosa<99999999,cast(a.tq_sosa as integer),null) as '
+      'SOSA'
+      ',a.tq_cle_fiche as CLE_INDI'
+      ',i.nom||coalesce('', ''||i.prenom,'''')||'' ('''
+      ' ||case i.sexe'
+      '  when 1 then ''h'''
+      '  when 2 then ''f'''
+      '  else ''i'''
+      ' end'
+      ' ||coalesce('' °''||cast(i.annee_naissance as varchar(5)),'''')'
+      ' ||coalesce('' -''||cast(i.annee_deces as varchar(5)),'''')||'')'' as '
+      'INDIVIDU'
+      ',coalesce(i.sexe,0) as SEXE'
+      ',(select first(1) ev_ind_date_year'
+      '  from(select ev_ind_date_year'
+      '      from evenements_ind'
+      '      where ev_ind_kle_fiche=a.tq_cle_fiche and '
+      'ev_ind_date_year is not null'
+      '      union'
+      '      select f.ev_fam_date_year'
+      '      from t_union u'
+      '      inner join evenements_fam f on '
+      'f.ev_fam_kle_famille=u.union_clef and f.ev_fam_date_year is not '
+      'null'
+      '      where a.tq_cle_fiche in (u.union_mari,u.union_femme))'
+      '      order by ev_ind_date_year) as PREM_DATE_CONNUE'
+      ',(select first(1) ev_ind_ville'
+      '  from(select ev_ind_datecode,ev_ind_ville'
+      '      from evenements_ind'
+      '      where ev_ind_kle_fiche=a.tq_cle_fiche and ev_ind_datecode '
+      'is not null'
+      '      union'
+      '      select f.ev_fam_datecode,f.ev_fam_ville'
+      '      from t_union u'
+      '      inner join evenements_fam f on '
+      'f.ev_fam_kle_famille=u.union_clef and f.ev_fam_datecode is not '
+      'null'
+      '      where a.tq_cle_fiche in (u.union_mari,u.union_femme))'
+      '      order by ev_ind_datecode) as PREM_VILLE_CONNUE'
+      ',(select first(1) ev_ind_dept'
+      '  from(select ev_ind_datecode,ev_ind_dept'
+      '      from evenements_ind'
+      '      where ev_ind_kle_fiche=a.tq_cle_fiche and ev_ind_datecode '
+      'is not null'
+      '      union'
+      '      select f.ev_fam_datecode,f.ev_fam_dept'
+      '      from t_union u'
+      '      inner join evenements_fam f on '
+      'f.ev_fam_kle_famille=u.union_clef and f.ev_fam_datecode is not '
+      'null'
+      '      where a.tq_cle_fiche in (u.union_mari,u.union_femme))'
+      '      order by ev_ind_datecode) as PREM_DEPT_CONNU'
+      ',(select first(1) ev_ind_subd'
+      '  from(select ev_ind_datecode,ev_ind_subd'
+      '      from evenements_ind'
+      '      where ev_ind_kle_fiche=a.tq_cle_fiche and ev_ind_datecode '
+      'is not null'
+      '      union'
+      '      select f.ev_fam_datecode,f.ev_fam_subd'
+      '      from t_union u'
+      '      inner join evenements_fam f on '
+      'f.ev_fam_kle_famille=u.union_clef and f.ev_fam_datecode is not '
+      'null'
+      '      where a.tq_cle_fiche in (u.union_mari,u.union_femme))'
+      '      order by ev_ind_datecode) as PREM_SUBD_CONNU'
+      ',iif(m.cle_fiche is null'
+      ',p.nom||coalesce('', ''||p.prenom,'''')||'' ('''
+      ' ||case p.sexe'
+      '  when 1 then ''h'''
+      '  when 2 then ''f'''
+      '  else ''i'''
+      ' end'
+      ' ||coalesce('' °''||cast(p.annee_naissance as varchar(5)),'''')'
+      ' ||coalesce('' -''||cast(p.annee_deces as varchar(5)),'''')||'')'''
+      ',m.nom||coalesce('', ''||m.prenom,'''')||'' ('''
+      ' ||case m.sexe'
+      '  when 1 then ''h'''
+      '  when 2 then ''f'''
+      '  else ''i'''
+      ' end'
+      ' ||coalesce('' °''||cast(m.annee_naissance as varchar(5)),'''')'
+      ' ||coalesce('' -''||cast(m.annee_deces as varchar(5)),'''')||'')'') as '
+      'PARENT_CONNU'
+      ',coalesce(iif(m.cle_fiche is null,p.sexe,m.sexe),0) as '
+      'SEXE_PARENT'
+      ',c.nom||coalesce('', ''||c.prenom,'''')||'' ('''
+      ' ||case c.sexe'
+      '  when 1 then ''h'''
+      '  when 2 then ''f'''
+      '  else ''i'''
+      ' end'
+      ' ||coalesce('' °''||cast(c.annee_naissance as varchar(5)),'''')'
+      ' ||coalesce('' -''||cast(c.annee_deces as varchar(5)),'''')||'')'' as '
+      'CONJOINT'
+      ',i.comment'
+      'from proc_tq_ascendance(:ICLEF,0,0,0) a'
+      'inner join individu i on i.cle_fiche=a.tq_cle_fiche'
+      'left join individu p on p.cle_fiche=i.cle_pere'
+      'left join individu m on m.cle_fiche=i.cle_mere'
+      'left join individu c on c.cle_fiche=a.tq_dossier'
+      'where i.cle_pere is null or i.cle_mere is null'
+      'order by a.tq_sosa'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ICLEF'
+        ParamType = ptInput
+      end>
+    left = 264
+    top = 152
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'ICLEF'
+        ParamType = ptInput
+      end>
+    object IBQAncetresGENERATION: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'GENERATION'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQAncetresCLE_INDI: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_INDI'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQAncetresINDIVIDU: TStringField
+      DisplayWidth = 116
+      FieldKind = fkData
+      FieldName = 'INDIVIDU'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 116
+    end
+    object IBQAncetresSEXE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SEXE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQAncetresPREM_DATE_CONNUE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'PREM_DATE_CONNUE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQAncetresPREM_VILLE_CONNUE: TStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'PREM_VILLE_CONNUE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQAncetresPREM_DEPT_CONNU: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'PREM_DEPT_CONNU'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQAncetresPREM_SUBD_CONNU: TStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'PREM_SUBD_CONNU'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQAncetresPARENT_CONNU: TStringField
+      DisplayWidth = 116
+      FieldKind = fkData
+      FieldName = 'PARENT_CONNU'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 116
+    end
+    object IBQAncetresSEXE_PARENT: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SEXE_PARENT'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQAncetresCONJOINT: TStringField
+      DisplayWidth = 116
+      FieldKind = fkData
+      FieldName = 'CONJOINT'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 116
+    end
+    object IBQAncetresSOSA: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SOSA'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQAncetresCOMMENT: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'COMMENT'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Size = 8
+      Transliterate = False
+    end
+  end
+  object DSAncetres: TDatasource[2]
+    DataSet = IBQAncetres
+    left = 152
+    top = 152
+  end
+  object pmExporter: TPopupMenu[3]
+    OnPopup = pmExporterPopup
+    left = 152
+    top = 280
+    object Ouvrirlafiche: TMenuItem
+      Caption = 'Ouvrir la fiche (ou double clic)'
+      ShortCut = 16454
+      OnClick = OuvrirlaficheClick
+    end
+    object mImprimer: TMenuItem
+      Caption = 'Imprimer'
+      Enabled = False
+      OnClick = mImprimerClick
+    end
+    object ExporterenHTML1: TMenuItem
+      Caption = 'Exporter en HTML'
+      Enabled = False
+      OnClick = ExporterenHTML1Click
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object Supprimerlestris1: TMenuItem
+      Caption = 'Supprimer les tris'
+      OnClick = Supprimerlestris1Click
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object AjouterlesNotes: TMenuItem
+      Caption = 'Ajouter les Notes'
+      OnClick = AjouterlesNotesClick
+    end
+    object N3: TMenuItem
+      Caption = '-'
+      Enabled = False
+    end
+    object NombreIndividus: TMenuItem
+      Visible = False
+    end
+  end
+  object SaveDialog: TSaveDialog[4]
+    DefaultExt = '.htm'
+    Filter = '*.htm|*.htm'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    left = 328
+    top = 208
+  end
+  object dxComponentPrinter: TPrinterSetupDialog[5]
+    Title = 'Ecran d''aperçu'
+    left = 488
+    top = 272
+  end
+  object IBTransactionPropre: TIBTransaction[6]
+    Active = False
+    DefaultDatabase = dm.ibd_BASE
+    left = 152
+    top = 208
+  end
+  object OnFormInfoIni: TOnFormInfoIni[7]
+    SaveEdits = [feTGrid]
+    SaveForm = [sfSavePos, sfSaveSize, sfSameMonitor]
+    left = 328
+    top = 280
+  end
+end

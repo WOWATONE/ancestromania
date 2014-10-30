@@ -1,0 +1,2438 @@
+inherited FIndividuNavigation: TFIndividuNavigation
+  Left = 471
+  Height = 460
+  Top = 173
+  Width = 665
+  AlphaBlendValue = 150
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'FIndividuNavigation'
+  ClientHeight = 460
+  ClientWidth = 665
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnClose = FormClose
+  OnCreate = SuperFormCreate
+  OnShow = SuperFormShow
+  PopupMenu = PmImprime
+  object pEnsemble: TPanel[0]
+    Left = 0
+    Height = 460
+    Top = 0
+    Width = 665
+    Align = alClient
+    ClientHeight = 460
+    ClientWidth = 665
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object lPlusEnfants: TLabel
+      Cursor = crHandPoint
+      Left = 633
+      Height = 20
+      Hint = 'Cet individu à d''autres enfants...'
+      Top = 436
+      Width = 21
+      Caption = '.../'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlue
+      Font.Height = -13
+      Font.Name = 'Arial Black'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      Visible = False
+      OnClick = lPlusEnfantsClick
+    end
+    object Image1: TIAHuman
+      Left = 870
+      Height = 110
+      Top = 94
+      Width = 88
+      AutoSize = True
+      Visible = False
+    end
+    object cxDBImage1: TExtDBImage
+      Left = 872
+      Height = 57
+      Top = 32
+      Width = 49
+      Visible = False
+      Datafield = 'PHOTO'
+      Datasource = dsNaviguer
+    end
+    object pConjoints: TPanel
+      Left = 0
+      Height = 208
+      Top = 229
+      Width = 331
+      BevelOuter = bvNone
+      BorderWidth = 1
+      TabOrder = 0
+    end
+    object pEnfants: TPanel
+      Left = 1
+      Height = 220
+      Top = 217
+      Width = 663
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 220
+      ClientWidth = 663
+      TabOrder = 1
+      object Panel3: TPanel
+        Left = 324
+        Height = 220
+        Top = 0
+        Width = 339
+        Align = alRight
+        BevelOuter = bvLowered
+        ClientHeight = 220
+        ClientWidth = 339
+        TabOrder = 0
+        object gbEnfant5: TPanel
+          Left = 1
+          Height = 42
+          Top = 169
+          Width = 337
+          Align = alTop
+          ClientHeight = 42
+          ClientWidth = 337
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          Visible = False
+          OnClick = doChangeIndi
+          object sSosaEnfant5: TShape
+            Left = 321
+            Height = 10
+            Top = 0
+            Width = 10
+            Anchors = [akTop, akRight]
+            Brush.Color = clGreen
+            Shape = stCircle
+            Visible = False
+          end
+          object nbEnfants5: TLabel
+            Cursor = crHandPoint
+            Left = 317
+            Height = 12
+            Top = 15
+            Width = 14
+            Alignment = taCenter
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            Caption = '12'
+            Color = clGray
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            Transparent = False
+            Visible = False
+            OnClick = doChangeIndi
+          end
+          object lNomEnfant5: TLabel
+            Cursor = crHandPoint
+            Left = 28
+            Height = 17
+            Top = 0
+            Width = 281
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNeEnfant5: TLabel
+            Cursor = crHandPoint
+            Left = 28
+            Height = 17
+            Top = 17
+            Width = 207
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object iPhotoEnfant5: TExtImage
+            Cursor = crHandPoint
+            Left = 1
+            Height = 28
+            Top = 5
+            Width = 24
+            Center = True
+            OnClick = doChangeIndi
+            Proportional = True
+            Stretch = True
+          end
+        end
+        object gbEnfant4: TPanel
+          Left = 1
+          Height = 42
+          Top = 127
+          Width = 337
+          Align = alTop
+          ClientHeight = 42
+          ClientWidth = 337
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 1
+          Visible = False
+          OnClick = doChangeIndi
+          object sSosaEnfant4: TShape
+            Left = 321
+            Height = 10
+            Top = 0
+            Width = 10
+            Anchors = [akTop, akRight]
+            Brush.Color = clGreen
+            Shape = stCircle
+            Visible = False
+          end
+          object nbEnfants4: TLabel
+            Cursor = crHandPoint
+            Left = 317
+            Height = 12
+            Top = 13
+            Width = 14
+            Alignment = taCenter
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            Caption = '12'
+            Color = clGray
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            Transparent = False
+            Visible = False
+            OnClick = doChangeIndi
+          end
+          object lNomEnfant4: TLabel
+            Cursor = crHandPoint
+            Left = 28
+            Height = 17
+            Top = 0
+            Width = 281
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNeEnfant4: TLabel
+            Cursor = crHandPoint
+            Left = 28
+            Height = 17
+            Top = 14
+            Width = 207
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object iPhotoEnfant4: TExtImage
+            Cursor = crHandPoint
+            Left = 1
+            Height = 28
+            Top = 5
+            Width = 24
+            Center = True
+            OnClick = doChangeIndi
+            Proportional = True
+            Stretch = True
+          end
+        end
+        object gbEnfant3: TPanel
+          Left = 1
+          Height = 42
+          Top = 85
+          Width = 337
+          Align = alTop
+          ClientHeight = 42
+          ClientWidth = 337
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 2
+          Visible = False
+          OnClick = doChangeIndi
+          object sSosaEnfant3: TShape
+            Left = 321
+            Height = 10
+            Top = 0
+            Width = 10
+            Anchors = [akTop, akRight]
+            Brush.Color = clGreen
+            Shape = stCircle
+            Visible = False
+          end
+          object nbEnfants3: TLabel
+            Cursor = crHandPoint
+            Left = 317
+            Height = 12
+            Top = 11
+            Width = 14
+            Alignment = taCenter
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            Caption = '12'
+            Color = clGray
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            Transparent = False
+            Visible = False
+            OnClick = doChangeIndi
+          end
+          object lNomEnfant3: TLabel
+            Cursor = crHandPoint
+            Left = 28
+            Height = 17
+            Top = 0
+            Width = 281
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNeEnfant3: TLabel
+            Cursor = crHandPoint
+            Left = 28
+            Height = 17
+            Top = 13
+            Width = 207
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object iPhotoEnfant3: TExtImage
+            Cursor = crHandPoint
+            Left = 1
+            Height = 28
+            Top = 5
+            Width = 24
+            Center = True
+            OnClick = doChangeIndi
+            Proportional = True
+            Stretch = True
+          end
+        end
+        object gbEnfant2: TPanel
+          Left = 1
+          Height = 42
+          Top = 43
+          Width = 337
+          Align = alTop
+          ClientHeight = 42
+          ClientWidth = 337
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 3
+          Visible = False
+          OnClick = doChangeIndi
+          object sSosaEnfant2: TShape
+            Left = 321
+            Height = 10
+            Top = 0
+            Width = 10
+            Anchors = [akTop, akRight]
+            Brush.Color = clGreen
+            Shape = stCircle
+            Visible = False
+          end
+          object nbEnfants2: TLabel
+            Cursor = crHandPoint
+            Left = 317
+            Height = 12
+            Top = 10
+            Width = 14
+            Alignment = taCenter
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            Caption = '12'
+            Color = clGray
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            Transparent = False
+            Visible = False
+            OnClick = doChangeIndi
+          end
+          object lNomEnfant2: TLabel
+            Cursor = crHandPoint
+            Left = 26
+            Height = 17
+            Top = -4
+            Width = 281
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNeEnfant2: TLabel
+            Cursor = crHandPoint
+            Left = 28
+            Height = 17
+            Top = 14
+            Width = 207
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object iPhotoEnfant2: TExtImage
+            Cursor = crHandPoint
+            Left = 1
+            Height = 28
+            Top = 5
+            Width = 24
+            Center = True
+            OnClick = doChangeIndi
+            Proportional = True
+            Stretch = True
+          end
+        end
+        object gbEnfant1: TPanel
+          Left = 1
+          Height = 42
+          Top = 1
+          Width = 337
+          Align = alTop
+          ClientHeight = 42
+          ClientWidth = 337
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 4
+          Visible = False
+          OnClick = doChangeIndi
+          object sSosaEnfant1: TShape
+            Left = 321
+            Height = 10
+            Top = 0
+            Width = 10
+            Anchors = [akTop, akRight]
+            Brush.Color = clGreen
+            Shape = stCircle
+            Visible = False
+          end
+          object nbEnfants1: TLabel
+            Cursor = crHandPoint
+            Left = 317
+            Height = 12
+            Top = 11
+            Width = 14
+            Alignment = taCenter
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            Caption = '12'
+            Color = clGray
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            Transparent = False
+            Visible = False
+            OnClick = doChangeIndi
+          end
+          object lNomEnfant1: TLabel
+            Cursor = crHandPoint
+            Left = 28
+            Height = 17
+            Top = 0
+            Width = 281
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNeEnfant1: TLabel
+            Cursor = crHandPoint
+            Left = 28
+            Height = 17
+            Top = 15
+            Width = 207
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object iPhotoEnfant1: TExtImage
+            Cursor = crHandPoint
+            Left = 1
+            Height = 28
+            Top = 5
+            Width = 24
+            Center = True
+            OnClick = doChangeIndi
+            Proportional = True
+            Stretch = True
+          end
+        end
+      end
+      object Panel2: TPanel
+        Left = 0
+        Height = 220
+        Top = 0
+        Width = 324
+        Align = alClient
+        ClientHeight = 220
+        ClientWidth = 324
+        TabOrder = 1
+        object gbEpouse1: TPanel
+          Cursor = crHandPoint
+          Left = 1
+          Height = 71
+          Top = 1
+          Width = 322
+          Align = alTop
+          ClientHeight = 71
+          ClientWidth = 322
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          OnClick = doChangeIndi
+          object sSosaEpouse1: TShape
+            Left = 310
+            Height = 10
+            Top = 0
+            Width = 10
+            Anchors = [akTop, akRight]
+            Brush.Color = clGreen
+            Shape = stCircle
+            Visible = False
+          end
+          object Shape2: TShape
+            Left = 48
+            Height = 1
+            Top = 21
+            Width = 266
+            Pen.Color = clSilver
+          end
+          object nbEnfantsConjoint1: TLabel
+            Left = 306
+            Height = 12
+            Top = 35
+            Width = 14
+            Alignment = taCenter
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            Caption = '12'
+            Color = clGray
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            Transparent = False
+            Visible = False
+            OnClick = doChangeIndi
+          end
+          object lUnionEpouse1: TLabel
+            Cursor = crHandPoint
+            Left = 48
+            Height = 17
+            Top = 26
+            Width = 272
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNomEpouse1: TLabel
+            Cursor = crHandPoint
+            Left = 48
+            Height = 17
+            Top = 0
+            Width = 256
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNeEpouse1: TLabel
+            Cursor = crHandPoint
+            Left = 48
+            Height = 17
+            Top = 11
+            Width = 272
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lInfosCouple1: TLabel
+            Cursor = crHandPoint
+            Left = 48
+            Height = 17
+            Top = 41
+            Width = 251
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object iPhotoEpouse1: TExtImage
+            Cursor = crHandPoint
+            Left = 1
+            Height = 56
+            Top = 5
+            Width = 46
+            Center = True
+            OnClick = doChangeIndi
+            Proportional = True
+            Stretch = True
+          end
+        end
+        object gbEpouse2: TPanel
+          Cursor = crHandPoint
+          Left = 1
+          Height = 71
+          Top = 72
+          Width = 322
+          Align = alTop
+          ClientHeight = 71
+          ClientWidth = 322
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 1
+          Visible = False
+          OnClick = doChangeIndi
+          object sSosaEpouse2: TShape
+            Left = 310
+            Height = 10
+            Top = 0
+            Width = 10
+            Anchors = [akTop, akRight]
+            Brush.Color = clGreen
+            Shape = stCircle
+            Visible = False
+          end
+          object Shape4: TShape
+            Left = 48
+            Height = 1
+            Top = 20
+            Width = 266
+            Pen.Color = clSilver
+          end
+          object nbEnfantsConjoint2: TLabel
+            Left = 302
+            Height = 12
+            Top = 35
+            Width = 14
+            Alignment = taCenter
+            AutoSize = False
+            Caption = '12'
+            Color = clGray
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            Transparent = False
+            Visible = False
+            OnClick = doChangeIndi
+          end
+          object lUnionEpouse2: TLabel
+            Cursor = crHandPoint
+            Left = 52
+            Height = 17
+            Top = 25
+            Width = 268
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNomEpouse2: TLabel
+            Cursor = crHandPoint
+            Left = 48
+            Height = 17
+            Top = 0
+            Width = 256
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNeEpouse2: TLabel
+            Cursor = crHandPoint
+            Left = 48
+            Height = 17
+            Top = 11
+            Width = 272
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lInfosCouple2: TLabel
+            Cursor = crHandPoint
+            Left = 48
+            Height = 17
+            Top = 43
+            Width = 251
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object iPhotoEpouse2: TExtImage
+            Cursor = crHandPoint
+            Left = 1
+            Height = 56
+            Top = 5
+            Width = 46
+            Center = True
+            OnClick = doChangeIndi
+            Proportional = True
+            Stretch = True
+          end
+        end
+        object gbEpouse3: TPanel
+          Cursor = crHandPoint
+          Left = 1
+          Height = 76
+          Top = 143
+          Width = 322
+          Align = alTop
+          ClientHeight = 76
+          ClientWidth = 322
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 2
+          Visible = False
+          OnClick = doChangeIndi
+          object sSosaEpouse3: TShape
+            Left = 310
+            Height = 10
+            Top = 0
+            Width = 10
+            Anchors = [akTop, akRight]
+            Brush.Color = clGreen
+            Shape = stCircle
+            Visible = False
+          end
+          object Shape5: TShape
+            Left = 48
+            Height = 1
+            Top = 20
+            Width = 266
+            Pen.Color = clSilver
+          end
+          object nbEnfantsConjoint3: TLabel
+            Left = 306
+            Height = 12
+            Top = 35
+            Width = 14
+            Alignment = taCenter
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            Caption = '12'
+            Color = clGray
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            Transparent = False
+            Visible = False
+            OnClick = doChangeIndi
+          end
+          object lUnionEpouse3: TLabel
+            Cursor = crHandPoint
+            Left = 48
+            Height = 17
+            Top = 25
+            Width = 272
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNomEpouse3: TLabel
+            Cursor = crHandPoint
+            Left = 48
+            Height = 17
+            Top = 0
+            Width = 256
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNeEpouse3: TLabel
+            Cursor = crHandPoint
+            Left = 48
+            Height = 17
+            Top = 10
+            Width = 272
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lInfosCouple3: TLabel
+            Cursor = crHandPoint
+            Left = 48
+            Height = 17
+            Top = 43
+            Width = 251
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object iPhotoEpouse3: TExtImage
+            Cursor = crHandPoint
+            Left = 1
+            Height = 56
+            Top = 5
+            Width = 46
+            Center = True
+            OnClick = doChangeIndi
+            Proportional = True
+            Stretch = True
+          end
+        end
+      end
+    end
+    object Panel1: TPanel
+      Left = 1
+      Height = 22
+      Top = 437
+      Width = 663
+      Align = alBottom
+      BevelOuter = bvNone
+      ClientHeight = 22
+      ClientWidth = 663
+      TabOrder = 2
+      object lPlusdeFemme: TLabel
+        Cursor = crHandPoint
+        Left = 304
+        Height = 20
+        Hint = 'Cet individu à d''autres épouses...'
+        Top = 6
+        Width = 21
+        Caption = '.../'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -13
+        Font.Name = 'Arial Black'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Visible = False
+        OnClick = lPlusdeFemmeClick
+      end
+    end
+    object Panel6: TPanel
+      Left = 1
+      Height = 103
+      Top = 1
+      Width = 663
+      Align = alTop
+      BevelOuter = bvSpace
+      ClientHeight = 103
+      ClientWidth = 663
+      TabOrder = 3
+      object Panel5: TPanel
+        Left = 1
+        Height = 101
+        Top = 1
+        Width = 330
+        Align = alLeft
+        BevelOuter = bvSpace
+        ClientHeight = 101
+        ClientWidth = 330
+        TabOrder = 0
+        object gbpere: TPanel
+          Cursor = crHandPoint
+          Left = 1
+          Height = 71
+          Top = 29
+          Width = 328
+          Align = alBottom
+          ClientHeight = 71
+          ClientWidth = 328
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          OnClick = doChangeIndi
+          object sSosaPere: TShape
+            Left = 310
+            Height = 10
+            Top = 0
+            Width = 10
+            Anchors = [akTop, akRight]
+            Brush.Color = clGreen
+            Shape = stCircle
+            Visible = False
+          end
+          object lProfPere: TLabel
+            Cursor = crHandPoint
+            Left = 49
+            Height = 17
+            Top = 13
+            Width = 270
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsItalic]
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNomPere: TLabel
+            Cursor = crHandPoint
+            Left = 49
+            Height = 17
+            Top = 0
+            Width = 260
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNePere: TLabel
+            Cursor = crHandPoint
+            Left = 49
+            Height = 17
+            Top = 30
+            Width = 270
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = doChangeIndi
+          end
+          object lDecesPere: TLabel
+            Cursor = crHandPoint
+            Left = 49
+            Height = 17
+            Top = 43
+            Width = 270
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = doChangeIndi
+          end
+          object iPhotoPere: TExtImage
+            Cursor = crHandPoint
+            Left = 1
+            Height = 57
+            Top = 5
+            Width = 48
+            Center = True
+            OnClick = doChangeIndi
+            Proportional = True
+            Stretch = True
+          end
+        end
+        object gbGPP: TPanel
+          Left = 1
+          Height = 28
+          Top = 1
+          Width = 164
+          Align = alLeft
+          ClientHeight = 28
+          ClientWidth = 164
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 1
+          OnClick = doChangeIndi
+          object GPPPlus: TLabel
+            Cursor = crHandPoint
+            Left = 146
+            Height = 12
+            Top = 0
+            Width = 12
+            Alignment = taCenter
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            Color = clGray
+            Font.CharSet = SYMBOL_CHARSET
+            Font.Color = clWhite
+            Font.Height = -9
+            Font.Name = 'Wingdings'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            Transparent = False
+            Visible = False
+            OnClick = doChangeIndi
+          end
+          object sSosaGPP: TShape
+            Left = 135
+            Height = 10
+            Top = 0
+            Width = 10
+            Anchors = [akTop, akRight]
+            Brush.Color = clGreen
+            Shape = stCircle
+            Visible = False
+          end
+          object lNomGPP: TLabel
+            Cursor = crHandPoint
+            Left = 27
+            Height = 17
+            Top = 0
+            Width = 109
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = doChangeIndi
+          end
+          object lNeGPP: TLabel
+            Cursor = crHandPoint
+            Left = 27
+            Height = 17
+            Top = 15
+            Width = 120
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = doChangeIndi
+          end
+          object iPhotoGPP: TExtImage
+            Cursor = crHandPoint
+            Left = 1
+            Height = 28
+            Top = 5
+            Width = 24
+            Center = True
+            OnClick = doChangeIndi
+            Proportional = True
+            Stretch = True
+          end
+        end
+        object gbGMP: TPanel
+          Left = 165
+          Height = 28
+          Top = 1
+          Width = 164
+          Align = alClient
+          ClientHeight = 28
+          ClientWidth = 164
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 2
+          OnClick = doChangeIndi
+          object GPMPlus: TLabel
+            Cursor = crHandPoint
+            Left = 146
+            Height = 12
+            Top = 0
+            Width = 12
+            Alignment = taCenter
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            Color = clGray
+            Font.CharSet = SYMBOL_CHARSET
+            Font.Color = clWhite
+            Font.Height = -9
+            Font.Name = 'Wingdings'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            Transparent = False
+            Visible = False
+            OnClick = doChangeIndi
+          end
+          object sSosaGMP: TShape
+            Left = 135
+            Height = 10
+            Top = 0
+            Width = 10
+            Anchors = [akTop, akRight]
+            Brush.Color = clGreen
+            Shape = stCircle
+            Visible = False
+          end
+          object lNomGMP: TLabel
+            Cursor = crHandPoint
+            Left = 27
+            Height = 17
+            Top = 0
+            Width = 109
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = doChangeIndi
+          end
+          object lNeGMP: TLabel
+            Cursor = crHandPoint
+            Left = 27
+            Height = 17
+            Top = 14
+            Width = 103
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = doChangeIndi
+          end
+          object iPhotoGMP: TExtImage
+            Cursor = crHandPoint
+            Left = 1
+            Height = 28
+            Top = 5
+            Width = 24
+            Center = True
+            OnClick = doChangeIndi
+            Proportional = True
+            Stretch = True
+          end
+        end
+      end
+      object Panel4: TPanel
+        Left = 331
+        Height = 101
+        Top = 1
+        Width = 331
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 101
+        ClientWidth = 331
+        TabOrder = 1
+        object gbMere: TPanel
+          Cursor = crHandPoint
+          Left = 0
+          Height = 71
+          Top = 30
+          Width = 331
+          Align = alBottom
+          ClientHeight = 71
+          ClientWidth = 331
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          OnClick = doChangeIndi
+          object sSosaMere: TShape
+            Left = 315
+            Height = 10
+            Top = 0
+            Width = 10
+            Anchors = [akTop, akRight]
+            Brush.Color = clGreen
+            Shape = stCircle
+            Visible = False
+          end
+          object lProfMere: TLabel
+            Cursor = crHandPoint
+            Left = 49
+            Height = 17
+            Top = 13
+            Width = 276
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsItalic]
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNomMere: TLabel
+            Cursor = crHandPoint
+            Left = 49
+            Height = 17
+            Top = 0
+            Width = 266
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentBidiMode = False
+            ParentColor = False
+            ParentFont = False
+            OnClick = doChangeIndi
+          end
+          object lNeMere: TLabel
+            Cursor = crHandPoint
+            Left = 49
+            Height = 17
+            Top = 30
+            Width = 276
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = doChangeIndi
+          end
+          object lDecesMere: TLabel
+            Cursor = crHandPoint
+            Left = 49
+            Height = 17
+            Top = 45
+            Width = 276
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = doChangeIndi
+          end
+          object iPhotoMere: TExtImage
+            Cursor = crHandPoint
+            Left = 1
+            Height = 57
+            Top = 5
+            Width = 48
+            Center = True
+            OnClick = doChangeIndi
+            Proportional = True
+            Stretch = True
+          end
+        end
+        object gbGMM: TPanel
+          Left = 168
+          Height = 30
+          Top = 0
+          Width = 163
+          Align = alRight
+          ClientHeight = 30
+          ClientWidth = 163
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 1
+          OnClick = doChangeIndi
+          object GMMPlus: TLabel
+            Cursor = crHandPoint
+            Left = 145
+            Height = 12
+            Top = 0
+            Width = 12
+            Alignment = taCenter
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            Color = clGray
+            Font.CharSet = SYMBOL_CHARSET
+            Font.Color = clWhite
+            Font.Height = -9
+            Font.Name = 'Wingdings'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            Transparent = False
+            Visible = False
+            OnClick = doChangeIndi
+          end
+          object sSosaGMM: TShape
+            Left = 134
+            Height = 10
+            Top = 0
+            Width = 10
+            Anchors = [akTop, akRight]
+            Brush.Color = clGreen
+            Shape = stCircle
+            Visible = False
+          end
+          object lNomGMM: TLabel
+            Cursor = crHandPoint
+            Left = 27
+            Height = 17
+            Top = 0
+            Width = 109
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = doChangeIndi
+          end
+          object lNeGMM: TLabel
+            Cursor = crHandPoint
+            Left = 27
+            Height = 17
+            Top = 15
+            Width = 103
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = doChangeIndi
+          end
+          object iPhotoGMM: TExtImage
+            Cursor = crHandPoint
+            Left = 1
+            Height = 28
+            Top = 5
+            Width = 24
+            Center = True
+            OnClick = doChangeIndi
+            Proportional = True
+            Stretch = True
+          end
+        end
+        object gbGPM: TPanel
+          Left = 0
+          Height = 30
+          Top = 0
+          Width = 168
+          Align = alClient
+          ClientHeight = 30
+          ClientWidth = 168
+          ParentColor = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 2
+          OnClick = doChangeIndi
+          object GMPPlus: TLabel
+            Cursor = crHandPoint
+            Left = 150
+            Height = 12
+            Top = 0
+            Width = 12
+            Alignment = taCenter
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            Color = clGray
+            Font.CharSet = SYMBOL_CHARSET
+            Font.Color = clWhite
+            Font.Height = -9
+            Font.Name = 'Wingdings'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            Transparent = False
+            Visible = False
+            OnClick = doChangeIndi
+          end
+          object sSosaGPM: TShape
+            Left = 139
+            Height = 10
+            Top = 0
+            Width = 10
+            Anchors = [akTop, akRight]
+            Brush.Color = clGreen
+            Shape = stCircle
+            Visible = False
+          end
+          object lNomGPM: TLabel
+            Cursor = crHandPoint
+            Left = 27
+            Height = 17
+            Top = 0
+            Width = 113
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = doChangeIndi
+          end
+          object lNeGPM: TLabel
+            Cursor = crHandPoint
+            Left = 27
+            Height = 17
+            Top = 15
+            Width = 103
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = doChangeIndi
+          end
+          object iPhotoGPM: TExtImage
+            Cursor = crHandPoint
+            Left = 1
+            Height = 28
+            Top = 5
+            Width = 24
+            Center = True
+            OnClick = doChangeIndi
+            Proportional = True
+            Stretch = True
+          end
+        end
+      end
+    end
+    object Panel7: TPanel
+      Left = 1
+      Height = 113
+      Top = 104
+      Width = 663
+      Align = alTop
+      BevelOuter = bvSpace
+      ClientHeight = 113
+      ClientWidth = 663
+      TabOrder = 4
+      object gbIndi: TPanel
+        Left = 1
+        Height = 111
+        Top = 1
+        Width = 523
+        Align = alClient
+        ClientHeight = 111
+        ClientWidth = 523
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 0
+        object sSosaIndi: TShape
+          Left = 505
+          Height = 10
+          Top = 0
+          Width = 10
+          Anchors = [akTop, akRight]
+          Brush.Color = clGreen
+          Shape = stCircle
+          Visible = False
+        end
+        object lSosaIndi: TLabel
+          Cursor = crHandPoint
+          Left = 379
+          Height = 18
+          Top = 0
+          Width = 122
+          Alignment = taRightJustify
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = False
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+          OnClick = doChangeIndi
+        end
+        object lAge: TLabel
+          Cursor = crHandPoint
+          Left = 518
+          Height = 1
+          Top = 18
+          Width = 1
+          Alignment = taRightJustify
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+          Visible = False
+          OnClick = doChangeIndi
+        end
+        object btnHistoire: TXAHistory
+          Cursor = crHandPoint
+          Left = 496
+          Height = 22
+          Hint = 'En savoir plus sur le net...'
+          Top = 73
+          Width = 22
+          TabOrder = 0
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnHistoireClick
+          GlyphSize = 16
+        end
+        object lProfIndi: TFWLabel
+          Cursor = crHandPoint
+          Left = 90
+          Height = 19
+          Top = 36
+          Width = 377
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = False
+          Font.Color = clWindowText
+          ParentColor = False
+          ParentFont = False
+          OnClick = doChangeIndi
+          ColorFocus = clMaroon
+        end
+        object lPrenomIndi: TFWLabel
+          Cursor = crHandPoint
+          Left = 90
+          Height = 23
+          Top = 14
+          Width = 329
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = False
+          Font.Color = clWindowText
+          ParentColor = False
+          ParentFont = False
+          OnClick = doChangeIndi
+          ColorFocus = clMaroon
+        end
+        object lNomIndi: TFWLabel
+          Cursor = crHandPoint
+          Left = 90
+          Height = 22
+          Top = 0
+          Width = 294
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = False
+          Font.Color = clWindowText
+          ParentColor = False
+          ParentFont = False
+          OnClick = doChangeIndi
+          ColorFocus = clMaroon
+        end
+        object lIndiNe: TFWLabel
+          Cursor = crHandPoint
+          Left = 90
+          Height = 19
+          Top = 54
+          Width = 382
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = False
+          Font.Color = clWindowText
+          ParentColor = False
+          ParentFont = False
+          OnClick = doChangeIndi
+          ColorFocus = clMaroon
+        end
+        object lDecesIndi: TFWLabel
+          Cursor = crHandPoint
+          Left = 90
+          Height = 19
+          Top = 72
+          Width = 329
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = False
+          Font.Color = clWindowText
+          ParentColor = False
+          ParentFont = False
+          OnClick = doChangeIndi
+          ColorFocus = clMaroon
+        end
+        object iPhotoIndi: TExtImage
+          Cursor = crHandPoint
+          Left = 1
+          Height = 101
+          Top = 7
+          Width = 85
+          OnClick = doChangeIndi
+          Proportional = True
+        end
+        object btnListeActe: TJvXPButton
+          Cursor = crHandPoint
+          Left = 414
+          Height = 22
+          Hint = 'Liste des actes de cet individu....'
+          Top = 73
+          Width = 76
+          TabStop = False
+          Caption = 'Les actes'
+          TabOrder = 1
+          Spacing = 8
+          Anchors = [akTop, akRight]
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnListeActeClick
+        end
+      end
+      object pBouton: TPanel
+        Left = 524
+        Height = 111
+        Top = 1
+        Width = 138
+        Align = alRight
+        BevelOuter = bvNone
+        ClientHeight = 111
+        ClientWidth = 138
+        TabOrder = 1
+        object Shape1: TShape
+          Left = 0
+          Height = 111
+          Top = 0
+          Width = 119
+          Pen.Color = clTeal
+        end
+        object btnOncles: TJvXPButton
+          Cursor = crHandPoint
+          Left = 0
+          Height = 16
+          Top = 0
+          Width = 138
+          Caption = 'Oncles/Tantes'
+          Enabled = False
+          TabOrder = 0
+          Align = alTop
+          ParentFont = False
+          OnClick = btnOnclesClick
+        end
+        object btnCousins: TJvXPButton
+          Cursor = crHandPoint
+          Left = 0
+          Height = 16
+          Top = 16
+          Width = 138
+          Caption = 'Cousin(es)'
+          Enabled = False
+          TabOrder = 1
+          Align = alTop
+          ParentFont = False
+          OnClick = btnCousinsClick
+        end
+        object btnFreres: TJvXPButton
+          Cursor = crHandPoint
+          Left = 0
+          Height = 16
+          Top = 32
+          Width = 138
+          Caption = 'Frères/Soeurs'
+          Enabled = False
+          TabOrder = 2
+          Align = alTop
+          ParentFont = False
+          OnClick = btnFreresClick
+        end
+        object btnNeveux: TJvXPButton
+          Cursor = crHandPoint
+          Left = 0
+          Height = 16
+          Top = 48
+          Width = 138
+          Caption = 'Neveux/Nièces'
+          Enabled = False
+          TabOrder = 3
+          Align = alTop
+          ParentFont = False
+          OnClick = btnNeveuxClick
+        end
+        object btnPetitsEnfants: TJvXPButton
+          Cursor = crHandPoint
+          Left = 0
+          Height = 16
+          Top = 64
+          Width = 138
+          Caption = 'Petits enfants'
+          Enabled = False
+          TabOrder = 4
+          Align = alTop
+          ParentFont = False
+          OnClick = btnPetitsEnfantsClick
+        end
+        object btnConjoints: TJvXPButton
+          Cursor = crHandPoint
+          Left = 0
+          Height = 16
+          Top = 80
+          Width = 138
+          Caption = 'Conjoints'
+          Enabled = False
+          TabOrder = 5
+          Align = alTop
+          ParentFont = False
+          OnClick = btnConjointsClick
+        end
+        object btnEnfants: TJvXPButton
+          Cursor = crHandPoint
+          Left = 0
+          Height = 17
+          Top = 96
+          Width = 138
+          Caption = 'Enfants'
+          Enabled = False
+          TabOrder = 6
+          Align = alTop
+          ParentFont = False
+          OnClick = btnEnfantsClick
+        end
+      end
+    end
+  end
+  object dsNaviguer: TDatasource[1]
+    DataSet = ibNaviguer
+    left = 770
+    top = 16
+  end
+  object ibNaviguer: TIBQuery[2]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM PROC_NAVIGATION(:iCLEF,:combien) '
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'iCLEF'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'combien'
+        ParamType = ptUnknown
+      end>
+    left = 768
+    top = 48
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'iCLEF'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'combien'
+        ParamType = ptUnknown
+      end>
+    object ibNaviguerNIVEAU: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'NIVEAU'
+      Index = 0
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."NIVEAU"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ibNaviguerCLE_FICHE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_FICHE'
+      Index = 1
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."CLE_FICHE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ibNaviguerNOM: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 2
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."NOM"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object ibNaviguerPRENOM: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'PRENOM'
+      Index = 3
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."PRENOM"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object ibNaviguerDATE_NAISSANCE: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'DATE_NAISSANCE'
+      Index = 4
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."DATE_NAISSANCE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object ibNaviguerDATE_DECES: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'DATE_DECES'
+      Index = 5
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."DATE_DECES"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object ibNaviguerSEXE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SEXE'
+      Index = 6
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."SEXE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ibNaviguerCLE_PERE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_PERE'
+      Index = 7
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."CLE_PERE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ibNaviguerCLE_MERE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_MERE'
+      Index = 8
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."CLE_MERE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ibNaviguerSOSA: TFloatField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SOSA'
+      Index = 9
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."SOSA"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object ibNaviguerDECEDE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'DECEDE'
+      Index = 10
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."DECEDE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ibNaviguerVILLE_NAISSANCE: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'VILLE_NAISSANCE'
+      Index = 11
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."VILLE_NAISSANCE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ibNaviguerVILLE_DECES: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'VILLE_DECES'
+      Index = 12
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."VILLE_DECES"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ibNaviguerPROFESSION: TIBStringField
+      DisplayWidth = 90
+      FieldKind = fkData
+      FieldName = 'PROFESSION'
+      Index = 13
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."PROFESSION"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 90
+    end
+    object ibNaviguerDATE_UNION: TIBStringField
+      DisplayWidth = 90
+      FieldKind = fkData
+      FieldName = 'DATE_UNION'
+      Index = 14
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."DATE_UNION"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 90
+    end
+    object ibNaviguerVILLE_UNION: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'VILLE_UNION'
+      Index = 15
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."VILLE_UNION"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ibNaviguerPHOTO: TBlobField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'PHOTO'
+      Index = 16
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."PHOTO"'
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      BlobType = ftBlob
+      Size = 8
+    end
+    object ibNaviguerENFANTS: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ENFANTS'
+      Index = 17
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."ENFANTS"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ibNaviguerNUM_SOSA: TFloatField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'NUM_SOSA'
+      Index = 18
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."NUM_SOSA"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object ibNaviguerPERIODE_VIE: TIBStringField
+      DisplayWidth = 15
+      FieldKind = fkData
+      FieldName = 'PERIODE_VIE'
+      Index = 19
+      LookupCache = False
+      Origin = '"PROC_NAVIGATION"."PERIODE_VIE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object popup_Enfants: TPopupMenu[3]
+    Images = ImageList1
+    left = 727
+    top = 47
+  end
+  object ImageList1: TImageList[4]
+    BkColor = clForeground
+    left = 772
+    top = 109
+    Bitmap = {
+      4C69040000001000000010000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000501FAFFF501FAFFF501FAFFF501FAFFF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF000000000000
+      000000000000000000000000000000000000000000000000000000000000501F
+      AFFF501FAFFF501FAFFF0000000000000000501FAFFF501FAFFF501FAFFF0000
+      000000000000000000000000000000000000000000000000000000000000501F
+      AFFF501FAFFF00000000000000000000000000000000501FAFFF501FAFFF0000
+      000000000000000000000000000000000000000000000000000000000000501F
+      AFFF501FAFFF00000000000000000000000000000000501FAFFF501FAFFF0000
+      000000000000000000000000000000000000000000000000000000000000501F
+      AFFF501FAFFF501FAFFF0000000000000000501FAFFF501FAFFF501FAFFF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000501FAFFF501FAFFF501FAFFF501FAFFF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000501FAFFF501FAFFF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000501FAFFF501FAFFF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000501FAFFF501FAFFF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000501FAFFF501FAFFF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000AF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFFAF5F
+      2FFF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000AF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFFAF5F
+      2FFF000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000AF5F2FFFAF5F2FFFAF5F2FFFAF5F
+      2FFF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000AF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFFAF5F
+      2FFF00000000000000000000000000000000000000000000000000000000AF5F
+      2FFFAF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFF00000000AF5F2FFFAF5F
+      2FFF000000000000000000000000000000000000000000000000AF5F2FFFAF5F
+      2FFFAF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFF0000000000000000000000000000
+      00000000000000000000000000000000000000000000AF5F2FFFAF5F2FFFAF5F
+      2FFF0000000000000000AF5F2FFFAF5F2FFFAF5F2FFF00000000000000000000
+      00000000000000000000000000000000000000000000AF5F2FFFAF5F2FFF0000
+      0000000000000000000000000000AF5F2FFFAF5F2FFF00000000000000000000
+      00000000000000000000000000000000000000000000AF5F2FFFAF5F2FFF0000
+      0000000000000000000000000000AF5F2FFFAF5F2FFF00000000000000000000
+      00000000000000000000000000000000000000000000AF5F2FFFAF5F2FFFAF5F
+      2FFF0000000000000000AF5F2FFFAF5F2FFFAF5F2FFF00000000000000000000
+      0000000000000000000000000000000000000000000000000000AF5F2FFFAF5F
+      2FFFAF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFF0000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000AF5F
+      2FFFAF5F2FFFAF5F2FFFAF5F2FFF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000044B024FF44B024FF44B024FF44B0
+      24FF44B024FF44B024FF44B024FF44B024FF44B024FF44B024FF44B024FF44B0
+      24FF44B024FF44B024FF44B024FF0000000044B024FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000000000000000
+      000000000000501FAFFF501FAFFF501FAFFF501FAFFF00000000000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000000000000000
+      0000501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF000000000000
+      0000000000000000000044B024FF0000000044B024FF0000000000000000501F
+      AFFF501FAFFF501FAFFF0000000000000000501FAFFF501FAFFF501FAFFF0000
+      0000000000000000000044B024FF0000000044B024FF0000000000000000501F
+      AFFF501FAFFF00000000000000000000000000000000501FAFFF501FAFFF0000
+      0000000000000000000044B024FF0000000044B024FF0000000000000000501F
+      AFFF501FAFFF00000000000000000000000000000000501FAFFF501FAFFF0000
+      0000000000000000000044B024FF0000000044B024FF0000000000000000501F
+      AFFF501FAFFF501FAFFF0000000000000000501FAFFF501FAFFF501FAFFF0000
+      0000000000000000000044B024FF0000000044B024FF00000000000000000000
+      0000501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000000000000000
+      000000000000501FAFFF501FAFFF501FAFFF501FAFFF00000000000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000000000000000
+      00000000000000000000501FAFFF501FAFFF0000000000000000000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000000000000000
+      0000501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000000000000000
+      0000501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF501FAFFF000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000000000000000
+      00000000000000000000501FAFFF501FAFFF0000000000000000000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000044B024FF0000000044B024FF44B024FF44B024FF44B0
+      24FF44B024FF44B024FF44B024FF44B024FF44B024FF44B024FF44B024FF44B0
+      24FF44B024FF44B024FF44B024FF0000000044B024FF44B024FF44B024FF44B0
+      24FF44B024FF44B024FF44B024FF44B024FF44B024FF44B024FF44B024FF44B0
+      24FF44B024FF44B024FF44B024FF0000000044B024FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000000000000000
+      000000000000000000000000000000000000AF5F2FFFAF5F2FFFAF5F2FFFAF5F
+      2FFFAF5F2FFF0000000044B024FF0000000044B024FF00000000000000000000
+      000000000000000000000000000000000000AF5F2FFFAF5F2FFFAF5F2FFFAF5F
+      2FFFAF5F2FFF0000000044B024FF0000000044B024FF00000000000000000000
+      00000000000000000000000000000000000000000000AF5F2FFFAF5F2FFFAF5F
+      2FFFAF5F2FFF0000000044B024FF0000000044B024FF00000000000000000000
+      000000000000000000000000000000000000AF5F2FFFAF5F2FFFAF5F2FFFAF5F
+      2FFFAF5F2FFF0000000044B024FF0000000044B024FF00000000000000000000
+      0000AF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFF00000000AF5F
+      2FFFAF5F2FFF0000000044B024FF0000000044B024FF0000000000000000AF5F
+      2FFFAF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFF00000000000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000AF5F2FFFAF5F
+      2FFFAF5F2FFF0000000000000000AF5F2FFFAF5F2FFFAF5F2FFF000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000AF5F2FFFAF5F
+      2FFF00000000000000000000000000000000AF5F2FFFAF5F2FFF000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000AF5F2FFFAF5F
+      2FFF00000000000000000000000000000000AF5F2FFFAF5F2FFF000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000AF5F2FFFAF5F
+      2FFFAF5F2FFF0000000000000000AF5F2FFFAF5F2FFFAF5F2FFF000000000000
+      0000000000000000000044B024FF0000000044B024FF0000000000000000AF5F
+      2FFFAF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFF00000000000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000000000000000
+      0000AF5F2FFFAF5F2FFFAF5F2FFFAF5F2FFF0000000000000000000000000000
+      0000000000000000000044B024FF0000000044B024FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000044B024FF0000000044B024FF44B024FF44B024FF44B0
+      24FF44B024FF44B024FF44B024FF44B024FF44B024FF44B024FF44B024FF44B0
+      24FF44B024FF44B024FF44B024FF
+    }
+  end
+  object popup_Conjoints: TPopupMenu[5]
+    Images = ImageList1
+    left = 728
+    top = 79
+  end
+  object Popup_PetitsEnfants: TPopupMenu[6]
+    Images = ImageList1
+    left = 728
+    top = 111
+  end
+  object Popup_Neveux: TPopupMenu[7]
+    Images = ImageList1
+    left = 728
+    top = 143
+  end
+  object popup_FreresSoeurs: TPopupMenu[8]
+    Images = ImageList1
+    left = 728
+    top = 175
+  end
+  object popup_CousinsCousines: TPopupMenu[9]
+    Images = ImageList1
+    left = 728
+    top = 207
+  end
+  object Popup_Oncles: TPopupMenu[10]
+    Images = ImageList1
+    left = 728
+    top = 247
+  end
+  object dxComponentPrinter1: TPrinterSetupDialog[11]
+    left = 824
+    top = 16
+  end
+  object PmImprime: TPopupMenu[12]
+    Images = dm.ImageListMenu
+    left = 732
+    top = 296
+    object mImpression: TMenuItem
+      Caption = 'Impression'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000000000000000000000000000000000
+        00FFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBD
+        BDFFBDBDBDFF000000FFBDBDBDFF000000FF0000000000000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FFBDBDBDFF000000FF00000000000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFF00FFFFFF00FFFFFF00FF
+        FFFFBDBDBDFFBDBDBDFF000000FF000000FF000000FF00000000000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFF7B7B7BFF7B7B7BFF7B7B
+        7BFFBDBDBDFFBDBDBDFF000000FFBDBDBDFF000000FF00000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FFBDBDBDFFBDBDBDFF000000FF000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBD
+        BDFFBDBDBDFF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000000000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000FF000000000000
+        0000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000000000
+        000000000000000000FFFFFFFFFF000000FF000000FF000000FF000000FF0000
+        00FFFFFFFFFF000000FF000000FF000000FF000000FF00000000000000000000
+        000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFF000000FF000000000000000000000000000000000000
+        00000000000000000000000000FFFFFFFFFF000000FF000000FF000000FF0000
+        00FF000000FFFFFFFFFF000000FF000000000000000000000000000000000000
+        00000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF0000000000000000000000000000
+        0000000000000000000000000000000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF0000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 6
+      OnClick = mImpressionClick
+    end
+  end
+end

@@ -1,0 +1,2697 @@
+inherited FIndividuDomiciles: TFIndividuDomiciles
+  Left = 566
+  Height = 441
+  Top = 287
+  Width = 634
+  ActiveControl = Panel10
+  Align = alClient
+  BorderWidth = 3
+  Caption = 'FIndividuDomiciles'
+  ClientHeight = 441
+  ClientWidth = 634
+  Color = clWindow
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnShow = SuperFormShow
+  object Panel10: TPanel[0]
+    Left = 3
+    Height = 17
+    Top = 3
+    Width = 628
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 17
+    ClientWidth = 628
+    TabOrder = 0
+    object lNom: TLabel
+      Left = 142
+      Height = 17
+      Top = 0
+      Width = 486
+      Align = alClient
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      Caption = 'lNom'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label8: TLabel
+      Cursor = crArrow
+      Left = 54
+      Height = 17
+      Top = 0
+      Width = 88
+      Align = alLeft
+      Caption = 'Domiciles de :'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = 12673280
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object bfsbDeleteAdresse: TFWDelete
+      Cursor = crHandPoint
+      Left = 27
+      Height = 17
+      Hint = 'Supprimer une adresse'
+      Top = 0
+      Width = 27
+      TabOrder = 1
+      Layout = blGlyphTop
+      Spacing = 240
+      Align = alLeft
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = bfsbDeleteAdresseClick
+      ColorFrameFocus = clWhite
+      GlyphSize = 16
+    end
+    object bfsbAjoutAdresse: TFWAdd
+      Cursor = crHandPoint
+      Left = 0
+      Height = 17
+      Hint = 'Ajouter une adresse'
+      Top = 0
+      Width = 27
+      TabOrder = 0
+      Layout = blGlyphTop
+      Spacing = 240
+      Align = alLeft
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = bfsbAjoutAdresseClick
+      ColorFrameFocus = clWhite
+      GlyphSize = 16
+    end
+  end
+  object Panel1: TPanel[1]
+    Left = 3
+    Height = 418
+    Top = 20
+    Width = 628
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 418
+    ClientWidth = 628
+    TabOrder = 1
+    object fpAdresses: TPanel
+      Left = 0
+      Height = 418
+      Top = 0
+      Width = 410
+      Align = alLeft
+      ClientHeight = 418
+      ClientWidth = 410
+      TabOrder = 1
+      object lbDay: TLabel
+        Left = 331
+        Height = 1
+        Top = 6
+        Width = 1
+        Anchors = [akTop, akRight]
+        ParentColor = False
+      end
+      object PanLieu: TPanel
+        Left = 1
+        Height = 238
+        Top = 1
+        Width = 408
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 238
+        ClientWidth = 408
+        PopupMenu = pmVideLieu
+        TabOrder = 0
+        object Panel5: TPanel
+          Left = 0
+          Height = 238
+          Top = 0
+          Width = 67
+          Align = alLeft
+          BevelOuter = bvNone
+          ClientHeight = 238
+          ClientWidth = 67
+          TabOrder = 0
+          object LabelDate: TLabel
+            Left = 2
+            Height = 14
+            Top = 13
+            Width = 26
+            Caption = 'Date'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label6: TLabel
+            Left = 1
+            Height = 14
+            Top = 34
+            Width = 46
+            Caption = 'Adresse'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object LabelCP: TLabel
+            Left = 1
+            Height = 12
+            Top = 67
+            Width = 56
+            Caption = 'Code Postal'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object LabelINSEE: TLabel
+            Left = 1
+            Height = 14
+            Top = 91
+            Width = 30
+            Caption = 'Insee'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object LabelRegion: TLabel
+            Left = 1
+            Height = 14
+            Top = 115
+            Width = 39
+            Caption = 'Région'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object LabelSubd: TLabel
+            Left = 1
+            Height = 12
+            Top = 144
+            Width = 55
+            Caption = 'Subdivision'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -9
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object LabelLatitude: TLabel
+            Left = 1
+            Height = 14
+            Top = 163
+            Width = 45
+            Caption = 'Latitude'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label5: TLabel
+            Left = 1
+            Height = 14
+            Top = 187
+            Width = 57
+            Caption = 'Téléphone'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object Panel7: TPanel
+          Left = 67
+          Height = 238
+          Top = 0
+          Width = 341
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 238
+          ClientWidth = 341
+          TabOrder = 1
+          object Panel6: TPanel
+            Left = 0
+            Height = 21
+            Top = 0
+            Width = 341
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 21
+            ClientWidth = 341
+            TabOrder = 0
+            object sDBMDate: TExtDBDateEdit
+              Left = 0
+              Height = 22
+              Top = 0
+              Width = 306
+              Anchors = [akTop, akLeft, akRight]
+              CharCase = ecNormal
+              MaxLength = 0
+              TabOrder = 0
+              SpaceChar = '_'
+              FontError.Color = clRed
+              FontError.Style = [fsBold]
+              DataField = 'EV_IND_DATE_WRITEN'
+              DataSource = dsAdresses
+            end
+          end
+          object Panel8: TPanel
+            Left = 0
+            Height = 48
+            Top = 21
+            Width = 341
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 48
+            ClientWidth = 341
+            TabOrder = 1
+            object Panel9: TPanel
+              Left = 0
+              Height = 48
+              Top = 0
+              Width = 57
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 48
+              ClientWidth = 57
+              TabOrder = 0
+              object sDBECP: TExtSearchDBEdit
+                Left = -1
+                Height = 22
+                Top = 0
+                Width = 59
+                DataField = 'ev_ind_cp'
+                DataSource = dsAdresses
+                CharCase = ecNormal
+                MaxLength = 0
+                PopupMenu = pmGoogle
+                TabOrder = 0
+                OnEnter = sDBECPEnter
+                OnExit = sDBECPExit
+                OnMouseEnter = InfoCopie
+                OnMouseLeave = EffaceBarreEtat
+                SearchDisplay = 'code'
+                SearchList = 'code;departement'
+                SearchSource = DSVilles
+              end
+              object edINSEE: TExtSearchDBEdit
+                Left = 0
+                Height = 22
+                Top = 24
+                Width = 58
+                DataField = 'ev_ind_insee'
+                DataSource = dsAdresses
+                CharCase = ecNormal
+                MaxLength = 0
+                PopupMenu = pmGoogle
+                TabOrder = 1
+                OnEnter = edINSEEEnter
+                OnExit = edINSEEExit
+                OnMouseEnter = InfoCopie
+                OnMouseLeave = EffaceBarreEtat
+                SearchDisplay = 'insee'
+                SearchList = 'insee;departement'
+                SearchSource = DSVilles
+              end
+            end
+            object Panel11: TPanel
+              Left = 57
+              Height = 48
+              Top = 0
+              Width = 48
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 48
+              ClientWidth = 48
+              TabOrder = 1
+              object LabelVille: TLabel
+                Left = 16
+                Height = 14
+                Top = 3
+                Width = 24
+                Anchors = [akTop, akRight]
+                Caption = 'Ville'
+                ParentColor = False
+              end
+              object LabelDept: TLabel
+                Left = 18
+                Height = 14
+                Top = 26
+                Width = 30
+                Caption = 'Dépt.'
+                ParentColor = False
+              end
+            end
+            object Panel13: TPanel
+              Left = 105
+              Height = 48
+              Top = 0
+              Width = 236
+              Align = alClient
+              BevelOuter = bvNone
+              ClientHeight = 48
+              ClientWidth = 236
+              TabOrder = 2
+              object edDept: TFWDBEdit
+                Left = 0
+                Height = 25
+                Top = 23
+                Width = 236
+                DataField = 'ev_ind_dept'
+                DataSource = dsAdresses
+                Anchors = [akTop, akLeft, akRight]
+                CharCase = ecNormal
+                MaxLength = 0
+                PopupMenu = pmGoogle
+                TabOrder = 0
+                OnMouseEnter = InfoCopie
+                OnMouseLeave = EffaceBarreEtat
+                Align = alClient
+              end
+              object Panel31: TPanel
+                Left = 0
+                Height = 23
+                Top = 0
+                Width = 236
+                Align = alTop
+                Caption = 'Panel31'
+                ClientHeight = 23
+                ClientWidth = 236
+                TabOrder = 1
+                object fbInfosVilles: TXAInfo
+                  Left = 184
+                  Height = 21
+                  Top = 1
+                  Width = 17
+                  TabOrder = 0
+                  Align = alRight
+                  ParentFont = False
+                  OnClick = fbInfosVillesClick
+                  GlyphSize = 16
+                end
+                object btnVillesVoisines: TXANeighbor
+                  Left = 218
+                  Height = 21
+                  Top = 1
+                  Width = 17
+                  TabOrder = 1
+                  Align = alRight
+                  ParentFont = False
+                  OnContextPopup = btnVillesVoisinesContextPopup
+                  GlyphSize = 16
+                end
+                object btnVillesFavoris: TXAFavorite
+                  Left = 201
+                  Height = 21
+                  Top = 1
+                  Width = 17
+                  TabOrder = 2
+                  Align = alRight
+                  ParentFont = False
+                  OnClick = btnVillesFavorisClick
+                  GlyphSize = 16
+                end
+                object edVille: TExtSearchDBEdit
+                  Left = 1
+                  Height = 21
+                  Top = 1
+                  Width = 183
+                  DataField = 'ev_ind_ville'
+                  DataSource = dsAdresses
+                  Anchors = [akTop, akLeft, akRight]
+                  CharCase = ecNormal
+                  MaxLength = 0
+                  ParentShowHint = False
+                  PopupMenu = pmGoogle
+                  TabOrder = 3
+                  OnEnter = edVilleEnter
+                  OnExit = edVilleExit
+                  OnKeyPress = edVilleKeyPress
+                  OnMouseLeave = EffaceBarreEtat
+                  Align = alClient
+                  SearchDisplay = 'ville'
+                  SearchList = 'ville;departement'
+                  SearchSource = DSVilles
+                  OnLocate = edVilleLocate
+                  OnSet = edVilleLocate
+                end
+              end
+            end
+          end
+          object Panel15: TPanel
+            Left = 0
+            Height = 26
+            Top = 107
+            Width = 341
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 26
+            ClientWidth = 341
+            TabOrder = 2
+            object Panel16: TPanel
+              Left = 0
+              Height = 26
+              Top = 0
+              Width = 135
+              Align = alLeft
+              ClientHeight = 26
+              ClientWidth = 135
+              TabOrder = 0
+              object sDBERegion: TFWDBEdit
+                Left = 1
+                Height = 24
+                Top = 1
+                Width = 136
+                DataField = 'ev_ind_region'
+                DataSource = dsAdresses
+                CharCase = ecNormal
+                MaxLength = 0
+                PopupMenu = pmGoogle
+                TabOrder = 0
+                OnMouseEnter = InfoCopie
+                OnMouseLeave = EffaceBarreEtat
+                Align = alLeft
+              end
+            end
+            object Panel17: TPanel
+              Left = 135
+              Height = 26
+              Top = 0
+              Width = 42
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 26
+              ClientWidth = 42
+              TabOrder = 1
+              object LabelPays: TLabel
+                Left = 15
+                Height = 26
+                Top = 0
+                Width = 27
+                Align = alRight
+                Anchors = [akTop, akRight]
+                Caption = 'Pays'
+                ParentColor = False
+              end
+            end
+            object Panel18: TPanel
+              Left = 177
+              Height = 26
+              Top = 0
+              Width = 164
+              Align = alClient
+              BevelOuter = bvNone
+              ClientHeight = 26
+              ClientWidth = 164
+              TabOrder = 2
+              object sDBEPays: TExtSearchDBEdit
+                Left = 80
+                Height = 26
+                Top = 0
+                Width = 84
+                DataField = 'ev_ind_pays'
+                DataSource = dsAdresses
+                BiDiMode = bdRightToLeft
+                CharCase = ecNormal
+                MaxLength = 0
+                ParentBiDiMode = False
+                ParentShowHint = False
+                TabOrder = 0
+                OnMouseEnter = InfoCopie
+                OnMouseLeave = EffaceBarreEtat
+                Align = alRight
+                SearchDisplay = 'pays'
+                SearchSource = DSCountries
+              end
+            end
+          end
+          object Panel19: TPanel
+            Left = 0
+            Height = 21
+            Top = 133
+            Width = 341
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 21
+            ClientWidth = 341
+            TabOrder = 3
+            object edSubd: TFWDBEdit
+              Left = 0
+              Height = 23
+              Top = 0
+              Width = 341
+              DataField = 'ev_ind_subd'
+              DataSource = dsAdresses
+              CharCase = ecNormal
+              MaxLength = 0
+              ParentFont = False
+              PopupMenu = pmGoogle
+              TabOrder = 0
+              OnEnter = edSubdEnter
+              OnExit = edVilleExit
+              OnMouseLeave = EffaceBarreEtat
+              Align = alTop
+            end
+          end
+          object Panel24: TPanel
+            Left = 0
+            Height = 26
+            Top = 154
+            Width = 341
+            Align = alTop
+            Caption = 'Panel24'
+            ClientHeight = 26
+            ClientWidth = 341
+            TabOrder = 4
+            object btnQuiHabite: TJvXPButton
+              Left = 217
+              Height = 24
+              Hint = 'Individus habitants au même endroit'
+              Top = 1
+              Width = 123
+              TabStop = False
+              Caption = 'À la même adresse?'
+              TabOrder = 0
+              Layout = blGlyphTop
+              Align = alRight
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = btnQuiHabiteClick
+            end
+            object Panel21: TPanel
+              Left = 81
+              Height = 24
+              Top = 1
+              Width = 61
+              Align = alRight
+              BevelOuter = bvNone
+              ClientHeight = 24
+              ClientWidth = 61
+              TabOrder = 1
+              object LabelLongitude: TLabel
+                Left = 6
+                Height = 24
+                Top = 0
+                Width = 55
+                Align = alRight
+                Caption = 'Longitude'
+                ParentColor = False
+              end
+              object Panel23: TPanel
+                Left = 50
+                Height = 50
+                Top = 22
+                Width = 170
+                Caption = 'Panel23'
+                TabOrder = 0
+              end
+            end
+            object Panel20: TPanel
+              Left = 1
+              Height = 24
+              Top = 1
+              Width = 82
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 24
+              ClientWidth = 82
+              TabOrder = 2
+              object sdbLatitude: TExtDBNumEdit
+                Left = 0
+                Height = 24
+                Top = 0
+                Width = 82
+                NbBeforeComma = 3
+                NbAfterComma = 8
+                ColorLabel = clActiveText
+                Max = 0
+                Min = 0
+                CharCase = ecNormal
+                Color = 11184810
+                MaxLength = 0
+                PopupMenu = pmGoogle
+                TabOrder = 0
+                Text = 'sdbLatitude'
+                OnExit = sdbLatitudePropertiesValidate
+                OnMouseEnter = InfoCopie
+                OnMouseLeave = EffaceBarreEtat
+                Align = alClient
+                DataField = 'ev_ind_latitude'
+                DataSource = dsAdresses
+              end
+            end
+            object sdbLongitude: TExtDBNumEdit
+              Left = 142
+              Height = 24
+              Top = 1
+              Width = 75
+              NbBeforeComma = 3
+              NbAfterComma = 8
+              ColorLabel = clActiveText
+              Max = 0
+              Min = 0
+              CharCase = ecNormal
+              Color = 11184810
+              MaxLength = 0
+              PopupMenu = pmGoogle
+              TabOrder = 3
+              Text = 'sdbLongitude'
+              OnExit = sdbLatitudePropertiesValidate
+              OnMouseEnter = InfoCopie
+              OnMouseLeave = EffaceBarreEtat
+              Align = alRight
+              DataField = 'ev_ind_longitude'
+              DataSource = dsAdresses
+            end
+          end
+          object Panel25: TPanel
+            Left = 0
+            Height = 58
+            Top = 180
+            Width = 341
+            Align = alClient
+            BevelOuter = bvNone
+            ClientHeight = 58
+            ClientWidth = 341
+            TabOrder = 5
+            object sDBTel: TFWDBMemo
+              Left = 0
+              Height = 58
+              Top = 0
+              Width = 129
+              Align = alLeft
+              DataField = 'ev_ind_tel'
+              DataSource = dsAdresses
+              TabOrder = 0
+            end
+            object Panel26: TPanel
+              Left = 321
+              Height = 58
+              Top = 0
+              Width = 20
+              Align = alRight
+              BevelOuter = bvNone
+              ClientHeight = 58
+              ClientWidth = 20
+              TabOrder = 1
+              object btnEMail: TXAEMail
+                Cursor = crHandPoint
+                Left = 0
+                Height = 17
+                Hint = 'Envoyer un email'
+                Top = 0
+                Width = 20
+                TabStop = False
+                TabOrder = 0
+                Align = alTop
+                Anchors = [akTop, akRight]
+                ParentFont = False
+                ParentShowHint = False
+                ShowHint = True
+                OnClick = btnEMailClick
+                GlyphSize = 16
+              end
+              object cxBtTrouveAdresse: TXAPostCard
+                Cursor = crHandPoint
+                Left = 0
+                Height = 17
+                Hint = 'Chercher une adresse sur internet'
+                Top = 17
+                Width = 20
+                TabStop = False
+                TabOrder = 1
+                Align = alTop
+                Anchors = [akTop, akRight]
+                ParentFont = False
+                ParentShowHint = False
+                ShowHint = True
+                OnClick = cxBtTrouveAdresseClick
+                GlyphSize = 16
+              end
+              object btnInternet: TXAWeb
+                Cursor = crHandPoint
+                Left = 0
+                Height = 17
+                Hint = 'Aller sur le site Web'
+                Top = 34
+                Width = 20
+                TabStop = False
+                TabOrder = 2
+                Align = alTop
+                Anchors = [akTop, akRight]
+                ParentFont = False
+                ParentShowHint = False
+                ShowHint = True
+                OnClick = btnInternetClick
+                GlyphSize = 16
+              end
+            end
+            object Panel27: TPanel
+              Left = 129
+              Height = 58
+              Top = 0
+              Width = 192
+              Align = alClient
+              BevelOuter = bvNone
+              ClientHeight = 58
+              ClientWidth = 192
+              TabOrder = 2
+              object Panel28: TPanel
+                Left = 0
+                Height = 58
+                Top = 0
+                Width = 38
+                Align = alLeft
+                BevelOuter = bvNone
+                ClientHeight = 58
+                ClientWidth = 38
+                TabOrder = 0
+                object Label7: TLabel
+                  Left = 4
+                  Height = 14
+                  Top = 5
+                  Width = 29
+                  Anchors = [akTop, akRight]
+                  Caption = 'EMail'
+                  ParentColor = False
+                end
+                object LabelWEB: TLabel
+                  Left = 9
+                  Height = 14
+                  Top = 30
+                  Width = 24
+                  Anchors = [akTop, akRight]
+                  Caption = 'Web'
+                  ParentColor = False
+                end
+              end
+              object Panel29: TPanel
+                Left = 38
+                Height = 58
+                Top = 0
+                Width = 154
+                Align = alClient
+                BevelOuter = bvNone
+                ClientHeight = 58
+                ClientWidth = 154
+                TabOrder = 1
+                object sDBEMail: TFWDBEdit
+                  Left = 0
+                  Height = 22
+                  Top = 0
+                  Width = 154
+                  DataField = 'ev_ind_mail'
+                  DataSource = dsAdresses
+                  CharCase = ecNormal
+                  MaxLength = 0
+                  TabOrder = 0
+                  Align = alTop
+                end
+                object sdbWWW: TFWDBEdit
+                  Left = 0
+                  Height = 22
+                  Top = 22
+                  Width = 154
+                  DataField = 'ev_ind_web'
+                  DataSource = dsAdresses
+                  CharCase = ecNormal
+                  MaxLength = 0
+                  TabOrder = 1
+                  OnExit = sdbWWWExit
+                  Align = alTop
+                end
+              end
+            end
+          end
+          object sDBMAdresse: TFWDBMemo
+            Left = 0
+            Height = 38
+            Top = 69
+            Width = 341
+            Align = alTop
+            DataField = 'ev_ind_lignes_adresse'
+            DataSource = dsAdresses
+            TabOrder = 6
+          end
+        end
+      end
+      object Panel4: TPanel
+        Left = 1
+        Height = 173
+        Top = 244
+        Width = 408
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 173
+        ClientWidth = 408
+        TabOrder = 1
+        object PageControl: TPageControl
+          Left = 0
+          Height = 152
+          Top = 21
+          Width = 408
+          ActivePage = OngletNotes
+          Align = alClient
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabIndex = 0
+          TabOrder = 0
+          OnChange = PageControlChange
+          OnEnter = PageControlEnter
+          OnExit = PageControlExit
+          object OngletNotes: TTabSheet
+            Caption = 'Notes'
+            ClientHeight = 124
+            ClientWidth = 404
+            ImageIndex = 66
+            object edCommentaires: TFWDBMemo
+              Left = 0
+              Height = 124
+              Top = 0
+              Width = 404
+              Align = alClient
+              DataField = 'EV_IND_COMMENT'
+              DataSource = dsAdresses
+              OnKeyDown = edCommentairesKeyDown
+              OnKeyPress = edVilleKeyPress
+              ParentFont = False
+              TabOrder = 0
+            end
+          end
+          object OngletSources: TTabSheet
+            Caption = 'Sources'
+            ClientHeight = 124
+            ClientWidth = 404
+            ImageIndex = 66
+            object edSources: TFWDBMemo
+              Left = 0
+              Height = 126
+              Top = 0
+              Width = 400
+              Align = alClient
+              DataField = 'EV_IND_SOURCE'
+              DataSource = dsAdresses
+              OnKeyDown = edSourcesKeyDown
+              OnKeyPress = edVilleKeyPress
+              ParentFont = False
+              TabOrder = 0
+              Tabstop = False
+            end
+          end
+          object OngletMedias: TTabSheet
+            Caption = 'Médias'
+            ClientHeight = 124
+            ClientWidth = 404
+            ImageIndex = 66
+            object cxGridMedias: TExtDBGrid
+              Cursor = crHandPoint
+              Left = 0
+              Height = 126
+              Hint = 'Double-cliquer sur l''image pour la visualiser.'
+              Top = 0
+              Width = 400
+              TitleButtons = False
+              AutoSort = False
+              Columns = <              
+                item
+                  ReadOnly = True
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Informations'
+                  Title.Orientation = toHorizontal
+                  Width = 271
+                  FieldName = 'MULTI_PATH'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Mémo'
+                  Title.Orientation = toHorizontal
+                  Width = 271
+                  FieldName = 'MULTI_MEMO'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end              
+                item
+                  ReadOnly = True
+                  Title.Alignment = taCenter
+                  Title.Caption = 'MULTI_REDUITE'
+                  Title.Orientation = toHorizontal
+                  Width = 65
+                  FieldName = 'MULTI_REDUITE'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end>
+              KeyStrokes = <              
+                item
+                  Command = rxgcShowFindDlg
+                  ShortCut = 16454
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowColumnsDlg
+                  ShortCut = 16471
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowFilterDlg
+                  ShortCut = 16468
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowSortDlg
+                  ShortCut = 16467
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowQuickFilter
+                  ShortCut = 16465
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcHideQuickFilter
+                  ShortCut = 16456
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcSelectAll
+                  ShortCut = 16449
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcDeSelectAll
+                  ShortCut = 16429
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcInvertSelection
+                  ShortCut = 16426
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcOptimizeColumnsWidth
+                  ShortCut = 16427
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcCopyCellValue
+                  ShortCut = 16451
+                  Enabled = True
+                end>
+              OptionsRx = []
+              Align = alClient
+              Color = clWindow
+              DrawFullLine = False
+              FocusColor = clRed
+              SelectedColor = clHighlight
+              GridLineStyle = psSolid
+              DataSource = DSMedias
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+              ParentColor = False
+              ParentFont = False
+              PopupMenu = PmImage
+              Scrollbars = ssAutoBoth
+              TabOrder = 0
+              TitleFont.CharSet = ANSI_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -11
+              TitleFont.Name = 'Tahoma'
+              OnDblClick = cxGridTableMediasCellDblClick
+              OnExit = colMemoPropertiesEditValueChanged
+            end
+          end
+        end
+        object PanButtons: TPanel
+          Left = 0
+          Height = 21
+          Top = 0
+          Width = 408
+          Align = alTop
+          Anchors = [akTop, akRight]
+          BevelOuter = bvNone
+          ClientHeight = 21
+          ClientWidth = 408
+          TabOrder = 1
+          object bsfbRetirer: TFWDelete
+            Left = 331
+            Height = 21
+            Top = 0
+            Width = 28
+            TabOrder = 0
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            OnClick = bsfbRetirerClick
+            GlyphSize = 16
+          end
+          object bsfbAjout: TFWAdd
+            Cursor = crHandPoint
+            Left = 304
+            Height = 21
+            Hint = 'Ajoute un témoin à cet événement'
+            Top = 0
+            Width = 27
+            TabStop = False
+            TabOrder = 1
+            Layout = blGlyphTop
+            Spacing = 240
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = bsfbAjoutClick
+            ColorFrameFocus = clWhite
+            GlyphSize = 16
+          end
+          object btnDetail: TFWXPButton
+            Left = 359
+            Top = 0
+            Width = 49
+            Caption = 'Détails'
+            TabOrder = 2
+            Glyph.Data = {
+              07544269746D617000000000
+            }
+            Align = alRight
+            Anchors = [akTop, akRight]
+            OnClick = btnDetailClick
+          end
+        end
+      end
+      object Splitter3: TSplitter
+        Cursor = crVSplit
+        Left = 1
+        Height = 5
+        Top = 239
+        Width = 408
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+    end
+    object Panel2: TPanel
+      Left = 415
+      Height = 418
+      Top = 0
+      Width = 213
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 418
+      ClientWidth = 213
+      TabOrder = 0
+      object tvAdr: TVirtualStringTree
+        Left = 0
+        Height = 150
+        Top = 0
+        Width = 213
+        Align = alTop
+        Header.AutoSizeIndex = 0
+        Header.Columns = <>
+        Header.DefaultHeight = 17
+        Header.MainColumn = -1
+        Header.Options = [hoAutoResize, hoDrag, hoShowSortGlyphs]
+        Header.SortColumn = 0
+        Images = ImgCat
+        PopupMenu = pmAdresses
+        TabOrder = 0
+        TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScrollOnExpand, toAutoSort, toAutoTristateTracking, toAutoDeleteMovedNodes]
+        OnClick = tvAdrClick
+        OnGetText = tvAdrGetText
+        OnGetImageIndex = tvAdrGetImageIndex
+        OnInitNode = tvAdrInitNode
+      end
+      object Panel3: TPanel
+        Left = 0
+        Height = 263
+        Top = 155
+        Width = 213
+        Align = alClient
+        ClientHeight = 263
+        ClientWidth = 213
+        Color = clWhite
+        ParentColor = False
+        TabOrder = 1
+        OnResize = Panel3Resize
+        object cxPhoto: TImage
+          Left = 1
+          Height = 261
+          Top = 1
+          Width = 211
+          Align = alClient
+          Center = True
+          OnDblClick = mVisualiseActeClick
+          PopupMenu = PmImage
+          Proportional = True
+        end
+        object lPoint: TImage
+          Left = 8
+          Height = 16
+          Top = 24
+          Width = 16
+          AutoSize = True
+          Transparent = True
+        end
+        object cxDBImage: TExtDBImage
+          Left = 48
+          Height = 49
+          Top = 32
+          Width = 49
+          Visible = False
+        end
+      end
+      object Splitter2: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 5
+        Top = 150
+        Width = 213
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+    end
+    object Splitter1: TSplitter
+      Left = 410
+      Height = 418
+      Top = 0
+      Width = 5
+    end
+  end
+  object dsAdresses: TDataSource[2]
+    DataSet = IBQEve
+    OnStateChange = dsAdressesStateChange
+    OnDataChange = dsAdressesDataChange
+    left = 200
+    top = 384
+  end
+  object Language: TYLanguage[3]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 112
+    top = 176
+  end
+  object pmDate: TPopupMenu[4]
+    OnPopup = pmDatePopup
+    left = 472
+    top = 88
+  end
+  object ImgCat: TImageList[5]
+    BkColor = clForeground
+    left = 573
+    top = 11
+    Bitmap = {
+      4C69040000001000000010000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000700000FF7F0000FF7F0000FF7F0000FF7F00
+      00FF7F0000FF7F0000FF7F7F7FFF505F50FF505F50FF00000000000000000000
+      00000000000000000000000000007F0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFEFEFEFFF505F50FF505F50FF505F50FF505F50FF505F
+      50FF505F50FF505F50FF000000007F0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFCFCFCFFF7F7F7FFFFFFFFFFFDFDFDFFF00000000707F
+      FFFF0000FFFF202060FF000000007F0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FF505F50FFFFFFFFFFFFFFFFFF00000000DFDFDFFF707F
+      FFFF0000BFFF00007FFF000030FF7F0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FF7F7F7FFFFFFFFFFFDFDFDFFF00000000FFFFFFFF505F
+      DFFF00007FFF0000FFFF00007FFF7F0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FF7F0000FFFFFFFFFFFFFFFFFF00000000DFDFDFFFDFDFDFFF707F
+      BFFF0000BFFF0000FFFF00007FFF7F0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FF7F7F7FFFFFFFFFFFDFDFDFFF00000000FFFFFFFFDFDFDFFF3030
+      70FF0000FFFF0000FFFF00007FFF7F0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FF7F0000FFFFFFFFFFFFFFFFFF00000000DFDFDFFFDFDFDFFF000000000000
+      BFFF0000FFFF0000FFFF00007FFF700000FF7F0000FF7F0000FF7F0000FF7F00
+      00FF7F0000FFFFFFFFFFDFDFDFFF00000000FFFFFFFFDFDFDFFF303070FF0000
+      FFFF0000FFFF0000FFFF00007FFF00000000000000000000000000000000505F
+      50FFFF0000FFFFFFFFFF00000000DFDFDFFFDFDFDFFF000000000000BFFF0000
+      FFFF0000FFFF0000FFFF00007FFF000000000000000000000000000000008F8F
+      8FFF505F50FF505F50FF505F50FF505F50FF505F50FF202020FF0000FFFF0000
+      FFFF0000FFFF0000FFFF00007FFF000000000000000000000000000000000000
+      000000000000000000000000000000000000000000008F8F8FFF505F50FF505F
+      50FF505F50FF505F50FF505F50FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000FF000000000000000000000000C0C0C0FFC0C0C0FFC0C0
+      C0FF000000FF0000000000000000000000000000000000000000000000000000
+      0000FFFFFFFFFFFFFFFFCCCCFFFF000000FFC0C0C0FFC0C0C0FFC0C0C0FFC0C0
+      C0FF555555FF000000FF0000000000000000000000000000000000000000FFFF
+      FFFFFFFFFFFF555555FFFFFFFFFFC0C0C0FFC0C0C0FFC0C0C0FFC0C0C0FF5555
+      55FF000000FF0000000000000000000000000000000000000000FFFFFFFFFFFF
+      FFFF555555FFFFFFFFFFC0C0C0FFC0C0C0FFC0C0C0FFC0C0C0FF555555FF0000
+      00FF0000000000000000000000000000000000000000FFFFFFFFCCCCFFFF5555
+      55FFCCCCFFFFCCCCFFFF999999FF999999FFC0C0C0FF555555FF000000FFCCCC
+      FFFFCCCCFFFF000000FF0000000000000000FFFFFFFFCCCCFFFF555555FFCCCC
+      FFFFCCCCFFFF555555FFCCCCFFFF000000FF999999FF000000FFCCCCFFFFCCCC
+      FFFFCCCCFFFF000000FF00000000000000FFCCCCFFFFCCCCFFFFCCCCFFFFCCCC
+      FFFF555555FFCCCCFFFFCCCCFFFF555555FFCCCCFFFFCCCCFFFFCCCCFFFFCCCC
+      FFFF000000FF999999FF0000000000000000999999FF000000FF9999FFFF9999
+      FFFF9999FFFF9999FFFF555555FF9999FFFF9999FFFF9999FFFF9999FFFF0000
+      00FF999999FF0000000000000000000000000000000000000000999999FF0000
+      00FF9999FFFF9999FFFF9999FFFF9999FFFF9999FFFF9999FFFF000000FF9999
+      99FF000000000000000000000000000000000000000000000000000000000000
+      0000999999FF000000FF6666FFFF6666FFFF6666FFFF000000FF999999FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000999999FF000000FF000000FF999999FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000F2EAC0FFDCC550FFDDC65FFFEFE4B8FFF0F0
+      FDFFABABFDFFB2B1FEFF00000000000000000000000000000000000000000000
+      000000000000EADEA0FFD0B220FFD0B124FFDCC562FFFBF8EDFF807EF3FF221F
+      F4FF221FF4FF9593F7FF00000000000000000000000000000000FBF9F0FFE9DC
+      A1FFCDAF20FFCFB12EFFDECB72FFE7D790FFE8D795FFF9F6E8FF3E39E8FF3E39
+      E8FF3E39E8FFA29EE8FFFDFCF8FF00000000FBF9F0FFE1CF81FFC7A512FFCBAB
+      1AFFD8BF51FFE5D489FFE8D895FFEEE2AFFFF6F1D9FFF8F3DDFF5852DDFF6D67
+      DDFFB3ADDDFFE3DFDDFFE2D291FFF3ECD0FFC3A212FFC9A81AFFD9C051FFDFCA
+      6AFFDCC457FFD2B41FFFEEE3B6FFFDFCF6FFFCFAF3FFF5EED3FF7068D1FFB6AE
+      D2FFF2E8C4FFE8D99AFFC09C03FFC9AC32FFCBAA0FFFB38D08FFA47B06FFC19F
+      19FFEADDA1FFF4EED0FFD4B72BFFF0E7BDFFEDE1ADFFF3EBC9FF877DC6FFBEB6
+      C7FFEDE1ADFFE7D790FFBD9903FFBA9503FFD3B627FFD1B225FFC7A722FFD3B6
+      27FFD6BB38FFEFE4B7FFE2CE76FFD7BD40FFE7D790FFF0E7BEFF9D92BBFFC8BD
+      BDFFEBDEA7FFE7D790FFBA9503FFB69105FFD7BB39FFD7BB39FFD7BB39FFD7BB
+      39FFD7BB39FFDCC457FFE7D790FFD0AF0FFFE7D790FFEEE3B4FFB3A6AEFFD1C5
+      B1FFEADDA2FFE7D790FFB69105FFB48D05FFD9C04BFFD9C04BFFD9C04BFFD9C0
+      4BFFD9C04BFFD9C04BFFE7D790FFD5B72EFFE7D790FFECDFA9FFC8BAA3FFDACD
+      A5FFE9DB9CFFE7D790FFB48D05FFB08A05FFDDC55CFFDDC55CFFDDC55CFFDDC5
+      5CFFDDC55CFFDDC55CFFE7D790FFD5B72EFFE7D790FFE9DB9EFFDDCD96FFE3D2
+      93FFE0CD83FFC4A641FFB28E0FFFAD8505FFDCC666FFDFCB6CFFDFCB6CFFDFCB
+      6CFFDFCB6CFFDFCB6CFFE7D790FFD5B72EFFE7D790FFE7D792FFDCC87BFFC3A4
+      41FFAF8A0FFFBFAB67FFCDCAC0FFB8A04FFFA98105FFBB9A2FFFD1B75AFFE3D0
+      7BFFE3D07BFFE3D07BFFE7D790FFD5B72EFFD7C272FFB89730FFAE8B1EFFC0AE
+      74FFCDCAC0FFCCCCCCFFD9D9D9FFCCCCCCFFCDC9C0FFC1B182FFB19337FFAA83
+      12FFBD9E3DFFD9C474FFCFB663FFB48E1DFFAC871EFFC1B182FFCCCCCCFFCCCC
+      CCFFD9D9D9FFF3F3F3FF00000000ECECECFFD6D6D6FFCCCCCCFFCCCCCCFFCAC4
+      B3FFBDAA75FFAE8F37FFB19543FFC3B58FFFCCCCCCFFCCCCCCFFE0E0E0FFF3F3
+      F3FF0000000000000000000000000000000000000000F9F9F9FFE3E3E3FFD3D3
+      D3FFCCCCCCFFCCCCCCFFCCCCCCFFCCCCCCFFE0E0E0FFF9F9F9FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000F3F3F3FFE6E6E6FFE9E9E9FFF9F9F9FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00FF000000FFFF0000FFFF0000FFFF0000FFFF0000FF000000FF000000000000
+      000000000000000000000000000000000000000000000000000000FF00FF00FF
+      00FF00FF00FFFF0000FFFF0000FF00FF00FF00FF00FFFF0000FFFF0000FF0000
+      00FF000000000000000000000000000000000000000000FF00FF00FF00FF00FF
+      00FF00FF00FFFF0000FFFF0000FF00FF00FF00FF00FFFF0000FFFF0000FF00FF
+      00FF000000FF000000000000000000000000FF0000FF00FF00FF00FF00FF00FF
+      00FF00FF00FF00FF00FF00FF00FF00FF00FFFF0000FFFF0000FFFF0000FF00FF
+      00FF00FF00FF000000FF00000000000000FFFF0000FF00FF00FF00FF00FF00FF
+      00FF00FF00FF00FF00FF00FF00FF00FF00FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FF00FF00FF00000000000000FFFF0000FF00FF00FF00FF00FF00FF
+      00FF00FF00FF00FF00FF00FF00FF00FF00FFFF0000FFFF0000FFFF0000FFFF00
+      00FF00FF00FF00FF00FF00000000FF0000FFFF0000FFFF0000FF00FF00FF00FF
+      00FFFF0000FFFF0000FFFF0000FF00FF00FFFF0000FFFF0000FFFF0000FFFF00
+      00FF00FF00FF00FF00FF000000FFFF0000FFFF0000FFFF0000FFFF0000FF00FF
+      00FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FF00FF00FF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FF00FF00FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FF00FF00FF00FF00FF00FF00FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FF000000FF000000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FFFF00
+      00FFFF0000FFFF0000FF0000000000000000FF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FFFF00
+      00FFFF0000FF000000FF0000000000000000000000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF00FF00FF00FF00FF00FF00FFFF0000FFFF00
+      00FFFF0000FF00000000000000000000000000000000000000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FFFF0000FF00FF00FFFF0000FFFF0000FFFF00
+      00FF000000000000000000000000000000000000000000000000000000FFFF00
+      00FFFF0000FFFF0000FFFF0000FFFF0000FF00FF00FFFF0000FF000000FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000FF000000FF000000FF000000FF00000000000000000000
+      0000000000000000000000000000
+    }
+  end
+  object ImageList1: TImageList[6]
+    BkColor = clForeground
+    left = 220
+    top = 27
+    Bitmap = {
+      4C69040000001000000010000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000003585
+      00FF368500FF368500FF368500FF368500FF368500FF368500FF358500FF0000
+      0000000000000000000000000000000000000000000000000000000000003481
+      01FF6EB861FF6EB861FF6EB861FF6EB861FF6EB861FF6EB861FF348101FF0000
+      000000000000000000000000000000000000000000000000000000000000327C
+      02FF8DCF8DFF8DCF8DFF8DCF8DFF8DCF8DFF8DCF8DFF8DCF8DFF327C02FF0000
+      0000000000000000000000000000307702FF307702FF307702FF307702FF3077
+      02FF9CD59CFF9CD59CFF9CD59CFF9CD59CFF9CD59CFF9CD59CFF307702FF3077
+      02FF307702FF307702FF307702FF2E7303FFABDBABFFABDBABFFABDBABFFABDB
+      ABFFABDBABFFABDBABFFABDBABFFABDBABFFABDBABFFABDBABFFABDBABFFABDB
+      ABFFABDBABFFABDBABFF2E7303FF2D6E04FFBAE2BAFFBAE2BAFFBAE2BAFFBAE2
+      BAFFBAE2BAFFBAE2BAFFBAE2BAFFBAE2BAFFBAE2BAFFBAE2BAFFBAE2BAFFBAE2
+      BAFFBAE2BAFFBAE2BAFF2D6E04FF2B6905FFC9E8C9FFC9E8C9FFC9E8C9FFC9E8
+      C9FFC9E8C9FFC9E8C9FFC9E8C9FFC9E8C9FFC9E8C9FFC9E8C9FFC9E8C9FFC9E8
+      C9FFC9E8C9FFC9E8C9FF2B6905FF296406FF78C374FF67B455FF56A437FF4494
+      18FFD7EED7FFD7EED7FFD7EED7FFD7EED7FFD7EED7FFD7EED7FF378800FF3788
+      00FF378800FF378800FF296406FF275F06FF78C374FF67B455FF56A437FF4494
+      18FFE6F5E6FFE6F5E6FFE6F5E6FFE6F5E6FFE6F5E6FFE6F5E6FF378800FF3788
+      00FF378800FF378800FF275F06FF255B07FF78C374FF67B455FF56A437FF4494
+      18FFF5FBF5FFF5FBF5FFF5FBF5FFF5FBF5FFF5FBF5FFF5FBF5FF378800FF3788
+      00FF378800FF378800FF255B07FF235608FF235608FF235608FF235608FF2356
+      08FF508E42FF70BC66FF5FAC47FF4E9D28FF3D8D0AFF337E01FF286206FF2862
+      06FF286206FF286206FF235608FF000000000000000000000000000000002251
+      09FF4F8C42FF70BC66FF5FAC47FF4E9D28FF3D8D0AFF317A02FF225109FF0000
+      000000000000000000000000000000000000000000000000000000000000204C
+      09FF4E8A43FF70BC66FF5FAC47FF4E9D28FF3D8D0AFF317902FF204C09FF0000
+      0000000000000000000000000000000000000000000000000000000000001E48
+      0AFF1E480AFF1E480AFF1E480AFF1E480AFF1E480AFF1E480AFF1E480AFF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000085FF0000
+      85FF000000000000000000000000000000000000000000000000000085FF0000
+      85FF00000000000000000000000000000000000085FF000085FF0708EFFF0708
+      F7FF000085FF000085FF0000000000000000000085FF000085FF0708F7FF0708
+      EFFF000085FF000085FF00000000000085FF1A1DFFFF1A1DFFFF1A1DFFFF1A1D
+      FFFF1A1DFFFF1A1DFFFF000085FF000085FF1A1DFFFF1A1DFFFF1A1DFFFF1A1D
+      FFFF1A1DFFFF1A1DFFFF000085FF000085FF090AD1FF262AF7FF2D32FFFF2D32
+      FFFF2D32FFFF2D32FFFF2D32FFFF2D32FFFF2D32FFFF2D32FFFF2D32FFFF2D32
+      FFFF262AF4FF090AC9FF000085FF000085FF0000C2FF0000C2FF1A1CDCFF3B41
+      FBFF4046FFFF4046FFFF4046FFFF4046FFFF4046FFFF4046FFFF3B41F7FF1A1C
+      C2FF0000A3FF0000B6FF000085FF000085FF0000C2FF0000C2FF2124D8FF4950
+      F7FF535BFFFF535BFFFF535BFFFF535BFFFF535BFFFF535BFFFF4950EFFF2124
+      BAFF0000A3FF0000B6FF000085FF000085FF1B1DD1FF4E55EFFF6670FFFF6670
+      FFFF6670FFFF6670FFFF6670FFFF6670FFFF6670FFFF6670FFFF6670FFFF6670
+      FFFF4E55E8FF1B1DC9FF000085FF000085FF5961EFFF7884FFFF7884FFFF7884
+      FFFF7884FFFF6873F5FF2427D3FF2427F9FF6873FBFF7884FFFF7884FFFF7884
+      FFFF7884FFFF5961EDFF000085FF000085FF0000C2FF3237D8FF7985F7FF828F
+      F7FF434ACDFF0000ACFF0000BEFF0000F5FF0000DBFF434AE2FF828FFBFF7985
+      F1FF3237C6FF0000B6FF000085FF000085FF0000C2FF0000C2FF090AC5FF1214
+      A2FF000099FF0000ACFF0000BEFF0000F5FF0000DBFF0000C4FF1214B2FF090A
+      98FF0000A3FF0000B6FF000085FF000085FF0000C2FF0000C2FF0000C2FF0000
+      97FF000099FF0000ACFF0000BEFF0000F5FF0000DBFF0000C4FF0000A3FF0000
+      91FF0000A3FF0000B6FF000085FF000085FF0000BEFF0000C2FF0000C2FF0000
+      97FF000099FF0000A9FF0000A0FF0000BBFF0000D5FF0000C4FF0000A3FF0000
+      91FF0000A3FF0000B6FF000085FF00000000000085FF0000BEFF0000BEFF0000
+      97FF000099FF0000A9FF000085FF000085FF0000D5FF0000C4FF0000A3FF0000
+      8FFF0000A3FF000085FF000000000000000000000000000085FF0000BEFF0000
+      97FF000085FF000085FF0000000000000000000085FF000085FF0000A3FF0000
+      8FFF000085FF0000000000000000000000000000000000000000000085FF0000
+      85FF000000000000000000000000000000000000000000000000000085FF0000
+      85FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000848484FF000000FF000000FF848484FF00000000000000000000
+      00000000000000000000000000000000000000000000000000FF000000FF0000
+      0000848484FF000000FFFFFFFFFFFFFFFFFF000000FF848484FF000000000000
+      00FF000000FF000000000000000000000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF0000000000000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFF000000FF000000FF000000FF000000FF000000FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF0000000000000000000000FFFFFFFFFFFFFFFFFF0000
+      00FF000000FF848484FF848484FF848484FF848484FF000000FF000000FFFFFF
+      FFFFFFFFFFFF000000FF0000000000000000000000FF848484FF848484FF0000
+      00FF848484FFFFFF00FFC6C6C6FF848484FF848484FF848484FF000000FF8484
+      84FF848484FF000000FF0000000000000000000000FF848484FF848484FF0000
+      00FF848484FFC6C6C6FF848484FF848484FF848484FF848484FF000000FF8484
+      84FF848484FF000000FF0000000000000000000000FF848484FF848484FF0000
+      00FF848484FF848484FF848484FF848484FF848484FF848484FF000000FF8484
+      84FF848484FF000000FF0000000000000000000000FF848484FF848484FF0000
+      00FF000000FF848484FF848484FF848484FF848484FF000000FF000000FF8484
+      84FF848484FF000000FF0000000000000000848484FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF848484FF00000000000000000000000000000000000000000000
+      000000000000848484FF000000FF000000FF848484FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000FF0000
+      00FF000000FF000000FF000000FF000000FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF000000FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000FFFFFF
+      FFFF000000FFBFBFBFFFFFFFFFFF000000FFFFFFFFFF000000FF000000000000
+      0000000000000000000000000000000000000000000000000000000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFF000000FF0000
+      0000000000000000000000000000000000000000000000000000000000FFFFFF
+      FFFF000000FF000000FFFFFFFFFF000000FF000000FF000000FF000000FF0000
+      00FF000000000000000000000000000000000000000000000000000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF000000000000000000000000000000000000000000000000000000FFFFFF
+      FFFF000000FF000000FF000000FF000000FFFFFFFFFF000000FFFFFFFFFF0000
+      00FF000000000000000000000000000000000000000000000000000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF000000000000000000000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FFFFFFFFFFBFBFBFFFFFFFFFFFBFBF
+      BFFFFFFFFFFFBFBFBFFFFFFFFFFFBFBFBFFFFFFFFFFFBFBFBFFFFFFFFFFFBFBF
+      BFFFFFFFFFFFBFBFBFFF000000FF000000FFBFBFBFFFFFFFFFFFBFBFBFFFFFFF
+      FFFFBFBFBFFFFFFFFFFFBFBFBFFFFFFFFFFFBFBFBFFFFFFFFFFFBFBFBFFFFFFF
+      FFFF0000FFFFFFFFFFFF000000FF000000FFFFFFFFFFBFBFBFFFFFFFFFFFBFBF
+      BFFFFFFFFFFFBFBFBFFFFFFFFFFFBFBFBFFFFFFFFFFFBFBFBFFFFFFFFFFFBFBF
+      BFFFFFFFFFFFBFBFBFFF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FFBFBFBFFFBFBFBFFFBFBFBFFFBFBF
+      BFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBF
+      BFFFBFBFBFFFBFBFBFFF000000FF000000FFBFBFBFFFBFBFBFFFBFBFBFFFBFBF
+      BFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBF
+      BFFFBFBFBFFFBFBFBFFF000000FF00000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000
+    }
+  end
+  object dxComponentPrinter1: TPrinterSetupDialog[7]
+    left = 432
+    top = 112
+  end
+  object pmAdresses: TPopupMenu[8]
+    Images = dm.ImageListMenu
+    OnPopup = pmAdressesPopup
+    left = 520
+    top = 96
+    object mAjouterAdresse: TMenuItem
+      Caption = 'Ajouter une adresse'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000FF0000
+        00FF008484FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF000000FF00000000000000000000000000000000000000FF00FF
+        FFFF000000FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF000000FF000000000000000000000000000000FFFFFF
+        FFFF00FFFFFF000000FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF008484FF000000FF0000000000000000000000FF00FF
+        FFFFFFFFFFFF00FFFFFF000000FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF008484FF008484FF000000FF00000000000000FFFFFF
+        FFFF00FFFFFFFFFFFFFF00FFFFFF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF00FF
+        FFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FF
+        FFFF000000FF0000000000000000000000000000000000000000000000FFFFFF
+        FFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFF
+        FFFF000000FF0000000000000000000000000000000000000000000000FF00FF
+        FFFFFFFFFFFF00FFFFFF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000000000
+        00FF000000FF000000FF00000000000000000000000000000000000000000000
+        00000000000000000000000000FF000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00000000000000000000000000FF00000000000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00FF000000FF000000FF00000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 5
+      ShortCut = 45
+      OnClick = bfsbAjoutAdresseClick
+    end
+    object mSupprimerAdresse: TMenuItem
+      Caption = 'Supprimer cette adresse'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        00000000000000000000000000000000000000000000424A42FF424A42FF424A
+        42FF000000FF000000FF00000000000000000000000000000000000000000000
+        0000000000000000000000000000424A42FF424A42FFCECECEFFCECECEFF8484
+        84FF424A42FF424A42FF181818FF000000000000000000000000000000000000
+        000000000000424A42FF424A42FFCECECEFFCECECEFFCECECEFFCECECEFFCECE
+        CEFF424A42FF424A42FF000000FF000000000000000000000000000000000000
+        0000848484FFCECECEFFCECECEFFD6E7E7FF007B00FFD6E7E7FFCECECEFFCECE
+        CEFF5A635AFF424A42FF424A42FF000000FF0000000000000000000000000000
+        0000848484FFD6E7E7FFD6E7E7FF007B00FF007B00FF007B00FF5A945AFFCECE
+        CEFF848484FF5A635AFF424A42FF000000FF0000000000000000000000000000
+        00006B736BFFD6E7E7FF219421FFBDBDBDFF007B00FFD6E7E7FF007B00FFCECE
+        CEFF848484FF5A635AFF5A635AFF424A42FF000000FF00000000000000006B73
+        6BFFD6E7E7FFBDBDBDFF007B00FFBDBDBDFFD6E7E7FFCECECEFFD6E7E7FFCECE
+        CEFFCECECEFF5A635AFF5A635AFF5A635AFF000000FF00000000000000008484
+        84FFD6E7E7FF219421FF007B00FF007B00FFBDBDBDFF007B00FF007B00FFD6E7
+        E7FFCECECEFF848484FF5A635AFF5A635AFF000000FF424A42FF000000006B73
+        6BFFD6E7E7FFD6E7E7FF007B00FFBDBDBDFFD6E7E7FF848484FF007B00FFBDBD
+        BDFFCECECEFF848484FF6B736BFF5A635AFF5A635AFF424A42FF848484FFD6E7
+        E7FFD6E7E7FFCECECEFFD6E7E7FF219421FF219421FFCECECEFFF7F7F7FFD6E7
+        E7FFF7F7F7FFF7F7F7FF848484FF848484FF5A635AFF424A42FF6B736BFFD6E7
+        E7FFCECECEFFCECECEFFCECECEFFCECECEFFF7F7F7FFF7F7F7FFBDBDBDFFBDBD
+        BDFFBDBDBDFFBDBDBDFFF7F7F7FF6B736BFF848484FF424A42FF848484FFCECE
+        CEFFCECECEFFF7F7F7FFF7F7F7FF848484FFBDBDBDFFBDBDBDFF6B736BFFD6E7
+        E7FFD6E7E7FF6B736BFFD6E7E7FFF7F7F7FF6B736BFF424A42FF848484FFF7F7
+        F7FFF7F7F7FF848484FF6B736BFFBDBDBDFFD6E7E7FF6B736BFFF7F7F7FFF7F7
+        F7FFD6E7E7FF848484FF6B736BFF848484FF00000000000000006B736BFF8484
+        84FFBDBDBDFFBDBDBDFFD6E7E7FFF7F7F7FF6B736BFFF7F7F7FFF7F7F7FF8484
+        84FF6B736BFF848484FF00000000000000000000000000000000000000000000
+        0000848484FF6B736BFF848484FF848484FFF7F7F7FF6B736BFF848484FF8484
+        84FF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000848484FF6B736BFF848484FF848484FF000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 2
+      ShortCut = 16430
+      OnClick = bfsbDeleteAdresseClick
+    end
+    object mQuiHabite: TMenuItem
+      Caption = 'Qui habite là?'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000008C8C8CFF215A63FF003173FF0821
+        4AFF4A524AFF636B63FF00000000000000000000000000000000000000000000
+        0000000000008C8C8CFF5A635AFF212121FF007BBDFF0073D6FF007BFFFF0052
+        FFFF181031FF313131FF4A524AFF848484FF0000000000000000000000008C8C
+        8CFF635A52FFAD526BFFFF8C84FF732929FF00ADFFFF0073D6FF007BFFFF0052
+        FFFF392973FF180063FF313131FF4A524AFF4A524AFF00000000000000005A63
+        5AFFFFADADFFD6528CFFFF8C84FF732929FF00ADFFFF0073D6FF007BFFFF0052
+        FFFF392973FF210094FF212121FF848484FF0000000000000000000000005A63
+        5AFFFFADADFFD6528CFFFF8C84FF732929FF00ADFFFF0073D6FF0073EFFF0042
+        D6FF392973FF210094FF5A635AFF000000000000000000000000000000005A63
+        5AFFFFADADFFD6528CFFFF8C84FF31424AFF00ADFFFF008CEFFF00ADFFFF0031
+        BDFF392973FF210094FF5A635AFF000000000000000000000000000000005A63
+        5AFFFFADADFFD6528CFFFF9C9CFF005273FF00ADFFFF00ADFFFF00ADFFFF0052
+        FFFF001863FF311084FF5A635AFF000000000000000000000000000000007352
+        4AFFFFADADFFFFADADFFFFADADFF005273FF00ADFFFF00ADFFFF00ADFFFF0052
+        FFFF002173FF5229C6FF31214AFF000000000000000000000000000000007352
+        4AFFFFADADFFFFADADFFFFADADFF005273FF00ADFFFF00ADFFFF00ADFFFF0052
+        FFFF002173FF5229C6FF080042FF000000000000000000000000000000007352
+        4AFFFFADADFFFFADADFFFFADADFF005273FF00ADFFFF73D6FFFFADDEFFFF298C
+        FFFF002173FF5229C6FF080042FF000000000000000000000000000000007352
+        4AFFFFADADFFFFADADFFFFD6D6FF002131FFADC6D6FF002173FF002173FF0031
+        BDFF4A6B73FF5229C6FF080042FF000000000000000000000000000000007352
+        4AFFFFD6D6FFFFADADFFFF9C9CFFBD6B5AFF21424AFF737B73FF526352FF4A52
+        4AFF7342C6FF7342C6FF31185AFF000000000000000000000000000000005A63
+        5AFFBD8484FF212121FF212121FF634A39FF636B63FFE7E7E7FFADADADFF2121
+        21FF212121FF31214AFF8C8C8CFF000000000000000000000000000000000000
+        0000394239FFBDBDBDFF8C8C8CFF212121FF6B736BFFE7E7E7FF8C8C8CFF394A
+        39FF8C8C8CFF212121FF00000000000000000000000000000000000000000000
+        00006B736BFFF7F7F7FFBDBDBDFF212121FF000000005A635AFF394A39FFF7F7
+        F7FFBDBDBDFF212121FF00000000000000000000000000000000000000000000
+        00008C8C8CFF636B63FF313131FF8C8C8CFF00000000000000008C8C8CFF636B
+        63FF313131FF8C8C8CFF00000000000000000000000000000000
+      }
+      ImageIndex = 49
+      OnClick = btnQuiHabiteClick
+    end
+  end
+  object IBQEve: TIBQuery[9]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BeforeClose = DatasetBeforeScrollOrClose
+    BeforeScroll = DatasetBeforeScrollOrClose
+    OnNewRecord = IBQEveNewRecord
+    BufferChunks = 30
+    CachedUpdates = False
+    GenerateParamNames = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      ' select e.ev_ind_clef'
+      ',e.ev_ind_kle_fiche'
+      ',e.ev_ind_kle_dossier'
+      ',e.ev_ind_type'
+      ',e.ev_ind_date_writen'
+      ',e.ev_ind_date_year'
+      ',e.ev_ind_date'
+      ',e.ev_ind_date_mois'
+      ',e.ev_ind_date_year_fin'
+      ',e.ev_ind_date_mois_fin'
+      ',e.ev_ind_cp'
+      ',e.ev_ind_insee'
+      ',e.ev_ind_ville'
+      ',e.ev_ind_dept'
+      ',e.ev_ind_region'
+      ',e.ev_ind_subd'
+      ',e.ev_ind_pays'
+      ',e.ev_ind_source'
+      ',e.ev_ind_comment'
+      ',e.ev_ind_acte'
+      ',e.ev_ind_latitude'
+      ',e.ev_ind_longitude'
+      ',e.ev_ind_lignes_adresse'
+      ',e.ev_ind_tel'
+      ',e.ev_ind_mail'
+      ',e.ev_ind_web'
+      ',e.ev_ind_date_jour'
+      ',e.ev_ind_date_jour_fin'
+      ',e.ev_ind_type_token1'
+      ',e.ev_ind_type_token2'
+      ',e.ev_ind_datecode'
+      ',e.ev_ind_datecode_tot'
+      ',e.ev_ind_datecode_tard'
+      ',e.ev_ind_calendrier1'
+      ',e.ev_ind_calendrier2'
+      ',(select 1 from rdb$database where exists (select 1 from sources_record s'
+      '      left join media_pointeurs p on p.mp_table=''F'' '
+      '      and p.mp_type_image=''F'''
+      '       and p.mp_pointe_sur=s.id'
+      '        where s.type_table=''I'''
+      '             and s.data_id=e.ev_ind_clef'
+      '             and (s.auth>'''' or s.titl>'''' or s.abr>'''' or s.publ>'''' or s.texte>'''' or p.mp_media is not null))) as ev_ind_details'
+      'from  evenements_ind e'
+      'inner join ref_evenements r on r.ref_eve_lib_court = e.ev_ind_type and r.ref_eve_langue=:langue'
+      'where  e.ev_ind_kle_fiche = :cle_fiche and e.ev_ind_type=''RESI'''
+      'order by e.ev_ind_datecode nulls last'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'langue'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_FICHE'
+        ParamType = ptUnknown
+      end>
+    UpdateObject = IBUEve
+    left = 280
+    top = 376
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'langue'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_FICHE'
+        ParamType = ptUnknown
+      end>
+    object IBQEveEV_IND_CLEF: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_CLEF'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_KLE_FICHE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_KLE_FICHE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_KLE_DOSSIER: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_KLE_DOSSIER'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_TYPE: TIBStringField
+      DisplayWidth = 7
+      FieldKind = fkData
+      FieldName = 'EV_IND_TYPE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 7
+    end
+    object IBQEveEV_IND_DATE_WRITEN: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_WRITEN'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object IBQEveEV_IND_DATE_YEAR: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_YEAR'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_DATE: TDateField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_DATE_JOUR: TSmallintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_JOUR'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_DATE_JOUR_FIN: TSmallintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_JOUR_FIN'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_TYPE_TOKEN1: TSmallintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_TYPE_TOKEN1'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_TYPE_TOKEN2: TSmallintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_TYPE_TOKEN2'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_DATECODE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATECODE'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_DATECODE_TOT: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATECODE_TOT'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_DATECODE_TARD: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATECODE_TARD'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_CP: TIBStringField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_CP'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object IBQEveEV_IND_VILLE: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'EV_IND_VILLE'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQEveEV_IND_DEPT: TIBStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'EV_IND_DEPT'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQEveEV_IND_PAYS: TIBStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'EV_IND_PAYS'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQEveEV_IND_REGION: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'EV_IND_REGION'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQEveEV_IND_SUBD: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'EV_IND_SUBD'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQEveEV_IND_ACTE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_ACTE'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_INSEE: TIBStringField
+      DisplayWidth = 6
+      FieldKind = fkData
+      FieldName = 'EV_IND_INSEE'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object IBQEveEV_IND_LATITUDE: TFloatField
+      DisplayWidth = 16
+      FieldKind = fkData
+      FieldName = 'EV_IND_LATITUDE'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object IBQEveEV_IND_LONGITUDE: TFloatField
+      DisplayWidth = 16
+      FieldKind = fkData
+      FieldName = 'EV_IND_LONGITUDE'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object IBQEveEV_IND_DETAILS: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DETAILS'
+      Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_DATE_MOIS: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_MOIS'
+      Index = 25
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_DATE_YEAR_FIN: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_YEAR_FIN'
+      Index = 26
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_DATE_MOIS_FIN: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_MOIS_FIN'
+      Index = 27
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_LIGNES_ADRESSE: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_LIGNES_ADRESSE'
+      Index = 28
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Size = 8
+      Transliterate = False
+    end
+    object IBQEveEV_IND_SOURCE: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_SOURCE'
+      Index = 29
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Size = 8
+      Transliterate = False
+    end
+    object IBQEveEV_IND_COMMENT: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_COMMENT'
+      Index = 30
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Size = 8
+      Transliterate = False
+    end
+    object IBQEveEV_IND_TEL: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_TEL'
+      Index = 31
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Size = 8
+      Transliterate = False
+    end
+    object IBQEveEV_IND_WEB: TStringField
+      DisplayWidth = 120
+      FieldKind = fkData
+      FieldName = 'EV_IND_WEB'
+      Index = 32
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 120
+    end
+    object IBQEveEV_IND_MAIL: TStringField
+      DisplayWidth = 120
+      FieldKind = fkData
+      FieldName = 'EV_IND_MAIL'
+      Index = 33
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 120
+    end
+    object IBQEveEV_IND_CALENDRIER1: TIntegerField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_CALENDRIER1'
+      Index = 34
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQEveEV_IND_CALENDRIER2: TSmallintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_CALENDRIER2'
+      Index = 35
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object IBUEve: TIBUpdateSQL[10]
+    ModifySQL.Strings = (
+      'update EVENEMENTS_IND'
+      'set'
+      '  EV_IND_DATE_WRITEN = :EV_IND_DATE_WRITEN,'
+      '  EV_IND_DATE = :EV_IND_DATE,'
+      '  EV_IND_DATE_YEAR = :EV_IND_DATE_YEAR,'
+      '  EV_IND_DATE_MOIS = :EV_IND_DATE_MOIS,'
+      '  EV_IND_DATE_YEAR_FIN = :EV_IND_DATE_YEAR_FIN,'
+      '  EV_IND_DATE_MOIS_FIN = :EV_IND_DATE_MOIS_FIN,'
+      '  EV_IND_CP = :EV_IND_CP,'
+      '  EV_IND_VILLE = :EV_IND_VILLE,'
+      '  EV_IND_DEPT = :EV_IND_DEPT,'
+      '  EV_IND_PAYS = :EV_IND_PAYS,'
+      '  EV_IND_SOURCE = :EV_IND_SOURCE,'
+      '  EV_IND_COMMENT = :EV_IND_COMMENT,'
+      '  EV_IND_REGION = :EV_IND_REGION,'
+      '  EV_IND_SUBD = :EV_IND_SUBD,'
+      '  EV_IND_INSEE =:EV_IND_INSEE,'
+      '  EV_IND_TITRE_EVENT = :EV_IND_TITRE_EVENT,'
+      '  EV_IND_LATITUDE = :EV_IND_LATITUDE,'
+      '  EV_IND_LONGITUDE = :EV_IND_LONGITUDE'
+      ',ev_ind_lignes_adresse=:ev_ind_lignes_adresse'
+      ',ev_ind_tel=:ev_ind_tel'
+      ',ev_ind_mail=:ev_ind_mail'
+      ',ev_ind_web=:ev_ind_web'
+      ',ev_ind_date_jour=:ev_ind_date_jour'
+      ',ev_ind_date_jour_fin=:ev_ind_date_jour_fin'
+      ',ev_ind_type_token1=:ev_ind_type_token1'
+      ',ev_ind_type_token2=:ev_ind_type_token2'
+      ',ev_ind_datecode=:ev_ind_datecode'
+      ',ev_ind_datecode_tot=:ev_ind_datecode_tot'
+      ',ev_ind_datecode_tard=:ev_ind_datecode_tard'
+      ',ev_ind_calendrier1=:ev_ind_calendrier1'
+      ',ev_ind_calendrier2=:ev_ind_calendrier2'
+      'where'
+      '  EV_IND_CLEF = :EV_IND_CLEF'
+    )
+    InsertSQL.Strings = (
+      'insert into EVENEMENTS_IND'
+      '(EV_IND_CLEF, EV_IND_KLE_FICHE, '
+      'EV_IND_KLE_DOSSIER, '
+      'EV_IND_TYPE, EV_IND_ACTE,'
+      'EV_IND_DATE_WRITEN, EV_IND_DATE, '
+      'EV_IND_DATE_YEAR, EV_IND_DATE_MOIS,'
+      'EV_IND_DATE_YEAR_FIN, EV_IND_DATE_MOIS_FIN,'
+      'EV_IND_CP, EV_IND_VILLE, '
+      'EV_IND_DEPT, EV_IND_PAYS, EV_IND_SOURCE, '
+      'EV_IND_COMMENT,  EV_IND_REGION, '
+      'EV_IND_SUBD, EV_IND_INSEE, '
+      'EV_IND_LATITUDE, EV_IND_LONGITUDE, '
+      'ev_ind_lignes_adresse,ev_ind_tel,'
+      'ev_ind_mail,ev_ind_web'
+      ',ev_ind_date_jour,ev_ind_date_jour_fin'
+      ',ev_ind_type_token1,ev_ind_type_token2'
+      ',ev_ind_datecode,ev_ind_datecode_tot,'
+      'ev_ind_datecode_tard,'
+      'ev_ind_calendrier1,ev_ind_calendrier2)'
+      'values'
+      '(:EV_IND_CLEF, :EV_IND_KLE_FICHE, '
+      ':EV_IND_KLE_DOSSIER,''RESI'', -3,'
+      ':EV_IND_DATE_WRITEN, :EV_IND_DATE, '
+      ':EV_IND_DATE_YEAR, :EV_IND_DATE_MOIS,'
+      ':EV_IND_DATE_YEAR_FIN, :EV_IND_DATE_MOIS_FIN,'
+      ':EV_IND_CP, :EV_IND_VILLE, '
+      ':EV_IND_DEPT, :EV_IND_PAYS, :EV_IND_SOURCE, '
+      ':EV_IND_COMMENT,  :EV_IND_REGION,'
+      ':EV_IND_SUBD, :EV_IND_INSEE,'
+      ':EV_IND_LATITUDE, :EV_IND_LONGITUDE, '
+      ':ev_ind_lignes_adresse,:ev_ind_tel,:ev_ind_mail,:ev_ind_web'
+      ',:ev_ind_date_jour,:ev_ind_date_jour_fin'
+      ',:ev_ind_type_token1,:ev_ind_type_token2'
+      ',:ev_ind_datecode,:ev_ind_datecode_tot,:ev_ind_datecode_tard'
+      ',:ev_ind_calendrier1,:ev_ind_calendrier2)'
+    )
+    DeleteSQL.Strings = (
+      'delete from EVENEMENTS_IND'
+      'where EV_IND_CLEF = :OLD_EV_IND_CLEF'
+    )
+    left = 352
+    top = 376
+  end
+  object IBMedias: TIBQuery[11]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    AfterOpen = IBMediasAfterOpen
+    AfterScroll = IBMediasAfterScroll
+    BeforeClose = IBMediasBeforeClose
+    BeforeScroll = DatasetBeforeScrollOrClose
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = dsAdresses
+    GenerateParamNames = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select p.mp_clef'
+      ',p.mp_media'
+      ',p.mp_position'
+      ',m.multi_path'
+      ',m.multi_memo'
+      ',m.multi_reduite'
+      ',m.multi_media'
+      'from media_pointeurs p'
+      'inner join multimedia m on m.multi_clef=p.mp_media'
+      'where p.mp_type_image=''A'''
+      '  and p.mp_table=''I'''
+      '  and p.mp_pointe_sur=:ev_ind_clef'
+      'order by p.mp_clef'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ev_ind_clef'
+        ParamType = ptUnknown
+      end>
+    UpdateObject = IBUMedias
+    left = 112
+    top = 336
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'ev_ind_clef'
+        ParamType = ptUnknown
+      end>
+    object IBMediasMULTI_REDUITE: TBlobField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MULTI_REDUITE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftBlob
+    end
+    object IBMediasMULTI_MEDIA: TBlobField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MULTI_MEDIA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftBlob
+    end
+    object IBMediasMULTI_MEMO: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MULTI_MEMO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Transliterate = False
+    end
+    object IBMediasMULTI_PATH: TStringField
+      DisplayWidth = 255
+      FieldKind = fkData
+      FieldName = 'MULTI_PATH'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object IBMediasMP_CLEF: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MP_CLEF'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBMediasMP_MEDIA: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MP_MEDIA'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBMediasMP_POSITION: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MP_POSITION'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object PmImage: TPopupMenu[12]
+    Images = dm.ImageListMenu
+    OnPopup = pmImagePopup
+    left = 472
+    top = 304
+    object mAjouterDocument: TMenuItem
+      Caption = 'Ajouter un document'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000FF0000
+        00FF008484FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF000000FF00000000000000000000000000000000000000FF00FF
+        FFFF000000FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF000000FF000000000000000000000000000000FFFFFF
+        FFFF00FFFFFF000000FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF008484FF000000FF0000000000000000000000FF00FF
+        FFFFFFFFFFFF00FFFFFF000000FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF008484FF008484FF000000FF00000000000000FFFFFF
+        FFFF00FFFFFFFFFFFFFF00FFFFFF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF00FF
+        FFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FF
+        FFFF000000FF0000000000000000000000000000000000000000000000FFFFFF
+        FFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFF
+        FFFF000000FF0000000000000000000000000000000000000000000000FF00FF
+        FFFFFFFFFFFF00FFFFFF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000000000
+        00FF000000FF000000FF00000000000000000000000000000000000000000000
+        00000000000000000000000000FF000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00000000000000000000000000FF00000000000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00FF000000FF000000FF00000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 5
+      ShortCut = 45
+      OnClick = bsfbAjoutClick
+    end
+    object mEnleverDocument: TMenuItem
+      Caption = 'Enlever ce document'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        00000000000000000000000000000000000000000000424A42FF424A42FF424A
+        42FF000000FF000000FF00000000000000000000000000000000000000000000
+        0000000000000000000000000000424A42FF424A42FFCECECEFFCECECEFF8484
+        84FF424A42FF424A42FF181818FF000000000000000000000000000000000000
+        000000000000424A42FF424A42FFCECECEFFCECECEFFCECECEFFCECECEFFCECE
+        CEFF424A42FF424A42FF000000FF000000000000000000000000000000000000
+        0000848484FFCECECEFFCECECEFFD6E7E7FF007B00FFD6E7E7FFCECECEFFCECE
+        CEFF5A635AFF424A42FF424A42FF000000FF0000000000000000000000000000
+        0000848484FFD6E7E7FFD6E7E7FF007B00FF007B00FF007B00FF5A945AFFCECE
+        CEFF848484FF5A635AFF424A42FF000000FF0000000000000000000000000000
+        00006B736BFFD6E7E7FF219421FFBDBDBDFF007B00FFD6E7E7FF007B00FFCECE
+        CEFF848484FF5A635AFF5A635AFF424A42FF000000FF00000000000000006B73
+        6BFFD6E7E7FFBDBDBDFF007B00FFBDBDBDFFD6E7E7FFCECECEFFD6E7E7FFCECE
+        CEFFCECECEFF5A635AFF5A635AFF5A635AFF000000FF00000000000000008484
+        84FFD6E7E7FF219421FF007B00FF007B00FFBDBDBDFF007B00FF007B00FFD6E7
+        E7FFCECECEFF848484FF5A635AFF5A635AFF000000FF424A42FF000000006B73
+        6BFFD6E7E7FFD6E7E7FF007B00FFBDBDBDFFD6E7E7FF848484FF007B00FFBDBD
+        BDFFCECECEFF848484FF6B736BFF5A635AFF5A635AFF424A42FF848484FFD6E7
+        E7FFD6E7E7FFCECECEFFD6E7E7FF219421FF219421FFCECECEFFF7F7F7FFD6E7
+        E7FFF7F7F7FFF7F7F7FF848484FF848484FF5A635AFF424A42FF6B736BFFD6E7
+        E7FFCECECEFFCECECEFFCECECEFFCECECEFFF7F7F7FFF7F7F7FFBDBDBDFFBDBD
+        BDFFBDBDBDFFBDBDBDFFF7F7F7FF6B736BFF848484FF424A42FF848484FFCECE
+        CEFFCECECEFFF7F7F7FFF7F7F7FF848484FFBDBDBDFFBDBDBDFF6B736BFFD6E7
+        E7FFD6E7E7FF6B736BFFD6E7E7FFF7F7F7FF6B736BFF424A42FF848484FFF7F7
+        F7FFF7F7F7FF848484FF6B736BFFBDBDBDFFD6E7E7FF6B736BFFF7F7F7FFF7F7
+        F7FFD6E7E7FF848484FF6B736BFF848484FF00000000000000006B736BFF8484
+        84FFBDBDBDFFBDBDBDFFD6E7E7FFF7F7F7FF6B736BFFF7F7F7FFF7F7F7FF8484
+        84FF6B736BFF848484FF00000000000000000000000000000000000000000000
+        0000848484FF6B736BFF848484FF848484FFF7F7F7FF6B736BFF848484FF8484
+        84FF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000848484FF6B736BFF848484FF848484FF000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 2
+      ShortCut = 16430
+      OnClick = bsfbRetirerClick
+    end
+    object mRemplacerDocument: TMenuItem
+      Caption = 'Remplacer ce document'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000286E2DFF256929FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000000000002D7533FF296F2EFF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000038833EFF569D5EFF53995AFF2A712FFF266B2BFF2366
+        27FF206223FF1D5E20FF00000000000000000000000000000000000000000000
+        00000000000042924AFF60A768FF8DCD97FF8ACB94FF87CA91FF84C98EFF81C8
+        8CFF60A768FF206324FF1D5F21FF000000000000000000000000000000000000
+        0000000000000000000043944BFF62A96AFF5DA465FF35803BFF317A36FF5197
+        58FF82C88DFF5BA163FF216425FF000000000000000000000000000000000000
+        0000000000004EA257FF499C52FF45954CFF408F47FF0000000000000000327B
+        38FF2D7533FF296F2EFF256A2AFF000000000000000000000000000000000000
+        00000000000000000000000000000000000046974EFF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        000000000000000000000000000050A659FF000000000000000042924AFF3D8C
+        45FF000000000000000000000000000000000000000000000000000000000000
+        000061BD6CFF5DB868FF5AB364FF56AD5FFF0000000000000000489A50FF4394
+        4BFF3F8D46FF3A8741FF00000000000000000000000000000000000000000000
+        000065C270FF8ECF97FFAAD9B1FF7AC383FF57AF61FF52A95CFF6FB778FF6BB3
+        74FF45954CFF0000000000000000000000000000000000000000000000000000
+        000068C673FF65C371FF94D29CFFABDAB2FFA8D9AFFFA5D8ADFFA2D6AAFF9FD5
+        A7FF6CB474FF46974EFF00000000000000000000000000000000000000000000
+        00000000000068C774FF66C472FF63C06FFF60BC6BFF5DB767FF79C282FF75BE
+        7EFF50A659FF0000000000000000000000000000000000000000000000000000
+        00000000000000000000000000000000000000000000000000005DB868FF5AB3
+        64FF000000000000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000000000000000000062BE6DFF5EB9
+        69FF000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 107
+      OnClick = mRemplacerDocumentClick
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object mVisualiseActe: TMenuItem
+      Caption = 'Visualiser ce document (ou dbl-click)'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000848484FF000000FF000000FF8484
+        84FF000000000000000000000000000000000000000000000000000000008484
+        84FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF848484FF00000000000000000000
+        00FF848484FF848484FF000000FF000000FF848484FF848484FF848484FF8484
+        84FF000000FF000000FF848484FF848484FF000000FF00000000000000000000
+        00FF848484FF848484FF000000FF848484FF848484FF848484FF848484FF8484
+        84FF848484FF000000FF848484FF848484FF000000FF00000000000000000000
+        00FF848484FF848484FF000000FF848484FFC6C6C6FF848484FF848484FF8484
+        84FF848484FF000000FF848484FF848484FF000000FF00000000000000000000
+        00FF848484FF848484FF000000FF848484FFFFFF00FFC6C6C6FF848484FF8484
+        84FF848484FF000000FF848484FF848484FF000000FF00000000000000000000
+        00FFFFFFFFFFFFFFFFFF000000FF000000FF848484FF848484FF848484FF8484
+        84FF000000FF000000FFFFFFFFFFFFFFFFFF000000FF00000000000000000000
+        00FFFFFFFFFFFFFFFFFFFFFFFFFF000000FF000000FF000000FF000000FF0000
+        00FF000000FFFFFFFFFFFFFFFFFFFFFFFFFF000000FF00000000000000000000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF00000000000000000000
+        0000000000FF000000FF00000000848484FF000000FFFFFFFFFFFFFFFFFF0000
+        00FF848484FF00000000000000FF000000FF0000000000000000000000000000
+        000000000000000000000000000000000000848484FF000000FF000000FF8484
+        84FF000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 34
+      OnClick = mVisualiseActeClick
+    end
+    object mImprimeActe: TMenuItem
+      Caption = 'Imprimer l''image de ce document'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000000000000000000000000000000000
+        00FFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBD
+        BDFFBDBDBDFF000000FFBDBDBDFF000000FF0000000000000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FFBDBDBDFF000000FF00000000000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFF00FFFFFF00FFFFFF00FF
+        FFFFBDBDBDFFBDBDBDFF000000FF000000FF000000FF00000000000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFF7B7B7BFF7B7B7BFF7B7B
+        7BFFBDBDBDFFBDBDBDFF000000FFBDBDBDFF000000FF00000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FFBDBDBDFFBDBDBDFF000000FF000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBD
+        BDFFBDBDBDFF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000000000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000FF000000000000
+        0000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000000000
+        000000000000000000FFFFFFFFFF000000FF000000FF000000FF000000FF0000
+        00FFFFFFFFFF000000FF000000FF000000FF000000FF00000000000000000000
+        000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFF000000FF000000000000000000000000000000000000
+        00000000000000000000000000FFFFFFFFFF000000FF000000FF000000FF0000
+        00FF000000FFFFFFFFFF000000FF000000000000000000000000000000000000
+        00000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF0000000000000000000000000000
+        0000000000000000000000000000000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF0000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 6
+      OnClick = mImprimeActeClick
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object mMontrerRepere: TMenuItem
+      Caption = 'Montrer le repère du domicile'
+      OnClick = mMontrerRepereClick
+    end
+    object mPoserRepere: TMenuItem
+      Caption = 'Poser le repère du domicile'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000001F50FF001F2FFF00002FFF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000503FAFFF501F7FFF503F7FFF501F7FFF001F50FF001F
+        2FFF001F50FF0000000000000000000000000000000000000000000000000000
+        00000000000000000000503FAFFF503FAFFF503FAFFF501F7FFF501F7FFF001F
+        50FF00002FFF0000000000000000000000000000000000000000000000000000
+        000000000000503FD0FF503FD0FF503FD0FF503FAFFF503FAFFF503F7FFF501F
+        7FFF001F50FF501F50FF00000000000000000000000000000000000000000000
+        000000000000503FD0FF505FFFFFAF3FD0FF505FD0FF503FD0FF503FAFFF501F
+        7FFF501F50FF001F2FFF00000000000000000000000000000000000000000000
+        000000000000505FD0FF505FFFFFAF7FFFFFAF9FFFFF503FD0FF503FAFFF503F
+        7FFF001F7FFF501F50FF00000000000000000000000000000000000000000000
+        00000000000000000000AF5FFFFFAF7FFFFFAF9FFFFF505FD0FF503FD0FF503F
+        AFFF501F7FFF0000000000000000000000000000000000000000000000000000
+        00000000000000000000505FFFFFAF5FFFFF505FFFFFAF3FD0FF503FD0FF503F
+        AFFF503F7FFF0000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000505FFFFF505FD0FF503FD0FF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 59
+      OnClick = mPoserRepereClick
+    end
+    object mSupprimerRepere: TMenuItem
+      Caption = 'Supprimer le repère du domicile'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000737B73FF737B73FF00000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        FFFF0000BDFF0000BDFF737B73FF000000000000000000000000000000000000
+        00000000FFFF737B73FF00000000000000000000000000000000000000000000
+        FFFF0000BDFF0000BDFF0000BDFF737B73FF0000000000000000000000000000
+        FFFF0000BDFF0000BDFF737B73FF000000000000000000000000000000000000
+        FFFF0000BDFF0000BDFF0000BDFF0000BDFF737B73FF000000000000FFFF0000
+        BDFF0000BDFF0000BDFF0000BDFF737B73FF0000000000000000000000000000
+        00000000FFFF0000BDFF0000BDFF0000BDFF0000BDFF737B73FF0000BDFF0000
+        BDFF0000BDFF0000BDFF0000BDFF737B73FF0000000000000000000000000000
+        0000000000000000FFFF0000BDFF0000BDFF0000BDFF0000BDFF0000BDFF0000
+        BDFF0000BDFF0000BDFF737B73FF000000000000000000000000000000000000
+        000000000000000000000000FFFF0000BDFF0000BDFF0000BDFF0000BDFF0000
+        BDFF0000BDFF737B73FF00000000000000000000000000000000000000000000
+        00000000000000000000000000000000BDFF0000BDFF0000BDFF0000BDFF0000
+        BDFF737B73FF0000000000000000000000000000000000000000000000000000
+        00000000000000000000000000000000FFFF0000BDFF0000BDFF0000BDFF0000
+        BDFF737B73FF0000000000000000000000000000000000000000000000000000
+        000000000000000000000000FFFF0000BDFF0000BDFF0000BDFF0000BDFF0000
+        BDFF737B73FF0000000000000000000000000000000000000000000000000000
+        0000000000000000FFFF0000BDFF0000BDFF0000BDFF737B73FF0000BDFF0000
+        BDFF0000BDFF737B73FF00000000000000000000000000000000000000000000
+        00000000FFFF0000BDFF0000BDFF0000BDFF737B73FF000000000000FFFF0000
+        BDFF0000BDFF0000BDFF737B73FF000000000000000000000000000000000000
+        00000000FFFF0000BDFF0000BDFF737B73FF0000000000000000000000000000
+        FFFF0000BDFF0000BDFF0000BDFF737B73FF0000000000000000000000000000
+        0000000000000000FFFF0000BDFF000000000000000000000000000000000000
+        00000000FFFF0000BDFF0000BDFF0000BDFF0000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000FFFF0000BDFF0000FFFF0000000000000000
+      }
+      ImageIndex = 4
+      OnClick = mSupprimerRepereClick
+    end
+  end
+  object IBUMedias: TIBUpdateSQL[13]
+    ModifySQL.Strings = (
+      'update multimedia'
+      'set multi_memo=:multi_memo'
+      'where multi_clef=:mp_media'
+    )
+    DeleteSQL.Strings = (
+      'delete from media_pointeurs'
+      'where mp_clef=:mp_clef'
+    )
+    left = 184
+    top = 336
+  end
+  object pmVideLieu: TPopupMenu[14]
+    left = 304
+    top = 184
+    object mEffacerlelieu: TMenuItem
+      Caption = 'Effacer le lieu'
+      OnClick = mEffacerlelieuClick
+    end
+  end
+  object DSMedias: TDataSource[15]
+    DataSet = IBMedias
+    OnStateChange = DSMediasStateChange
+    left = 32
+    top = 336
+  end
+  object DSVilles: TDataSource[16]
+    OnStateChange = DSMediasStateChange
+    left = 32
+    top = 392
+  end
+  object pmGoogle: TPopupMenu[17]
+    AutoPopup = False
+    OnPopup = pmGooglePopup
+    left = 48
+    top = 224
+    object mAcquerir: TMenuItem
+      Caption = 'Coordonnées Google Maps'
+      Hint = 'Appuyer sur Maj en cliquant pour voir la réponse complète de Google Maps'
+      ShortCut = 16455
+      OnClick = mAcquerirClick
+    end
+  end
+  object OnFormInfoIni: TOnFormInfoIni[18]
+    SaveForm = [sfSaveSizes]
+    Options = [loAutoLoad, loAutoWrite]
+    left = 208
+    top = 328
+  end
+  object DSCountries: TDataSource[19]
+    left = 304
+    top = 320
+  end
+end

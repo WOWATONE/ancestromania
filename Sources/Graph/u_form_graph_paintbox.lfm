@@ -1,0 +1,714 @@
+inherited FGraphPaintBox: TFGraphPaintBox
+  Left = 279
+  Height = 600
+  Top = 212
+  Width = 832
+  ActiveControl = btnSetZoomAll
+  Caption = 'Arbre'
+  ClientHeight = 600
+  ClientWidth = 832
+  Color = clWindow
+  Constraints.MinHeight = 475
+  Constraints.MinWidth = 680
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnActivate = FormActivate
+  OnClick = SuperFormClick
+  OnClose = SuperFormClose
+  OnDestroy = SuperFormDestroy
+  OnKeyDown = FormKeyDown
+  OnResize = SuperFormResize
+  OnShow = SuperFormShow
+  object PanelPaintBox: TPanel[0]
+    Left = 0
+    Height = 540
+    Top = 60
+    Width = 832
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 540
+    ClientWidth = 832
+    Color = clWhite
+    ParentColor = False
+    TabOrder = 1
+    object PaintTree: TGraphTree
+      Left = 0
+      Height = 540
+      Top = 0
+      Width = 832
+      Align = alClient
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentColor = False
+      ParentFont = False
+      ParentShowHint = False
+      PopupMenu = popup
+      OnDblClick = PaintTreeDblClick
+      ArrowIndi = Arrow
+      PrintOutTextXY = PaintLinkPrintOutTextXY
+      PrintSetRectXY = PaintLinkPrintSetRectXY
+      PrintRect = PaintLinkPrintRect
+      PrintRoundRect = PaintLinkPrintRoundRect
+      PrintBrushSet = PaintLinkPrintBrushSet
+      PrintFont = PaintLinkPrintFont
+      PrintPenSet = PaintLinkPrintPenSet
+      PrintColor = PaintLinkPrintColor
+      PrintMoveTo = PaintLinkPrintMoveTo
+      PrintLineTo = PaintLinkPrintLineTo
+      ColorBox = clBlack
+      ColorLink = clBlack
+    end
+    object PaintArc: TGraphArc
+      Left = 0
+      Height = 540
+      Top = 0
+      Width = 832
+      Align = alClient
+      Font.Color = clWindowText
+      Font.Height = -7
+      Font.Name = 'Tahoma'
+      ParentColor = False
+      ParentFont = False
+      ParentShowHint = False
+      PopupMenu = popup
+      OnDblClick = PaintTreeDblClick
+      OnMouseMove = PaintArcMouseMove
+      ColorCircle = clBlack
+      PrintOutTextXY = PaintLinkPrintOutTextXY
+      PrintSetRectXY = PaintLinkPrintSetRectXY
+      PrintFont = PaintLinkPrintFont
+      PrintArc = PaintArcPrintArc
+      PrintMoveTo = PaintLinkPrintMoveTo
+      PrintLineTo = PaintLinkPrintLineTo
+      PrintBrushSet = PaintLinkPrintBrushSet
+      PrintPenSet = PaintLinkPrintPenSet
+      PrintColor = PaintLinkPrintColor
+    end
+    object PaintLink: TGraphLink
+      Left = 0
+      Height = 540
+      Top = 0
+      Width = 832
+      Align = alClient
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentColor = False
+      ParentFont = False
+      ParentShowHint = False
+      PopupMenu = popup
+      OnDblClick = PaintTreeDblClick
+      OnMouseMove = PaintArcMouseMove
+      ArrowIndi = Arrow
+      PrintOutTextXY = PaintLinkPrintOutTextXY
+      PrintSetRectXY = PaintLinkPrintSetRectXY
+      PrintRect = PaintLinkPrintRect
+      PrintRoundRect = PaintLinkPrintRoundRect
+      PrintBrushSet = PaintLinkPrintBrushSet
+      PrintFont = PaintLinkPrintFont
+      PrintPenSet = PaintLinkPrintPenSet
+      PrintColor = PaintLinkPrintColor
+      PrintMoveTo = PaintLinkPrintMoveTo
+      PrintLineTo = PaintLinkPrintLineTo
+      Options = []
+      ColorLinks = clBlack
+    end
+    object Arrow: TImage
+      Left = 414
+      Height = 18
+      Top = 72
+      Width = 18
+      Picture.Data = {
+        0F54496D6167696E674772617068696346050000424D46050000000000003600
+        0000280000001200000012000000010020000000000010050000640000006400
+        0000000000000000000000000000000000000000000000000000279F29FF58B9
+        5EFF58B95EFF58B95EFF58B95EFF58B95EFF58B95EFF58B95EFF58B95EFF35A6
+        37FF000000000000000000000000000000000000000000000000000000000000
+        000046B249FFAADFBAFF9CD1B0FF9CD1B0FF9CD1B0FF9CD1B0FF9CD1B0FF9CD1
+        B0FFA3D8B5FF7CCD83FF00000000000000000000000000000000000000000000
+        000000000000000000002DA82DFF9CD4B2FF86C2A3FF85C1A2FF85C1A2FF85C1
+        A2FF85C1A2FF86C1A3FF91CBAAFF7CCE83FF0000000000000000000000000000
+        00000000000000000000000000000000000021A421FF91D2AAFF85C6A6FF85C5
+        A6FF85C5A6FF85C5A6FF85C5A6FF85C5A6FF90CDACFF7CCE83FF000000000000
+        000000000000000000000000000000000000000000000000000021A421FF6DC9
+        8BFF86CAA9FF85CAA8FF85CAA8FF85CAA8FF85CAA8FF85CAA8FF90D1AFFF7CCE
+        83FF000000000000000000000000000000000000000000000000000000000000
+        000021A421FF42C069FF85CEACFF85CEACFF85CEACFF85CEACFF85CEACFF85CE
+        ACFF90D5B1FF7CCD83FF0000000000000000000000000000000000000000149B
+        14FF159D15FF159C17FF21A522FF32C15FFF42BC7BFF85D2AFFF85D2AFFF85D2
+        AFFF85D2AFFF85D2AFFF8ED7B3FF85D08EFF28A22DFF2CA62EFF2BA42CFF0A93
+        0AFF0000000025A725FF77E97CFF57D970FF59DA73FF22BF5DFF00AF4FFF4DC6
+        88FF85D6B2FF85D6B2FF85D6B2FF85D6B2FF86D7B2FF9FE3BCFFAAE8C2FFBEF2
+        C9FF5FBE65FF00000000000000000000000048C248FF2CCA67FF02B958FF01B8
+        57FF00B856FF01B857FF54CD91FF85DAB5FF85DAB5FF85DAB5FF85DAB5FF85DA
+        B5FF97E1BBFF87D48EFF00000000000000000000000000000000129912FF5ED4
+        64FF14C963FF00C35DFF00C25CFF00C25CFF00C25CFF31CC7DFF7EDDB2FF85DF
+        B7FF85DFB7FF8CE1B9FFA2E5AEFF1A9D1BFF0000000000000000000000000000
+        000000000000149B14FF64E176FF07CE65FF00CD63FF00CC63FF00CC63FF00CC
+        63FF13CF6FFF79E1B2FF87E3BBFFAAECBEFF2AA42CFF00000000000000000000
+        0000000000000000000000000000000000001DA01DFF57E77DFF04DB6EFF00D5
+        6AFF00D56AFF00D56AFF00D56AFF27DC82FFA6EDC4FF45B348FF000000000000
+        00000000000000000000000000000000000000000000000000000000000032B1
+        33FF3CE77BFF02E273FF00DF71FF00DF71FF01E072FF2EE579FF66C86AFF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000050CB53FF22EB7BFF01E979FF00E978FF15E87BFF5AD5
+        63FF139913FF0000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000129A12FF62E06EFF0FF380FF06F1
+        80FF62EA7AFF169B16FF00000000000000000000000000000000000000000000
+        000000000000000000000000000000000000000000000000000000000000179C
+        17FF61EF80FF54F585FF1FA31FFF000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000024A724FF37B538FF0000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000000000000000000000000000119611FF000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      Transparent = True
+      Visible = False
+    end
+  end
+  object PanReglages: TPanel[1]
+    Left = 580
+    Height = 236
+    Top = 0
+    Width = 252
+    Anchors = [akTop, akRight]
+    ClientHeight = 236
+    ClientWidth = 252
+    TabOrder = 0
+    Visible = False
+    OnExit = PanReglagesExit
+    object btnSetMouseMoveOrSelect: TFWOK
+      Cursor = crHandPoint
+      Left = 4
+      Height = 30
+      Hint = 'Outil de déplacement'
+      Top = 6
+      Width = 44
+      Caption = 'OK'
+      TabOrder = 2
+      Font.Color = clHighlightText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object btnSetMouseZoomMore: TFWZoomIn
+      Cursor = crHandPoint
+      Left = 49
+      Height = 30
+      Hint = 'Augmente la taille de l''arbre à l''écran.'
+      Top = 6
+      Width = 34
+      TabOrder = 3
+      Font.Color = clHighlightText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnSetMouseZoomMoreClick
+    end
+    object btnSetZoomAll: TFWSearch
+      Cursor = crHandPoint
+      Left = 79
+      Height = 30
+      Hint = 'Ajuste la taille de l''arbre à celle de l''écran.'
+      Top = 6
+      Width = 34
+      HelpType = htKeyword
+      TabOrder = 4
+      Font.Color = clHighlightText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnSetZoomAllClick
+    end
+    object btnSetMouseZoomLess: TFWZoomOut
+      Cursor = crHandPoint
+      Left = 109
+      Height = 30
+      Hint = 'Diminue la taille de l''arbre à l''écran.'
+      Top = 6
+      Width = 34
+      TabOrder = 5
+      Font.Color = clHighlightText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnSetMouseZoomLessClick
+    end
+    object lZoom: TLabel
+      Left = 154
+      Height = 14
+      Top = 13
+      Width = 43
+      Caption = 'Zoom :'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = 12673280
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lbZoom: TLabel
+      Left = 198
+      Height = 14
+      Top = 13
+      Width = 35
+      Caption = '100 %'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentColor = False
+      ParentFont = False
+    end
+    object TrackBar: TScrollBar
+      Cursor = crHandPoint
+      Left = 6
+      Height = 16
+      Top = 44
+      Width = 230
+      PageSize = 0
+      Position = 100
+      TabOrder = 0
+      OnChange = TrackBarChange
+      OnScroll = TrackBarScroll
+    end
+    object panDockMiniature: TPanel
+      Left = 1
+      Height = 169
+      Top = 66
+      Width = 250
+      Align = alBottom
+      BevelOuter = bvNone
+      ClientHeight = 169
+      ClientWidth = 250
+      TabOrder = 1
+      object GraphArcMini: TGraphArc
+        Left = 0
+        Height = 169
+        Top = 0
+        Width = 250
+        Align = alClient
+        Font.Color = clWindowText
+        Font.Height = -8
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+      end
+      object GraphTreeMini: TGraphTree
+        Left = 0
+        Height = 169
+        Top = 0
+        Width = 250
+        Align = alClient
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+        ColorLink = clBlack
+      end
+      object GraphLinkMini: TGraphLink
+        Left = 0
+        Height = 169
+        Top = 0
+        Width = 250
+        Align = alClient
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+        Visible = False
+        Options = []
+      end
+    end
+  end
+  object Panel5: TPanel[2]
+    Left = 0
+    Height = 55
+    Top = 0
+    Width = 832
+    Align = alTop
+    ClientHeight = 55
+    ClientWidth = 832
+    TabOrder = 2
+    OnClick = Panel5Click
+    object LReglages: TLabel
+      Left = 686
+      Height = 14
+      Hint = 'Cliquer pour ouvrir le panneau de réglage.'
+      Top = 24
+      Width = 140
+      Alignment = taCenter
+      Anchors = [akTop, akRight]
+      Caption = 'Réglages visualisation'
+      Color = clYellow
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clGreen
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      Transparent = False
+      WordWrap = True
+      OnClick = LReglagesClick
+    end
+    object btnPrint: TFWPrint
+      Cursor = crHandPoint
+      Left = 304
+      Height = 53
+      Hint = 'Impression'
+      Top = 1
+      Width = 59
+      Caption = 'Imprimer'
+      TabOrder = 0
+      Layout = blGlyphTop
+      Align = alLeft
+      Font.Color = clHighlightText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnPrintClick
+    end
+    object btnCfgGraph: TFWConfig
+      Cursor = crHandPoint
+      Left = 39
+      Height = 53
+      Hint = 'Paramétrage de l''arbre'
+      Top = 1
+      Width = 38
+      TabOrder = 1
+      Align = alLeft
+      Font.Color = clHighlightText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnCfgGraphClick
+    end
+    object btnRefresh: TFWRefresh
+      Cursor = crHandPoint
+      Left = 272
+      Height = 53
+      Hint = 'Rafraîchissement de l''arbre'
+      Top = 1
+      Width = 32
+      TabOrder = 2
+      Align = alLeft
+      Font.Color = clHighlightText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnRefreshClick
+    end
+    object BtnGraphOnTopLeft: TFWInit
+      Cursor = crHandPoint
+      Left = 77
+      Height = 53
+      Hint = 'Calage de l''arbre en haut à gauche'
+      Top = 1
+      Width = 32
+      TabOrder = 3
+      Align = alLeft
+      Font.Color = clHighlightText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = BtnGraphOnTopLeftClick
+    end
+    object btnSelectIndiGraph: TFWOK
+      Cursor = crHandPoint
+      Left = 1
+      Height = 53
+      Hint = 'Retour à la fiche principale'
+      Top = 1
+      Width = 38
+      Caption = 'OK'
+      TabOrder = 4
+      Layout = blGlyphTop
+      Align = alLeft
+      Font.Color = clHighlightText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnSelectIndiGraphClick
+    end
+    object lNom: TLabel
+      Left = 475
+      Height = 1
+      Top = 0
+      Width = 1
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      OnClick = lNomClick
+    end
+    object lNaisDec: TLabel
+      Left = 554
+      Height = 41
+      Top = 4
+      Width = 278
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      ParentColor = False
+      WordWrap = True
+      OnClick = lNaisDecClick
+    end
+    object Panel1: TPanel
+      Left = 109
+      Height = 53
+      Top = 1
+      Width = 163
+      Align = alLeft
+      BevelOuter = bvNone
+      ClientHeight = 53
+      ClientWidth = 163
+      TabOrder = 6
+      object cbInversion: TCheckBox
+        Left = 91
+        Height = 21
+        Top = 6
+        Width = 78
+        Caption = 'Inversion'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -9
+        Font.Name = 'Tahoma'
+        OnMouseUp = cbInversionMouseUp
+        ParentFont = False
+        TabOrder = 0
+      end
+      object sbDesc: TCheckBox
+        Left = 8
+        Height = 21
+        Top = 6
+        Width = 104
+        Caption = 'Descendance'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -9
+        Font.Name = 'Tahoma'
+        OnClick = sbDescClick
+        ParentFont = False
+        TabOrder = 1
+      end
+      object edNbGeneration: TFWSpinEdit
+        Cursor = crHandPoint
+        Left = 91
+        Height = 23
+        Top = 31
+        Width = 37
+        OnChange = edNbGenerationChange
+        ParentFont = False
+        TabOrder = 2
+        Value = 1
+      end
+      object lNbGenerations: TLabel
+        Left = 8
+        Height = 12
+        Top = 38
+        Width = 65
+        Caption = 'Générations :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -9
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+    object Panel2: TPanel
+      Left = 363
+      Height = 53
+      Top = 1
+      Width = 170
+      Align = alLeft
+      BevelOuter = bvNone
+      ClientHeight = 53
+      ClientWidth = 170
+      TabOrder = 5
+      object rg_sortie: TRadioGroup
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 170
+        Align = alTop
+        AutoFill = True
+        Caption = 'Sortie'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.TopBottomSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 3
+        ClientHeight = 16
+        ClientWidth = 166
+        Columns = 3
+        ItemIndex = 0
+        Items.Strings = (
+          'Papier'
+          'PDF'
+          'RTF'
+        )
+        TabOrder = 0
+      end
+      object cb_papersize: TComboBox
+        Left = 110
+        Height = 21
+        Top = 32
+        Width = 60
+        Align = alRight
+        Anchors = [akTop, akRight]
+        ItemHeight = 0
+        ItemIndex = 0
+        Items.Strings = (
+          'A4'
+          'A3'
+          'A2'
+          'A1'
+          'A0'
+        )
+        OnChange = cb_papersizeChange
+        TabOrder = 1
+        Text = 'A4'
+      end
+      object lNbGenerations1: TLabel
+        Left = 74
+        Height = 21
+        Top = 32
+        Width = 36
+        Align = alRight
+        Anchors = [akTop, akRight]
+        Caption = 'Taille :'
+        ParentColor = False
+      end
+      object ch_Portrait: TCheckBox
+        Left = 0
+        Height = 21
+        Top = 32
+        Width = 65
+        Align = alLeft
+        Caption = 'Portrait'
+        TabOrder = 2
+      end
+    end
+  end
+  object Splitter1: TSplitter[3]
+    Cursor = crVSplit
+    Left = 0
+    Height = 5
+    Top = 55
+    Width = 832
+    Align = alTop
+    ResizeAnchor = akTop
+  end
+  object PrinterSetupDialog: TPrinterSetupDialog[4]
+    left = 504
+    top = 336
+  end
+  object popup: TPopupMenu[5]
+    OnPopup = popupPopup
+    left = 192
+    top = 160
+    object Ouvrirlafichedecetindividu: TMenuItem
+      Caption = 'Ouvrir la fiche (ou dbl-click)'
+      Default = True
+      OnClick = OuvrirlafichedecetindividuClick
+    end
+    object popup_VoirLaFicheInBox: TMenuItem
+      Caption = 'Consulter la fiche dans une autre fenêtre'
+      OnClick = popup_VoirLaFicheInBoxClick
+    end
+    object Dmarrerlarbredepuiscetindividu: TMenuItem
+      Caption = 'Démarrer l''arbre depuis cet individu'
+      OnClick = DmarrerlarbredepuiscetindividuClick
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object mImprimercettepage: TMenuItem
+      Caption = 'Imprimer cette page'
+      OnClick = mImprimercettepageClick
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object mNgene: TMenuItem
+      Caption = 'Génération:'
+    end
+    object enfants1: TMenuItem
+      Caption = 'enfants'
+    end
+  end
+  object Language: TYLanguage[6]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 104
+    top = 256
+  end
+  object Viewer: TGraphViewer[7]
+    OnZoomChanged = ViewerZoomChanged
+    Graph = PaintTree
+    Data = GraphTreeData
+    GraphMiniature = GraphTreeMini
+    left = 251
+    top = 359
+  end
+  object GraphArcData: TGraphArcData[8]
+    left = 194
+    top = 243
+  end
+  object GraphTreeData: TGraphTreeData[9]
+    left = 136
+    top = 320
+  end
+  object GraphLinkData: TGraphLinkData[10]
+    left = 187
+    top = 443
+  end
+  object OnFormInfoIni: TOnFormInfoIni[11]
+    SaveEdits = [feTCheck, feTComboValue, feTRadioGroup, feTSpinEdit]
+    SaveForm = [sfSavePos, sfSaveSize, sfSaveSizes, sfSameMonitor]
+    Options = [loAutoUpdate, loAutoLoad]
+    left = 326
+    top = 256
+  end
+  object sd_PDFRTF: TSaveDialog[12]
+    left = 120
+    top = 94
+  end
+end

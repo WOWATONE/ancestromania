@@ -1,0 +1,447 @@
+inherited FMajInternet: TFMajInternet
+  Left = 710
+  Height = 446
+  Top = 191
+  Width = 520
+  BorderIcons = [biSystemMenu]
+  Caption = 'Vérifier les mises à jour via internet...'
+  ClientHeight = 446
+  ClientWidth = 520
+  Color = clWindow
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = SuperFormKeyDown
+  Position = poMainFormCenter
+  object Panel9: TPanel[0]
+    Left = 0
+    Height = 56
+    Top = 0
+    Width = 520
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 56
+    ClientWidth = 520
+    TabOrder = 0
+    object Image2: TIATitle
+      Left = 0
+      Top = 0
+      AutoSize = True
+      Stretch = True
+      ImageOn = iaAncestromania
+    end
+    object Label2: TLabel
+      Left = 130
+      Height = 34
+      Top = 6
+      Width = 374
+      Alignment = taRightJustify
+      Anchors = [akTop, akRight]
+      Caption = 'Mises à jour en ligne...'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowFrame
+      Font.Height = -29
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Panel10: TPanel
+      Left = 0
+      Height = 3
+      Top = 52
+      Width = 520
+      Anchors = [akTop, akLeft, akRight]
+      BevelOuter = bvNone
+      Color = clNavy
+      ParentColor = False
+      TabOrder = 0
+    end
+  end
+  object TabInternet: TPageControl[1]
+    Left = 0
+    Height = 362
+    Top = 56
+    Width = 520
+    ActivePage = TabMaj
+    Align = alClient
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    ParentFont = False
+    TabIndex = 0
+    TabOrder = 1
+    object TabMaj: TTabSheet
+      Caption = 'Mise à jour en ligne'
+      ClientHeight = 338
+      ClientWidth = 518
+      object lRun: TLabel
+        Left = 15
+        Height = 13
+        Top = 212
+        Width = 483
+        Alignment = taCenter
+        Anchors = [akTop, akLeft, akRight]
+        AutoSize = False
+        Caption = 'Connection en cours'
+        ParentColor = False
+        Visible = False
+      end
+      object Label8: TLabel
+        Left = 54
+        Height = 25
+        Top = 8
+        Width = 435
+        AutoSize = False
+        Caption = 'Vérification des mises à jour d''Ancestromania'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWindowFrame
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label9: TLabel
+        Left = 55
+        Height = 46
+        Top = 35
+        Width = 421
+        AutoSize = False
+        Caption = 'Cette fonctionnalité vous permet de vérifier quelle est la dernière version en date d''Ancestromania. Si une version plus récente existe vous pourrez la télécharger directement.'
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        ParentColor = False
+        ParentFont = False
+        WordWrap = True
+      end
+      object lAlerte: TLabel
+        Left = 15
+        Height = 15
+        Top = 192
+        Width = 484
+        Alignment = taCenter
+        Anchors = [akTop, akLeft, akRight]
+        AutoSize = False
+        Caption = 'Ancestromania n''envoie aucune information à qui que ce soit'
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        Visible = False
+      end
+      object Image1: TImage
+        Left = 8
+        Height = 30
+        Top = 8
+        Width = 30
+        AutoSize = True
+        Picture.Data = {
+          07544269746D6170F6070000424DF60700000000000036040000280000001E00
+          00001E0000000100080000000000C0030000130B0000130B0000000100000000
+          0000000000000000330033003300323233006B351F003B5E0500057001002C69
+          0B002B4E3500127D3900307B26004E5A06006F541100507000006C7500005D46
+          360079452C0052662A006B653500273066001E4353003B48480012784F00314A
+          74003568780052515100764951005A695900756559004D516E007B507400456B
+          7400727171008000000095350400A23B0300FE000000CC333300FF333300954A
+          0D00B04B05008D6B0900B4711400864E3300AB5027008F653A00B76D3100C35B
+          0000D06D0500E47C0000C35D2E00CB6A2F00DD2F74008C5A4700B15845009469
+          5500A16D52008C556F00AA4F730093746C00A7766400C35E4F00C56D5200E27B
+          4900C4746C0002950100339201000CA516002EA318000F8931002E902A0018B1
+          31002DAD2F004B8E0200739008004CA319006AA41F0068852A0047B135006EAB
+          2A0000FF000066FF3300138343002F9546001CBB420026B9470007966A0052AF
+          52002FCB5F005BD26A00A2971400D48B0A00F38F0300D4B31900FDA31100D88D
+          3000E4922F00C8A82D00F9AA2E00D6C40000FFC11000FFFF00009F825B00B688
+          58009ABC4C00B1BC4D008D8B7A00A788770080BF7300B5BF7200D5904E00E499
+          5600DCA54E00F7B44C00D2906E00EF976500D1AA7400EDB3710091CD7400FCCB
+          6B00010483000B299A0023268E000716A7000C2EB100272EB400224491001A72
+          90002D758C001747B0002848B3000273A6002F75AC006E6D9B000C36CE002729
+          D0000000FF000639EC003034F1001A45D600284CD7001E60C9002971D2001349
+          E6002E55E3000764F7003666EA004854CD004572C6007273D1005252FA004C6A
+          E6006477EC008E5A8D00AD59890093778900A37586009075A500C46A8B00FF00
+          FF000080800037859F0000B39700148BB6003495B4000EA9B00050909C006796
+          970075AE8A004893AC006990B90075B0BC001FD397005BDA82006CD78B0071E6
+          93006DD2AC000698CD003A92CA0019A6D4002EADD7003591F10016BEEE0031B2
+          F1007A8DC4004FB3D50068B7D2004A8FF8007089EB004FB3F70065B2FC0031CB
+          CD0006D0FB0024CEF60000FFFF0033FFFF0067CBCC007BE3C40056C5F40071CF
+          F10040FFFF007BE2FD008D8C8C00B495890097B09E00B3AB96008892B000A49B
+          AC0085B9B500B1AEAE00C8959100E4929200CCA99800EEB98A00D2B4AC00E4B9
+          AF008CD28900ABD88C008FE49700B2E497008CC6BF00B2D6AC0099E0BA00B8EB
+          B500CBC49800F0C79300CAE39700FEE49600CEC5B200E5C1AF00D2EBB000FDE8
+          B1009298C800AC8DC40094AED200AEB2CB00859AEE0093A9EB00A7B5E900CFBC
+          C10091C8D200BBCDD40094ECD100BCF1C10095CEFB00B1CEFA0096FAFE00B4F1
+          FA00CCCCCB00EDD6CC00CDEACF00F7E8D700C7D6EC00F8DAEC00CFEDF600FDFD
+          FC00FFFFFFFFFFFFFFFFFFFFFFFFFFF8CB393B9CD2D2CBCB3B39391A3BCFF9FF
+          0000FFFFFFFFFFFFFFFFFFFFFFFDD19CD1F8F9F8F8F8EFEFEFD6D29C391A9BEF
+          0000FFFFFFFFFFFFFFFFFFFFFFD1D2F8FAF9FCF9F8F9F8D29CCBD4D6D29C1A9B
+          0000FFFFFFFFFFFFFFFFFFFFF8D4FCFBFDFEF9FAF9FCD6D6EFCA9C6BD6D29C1A
+          0000FFFFFFFFFFFFFFFFFFFFD4F9FEFBFEFBFDFEF9F8D6F8D1CBCA9CD6D4D239
+          0000FFFFFFFFFFFFFFFFFFFFD6FEFBFFFDFFFEFBFCF9CFF9D2CB9CCBD6D4D23B
+          0000FFFFFFFFFFFFFFFFFFFFD6FDFEFFFFFFFBFDFAF9D2EF9CCB9C6BD6D2D29C
+          0000FFFFFFFFFFFFFFFFFFFFFDEFFDFFFFFFFDFEFBEFD4D6409C409ED6D4D2EF
+          0000FFFFFFFFFFFFFFFFFFFFFFF9F8F9D240EFF9FED4D6D29E404040D6D2F8FF
+          0000FFFFFFFFFFFFFDFBF8F8EFF8F9D6D2D7D79ED2D2D2404040403DCBFCFFFF
+          0000FFFFFFFFFDF8CB3935351A1A1ECBD25E71E3EFD24040403D403A9BFBFFFF
+          0000FFFFFFF9CB2E3333333D33322CCB725E625E6277E5D2403E3D361EEFFDFF
+          0000FFFFF93333323638363236323ED4725E626262646277E1D4403A351E3BD1
+          0000FFF95F2C2C23231227232C2C36D66F62626262716271627177D5D23A371E
+          0000FF5F2822232323070B23232336D67062717171717171717171627175723A
+          00005F2328282F2F2F0706062928D4D47171717777777777777771777171713A
+          00002828282F2F3029060641072AD6D27177777777777777777777777771713C
+          0000282F2F3030300E414107292EF97477777777777777777777777777776F3A
+          0000282F3030315A4942495B3167F97477777777E377E377E37777777777733B
+          00002F30315A414B4B445A5C5CD2EF7577E377E3E3E3E3E3E3E377E377777239
+          000030302A43474B485D625E5ED6D6777777E3E3E3E3E3E3E3E3E3E377777239
+          000030314B475455556C717170F9D177E3E3E3E3E3E7E7E7E7E3E3E3E3774039
+          0000305B4E555858585976E374FBCD77E3E3E3E7E7E7E7E7E7E7E7E3E3E34020
+          0000604A555858AEAFADAEE3E0FD74E3E3E3E7E7E7E7FBE7E7E7E7E3E3E1409B
+          0000E2475858ADDBDFDAFAE6E4FCCBCDD4E0E3E7E7FBE7FBE7E7E7E7E3D53C9B
+          0000FF765559AFDAF3F3DFDBE4FFF8D1CFCACBCBCDD6E5FBE7FBE7E7E3D53CCF
+          0000FFFB6859AFDBF3F3E6AEA8CCEFF8F9FDF8EFD6CD9CCB9CD4D4E1E3D439D1
+          0000FFFFFBD9ADDADADBAFAD58554C5B5FCBEFD1EFF8F9F8D7D1D2CB9C9C3BEF
+          0000FFFFFFFFE6D9D8AFAD5955544F62E5FFFFFFFFFDF8EFEFD6D6EFD7CBD1FD
+          0000FFFFFFFFFFFFE7E66D71E2E1E7FFFFFFFFFFFFFFFFFFFFFFFFFBF8EFFDFF
+          0000
+        }
+        Stretch = True
+        Transparent = True
+      end
+      object GroupBox1: TGroupBox
+        Left = 43
+        Height = 73
+        Top = 96
+        Width = 192
+        Caption = ' Votre version '
+        ClientHeight = 56
+        ClientWidth = 188
+        ParentColor = False
+        ParentFont = False
+        TabOrder = 0
+        object lBuild: TLabel
+          Left = 4
+          Height = 21
+          Top = 23
+          Width = 184
+          Alignment = taCenter
+          AutoSize = False
+          Font.Color = clNavy
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object lDateAncien: TLabel
+          Left = 4
+          Height = 17
+          Top = 52
+          Width = 183
+          Alignment = taCenter
+          AutoSize = False
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+      object GroupBox2: TGroupBox
+        Left = 276
+        Height = 73
+        Top = 96
+        Width = 192
+        Caption = ' Version officielle sur le site '
+        ClientHeight = 56
+        ClientWidth = 188
+        ParentColor = False
+        ParentFont = False
+        TabOrder = 2
+        object lSite: TLabel
+          Left = 5
+          Height = 21
+          Top = 21
+          Width = 182
+          Alignment = taCenter
+          AutoSize = False
+          Font.Color = clRed
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object lTailleDistant: TLabel
+          Left = 5
+          Height = 14
+          Top = 40
+          Width = 181
+          Alignment = taCenter
+          AutoSize = False
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object lDate: TLabel
+          Left = 5
+          Height = 14
+          Top = 55
+          Width = 182
+          Alignment = taCenter
+          AutoSize = False
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+      object Gauge: TProgressBar
+        Left = 15
+        Height = 25
+        Top = 266
+        Width = 484
+        Anchors = [akTop, akLeft, akRight]
+        TabOrder = 3
+        Visible = False
+      end
+      object pConnect: TGroupBox
+        Left = 15
+        Height = 34
+        Top = 225
+        Width = 484
+        Anchors = [akTop, akLeft, akRight]
+        ClientHeight = 30
+        ClientWidth = 480
+        ParentColor = False
+        ParentFont = False
+        TabOrder = 1
+        Visible = False
+        object Label1: TLabel
+          Left = 75
+          Height = 14
+          Top = -2
+          Width = 51
+          AutoSize = False
+          Caption = 'Taille :'
+          Font.Height = -12
+          ParentColor = False
+          ParentFont = False
+        end
+        object lTaille: TLabel
+          Left = 123
+          Height = 14
+          Top = -2
+          Width = 100
+          AutoSize = False
+          Caption = 'lTaille'
+          Font.Color = clNavy
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label3: TLabel
+          Left = 235
+          Height = 14
+          Top = -2
+          Width = 46
+          AutoSize = False
+          Caption = 'Reste :'
+          Font.Height = -12
+          ParentColor = False
+          ParentFont = False
+        end
+        object lReste: TLabel
+          Left = 280
+          Height = 14
+          Top = -2
+          Width = 132
+          AutoSize = False
+          Caption = 'lReste'
+          Font.Color = clRed
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+    end
+    object TabNews: TTabSheet
+      Caption = 'Liste des nouveautés'
+      ImageIndex = 1
+    end
+  end
+  object Panel1: TPanel[2]
+    Left = 0
+    Height = 28
+    Top = 418
+    Width = 520
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 28
+    ClientWidth = 520
+    TabOrder = 2
+    object btnMAJ: TJvXPButton
+      Left = 0
+      Height = 28
+      Top = 0
+      Width = 157
+      Caption = 'Vérifier les mises à jour'
+      TabOrder = 0
+      Spacing = 8
+      Align = alLeft
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      OnClick = btnMAJClick
+    end
+    object btnFermer: TFWClose
+      Left = 405
+      Height = 28
+      Top = 0
+      Width = 115
+      Caption = 'Fermer'
+      TabOrder = 1
+      Spacing = 8
+      Align = alRight
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      OnClick = btnFermerClick
+    end
+  end
+  object OnFormInfoIni1: TOnFormInfoIni[3]
+    SaveForm = [sfSavePos, sfSaveSize, sfSameMonitor]
+    left = 91
+    top = 212
+  end
+  object NetUpdate: TNetUpdate[4]
+    Progress = Gauge
+    OnErrorMessage = NetUpdateErrorMessage
+    OnIniRead = NetUpdateIniRead
+    OnPageDownloaded = NetUpdatePageDownloaded
+    OnDownloading = NetUpdateDownloading
+    OnDownloaded = NetUpdateDownloaded
+    OnFileDownloaded = NetUpdateFileDownloaded
+    LNetComponent = HTTPClient
+    left = 224
+    top = 200
+  end
+  object HTTPClient: TLHTTPClientComponent[5]
+    Timeout = 0
+    left = 328
+    top = 208
+  end
+end

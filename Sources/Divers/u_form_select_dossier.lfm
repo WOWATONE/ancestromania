@@ -1,0 +1,659 @@
+inherited FSelectDossier: TFSelectDossier
+  Left = 288
+  Height = 342
+  Top = 177
+  Width = 490
+  ActiveControl = dxDBGListe
+  BorderIcons = []
+  BorderWidth = 1
+  Caption = 'Dossier'
+  ClientHeight = 342
+  ClientWidth = 490
+  Color = clWindow
+  Constraints.MinHeight = 293
+  Constraints.MinWidth = 490
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 340
+    Top = 1
+    Width = 488
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 340
+    ClientWidth = 488
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 3
+      Height = 334
+      Top = 3
+      Width = 482
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 334
+      ClientWidth = 482
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 1
+        Height = 332
+        Top = 1
+        Width = 480
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 332
+        ClientWidth = 480
+        TabOrder = 0
+        object panDock: TPanel
+          Left = 3
+          Height = 240
+          Top = 59
+          Width = 474
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 240
+          ClientWidth = 474
+          TabOrder = 0
+          object dxDBGListe: TExtDBGrid
+            Cursor = crHandPoint
+            Left = 0
+            Height = 240
+            Top = 0
+            Width = 368
+            TitleButtons = False
+            AutoSort = False
+            Columns = <            
+              item
+                Title.Alignment = taCenter
+                Title.Caption = '_NOMDOSSIER'
+                Title.Orientation = toHorizontal
+                Width = 330
+                FieldName = 'NOM_DOSSIER'
+                Filter.DropDownRows = 0
+                Filter.EmptyValue = '(Empty)'
+                Filter.EmptyFont.Style = [fsItalic]
+                Filter.ItemIndex = -1
+                EditButtons = <>
+                FieldTag = 0
+              end            
+              item
+                Alignment = taCenter
+                Title.Alignment = taCenter
+                Title.Caption = 'DS_VERROU'
+                Title.Orientation = toHorizontal
+                Width = 25
+                FieldName = 'DS_VERROU'
+                Filter.DropDownRows = 0
+                Filter.EmptyValue = '(Empty)'
+                Filter.EmptyFont.Style = [fsItalic]
+                Filter.ItemIndex = -1
+                EditButtons = <>
+                FieldTag = 0
+              end            
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'DS_INFOS'
+                Title.Orientation = toHorizontal
+                FieldName = 'DS_INFOS'
+                Filter.DropDownRows = 0
+                Filter.EmptyValue = '(Empty)'
+                Filter.EmptyFont.Style = [fsItalic]
+                Filter.ItemIndex = -1
+                EditButtons = <>
+                FieldTag = 0
+              end>
+            KeyStrokes = <            
+              item
+                Command = rxgcShowFindDlg
+                ShortCut = 16454
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowColumnsDlg
+                ShortCut = 16471
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowFilterDlg
+                ShortCut = 16468
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowSortDlg
+                ShortCut = 16467
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowQuickFilter
+                ShortCut = 16465
+                Enabled = True
+              end            
+              item
+                Command = rxgcHideQuickFilter
+                ShortCut = 16456
+                Enabled = True
+              end            
+              item
+                Command = rxgcSelectAll
+                ShortCut = 16449
+                Enabled = True
+              end            
+              item
+                Command = rxgcDeSelectAll
+                ShortCut = 16429
+                Enabled = True
+              end            
+              item
+                Command = rxgcInvertSelection
+                ShortCut = 16426
+                Enabled = True
+              end            
+              item
+                Command = rxgcOptimizeColumnsWidth
+                ShortCut = 16427
+                Enabled = True
+              end>
+            OptionsRx = []
+            Align = alClient
+            Color = clWindow
+            DrawFullLine = False
+            FocusColor = clRed
+            SelectedColor = clHighlight
+            GridLineStyle = psSolid
+            DataSource = DSDossier
+            FixedCols = 0
+            Options = [dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+            ParentColor = False
+            Scrollbars = ssAutoBoth
+            TabOrder = 0
+            TitleFont.CharSet = ANSI_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+            OnDblClick = dxDBGListeDblClick
+          end
+          object Panel1: TPanel
+            Left = 368
+            Height = 240
+            Top = 0
+            Width = 106
+            Align = alRight
+            BevelOuter = bvNone
+            ClientHeight = 240
+            ClientWidth = 106
+            TabOrder = 1
+            object bfsbVideBase: TJvXPButton
+              Cursor = crHandPoint
+              Left = 0
+              Height = 25
+              Top = 124
+              Width = 106
+              Caption = 'Vider la base'
+              TabOrder = 0
+              Spacing = 5
+              Align = alTop
+              Anchors = [akTop, akRight]
+              OnMouseUp = bfsbVideBaseMouseUp
+            end
+            object bfsbDelete: TFWDelete
+              Cursor = crHandPoint
+              Left = 0
+              Height = 25
+              Top = 99
+              Width = 106
+              Caption = 'Supprimer'
+              TabOrder = 1
+              Spacing = 5
+              Align = alTop
+              Anchors = [akTop, akRight]
+              Font.Height = -11
+              ParentFont = False
+              OnClick = bfsbDeleteClick
+              GlyphSize = 16
+            end
+            object btVideDossier: TJvXPButton
+              Cursor = crHandPoint
+              Left = 0
+              Height = 25
+              Top = 74
+              Width = 106
+              Caption = 'Vider dossier'
+              TabOrder = 2
+              Spacing = 5
+              Align = alTop
+              Anchors = [akTop, akRight]
+              OnClick = btVideDossierClick
+            end
+            object btnCopier: TFWCopy
+              Cursor = crHandPoint
+              Left = 0
+              Height = 24
+              Top = 50
+              Width = 106
+              Caption = 'Copier vers'
+              TabOrder = 3
+              Spacing = 5
+              Align = alTop
+              Anchors = [akTop, akRight]
+              Font.Height = -11
+              ParentFont = False
+              PopupMenu = pmDossier
+            end
+            object btnEdit: TJvXPButton
+              Cursor = crHandPoint
+              Left = 0
+              Height = 25
+              Top = 25
+              Width = 106
+              Caption = 'Modifier/détails'
+              TabOrder = 4
+              Spacing = 2
+              Align = alTop
+              Anchors = [akTop, akRight]
+              Font.Height = -11
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = btnEditClick
+            end
+            object bfsbAjout: TFWAdd
+              Cursor = crHandPoint
+              Left = 0
+              Height = 25
+              Top = 0
+              Width = 106
+              Caption = 'Nouveau'
+              TabOrder = 5
+              Spacing = 5
+              Align = alTop
+              Anchors = [akTop, akRight]
+              Font.Height = -11
+              ParentFont = False
+              OnClick = bfsbAjoutClick
+              GlyphSize = 16
+            end
+          end
+        end
+        object Panel3: TPanel
+          Left = 3
+          Height = 56
+          Top = 3
+          Width = 474
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 56
+          ClientWidth = 474
+          TabOrder = 1
+          object Image1: TIATitle
+            Left = 1
+            Top = 0
+            AutoSize = True
+            ImageOn = iaDatabase
+          end
+        end
+        object fpBoutons: TPanel
+          Left = 3
+          Height = 30
+          Top = 299
+          Width = 474
+          Align = alBottom
+          BevelInner = bvLowered
+          ClientHeight = 30
+          ClientWidth = 474
+          TabOrder = 2
+          object fsbSelection: TFWOK
+            Cursor = crHandPoint
+            Left = 252
+            Top = 2
+            Width = 126
+            Caption = 'Sélectionner'
+            TabOrder = 0
+            Default = True
+            Align = alRight
+            Anchors = [akTop, akRight]
+            OnClick = fsbSelectionClick
+          end
+          object bFermer: TFWClose
+            Cursor = crHandPoint
+            Left = 378
+            Top = 2
+            Width = 94
+            Caption = 'Fermer'
+            TabOrder = 1
+            Cancel = True
+            ModalResult = 2
+            Spacing = 5
+            Align = alRight
+            Anchors = [akTop, akRight]
+            OnClick = bFermerClick
+          end
+          object cbForcedWrites: TJvXPCheckbox
+            Left = 4
+            Height = 17
+            Top = 5
+            Width = 164
+            Caption = 'Écriture forcée activée.'
+            TabOrder = 2
+            UseDockManager = False
+            AutoSize = True
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = cbForcedWritesClick
+          end
+        end
+      end
+    end
+  end
+  object DSDossier: TDatasource[1]
+    DataSet = IBQDossier
+    left = 48
+    top = 96
+  end
+  object IBQDossier: TIBQuery[2]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    AfterScroll = IBQDossierAfterScroll
+    OnCalcFields = IBQDossierCalcFields
+    OnNewRecord = IBQDossierNewRecord
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select '
+      'cle_dossier'
+      ',nom_dossier'
+      ',ds_verrou'
+      ',ds_base_path'
+      ',ds_infos'
+      ',ds_fermeture'
+      ',ds_last'
+      ',ds_fic_notes'
+      ',ds_langue'
+      ',ds_indicateurs'
+      'from DOSSIER '
+      'order by CLE_DOSSIER'
+    )
+    Params = <>
+    UpdateObject = IBUDossier
+    left = 160
+    top = 88
+    object IBQDossierCLE_DOSSIER: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_DOSSIER'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQDossierDS_VERROU: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'DS_VERROU'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQDossierDS_LAST: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'DS_LAST'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQDossierDS_FERMETURE: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'DS_FERMETURE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQDossier_NOMDOSSIER: TStringField
+      DisplayWidth = 50
+      FieldKind = fkCalculated
+      FieldName = '_NOMDOSSIER'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQDossierNOM_DOSSIER: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'NOM_DOSSIER'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQDossierDS_LANGUE: TStringField
+      DisplayWidth = 3
+      FieldKind = fkData
+      FieldName = 'DS_LANGUE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object IBQDossierDS_INFOS: TStringField
+      DisplayWidth = 254
+      FieldKind = fkData
+      FieldName = 'DS_INFOS'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 254
+    end
+    object IBQDossierDS_BASE_PATH: TStringField
+      DisplayWidth = 254
+      FieldKind = fkData
+      FieldName = 'DS_BASE_PATH'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 254
+    end
+    object IBQDossierDS_FIC_NOTES: TStringField
+      DisplayWidth = 254
+      FieldKind = fkData
+      FieldName = 'DS_FIC_NOTES'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 254
+    end
+    object IBQDossierDS_INDICATEURS: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'DS_INDICATEURS'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object IBUDossier: TIBUpdateSQL[3]
+    RefreshSQL.Strings = (
+      'Select '
+      'CLE_DOSSIER'
+      ',NOM_DOSSIER'
+      ',DS_VERROU'
+      ',DS_INFOS'
+      ',ds_fermeture'
+      ',DS_LAST'
+      ',ds_base_path'
+      ',ds_fic_notes'
+      ',ds_langue'
+      ',ds_indicateurs'
+      'from DOSSIER '
+      'where'
+      '  CLE_DOSSIER = :CLE_DOSSIER'
+    )
+    ModifySQL.Strings = (
+      'update DOSSIER'
+      'set'
+      'NOM_DOSSIER = :NOM_DOSSIER'
+      ',DS_VERROU = :DS_VERROU'
+      ',DS_LANGUE=:DS_LANGUE'
+      ',DS_INFOS = :DS_INFOS'
+      ',ds_base_path=:ds_base_path'
+      ',ds_fic_notes=:ds_fic_notes'
+      ',ds_indicateurs=:ds_indicateurs'
+      'where'
+      '  CLE_DOSSIER = :CLE_DOSSIER'
+    )
+    InsertSQL.Strings = (
+      'insert into DOSSIER'
+      '(CLE_DOSSIER'
+      ',NOM_DOSSIER'
+      ',DS_VERROU'
+      ',DS_INFOS'
+      ',DS_LAST'
+      ',ds_base_path'
+      ',ds_fic_notes'
+      ',ds_langue'
+      ',ds_indicateurs)'
+      'values'
+      '(:CLE_DOSSIER'
+      ',:NOM_DOSSIER'
+      ',:DS_VERROU'
+      ',:DS_INFOS'
+      ',:DS_LAST'
+      ',:ds_base_path'
+      ',:ds_fic_notes'
+      ',:ds_langue'
+      ',:ds_indicateurs)'
+    )
+    DeleteSQL.Strings = (
+      'delete from DOSSIER'
+      'where'
+      'CLE_DOSSIER=:OLD_CLE_DOSSIER'
+    )
+    left = 72
+    top = 168
+  end
+  object Language: TYLanguage[4]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+  end
+  object pmDossier: TPopupMenu[5]
+    Images = dm.ImageTreeview
+    OnPopup = pmDossierPopup
+    left = 256
+    top = 104
+    object N0Nouveaudossier1: TMenuItem
+      Caption = '0 - Nouveau dossier'
+    end
+  end
+  object ilDossier: TImageList[6]
+    BkColor = clForeground
+    left = 176
+    top = 160
+    Bitmap = {
+      4C69020000001000000010000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000205E00FF205E00FF205E00FF0000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000307B
+      19FF307B19FF307B19FF307B19FF205E00FF205E00FF205E00FF000000000000
+      0000000000000000000000000000000000000000000000000000000000004AB5
+      39FF4AB539FF4AB539FF4AB539FF307B19FF307B19FF307B19FF000000000000
+      0000000000000000000000000000000000000000000000000000307B19FF4AB5
+      39FFFFFFC0FFFFFFC0FF4AB539FF307B19FF307B19FF205E00FF367200FF0000
+      0000000000000000000000000000000000000000000000000000307B19FF4AB5
+      39FFFFFFC0FF4AB539FF4AB539FF307B19FF307B19FF307B19FF205E00FF0000
+      0000000000000000000000000000000000000000000000000000307B19FF4AB5
+      39FF4AB539FF4AB539FF307B19FF307B19FF307B19FF205E00FF367200FF0000
+      000000000000000000000000000000000000000000000000000000000000307B
+      19FF4AB539FF307B19FF307B19FF307B19FF367200FF205E00FF000000000000
+      000000000000000000000000000000000000000000000000000000000000307B
+      19FF307B19FF307B19FF307B19FF367200FF367200FF205E00FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000367200FF367200FF367200FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000505FFFFF505FD0FF503FD0FF0000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000505F
+      FFFFAF5FFFFF505FFFFFAF3FD0FF503FD0FF503FAFFF503F7FFF000000000000
+      000000000000000000000000000000000000000000000000000000000000AF5F
+      FFFFAF7FFFFFAF9FFFFF505FD0FF503FD0FF503FAFFF501F7FFF000000000000
+      0000000000000000000000000000000000000000000000000000505FD0FF505F
+      FFFFAF7FFFFFAF9FFFFF503FD0FF503FAFFF503F7FFF001F7FFF501F50FF0000
+      0000000000000000000000000000000000000000000000000000503FD0FF505F
+      FFFFAF3FD0FF505FD0FF503FD0FF503FAFFF501F7FFF501F50FF001F2FFF0000
+      0000000000000000000000000000000000000000000000000000503FD0FF503F
+      D0FF503FD0FF503FAFFF503FAFFF503F7FFF501F7FFF001F50FF501F50FF0000
+      000000000000000000000000000000000000000000000000000000000000503F
+      AFFF503FAFFF503FAFFF501F7FFF501F7FFF001F50FF00002FFF000000000000
+      000000000000000000000000000000000000000000000000000000000000503F
+      AFFF501F7FFF503F7FFF501F7FFF001F50FF001F2FFF001F50FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000001F50FF001F2FFF00002FFF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000
+    }
+  end
+  object OnFormInfoIni: TOnFormInfoIni[7]
+    SaveEdits = [feTCheck]
+    SaveForm = [sfSavePos, sfSaveSize, sfSameMonitor]
+    left = 256
+    top = 200
+  end
+end

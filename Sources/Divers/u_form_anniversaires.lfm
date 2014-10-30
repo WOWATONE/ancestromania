@@ -1,0 +1,932 @@
+inherited FAnniversaires: TFAnniversaires
+  Left = 446
+  Height = 444
+  Top = 201
+  Width = 682
+  BorderWidth = 1
+  Caption = 'Anniversaires'
+  ClientHeight = 444
+  ClientWidth = 682
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  OnShow = SuperFormShow
+  Position = poScreenCenter
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 442
+    Top = 1
+    Width = 680
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 442
+    ClientWidth = 680
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 3
+      Height = 436
+      Top = 3
+      Width = 674
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 436
+      ClientWidth = 674
+      Color = clWindow
+      ParentColor = False
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 1
+        Height = 380
+        Top = 55
+        Width = 672
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 2
+        ClientHeight = 380
+        ClientWidth = 672
+        TabOrder = 0
+        object pBottom: TPanel
+          Left = 2
+          Height = 2
+          Top = 347
+          Width = 668
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 1
+        end
+        object panDock: TPanel
+          Left = 2
+          Height = 345
+          Top = 2
+          Width = 668
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 345
+          ClientWidth = 668
+          TabOrder = 2
+          object Panel5: TPanel
+            Left = 0
+            Height = 345
+            Top = 0
+            Width = 108
+            Align = alLeft
+            ClientHeight = 345
+            ClientWidth = 108
+            TabOrder = 0
+            object BlueFlaTCSpeedButton1: TCSpeedButton
+              Tag = 1
+              Cursor = crHandPoint
+              Left = 1
+              Height = 19
+              Top = 1
+              Width = 106
+              Align = alTop
+              Caption = 'Janvier'
+              Color = 15725041
+              Glyph.Data = {
+                FE000000424DFE0000000000000076000000280000000C000000110000000100
+                04000000000088000000204E0000204E00001000000000000000FFFFFF00C2F0
+                FF00E5E5E500CCCCCC0033CCFF00B2B2B2003398B10033666600000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000002332000000000000775320000000000072753200000000007227532000
+                0000007222753200000000722227532000000072222275200000007222222700
+                0000007222227000000000722227000000000072227000000000007227000000
+                0000007270000000000000770000000000000000000000000000000000000000
+                0000
+              }
+              Margin = 6
+              OnClick = init
+            end
+            object BlueFlaTCSpeedButton2: TCSpeedButton
+              Tag = 2
+              Cursor = crHandPoint
+              Left = 1
+              Height = 19
+              Top = 20
+              Width = 106
+              Align = alTop
+              Caption = 'Février'
+              Color = 15725041
+              Glyph.Data = {
+                FE000000424DFE0000000000000076000000280000000C000000110000000100
+                04000000000088000000204E0000204E00001000000000000000FFFFFF00C2F0
+                FF00E5E5E500CCCCCC0033CCFF00B2B2B2003398B10033666600000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000002332000000000000775320000000000072753200000000007227532000
+                0000007222753200000000722227532000000072222275200000007222222700
+                0000007222227000000000722227000000000072227000000000007227000000
+                0000007270000000000000770000000000000000000000000000000000000000
+                0000
+              }
+              Margin = 6
+              OnClick = init
+            end
+            object BlueFlaTCSpeedButton3: TCSpeedButton
+              Tag = 3
+              Cursor = crHandPoint
+              Left = 1
+              Height = 19
+              Top = 39
+              Width = 106
+              Align = alTop
+              Caption = 'Mars'
+              Color = 15725041
+              Glyph.Data = {
+                FE000000424DFE0000000000000076000000280000000C000000110000000100
+                04000000000088000000204E0000204E00001000000000000000FFFFFF00C2F0
+                FF00E5E5E500CCCCCC0033CCFF00B2B2B2003398B10033666600000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000002332000000000000775320000000000072753200000000007227532000
+                0000007222753200000000722227532000000072222275200000007222222700
+                0000007222227000000000722227000000000072227000000000007227000000
+                0000007270000000000000770000000000000000000000000000000000000000
+                0000
+              }
+              Margin = 6
+              OnClick = init
+            end
+            object BlueFlaTCSpeedButton4: TCSpeedButton
+              Tag = 4
+              Cursor = crHandPoint
+              Left = 1
+              Height = 19
+              Top = 58
+              Width = 106
+              Align = alTop
+              Caption = 'Avril'
+              Color = 15725041
+              Glyph.Data = {
+                FE000000424DFE0000000000000076000000280000000C000000110000000100
+                04000000000088000000204E0000204E00001000000000000000FFFFFF00C2F0
+                FF00E5E5E500CCCCCC0033CCFF00B2B2B2003398B10033666600000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000002332000000000000775320000000000072753200000000007227532000
+                0000007222753200000000722227532000000072222275200000007222222700
+                0000007222227000000000722227000000000072227000000000007227000000
+                0000007270000000000000770000000000000000000000000000000000000000
+                0000
+              }
+              Margin = 6
+              OnClick = init
+            end
+            object BlueFlaTCSpeedButton5: TCSpeedButton
+              Tag = 5
+              Cursor = crHandPoint
+              Left = 1
+              Height = 19
+              Top = 77
+              Width = 106
+              Align = alTop
+              Caption = 'Mai'
+              Color = 15725041
+              Glyph.Data = {
+                FE000000424DFE0000000000000076000000280000000C000000110000000100
+                04000000000088000000204E0000204E00001000000000000000FFFFFF00C2F0
+                FF00E5E5E500CCCCCC0033CCFF00B2B2B2003398B10033666600000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000002332000000000000775320000000000072753200000000007227532000
+                0000007222753200000000722227532000000072222275200000007222222700
+                0000007222227000000000722227000000000072227000000000007227000000
+                0000007270000000000000770000000000000000000000000000000000000000
+                0000
+              }
+              Margin = 6
+              OnClick = init
+            end
+            object BlueFlaTCSpeedButton6: TCSpeedButton
+              Tag = 6
+              Cursor = crHandPoint
+              Left = 1
+              Height = 19
+              Top = 96
+              Width = 106
+              Align = alTop
+              Caption = 'Juin'
+              Color = 15725041
+              Glyph.Data = {
+                FE000000424DFE0000000000000076000000280000000C000000110000000100
+                04000000000088000000204E0000204E00001000000000000000FFFFFF00C2F0
+                FF00E5E5E500CCCCCC0033CCFF00B2B2B2003398B10033666600000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000002332000000000000775320000000000072753200000000007227532000
+                0000007222753200000000722227532000000072222275200000007222222700
+                0000007222227000000000722227000000000072227000000000007227000000
+                0000007270000000000000770000000000000000000000000000000000000000
+                0000
+              }
+              Margin = 6
+              OnClick = init
+            end
+            object BlueFlaTCSpeedButton7: TCSpeedButton
+              Tag = 7
+              Cursor = crHandPoint
+              Left = 1
+              Height = 19
+              Top = 115
+              Width = 106
+              Align = alTop
+              Caption = 'Juillet'
+              Color = 15725041
+              Glyph.Data = {
+                FE000000424DFE0000000000000076000000280000000C000000110000000100
+                04000000000088000000204E0000204E00001000000000000000FFFFFF00C2F0
+                FF00E5E5E500CCCCCC0033CCFF00B2B2B2003398B10033666600000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000002332000000000000775320000000000072753200000000007227532000
+                0000007222753200000000722227532000000072222275200000007222222700
+                0000007222227000000000722227000000000072227000000000007227000000
+                0000007270000000000000770000000000000000000000000000000000000000
+                0000
+              }
+              Margin = 6
+              OnClick = init
+            end
+            object BlueFlaTCSpeedButton9: TCSpeedButton
+              Tag = 9
+              Cursor = crHandPoint
+              Left = 1
+              Height = 19
+              Top = 153
+              Width = 106
+              Align = alTop
+              Caption = 'Septembre'
+              Color = 15725041
+              Glyph.Data = {
+                FE000000424DFE0000000000000076000000280000000C000000110000000100
+                04000000000088000000204E0000204E00001000000000000000FFFFFF00C2F0
+                FF00E5E5E500CCCCCC0033CCFF00B2B2B2003398B10033666600000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000002332000000000000775320000000000072753200000000007227532000
+                0000007222753200000000722227532000000072222275200000007222222700
+                0000007222227000000000722227000000000072227000000000007227000000
+                0000007270000000000000770000000000000000000000000000000000000000
+                0000
+              }
+              Margin = 6
+              OnClick = init
+            end
+            object BlueFlaTCSpeedButton10: TCSpeedButton
+              Tag = 10
+              Cursor = crHandPoint
+              Left = 1
+              Height = 19
+              Top = 172
+              Width = 106
+              Align = alTop
+              Caption = 'Octobre'
+              Color = 15725041
+              Glyph.Data = {
+                FE000000424DFE0000000000000076000000280000000C000000110000000100
+                04000000000088000000204E0000204E00001000000000000000FFFFFF00C2F0
+                FF00E5E5E500CCCCCC0033CCFF00B2B2B2003398B10033666600000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000002332000000000000775320000000000072753200000000007227532000
+                0000007222753200000000722227532000000072222275200000007222222700
+                0000007222227000000000722227000000000072227000000000007227000000
+                0000007270000000000000770000000000000000000000000000000000000000
+                0000
+              }
+              Margin = 6
+              OnClick = init
+            end
+            object BlueFlaTCSpeedButton11: TCSpeedButton
+              Tag = 11
+              Cursor = crHandPoint
+              Left = 1
+              Height = 19
+              Top = 191
+              Width = 106
+              Align = alTop
+              Caption = 'Novembre'
+              Color = 15725041
+              Glyph.Data = {
+                FE000000424DFE0000000000000076000000280000000C000000110000000100
+                04000000000088000000204E0000204E00001000000000000000FFFFFF00C2F0
+                FF00E5E5E500CCCCCC0033CCFF00B2B2B2003398B10033666600000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000002332000000000000775320000000000072753200000000007227532000
+                0000007222753200000000722227532000000072222275200000007222222700
+                0000007222227000000000722227000000000072227000000000007227000000
+                0000007270000000000000770000000000000000000000000000000000000000
+                0000
+              }
+              Margin = 6
+              OnClick = init
+            end
+            object BlueFlaTCSpeedButton12: TCSpeedButton
+              Tag = 12
+              Cursor = crHandPoint
+              Left = 1
+              Height = 19
+              Top = 210
+              Width = 106
+              Align = alTop
+              Caption = 'Décembre'
+              Color = 15725041
+              Glyph.Data = {
+                FE000000424DFE0000000000000076000000280000000C000000110000000100
+                04000000000088000000204E0000204E00001000000000000000FFFFFF00C2F0
+                FF00E5E5E500CCCCCC0033CCFF00B2B2B2003398B10033666600000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000002332000000000000775320000000000072753200000000007227532000
+                0000007222753200000000722227532000000072222275200000007222222700
+                0000007222227000000000722227000000000072227000000000007227000000
+                0000007270000000000000770000000000000000000000000000000000000000
+                0000
+              }
+              Margin = 6
+              OnClick = init
+            end
+            object BlueFlaTCSpeedButton8: TCSpeedButton
+              Tag = 8
+              Cursor = crHandPoint
+              Left = 1
+              Height = 19
+              Top = 134
+              Width = 106
+              Align = alTop
+              Caption = 'Août'
+              Color = 15725041
+              Glyph.Data = {
+                FE000000424DFE0000000000000076000000280000000C000000110000000100
+                04000000000088000000204E0000204E00001000000000000000FFFFFF00C2F0
+                FF00E5E5E500CCCCCC0033CCFF00B2B2B2003398B10033666600000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000002332000000000000775320000000000072753200000000007227532000
+                0000007222753200000000722227532000000072222275200000007222222700
+                0000007222227000000000722227000000000072227000000000007227000000
+                0000007270000000000000770000000000000000000000000000000000000000
+                0000
+              }
+              Margin = 6
+              OnClick = init
+            end
+          end
+          object cxGrid1: TExtDBGrid
+            Cursor = crHandPoint
+            Left = 113
+            Height = 345
+            Top = 0
+            Width = 555
+            TitleButtons = False
+            AutoSort = False
+            Columns = <            
+              item
+                ReadOnly = True
+                Title.Alignment = taCenter
+                Title.Caption = ' '
+                Title.Orientation = toHorizontal
+                Width = 20
+                FieldName = 'SEXE'
+                Filter.DropDownRows = 0
+                Filter.EmptyValue = '(Empty)'
+                Filter.EmptyFont.Style = [fsItalic]
+                Filter.ItemIndex = -1
+                EditButtons = <>
+                Images = dm.ImageSexe
+                FieldTag = 0
+              end            
+              item
+                ReadOnly = True
+                Title.Alignment = taCenter
+                Title.Caption = 'Nom'
+                Title.Orientation = toHorizontal
+                Width = 135
+                FieldName = 'NOM'
+                Filter.DropDownRows = 0
+                Filter.EmptyValue = '(Empty)'
+                Filter.EmptyFont.Style = [fsItalic]
+                Filter.ItemIndex = -1
+                EditButtons = <>
+                FieldTag = 0
+                Resize = True
+              end            
+              item
+                ReadOnly = True
+                Title.Alignment = taCenter
+                Title.Caption = 'Prénom'
+                Title.Orientation = toHorizontal
+                Width = 170
+                FieldName = 'PRENOM'
+                Filter.DropDownRows = 0
+                Filter.EmptyValue = '(Empty)'
+                Filter.EmptyFont.Style = [fsItalic]
+                Filter.ItemIndex = -1
+                EditButtons = <>
+                FieldTag = 0
+                Resize = True
+              end            
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'Né(e) le'
+                Title.Orientation = toHorizontal
+                Width = 139
+                FieldName = 'datenaissance'
+                Filter.DropDownRows = 0
+                Filter.EmptyValue = '(Empty)'
+                Filter.EmptyFont.Style = [fsItalic]
+                Filter.ItemIndex = -1
+                EditButtons = <>
+                FieldTag = 0
+              end            
+              item
+                Alignment = taCenter
+                ReadOnly = True
+                Title.Alignment = taCenter
+                Title.Caption = 'Âge'
+                Title.Orientation = toHorizontal
+                Width = 33
+                FieldName = 'AGE'
+                Filter.DropDownRows = 0
+                Filter.EmptyValue = '(Empty)'
+                Filter.EmptyFont.Style = [fsItalic]
+                Filter.ItemIndex = -1
+                EditButtons = <>
+                FieldTag = 0
+              end            
+              item
+                Alignment = taCenter
+                ReadOnly = True
+                Title.Alignment = taCenter
+                Title.Caption = 'Jour'
+                Title.Orientation = toHorizontal
+                Width = 34
+                FieldName = 'JOUR'
+                Filter.DropDownRows = 0
+                Filter.EmptyValue = '(Empty)'
+                Filter.EmptyFont.Style = [fsItalic]
+                Filter.ItemIndex = -1
+                EditButtons = <>
+                FieldTag = 0
+              end>
+            KeyStrokes = <            
+              item
+                Command = rxgcShowFindDlg
+                ShortCut = 16454
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowColumnsDlg
+                ShortCut = 16471
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowFilterDlg
+                ShortCut = 16468
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowSortDlg
+                ShortCut = 16467
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowQuickFilter
+                ShortCut = 16465
+                Enabled = True
+              end            
+              item
+                Command = rxgcHideQuickFilter
+                ShortCut = 16456
+                Enabled = True
+              end            
+              item
+                Command = rxgcSelectAll
+                ShortCut = 16449
+                Enabled = True
+              end            
+              item
+                Command = rxgcDeSelectAll
+                ShortCut = 16429
+                Enabled = True
+              end            
+              item
+                Command = rxgcInvertSelection
+                ShortCut = 16426
+                Enabled = True
+              end            
+              item
+                Command = rxgcOptimizeColumnsWidth
+                ShortCut = 16427
+                Enabled = True
+              end>
+            OptionsRx = []
+            Align = alClient
+            Color = clWindow
+            DrawFullLine = False
+            FocusColor = clRed
+            SelectedColor = clHighlight
+            GridLineStyle = psSolid
+            DataSource = DSAnni
+            FixedCols = 0
+            Options = [dgTitles, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+            ParentColor = False
+            PopupMenu = pmGrid
+            ReadOnly = True
+            Scrollbars = ssAutoBoth
+            TabOrder = 1
+            TitleFont.CharSet = ANSI_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+            OnDblClick = dxDBGrid1DblClick
+          end
+          object Splitter3: TSplitter
+            Left = 108
+            Height = 345
+            Top = 0
+            Width = 5
+          end
+        end
+        object fpBoutons: TPanel
+          Left = 2
+          Height = 29
+          Top = 349
+          Width = 668
+          Align = alBottom
+          ClientHeight = 29
+          ClientWidth = 668
+          TabOrder = 0
+          object rbTous: TRadioButton
+            Cursor = crHandPoint
+            Left = 1
+            Height = 27
+            Hint = 'Anniversaire de tous les individus pour le mois sélectionné'
+            Top = 1
+            Width = 51
+            Align = alLeft
+            Caption = 'Tous'
+            OnClick = init
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+          end
+          object rbVivant: TRadioButton
+            Cursor = crHandPoint
+            Left = 52
+            Height = 27
+            Hint = 'Montre les anniversaires de toutes les personnes vivantes,  pour le mois sélectionné'
+            Top = 1
+            Width = 159
+            Align = alLeft
+            Caption = 'Uniquement les vivants'
+            Checked = True
+            OnClick = init
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+            TabStop = True
+          end
+          object btnFermer: TFWClose
+            Cursor = crHandPoint
+            Left = 569
+            Height = 27
+            Hint = 'Ferme cette fenêtre.'
+            Top = 1
+            Width = 98
+            Caption = 'Fermer'
+            TabOrder = 2
+            Cancel = True
+            ModalResult = 2
+            Spacing = 8
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = sbCloseClick
+          end
+          object bsfbSelection: TFWOK
+            Cursor = crHandPoint
+            Left = 413
+            Height = 27
+            Hint = 'Ouvre la fiche de l''individu sélectionné'
+            Top = 1
+            Width = 156
+            Caption = 'Ouvrir la fiche'
+            TabOrder = 3
+            Default = True
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = btnOkClick
+          end
+          object btnPrint: TFWPrintGrid
+            Cursor = crHandPoint
+            Left = 315
+            Height = 27
+            Hint = 'Ouvre la fiche de l''individu sélectionné'
+            Top = 1
+            Width = 98
+            Caption = 'Imprimer'
+            TabOrder = 4
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = btnPrintClick
+            DBGrid = cxGrid1
+          end
+        end
+      end
+      object Panel2: TPanel
+        Left = 1
+        Height = 54
+        Top = 1
+        Width = 672
+        Align = alTop
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 54
+        ClientWidth = 672
+        TabOrder = 1
+        object Panel3: TPanel
+          Left = 3
+          Height = 48
+          Top = 3
+          Width = 666
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 48
+          ClientWidth = 666
+          TabOrder = 0
+          object Label1: TLabel
+            Left = 459
+            Height = 48
+            Top = 0
+            Width = 207
+            Align = alRight
+            Anchors = [akTop, akRight]
+            Caption = 'Anniversaires'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowFrame
+            Font.Height = -27
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object IATitle1: TIATitle
+            Left = -2
+            Top = -4
+            ImageOn = iaPeople
+          end
+        end
+      end
+    end
+  end
+  object DSAnni: TDatasource[1]
+    DataSet = IBQAnni
+    left = 208
+    top = 128
+  end
+  object IBQAnni: TIBQuery[2]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select i.cle_fiche'
+      ',i.nom'
+      ',i.prenom'
+      ',n.ev_ind_date_writen as datenaissance'
+      ',n.ev_ind_date_jour as jour'
+      ',i.date_deces'
+      ',i.sexe'
+      ',n.ev_ind_calendrier1'
+      ',cast(extract(year from current_date)-'
+      'n.ev_ind_date_year as integer)as age'
+      'from evenements_ind n'
+      'inner join individu i on '
+      '(i.cle_fiche=n.ev_ind_kle_fiche)'
+      'where n.ev_ind_type=''BIRT'''
+      'and n.ev_ind_date_mois=:mois'
+      'and (1=:mode or (i.decede is null and '
+      'n.ev_ind_date_year>(extract(year from  '
+      'current_date)-110)))'
+      'and i.kle_dossier=:dossier'
+      'order by n.ev_ind_date_jour nulls last,age desc'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'MOIS'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'mode'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptInput
+      end>
+    left = 152
+    top = 128
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'MOIS'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'mode'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptInput
+      end>
+    object IBQAnniCLE_FICHE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_FICHE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQAnniNOM: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object IBQAnniPRENOM: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'PRENOM'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object IBQAnniDATE_DECES: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'DATE_DECES'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object IBQAnniSEXE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SEXE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQAnniAGE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'AGE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQAnniJOUR: TSmallintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'JOUR'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQAnniSTR_NAISSANCE: TStringField
+      DisplayWidth = 50
+      FieldKind = fkCalculated
+      FieldName = 'STR_NAISSANCE'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQAnniANNEE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ANNEE'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQAnniev_ind_calendrier1: TSmallintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_CALENDRIER1'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object pmGrid: TPopupMenu[3]
+    Images = dm.ImageListMenu
+    OnPopup = pmGridPopup
+    left = 472
+    top = 129
+    object ExporterenHTML1: TMenuItem
+      Caption = 'Exporter en HTML'
+      Enabled = False
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000CE3131FFCE3131FFCE3131FF000000000000000000000000000000000000
+        000000000000000000000000000000000000000000000000000000000000CE31
+        31FF9C6300FF00000000000000009C3100FF101010FF9C0000FFCE3131FF9C63
+        31FF9C6300FF9C6300FF00000000000000000000000000000000737373FFCE31
+        31FF0000000000000000101010FF101010FFCE3131FF9C6331FF9C6331FFCE63
+        00FFFF6331FFFF6331FF9C6300FF9C6300FF00000000000000005A5A5AFFCE31
+        31FF00000000633131FF9C3131FFCE3131FF9C6331FFFF6331FFCE6300FFFF63
+        31FFFF6331FFFF6331FFFF6331FFFF6331FF9C6300FF000000005A5A5AFFCE63
+        31FF9C3100FF840000FFCE3131FF9C6331FFFF6331FFCE6300FF000000000000
+        0000CE3131FFFF6331FFFF6331FFFF6331FFFF6331FF9C6300FF5A5A5AFF639C
+        9CFFCE6331FF9C3131FF9C6331FFCE6300FFFF6331FF00000000000000000000
+        000000000000CE3131FFFF6331FFFF6331FFFF6331FF9C6300FF737373FF639C
+        CEFFFF6331FFCE3131FF9C6331FFFF6331FFCE6300FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000737373FF9CCE
+        CEFF639CCEFFCE6331FF9C6331FFFF6331FFCE6300FFCE6300FFCE6300FFCE63
+        00FFCE6300FFCE6300FFCE6300FFCE6300FFCE6300FFCE6300FF000000007373
+        73FF9CCECEFFCE6363FFCE6331FFFF6331FFFF6331FFFF6331FFFF6331FFCE9C
+        31FFCE9C31FFFF9C00FFFF9C00FFFF9C00FFFF9C00FFCE6300FF00000000CE31
+        31FF639C9CFF9CCEFFFFFF6331FFFF6331FFCE6300FF00000000000000000000
+        000000000000CE3131FFFFFF63FFFFCE00FFFF9C00FFCE6300FF000000000000
+        00009C3131FF9C9C63FF9CFFFFFFFF6331FFCE6300FFCE6300FF000000000000
+        0000CE3131FFCE9C31FFFFFF9CFFFFFF63FFCE6300FF00000000000000000000
+        0000CE3131FF9C3131FF9C9C63FFC6C6C6FFCE6300FFCE6300FFCE3131FFCE31
+        31FFCE6300FFFFCE00FFFFFF63FFFF9C00FFCE6300FF00000000000000000000
+        000000000000CE3131FFCE6300FFCE9C63FFCECE9CFFCE6300FFCE6300FFCE9C
+        31FFFF9C00FFCE9C31FFFF9C00FFCE6300FF0000000000000000000000000000
+        00000000000000000000CE6300FFCE6300FFFF6331FFFF6331FFFF6331FFFF63
+        31FFCE9C31FFFF9C00FFCE6300FF0000000000000000FF6331FF000000000000
+        000000000000000000000000000000000000CE6300FFCE6300FFCE6300FFCE63
+        00FFCE6300FFCE6300FF000000000000000000000000CE6300FF000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        000000000000CE6300FFCE6300FFCE6300FFCE6300FF00000000
+      }
+      ImageIndex = 17
+      OnClick = ExporterenHTML1Click
+    end
+  end
+  object SaveDialog: TSaveDialog[4]
+    DefaultExt = '.htm'
+    Filter = '*.htm|*.htm'
+    left = 392
+    top = 129
+  end
+  object Language: TYLanguage[5]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 216
+    top = 16
+  end
+  object dxComponentPrinter1: TPrinterSetupDialog[6]
+    left = 170
+    top = 252
+  end
+  object OnFormInfoIni: TOnFormInfoIni[7]
+    SaveEdits = [feTGrid, feTRadio]
+    SaveForm = [sfSavePos, sfSaveSizes]
+    left = 320
+    top = 224
+  end
+end

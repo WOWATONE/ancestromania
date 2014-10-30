@@ -1,0 +1,956 @@
+inherited FRechercheActes: TFRechercheActes
+  Left = 16
+  Height = 580
+  Top = 219
+  Width = 938
+  BorderWidth = 1
+  Caption = 'Liste des actes par type'
+  ClientHeight = 580
+  ClientWidth = 938
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  ShowHint = True
+  Visible = True
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 578
+    Top = 1
+    Width = 936
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 578
+    ClientWidth = 936
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 3
+      Height = 572
+      Top = 3
+      Width = 930
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 572
+      ClientWidth = 930
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 1
+        Height = 570
+        Top = 1
+        Width = 928
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 570
+        ClientWidth = 928
+        TabOrder = 0
+        object dxDBGrid1: TExtDBGrid
+          Cursor = crHandPoint
+          Left = 3
+          Height = 460
+          Top = 63
+          Width = 922
+          TitleButtons = False
+          AutoSort = False
+          Columns = <          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Événement'
+              Title.Orientation = toHorizontal
+              Width = 75
+              FieldName = 'EVENEMENT'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Nom(s)'
+              Title.Orientation = toHorizontal
+              Width = 203
+              FieldName = 'NOMS'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Père ou parents du mari'
+              Title.Orientation = toHorizontal
+              Width = 155
+              FieldName = 'PARENT_H'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Mère ou parents de la femme'
+              Title.Orientation = toHorizontal
+              Width = 155
+              FieldName = 'PARENT_F'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Date'
+              Title.Orientation = toHorizontal
+              Width = 65
+              FieldName = 'DATE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Année'
+              Title.Orientation = toHorizontal
+              Width = 35
+              FieldName = 'ANNEE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Ville'
+              Title.Orientation = toHorizontal
+              Width = 66
+              FieldName = 'VILLE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Sub|division'
+              Title.Orientation = toHorizontal
+              Width = 40
+              FieldName = 'SUBDIVISION'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Départ|ement'
+              Title.Orientation = toHorizontal
+              Width = 49
+              FieldName = 'DEPARTEMENT'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Région'
+              Title.Orientation = toHorizontal
+              Width = 0
+              Visible = False
+              FieldName = 'REGION'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Pays'
+              Title.Orientation = toHorizontal
+              Width = 0
+              Visible = False
+              FieldName = 'PAYS'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'NIP'
+              Title.Orientation = toHorizontal
+              Visible = False
+              FieldName = 'NIP'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Notes'
+              Title.Orientation = toHorizontal
+              Width = 89
+              FieldName = 'NOTES'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'ACTE'
+              Title.Orientation = toHorizontal
+              Visible = False
+              FieldName = 'ACTE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end>
+          KeyStrokes = <          
+            item
+              Command = rxgcShowFindDlg
+              ShortCut = 16454
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowColumnsDlg
+              ShortCut = 16471
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowFilterDlg
+              ShortCut = 16468
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowSortDlg
+              ShortCut = 16467
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowQuickFilter
+              ShortCut = 16465
+              Enabled = True
+            end          
+            item
+              Command = rxgcHideQuickFilter
+              ShortCut = 16456
+              Enabled = True
+            end          
+            item
+              Command = rxgcSelectAll
+              ShortCut = 16449
+              Enabled = True
+            end          
+            item
+              Command = rxgcDeSelectAll
+              ShortCut = 16429
+              Enabled = True
+            end          
+            item
+              Command = rxgcInvertSelection
+              ShortCut = 16426
+              Enabled = True
+            end          
+            item
+              Command = rxgcOptimizeColumnsWidth
+              ShortCut = 16427
+              Enabled = True
+            end>
+          OptionsRx = [rdgMultiTitleLines]
+          Align = alClient
+          Color = clWindow
+          DrawFullLine = False
+          FocusColor = clRed
+          SelectedColor = clHighlight
+          GridLineStyle = psSolid
+          DataSource = DSActes
+          FixedCols = 0
+          Options = [dgEditing, dgTitles, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+          ParentColor = False
+          PopupMenu = pmExporter
+          ReadOnly = True
+          Scrollbars = ssAutoBoth
+          TabOrder = 1
+          TitleFont.CharSet = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+          OnDblClick = dxDBGrid1DBTableView1CellDblClick
+          OptionsExt = [eoPaintEdits, eoPaintBlobs]
+        end
+        object Panel3: TPanel
+          Left = 3
+          Height = 55
+          Top = 3
+          Width = 922
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 55
+          ClientWidth = 922
+          TabOrder = 2
+          object Image1: TIATitle
+            Left = 0
+            Hint = 'Cliquer pour supprimer les tris.'
+            Top = 0
+            Align = alLeft
+            AutoSize = True
+            OnClick = Image1Click
+            ParentShowHint = False
+            ShowHint = True
+            ImageOn = iaNotes
+          end
+          object Label1: TLabel
+            Left = 558
+            Height = 55
+            Top = 0
+            Width = 364
+            Align = alRight
+            Alignment = taRightJustify
+            Anchors = [akTop, akRight]
+            Caption = 'Liste des Actes par type'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowFrame
+            Font.Height = -27
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object Panel2: TPanel
+          Left = 3
+          Height = 5
+          Top = 58
+          Width = 922
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 3
+        end
+        object fpBoutons: TPanel
+          Left = 3
+          Height = 44
+          Top = 523
+          Width = 922
+          Align = alBottom
+          BevelOuter = bvNone
+          ClientHeight = 44
+          ClientWidth = 922
+          TabOrder = 0
+          object cxGroupBox1: TGroupBox
+            Left = 0
+            Height = 44
+            Hint = 'Actualiser après modification.'
+            Top = 0
+            Width = 294
+            Align = alLeft
+            Anchors = [akLeft, akBottom]
+            ClientHeight = 40
+            ClientWidth = 290
+            ParentColor = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            object Panel7: TPanel
+              Left = 0
+              Height = 19
+              Top = 14
+              Width = 290
+              Align = alTop
+              BevelOuter = bvNone
+              ClientHeight = 19
+              ClientWidth = 290
+              TabOrder = 0
+              object cbChercher: TJvXPCheckbox
+                Left = 0
+                Height = 19
+                Hint = 'Actualiser après modification.'
+                Top = 0
+                Width = 88
+                Caption = 'à chercher'
+                TabOrder = 0
+                ParentColor = False
+                UseDockManager = False
+                Align = alLeft
+                Anchors = [akLeft, akBottom]
+                Font.Height = -11
+                ParentFont = False
+              end
+              object cbTrouves: TJvXPCheckbox
+                Left = 88
+                Height = 19
+                Hint = 'Actualiser après modification.'
+                Top = 0
+                Width = 75
+                Caption = 'trouvés'
+                TabOrder = 1
+                ParentColor = False
+                UseDockManager = False
+                Align = alLeft
+                Anchors = [akLeft, akBottom]
+                Font.Height = -11
+                ParentFont = False
+              end
+              object cbIgnorer: TJvXPCheckbox
+                Left = 163
+                Height = 19
+                Hint = 'Actualiser après modification.'
+                Top = 0
+                Width = 88
+                Caption = 'à ignorer'
+                TabOrder = 2
+                ParentColor = False
+                UseDockManager = False
+                Align = alLeft
+                Anchors = [akLeft, akBottom]
+                Font.Height = -11
+                ParentFont = False
+              end
+            end
+            object Panel8: TPanel
+              Left = 0
+              Height = 14
+              Top = 0
+              Width = 290
+              Align = alTop
+              BevelOuter = bvNone
+              ClientHeight = 14
+              ClientWidth = 290
+              TabOrder = 1
+              object cbDemandes: TJvXPCheckbox
+                Left = 203
+                Height = 14
+                Hint = 'Actualiser après modification.'
+                Top = 0
+                Width = 80
+                Caption = 'demandés'
+                TabOrder = 0
+                ParentColor = False
+                UseDockManager = False
+                Align = alLeft
+                Anchors = [akLeft, akBottom]
+                Font.Height = -11
+                ParentFont = False
+              end
+              object cbAbsents: TJvXPCheckbox
+                Left = 123
+                Height = 14
+                Hint = 'Actualiser après modification.'
+                Top = 0
+                Width = 80
+                Caption = 'absents'
+                TabOrder = 1
+                ParentColor = False
+                UseDockManager = False
+                Align = alLeft
+                Anchors = [akLeft, akBottom]
+                Font.Height = -11
+                ParentFont = False
+              end
+              object Label2: TLabel
+                Left = 0
+                Height = 14
+                Top = 0
+                Width = 123
+                Align = alLeft
+                Anchors = [akLeft, akBottom]
+                Caption = 'Types d''actes à lister:'
+                Font.CharSet = ANSI_CHARSET
+                Font.Color = clWindowFrame
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                ParentColor = False
+                ParentFont = False
+              end
+            end
+          end
+          object Panel1: TPanel
+            Left = 294
+            Height = 44
+            Top = 0
+            Width = 138
+            Align = alLeft
+            BevelOuter = bvNone
+            ClientHeight = 44
+            ClientWidth = 138
+            TabOrder = 1
+            object Label4: TLabel
+              Left = 0
+              Height = 14
+              Top = 0
+              Width = 138
+              Align = alTop
+              Caption = 'Période (facultative)'
+              ParentColor = False
+            end
+            object Panel6: TPanel
+              Left = 0
+              Height = 30
+              Top = 14
+              Width = 138
+              Align = alClient
+              BevelOuter = bvNone
+              ClientHeight = 30
+              ClientWidth = 138
+              TabOrder = 0
+              object edJusque: TMaskEdit
+                Left = 51
+                Height = 30
+                Hint = 'Jusqu''à l''année. Actualiser après avoir modifié la période.'
+                Top = 0
+                Width = 30
+                Align = alLeft
+                Anchors = [akLeft, akBottom]
+                CharCase = ecNormal
+                Font.Height = -11
+                MaxLength = 0
+                ParentFont = False
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 0
+                SpaceChar = '_'
+              end
+              object Label3: TLabel
+                Left = 44
+                Height = 30
+                Top = 0
+                Width = 7
+                Align = alLeft
+                Anchors = [akLeft, akBottom]
+                Caption = 'à'
+                ParentColor = False
+              end
+              object edDepuis: TMaskEdit
+                Left = 14
+                Height = 30
+                Hint = 'Depuis l''année. Actualiser après avoir modifié la période.'
+                Top = 0
+                Width = 30
+                Align = alLeft
+                Anchors = [akLeft, akBottom]
+                CharCase = ecNormal
+                Font.Height = -11
+                MaxLength = 0
+                ParentFont = False
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 1
+                SpaceChar = '_'
+              end
+              object Label5: TLabel
+                Left = 0
+                Height = 30
+                Top = 0
+                Width = 14
+                Align = alLeft
+                Anchors = [akLeft, akBottom]
+                Caption = 'de'
+                ParentColor = False
+              end
+            end
+          end
+          object Panel4: TPanel
+            Left = 432
+            Height = 44
+            Top = 0
+            Width = 160
+            Align = alLeft
+            BevelOuter = bvNone
+            ClientHeight = 44
+            ClientWidth = 160
+            TabOrder = 2
+            object cbSosa: TJvXPCheckbox
+              Left = 0
+              Height = 16
+              Hint = 'Actualiser après modification.'
+              Top = 0
+              Width = 160
+              Caption = 'SOSA uniquement'
+              TabOrder = 0
+              ParentColor = False
+              UseDockManager = False
+              Align = alTop
+              Anchors = [akTop, akLeft, akRight, akBottom]
+              Font.Height = -11
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+            end
+            object btnActualiser: TFWRefresh
+              Cursor = crHandPoint
+              Left = 0
+              Height = 28
+              Hint = 'Relance le calcul.'
+              Top = 16
+              Width = 160
+              Caption = 'Actualiser'
+              TabOrder = 1
+              Align = alClient
+              Anchors = [akLeft, akBottom]
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentFont = False
+              OnClick = btnActualiserClick
+            end
+          end
+          object Panel5: TPanel
+            Left = 728
+            Height = 44
+            Top = 0
+            Width = 194
+            Align = alRight
+            BevelOuter = bvNone
+            Caption = 'Panel5'
+            ClientHeight = 44
+            ClientWidth = 194
+            TabOrder = 3
+            object btnPrint: TFWPrintGrid
+              Cursor = crHandPoint
+              Left = 22
+              Height = 44
+              Hint = 'Imprime la liste ci dessus....'
+              Top = 0
+              Width = 90
+              Caption = 'Imprimer...'
+              TabOrder = 0
+              Align = alRight
+              Anchors = [akRight, akBottom]
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = btnPrintClick
+              DBGrid = dxDBGrid1
+            end
+            object btnFermer: TFWClose
+              Cursor = crHandPoint
+              Left = 112
+              Height = 44
+              Top = 0
+              Width = 82
+              Caption = 'Fermer'
+              TabOrder = 1
+              Align = alRight
+              Anchors = [akRight, akBottom]
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentFont = False
+              OnClick = sbCloseClick
+            end
+          end
+        end
+      end
+    end
+  end
+  object IBQActes: TIBQuery[1]
+    Database = dm.ibd_BASE
+    Transaction = IBTransactionPropre
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    Params = <>
+    left = 224
+    top = 152
+    object IBQActesEVENEMENT: TStringField
+      DisplayWidth = 90
+      FieldKind = fkData
+      FieldName = 'EVENEMENT'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 90
+    end
+    object IBQActesNOMS: TStringField
+      Alignment = taCenter
+      DisplayWidth = 207
+      FieldKind = fkData
+      FieldName = 'NOMS'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 207
+    end
+    object IBQActesPARENT_H: TStringField
+      Alignment = taCenter
+      DisplayWidth = 207
+      FieldKind = fkData
+      FieldName = 'PARENT_H'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 207
+    end
+    object IBQActesPARENT_F: TStringField
+      Alignment = taCenter
+      DisplayWidth = 207
+      FieldKind = fkData
+      FieldName = 'PARENT_F'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 207
+    end
+    object IBQActesDATE: TStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'DATE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object IBQActesANNEE: TLongintField
+      Alignment = taCenter
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ANNEE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQActesVILLE: TStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'VILLE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQActesSUBDIVISION: TStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'SUBDIVISION'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQActesDEPARTEMENT: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'DEPARTEMENT'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQActesREGION: TStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'REGION'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQActesPAYS: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'PAYS'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQActesNOTES: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'NOTES'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Transliterate = False
+    end
+    object IBQActesNIP: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'NIP'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQActesCODE_EV: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CODE_EV'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQActesTYPE_TABLE: TStringField
+      DisplayWidth = 1
+      FieldKind = fkData
+      FieldName = 'TYPE_TABLE'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object IBQActesACTE: TStringField
+      Alignment = taCenter
+      DisplayLabel = 'Acte'
+      DisplayWidth = 1
+      FieldKind = fkData
+      FieldName = 'ACTE'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+  end
+  object DSActes: TDatasource[2]
+    DataSet = IBQActes
+    left = 176
+    top = 152
+  end
+  object pmExporter: TPopupMenu[3]
+    OnPopup = pmExporterPopup
+    left = 336
+    top = 152
+    object Ouvrirlafiche: TMenuItem
+      Caption = 'Ouvrir la fiche (ou double clic)'
+      Default = True
+      Enabled = False
+      Hint = 'Avec touche Maj ouvre la fiche en consultation.'
+      ShortCut = 16454
+      OnClick = OuvrirlaficheClick
+    end
+    object mImprimer: TMenuItem
+      Caption = 'Imprimer'
+      Enabled = False
+      OnClick = mImprimerClick
+    end
+    object ExporterenHTML1: TMenuItem
+      Caption = 'Exporter en HTML'
+      Enabled = False
+      OnClick = ExporterenHTML1Click
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object Supprimerlestris1: TMenuItem
+      Caption = 'Supprimer les tris'
+      OnClick = Supprimerlestris1Click
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object Ajouterlesnotes: TMenuItem
+      Caption = 'Ajouter les notes'
+      OnClick = AjouterlesnotesClick
+    end
+    object N4: TMenuItem
+      Caption = '-'
+    end
+    object NombreEvenements: TMenuItem
+      Visible = False
+    end
+  end
+  object SaveDialog: TSaveDialog[4]
+    DefaultExt = '.htm'
+    Filter = '*.htm|*.htm'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    left = 379
+    top = 154
+  end
+  object dxComponentPrinter1: TPrinterSetupDialog[5]
+    Title = 'Ecran d''aperçu'
+    left = 418
+    top = 153
+  end
+  object IBTransactionPropre: TIBTransaction[6]
+    Active = False
+    DefaultDatabase = dm.ibd_BASE
+    left = 281
+    top = 152
+  end
+  object OnFormInfoIni: TOnFormInfoIni[7]
+    SaveEdits = [feTEdit, feTCheck, feTGrid]
+    SaveForm = [sfSavePos, sfSaveSize, sfSameMonitor]
+    left = 296
+    top = 216
+  end
+end

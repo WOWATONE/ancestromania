@@ -1,0 +1,1106 @@
+inherited FQuiHabiteLa: TFQuiHabiteLa
+  Left = 554
+  Height = 500
+  Top = 148
+  Width = 735
+  ActiveControl = dxDBGrid1
+  BorderWidth = 1
+  Caption = 'Qui habite là...'
+  ClientHeight = 500
+  ClientWidth = 735
+  Color = clWhite
+  Constraints.MinWidth = 735
+  DefaultMonitor = dmMainForm
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 498
+    Top = 1
+    Width = 733
+    Align = alClient
+    BevelOuter = bvNone
+    BorderWidth = 2
+    ClientHeight = 498
+    ClientWidth = 733
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 2
+      Height = 494
+      Top = 2
+      Width = 729
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 494
+      ClientWidth = 729
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 0
+        Height = 494
+        Top = 0
+        Width = 729
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 494
+        ClientWidth = 729
+        TabOrder = 0
+        object pBottom: TPanel
+          Left = 3
+          Height = 3
+          Top = 459
+          Width = 723
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 1
+        end
+        object dxDBGrid1: TExtDBGrid
+          Cursor = crHandPoint
+          Left = 3
+          Height = 290
+          Top = 63
+          Width = 723
+          TitleButtons = False
+          AutoSort = False
+          Columns = <          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = ' '
+              Title.Orientation = toHorizontal
+              Width = 20
+              FieldName = 'SEXE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Nom'
+              Title.Orientation = toHorizontal
+              FieldName = 'NOM'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Prénom'
+              Title.Orientation = toHorizontal
+              Width = 204
+              FieldName = 'PRENOM'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Période'
+              Title.Orientation = toHorizontal
+              Width = 312
+              FieldName = 'EV_IND_DATE_WRITEN'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end>
+          KeyStrokes = <          
+            item
+              Command = rxgcShowFindDlg
+              ShortCut = 16454
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowColumnsDlg
+              ShortCut = 16471
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowFilterDlg
+              ShortCut = 16468
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowSortDlg
+              ShortCut = 16467
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowQuickFilter
+              ShortCut = 16465
+              Enabled = True
+            end          
+            item
+              Command = rxgcHideQuickFilter
+              ShortCut = 16456
+              Enabled = True
+            end          
+            item
+              Command = rxgcSelectAll
+              ShortCut = 16449
+              Enabled = True
+            end          
+            item
+              Command = rxgcDeSelectAll
+              ShortCut = 16429
+              Enabled = True
+            end          
+            item
+              Command = rxgcInvertSelection
+              ShortCut = 16426
+              Enabled = True
+            end          
+            item
+              Command = rxgcOptimizeColumnsWidth
+              ShortCut = 16427
+              Enabled = True
+            end          
+            item
+              Command = rxgcCopyCellValue
+              ShortCut = 16451
+              Enabled = True
+            end>
+          OptionsRx = []
+          Align = alTop
+          Anchors = [akTop, akLeft, akRight, akBottom]
+          Color = clWindow
+          DrawFullLine = False
+          FocusColor = clRed
+          SelectedColor = clHighlight
+          GridLineStyle = psSolid
+          DataSource = DSNom
+          FixedColor = 5614250
+          Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+          ParentColor = False
+          PopupMenu = pmUnions
+          Scrollbars = ssAutoVertical
+          TabOrder = 2
+          TitleFont.CharSet = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+        end
+        object Panel3: TPanel
+          Left = 3
+          Height = 55
+          Top = 3
+          Width = 723
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 55
+          ClientWidth = 723
+          TabOrder = 3
+          object Label8: TLabel
+            Left = 114
+            Height = 25
+            Top = 2
+            Width = 150
+            Alignment = taRightJustify
+            Caption = 'Qui habite là ?'
+            Color = clWindow
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowFrame
+            Font.Height = -21
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            Transparent = False
+          end
+          object lPere: TLabel
+            Left = 312
+            Height = 13
+            Top = 0
+            Width = 50
+            Caption = 'Son père :'
+            ParentColor = False
+            Visible = False
+          end
+          object lMere: TLabel
+            Left = 488
+            Height = 13
+            Top = 0
+            Width = 46
+            Caption = 'Sa mère :'
+            ParentColor = False
+            Visible = False
+          end
+          object lConjoint: TLabel
+            Left = 376
+            Height = 13
+            Top = 4
+            Width = 106
+            Caption = 'Son dernier conjoint : '
+            ParentColor = False
+            Visible = False
+          end
+          object lVille: TLabel
+            Left = 248
+            Height = 25
+            Top = 10
+            Width = 481
+            Alignment = taRightJustify
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowFrame
+            Font.Height = -21
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            WordWrap = True
+          end
+          object IATitle1: TIATitle
+            Left = 2
+            Top = 2
+            ImageOn = iaWho
+          end
+        end
+        object Panel2: TPanel
+          Left = 3
+          Height = 5
+          Top = 58
+          Width = 723
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 4
+        end
+        object Panel9: TPanel
+          Left = 3
+          Height = 109
+          Top = 354
+          Width = 723
+          Anchors = [akLeft, akRight, akBottom]
+          BevelOuter = bvNone
+          BevelWidth = 2
+          BorderWidth = 2
+          ClientHeight = 109
+          ClientWidth = 723
+          Color = clSkyBlue
+          ParentColor = False
+          TabOrder = 5
+          object rv: TRichView
+            Left = 2
+            Height = 105
+            Top = 2
+            Width = 719
+            TabStop = True
+            TabOrder = 0
+            Align = alClient
+            Tracking = True
+            VScrollVisible = False
+            FirstJumpNo = 0
+            Style = RVStyle
+            MaxTextWidth = 0
+            MinTextWidth = 0
+            LeftMargin = 5
+            RightMargin = 5
+            BackgroundStyle = bsNoBitmap
+            Delimiters = ' .;,:(){}"'
+            AllowSelection = True
+            SingleClick = False
+          end
+        end
+        object fpBoutons: TPanel
+          Left = 3
+          Height = 29
+          Top = 462
+          Width = 723
+          Align = alBottom
+          BevelInner = bvLowered
+          ClientHeight = 29
+          ClientWidth = 723
+          TabOrder = 0
+          object GoodBtn7: TFWClose
+            Cursor = crHandPoint
+            Left = 625
+            Height = 27
+            Top = 0
+            Width = 94
+            Caption = 'Fermer'
+            TabOrder = 0
+            Cancel = True
+            Default = True
+            Spacing = 8
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            OnClick = sbCloseClick
+          end
+          object btnCopier: TFWCopy
+            Left = 5
+            Height = 25
+            Hint = 'Permet d''affecter cette adresse à un autre individu...'
+            Top = 0
+            Width = 245
+            TabStop = False
+            Caption = 'Affecter à d''autres individus'
+            TabOrder = 1
+            Spacing = 8
+            Anchors = [akLeft, akBottom]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = btnCopierClick
+          end
+        end
+      end
+    end
+  end
+  object IBQNom: TIBQuery[1]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BeforePost = IBQNomBeforePost
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select i1.cle_fiche'
+      ',i1.nom'
+      ',i1.prenom'
+      ',i1.sexe'
+      ',i1.cle_pere'
+      ',i1.cle_mere'
+      ',i1.date_naissance'
+      ',i1.date_deces'
+      ',a1.ev_ind_type'
+      ',a1.ev_ind_date_writen'
+      ',a1.ev_ind_date_year'
+      ',a1.ev_ind_date_year_fin'
+      ',a1.ev_ind_date'
+      ',a1.ev_ind_datecode_tard'
+      ',a1.ev_ind_date_mois'
+      ',a1.ev_ind_date_mois_fin'
+      ',a1.ev_ind_clef'
+      ',a1.ev_ind_date_jour'
+      ',a1.ev_ind_datecode'
+      ',a1.ev_ind_date_jour_fin'
+      ',a1.ev_ind_datecode_tot'
+      ',a1.ev_ind_type_token1'
+      ',a1.ev_ind_type_token2'
+      ',(select ev_ind_ville from evenements_ind where ev_ind_type=''BIRT'' and ev_ind_kle_fiche=a1.ev_ind_kle_fiche) as ville_naissance'
+      'from evenements_ind a0 '
+      'inner join individu i0'
+      '        on i0.cle_fiche=a0.ev_ind_kle_fiche'
+      'inner join evenements_ind a1'
+      '        on a1.ev_ind_type=''RESI'''
+      '       and a1.ev_ind_cp is not distinct from a0.ev_ind_cp'
+      '       and a1.ev_ind_ville is not distinct from a0.ev_ind_ville'
+      '       and a1.ev_ind_subd is not distinct from a0.ev_ind_subd'
+      '       and a1.ev_ind_dept is not distinct from a0.ev_ind_dept'
+      '       and a1.ev_ind_region is not distinct from a0.ev_ind_region'
+      '       and a1.ev_ind_pays is not distinct from a0.ev_ind_pays'
+      '       and a1.ev_ind_lignes_adresse is not distinct from a0.ev_ind_lignes_adresse'
+      'inner join individu i1'
+      '        on i1.cle_fiche=a1.ev_ind_kle_fiche'
+      '       and i1.kle_dossier=i0.kle_dossier'
+      'where a0.ev_ind_clef=:adr_clef'
+      'ORDER BY '
+      ' a1.ev_ind_datecode nulls last'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'adr_clef'
+        ParamType = ptUnknown
+      end>
+    UpdateObject = IBUAdresses
+    left = 118
+    top = 15
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'adr_clef'
+        ParamType = ptUnknown
+      end>
+    object IBQNomEV_IND_CLEF: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_CLEF'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object IBQNomCLE_FICHE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_FICHE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = True
+    end
+    object IBQNomNOM: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object IBQNomPRENOM: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'PRENOM'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object IBQNomSEXE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SEXE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQNomCLE_PERE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_PERE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQNomCLE_MERE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_MERE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQNomDATE_NAISSANCE: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'DATE_NAISSANCE'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object IBQNomDATE_DECES: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'DATE_DECES'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object IBQNomEV_IND_DATE_WRITEN: TStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_WRITEN'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object IBQNomEV_IND_DATE_YEAR: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_YEAR'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQNomEV_IND_DATE_YEAR_FIN: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_YEAR_FIN'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQNomEV_IND_DATE_MOIS: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_MOIS'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQNomEV_IND_DATE_MOIS_FIN: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_MOIS_FIN'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQNomEV_IND_DATE: TDateField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQNomVILLE_NAISSANCE: TStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'VILLE_NAISSANCE'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQNomEV_IND_DATECODE_TARD: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATECODE_TARD'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQNomEV_IND_DATE_JOUR: TSmallintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_JOUR'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQNomEV_IND_DATE_JOUR_FIN: TSmallintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_JOUR_FIN'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQNomEV_IND_DATECODE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATECODE'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQNomEV_IND_DATECODE_TOT: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATECODE_TOT'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQNomEV_IND_TYPE_TOKEN1: TSmallintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_TYPE_TOKEN1'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQNomEV_IND_TYPE_TOKEN2: TSmallintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EV_IND_TYPE_TOKEN2'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object DSNom: TDatasource[2]
+    DataSet = IBQNom
+    OnStateChange = DSNomStateChange
+    left = 86
+    top = 15
+  end
+  object pmUnions: TPopupMenu[3]
+    Images = dm.ImageListMenu
+    OnPopup = pmUnionsPopup
+    left = 30
+    top = 151
+    object mFiche: TMenuItem
+      Caption = 'Ouvrir la fiche ...'
+      Enabled = False
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000FF0000
+        00FF008484FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF000000FF00000000000000000000000000000000000000FF00FF
+        FFFF000000FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF000000FF000000000000000000000000000000FFFFFF
+        FFFF00FFFFFF000000FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF008484FF000000FF0000000000000000000000FF00FF
+        FFFFFFFFFFFF00FFFFFF000000FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF008484FF008484FF000000FF00000000000000FFFFFF
+        FFFF00FFFFFFFFFFFFFF00FFFFFF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF00FF
+        FFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FF
+        FFFF000000FF0000000000000000000000000000000000000000000000FFFFFF
+        FFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFF
+        FFFF000000FF0000000000000000000000000000000000000000000000FF00FF
+        FFFFFFFFFFFF00FFFFFF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000000000
+        00FF000000FF000000FF00000000000000000000000000000000000000000000
+        00000000000000000000000000FF000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00000000000000000000000000FF00000000000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00FF000000FF000000FF00000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 5
+      OnClick = mFicheClick
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object ExporterenHTML1: TMenuItem
+      Caption = 'Exporter en HTML'
+      Enabled = False
+      OnClick = ExporterenHTML1Click
+    end
+  end
+  object SaveDialog: TSaveDialog[4]
+    DefaultExt = '.htm'
+    Filter = '*.htm|*.htm'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    left = 65
+    top = 153
+  end
+  object Language: TYLanguage[5]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+  end
+  object IBQPere: TIBQuery[6]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DSNom
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select cle_fiche,nom,prenom from individu where cle_fiche=:cle_pere'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_PERE'
+        ParamType = ptUnknown
+      end>
+    left = 523
+    top = 91
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_PERE'
+        ParamType = ptUnknown
+      end>
+    object IBQPereCLE_FICHE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_FICHE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQPereNOM: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object IBQPerePRENOM: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'PRENOM'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+  end
+  object IBQEvPere: TIBQuery[7]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DSNom
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select first(1) ev_ind_date_writen,ev_ind_ville'
+      'from evenements_ind'
+      'where ev_ind_type=''BIRT'' and ev_ind_kle_fiche=:cle_pere'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'cle_pere'
+        ParamType = ptUnknown
+      end>
+    left = 555
+    top = 91
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'cle_pere'
+        ParamType = ptUnknown
+      end>
+    object IBQEvPereEV_IND_DATE_WRITEN: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_WRITEN'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object IBQEvPereEV_IND_VILLE: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'EV_IND_VILLE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+  end
+  object IBQConjoint: TIBQuery[8]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DSNom
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select first(1) c.cle_fiche'
+      ',c.nom'
+      ',c.prenom'
+      ',c.sexe'
+      'from proc_conjoints_ordonnes(:cle_fiche,0) p'
+      'inner join individu c on c.cle_fiche=p.conjoint'
+      'order by ordre desc '
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_FICHE'
+        ParamType = ptUnknown
+      end>
+    left = 451
+    top = 99
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_FICHE'
+        ParamType = ptUnknown
+      end>
+    object IBQConjointCLE_FICHE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_FICHE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQConjointNOM: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object IBQConjointPRENOM: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'PRENOM'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object IBQConjointSEXE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SEXE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object IBQEvMere: TIBQuery[9]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DSNom
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select first(1) ev_ind_date_writen,ev_ind_ville'
+      'from evenements_ind'
+      'where ev_ind_type=''BIRT'' and ev_ind_kle_fiche=:cle_mere'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'cle_mere'
+        ParamType = ptUnknown
+      end>
+    left = 387
+    top = 91
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'cle_mere'
+        ParamType = ptUnknown
+      end>
+    object IBQEvMereEV_IND_DATE_WRITEN: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'EV_IND_DATE_WRITEN'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object IBQEvMereEV_IND_VILLE: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'EV_IND_VILLE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+  end
+  object IBQMere: TIBQuery[10]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DSNom
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select cle_fiche,nom,prenom from individu where cle_fiche=:cle_mere'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_MERE'
+        ParamType = ptUnknown
+      end>
+    left = 312
+    top = 91
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_MERE'
+        ParamType = ptUnknown
+      end>
+    object IBQMereCLE_FICHE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_FICHE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQMereNOM: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object IBQMerePRENOM: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'PRENOM'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+  end
+  object IBUAdresses: TIBUpdateSQL[11]
+    ModifySQL.Strings = (
+      'update evenements_ind'
+      'set ev_ind_date_writen=:ev_ind_date_writen'
+      ',ev_ind_date=:ev_ind_date'
+      ',ev_ind_date_year=:ev_ind_date_year'
+      ',ev_ind_date_year_fin=:ev_ind_date_year_fin'
+      ',ev_ind_date_mois=:ev_ind_date_mois'
+      ',ev_ind_date_mois_fin=:ev_ind_date_mois_fin'
+      ',ev_ind_date_jour=:ev_ind_date_jour'
+      ',ev_ind_date_jour_fin=:ev_ind_date_jour_fin'
+      ',ev_ind_type_token1=:ev_ind_type_token1'
+      ',ev_ind_type_token2=:ev_ind_type_token2'
+      ',ev_ind_datecode=:ev_ind_datecode'
+      ',ev_ind_datecode_tot=:ev_ind_datecode_tot'
+      ',ev_ind_datecode_tard=:ev_ind_datecode_tard'
+      'where ev_ind_clef=:ev_ind_clef'
+    )
+    left = 165
+    top = 16
+  end
+  object RVStyle: TRVStyle[12]
+    TextStyles = <    
+      item
+        CharSet = DEFAULT_CHARSET
+        FontName = 'Arial'
+        Size = 10
+        Color = clWindowText
+        Style = []
+      end    
+      item
+        CharSet = DEFAULT_CHARSET
+        FontName = 'Arial'
+        Size = 10
+        Color = clBlue
+        Style = [fsBold]
+      end    
+      item
+        CharSet = DEFAULT_CHARSET
+        FontName = 'Arial'
+        Size = 10
+        Color = clNavy
+        Style = [fsBold]
+      end    
+      item
+        CharSet = DEFAULT_CHARSET
+        FontName = 'Arial'
+        Size = 10
+        Color = clMaroon
+        Style = [fsItalic]
+      end    
+      item
+        CharSet = DEFAULT_CHARSET
+        FontName = 'Arial'
+        Size = 10
+        Color = clGreen
+        Style = [fsUnderline]
+      end    
+      item
+        CharSet = DEFAULT_CHARSET
+        FontName = 'Arial'
+        Size = 10
+        Color = clGreen
+        Style = [fsUnderline]
+      end>
+    JumpCursor = 101
+    Color = clWindow
+    HoverColor = clNone
+    FullRedraw = False
+    SelColor = clHighlight
+    SelTextColor = clHighlightText
+    left = 178
+    top = 267
+  end
+end

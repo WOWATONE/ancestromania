@@ -1,0 +1,357 @@
+inherited FEditRefTemoins: TFEditRefTemoins
+  Left = 381
+  Height = 396
+  Top = 189
+  Width = 494
+  ActiveControl = dxDBGrid1
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Rôles et relations des témoins'
+  ClientHeight = 396
+  ClientWidth = 494
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 0
+    Height = 396
+    Top = 0
+    Width = 494
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 396
+    ClientWidth = 494
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object Panel7: TPanel
+      Left = 3
+      Height = 390
+      Top = 3
+      Width = 488
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 390
+      ClientWidth = 488
+      TabOrder = 0
+      object Panel4: TPanel
+        Left = 1
+        Height = 59
+        Top = 1
+        Width = 486
+        Align = alTop
+        ClientHeight = 59
+        ClientWidth = 486
+        TabOrder = 0
+        object lbTitle: TLabel
+          Left = 8
+          Height = 14
+          Top = 2
+          Width = 286
+          Caption = 'Libellés types : ne pas supprimer ni modifier les similis TAGs,'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowFrame
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+          WordWrap = True
+        end
+        object lbTitle1: TLabel
+          Left = 8
+          Height = 14
+          Top = 20
+          Width = 338
+          Caption = 'sous peine de ne plus importer les témoins depuis des fichiers gedcom,'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowFrame
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+          WordWrap = True
+        end
+        object lbTitle2: TLabel
+          Left = 8
+          Height = 14
+          Top = 39
+          Width = 334
+          Caption = 'générés par certains logiciels utilisant ces étiquettes non normalisées.'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowFrame
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+          WordWrap = True
+        end
+        object Panel2: TPanel
+          Left = 419
+          Height = 57
+          Top = 1
+          Width = 66
+          Align = alRight
+          BevelOuter = bvSpace
+          ClientHeight = 57
+          ClientWidth = 66
+          TabOrder = 0
+          object Panel3: TPanel
+            Left = 1
+            Height = 24
+            Top = 32
+            Width = 64
+            Align = alBottom
+            BevelOuter = bvNone
+            ClientHeight = 24
+            ClientWidth = 64
+            TabOrder = 0
+            object btnAdd: TFWAdd
+              Cursor = crHandPoint
+              Left = 10
+              Height = 24
+              Top = 0
+              Width = 27
+              TabOrder = 0
+              Layout = blGlyphTop
+              Spacing = 240
+              Align = alRight
+              Anchors = [akTop, akRight]
+              ParentFont = False
+              OnClick = btnAddClick
+              ColorFrameFocus = clWhite
+              GlyphSize = 16
+            end
+            object btnDel: TFWDelete
+              Cursor = crHandPoint
+              Left = 37
+              Height = 24
+              Top = 0
+              Width = 27
+              TabOrder = 1
+              Layout = blGlyphTop
+              Spacing = 240
+              Align = alRight
+              Anchors = [akTop, akRight]
+              ParentFont = False
+              OnClick = btnDelClick
+              ColorFrameFocus = clWhite
+              GlyphSize = 16
+            end
+          end
+        end
+      end
+      object Panel8: TPanel
+        Left = 1
+        Height = 32
+        Top = 357
+        Width = 486
+        Align = alBottom
+        ClientHeight = 32
+        ClientWidth = 486
+        TabOrder = 1
+        object btnImport: TFWImport
+          Cursor = crHandPoint
+          Left = 1
+          Height = 30
+          Top = 1
+          Width = 94
+          Caption = 'Importer'
+          TabOrder = 0
+          Align = alLeft
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnImportClick
+        end
+        object btnExport: TFWExport
+          Cursor = crHandPoint
+          Left = 95
+          Height = 30
+          Top = 1
+          Width = 94
+          Caption = 'Exporter'
+          TabOrder = 1
+          Align = alLeft
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnExportClick
+        end
+        object btnFermer: TFWClose
+          Cursor = crHandPoint
+          Left = 391
+          Height = 30
+          Hint = 'Ferme cette fenêtre.'
+          Top = 1
+          Width = 94
+          Caption = 'Fermer'
+          TabOrder = 2
+          ModalResult = 1
+          Align = alRight
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+        end
+      end
+      object Panel6: TPanel
+        Left = 1
+        Height = 297
+        Top = 60
+        Width = 486
+        Align = alClient
+        BorderWidth = 5
+        ClientHeight = 297
+        ClientWidth = 486
+        TabOrder = 2
+        object Panel1: TPanel
+          Left = 6
+          Height = 285
+          Top = 6
+          Width = 474
+          Align = alClient
+          BevelOuter = bvLowered
+          ClientHeight = 285
+          ClientWidth = 474
+          TabOrder = 0
+          object dxDBGrid1: TExtDBGrid
+            Left = 1
+            Height = 283
+            Top = 1
+            Width = 472
+            TitleButtons = False
+            AutoSort = False
+            Columns = <            
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'Libellés'
+                Title.Orientation = toHorizontal
+                Width = 192
+                FieldName = 'REF_RELA_LIBELLE'
+                Filter.DropDownRows = 0
+                Filter.EmptyValue = '(Empty)'
+                Filter.EmptyFont.Style = [fsItalic]
+                Filter.ItemIndex = -1
+                EditButtons = <>
+                FieldTag = 0
+              end            
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'Similis TAGs'
+                Title.Orientation = toHorizontal
+                Width = 134
+                FieldName = 'REF_RELA_TAG'
+                Filter.DropDownRows = 0
+                Filter.EmptyValue = '(Empty)'
+                Filter.EmptyFont.Style = [fsItalic]
+                Filter.ItemIndex = -1
+                EditButtons = <>
+                FieldTag = 0
+              end>
+            KeyStrokes = <            
+              item
+                Command = rxgcShowFindDlg
+                ShortCut = 16454
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowColumnsDlg
+                ShortCut = 16471
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowFilterDlg
+                ShortCut = 16468
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowSortDlg
+                ShortCut = 16467
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowQuickFilter
+                ShortCut = 16465
+                Enabled = True
+              end            
+              item
+                Command = rxgcHideQuickFilter
+                ShortCut = 16456
+                Enabled = True
+              end            
+              item
+                Command = rxgcSelectAll
+                ShortCut = 16449
+                Enabled = True
+              end            
+              item
+                Command = rxgcDeSelectAll
+                ShortCut = 16429
+                Enabled = True
+              end            
+              item
+                Command = rxgcInvertSelection
+                ShortCut = 16426
+                Enabled = True
+              end            
+              item
+                Command = rxgcOptimizeColumnsWidth
+                ShortCut = 16427
+                Enabled = True
+              end>
+            OptionsRx = []
+            Align = alClient
+            Color = clWindow
+            DrawFullLine = False
+            FocusColor = clRed
+            SelectedColor = clHighlight
+            GridLineStyle = psSolid
+            DataSource = DataSource
+            FixedColor = 5614250
+            Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+            ParentColor = False
+            Scrollbars = ssAutoBoth
+            TabOrder = 0
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+          end
+        end
+      end
+    end
+  end
+  object DataSource: TDatasource[1]
+    DataSet = Query
+    left = 87
+    top = 47
+  end
+  object Language: TYLanguage[2]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 8
+    top = 8
+  end
+  object Query: TIBTable[3]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBTrans_Secondaire
+    AfterDelete = QueryAfterDelete
+    AfterInsert = QueryAfterInsert
+    BeforeDelete = QueryBeforeDelete
+    BeforePost = QueryBeforePost
+    BufferChunks = 1000
+    CachedUpdates = False
+    IndexFieldNames = 'REF_RELA_LIBELLE'
+    TableName = 'REF_RELA_TEMOINS'
+    left = 82
+    top = 141
+  end
+end

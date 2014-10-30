@@ -1,0 +1,292 @@
+inherited FEditDossier: TFEditDossier
+  Left = 449
+  Height = 409
+  Top = 190
+  Width = 546
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  BorderWidth = 1
+  ClientHeight = 409
+  ClientWidth = 546
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  Position = poOwnerFormCenter
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 407
+    Top = 1
+    Width = 544
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 407
+    ClientWidth = 544
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object pGlobal: TPanel
+      Left = 3
+      Height = 401
+      Top = 3
+      Width = 538
+      Align = alClient
+      BevelOuter = bvNone
+      BorderWidth = 2
+      ClientHeight = 401
+      ClientWidth = 538
+      TabOrder = 0
+      object panDock: TPanel
+        Left = 2
+        Height = 367
+        Top = 2
+        Width = 534
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 367
+        ClientWidth = 534
+        TabOrder = 1
+        object DBText1: TDBText
+          Left = 0
+          Height = 15
+          Top = 303
+          Width = 534
+          Align = alTop
+          Anchors = [akLeft, akBottom]
+          DataField = 'DS_FERMETURE'
+          DataSource = DataSource
+          ParentColor = False
+        end
+        object Label1: TLabel
+          Left = 0
+          Height = 18
+          Top = 285
+          Width = 534
+          Align = alTop
+          Anchors = [akLeft, akBottom]
+          Caption = 'Dernière consultation :'
+          ParentColor = False
+        end
+        object Label2: TLabel
+          Left = 0
+          Height = 13
+          Top = 0
+          Width = 534
+          Align = alTop
+          Caption = 'Nom du dossier :'
+          ParentColor = False
+        end
+        object Label3: TLabel
+          Left = 0
+          Height = 13
+          Top = 38
+          Width = 534
+          Align = alTop
+          Caption = 'Description du dossier :'
+          ParentColor = False
+        end
+        object Label4: TLabel
+          Left = 0
+          Height = 0
+          Top = 170
+          Width = 534
+          Align = alTop
+          Anchors = [akLeft, akBottom]
+          Caption = 'Répertoire de base des images et fichiers attachés au dossier :'
+          ParentColor = False
+        end
+        object Label5: TLabel
+          Left = 0
+          Height = 39
+          Top = 192
+          Width = 534
+          Align = alTop
+          Anchors = [akLeft, akBottom]
+          Caption = 'Fichier de notes du dossier :'
+          ParentColor = False
+        end
+        object dxDBEdit1: TFWDBEdit
+          Left = 0
+          Height = 25
+          Top = 13
+          Width = 534
+          DataField = 'NOM_DOSSIER'
+          DataSource = DataSource
+          CharCase = ecNormal
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 1
+          Align = alTop
+        end
+        object dxDBMemo1: TFWDBMemo
+          Left = 0
+          Height = 91
+          Top = 51
+          Width = 534
+          Align = alTop
+          Anchors = [akTop, akLeft, akRight, akBottom]
+          DataField = 'DS_Infos'
+          DataSource = DataSource
+          ParentFont = False
+          TabOrder = 0
+        end
+        object edFicNotes: TFWDBEdit
+          Left = 0
+          Height = 28
+          Top = 231
+          Width = 534
+          DataField = 'DS_FIC_NOTES'
+          DataSource = DataSource
+          Anchors = [akLeft, akRight, akBottom]
+          CharCase = ecNormal
+          MaxLength = 0
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 2
+          Align = alTop
+        end
+        object cbImages: TJvXPCheckbox
+          Left = 0
+          Height = 22
+          Top = 170
+          Width = 534
+          Caption = 'Intégrer une copie des images dans la base.'
+          TabOrder = 3
+          ParentColor = False
+          UseDockManager = False
+          Align = alTop
+          Anchors = [akLeft, akBottom]
+          ParentFont = False
+        end
+        object Panel1: TPanel
+          Left = 0
+          Height = 26
+          Top = 259
+          Width = 534
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 26
+          ClientWidth = 534
+          TabOrder = 4
+          object Label6: TLabel
+            Left = 0
+            Height = 26
+            Top = 0
+            Width = 294
+            Align = alLeft
+            Anchors = [akLeft, akBottom]
+            Caption = 'Langue des données (modifiable uniquement si dossier vide) :'
+            ParentColor = False
+          end
+          object cbLangue: TFWDBComboBox
+            Left = 360
+            Height = 25
+            Top = 2
+            Width = 169
+            Anchors = [akLeft, akRight, akBottom]
+            DataField = 'DS_LANGUE'
+            DataSource = DataSource
+            ItemHeight = 17
+            Items.Strings = (
+              'FRA'
+              'ENG'
+              'DEU'
+              'ITA'
+              'SPA'
+            )
+            MaxLength = 3
+            ParentFont = False
+            TabOrder = 0
+          end
+        end
+        object Panel2: TPanel
+          Left = 0
+          Height = 28
+          Top = 142
+          Width = 534
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 28
+          ClientWidth = 534
+          TabOrder = 5
+          object edPathBaseMedias: TExtDBDirectoryEdit
+            Left = 0
+            Height = 21
+            Top = 4
+            Width = 506
+            ShowHidden = False
+            ButtonWidth = 23
+            NumGlyphs = 1
+            Anchors = [akTop, akLeft, akRight]
+            MaxLength = 0
+            TabOrder = 0
+            DataField = 'ds_base_path'
+            DataSource = DataSource
+          end
+        end
+      end
+      object fpBoutons: TPanel
+        Left = 2
+        Height = 30
+        Top = 369
+        Width = 534
+        Align = alBottom
+        BevelInner = bvLowered
+        ClientHeight = 30
+        ClientWidth = 534
+        TabOrder = 0
+        object bsfbSelection: TFWOK
+          Cursor = crHandPoint
+          Left = 438
+          Top = 2
+          Width = 94
+          Caption = 'Ok'
+          TabOrder = 0
+          ModalResult = 1
+          Spacing = 5
+          Align = alRight
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          ParentShowHint = False
+        end
+        object btnFermer: TFWClose
+          Cursor = crHandPoint
+          Left = 344
+          Top = 2
+          Width = 94
+          Caption = 'Annuler'
+          TabOrder = 1
+          ModalResult = 2
+          Spacing = 5
+          Align = alRight
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          ParentShowHint = False
+        end
+      end
+    end
+  end
+  object DataSource: TDatasource[1]
+    left = 152
+    top = 8
+  end
+  object Language: TYLanguage[2]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 48
+    top = 56
+  end
+  object SelectFichier: TOpenDialog[3]
+    left = 328
+    top = 40
+  end
+end

@@ -1,0 +1,134 @@
+object FVoirPoint: TFVoirPoint
+  Left = 520
+  Height = 161
+  Top = 303
+  Width = 184
+  ActiveControl = edLatitude
+  BorderIcons = []
+  BorderStyle = bsDialog
+  Caption = 'Point sur la carte'
+  ClientHeight = 161
+  ClientWidth = 184
+  Color = clWindow
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = FormClose
+  OnCreate = FormCreate
+  Position = poMainFormCenter
+  LCLVersion = '0.9.31'
+  object Label1: TLabel
+    Left = 15
+    Height = 15
+    Top = 64
+    Width = 58
+    Caption = 'Latitude : '
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 7
+    Height = 15
+    Top = 96
+    Width = 64
+    Caption = 'Longitude :'
+    ParentColor = False
+  end
+  object Panel9: TPanel
+    Left = 0
+    Height = 49
+    Top = 0
+    Width = 184
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 49
+    ClientWidth = 184
+    TabOrder = 3
+    object Image1: TIAWorld
+      Left = 0
+      Height = 33
+      Top = 3
+      Width = 33
+      Stretch = True
+    end
+    object Label3: TLabel
+      Left = 35
+      Height = 15
+      Top = 0
+      Width = 323
+      Caption = 'Coordonnées décimales du lieu à visualiser par satellite.'
+      ParentColor = False
+      WordWrap = True
+    end
+    object Panel10: TPanel
+      Left = 1
+      Height = 3
+      Top = 41
+      Width = 179
+      Anchors = [akTop, akLeft, akRight]
+      BevelOuter = bvNone
+      Color = 12558466
+      ParentColor = False
+      TabOrder = 0
+    end
+  end
+  object btnClose: TFWClose
+    Left = 93
+    Top = 133
+    Width = 85
+    TabStop = False
+    Caption = 'Fermer'
+    TabOrder = 4
+    Spacing = 8
+    Anchors = [akRight, akBottom]
+    ParentFont = False
+    OnClick = btnCloseClick
+  end
+  object btnSat: TJvXPButton
+    Cursor = crHandPoint
+    Left = 5
+    Height = 24
+    Hint = 'Affiche la carte satellite de l''endroit...'
+    Top = 133
+    Width = 24
+    TabStop = False
+    TabOrder = 2
+    Spacing = 16
+    Anchors = [akLeft, akBottom]
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object edLatitude: TMaskEdit
+    Left = 64
+    Height = 21
+    Hint = 'Latitude du lieu à atteindre'
+    Top = 60
+    Width = 84
+    AutoSize = False
+    CharCase = ecNormal
+    Color = clWhite
+    MaxLength = 0
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+    SpaceChar = '_'
+  end
+  object edLongitude: TMaskEdit
+    Left = 64
+    Height = 21
+    Hint = 'Longitude du lieu à atteindre'
+    Top = 92
+    Width = 84
+    AutoSize = False
+    CharCase = ecNormal
+    Color = clWhite
+    MaxLength = 0
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+    SpaceChar = '_'
+  end
+end

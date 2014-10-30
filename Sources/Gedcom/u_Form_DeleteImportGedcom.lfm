@@ -1,0 +1,774 @@
+object FDeleteImportGedcom: TFDeleteImportGedcom
+  Left = 567
+  Height = 467
+  Top = 163
+  Width = 786
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Suppression d''une importation'
+  ClientHeight = 467
+  ClientWidth = 786
+  Color = clWindow
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  Position = poMainFormCenter
+  LCLVersion = '1.2.0.3'
+  object Panel2: TPanel
+    Left = 0
+    Height = 58
+    Top = 0
+    Width = 786
+    Align = alTop
+    BevelOuter = bvNone
+    BorderWidth = 3
+    ClientHeight = 58
+    ClientWidth = 786
+    TabOrder = 0
+    object Panel3: TPanel
+      Left = 3
+      Height = 52
+      Top = 3
+      Width = 780
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 52
+      ClientWidth = 780
+      TabOrder = 0
+      object Panel14: TPanel
+        Left = 0
+        Height = 50
+        Top = 0
+        Width = 780
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 50
+        ClientWidth = 780
+        TabOrder = 0
+        object IATitle1: TIATitle
+          Left = -3
+          Top = 0
+          ImageOn = iaDatabase
+        end
+        object Label17: TLabel
+          Left = 416
+          Height = 50
+          Top = 0
+          Width = 364
+          Align = alRight
+          Alignment = taRightJustify
+          Anchors = [akTop, akRight]
+          Caption = 'Supprimer une importation'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowFrame
+          Font.Height = -24
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+    end
+  end
+  object Panel4: TPanel
+    Left = 0
+    Height = 26
+    Top = 441
+    Width = 786
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 26
+    ClientWidth = 786
+    TabOrder = 1
+    object btnExecute: TFWErase
+      Left = 578
+      Top = 0
+      Width = 104
+      Caption = 'Suppression'
+      Enabled = False
+      TabOrder = 1
+      Spacing = 8
+      Align = alRight
+      Anchors = [akRight, akBottom]
+      OnClick = btnExecuteClick
+    end
+    object btnClose: TFWClose
+      Left = 682
+      Top = 0
+      Width = 104
+      Caption = 'Fermer'
+      TabOrder = 0
+      ModalResult = 1
+      Spacing = 8
+      Align = alRight
+      Anchors = [akRight, akBottom]
+      ParentFont = False
+      OnClick = btnCloseClick
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 383
+    Top = 58
+    Width = 786
+    Align = alClient
+    BevelOuter = bvSpace
+    BorderWidth = 3
+    ClientHeight = 383
+    ClientWidth = 786
+    TabOrder = 2
+    object Panel11: TPanel
+      Left = 4
+      Height = 375
+      Top = 4
+      Width = 252
+      Align = alLeft
+      BevelOuter = bvNone
+      BorderWidth = 3
+      BorderStyle = bsSingle
+      ClientHeight = 373
+      ClientWidth = 250
+      TabOrder = 0
+      object Label3: TLabel
+        Left = 15
+        Height = 14
+        Top = 14
+        Width = 66
+        Caption = 'Individus :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clGreen
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label4: TLabel
+        Left = 15
+        Height = 14
+        Top = 36
+        Width = 61
+        Caption = 'Hommes :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clNavy
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 15
+        Height = 14
+        Top = 59
+        Width = 59
+        Caption = 'Femmes :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 15
+        Height = 14
+        Top = 81
+        Width = 115
+        Caption = 'Sexe indéterminé :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clRed
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label7: TLabel
+        Left = 15
+        Height = 14
+        Top = 108
+        Width = 52
+        Caption = 'Unions :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = 9392965
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label8: TLabel
+        Left = 15
+        Height = 14
+        Top = 130
+        Width = 145
+        Caption = 'Evénements individus :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = 9392965
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label9: TLabel
+        Left = 15
+        Height = 14
+        Top = 153
+        Width = 136
+        Caption = 'Evénements familles :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = 9392965
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label10: TLabel
+        Left = 15
+        Height = 14
+        Top = 175
+        Width = 65
+        Caption = 'Adresses :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = 9392965
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label11: TLabel
+        Left = 15
+        Height = 14
+        Top = 197
+        Width = 81
+        Caption = 'Patronymes :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clPurple
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label12: TLabel
+        Left = 15
+        Height = 14
+        Top = 219
+        Width = 134
+        Caption = 'Images / Documents :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = 9392965
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label13: TLabel
+        Left = 15
+        Height = 14
+        Top = 260
+        Width = 37
+        Caption = 'Pays :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = 9392965
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label14: TLabel
+        Left = 15
+        Height = 14
+        Top = 282
+        Width = 58
+        Caption = 'Régions :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = 9392965
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label15: TLabel
+        Left = 15
+        Height = 14
+        Top = 305
+        Width = 94
+        Caption = 'Départements :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = 9392965
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label16: TLabel
+        Left = 15
+        Height = 14
+        Top = 327
+        Width = 43
+        Caption = 'Villes :'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clNavy
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lHommes: TLabel
+        Left = 208
+        Height = 14
+        Top = 36
+        Width = 8
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Color = clNavy
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lFemmes: TLabel
+        Left = 208
+        Height = 14
+        Top = 59
+        Width = 8
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lIndeter: TLabel
+        Left = 208
+        Height = 14
+        Top = 81
+        Width = 8
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Color = clRed
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lUnions: TLabel
+        Left = 208
+        Height = 14
+        Top = 108
+        Width = 8
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lEveInd: TLabel
+        Left = 208
+        Height = 14
+        Top = 130
+        Width = 8
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lEveFam: TLabel
+        Left = 208
+        Height = 14
+        Top = 153
+        Width = 8
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lAdresses: TLabel
+        Left = 208
+        Height = 14
+        Top = 175
+        Width = 8
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lPatronymes: TLabel
+        Left = 208
+        Height = 14
+        Top = 197
+        Width = 8
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Color = clPurple
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lImages: TLabel
+        Left = 208
+        Height = 14
+        Top = 219
+        Width = 8
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lPays: TLabel
+        Left = 208
+        Height = 14
+        Top = 260
+        Width = 8
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lRegions: TLabel
+        Left = 208
+        Height = 14
+        Top = 282
+        Width = 8
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lDepts: TLabel
+        Left = 208
+        Height = 14
+        Top = 305
+        Width = 8
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lVilles: TLabel
+        Left = 208
+        Height = 14
+        Top = 327
+        Width = 8
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lIndividus: TLabel
+        Left = 208
+        Height = 14
+        Top = 14
+        Width = 8
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Color = clGreen
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Panel8: TPanel
+        Left = 12
+        Height = 2
+        Top = 101
+        Width = 223
+        Anchors = [akTop, akLeft, akRight]
+        BevelOuter = bvNone
+        ClientHeight = 2
+        ClientWidth = 223
+        Color = clBlue
+        ParentColor = False
+        TabOrder = 0
+        object Panel6: TPanel
+          Left = 0
+          Height = 2
+          Top = 235
+          Width = 204
+          BevelOuter = bvNone
+          Color = 14540253
+          ParentColor = False
+          TabOrder = 0
+        end
+        object Panel7: TPanel
+          Left = 0
+          Height = 2
+          Top = -27
+          Width = 204
+          BevelOuter = bvNone
+          ClientHeight = 2
+          ClientWidth = 204
+          Color = 14540253
+          ParentColor = False
+          TabOrder = 1
+          object Panel9: TPanel
+            Left = 0
+            Height = 2
+            Top = 235
+            Width = 204
+            BevelOuter = bvNone
+            Color = 14540253
+            ParentColor = False
+            TabOrder = 0
+          end
+        end
+      end
+      object Panel10: TPanel
+        Left = 12
+        Height = 2
+        Top = 245
+        Width = 223
+        Anchors = [akTop, akLeft, akRight]
+        BevelOuter = bvNone
+        ClientHeight = 2
+        ClientWidth = 223
+        Color = clBlue
+        ParentColor = False
+        TabOrder = 1
+        object Panel12: TPanel
+          Left = 0
+          Height = 2
+          Top = 235
+          Width = 204
+          BevelOuter = bvNone
+          Color = 14540253
+          ParentColor = False
+          TabOrder = 0
+        end
+      end
+    end
+    object Panel5: TPanel
+      Left = 256
+      Height = 375
+      Top = 4
+      Width = 2
+      Align = alLeft
+      BevelOuter = bvNone
+      TabOrder = 1
+    end
+    object Panel13: TPanel
+      Left = 258
+      Height = 375
+      Top = 4
+      Width = 524
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 375
+      ClientWidth = 524
+      TabOrder = 2
+      object cxRadioGroup1: TRadioGroup
+        Left = 1
+        Height = 83
+        Top = 291
+        Width = 522
+        Align = alBottom
+        AutoFill = True
+        Caption = ' Choix '
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.TopBottomSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 1
+        ClientHeight = 66
+        ClientWidth = 518
+        ItemIndex = 0
+        Items.Strings = (
+          'Supprimer l''importation sélectionnée'
+          'Garder l''importation sélectionnée et effacer les autres données'
+          'Supprimer l''importation sélectionnée uniquement de cette liste des importations'
+        )
+        ParentFont = False
+        ParentColor = False
+        TabOrder = 1
+      end
+      object cxGrid1: TDBGrid
+        Left = 1
+        Height = 225
+        Top = 66
+        Width = 522
+        Align = alClient
+        Anchors = [akLeft, akRight, akBottom]
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Alignment = taCenter
+            Title.Caption = 'Du'
+            Width = 94
+            FieldName = 'IG_DATE'
+          end        
+          item
+            Title.Alignment = taCenter
+            Title.Caption = 'Gedcom'
+            Width = 420
+            FieldName = 'IG_PATH'
+          end>
+        DataSource = dsImport
+        FixedCols = 0
+        Options = [dgEditing, dgTitles, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+        Scrollbars = ssAutoBoth
+        TabOrder = 0
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+      end
+      object Panel15: TPanel
+        Left = 1
+        Height = 65
+        Top = 1
+        Width = 522
+        Align = alTop
+        BevelOuter = bvNone
+        Caption = 'Panel15'
+        ClientHeight = 65
+        ClientWidth = 522
+        TabOrder = 2
+        object Label1: TLabel
+          Left = 0
+          Height = 65
+          Top = 0
+          Width = 522
+          Align = alClient
+          Anchors = [akLeft, akRight, akBottom]
+          Caption = 'Attention. Cette fiche permet de supprimer en une seule fois, toutes les données importées depuis un fichier Gedcom ou un dossier. Cette action est irréversible. Il est fortement conseillé de faire d''abord une sauvegarde.'
+          Font.Color = clRed
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+          WordWrap = True
+        end
+      end
+    end
+  end
+  object ibQImport: TIBQuery
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT t.* FROM T_IMPORT_GEDCOM t'
+      'where exists(select * from individu'
+      'where id_import_gedcom=t.ig_id'
+      'and kle_dossier=:dossier)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'dossier'
+        ParamType = ptUnknown
+      end>
+    left = 296
+    top = 16
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'dossier'
+        ParamType = ptUnknown
+      end>
+    object ibQImportIG_ID: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'IG_ID'
+      Index = 0
+      LookupCache = False
+      Origin = '"T_IMPORT_GEDCOM"."IG_ID"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = True
+    end
+    object ibQImportIG_PATH: TIBStringField
+      DisplayWidth = 255
+      FieldKind = fkData
+      FieldName = 'IG_PATH'
+      Index = 1
+      LookupCache = False
+      Origin = '"T_IMPORT_GEDCOM"."IG_PATH"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 255
+    end
+    object ibQImportIG_DATE: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'IG_DATE'
+      Index = 2
+      LookupCache = False
+      Origin = '"T_IMPORT_GEDCOM"."IG_DATE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dsImport: TDatasource
+    DataSet = ibQImport
+    left = 243
+    top = 11
+  end
+  object IBQPurgeImport: TIBSQL
+    Database = dm.ibd_BASE
+    ParamCheck = True
+    Transaction = dm.IBT_BASE
+    left = 467
+    top = 19
+  end
+end

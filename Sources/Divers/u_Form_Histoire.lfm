@@ -1,0 +1,582 @@
+inherited FHistoire: TFHistoire
+  Left = 788
+  Height = 617
+  Top = 118
+  Width = 243
+  Align = alClient
+  BorderIcons = [biSystemMenu]
+  Caption = 'Histoire'
+  ClientHeight = 617
+  ClientWidth = 243
+  Color = clWindow
+  Constraints.MinHeight = 435
+  Constraints.MinWidth = 240
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
+  OnShow = FormShow
+  object Splitter1: TSplitter[0]
+    Cursor = crVSplit
+    Left = 0
+    Height = 5
+    Top = 323
+    Width = 243
+    Align = alBottom
+    ResizeAnchor = akBottom
+  end
+  object pListe: TPanel[1]
+    Left = 0
+    Height = 323
+    Top = 0
+    Width = 243
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 323
+    ClientWidth = 243
+    TabOrder = 0
+    object cxGrid1: TExtDBGrid
+      Cursor = crHandPoint
+      Left = 0
+      Height = 323
+      Hint = 'Double-cliquez pour modifier un événement historique.'
+      Top = 0
+      Width = 243
+      TitleButtons = False
+      AutoSort = False
+      Columns = <      
+        item
+          MinSize = 200
+          Title.Alignment = taCenter
+          Title.Caption = 'HI_TITRE'
+          Title.Orientation = toHorizontal
+          Width = 148
+          FieldName = 'HI_TITRE'
+          Filter.DropDownRows = 0
+          Filter.EmptyValue = '(Empty)'
+          Filter.EmptyFont.Style = [fsItalic]
+          Filter.ItemIndex = -1
+          EditButtons = <>
+          FieldTag = 0
+        end>
+      KeyStrokes = <      
+        item
+          Command = rxgcShowFindDlg
+          ShortCut = 16454
+          Enabled = True
+        end      
+        item
+          Command = rxgcShowColumnsDlg
+          ShortCut = 16471
+          Enabled = True
+        end      
+        item
+          Command = rxgcShowFilterDlg
+          ShortCut = 16468
+          Enabled = True
+        end      
+        item
+          Command = rxgcShowSortDlg
+          ShortCut = 16467
+          Enabled = True
+        end      
+        item
+          Command = rxgcShowQuickFilter
+          ShortCut = 16465
+          Enabled = True
+        end      
+        item
+          Command = rxgcHideQuickFilter
+          ShortCut = 16456
+          Enabled = True
+        end      
+        item
+          Command = rxgcSelectAll
+          ShortCut = 16449
+          Enabled = True
+        end      
+        item
+          Command = rxgcDeSelectAll
+          ShortCut = 16429
+          Enabled = True
+        end      
+        item
+          Command = rxgcInvertSelection
+          ShortCut = 16426
+          Enabled = True
+        end      
+        item
+          Command = rxgcOptimizeColumnsWidth
+          ShortCut = 16427
+          Enabled = True
+        end>
+      OptionsRx = []
+      Align = alClient
+      AutoFillColumns = True
+      Color = clWindow
+      DrawFullLine = False
+      FocusColor = clRed
+      SelectedColor = clHighlight
+      GridLineStyle = psSolid
+      DataSource = dsHistoire
+      FixedCols = 0
+      Font.Color = clWindowText
+      Font.Height = -9
+      Font.Name = 'Tahoma'
+      Options = [dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete]
+      ParentColor = False
+      ParentFont = False
+      ReadOnly = True
+      Scrollbars = ssAutoBoth
+      TabOrder = 0
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      OnDblClick = dbListeDblClick
+    end
+  end
+  object pPhotoDate: TPanel[2]
+    Left = 0
+    Height = 289
+    Top = 328
+    Width = 243
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 289
+    ClientWidth = 243
+    Constraints.MinHeight = 170
+    TabOrder = 1
+    object Panel1: TPanel
+      Left = 0
+      Height = 136
+      Top = 0
+      Width = 243
+      Align = alTop
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      BevelInner = bvRaised
+      BevelOuter = bvLowered
+      ClientHeight = 136
+      ClientWidth = 243
+      TabOrder = 0
+      object PanelTexte: TPanel
+        Left = 2
+        Height = 132
+        Top = 2
+        Width = 239
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 132
+        ClientWidth = 239
+        TabOrder = 0
+        object cxDBMemo1: TFWDBMemo
+          Cursor = crHandPoint
+          Left = 0
+          Height = 90
+          Hint = 'Double-cliquez pour modifier cet événement historique.'
+          Top = 42
+          Width = 239
+          Align = alClient
+          DataField = 'hi_texte'
+          DataSource = DSBlob
+          Font.Height = -11
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 0
+          ColorReadOnly = clWindow
+        end
+        object DBText1: TDBText
+          Left = 0
+          Height = 21
+          Top = 21
+          Width = 239
+          Align = alTop
+          AutoSize = False
+          DataField = 'HI_DATE_TEXTE'
+          DataSource = dsHistoire
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object DBText2: TDBText
+          Left = 0
+          Height = 21
+          Top = 0
+          Width = 239
+          Align = alTop
+          AutoSize = False
+          DataField = 'HI_TITRE'
+          DataSource = dsHistoire
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object cxLabel2: TFWLabel
+          Left = 8
+          Height = 81
+          Top = 39
+          Width = 226
+          Alignment = taCenter
+          AutoSize = False
+          Caption = 'Votre module d''histoire est vide, cliquez sur le bouton Importer pour ajouter un dictionnaire.'
+          Font.Color = clWindowText
+          ParentColor = False
+          ParentFont = False
+          Visible = False
+          ColorFocus = clMaroon
+        end
+      end
+    end
+    object Panel3: TPanel
+      Left = 0
+      Height = 153
+      Top = 136
+      Width = 243
+      Align = alBottom
+      ClientHeight = 153
+      ClientWidth = 243
+      TabOrder = 1
+      object Panel2: TPanel
+        Left = 1
+        Height = 151
+        Top = 1
+        Width = 26
+        Align = alLeft
+        ClientHeight = 151
+        ClientWidth = 26
+        TabOrder = 0
+        object btnCategorie: TFWFolder
+          Cursor = crHandPoint
+          Left = 0
+          Height = 25
+          Hint = 'Catégorie d''événements: (Tous)'
+          Top = 120
+          Width = 25
+          TabStop = False
+          TabOrder = 0
+          Layout = blGlyphTop
+          Anchors = [akLeft, akBottom]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+        end
+        object btnHistoire: TXAHistory
+          Cursor = crHandPoint
+          Left = 0
+          Height = 25
+          Hint = 'En savoir plus sur le net...'
+          Top = 96
+          Width = 25
+          TabOrder = 1
+          Anchors = [akLeft, akBottom]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnHistoireClick
+        end
+        object btnAjout: TFWAdd
+          Cursor = crHandPoint
+          Left = 0
+          Height = 25
+          Hint = 'Modifier ou Ajouter un événement historique...'
+          Top = 0
+          Width = 25
+          TabOrder = 2
+          Spacing = 8
+          Anchors = [akLeft, akBottom]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnAjoutClick
+        end
+        object btnImport: TFWImport
+          Cursor = crHandPoint
+          Left = 0
+          Height = 25
+          Hint = 'Importer des événements historiques...'
+          Top = 72
+          Width = 25
+          TabOrder = 3
+          Anchors = [akLeft, akBottom]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnImportClick
+        end
+        object btnDelete: TFWDelete
+          Cursor = crHandPoint
+          Left = 0
+          Height = 25
+          Hint = 'Supprimer l''événement en cours...'
+          Top = 24
+          Width = 25
+          Enabled = False
+          TabOrder = 4
+          Anchors = [akLeft, akBottom]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnDeleteClick
+        end
+        object btnExport: TFWExport
+          Cursor = crHandPoint
+          Left = 0
+          Height = 24
+          Hint = 'Exporter des événements historiques....'
+          Top = 48
+          Width = 25
+          TabOrder = 5
+          Anchors = [akLeft, akBottom]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnExportClick
+        end
+      end
+      object cxDBImage1: TExtDBImage
+        Cursor = crHandPoint
+        Left = 27
+        Height = 151
+        Hint = 'Double-cliquez pour modifier cet événement historique.'
+        Top = 1
+        Width = 215
+        Align = alClient
+        Anchors = [akRight, akBottom]
+        OnDblClick = btnAjoutClick
+        Proportional = True
+        Stretch = True
+        Datafield = 'hi_image'
+        Datasource = DSBlob
+      end
+    end
+  end
+  object dsHistoire: TDatasource[3]
+    DataSet = ibHistoire
+    left = 128
+    top = 48
+  end
+  object ibHistoire: TIBQuery[4]
+    Database = dm.IBBaseParam
+    Transaction = TransHistoire
+    AutoCalcFields = False
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select hi_id,hi_dossier,hi_dicorigine,hi_date_texte,hi_cat,hi_titre'
+      ',hi_date_code_debut'
+      'from ref_histoire where hi_dossier in (0,0)'
+    )
+    Params = <>
+    UpdateObject = uHistoire
+    left = 48
+    top = 104
+    object ibHistoireHI_ID: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'HI_ID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ibHistoireHI_DOSSIER: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'HI_DOSSIER'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ibHistoireHI_DICORIGINE: TStringField
+      DisplayWidth = 28
+      FieldKind = fkData
+      FieldName = 'HI_DICORIGINE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 8
+    end
+    object ibHistoireHI_DATE_TEXTE: TStringField
+      DisplayWidth = 200
+      FieldKind = fkData
+      FieldName = 'HI_DATE_TEXTE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object ibHistoireHI_CAT: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'HI_CAT'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ibHistoireHI_TITRE: TStringField
+      DisplayWidth = 200
+      FieldKind = fkData
+      FieldName = 'HI_TITRE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object ibHistoireHI_DATE_CODE_DEBUT: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'HI_DATE_CODE_DEBUT'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object uHistoire: TIBUpdateSQL[5]
+    DeleteSQL.Strings = (
+      'delete from REF_HISTOIRE'
+      'where HI_ID=:OLD_HI_ID'
+    )
+    left = 128
+    top = 96
+  end
+  object QBlob: TIBQuery[6]
+    Database = dm.IBBaseParam
+    Transaction = TransHistoire
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = dsHistoire
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select hi_texte,hi_image from ref_histoire'
+      'where hi_id=:hi_id'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'hi_id'
+        ParamType = ptUnknown
+      end>
+    left = 64
+    top = 176
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'hi_id'
+        ParamType = ptUnknown
+      end>
+    object QBlobHI_TEXTE: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'HI_TEXTE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Transliterate = False
+    end
+    object QBlobHI_IMAGE: TBlobField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'HI_IMAGE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftBlob
+    end
+  end
+  object DSBlob: TDatasource[7]
+    DataSet = QBlob
+    left = 128
+    top = 176
+  end
+  object pmCategories: TPopupMenu[8]
+    left = 168
+    top = 240
+    object mTous: TMenuItem
+      Caption = '(Tous)'
+      Checked = True
+      RadioItem = True
+      OnClick = mTousClick
+    end
+    object mActivitesEconomiques: TMenuItem
+      Caption = 'Activités économiques'
+      RadioItem = True
+      OnClick = mTousClick
+    end
+    object mArtsEtLettres: TMenuItem
+      Caption = 'Arts et lettres'
+      RadioItem = True
+      OnClick = mTousClick
+    end
+    object mCalamites: TMenuItem
+      Caption = 'Calamités'
+      RadioItem = True
+      OnClick = mTousClick
+    end
+    object Histoire1: TMenuItem
+      Caption = 'Histoire'
+      RadioItem = True
+      OnClick = mTousClick
+    end
+    object mPersonnalites: TMenuItem
+      Caption = 'Personnalités'
+      RadioItem = True
+      OnClick = mTousClick
+    end
+    object mReligions: TMenuItem
+      Caption = 'Religions'
+      RadioItem = True
+      OnClick = mTousClick
+    end
+    object mSciencesTechniques: TMenuItem
+      Caption = 'Sciences et Techniques'
+      RadioItem = True
+      OnClick = mTousClick
+    end
+    object mVieQuotidienne: TMenuItem
+      Caption = 'Vie quotidienne'
+      RadioItem = True
+      OnClick = mTousClick
+    end
+    object mInfosGenealogiques: TMenuItem
+      Caption = 'Infos généalogiques'
+      RadioItem = True
+      OnClick = mTousClick
+    end
+  end
+  object TransHistoire: TIBTransaction[9]
+    Active = False
+    left = 32
+    top = 40
+  end
+  object OnFormInfoIni: TOnFormInfoIni[10]
+    SaveForm = [sfSavePos, sfSaveSize, sfSaveSizes, sfSameMonitor]
+    left = 112
+    top = 248
+  end
+end

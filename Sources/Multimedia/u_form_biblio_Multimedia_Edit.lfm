@@ -1,0 +1,515 @@
+inherited FBiblio_Multimedia_Edit: TFBiblio_Multimedia_Edit
+  Left = 404
+  Height = 606
+  Top = 141
+  Width = 727
+  Caption = 'Edition de l''image...'
+  ClientHeight = 606
+  ClientWidth = 727
+  Color = clWindow
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnCreate = SuperFormCreate
+  OnDestroy = SuperFormDestroy
+  Position = poScreenCenter
+  object panDock: TPanel[0]
+    Left = 0
+    Height = 606
+    Top = 0
+    Width = 727
+    Align = alClient
+    BevelOuter = bvNone
+    BorderWidth = 1
+    ClientHeight = 606
+    ClientWidth = 727
+    TabOrder = 0
+    object ScrollBox: TScrollBox
+      Left = 1
+      Height = 604
+      Top = 1
+      Width = 725
+      HorzScrollBar.Page = 723
+      VertScrollBar.Page = 602
+      Align = alClient
+      ClientHeight = 602
+      ClientWidth = 723
+      TabOrder = 0
+      object Panel6: TPanel
+        Left = 0
+        Height = 602
+        Top = 0
+        Width = 723
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 602
+        ClientWidth = 723
+        TabOrder = 0
+        object Panel7: TPanel
+          Left = 93
+          Height = 602
+          Top = 0
+          Width = 630
+          Align = alClient
+          BevelOuter = bvLowered
+          TabOrder = 0
+        end
+        object Panel5: TPanel
+          Left = 0
+          Height = 602
+          Top = 0
+          Width = 93
+          Align = alLeft
+          BevelInner = bvRaised
+          BevelOuter = bvNone
+          ClientHeight = 602
+          ClientWidth = 93
+          TabOrder = 1
+          object Label2: TLabel
+            Left = 6
+            Height = 14
+            Top = 109
+            Width = 80
+            Caption = 'Destination :'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clBackground
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Bevel2: TBevel
+            Left = 5
+            Height = 9
+            Top = 396
+            Width = 82
+            Shape = bsTopLine
+          end
+          object Label3: TLabel
+            Left = 6
+            Height = 14
+            Top = 402
+            Width = 49
+            Caption = 'Lancer :'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clBackground
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object btnPrint: TFWPrint
+            Cursor = crHandPoint
+            Left = 6
+            Height = 53
+            Top = 425
+            Width = 79
+            Caption = 'Imprimer'
+            TabOrder = 6
+            Anchors = [akTop, akLeft, akRight]
+            Font.Color = clHighlightText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            ParentFont = False
+            OnClick = btnPrintClick
+          end
+          object spbPreviewWhole: TCSpeedButton
+            Left = 5
+            Height = 22
+            Hint = 'Pleine page'
+            Top = 13
+            Width = 24
+            AllowAllUp = True
+            Color = clBtnHighlight
+            Down = True
+            Flat = True
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'MS Sans Serif'
+            Glyph.Data = {
+              6E030000424D6E03000000000000760000002800000050000000130000000100
+              040000000000F8020000CE0E0000C40E00001000000000000000000000000000
+              80000080000000808000800000008000800080800000C0C0C000808080000000
+              FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+              7777777777777777777777777777777777777777777777777F7F7F7F7F7F7F7F
+              7F7F777777777777777777777777777777777777777777777777777777777777
+              F7F7F7F7F7F7F7F7F7F777000000000000000077770000000000000000777700
+              00000000000000777F00000000000000007F7706868686868686807777068686
+              86868686807777068686868686868077F70080808080808080F7770868000000
+              0068607777086800000000686077770868000000006860777F08080000000008
+              007F7706860FFFFFF08680777706860FFFFFF08680777706860FFFFFF0868077
+              F70080087878708080F77708680FFFFFF06860777708680FFFFFF06860777708
+              680FFFFFF06860777F08080787878008007F7706860F00F0F08680777706860F
+              00F0F08680777706860F00F0F0868077F70080080070708080F77708680FFFFF
+              F06860777708680FFFFFF06860777708680FFFFFF06860777F08080787878008
+              007F7706860F00F0F08680777706860F00F0F08680777706860F00F0F0868077
+              F70080080070708080F77708680FFFFFF06860777708680FFFFFF06860777708
+              680FFFFFF06860777F08080787878008007F7706860F00F0F08680777706860F
+              00F0F08680777706860F00F0F0868077F70080080070708080F77708680FFFFF
+              F06860777708680FFFFFF06860777708680FFFFFF06860777F08080787878008
+              007F7706860FFFFFF08680777706860FFFFFF08680777706860FFFFFF0868077
+              F70080087878708080F777086800000000686077770868000000006860777708
+              68000000006860777F08080000000008007F7706868686868686807777068686
+              86868686807777068686868686868077F70080808080808080F7770000000000
+              0000007777000000000000000077770000000000000000777F00000000000000
+              007F777777777777777777777777777777777777777777777777777777777777
+              F7F7F7F7F7F7F7F7F7F777777777777777777777777777777777777777777777
+              77777777777777777F7F7F7F7F7F7F7F7F7F
+            }
+            GroupIndex = 1
+            NumGlyphs = 4
+            OnClick = spbPreviewWholeClick
+            ShowHint = True
+            ParentFont = False
+            ParentShowHint = False
+          end
+          object spbPreviewWidth: TCSpeedButton
+            Left = 32
+            Height = 22
+            Hint = 'Taille page'
+            Top = 13
+            Width = 24
+            AllowAllUp = True
+            Flat = True
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'MS Sans Serif'
+            Glyph.Data = {
+              6E030000424D6E03000000000000760000002800000050000000130000000100
+              040000000000F8020000CE0E0000C40E00001000000000000000000000000000
+              80000080000000808000800000008000800080800000C0C0C000808080000000
+              FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+              7777777777777777777777777777777777777777777777777F7F7F7F7F7F7F7F
+              7F7F777777777777777777777777777777777777777777777777777777777777
+              F7F7F7F7F7F7F7F7F7F777000000000000000077770000000000000000777700
+              00000000000000777F00000000000000007F77060FFFFFFFFFF0807777060FFF
+              FFFFFFF0807777060FFFFFFFFFF08077F70000787878787080F777080F00000F
+              00F0607777080F00000F00F0607777080F00000F00F060777F08008000070080
+              007F77060FFFFFFFFFF0807777060FFFFFFFFFF0807777060FFFFFFFFFF08077
+              F70000787878787080F777080F00000F00F0607777080F00000F00F060777708
+              0F00000F00F060777F08008000070080007F77060FFFFFFFFFF0807777060FFF
+              FFFFFFF0807777060FFFFFFFFFF08077F70000787878787080F777080F00000F
+              00F0607777080F00000F00F0607777080F00000F00F060777F08008000070080
+              007F77060FFFFFFFFFF0807777060FFFFFFFFFF0807777060FFFFFFFFFF08077
+              F70000787878787080F777080F00000F00F0607777080F00000F00F060777708
+              0F00000F00F060777F08008000070080007F77060FFFFFFFFFF0807777060FFF
+              FFFFFFF0807777060FFFFFFFFFF08077F70000787878787080F777080FFFFFFF
+              FFF0607777080FFFFFFFFFF0607777080FFFFFFFFFF060777F08008787878780
+              007F770600000000000080777706000000000000807777060000000000008077
+              F70000000000000080F777086868686868686077770868686868686860777708
+              68686868686860777F08080808080808007F7706868686868686807777068686
+              86868686807777068686868686868077F70080808080808080F7770000000000
+              0000007777000000000000000077770000000000000000777F00000000000000
+              007F777777777777777777777777777777777777777777777777777777777777
+              F7F7F7F7F7F7F7F7F7F777777777777777777777777777777777777777777777
+              77777777777777777F7F7F7F7F7F7F7F7F7F
+            }
+            GroupIndex = 1
+            NumGlyphs = 4
+            OnClick = spbPreviewWidthClick
+            ShowHint = True
+            ParentFont = False
+            ParentShowHint = False
+          end
+          object spbPreview100Percent: TCSpeedButton
+            Left = 60
+            Height = 22
+            Hint = '100 %'
+            Top = 13
+            Width = 24
+            AllowAllUp = True
+            Flat = True
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'MS Sans Serif'
+            Glyph.Data = {
+              BA030000424DBA03000000000000760000002800000051000000130000000100
+              04000000000044030000CE0E0000C40E00001000000000000000000000000000
+              80000080000000808000800000008000800080800000C0C0C000808080000000
+              FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+              77777777777777777777777777777777777777777777777777F7F7F7F7F7F7F7
+              F7F7F00000007777777777777777777777777777777777777777777777777777
+              777777777F7F7F7F7F7F7F7F7F7F700000007700000000000000007777700000
+              0000000000077770000000000000000777F00000000000000007F00000007706
+              80FFFFFFFFFFF0777770680FFFFFFFFFFF077770680FFFFFFFFFFF077F700807
+              87878787870F70000000770860FFFFFFFFFFF0777770860FFFFFFFFFFF077770
+              860FFFFFFFFFFF0777F08008787878787807F0000000770680FF000F00000077
+              7770680FF000F00000077770680FF000F00000077F70080780008000000F7000
+              0000770860FF000F000000777770860FF000F00000077770860FF000F0000007
+              77F08008700070000007F0000000770680FFFFFFFFFFF0777770680FFFFFFFFF
+              FF077770680FFFFFFFFFFF077F70080787878787870F70000000770860FFFFFF
+              FFFFF0777770860FFFFFFFFFFF077770860FFFFFFFFFFF0777F0800878787878
+              7807F0000000770680FF000F000000777770680FF000F00000077770680FF000
+              F00000077F70080780008000000F70000000770860FF000F000000777770860F
+              F000F00000077770860FF000F000000777F08008700070000007F00000007706
+              80FFFFFFFFFFF0777770680FFFFFFFFFFF077770680FFFFFFFFFFF077F700807
+              87878787870F70000000770860FFFFFFFFFFF0777770860FFFFFFFFFFF077770
+              860FFFFFFFFFFF0777F08008787878787807F000000077068000000000000077
+              77706800000000000007777068000000000000077F70080000000000000F7000
+              0000770868686868686860777770868686868686860777708686868686868607
+              77F08080808080808007F0000000770686868686868680777770686868686868
+              6807777068686868686868077F70080808080808080F70000000770000000000
+              00000077777000000000000000077770000000000000000777F0000000000000
+              0007F00000007777777777777777777777777777777777777777777777777777
+              777777777F7F7F7F7F7F7F7F7F7F700000007777777777777777777777777777
+              7777777777777777777777777777777777F7F7F7F7F7F7F7F7F7F0000000
+            }
+            GroupIndex = 1
+            NumGlyphs = 4
+            OnClick = spbPreview100PercentClick
+            ShowHint = True
+            ParentFont = False
+            ParentShowHint = False
+          end
+          object Bevel1: TBevel
+            Left = 5
+            Height = 11
+            Top = 100
+            Width = 82
+            Shape = bsTopLine
+          end
+          object rvPrinter: TJvXPCheckbox
+            Cursor = crHandPoint
+            Left = 9
+            Height = 17
+            Hint = 'Imprimante'
+            Top = 136
+            Width = 71
+            TabOrder = 0
+            UseDockManager = False
+            ParentShowHint = False
+            ShowHint = True
+          end
+          object rbPDF: TJvXPCheckbox
+            Cursor = crHandPoint
+            Left = 9
+            Height = 17
+            Hint = 'Adobe Acrobat PDF'
+            Top = 192
+            Width = 56
+            TabOrder = 1
+            UseDockManager = False
+            ParentShowHint = False
+            ShowHint = True
+          end
+          object rbRTF: TJvXPCheckbox
+            Cursor = crHandPoint
+            Left = 9
+            Height = 17
+            Hint = 'RTF'
+            Top = 256
+            Width = 56
+            TabOrder = 2
+            UseDockManager = False
+            ParentShowHint = False
+            ShowHint = True
+          end
+          object rbHtml: TJvXPCheckbox
+            Cursor = crHandPoint
+            Left = 9
+            Height = 17
+            Hint = 'Page HTML'
+            Top = 320
+            Width = 56
+            TabOrder = 3
+            UseDockManager = False
+            ParentShowHint = False
+            ShowHint = True
+          end
+          object cbStretch: TCheckBox
+            Left = 9
+            Height = 24
+            Top = 55
+            Width = 74
+            Caption = 'Cadrage'
+            OnClick = cbStretchClick
+            TabOrder = 4
+          end
+          object cbLandScape: TCheckBox
+            Left = 9
+            Height = 24
+            Top = 75
+            Width = 74
+            Caption = 'Paysage'
+            OnClick = cbLandScapeClick
+            TabOrder = 5
+          end
+        end
+      end
+    end
+  end
+  object ppReport: TRLReport[1]
+    Left = 96
+    Height = 1123
+    Top = 8
+    Width = 794
+    DataSource = DSImage
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Arial'
+    RealBounds.Left = 0
+    RealBounds.Top = 0
+    RealBounds.Width = 0
+    RealBounds.Height = 0
+    object ppHeaderBand1: TRLBand
+      Left = 38
+      Height = 6
+      Top = 38
+      Width = 718
+      RealBounds.Left = 0
+      RealBounds.Top = 0
+      RealBounds.Width = 0
+      RealBounds.Height = 0
+      object ppLabel1: TRLLabel
+        Left = 1
+        Height = 17
+        Top = 0
+        Width = 53
+        Font.Color = clNavy
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        FriendlyName = 'Label1'
+        ParentFont = False
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
+    end
+    object ppDetailBand1: TRLSubDetail
+      Left = 38
+      Height = 173
+      Top = 49
+      Width = 718
+      RealBounds.Left = 0
+      RealBounds.Top = 0
+      RealBounds.Width = 0
+      RealBounds.Height = 0
+      object dbImage: TRLDBImage
+        Left = 7
+        Height = 171
+        Top = -1
+        Width = 285
+        DataField = 'MULTI_MEDIA'
+        DataSource = DSImage
+        FriendlyName = 'dbImage1'
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
+    end
+    object ppFooterBand1: TRLBand
+      Left = 38
+      Height = 5
+      Top = 44
+      Width = 718
+      RealBounds.Left = 0
+      RealBounds.Top = 0
+      RealBounds.Width = 0
+      RealBounds.Height = 0
+      object ppLabel2: TRLLabel
+        Left = 7
+        Height = 14
+        Top = 1
+        Width = 69
+        Caption = 'Imprimé le '
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        FriendlyName = 'Label2'
+        ParentFont = False
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
+    end
+  end
+  object Language: TYLanguage[2]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'MS Sans Serif'
+    Method = mRead
+    left = 184
+    top = 72
+  end
+  object DSImage: TDatasource[3]
+    DataSet = QImage
+    left = 136
+    top = 200
+  end
+  object QImage: TIBQuery[4]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select MULTI_MEDIA,multi_path '
+      'from MULTIMEDIA WHERE  MULTI_CLEF = :CLEF'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLEF'
+        ParamType = ptUnknown
+      end>
+    left = 136
+    top = 168
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLEF'
+        ParamType = ptUnknown
+      end>
+    object QImageMULTI_MEDIA: TBlobField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MULTI_MEDIA'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftBlob
+    end
+    object QImageMULTI_PATH: TStringField
+      DisplayWidth = 255
+      FieldKind = fkData
+      FieldName = 'MULTI_PATH'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+  end
+  object SaveDialogRTF: TSaveDialog[5]
+    DefaultExt = '.rtf'
+    Filter = 'RTF (*.rtf)|*.rtf'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    left = 136
+    top = 352
+  end
+  object SaveDialogPDF: TSaveDialog[6]
+    DefaultExt = '.pdf'
+    Filter = 'PDF (*.pdf)|*.pdf'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    left = 136
+    top = 384
+  end
+  object SaveDialogHTML: TSaveDialog[7]
+    DefaultExt = '.htm'
+    Filter = 'HTM (*.htm)|*.htm'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    left = 136
+    top = 416
+  end
+end

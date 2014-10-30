@@ -1,0 +1,40 @@
+object FCoherence: TFCoherence
+  Left = 1247
+  Height = 100
+  Top = 403
+  Width = 150
+  HorzScrollBar.Visible = False
+  VertScrollBar.Visible = False
+  Anchors = []
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Dates incohérentes'
+  ClientHeight = 100
+  ClientWidth = 150
+  Color = 16756834
+  Constraints.MinHeight = 100
+  Constraints.MinWidth = 150
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  FormStyle = fsStayOnTop
+  OnCreate = SuperFormCreate
+  OnShow = SuperFormShow
+  LCLVersion = '1.2.4.0'
+  object Msg: TLabel
+    Left = 0
+    Height = 1
+    Top = 0
+    Width = 1
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clYellow
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
+  end
+end

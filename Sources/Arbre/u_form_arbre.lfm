@@ -1,0 +1,338 @@
+inherited FArbre: TFArbre
+  Left = 521
+  Height = 508
+  Top = 250
+  Width = 547
+  BorderStyle = bsDialog
+  Caption = 'FArbre'
+  ClientHeight = 508
+  ClientWidth = 547
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnCreate = FormCreate
+  OnDestroy = SuperFormDestroy
+  OnKeyDown = SuperFormKeyDown
+  OnShow = FormShow
+  object Panel10: TPanel[0]
+    Left = 0
+    Height = 40
+    Top = 0
+    Width = 547
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 40
+    ClientWidth = 547
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 1
+    object Panel1: TPanel
+      Left = 185
+      Height = 40
+      Top = 0
+      Width = 362
+      Align = alRight
+      BevelOuter = bvNone
+      ClientHeight = 40
+      ClientWidth = 362
+      TabOrder = 0
+      object Panel5: TPanel
+        Left = 0
+        Height = 20
+        Top = 0
+        Width = 362
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 20
+        ClientWidth = 362
+        TabOrder = 0
+        object cbDescendance: TJvXPCheckbox
+          Left = 0
+          Height = 20
+          Hint = 'Affiche l''arbre descendant'
+          Top = 0
+          Width = 143
+          Caption = 'Descendance'
+          TabOrder = 0
+          UseDockManager = False
+          Align = alClient
+          Anchors = [akTop, akRight]
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = cbDescendanceClick
+        end
+        object Label1: TLabel
+          Left = 143
+          Height = 20
+          Top = 0
+          Width = 69
+          Align = alRight
+          Anchors = [akTop, akRight]
+          Caption = 'Générations'
+          ParentColor = False
+        end
+        object dxsGenerations: TFWSpinEdit
+          Left = 212
+          Height = 20
+          Top = 0
+          Width = 36
+          Align = alRight
+          Anchors = [akTop, akRight]
+          Font.Height = -11
+          MaxValue = 10000
+          OnChange = dxsGenerationsChange
+          OnKeyDown = SuperFormKeyDown
+          ParentFont = False
+          TabOrder = 1
+          Value = 4
+        end
+        object frbHorizontal: TRadioButton
+          Left = 248
+          Height = 20
+          Hint = 'Affiche l''arbre horizontalement'
+          Top = 0
+          Width = 60
+          Align = alRight
+          Anchors = [akTop, akRight]
+          Caption = 'Horiz.'
+          OnClick = frbHorizontalClick
+          OnKeyDown = SuperFormKeyDown
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 2
+        end
+        object frbVertical: TRadioButton
+          Left = 308
+          Height = 20
+          Hint = 'Affiche l''arbre verticalement'
+          Top = 0
+          Width = 54
+          Align = alRight
+          Anchors = [akTop, akRight]
+          Caption = 'Vert.'
+          Checked = True
+          OnClick = frbVerticalClick
+          OnKeyDown = SuperFormKeyDown
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 3
+          TabStop = True
+        end
+      end
+      object Panel6: TPanel
+        Left = 0
+        Height = 20
+        Top = 20
+        Width = 362
+        Align = alBottom
+        BevelOuter = bvNone
+        ClientHeight = 20
+        ClientWidth = 362
+        TabOrder = 1
+        object Label2: TLabel
+          Left = 0
+          Height = 20
+          Top = 0
+          Width = 233
+          Align = alClient
+          Anchors = [akTop, akRight]
+          Caption = 'Les implexes sont en italique'
+          ParentColor = False
+          OnClick = Label2Click
+        end
+        object Label3: TLabel
+          Left = 233
+          Height = 20
+          Top = 0
+          Width = 93
+          Align = alRight
+          Anchors = [akTop, akRight]
+          Caption = 'Taille de la fonte'
+          ParentColor = False
+          OnClick = Label2Click
+        end
+        object sp_fontsize: TFWSpinEdit
+          Left = 326
+          Height = 20
+          Top = 0
+          Width = 36
+          Align = alRight
+          Anchors = [akTop, akRight]
+          Font.Height = -11
+          MinValue = 3
+          OnChange = sp_fontsizeChange
+          ParentFont = False
+          TabOrder = 0
+          Value = 7
+        end
+      end
+    end
+    object Panel2: TPanel
+      Left = 0
+      Height = 40
+      Top = 0
+      Width = 185
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 40
+      ClientWidth = 185
+      TabOrder = 1
+      object Panel3: TPanel
+        Left = 0
+        Height = 19
+        Top = 0
+        Width = 185
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 19
+        ClientWidth = 185
+        TabOrder = 0
+        object Label8: TLabel
+          Cursor = crArrow
+          Left = 0
+          Height = 19
+          Top = 0
+          Width = 57
+          Align = alLeft
+          AutoSize = False
+          Caption = 'Arbre de :'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = 12673280
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object lNom: TLabel
+          Left = 57
+          Height = 19
+          Top = 0
+          Width = 128
+          Align = alClient
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = False
+          Caption = 'lNom'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+      object Panel4: TPanel
+        Left = 0
+        Height = 21
+        Top = 19
+        Width = 185
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 21
+        ClientWidth = 185
+        TabOrder = 1
+        object lHint: TLabel
+          Left = 0
+          Height = 21
+          Top = 0
+          Width = 185
+          Align = alClient
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+    end
+  end
+  object oc: TVirtualStringTree[1]
+    Left = 0
+    Height = 468
+    Top = 40
+    Width = 547
+    Align = alClient
+    DefaultNodeHeight = 15
+    DefaultText = 'essai'
+    Font.Color = clBlack
+    Font.Height = -12
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    Header.AutoSizeIndex = 0
+    Header.Columns = <    
+      item
+        Position = 0
+        Width = 545
+      end>
+    Header.DefaultHeight = 17
+    Header.Options = [hoAutoResize, hoDrag, hoShowSortGlyphs]
+    Images = dm.ImgCouple
+    ParentColor = True
+    ParentFont = False
+    ParentShowHint = False
+    PopupMenu = pmArbre
+    ShowHint = True
+    TabOrder = 0
+    TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoSort, toAutoTristateTracking, toAutoDeleteMovedNodes]
+    TreeOptions.MiscOptions = [toFullRepaintOnResize, toInitOnSave, toToggleOnDblClick, toWheelPanning, toEditOnClick]
+    OnDblClick = option_OpenFicheClick
+    OnGetText = ocGetText
+    OnPaintText = ocPaintText
+    OnGetImageIndex = ocGetImageIndex
+    OnGetPopupMenu = ocGetPopupMenu
+    OnKeyDown = SuperFormKeyDown
+    OnMouseMove = ocMouseMove
+  end
+  object pmArbre: TPopupMenu[2]
+    Images = dm.ImageListMenu
+    left = 48
+    top = 56
+    object option_OpenFiche: TMenuItem
+      Caption = 'Ouvrir la fiche'
+      OnClick = option_OpenFicheClick
+    end
+    object option_OpenFicheInBox: TMenuItem
+      Caption = 'Ouvrir la fiche dans une fenêtre'
+      OnClick = option_OpenFicheInBoxClick
+    end
+  end
+  object Language: TYLanguage[3]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 128
+    top = 144
+  end
+  object dxComponentPrinter1: TPrinterSetupDialog[4]
+    Title = 'Ecran d''aperçu'
+    left = 320
+    top = 72
+  end
+  object IBQEnfants: TIBSQL[5]
+    Database = dm.ibd_BASE
+    ParamCheck = True
+    Transaction = dm.IBTrans_Courte
+    left = 112
+    top = 56
+  end
+  object IBSTree: TIBSQL[6]
+    Database = dm.ibd_BASE
+    ParamCheck = True
+    Transaction = dm.IBTrans_Courte
+    left = 128
+    top = 232
+  end
+  object OnFormInfoIni: TOnFormInfoIni[7]
+    SaveEdits = [feTRadio, feTSpinEdit]
+    left = 350
+    top = 225
+  end
+end

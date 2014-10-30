@@ -1,0 +1,559 @@
+inherited FtvAscendance: TFtvAscendance
+  Left = 232
+  Height = 479
+  Top = 144
+  Width = 755
+  Caption = 'Arbre d''ascendance'
+  ClientHeight = 479
+  ClientWidth = 755
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  Position = poScreenCenter
+  object pBorder: TPanel[0]
+    Left = 0
+    Height = 479
+    Top = 0
+    Width = 755
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 479
+    ClientWidth = 755
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 3
+      Height = 473
+      Top = 3
+      Width = 749
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 473
+      ClientWidth = 749
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 1
+        Height = 471
+        Top = 1
+        Width = 747
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 471
+        ClientWidth = 747
+        TabOrder = 0
+        object pBottom: TPanel
+          Left = 3
+          Height = 3
+          Top = 409
+          Width = 741
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 0
+        end
+        object Panel3: TPanel
+          Left = 3
+          Height = 55
+          Top = 3
+          Width = 741
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 55
+          ClientWidth = 741
+          TabOrder = 1
+          object Image1: TIATitle
+            Left = 1
+            Top = 1
+            AutoSize = True
+            ParentShowHint = False
+            ImageOn = iaTree
+          end
+          object Label1: TLabel
+            Left = 615
+            Height = 19
+            Top = 3
+            Width = 112
+            Alignment = taRightJustify
+            Anchors = [akTop, akRight]
+            Caption = 'Ascendance.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowFrame
+            Font.Height = -16
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Panel2: TPanel
+            Left = 0
+            Height = 3
+            Top = 52
+            Width = 741
+            Align = alBottom
+            Color = clGradientActiveCaption
+            ParentColor = False
+            TabOrder = 0
+          end
+        end
+        object Panel1: TPanel
+          Left = 3
+          Height = 5
+          Top = 58
+          Width = 741
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 2
+        end
+        object TreeView1: TVirtualStringTree
+          Cursor = crHandPoint
+          Left = 3
+          Height = 346
+          Hint = 'Le bouton droit de la souris permet d''afficher des options'
+          Top = 63
+          Width = 741
+          Align = alClient
+          Header.AutoSizeIndex = 0
+          Header.Columns = <>
+          Header.DefaultHeight = 17
+          Header.MainColumn = -1
+          Images = dm.ImgCouple
+          ParentColor = True
+          ParentShowHint = False
+          PopupMenu = pmArbre
+          ShowHint = True
+          TabOrder = 3
+          TreeOptions.MiscOptions = [toCheckSupport, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning, toEditOnClick]
+          OnCollapsing = TreeView1Collapsing
+          OnDblClick = TreeView1DblClick
+          OnExpanding = TreeView1Expanding
+          OnGetText = TreeView1GetText
+          OnPaintText = TreeView1PaintText
+          OnGetImageIndex = TreeView1GetImageIndex
+          OnMouseMove = TreeView1MouseMove
+        end
+        object fpBoutons: TPanel
+          Left = 3
+          Height = 56
+          Top = 412
+          Width = 741
+          Align = alBottom
+          BevelInner = bvLowered
+          ClientHeight = 56
+          ClientWidth = 741
+          TabOrder = 4
+          object Panel4: TPanel
+            Left = 2
+            Height = 25
+            Top = 29
+            Width = 737
+            Align = alBottom
+            BevelOuter = bvNone
+            ClientHeight = 25
+            ClientWidth = 737
+            TabOrder = 0
+            object btOuvrir: TJvXPButton
+              Cursor = crHandPoint
+              Left = 0
+              Height = 25
+              Hint = 'Ouvre l''arbre complètement.'
+              Top = 0
+              Width = 74
+              Caption = 'Tout ouvrir'
+              TabOrder = 0
+              Align = alLeft
+              Anchors = [akLeft, akBottom]
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = btOuvrirClick
+            end
+            object btFermer: TJvXPButton
+              Cursor = crHandPoint
+              Left = 74
+              Height = 25
+              Hint = 'Ferme l''arbre complètement.'
+              Top = 0
+              Width = 90
+              Caption = 'Tout fermer'
+              TabOrder = 1
+              Align = alLeft
+              Anchors = [akLeft, akBottom]
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = btFermerClick
+            end
+            object btFermeFiche: TFWClose
+              Cursor = crHandPoint
+              Left = 643
+              Height = 25
+              Top = 0
+              Width = 94
+              Caption = 'Fermer'
+              TabOrder = 2
+              Align = alRight
+              Anchors = [akRight, akBottom]
+            end
+            object btnPrint: TFWPrintVTree
+              Cursor = crHandPoint
+              Left = 403
+              Height = 25
+              Hint = 'Imprime l''arbre'
+              Top = 0
+              Width = 240
+              Caption = 'Imprimer'
+              TabOrder = 3
+              Spacing = 8
+              Align = alRight
+              Anchors = [akRight, akBottom]
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = btnPrintClick
+              Tree = TreeView1
+            end
+          end
+          object Panel5: TPanel
+            Left = 2
+            Height = 27
+            Top = 2
+            Width = 242
+            Align = alLeft
+            BevelOuter = bvNone
+            Caption = 'Panel5'
+            ClientHeight = 27
+            ClientWidth = 242
+            TabOrder = 1
+            object btnReconstruire: TFWRefresh
+              Cursor = crHandPoint
+              Left = 0
+              Height = 27
+              Hint = 'Reconstruire l''arbre.'
+              Top = 0
+              Width = 104
+              Caption = 'Reconstruire'
+              TabOrder = 0
+              Default = True
+              Align = alLeft
+              Anchors = [akLeft, akBottom]
+              Font.CharSet = ANSI_CHARSET
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = btnReconstruireClick
+            end
+            object Label2: TLabel
+              Left = 104
+              Height = 27
+              Top = 0
+              Width = 73
+              Align = alLeft
+              Caption = 'Générations:'
+              Color = clWindow
+              ParentColor = False
+              Transparent = False
+            end
+            object cxSpinNiveaux: TFWSpinEdit
+              Left = 177
+              Height = 27
+              Top = 0
+              Width = 41
+              Align = alLeft
+              OnChange = cxSpinNiveauxPropertiesChange
+              ParentFont = False
+              TabOrder = 1
+              Value = 1
+            end
+          end
+          object Panel6: TPanel
+            Left = 647
+            Height = 27
+            Top = 2
+            Width = 92
+            Align = alRight
+            BevelOuter = bvNone
+            TabOrder = 2
+          end
+          object Panel7: TPanel
+            Left = 413
+            Height = 27
+            Top = 2
+            Width = 234
+            Align = alRight
+            BevelOuter = bvNone
+            ClientHeight = 27
+            ClientWidth = 234
+            TabOrder = 3
+            object cb_PaperSize: TComboBox
+              Left = 186
+              Height = 27
+              Top = 0
+              Width = 48
+              Align = alRight
+              Anchors = [akTop, akRight]
+              ItemHeight = 0
+              ItemIndex = 0
+              Items.Strings = (
+                'A4'
+                'A3'
+                'A2'
+                'A1'
+                'A0'
+              )
+              TabOrder = 0
+              Text = 'A4'
+            end
+            object ch_portrait: TJvXPCheckbox
+              Left = 17
+              Height = 27
+              Top = 0
+              Width = 81
+              Caption = 'Portrait'
+              TabOrder = 1
+              UseDockManager = False
+              Align = alRight
+              Anchors = [akTop, akRight]
+            end
+            object sp_Fonte: TFWSpinEdit
+              Left = 137
+              Height = 27
+              Top = 0
+              Width = 49
+              Align = alRight
+              Anchors = [akTop, akRight]
+              MinValue = 5
+              OnChange = cxSpinNiveauxPropertiesChange
+              ParentFont = False
+              TabOrder = 2
+              Value = 5
+            end
+            object Label3: TLabel
+              Left = 98
+              Height = 27
+              Top = 0
+              Width = 39
+              Align = alRight
+              Anchors = [akTop, akRight]
+              Caption = 'Fonte :'
+              Color = clWindow
+              Font.CharSet = ANSI_CHARSET
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+              Transparent = False
+            end
+          end
+        end
+      end
+    end
+  end
+  object pmArbre: TPopupMenu[1]
+    Images = dm.ImageListMenu
+    OnPopup = pmArbrePopup
+    left = 48
+    top = 56
+    object OpenFiche: TMenuItem
+      Caption = 'Ouvrir la fiche (ou double-clic)'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        000000000000000000000000000000000000999999FF666666FF8D8D8DFFB3B3
+        B3FFC0C0C0FF0000000000000000000000000000000000000000000000000000
+        00000000000000000000999999FF337373FF0080A6FF0080FFFF0000C0FF7373
+        73FF999999FFB3B3B3FF00000000000000000000000000000000000000000000
+        00000000000000000000666666FF00FFFFFF0080CCFF0080FFFF0000FFFF4D4D
+        4DFF999999FF999999FF999999FFB3B3B3FF0000000000000000000000000000
+        00000000000000000000666666FF00FFFFFF0080CCFF0080FFFF0000FFFF4D4D
+        4DFF999999FF999999FF999999FFB3B3B3FF0000000000000000000000000000
+        00000000000000000000666666FF00FFFFFF0080CCFF0080FFFF0000FFFF4D4D
+        4DFF999999FFB3B3B3FF00000000000000000000000000000000000000000000
+        00000000000000000000666666FF00FFFFFF0080CCFF00C0E6FF0000B3FF5A5A
+        5AFF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000666666FF00FFFFFF00FFFFFF00FFFFFF0000E6FF3333
+        5AFF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000008080FF00FFFFFF00FFFFFF00FFFFFF0000FFFF0000
+        80FF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000008080FF00FFFFFF00FFFFFF00FFFFFF0000FFFF0000
+        80FF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000008080FF00FFFFFF00FFFFFF80FFFFFF0040FFFF0000
+        80FF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000008080FF80FFFFFF8080FFFF0080FFFF0080FFFF0040
+        80FF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000737373FF0080C0FF4D4D4DFF4D4D4DFF333373FF9999
+        99FF000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000000000005A5A5AFFE6E6E6FFB3B3B3FF4D4D4DFF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000808080FFFFFFFFFFE6E6E6FF4D4D4DFF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000999999FF737373FF737373FF999999FF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 86
+      ShortCut = 16454
+      OnClick = OpenFicheClick
+    end
+    object Imprimer1: TMenuItem
+      Caption = 'Imprimer'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000000000000000000000000000000000
+        00FFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBD
+        BDFFBDBDBDFF000000FFBDBDBDFF000000FF0000000000000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FFBDBDBDFF000000FF00000000000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFF00FFFFFF00FFFFFF00FF
+        FFFFBDBDBDFFBDBDBDFF000000FF000000FF000000FF00000000000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFF7B7B7BFF7B7B7BFF7B7B
+        7BFFBDBDBDFFBDBDBDFF000000FFBDBDBDFF000000FF00000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FFBDBDBDFFBDBDBDFF000000FF000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBD
+        BDFFBDBDBDFF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000000000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000FF000000000000
+        0000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000000000
+        000000000000000000FFFFFFFFFF000000FF000000FF000000FF000000FF0000
+        00FFFFFFFFFF000000FF000000FF000000FF000000FF00000000000000000000
+        000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFF000000FF000000000000000000000000000000000000
+        00000000000000000000000000FFFFFFFFFF000000FF000000FF000000FF0000
+        00FF000000FFFFFFFFFF000000FF000000000000000000000000000000000000
+        00000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF0000000000000000000000000000
+        0000000000000000000000000000000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF0000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 6
+      OnClick = ImprimerClick
+    end
+    object mExport: TMenuItem
+      Caption = 'Exporter en texte'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000FF0000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00000000FFFF000000FF00000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00000000FFFF0000FFFF000000FF000000000000000000000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF0000FFFF0000FFFF0000FFFF0000
+        FFFF0000FFFF0000FFFF0000FFFF000000FF0000000000000000000000FFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF0000FFFF0000FFFF0000FFFF0000
+        FFFF0000FFFF0000FFFF0000FFFF0000FFFF000000FF00000000000000FFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF0000FFFF0000FFFF0000FFFF0000
+        FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF000000FF000000FFFFFF
+        FFFF000000FF000000FFFFFFFFFF000000FF0000FFFF0000FFFF0000FFFF0000
+        FFFF0000FFFF0000FFFF0000FFFF0000FFFF000000FF00000000000000FFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF0000FFFF0000FFFF0000FFFF0000
+        FFFF0000FFFF0000FFFF0000FFFF000000FF0000000000000000000000FFFFFF
+        FFFF000000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+        00FF0000FFFF0000FFFF000000FF000000000000000000000000000000FFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+        00FF0000FFFF000000FF00000000000000000000000000000000000000FFFFFF
+        FFFF000000FF000000FFFFFFFFFF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000FFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFF000000FF0000
+        0000000000000000000000000000000000000000000000000000000000FFFFFF
+        FFFF000000FFBFBFBFFFFFFFFFFF000000FFFFFFFFFF000000FF000000000000
+        0000000000000000000000000000000000000000000000000000000000FFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF0000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 45
+      OnClick = mExportClick
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object Datescompletes: TMenuItem
+      Caption = 'Dates complètes'
+      Checked = True
+      OnClick = DatescompletesClick
+    end
+    object Avecvilles: TMenuItem
+      Caption = 'Avec villes'
+      Checked = True
+      OnClick = AvecvillesClick
+    end
+    object AvecSOSA: TMenuItem
+      Caption = 'Avec code SOSA'
+      Checked = True
+      OnClick = AvecSOSAClick
+    end
+    object Avecmariages: TMenuItem
+      Caption = 'Avec mariages'
+      Checked = True
+      OnClick = AvecmariagesClick
+    end
+    object mIdentImplexes: TMenuItem
+      Caption = 'Identification implexes'
+      OnClick = mIdentImplexesClick
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
+    object NbrAscendants: TMenuItem
+      Caption = 'individus'
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object GenerationetSosarelatifs: TMenuItem
+      Caption = 'Génération et n° Sosa relatifs:'
+    end
+    object mGeneRelative: TMenuItem
+      Caption = 'Génération'
+    end
+  end
+  object IBQ_SQL: TIBQuery[2]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBTrans_Courte
+    AutoCalcFields = False
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    Params = <>
+    UniDirectional = True
+    left = 200
+    top = 88
+  end
+  object SaveDialog1: TSaveDialog[3]
+    Title = 'Enregistrer sous'
+    DefaultExt = '.txt'
+    Filter = 'Fichiers texte|*.txt|All files|*.*'
+    FilterIndex = 0
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    left = 456
+    top = 200
+  end
+  object dxComponentPrinter1: TPrinterSetupDialog[4]
+    left = 512
+    top = 88
+  end
+  object OnFormInfoIni: TOnFormInfoIni[5]
+    SaveEdits = [feTCheck, feTComboValue, feTPopup, feTSpinEdit]
+    SaveForm = [sfSavePos, sfSaveSize, sfSaveSizes]
+    left = 170
+    top = 253
+  end
+end

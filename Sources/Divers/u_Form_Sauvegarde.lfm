@@ -1,0 +1,153 @@
+inherited FSauvegarde: TFSauvegarde
+  Tag = 99
+  Left = 787
+  Height = 198
+  Top = 310
+  ActiveControl = eNomBase
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Copie de sauvegarde'
+  ClientHeight = 198
+  Color = clWindow
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnCreate = FormCreate
+  Position = poMainFormCenter
+  object gbNomBase: TGroupBox[0]
+    Left = 0
+    Height = 118
+    Top = 48
+    Width = 320
+    Align = alClient
+    Anchors = [akTop, akLeft, akRight]
+    ClientHeight = 96
+    ClientWidth = 316
+    Font.Color = clWindowFrame
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    object lDate: TLabel
+      Left = 15
+      Height = 11
+      Top = 101
+      Width = 3
+      Caption = ' '
+      Font.Color = clWindowText
+      Font.Height = -9
+      Font.Name = 'Tahoma'
+      ParentColor = False
+      ParentFont = False
+      Visible = False
+    end
+    object Label2: TLabel
+      Left = 49
+      Height = 34
+      Top = 4
+      Width = 215
+      Caption = 'Nom  du fichier, copie de la base'#13#10'dans le répertoire de sauvegarde.'
+      ParentColor = False
+      WordWrap = True
+    end
+    object eNomBase: TMaskEdit
+      Left = 8
+      Height = 25
+      Top = 45
+      Width = 305
+      Anchors = [akTop, akLeft, akRight]
+      CharCase = ecNormal
+      MaxLength = 0
+      ParentFont = False
+      TabOrder = 0
+      OnChange = cbAjoutDateClick
+      SpaceChar = '_'
+    end
+    object cbAjoutDate: TJvXPCheckbox
+      Left = 8
+      Height = 17
+      Top = 73
+      Width = 205
+      Caption = ' Ajouter la date au nom'
+      TabOrder = 1
+      TabStop = False
+      UseDockManager = False
+      OnClick = cbAjoutDateClick
+    end
+  end
+  object Panel3: TPanel[1]
+    Left = 0
+    Height = 48
+    Top = 0
+    Width = 320
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 48
+    ClientWidth = 320
+    TabOrder = 1
+    object Image1: TIATitle
+      Left = 1
+      Top = -4
+      AutoSize = True
+      ImageOn = iaDatabase
+    end
+    object Label1: TLabel
+      Left = 152
+      Height = 33
+      Top = 8
+      Width = 160
+      Alignment = taRightJustify
+      Anchors = [akTop, akRight]
+      Caption = 'Sauvegarde'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowFrame
+      Font.Height = -27
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+  end
+  object Panel1: TPanel[2]
+    Left = 0
+    Height = 32
+    Top = 166
+    Width = 320
+    Align = alBottom
+    ClientHeight = 32
+    ClientWidth = 320
+    TabOrder = 2
+    object btnGO: TFWOK
+      Left = 131
+      Height = 30
+      Top = 1
+      Width = 94
+      Caption = 'Copie'
+      TabOrder = 0
+      Default = True
+      Spacing = 10
+      Align = alRight
+      Anchors = [akTop, akRight]
+      OnClick = btnGOClick
+    end
+    object btnclose: TFWClose
+      Left = 225
+      Height = 30
+      Top = 1
+      Width = 94
+      Caption = 'Fermer'
+      TabOrder = 1
+      Cancel = True
+      Spacing = 10
+      Align = alRight
+      Anchors = [akTop, akRight]
+      ParentFont = False
+      OnClick = btncloseClick
+    end
+  end
+  object OnFormInfoIni: TOnFormInfoIni[3]
+    SaveEdits = [feTCheck]
+    SaveForm = [sfSavePos, sfSaveSize]
+    left = 184
+    top = 24
+  end
+end

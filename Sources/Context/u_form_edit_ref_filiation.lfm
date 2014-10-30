@@ -1,0 +1,294 @@
+inherited FEditRefFiliation: TFEditRefFiliation
+  Left = 786
+  Height = 237
+  Top = 177
+  ActiveControl = dxDBGrid1
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Références: Filiations'
+  ClientHeight = 237
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 0
+    Height = 237
+    Top = 0
+    Width = 320
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 237
+    ClientWidth = 320
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object Panel7: TPanel
+      Left = 3
+      Height = 231
+      Top = 3
+      Width = 314
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 231
+      ClientWidth = 314
+      TabOrder = 0
+      object Panel4: TPanel
+        Left = 1
+        Height = 24
+        Top = 1
+        Width = 312
+        Align = alTop
+        ClientHeight = 24
+        ClientWidth = 312
+        TabOrder = 0
+        object lbTitle: TLabel
+          Left = 8
+          Height = 15
+          Top = 8
+          Width = 105
+          Caption = 'Types de filiation'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = 10841658
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object btnAdd: TFWAdd
+          Cursor = crHandPoint
+          Left = 257
+          Height = 22
+          Top = 1
+          Width = 27
+          TabOrder = 0
+          Layout = blGlyphTop
+          Spacing = 240
+          Align = alRight
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          OnClick = btnAddClick
+          ColorFrameFocus = clWhite
+          GlyphSize = 16
+        end
+        object btnDel: TFWDelete
+          Cursor = crHandPoint
+          Left = 284
+          Height = 22
+          Top = 1
+          Width = 27
+          TabOrder = 1
+          Layout = blGlyphTop
+          Spacing = 240
+          Align = alRight
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          OnClick = btnDelClick
+          ColorFrameFocus = clWhite
+          GlyphSize = 16
+        end
+      end
+      object Panel8: TPanel
+        Left = 1
+        Height = 28
+        Top = 202
+        Width = 312
+        Align = alBottom
+        ClientHeight = 28
+        ClientWidth = 312
+        TabOrder = 1
+        object btnImport: TFWImport
+          Cursor = crHandPoint
+          Left = 1
+          Top = 1
+          Width = 94
+          Caption = 'Importer'
+          TabOrder = 0
+          Align = alLeft
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnImportClick
+        end
+        object btnExport: TFWExport
+          Cursor = crHandPoint
+          Left = 95
+          Top = 1
+          Width = 94
+          Caption = 'Exporter'
+          TabOrder = 1
+          Align = alLeft
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnExportClick
+        end
+        object btnFermer: TFWClose
+          Cursor = crHandPoint
+          Left = 217
+          Hint = 'Ferme cette fenêtre.'
+          Top = 1
+          Width = 94
+          Caption = 'Fermer'
+          TabOrder = 2
+          ModalResult = 1
+          Align = alRight
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+        end
+      end
+      object Panel6: TPanel
+        Left = 1
+        Height = 177
+        Top = 25
+        Width = 312
+        Align = alClient
+        BorderWidth = 5
+        ClientHeight = 177
+        ClientWidth = 312
+        TabOrder = 2
+        object Panel1: TPanel
+          Left = 6
+          Height = 165
+          Top = 6
+          Width = 300
+          Align = alClient
+          BevelOuter = bvLowered
+          ClientHeight = 165
+          ClientWidth = 300
+          TabOrder = 0
+          object dxDBGrid1: TExtDBGrid
+            Left = 1
+            Height = 163
+            Top = 1
+            Width = 298
+            TitleButtons = False
+            AutoSort = False
+            Columns = <            
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'Libellé'
+                Title.Orientation = toHorizontal
+                Width = 356
+                FieldName = 'FIL_LIBELLE'
+                Filter.DropDownRows = 0
+                Filter.EmptyValue = '(Empty)'
+                Filter.EmptyFont.Style = [fsItalic]
+                Filter.ItemIndex = -1
+                EditButtons = <>
+                FieldTag = 0
+              end>
+            KeyStrokes = <            
+              item
+                Command = rxgcShowFindDlg
+                ShortCut = 16454
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowColumnsDlg
+                ShortCut = 16471
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowFilterDlg
+                ShortCut = 16468
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowSortDlg
+                ShortCut = 16467
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowQuickFilter
+                ShortCut = 16465
+                Enabled = True
+              end            
+              item
+                Command = rxgcHideQuickFilter
+                ShortCut = 16456
+                Enabled = True
+              end            
+              item
+                Command = rxgcSelectAll
+                ShortCut = 16449
+                Enabled = True
+              end            
+              item
+                Command = rxgcDeSelectAll
+                ShortCut = 16429
+                Enabled = True
+              end            
+              item
+                Command = rxgcInvertSelection
+                ShortCut = 16426
+                Enabled = True
+              end            
+              item
+                Command = rxgcOptimizeColumnsWidth
+                ShortCut = 16427
+                Enabled = True
+              end            
+              item
+                Command = rxgcCopyCellValue
+                ShortCut = 16451
+                Enabled = True
+              end>
+            OptionsRx = []
+            Align = alClient
+            Color = clWindow
+            DrawFullLine = False
+            FocusColor = clRed
+            SelectedColor = clHighlight
+            GridLineStyle = psSolid
+            DataSource = DataSource
+            Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+            ParentColor = False
+            Scrollbars = ssAutoBoth
+            TabOrder = 0
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+          end
+        end
+      end
+    end
+  end
+  object DataSource: TDatasource[1]
+    DataSet = Query
+    left = 87
+    top = 47
+  end
+  object Language: TYLanguage[2]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 8
+    top = 8
+  end
+  object Query: TIBTable[3]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBTrans_Secondaire
+    AfterDelete = QueryAfterDelete
+    AfterInsert = QueryAfterInsert
+    BeforeDelete = QueryBeforeDelete
+    BeforePost = QueryBeforePost
+    BufferChunks = 1000
+    CachedUpdates = False
+    Filtered = True
+    IndexFieldNames = 'FIL_LIBELLE'
+    TableName = 'REF_FILIATION'
+    left = 66
+    top = 114
+  end
+end

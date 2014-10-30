@@ -1,0 +1,5095 @@
+inherited FListReport: TFListReport
+  Left = 422
+  Height = 712
+  Top = 171
+  Width = 806
+  Caption = 'Documents imprimables'
+  ClientHeight = 712
+  ClientWidth = 806
+  Color = clWindow
+  Font.Color = clWindowText
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnDestroy = SuperFormDestroy
+  OnMouseWheelDown = SuperFormMouseWheelDown
+  OnMouseWheelUp = SuperFormMouseWheelUp
+  object Panel4: TPanel[0]
+    Left = 0
+    Height = 6
+    Top = 706
+    Width = 806
+    Align = alBottom
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentColor = False
+    TabOrder = 0
+  end
+  object Panel2: TPanel[1]
+    Left = 0
+    Height = 23
+    Top = 0
+    Width = 806
+    Align = alTop
+    ClientHeight = 23
+    ClientWidth = 806
+    TabOrder = 1
+    object Label37: TLabel
+      Left = 7
+      Height = 13
+      Top = 4
+      Width = 93
+      Caption = 'Impressions de :'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBackground
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold, fsUnderline]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lNom: TLabel
+      Left = 120
+      Height = 13
+      Top = 4
+      Width = 674
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      Caption = 'Mettre ici le nom de l''individu sélectionné'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+  end
+  object Panel6: TPanel[2]
+    Left = 268
+    Height = 683
+    Top = 23
+    Width = 538
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 683
+    ClientWidth = 538
+    TabOrder = 2
+    object Panel7: TPanel
+      Left = 0
+      Height = 533
+      Top = 120
+      Width = 538
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 533
+      ClientWidth = 538
+      TabOrder = 0
+      object RLPreview: TRLPreview
+        Left = 1
+        Height = 531
+        Top = 1
+        Width = 536
+        HorzScrollBar.Page = 532
+        HorzScrollBar.Tracking = True
+        VertScrollBar.Page = 527
+        VertScrollBar.Tracking = True
+        Align = alClient
+        ClientHeight = 527
+        ClientWidth = 532
+        ParentBiDiMode = False
+        TabOrder = 0
+        Visible = False
+      end
+    end
+    object p_config: TPanel
+      Left = 0
+      Height = 65
+      Top = 0
+      Width = 538
+      Align = alTop
+      BevelInner = bvRaised
+      BevelOuter = bvNone
+      ClientHeight = 65
+      ClientWidth = 538
+      TabOrder = 1
+      object Label2: TLabel
+        Left = 105
+        Height = 17
+        Top = 3
+        Width = 79
+        Caption = 'Destination :'
+        Color = clWindow
+        ParentColor = False
+        Transparent = False
+      end
+      object Label1: TLabel
+        Left = 3
+        Height = 17
+        Top = 3
+        Width = 74
+        Caption = 'Configurer :'
+        Color = clWindow
+        ParentColor = False
+        Transparent = False
+      end
+      object btnConfig: TFWConfig
+        Cursor = crHandPoint
+        Left = 4
+        Height = 39
+        Top = 21
+        Width = 83
+        TabOrder = 5
+        Font.Color = clHighlightText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        ParentFont = False
+        OnClick = btnConfigClick
+      end
+      object Bevel1: TBevel
+        Left = 90
+        Height = 64
+        Top = 2
+        Width = 14
+        Shape = bsLeftLine
+      end
+      object Bevel2: TBevel
+        Left = 284
+        Height = 64
+        Top = 3
+        Width = 9
+        Shape = bsLeftLine
+      end
+      object btnPrint: TFWPrint
+        Cursor = crHandPoint
+        Left = 293
+        Height = 27
+        Top = 3
+        Width = 138
+        Caption = 'Sortie'
+        TabOrder = 6
+        OnClick = btnPrintClick
+      end
+      object rvPrinter: TRadioButton
+        Cursor = crHandPoint
+        Left = 104
+        Height = 21
+        Hint = 'Imprimante'
+        Top = 21
+        Width = 93
+        Caption = 'Imprimante'
+        Checked = True
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 0
+        TabStop = True
+      end
+      object rbPDF: TRadioButton
+        Cursor = crHandPoint
+        Left = 230
+        Height = 21
+        Hint = 'Adobe Acrobat PDF'
+        Top = 21
+        Width = 51
+        Caption = 'PDF'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 1
+      end
+      object rbRTF: TRadioButton
+        Cursor = crHandPoint
+        Left = 105
+        Height = 21
+        Hint = 'RTF'
+        Top = 39
+        Width = 51
+        Caption = 'RTF'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 2
+      end
+      object rbTXT: TRadioButton
+        Cursor = crHandPoint
+        Left = 231
+        Height = 21
+        Hint = 'Texte délimité'
+        Top = 39
+        Width = 51
+        Caption = 'TXT'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 3
+      end
+      object rbHtml: TRadioButton
+        Cursor = crHandPoint
+        Left = 164
+        Height = 21
+        Hint = 'Page HTML'
+        Top = 39
+        Width = 62
+        Caption = 'HTML'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 4
+      end
+      object FWRefresh: TFWRefresh
+        Left = 293
+        Height = 28
+        Top = 33
+        Width = 138
+        Caption = 'Mise à jour'
+        TabOrder = 7
+        OnClick = FWRefreshClick
+      end
+      object Bevel3: TBevel
+        Left = 436
+        Height = 64
+        Top = 1
+        Width = 9
+        Shape = bsLeftLine
+      end
+      object cb_papersize: TComboBox
+        Left = 444
+        Height = 25
+        Top = 33
+        Width = 60
+        ItemHeight = 17
+        ItemIndex = 0
+        Items.Strings = (
+          'A4'
+          'A3'
+          'A2'
+          'A1'
+          'A0'
+        )
+        OnChange = cb_papersizeChange
+        TabOrder = 8
+        Text = 'A4'
+      end
+      object ch_Portrait: TCheckBox
+        Left = 444
+        Height = 21
+        Top = 3
+        Width = 70
+        Caption = 'Portrait'
+        Checked = True
+        OnChange = ch_PortraitChange
+        State = cbChecked
+        TabOrder = 9
+      end
+    end
+    object Panel8: TPanel
+      Left = 0
+      Height = 30
+      Top = 653
+      Width = 538
+      Align = alBottom
+      BevelInner = bvRaised
+      BevelOuter = bvNone
+      ClientHeight = 30
+      ClientWidth = 538
+      TabOrder = 2
+      object spbPreviewFirst: TCSpeedButton
+        Left = 1
+        Height = 28
+        Hint = 'Premère page'
+        Top = 1
+        Width = 22
+        Align = alLeft
+        Flat = True
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'MS Sans Serif'
+        Glyph.Data = {
+          36050000424D3605000000000000360400002800000010000000100000000100
+          080000000000000100000000000000000000000100000001000000000000FF63
+          2900FF942900FFCE2900FFFF9400BDBDBD00FFFFCE00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00050505050505
+          0505050505050505050505050505050505050505050505050505000001050505
+          0505050000050505050500030105050505050001000505050505000301050505
+          0500010200050505050500030105050500010302000000000000000301050500
+          0103030202020202020100030105000103030303030303030601000301050500
+          0304030606060606060100030105050500030406010101010101000301050505
+          0500030601050505050500030105050505050003010505050505000001050505
+          0505050001050505050505050505050505050505050505050505050505050505
+          0505050505050505050505050505050505050505050505050505
+        }
+        OnClick = spbPreviewFirstClick
+        ShowHint = True
+        ParentFont = False
+        ParentShowHint = False
+      end
+      object spbPreviewPrior: TSBPrior
+        Left = 23
+        Height = 28
+        Hint = 'Page précédente'
+        Top = 1
+        Width = 22
+        Align = alLeft
+        Flat = True
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'MS Sans Serif'
+        OnClick = spbPreviewPriorClick
+        ShowHint = True
+        ParentFont = False
+        ParentShowHint = False
+      end
+      object spbPreviewNext: TSBNext
+        Left = 82
+        Height = 28
+        Hint = 'Page suivante'
+        Top = 1
+        Width = 22
+        Align = alLeft
+        Flat = True
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'MS Sans Serif'
+        OnClick = spbPreviewNextClick
+        ShowHint = True
+        ParentFont = False
+        ParentShowHint = False
+      end
+      object spbPreviewLast: TCSpeedButton
+        Left = 104
+        Height = 28
+        Hint = 'Dernière page'
+        Top = 1
+        Width = 22
+        Align = alLeft
+        Flat = True
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'MS Sans Serif'
+        Glyph.Data = {
+          46020000424D46020000000000003600000028000000100000000B0000000100
+          18000000000010020000C30E0000C30E00000000000000000000BFBFBFBFBFBF
+          BFBFBFBFBFBFBFBFBF000000000000BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF
+          BFFF672F000000000000BFBFBFBFBFBFBFBFBFBFBFBFBFBFBF000000FF672F00
+          0000BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFFF672FFFC82F000000BFBFBFBFBFBF
+          BFBFBFBFBFBFBFBFBF000000FF972FFF672F000000BFBFBFBFBFBFBFBFBFBFBF
+          BFFF672FFFC82F000000000000000000000000000000000000000000FF972FFF
+          C82FFF672F000000BFBFBFBFBFBFBFBFBFFF672FFFC82F000000FF672FFF972F
+          FF972FFF972FFF972FFF972FFF972FFFC82FFFC82FFF672F000000BFBFBFBFBF
+          BFFF672FFFC82F000000FF672FFFFFCFFFC82FFFC82FFFC82FFFC82FFFC82FFF
+          C82FFFC82FFFC82FFF672F000000BFBFBFFF672FFFC82F000000FF672FFFFFCF
+          FFFFCFFFFFCFFFFFCFFFFFCFFFFFCFFFC82FFFFF90FFC82F000000BFBFBFBFBF
+          BFFF672FFFC82F000000FF672FFF672FFF672FFF672FFF672FFF672FFFFFCFFF
+          FF90FFC82F000000BFBFBFBFBFBFBFBFBFFF672FFFC82F000000BFBFBFBFBFBF
+          BFBFBFBFBFBFBFBFBFFF672FFFFFCFFFC82F000000BFBFBFBFBFBFBFBFBFBFBF
+          BFFF672FFFC82F000000BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFFF672FFFC82F00
+          0000BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFFF672FFFC82F000000BFBFBFBFBFBF
+          BFBFBFBFBFBFBFBFBFFF672F000000BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF
+          BFFF672F000000000000
+        }
+        OnClick = spbPreviewLastClick
+        ShowHint = True
+        ParentFont = False
+        ParentShowHint = False
+      end
+      object spbPreviewWidth: TCSpeedButton
+        Left = 150
+        Height = 28
+        Hint = 'Taille page'
+        Top = 1
+        Width = 24
+        Align = alLeft
+        AllowAllUp = True
+        Flat = True
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'MS Sans Serif'
+        Glyph.Data = {
+          6E030000424D6E03000000000000760000002800000050000000130000000100
+          040000000000F8020000CE0E0000C40E00001000000000000000000000000000
+          80000080000000808000800000008000800080800000C0C0C000808080000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+          7777777777777777777777777777777777777777777777777F7F7F7F7F7F7F7F
+          7F7F777777777777777777777777777777777777777777777777777777777777
+          F7F7F7F7F7F7F7F7F7F777000000000000000077770000000000000000777700
+          00000000000000777F00000000000000007F77060FFFFFFFFFF0807777060FFF
+          FFFFFFF0807777060FFFFFFFFFF08077F70000787878787080F777080F00000F
+          00F0607777080F00000F00F0607777080F00000F00F060777F08008000070080
+          007F77060FFFFFFFFFF0807777060FFFFFFFFFF0807777060FFFFFFFFFF08077
+          F70000787878787080F777080F00000F00F0607777080F00000F00F060777708
+          0F00000F00F060777F08008000070080007F77060FFFFFFFFFF0807777060FFF
+          FFFFFFF0807777060FFFFFFFFFF08077F70000787878787080F777080F00000F
+          00F0607777080F00000F00F0607777080F00000F00F060777F08008000070080
+          007F77060FFFFFFFFFF0807777060FFFFFFFFFF0807777060FFFFFFFFFF08077
+          F70000787878787080F777080F00000F00F0607777080F00000F00F060777708
+          0F00000F00F060777F08008000070080007F77060FFFFFFFFFF0807777060FFF
+          FFFFFFF0807777060FFFFFFFFFF08077F70000787878787080F777080FFFFFFF
+          FFF0607777080FFFFFFFFFF0607777080FFFFFFFFFF060777F08008787878780
+          007F770600000000000080777706000000000000807777060000000000008077
+          F70000000000000080F777086868686868686077770868686868686860777708
+          68686868686860777F08080808080808007F7706868686868686807777068686
+          86868686807777068686868686868077F70080808080808080F7770000000000
+          0000007777000000000000000077770000000000000000777F00000000000000
+          007F777777777777777777777777777777777777777777777777777777777777
+          F7F7F7F7F7F7F7F7F7F777777777777777777777777777777777777777777777
+          77777777777777777F7F7F7F7F7F7F7F7F7F
+        }
+        GroupIndex = 1
+        NumGlyphs = 4
+        OnClick = spbPreviewWidthClick
+        ShowHint = True
+        ParentFont = False
+        ParentShowHint = False
+      end
+      object spbPreview100Percent: TCSpeedButton
+        Left = 174
+        Height = 28
+        Hint = '100 %'
+        Top = 1
+        Width = 24
+        Align = alLeft
+        AllowAllUp = True
+        Color = clBtnHighlight
+        Down = True
+        Flat = True
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'MS Sans Serif'
+        Glyph.Data = {
+          BA030000424DBA03000000000000760000002800000051000000130000000100
+          04000000000044030000CE0E0000C40E00001000000000000000000000000000
+          80000080000000808000800000008000800080800000C0C0C000808080000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+          77777777777777777777777777777777777777777777777777F7F7F7F7F7F7F7
+          F7F7F00000007777777777777777777777777777777777777777777777777777
+          777777777F7F7F7F7F7F7F7F7F7F700000007700000000000000007777700000
+          0000000000077770000000000000000777F00000000000000007F00000007706
+          80FFFFFFFFFFF0777770680FFFFFFFFFFF077770680FFFFFFFFFFF077F700807
+          87878787870F70000000770860FFFFFFFFFFF0777770860FFFFFFFFFFF077770
+          860FFFFFFFFFFF0777F08008787878787807F0000000770680FF000F00000077
+          7770680FF000F00000077770680FF000F00000077F70080780008000000F7000
+          0000770860FF000F000000777770860FF000F00000077770860FF000F0000007
+          77F08008700070000007F0000000770680FFFFFFFFFFF0777770680FFFFFFFFF
+          FF077770680FFFFFFFFFFF077F70080787878787870F70000000770860FFFFFF
+          FFFFF0777770860FFFFFFFFFFF077770860FFFFFFFFFFF0777F0800878787878
+          7807F0000000770680FF000F000000777770680FF000F00000077770680FF000
+          F00000077F70080780008000000F70000000770860FF000F000000777770860F
+          F000F00000077770860FF000F000000777F08008700070000007F00000007706
+          80FFFFFFFFFFF0777770680FFFFFFFFFFF077770680FFFFFFFFFFF077F700807
+          87878787870F70000000770860FFFFFFFFFFF0777770860FFFFFFFFFFF077770
+          860FFFFFFFFFFF0777F08008787878787807F000000077068000000000000077
+          77706800000000000007777068000000000000077F70080000000000000F7000
+          0000770868686868686860777770868686868686860777708686868686868607
+          77F08080808080808007F0000000770686868686868680777770686868686868
+          6807777068686868686868077F70080808080808080F70000000770000000000
+          00000077777000000000000000077770000000000000000777F0000000000000
+          0007F00000007777777777777777777777777777777777777777777777777777
+          777777777F7F7F7F7F7F7F7F7F7F700000007777777777777777777777777777
+          7777777777777777777777777777777777F7F7F7F7F7F7F7F7F7F0000000
+        }
+        GroupIndex = 1
+        NumGlyphs = 4
+        OnClick = spbPreview100PercentClick
+        ShowHint = True
+        ParentFont = False
+        ParentShowHint = False
+      end
+      object spbPreviewWhole: TCSpeedButton
+        Left = 126
+        Height = 28
+        Hint = 'Pleine page'
+        Top = 1
+        Width = 24
+        Align = alLeft
+        AllowAllUp = True
+        Flat = True
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'MS Sans Serif'
+        Glyph.Data = {
+          6E030000424D6E03000000000000760000002800000050000000130000000100
+          040000000000F8020000CE0E0000C40E00001000000000000000000000000000
+          80000080000000808000800000008000800080800000C0C0C000808080000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+          7777777777777777777777777777777777777777777777777F7F7F7F7F7F7F7F
+          7F7F777777777777777777777777777777777777777777777777777777777777
+          F7F7F7F7F7F7F7F7F7F777000000000000000077770000000000000000777700
+          00000000000000777F00000000000000007F7706868686868686807777068686
+          86868686807777068686868686868077F70080808080808080F7770868000000
+          0068607777086800000000686077770868000000006860777F08080000000008
+          007F7706860FFFFFF08680777706860FFFFFF08680777706860FFFFFF0868077
+          F70080087878708080F77708680FFFFFF06860777708680FFFFFF06860777708
+          680FFFFFF06860777F08080787878008007F7706860F00F0F08680777706860F
+          00F0F08680777706860F00F0F0868077F70080080070708080F77708680FFFFF
+          F06860777708680FFFFFF06860777708680FFFFFF06860777F08080787878008
+          007F7706860F00F0F08680777706860F00F0F08680777706860F00F0F0868077
+          F70080080070708080F77708680FFFFFF06860777708680FFFFFF06860777708
+          680FFFFFF06860777F08080787878008007F7706860F00F0F08680777706860F
+          00F0F08680777706860F00F0F0868077F70080080070708080F77708680FFFFF
+          F06860777708680FFFFFF06860777708680FFFFFF06860777F08080787878008
+          007F7706860FFFFFF08680777706860FFFFFF08680777706860FFFFFF0868077
+          F70080087878708080F777086800000000686077770868000000006860777708
+          68000000006860777F08080000000008007F7706868686868686807777068686
+          86868686807777068686868686868077F70080808080808080F7770000000000
+          0000007777000000000000000077770000000000000000777F00000000000000
+          007F777777777777777777777777777777777777777777777777777777777777
+          F7F7F7F7F7F7F7F7F7F777777777777777777777777777777777777777777777
+          77777777777777777F7F7F7F7F7F7F7F7F7F
+        }
+        GroupIndex = 1
+        NumGlyphs = 4
+        OnClick = spbPreviewWholeClick
+        ShowHint = True
+        ParentFont = False
+        ParentShowHint = False
+      end
+      object mskPreviewPage: TMaskEdit
+        Left = 45
+        Height = 28
+        Top = 1
+        Width = 37
+        Align = alLeft
+        AutoSelect = False
+        CharCase = ecNormal
+        MaxLength = 5
+        ParentColor = True
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 0
+        TabStop = False
+        OnKeyPress = mskPreviewPageKeyPress
+        EditMask = '99999;0; '
+        Text = '1'
+        SpaceChar = ' '
+      end
+      object btnShowConfigBox: TFWConfig
+        Left = 413
+        Height = 28
+        Top = 1
+        Width = 124
+        TabStop = False
+        Caption = 'Paramètres'
+        TabOrder = 1
+        Spacing = 1
+        Align = alRight
+        Anchors = [akTop, akRight]
+        OnClick = btnShowConfigBoxClick
+      end
+      object ch_photo: TJvXPCheckbox
+        Left = 198
+        Height = 28
+        Top = 1
+        Width = 161
+        Caption = 'Avec photo'
+        TabOrder = 2
+        Checked = True
+        State = cbChecked
+        UseDockManager = False
+        Align = alLeft
+        Visible = False
+        OnClick = ch_photoClick
+      end
+    end
+    object pRien: TPanel
+      Left = 20
+      Height = 175
+      Top = 182
+      Width = 504
+      Anchors = [akTop, akLeft, akRight]
+      BevelInner = bvSpace
+      BevelOuter = bvSpace
+      BorderStyle = bsSingle
+      ClientHeight = 171
+      ClientWidth = 500
+      TabOrder = 3
+      Visible = False
+      OnClick = pRienClick
+      object Image2: TIASearch
+        Left = 8
+        Top = 8
+        AutoSize = True
+      end
+      object Label4: TLabel
+        Left = 159
+        Height = 87
+        Top = 14
+        Width = 169
+        Alignment = taCenter
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Aucune donnée pour cet état'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -24
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        WordWrap = True
+      end
+    end
+    object cp_Widths: TExtClonedPanel
+      Left = 0
+      Height = 50
+      Top = 65
+      Width = 538
+      HorzScrollBar.Page = 534
+      VertScrollBar.Page = 46
+      Align = alTop
+      ClientHeight = 46
+      ClientWidth = 534
+      TabOrder = 4
+      PanelCloned = p_Width
+      OnCloningControl = cp_WidthsCloningControl
+      object p_Width: TPanel
+        Left = 0
+        Height = 46
+        Top = 0
+        Width = 106
+        Align = alLeft
+        BevelOuter = bvNone
+        ClientHeight = 46
+        ClientWidth = 106
+        TabOrder = 0
+        Visible = False
+        object L_Width: TLabel
+          Left = 5
+          Height = 17
+          Top = 3
+          Width = 21
+          Caption = 'C.1'
+          ParentColor = False
+        end
+        object se_Width: TSpinEdit
+          Left = 50
+          Height = 25
+          Top = -1
+          Width = 56
+          MaxValue = 800
+          TabOrder = 0
+          Value = 1
+        end
+      end
+    end
+    object S_widths: TSplitter
+      Cursor = crVSplit
+      Left = 0
+      Height = 5
+      Top = 115
+      Width = 538
+      Align = alTop
+      ResizeAnchor = akTop
+    end
+  end
+  object s_tree: TSplitter[3]
+    Left = 264
+    Height = 683
+    Top = 23
+    Width = 4
+  end
+  object TL: TTreeView[4]
+    Left = 0
+    Height = 683
+    Top = 23
+    Width = 264
+    Align = alLeft
+    ReadOnly = True
+    ScrollBars = ssAutoVertical
+    TabOrder = 4
+    OnClick = TLClick
+    Options = [tvoAutoItemHeight, tvoHideSelection, tvoKeepCollapsedNodes, tvoReadOnly, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
+    Items.Data = {
+      F9FFFFFF020006000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF030000000000
+      0000010A000000417363656E64616E6365FFFFFFFF00000000FFFFFFFFFFFFFF
+      FF00000000000000000009000000436F6D706CC3A87465FFFFFFFF01000000FF
+      FFFFFFFFFFFFFF0000000000000000000E000000506172206C657320686F6D6D
+      6573FFFFFFFF02000000FFFFFFFFFFFFFFFF0000000000000000000E00000050
+      6172206C65732066656D6D6573FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF020000
+      0000000000010B00000044657363656E64616E6365FFFFFFFF0A000000FFFFFF
+      FFFFFFFFFF00000000000000000009000000436F6D706CC3A87465FFFFFFFF0B
+      000000FFFFFFFFFFFFFFFF0000000000000000000C000000506174726F6E796D
+      69717565FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF030000000000000001130000
+      004C6973746520616C70686162C3A97469717565FFFFFFFF14000000FFFFFFFF
+      FFFFFFFF00000000000000000006000000486F6D6D6573FFFFFFFF15000000FF
+      FFFFFFFFFFFFFF0000000000000000000600000046656D6D6573FFFFFFFF1600
+      0000FFFFFFFFFFFFFFFF00000000000000000004000000546F7573FFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFF0800000000000000010F0000004C69737465732064
+      69766572736573FFFFFFFF1E000000FFFFFFFFFFFFFFFF000000000000000000
+      06000000556E696F6E73FFFFFFFF1F000000FFFFFFFFFFFFFFFF000000000000
+      00000007000000C389636C616972FFFFFFFF20000000FFFFFFFFFFFFFFFF0000
+      000000000000000C000000C38976C3A96E656D656E7473FFFFFFFF21000000FF
+      FFFFFFFFFFFFFF0000000000000000000D000000416E6E697665727361697265
+      73FFFFFFFF22000000FFFFFFFFFFFFFFFF00000000000000000007000000456E
+      66616E7473FFFFFFFF23000000FFFFFFFFFFFFFFFF0000000000000000001000
+      00004672C3A872657320262053C593757273FFFFFFFF24000000FFFFFFFFFFFF
+      FFFF0000000000000000000F0000004F6E636C657320262054616E746573FFFF
+      FFFF25000000FFFFFFFFFFFFFFFF00000000000000000009000000436F757369
+      6E616765FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF020000000000000001060000
+      00466963686573FFFFFFFF28000000FFFFFFFFFFFFFFFF000000000000000000
+      0C000000496E646976696475656C6C65FFFFFFFF29000000FFFFFFFFFFFFFFFF
+      0000000000000000000900000046616D696C69616C65FFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF0A00000000000000010C000000537461746973746971756573FF
+      FFFFFF32000000FFFFFFFFFFFFFFFF0000000000000000000A00000050617472
+      6F6E796D6573FFFFFFFF33000000FFFFFFFFFFFFFFFF00000000000000000008
+      0000005072C3A96E6F6D73FFFFFFFF34000000FFFFFFFFFFFFFFFF0000000000
+      000000001A000000C382676520C3A0206C61207072656D69C3A8726520756E69
+      6F6EFFFFFFFF35000000FFFFFFFFFFFFFFFF0000000000000000000B0000004C
+      6F6E67C3A9766974C3A9FFFFFFFF36000000FFFFFFFFFFFFFFFF000000000000
+      0000001A0000004E6F6D627265206427656E66616E74732070617220756E696F
+      6EFFFFFFFF37000000FFFFFFFFFFFFFFFF0000000000000000000B0000005265
+      63656E73656D656E74FFFFFFFF38000000FFFFFFFFFFFFFFFF00000000000000
+      00001800000044C3A96E6F6D6272656D656E7420617363656E64616E6365FFFF
+      FFFF39000000FFFFFFFFFFFFFFFF0000000000000000001900000044C3A96E6F
+      6D6272656D656E742064657363656E64616E6365FFFFFFFF3A000000FFFFFFFF
+      FFFFFFFF000000000000000000200000004E616973732E2F44C3A963C3A87320
+      70617220706179732F44C3A9706172742EFFFFFFFF3B000000FFFFFFFFFFFFFF
+      FF0000000000000000000B00000050726F66657373696F6E73
+    }
+  end
+  object OnFormInfoIni: TOnFormInfoIni[5]
+    SaveForm = [sfSavePos, sfSaveSize, sfSaveSizes, sfSameMonitor]
+    Options = [loAutoUpdate, loAutoLoad]
+    left = 300
+    top = 328
+  end
+  object QCousinage: TIBQuery[6]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select i.cle_fiche'
+      ',i.nom'
+      ',i.prenom'
+      ',i.date_naissance'
+      ',i.date_deces'
+      ',i.sexe'
+      ',i.cle_pere'
+      ',i.cle_mere'
+      ',p.nom as nom_pere'
+      ',p.prenom as prenom_pere'
+      ',m.nom as nom_mere'
+      ',m.prenom as prenom_mere'
+      'from proc_trouve_oncles_tantes (:i_clef) pr'
+      'inner join individu i on i.cle_pere=pr.cle_fiche or i.cle_mere=pr.cle_fiche'
+      'left join individu p on p.cle_fiche=i.cle_pere'
+      'left join individu m on m.cle_fiche=i.cle_mere'
+      'order by pr.sosa,i.annee_naissance'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptUnknown
+      end>
+    left = 521
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptUnknown
+      end>
+    object QCousinageCLE_FICHE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_FICHE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object QCousinageNOM: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object QCousinagePRENOM: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'PRENOM'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object QCousinageDATE_NAISSANCE: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'DATE_NAISSANCE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object QCousinageDATE_DECES: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'DATE_DECES'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object QCousinageSEXE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SEXE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object QCousinageCLE_PERE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_PERE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object QCousinageCLE_MERE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_MERE'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object QCousinageNOM_PERE: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NOM_PERE'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object QCousinagePRENOM_PERE: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'PRENOM_PERE'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object QCousinageNOM_MERE: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NOM_MERE'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object QCousinagePRENOM_MERE: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'PRENOM_MERE'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+  end
+  object DSCousinage: TDatasource[7]
+    DataSet = QCousinage
+    left = 521
+    top = 144
+  end
+  object DSUnions: TDatasource[8]
+    DataSet = QUnions
+    left = 489
+    top = 144
+  end
+  object QUnions: TIBQuery[9]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select union_cle'
+      ',mari_cle'
+      ',mari_nom'
+      ',mari_prenom'
+      ',mari_num_sosa'
+      ',femme_cle'
+      ',femme_nom'
+      ',femme_prenom'
+      ',femme_num_sosa'
+      ',subd'
+      ',ville'
+      ',dept'
+      ',region'
+      ',pays'
+      ',an_marr'
+      ',mois_marr'
+      ',date_marr as date_union'
+      ',age_mari'
+      ',age_femme'
+      ',(select sosas from proc_sosas(mari_cle)) as sosa_mari'
+      ',(select sosas from proc_sosas(femme_cle)) as sosa_femme'
+      'from proc_liste_unions(:dossier) p'
+      'order by mari_nom ,mari_prenom '
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    left = 489
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+  end
+  object QEvenements: TIBQuery[10]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select distinct ev_ind_kle_fiche'
+      ',ev_ind_type as s_type'
+      ',ev_ind_date_writen as date_eve'
+      ',ev_ind_cp as cp'
+      ',ev_ind_ville as ville'
+      ',ev_ind_dept'
+      ',ev_ind_pays'
+      ',ev_ind_region'
+      ',ev_ind_subd'
+      ',ev_ind_insee'
+      ',nom_complet'
+      ',sexe'
+      ',type_eve'
+      'from(select e.ev_ind_kle_fiche'
+      ',e.ev_ind_type'
+      ',e.ev_ind_date_writen'
+      ',e.ev_ind_datecode'
+      ',e.ev_ind_heure'
+      ',e.ev_ind_cp'
+      ',e.ev_ind_ville'
+      ',e.ev_ind_dept'
+      ',e.ev_ind_pays'
+      ',e.ev_ind_region'
+      ',e.ev_ind_subd'
+      ',e.ev_ind_insee'
+      ',cast(coalesce(e.ev_ind_titre_event,r.ref_eve_lib_long)||'' : de ''||i.nom||'', ''||i.prenom as varchar(160)) as nom_complet'
+      ',i.sexe'
+      ',''IND'' as type_eve'
+      'from dossier d'
+      'inner join individu i on i.kle_dossier=d.cle_dossier'
+      'inner join evenements_ind e on e.ev_ind_kle_fiche=i.cle_fiche'
+      'inner join ref_evenements r on r.ref_eve_lib_court=e.ev_ind_type'
+      'and r.ref_eve_langue=d.ds_langue'
+      'where d.cle_dossier=:i_clef'
+      'union all'
+      'select u.union_clef'
+      ',e.ev_fam_type'
+      ',e.ev_fam_date_writen'
+      ',e.ev_fam_datecode'
+      ',e.ev_fam_heure'
+      ',e.ev_fam_cp'
+      ',e.ev_fam_ville'
+      ',e.ev_fam_dept'
+      ',e.ev_fam_pays'
+      ',e.ev_fam_region'
+      ',e.ev_fam_subd'
+      ',e.ev_fam_insee'
+      ',cast(substring(coalesce(e.ev_fam_titre_event,r.ref_eve_lib_long)||'' : de ''||m.nom||'', ''||m.prenom'
+      '||'' avec ''||f.nom||'', ''||f.prenom from 1 for 160) as varchar(160))'
+      ',0'
+      ',''FAM'''
+      'from dossier d'
+      ',t_union u'
+      'inner join individu m on m.cle_fiche=u.union_mari and m.kle_dossier=d.cle_dossier'
+      'inner join individu f on f.cle_fiche=u.union_femme and f.kle_dossier=d.cle_dossier'
+      'inner join evenements_fam e on e.ev_fam_kle_famille=u.union_clef'
+      'inner join ref_evenements r on r.ref_eve_lib_court=e.ev_fam_type and r.ref_eve_langue=d.ds_langue'
+      'where d.cle_dossier=:i_clef)'
+      'order by ev_ind_datecode nulls last,ev_ind_heure nulls last'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptUnknown
+      end>
+    left = 457
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptUnknown
+      end>
+  end
+  object DSEvenements: TDatasource[11]
+    DataSet = QEvenements
+    left = 457
+    top = 144
+  end
+  object DSStatNomPrenom: TDatasource[12]
+    DataSet = QStatNomPrenom
+    left = 658
+    top = 144
+  end
+  object QStatNomPrenom: TIBQuery[13]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select count(*) as combien'
+      ',nom'
+      'from individu where kle_dossier=:dossier'
+      'group by nom order by nom'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    left = 658
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    object QStatNomPrenomCOMBIEN: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'COMBIEN'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object QStatNomPrenomNOM: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+  end
+  object QFiche: TIBQuery[14]
+    Database = dm.ibd_BASE
+    Transaction = TransactionPropre
+    BufferChunks = 5000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from PROC_ETAT_FICHE(:CLE_FICHE)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_FICHE'
+        ParamType = ptUnknown
+      end>
+    left = 373
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_FICHE'
+        ParamType = ptUnknown
+      end>
+  end
+  object DSFiche: TDatasource[15]
+    DataSet = QFiche
+    left = 373
+    top = 144
+  end
+  object DSListeAlpha: TDatasource[16]
+    DataSet = QListeAlpha
+    left = 288
+    top = 144
+  end
+  object QListeAlpha: TIBQuery[17]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select i.nom'
+      ',i.prenom'
+      ',n.ev_ind_date_writen as date_naissance'
+      ',n.ev_ind_cp as cp_naissance'
+      ',n.ev_ind_ville as lieu_naissance'
+      ',d.ev_ind_date_writen as date_deces'
+      ',d.ev_ind_cp as cp_deces'
+      ',d.ev_ind_ville as lieu_deces'
+      ',i.sexe'
+      ',i.filliation'
+      ',substring(i.indi_trie_nom from 1 for 1) as lettre'
+      ',d.ev_ind_date_year-n.ev_ind_date_year as age'
+      ',i.num_sosa as sosa'
+      ',i.cle_fiche'
+      ',(select sosas from proc_sosas(i.cle_fiche)) as sosas'
+      'from individu i'
+      'left join evenements_ind n on n.ev_ind_type=''BIRT'' and n.ev_ind_kle_fiche=i.cle_fiche'
+      'left join evenements_ind d on d.ev_ind_type=''DEAT'' and d.ev_ind_kle_fiche=i.cle_fiche'
+      'where i.kle_dossier=:i_dossier'
+      'and (0=:I_SEXE or i.sexe=:I_SEXE)'
+      'order by i.nom,i.prenom'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_dossier'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'i_sexe'
+        ParamType = ptInput
+      end>
+    left = 288
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_dossier'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'i_sexe'
+        ParamType = ptInput
+      end>
+  end
+  object QAscendance: TIBQuery[18]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select t.tq_niveau+1 as generattion'
+      ',t.tq_sosa as sosa'
+      ',i.nom||coalesce('' ''||i.prenom,'''') as nom'
+      ',n.ev_ind_date_writen as date_naissance'
+      ',n.ev_ind_cp as cp_naissance'
+      ',n.ev_ind_ville as ville_naissance'
+      ',n.ev_ind_ville||coalesce('', ''||n.ev_ind_subd,'''') as lieu_naissance'
+      ',d.ev_ind_date_writen as date_deces'
+      ',d.ev_ind_cp as cp_deces'
+      ',d.ev_ind_ville as ville_deces'
+      ',d.ev_ind_ville||coalesce('', ''||d.ev_ind_subd,'''') as lieu_deces'
+      ',i.sexe'
+      ',(d.ev_ind_date_year -  n.ev_ind_date_year) as age'
+      ',t.tq_cle_fiche as cle_fiche'
+      ',t.implexe'
+      ',u.union_clef as clef_union'
+      ',i.num_sosa'
+      ',(select first (1) ev_fam_date_writen'
+      '  from evenements_fam'
+      '  where ev_fam_type=''MARR'''
+      '    and ev_fam_kle_famille=u.union_clef'
+      '  order by ev_fam_datecode,ev_fam_heure) as date_mariage'
+      ',(select first (1) ev_fam_cp'
+      '  from evenements_fam'
+      '  where ev_fam_type=''MARR'''
+      '    and ev_fam_kle_famille=u.union_clef'
+      '  order by ev_fam_datecode,ev_fam_heure) as cp_mariage'
+      ',(select first (1) ev_fam_ville'
+      '  from evenements_fam'
+      '  where ev_fam_type=''MARR'''
+      '    and ev_fam_kle_famille=u.union_clef'
+      '  order by ev_fam_datecode,ev_fam_heure) as ville_mariage'
+      ',iif(n.ev_ind_acte in(-3,1),0,1) as acte_naissance_absent'
+      ',iif(d.ev_ind_acte in(-3,1),0,1) as acte_deces_absent'
+      ',iif((select first (1) ev_fam_acte'
+      '      from evenements_fam'
+      '      where ev_fam_type=''MARR'''
+      '        and ev_fam_kle_famille=u.union_clef'
+      '      order by ev_fam_datecode,ev_fam_heure)in(-3,1),0,1) as acte_mariage_absent'
+      'from proc_tq_ascendance(:i_clef,0,:i_parqui,1) t'
+      'inner join individu i on i.cle_fiche=t.tq_cle_fiche'
+      'left join evenements_ind n on (n.ev_ind_kle_fiche=t.tq_cle_fiche and n.ev_ind_type = ''BIRT'')'
+      'left join evenements_ind d on (d.ev_ind_kle_fiche=t.tq_cle_fiche and d.ev_ind_type = ''DEAT'')'
+      'left join t_union u on (i.sexe=1 and u.union_mari=t.tq_cle_fiche and u.union_femme=t.tq_dossier)'
+      '  or (i.sexe=2 and u.union_femme=t.tq_cle_fiche and u.union_mari=t.tq_dossier)'
+      'order by 1,2'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'i_parqui'
+        ParamType = ptUnknown
+      end>
+    left = 192
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'i_parqui'
+        ParamType = ptUnknown
+      end>
+  end
+  object QDescendance: TIBQuery[19]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select'
+      't.tq_niveau as niveau'
+      ',t.tq_num_sosa as sosa'
+      ',t.tq_cle_fiche as cle_fiche'
+      ',i.nom'
+      ',i.prenom'
+      ',i.date_naissance'
+      ',i.date_deces'
+      ',i.sexe'
+      ',i.cle_pere'
+      ',i.cle_mere'
+      ',i.age_au_deces as age'
+      ',t.tq_sosa as ordre'
+      ',n.ev_ind_clef as cle_naissance'
+      ',n.ev_ind_ville as ville_naissance'
+      ',n.ev_ind_cp as cp_naissance'
+      ',n.ev_ind_dept as dept_naissance'
+      ',n.ev_ind_pays as pays_naissance'
+      ',iif(n.ev_ind_acte in(-3,1),0,1) as acte_naissance_absent'
+      ',nd.rdp_code_deux as code_dept_naissance'
+      ',d.ev_ind_clef as cle_deces'
+      ',d.ev_ind_ville as ville_deces'
+      ',d.ev_ind_cp as cp_deces'
+      ',d.ev_ind_dept as dept_deces'
+      ',d.ev_ind_pays as pays_deces'
+      ',iif(d.ev_ind_acte in(-3,1),0,1) as acte_deces_absent'
+      ',dd.rdp_code_deux as code_dept_deces'
+      ',(select occupation from proc_dernier_metier(t.tq_cle_fiche)) as occupation'
+      ',c.sexe as sexe_conjoint'
+      ',p.conjoint as cle_conjoint'
+      ',c.nom as nom_conjoint'
+      ',c.prenom as prenom_conjoint'
+      ',nc.ev_ind_clef as cle_naissance_conjoint'
+      ',c.date_naissance as date_naissance_conjoint'
+      ',nc.ev_ind_ville as ville_naissance_conjoint'
+      ',nc.ev_ind_cp as cp_naissance_conjoint'
+      ',nc.ev_ind_dept as dept_naissance_conjoint'
+      ',nc.ev_ind_pays as pays_naissance_conjoint'
+      ',iif(nc.ev_ind_acte in(-3,1),0,1) as acte_naissance_conjoint_absent'
+      ',ncd.rdp_code_deux as code_dept_naissance_conjoint'
+      ',dc.ev_ind_clef as cle_deces_conjoint'
+      ',c.date_deces as date_deces_conjoint'
+      ',dc.ev_ind_ville as ville_deces_conjoint'
+      ',dc.ev_ind_cp as cp_deces_conjoint'
+      ',dc.ev_ind_dept as dept_deces_conjoint'
+      ',dc.ev_ind_pays as pays_deces_conjoint'
+      ',iif(dc.ev_ind_acte in(-3,1),0,1) as acte_deces_conjoint_absent'
+      ',dcd.rdp_code_deux as code_dept_deces_conjoint'
+      ',(select occupation from proc_dernier_metier(p.conjoint)) as occupation_conjoint'
+      ',p.clef_marr as cle_mariage'
+      ',m.ev_fam_date_writen as date_mariage'
+      ',m.ev_fam_ville as ville_mariage'
+      ',m.ev_fam_cp as cp_mariage'
+      ',m.ev_fam_dept as dept_mariage'
+      ',m.ev_fam_pays as pays_mariage'
+      ',md.rdp_code_deux as code_dept_mariage'
+      ',p.clef_union as cle_union'
+      ',p.ordre as ordre_union'
+      ',(select first(1) ordre'
+      '  from proc_conjoints_ordonnes(t.tq_ascendant,0)'
+      '  where conjoint in (i.cle_pere,i.cle_mere)) as issu_union'
+      ',iif(m.ev_fam_acte in(-3,1),0,1) as acte_mariage_absent'
+      'from proc_tq_descendance(:i_clef,0,0,1) t'
+      'inner join individu i on i.cle_fiche=t.tq_cle_fiche'
+      'left join evenements_ind n on n.ev_ind_kle_fiche=i.cle_fiche'
+      '                          and n.ev_ind_type=''BIRT'''
+      'left join ref_pays np on np.rpa_libelle=n.ev_ind_pays'
+      'left join ref_departements nd on nd.rdp_libelle=n.ev_ind_dept'
+      '                             and nd.rdp_pays=np.rpa_code'
+      'left join evenements_ind d on d.ev_ind_kle_fiche=i.cle_fiche'
+      '                          and d.ev_ind_type=''DEAT'''
+      'left join ref_pays dp on dp.rpa_libelle=d.ev_ind_pays'
+      'left join ref_departements dd on dd.rdp_libelle=d.ev_ind_dept'
+      '                             and dd.rdp_pays=dp.rpa_code'
+      'left join proc_conjoints_ordonnes(i.cle_fiche,0) p on 1=1'
+      'left join individu c on c.cle_fiche=p.conjoint'
+      'left join evenements_ind nc on nc.ev_ind_kle_fiche=p.conjoint'
+      '                           and nc.ev_ind_type=''BIRT'''
+      'left join ref_pays ncp on ncp.rpa_libelle=nc.ev_ind_pays'
+      'left join ref_departements ncd on ncd.rdp_libelle=nc.ev_ind_dept'
+      '                              and ncd.rdp_pays=ncp.rpa_code'
+      'left join evenements_ind dc on dc.ev_ind_kle_fiche=p.conjoint'
+      '                           and dc.ev_ind_type=''DEAT'''
+      'left join ref_pays dcp on dcp.rpa_libelle=dc.ev_ind_pays'
+      'left join ref_departements dcd on dcd.rdp_libelle=dc.ev_ind_dept'
+      '                              and dcd.rdp_pays=dcp.rpa_code'
+      'left join evenements_fam m on m.ev_fam_clef=p.clef_marr'
+      'left join ref_pays mp on mp.rpa_libelle=m.ev_fam_pays'
+      'left join ref_departements md on md.rdp_libelle=m.ev_fam_dept'
+      '                             and md.rdp_pays=mp.rpa_code'
+      'order by t.tq_niveau,t.tq_num_sosa,p.ordre'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptInput
+      end>
+    left = 224
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptInput
+      end>
+  end
+  object QDesPat: TIBQuery[20]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select t.tq_niveau as niveau'
+      ',t.tq_num_sosa as sosa'
+      ',t.tq_cle_fiche as cle_fiche'
+      ',i.nom||coalesce('' ''||i.prenom,'''') as nom'
+      ',i.date_naissance'
+      ',i.date_deces'
+      ',i.sexe'
+      ',i.cle_pere'
+      ',i.cle_mere'
+      ',i.age_au_deces as age'
+      'from PROC_TQ_DESCENDANCE(:I_CLEF,0,0,1) t'
+      'inner join individu i on i.cle_fiche=t.tq_cle_fiche'
+      'where t.tq_sosa is null'
+      'and i.nom=(select nom from individu where cle_fiche=:I_CLEF)'
+      'order by t.tq_niveau,t.tq_num_sosa'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptInput
+      end>
+    left = 256
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptInput
+      end>
+  end
+  object DSDesPat: TDatasource[21]
+    DataSet = QDesPat
+    left = 256
+    top = 144
+  end
+  object DSAscendance: TDatasource[22]
+    DataSet = QAscendance
+    left = 192
+    top = 144
+  end
+  object DSDescendance: TDatasource[23]
+    DataSet = QDescendance
+    left = 224
+    top = 144
+  end
+  object QStatPrenoms: TIBQuery[24]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select count(*) as combien'
+      ',prenom as nom'
+      'from proc_liste_prenom(:dossier)'
+      'group by prenom order by prenom'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    left = 690
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    object IntegerField1: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'COMBIEN'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBStringField1: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+  end
+  object dsStatPrenoms: TDatasource[25]
+    DataSet = QStatPrenoms
+    left = 690
+    top = 144
+  end
+  object QAnniv: TIBQuery[26]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from PROC_ETAT_ANNIV_ORDER(:A_MOIS,:I_DOSSIER,:GET_BIRT,:GET_DEAT,:GET_MARR)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'A_MOIS'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'I_DOSSIER'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'GET_BIRT'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'GET_DEAT'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'GET_MARR'
+        ParamType = ptInput
+      end>
+    left = 205
+    top = 240
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'A_MOIS'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'I_DOSSIER'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'GET_BIRT'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'GET_DEAT'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'GET_MARR'
+        ParamType = ptInput
+      end>
+    object QAnnivNOM: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object QAnnivPRENOM: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'PRENOM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object QAnnivADATE: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'ADATE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object QAnnivANNEE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ANNEE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object QAnnivEV_TYPE: TIBStringField
+      DisplayWidth = 7
+      FieldKind = fkData
+      FieldName = 'EV_TYPE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 7
+    end
+    object QAnnivSEXE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SEXE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object DSAnniv: TDatasource[27]
+    DataSet = QAnniv
+    left = 205
+    top = 272
+  end
+  object QCouple: TIBQuery[28]
+    Database = dm.ibd_BASE
+    Transaction = TransactionPropre
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from PROC_ETAT_FICHE_FAMILIALE(:ACLE_UNION)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ACLE_UNION'
+        ParamType = ptUnknown
+      end>
+    left = 245
+    top = 240
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'ACLE_UNION'
+        ParamType = ptUnknown
+      end>
+  end
+  object DSCouple: TDatasource[29]
+    DataSet = QCouple
+    left = 245
+    top = 272
+  end
+  object QEnfantsCouple: TIBQuery[30]
+    Database = dm.ibd_BASE
+    Transaction = TransactionPropre
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from PROC_TROUVE_ENFANTS(:A_CLE_PERE,:A_CLE_MERE,:dossier)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'A_CLE_PERE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'A_CLE_MERE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'dossier'
+        ParamType = ptUnknown
+      end>
+    left = 277
+    top = 240
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'A_CLE_PERE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'A_CLE_MERE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'dossier'
+        ParamType = ptUnknown
+      end>
+  end
+  object DSEnfantsCouple: TDatasource[31]
+    DataSet = QEnfantsCouple
+    left = 277
+    top = 272
+  end
+  object QEveCouple: TIBQuery[32]
+    Database = dm.ibd_BASE
+    Transaction = TransactionPropre
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select f.* ,r. REF_EVE_LIB_LONG'
+      'from evenements_fam f'
+      'inner join t_union u on u.union_clef=f.ev_fam_kle_famille'
+      'inner join individu i on i.cle_fiche=u.union_mari'
+      'inner join dossier d on d.cle_dossier=i.kle_dossier'
+      'inner join ref_evenements r on r.ref_eve_lib_court=f.ev_fam_type and r.ref_eve_langue=d.ds_langue'
+      'where  f.EV_FAM_KLE_FAMILLE= :CLE_FAMILLE'
+      'order by f.ev_fam_datecode nulls last'
+      ',f.ev_fam_heure nulls last'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_FAMILLE'
+        ParamType = ptUnknown
+      end>
+    left = 309
+    top = 240
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_FAMILLE'
+        ParamType = ptUnknown
+      end>
+  end
+  object DSEveCouple: TDatasource[33]
+    DataSet = QEveCouple
+    left = 309
+    top = 272
+  end
+  object QAgePremiereUnion: TIBQuery[34]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select *'
+      'from proc_etat_age_prem_union('
+      ' :A_CLE_DOSSIER,'
+      ' :LIMIT_ON_DATE,'
+      ' :LIMIT_ON_SOSA,'
+      ' :YEAR_FROM,'
+      ' :YEAR_TO,'
+      ' :INTERVAL)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'A_CLE_DOSSIER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_DATE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_SOSA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_FROM'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_TO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'INTERVAL'
+        ParamType = ptUnknown
+      end>
+    left = 425
+    top = 240
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'A_CLE_DOSSIER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_DATE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_SOSA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_FROM'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_TO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'INTERVAL'
+        ParamType = ptUnknown
+      end>
+  end
+  object QLongevite: TIBQuery[35]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select *'
+      'from PROC_ETAT_LONGEVITE('
+      '    :A_CLE_DOSSIER,'
+      '    :LIMIT_ON_DATE,'
+      '    :LIMIT_ON_SOSA,'
+      '   :YEAR_FROM,'
+      '   :YEAR_TO,'
+      '    :INTERVAL)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'A_CLE_DOSSIER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_DATE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_SOSA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_FROM'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_TO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'INTERVAL'
+        ParamType = ptUnknown
+      end>
+    left = 464
+    top = 240
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'A_CLE_DOSSIER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_DATE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_SOSA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_FROM'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_TO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'INTERVAL'
+        ParamType = ptUnknown
+      end>
+  end
+  object QNbEnfantUnion: TIBQuery[36]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select *'
+      'from'
+      'PROC_ETAT_NB_ENFANT_UNION('
+      '    :A_CLE_DOSSIER,'
+      '    :LIMIT_ON_DATE,'
+      '    :LIMIT_ON_SOSA,'
+      '   :YEAR_FROM,'
+      '    :YEAR_TO,'
+      '    :INTERVAL)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'A_CLE_DOSSIER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_DATE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_SOSA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_FROM'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_TO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'INTERVAL'
+        ParamType = ptUnknown
+      end>
+    left = 505
+    top = 240
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'A_CLE_DOSSIER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_DATE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_SOSA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_FROM'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_TO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'INTERVAL'
+        ParamType = ptUnknown
+      end>
+  end
+  object QRecensement: TIBQuery[37]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select *'
+      'from proc_etat_recensement('
+      ':cle_dossier'
+      ',:limit_on_date'
+      ',:limit_on_sosa'
+      ',:year_from'
+      ',:year_to'
+      ',:interval'
+      ',:longevite_h'
+      ',:longevite_f)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_DOSSIER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_DATE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_SOSA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_FROM'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_TO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'INTERVAL'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'longevite_h'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'longevite_f'
+        ParamType = ptUnknown
+      end>
+    left = 545
+    top = 240
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_DOSSIER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_DATE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMIT_ON_SOSA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_FROM'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEAR_TO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'INTERVAL'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'longevite_h'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'longevite_f'
+        ParamType = ptUnknown
+      end>
+  end
+  object QDenombreAscendance: TIBQuery[38]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from PROC_ETAT_DENOMB_ASCEND (:A_CLE_FICHE)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'A_CLE_FICHE'
+        ParamType = ptUnknown
+      end>
+    left = 585
+    top = 240
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'A_CLE_FICHE'
+        ParamType = ptUnknown
+      end>
+  end
+  object QDenombreDescendance: TIBQuery[39]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from PROC_ETAT_DENOMB_DESCEND (:A_CLE_FICHE)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'A_CLE_FICHE'
+        ParamType = ptUnknown
+      end>
+    left = 625
+    top = 240
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'A_CLE_FICHE'
+        ParamType = ptUnknown
+      end>
+  end
+  object DSAgePremiereUnion: TDatasource[40]
+    DataSet = QAgePremiereUnion
+    left = 425
+    top = 272
+  end
+  object DSLongevite: TDatasource[41]
+    DataSet = QLongevite
+    left = 465
+    top = 272
+  end
+  object DSNbEnfantUnion: TDatasource[42]
+    DataSet = QNbEnfantUnion
+    left = 505
+    top = 272
+  end
+  object DSRecensement: TDatasource[43]
+    DataSet = QRecensement
+    left = 545
+    top = 272
+  end
+  object DSDenombreAscendance: TDatasource[44]
+    DataSet = QDenombreAscendance
+    left = 585
+    top = 272
+  end
+  object DSDenombreDescendance: TDatasource[45]
+    DataSet = QDenombreDescendance
+    left = 625
+    top = 272
+  end
+  object QEclair: TIBQuery[46]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select'
+      '    NOM,'
+      '    CP,'
+      '    VILLE,'
+      '    PAYS,'
+      '    DATE_DEBUT,'
+      '    DATE_FIN,'
+      '    NAISSANCE,'
+      '    BAPTEME,'
+      '    MARIAGE,'
+      '    DECES,'
+      '    INSEE'
+      'from'
+      'PROC_ETAT_ECLAIR('
+      '    0,'
+      '    1,'
+      '    '''');'
+    )
+    Params = <>
+    left = 721
+    top = 112
+  end
+  object DSEclair: TDatasource[47]
+    DataSet = QEclair
+    left = 721
+    top = 144
+  end
+  object QGetNomPrenom: TIBQuery[48]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select NOM,PRENOM,SEXE from individu where cle_fiche=:cle_fiche'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'cle_fiche'
+        ParamType = ptUnknown
+      end>
+    left = 440
+    top = 336
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'cle_fiche'
+        ParamType = ptUnknown
+      end>
+  end
+  object QEveIndi: TIBQuery[49]
+    Database = dm.ibd_BASE
+    Transaction = TransactionPropre
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from (select e.ev_ind_kle_fiche'
+      ',e.ev_ind_type'
+      ',e.ev_ind_date_writen'
+      ',e.ev_ind_date_year'
+      ',e.ev_ind_date_mois'
+      ',e.ev_ind_datecode'
+      ',e.ev_ind_date'
+      ',e.ev_ind_heure'
+      ',e.ev_ind_cp'
+      ',e.ev_ind_ville'
+      ',e.ev_ind_dept'
+      ',e.ev_ind_pays'
+      ',e.ev_ind_cause'
+      ',e.ev_ind_source'
+      ',e.ev_ind_comment'
+      ',e.ev_ind_description'
+      ',e.ev_ind_region'
+      ',e.ev_ind_subd'
+      ',coalesce(e.ev_ind_titre_event,r.ref_eve_lib_long) as ev_libelle'
+      ',e.ev_ind_insee'
+      ',i.nom'
+      ',i.prenom'
+      ',cast(coalesce(e.ev_ind_titre_event,r.ref_eve_lib_long)||'' : de ''||i.nom||'', ''||i.prenom as varchar(160)) as nom_complet'
+      ',i.sexe'
+      ',''IND'' as type_event'
+      ',iif(e.ev_ind_source is null,1,0) as source_vide'
+      '    ,iif(e.ev_ind_comment is null,1,0) as comment_vide,r.ref_eve_ecran'
+      ' from individu i'
+      ' inner join evenements_ind e on e.ev_ind_kle_fiche=i.cle_fiche'
+      ' inner join dossier d on d.cle_dossier=i.kle_dossier'
+      ' inner join ref_evenements r on r.ref_eve_lib_court=e.ev_ind_type'
+      ' and r.ref_eve_langue=d.ds_langue'
+      ' where i.cle_fiche=:i_clef'
+      ')order by  ev_ind_datecode NULLS LAST,ev_ind_heure NULLS LAST,ref_eve_ecran'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptInput
+      end>
+    left = 405
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptInput
+      end>
+  end
+  object DSEveIndi: TDatasource[50]
+    DataSet = QEveIndi
+    left = 405
+    top = 144
+  end
+  object QMultimedia: TIBQuery[51]
+    Database = dm.ibd_BASE
+    Transaction = TransactionPropre
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select -2147483647 as ordre'
+      ',p.mp_clef'
+      ',m.multi_infos'
+      ',t.multi_media as multi_media_normale'
+      ',m.multi_memo'
+      ',m.multi_reduite as multi_media'
+      ',upper(right(m.multi_path,position(''.'' in reverse(m.multi_path))-1)) as extension'
+      ' FROM MEDIA_POINTEURS p'
+      ' inner join MULTIMEDIA m on p.MP_MEDIA=m.MULTI_CLEF'
+      ' inner join tq_medias t on t.multi_clef=p.MP_MEDIA'
+      ' WHERE p.mp_type_image=''I'' and p.MP_CLE_INDIVIDU=:indi'
+      'order by 1 nulls last,2'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'indi'
+        ParamType = ptInput
+      end>
+    left = 721
+    top = 384
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'indi'
+        ParamType = ptInput
+      end>
+  end
+  object DSMultimedia: TDatasource[52]
+    DataSet = QMultimedia
+    left = 728
+    top = 320
+  end
+  object DSFratrie: TDatasource[53]
+    DataSet = QFratrie
+    left = 554
+    top = 144
+  end
+  object QFratrie: TIBQuery[54]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from PROC_TROUVE_FRERES_SOEURS (:CLEF)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLEF'
+        ParamType = ptUnknown
+      end>
+    left = 554
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLEF'
+        ParamType = ptUnknown
+      end>
+  end
+  object QOnclesTantes: TIBQuery[55]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from PROC_TROUVE_ONCLES_TANTES (:CLEF)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLEF'
+        ParamType = ptUnknown
+      end>
+    left = 586
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLEF'
+        ParamType = ptUnknown
+      end>
+  end
+  object DSOnclesTantes: TDatasource[56]
+    DataSet = QOnclesTantes
+    left = 586
+    top = 144
+  end
+  object DSEnfants: TDatasource[57]
+    DataSet = QEnfants
+    left = 617
+    top = 144
+  end
+  object QEnfants: TIBQuery[58]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from PROC_TROUVE_ENFANTS (:PERE, :MERE,:dossier)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'PERE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MERE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'dossier'
+        ParamType = ptUnknown
+      end>
+    left = 617
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'PERE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MERE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'dossier'
+        ParamType = ptUnknown
+      end>
+  end
+  object SaveDialogRTF: TSaveDialog[59]
+    DefaultExt = '.rtf'
+    Filter = 'RTF (*.rtf)|*.rtf'
+    left = 640
+    top = 344
+  end
+  object SaveDialogPDF: TSaveDialog[60]
+    DefaultExt = '.pdf'
+    Filter = 'PDF (*.pdf)|*.pdf'
+    left = 640
+    top = 384
+  end
+  object SaveDialogHTML: TSaveDialog[61]
+    DefaultExt = '.htm'
+    Filter = 'HTM (*.htm)|*.htm'
+    left = 640
+    top = 416
+  end
+  object Language: TYLanguage[62]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'MS Sans Serif'
+    Method = mRead
+    left = 8
+    top = 8
+  end
+  object IBStatGraph: TIBQuery[63]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    Params = <>
+    left = 665
+    top = 240
+  end
+  object DSStatGraph: TDatasource[64]
+    DataSet = IBStatGraph
+    left = 665
+    top = 272
+  end
+  object IBQParentEnfants: TIBQuery[65]
+    Database = dm.ibd_BASE
+    Transaction = TransactionPropre
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT i.cle_fiche'
+      ',p.nom as nom_pere'
+      ',p.prenom as prenom_pere'
+      ',p.cle_fiche as pere_cle_fiche'
+      ',p.Date_Naissance as pere_naissance'
+      ',p.Date_deces as pere_deces'
+      ',p.num_sosa as pere_sosa'
+      ',p.annee_naissance as pere_annee'
+      ',m.nom as nom_mere'
+      ',m.prenom as prenom_mere'
+      ',m.cle_fiche as mere_cle_fiche'
+      ',m.Date_Naissance as mere_naissance'
+      ',m.Date_deces as mere_deces'
+      ',m.Num_Sosa as mere_sosa'
+      ',m.annee_naissance as mere_annee'
+      'FROM  individu i'
+      'LEFT JOIN individu p on i.cle_pere = p.cle_fiche'
+      'LEFT JOIN individu m on i.cle_mere = m.cle_fiche'
+      'WHERE i.Cle_Fiche = :cle_fiche'
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'cle_fiche'
+        ParamType = ptUnknown
+      end>
+    left = 345
+    top = 240
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'cle_fiche'
+        ParamType = ptUnknown
+      end>
+  end
+  object DSParentEnfants: TDatasource[66]
+    DataSet = IBQParentEnfants
+    left = 345
+    top = 272
+  end
+  object QEveConjoint: TIBQuery[67]
+    Database = dm.ibd_BASE
+    Transaction = TransactionPropre
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from ('
+      'select e.ev_ind_kle_fiche'
+      ',e.ev_ind_type'
+      ',e.ev_ind_date_writen'
+      ',e.ev_ind_date_year'
+      ',e.ev_ind_date_mois'
+      ',e.ev_ind_datecode'
+      ',e.ev_ind_date'
+      ',e.ev_ind_heure'
+      ',e.ev_ind_cp'
+      ',e.ev_ind_ville'
+      ',e.ev_ind_dept'
+      ',e.ev_ind_pays'
+      ',e.ev_ind_cause'
+      ',e.ev_ind_source'
+      ',e.ev_ind_comment'
+      ',e.ev_ind_description'
+      ',e.ev_ind_region'
+      ',e.ev_ind_subd'
+      ',coalesce(e.ev_ind_titre_event,r.ref_eve_lib_long) as ev_libelle'
+      ',e.ev_ind_insee'
+      ',i.nom'
+      ',i.prenom'
+      ',cast(coalesce(e.ev_ind_titre_event,r.ref_eve_lib_long)||'' : de ''||i.nom||'', ''||i.prenom as varchar(160)) as nom_complet'
+      ',i.sexe'
+      ',''IND'' as type_event'
+      ',iif(e.ev_ind_source is null,1,0) as source_vide'
+      ',iif(e.ev_ind_comment is null,1,0) as comment_vide'
+      ',r.ref_eve_ecran'
+      ' from individu i'
+      ' inner join evenements_ind e on e.ev_ind_kle_fiche=i.cle_fiche'
+      ' inner join dossier d on d.cle_dossier=i.kle_dossier'
+      ' inner join ref_evenements r on r.ref_eve_lib_court=e.ev_ind_type'
+      ' and r.ref_eve_langue=d.ds_langue'
+      ' where i.cle_fiche=:i_clef'
+      ') order by ev_ind_datecode NULLS LAST'
+      ',ev_ind_heure NULLS LAST,ref_eve_ecran'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptInput
+      end>
+    left = 528
+    top = 336
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_clef'
+        ParamType = ptInput
+      end>
+  end
+  object DSEveConjoint: TDatasource[68]
+    DataSet = QEveConjoint
+    left = 504
+    top = 384
+  end
+  object QProfessions: TIBQuery[69]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select count(*) '
+      ',profession '
+      'from proc_liste_profession(:i_dossier) '
+      'group by profession '
+      'order by 1 desc, profession '
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_dossier'
+        ParamType = ptUnknown
+      end>
+    left = 754
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_dossier'
+        ParamType = ptUnknown
+      end>
+  end
+  object dsProfessions: TDatasource[70]
+    DataSet = QProfessions
+    left = 754
+    top = 144
+  end
+  object TransactionPropre: TIBTransaction[71]
+    Active = False
+    DefaultDatabase = dm.ibd_BASE
+    Params.Strings = (
+      'read_committed'
+      'rec_version'
+      'nowait'
+    )
+    left = 280
+    top = 432
+  end
+  object PDSProfessions: TFWPrintData[72]
+    Datasource = dsProfessions
+    Columns = <    
+      item
+        Width = 110
+        DBTitle = 'Combien ?'
+        FieldName = 'COUNT'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Profession'
+        FieldName = 'PROFESSION'
+      end>
+    Preview = RLPreview
+    left = 400
+    top = 496
+  end
+  object PDSCousinage: TFWPrintData[73]
+    Datasource = DSCousinage
+    Columns = <    
+      item
+        Visible = False
+        DBTitle = 'Clé'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom'
+      end    
+      item
+        DBTitle = 'Naissance'
+      end    
+      item
+        DBTitle = 'Décès'
+      end    
+      item
+        Width = 20
+        DBTitle = 'Sexe'
+        Images = dm.ImageSexe
+      end    
+      item
+        Visible = False
+      end    
+      item
+        Visible = False
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom du père'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom du père'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom de la mère'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom de la mère'
+      end>
+    Preview = RLPreview
+    left = 72
+    top = 272
+  end
+  object PDSUnions: TFWPrintData[74]
+    Datasource = DSUnions
+    Columns = <    
+      item
+        Width = 88
+        DBTitle = 'Union le'
+        FieldName = 'DATE_UNION'
+      end    
+      item
+        Visible = False
+        FieldName = 'UNION_CLE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'VILLE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Département'
+        FieldName = 'DEPT'
+      end    
+      item
+        Visible = False
+        FieldName = 'MARI_CLE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom du mari'
+        FieldName = 'MARI_NOM'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom'
+        FieldName = 'MARI_PRENOM'
+      end    
+      item
+        Visible = False
+        DBTitle = 'SOSA'
+        DisplayFormat = '#0'
+        FieldName = 'MARI_NUM_SOSA'
+      end    
+      item
+        Visible = False
+        FieldName = 'FEMME_CLE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Âge du marié'
+        FieldName = 'AGE_MARI'
+      end    
+      item
+        DBTitle = 'SOSA'
+        DisplayFormat = '#0'
+        FieldName = 'SOSA_MARI'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom de sa femme'
+        FieldName = 'FEMME_NOM'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom'
+        FieldName = 'FEMME_PRENOM'
+      end    
+      item
+        Width = 60
+        Visible = False
+        DBTitle = 'SOSA'
+        DisplayFormat = '#0'
+        FieldName = 'FEMME_NUM_SOSA'
+      end    
+      item
+        Visible = False
+        FieldName = 'SUBD'
+      end    
+      item
+        Visible = False
+        FieldName = 'REGION'
+      end    
+      item
+        DBTitle = 'SOSA'
+        DisplayFormat = '#0'
+        FieldName = 'SOSA_FEMME'
+      end    
+      item
+        Visible = False
+        DBTitle = 'Pays'
+        FieldName = 'PAYS'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Année'
+        FieldName = 'AN_MARR'
+      end    
+      item
+        Visible = False
+        FieldName = 'MOIS_MARR'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Âge de la mariée'
+        FieldName = 'AGE_FEMME'
+      end>
+    Preview = RLPreview
+    left = 320
+    top = 496
+  end
+  object PDSStatNoms: TFWPrintData[75]
+    Datasource = DSStatNomPrenom
+    Columns = <    
+      item
+        Width = 88
+        DBTitle = 'Combien ?'
+        FieldName = 'COMBIEN'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Patronyme'
+        FieldName = 'NOM'
+      end>
+    Preview = RLPreview
+    left = 640
+    top = 600
+  end
+  object PDSEvenements: TFWPrintData[76]
+    Datasource = DSEvenements
+    Columns = <    
+      item
+        Width = 33
+        Visible = False
+        DBTitle = 'Type'
+        FieldName = 'TYPE_EVE'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_IND_KLE_FICHE'
+      end    
+      item
+        DBTitle = 'Événem.'
+        FieldName = 'S_TYPE'
+      end    
+      item
+        Width = 88
+        DBTitle = 'Date'
+        FieldName = 'DATE_EVE'
+      end    
+      item
+        Width = 55
+        DBTitle = 'Code postal'
+        FieldName = 'CP'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'VILLE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Département'
+        FieldName = 'EV_IND_DEPT'
+      end    
+      item
+        Width = 30
+        Resize = True
+        DBTitle = 'Pays'
+        FieldName = 'EV_IND_PAYS'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Région'
+        FieldName = 'EV_IND_REGION'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_IND_SUBD'
+      end    
+      item
+        Width = 66
+        DBTitle = 'Insee'
+        FieldName = 'EV_IND_INSEE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Description'
+        FieldName = 'NOM_COMPLET'
+      end    
+      item
+        Width = 33
+        DBTitle = 'Sexe'
+        FieldName = 'SEXE'
+        Images = dm.ImageSexe
+      end>
+    Preview = RLPreview
+    left = 512
+    top = 600
+  end
+  object PDSFiche: TFWPrintData[77]
+    Datasource = DSFiche
+    Columns = <    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end    
+      item
+      end>
+    Preview = RLPreview
+    left = 754
+    top = 544
+  end
+  object PDSListeAlpha: TFWPrintData[78]
+    Datasource = DSListeAlpha
+    Columns = <    
+      item
+        Width = 33
+        DBTitle = 'Sexe'
+        FieldName = 'SEXE'
+        Images = dm.ImageSexe
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom'
+        FieldName = 'NOM'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom'
+        FieldName = 'PRENOM'
+      end    
+      item
+        Width = 137
+        DBTitle = 'Naissance'
+        FieldName = 'DATE_NAISSANCE'
+      end    
+      item
+        Visible = False
+        FieldName = 'CP_NAISSANCE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'LIEU_NAISSANCE'
+      end    
+      item
+        Width = 137
+        DBTitle = 'Décès le'
+        FieldName = 'DATE_DECES'
+      end    
+      item
+        Visible = False
+        FieldName = 'CP_DECES'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'LIEU_DECES'
+      end    
+      item
+        DBTitle = 'Filliation'
+        FieldName = 'FILLIATION'
+      end    
+      item
+        Visible = False
+        FieldName = 'LETTRE'
+      end    
+      item
+        DBTitle = 'Âge'
+        FieldName = 'AGE'
+      end    
+      item
+        DBTitle = 'SOSA'
+        DisplayFormat = '#0'
+        FieldName = 'SOSA'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_FICHE'
+      end    
+      item
+        Visible = False
+        FieldName = 'SOSAS'
+      end>
+    Preview = RLPreview
+    left = 688
+    top = 472
+  end
+  object PDSDesPat: TFWPrintData[79]
+    Datasource = DSDesPat
+    Columns = <    
+      item
+        FieldName = 'NIVEAU'
+      end    
+      item
+        Width = 33
+        DBTitle = 'Sexe'
+        FieldName = 'SEXE'
+        Images = dm.ImageSexe
+      end    
+      item
+        DBTitle = 'SOSA'
+        DisplayFormat = '#0'
+        FieldName = 'SOSA'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_FICHE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom'
+        FieldName = 'NOM'
+      end    
+      item
+        Width = 137
+        DBTitle = 'Né(e) le'
+        FieldName = 'DATE_NAISSANCE'
+      end    
+      item
+        DBTitle = 'Décès le'
+        FieldName = 'DATE_DECES'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_PERE'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_MERE'
+      end    
+      item
+        Width = 34
+        DBTitle = 'Âge'
+        FieldName = 'AGE'
+      end>
+    Preview = RLPreview
+    left = 576
+    top = 480
+  end
+  object PDSAscendance: TFWPrintData[80]
+    Datasource = DSAscendance
+    Columns = <    
+      item
+        Width = 33
+        DBTitle = 'Gén.'
+        FieldName = 'GENERATTION'
+      end    
+      item
+        Width = 20
+        DBTitle = 'Sexe'
+        FieldName = 'SEXE'
+        Images = dm.ImageSexe
+      end    
+      item
+        DBTitle = 'SOSA'
+        DisplayFormat = '#0'
+        FieldName = 'SOSA'
+      end    
+      item
+        Width = 66
+        Resize = True
+        DBTitle = 'Nom - prénom'
+        FieldName = 'NOM'
+      end    
+      item
+        Width = 126
+        DBTitle = 'Naissance'
+        FieldName = 'DATE_NAISSANCE'
+      end    
+      item
+        Visible = False
+        FieldName = 'CP_NAISSANCE'
+      end    
+      item
+        Width = 55
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'VILLE_NAISSANCE'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Lieu'
+        FieldName = 'LIEU_NAISSANCE'
+      end    
+      item
+        Width = 20
+        DBTitle = 'Acte absent'
+        FieldName = 'ACTE_NAISSANCE_ABSENT'
+        Images = ImgChecks
+      end    
+      item
+        Width = 126
+        DBTitle = 'Décès'
+        FieldName = 'DATE_DECES'
+      end    
+      item
+        Visible = False
+        DBTitle = 'Code postal'
+        FieldName = 'CP_DECES'
+      end    
+      item
+        Width = 51
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'VILLE_DECES'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Lieu'
+        FieldName = 'LIEU_DECES'
+      end    
+      item
+        DBTitle = 'Acte absent'
+        FieldName = 'ACTE_DECES_ABSENT'
+        Images = ImgChecks
+      end    
+      item
+        Width = 31
+        DBTitle = 'Âge'
+        FieldName = 'AGE'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_FICHE'
+      end    
+      item
+        DBTitle = 'Implexe'
+        FieldName = 'IMPLEXE'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLEF_UNION'
+      end    
+      item
+        Visible = False
+        FieldName = 'NUM_SOSA'
+      end    
+      item
+        Width = 126
+        DBTitle = 'Marié le'
+        FieldName = 'DATE_MARIAGE'
+      end    
+      item
+        Visible = False
+        DBTitle = 'Code postal'
+        FieldName = 'CP_MARIAGE'
+      end    
+      item
+        Width = 51
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'VILLE_MARIAGE'
+      end    
+      item
+        DBTitle = 'Acte absent'
+        FieldName = 'ACTE_MARIAGE_ABSENT'
+        Images = ImgChecks
+      end>
+    Preview = RLPreview
+    Orientation = poLandscape
+    left = 495
+    top = 480
+  end
+  object PDSDescendance: TFWPrintData[81]
+    Datasource = DSDescendance
+    Columns = <    
+      item
+        Width = 30
+        DBTitle = 'Niveau'
+        FieldName = 'NIVEAU'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_FICHE'
+      end    
+      item
+        Width = 20
+        DBTitle = 'Sexe'
+        FieldName = 'SEXE'
+        Images = dm.ImageSexe
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom'
+        FieldName = 'NOM'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom'
+        FieldName = 'PRENOM'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_NAISSANCE'
+      end    
+      item
+        Width = 126
+        FieldName = 'DATE_NAISSANCE'
+      end    
+      item
+        Width = 60
+        Visible = False
+        DBTitle = 'Code postal'
+        FieldName = 'CP_NAISSANCE'
+      end    
+      item
+        Width = 60
+        Resize = True
+        DBTitle = 'Né(e) à'
+        FieldName = 'VILLE_NAISSANCE'
+      end    
+      item
+        Visible = False
+        FieldName = 'CODE_DEPT_NAISSANCE'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Département'
+        FieldName = 'DEPT_NAISSANCE'
+      end    
+      item
+        Width = 33
+        Resize = True
+        DBTitle = 'Pays'
+        FieldName = 'PAYS_NAISSANCE'
+      end    
+      item
+        Width = 20
+        DBTitle = 'Acte absent'
+        FieldName = 'ACTE_NAISSANCE_ABSENT'
+        Images = ImgChecks
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_DECES'
+      end    
+      item
+        Width = 126
+        FieldName = 'DATE_DECES'
+      end    
+      item
+        Width = 60
+        Visible = False
+        DBTitle = 'Code postal'
+        FieldName = 'CP_DECES'
+      end    
+      item
+        Width = 60
+        Resize = True
+        DBTitle = 'Décès à'
+        FieldName = 'VILLE_DECES'
+      end    
+      item
+        Visible = False
+        FieldName = 'CODE_DEPT_DECES'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Département'
+        FieldName = 'DEPT_DECES'
+      end    
+      item
+        Width = 20
+        Resize = True
+        DBTitle = 'Pays'
+        FieldName = 'PAYS_DECES'
+      end    
+      item
+        Width = 20
+        DBTitle = 'Acte absent'
+        FieldName = 'ACTE_DECES_ABSENT'
+        Images = ImgChecks
+      end    
+      item
+        Resize = True
+        LineBreak = 1
+        BreakCaption = 'et'
+        DBTitle = 'Occupation'
+        FieldName = 'OCCUPATION'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_CONJOINT'
+      end    
+      item
+        Width = 20
+        FieldName = 'SEXE_CONJOINT'
+        Images = dm.ImageSexe
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom conjoint'
+        FieldName = 'NOM_CONJOINT'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom conjoint'
+        FieldName = 'PRENOM_CONJOINT'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_NAISSANCE_CONJOINT'
+      end    
+      item
+        Width = 126
+        DBTitle = 'Né(e) le'
+        FieldName = 'DATE_NAISSANCE_CONJOINT'
+      end    
+      item
+        Visible = False
+        DBTitle = 'Code postal'
+        FieldName = 'CP_NAISSANCE_CONJOINT'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'VILLE_NAISSANCE_CONJOINT'
+      end    
+      item
+        Visible = False
+        FieldName = 'CODE_DEPT_NAISSANCE_CONJOINT'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Département'
+        FieldName = 'DEPT_NAISSANCE_CONJOINT'
+      end    
+      item
+        Width = 20
+        Resize = True
+        DBTitle = 'Pays'
+        FieldName = 'PAYS_NAISSANCE_CONJOINT'
+      end    
+      item
+        Width = 20
+        FieldName = 'ACTE_NAISSANCE_CONJOINT_ABSENT'
+        Images = ImgChecks
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_DECES_CONJOINT'
+      end    
+      item
+        DBTitle = 'Décès'
+        FieldName = 'DATE_DECES_CONJOINT'
+      end    
+      item
+        Visible = False
+        DBTitle = 'Code postal'
+        FieldName = 'CP_DECES_CONJOINT'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'VILLE_DECES_CONJOINT'
+      end    
+      item
+        Visible = False
+        FieldName = 'CODE_DEPT_DECES_CONJOINT'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Département'
+        FieldName = 'DEPT_DECES_CONJOINT'
+      end    
+      item
+        Width = 20
+        Resize = True
+        DBTitle = 'Pays'
+        FieldName = 'PAYS_DECES_CONJOINT'
+      end    
+      item
+        Width = 20
+        FieldName = 'ACTE_DECES_CONJOINT_ABSENT'
+        Images = ImgChecks
+      end    
+      item
+        Resize = True
+        LineBreak = 5
+        BreakCaption = 'Mariage'
+        DBTitle = 'Occupation'
+        FieldName = 'OCCUPATION_CONJOINT'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_MARIAGE'
+      end    
+      item
+        FieldName = 'DATE_MARIAGE'
+      end    
+      item
+        Visible = False
+        DBTitle = 'Code postal'
+        FieldName = 'CP_MARIAGE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'VILLE_MARIAGE'
+      end    
+      item
+        Visible = False
+        FieldName = 'CODE_DEPT_MARIAGE'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Département'
+        FieldName = 'DEPT_MARIAGE'
+      end    
+      item
+        Width = 20
+        Resize = True
+        DBTitle = 'Pays'
+        FieldName = 'PAYS_MARIAGE'
+      end    
+      item
+        Width = 20
+        FieldName = 'ACTE_MARIAGE_ABSENT'
+        Images = ImgChecks
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_UNION'
+      end    
+      item
+        Visible = False
+        FieldName = 'ORDRE_UNION'
+      end    
+      item
+        Visible = False
+        FieldName = 'ISSU_UNION'
+      end    
+      item
+        Visible = False
+      end    
+      item
+        Visible = False
+      end    
+      item
+        Visible = False
+      end    
+      item
+        Visible = False
+      end    
+      item
+        Visible = False
+      end    
+      item
+        Visible = False
+      end    
+      item
+        Visible = False
+      end>
+    Preview = RLPreview
+    Orientation = poLandscape
+    left = 24
+    top = 480
+  end
+  object PDSStatPrenoms: TFWPrintData[82]
+    Datasource = dsStatPrenoms
+    Columns = <    
+      item
+        Width = 88
+        DBTitle = 'Combien ?'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom'
+      end>
+    Preview = RLPreview
+    left = 16
+    top = 408
+  end
+  object PDSAnniv: TFWPrintData[83]
+    Datasource = DSAnniv
+    Columns = <    
+      item
+        Width = 33
+        DBTitle = 'Sexe'
+        FieldName = 'SEXE'
+        Images = dm.ImageSexe
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom'
+        FieldName = 'NOM'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom'
+        FieldName = 'PRENOM'
+      end    
+      item
+        Width = 88
+        DBTitle = 'Date'
+        FieldName = 'ADATE'
+      end    
+      item
+        Width = 55
+        DBTitle = 'Année'
+        FieldName = 'ANNEE'
+      end    
+      item
+        Width = 33
+        DBTitle = 'Év.'
+        FieldName = 'EV_TYPE'
+        Images = dm.imageEvent
+      end>
+    Preview = RLPreview
+    left = 40
+    top = 352
+  end
+  object PDSCouple: TFWPrintData[84]
+    Datasource = DSCouple
+    Columns = <    
+      item
+        DBTitle = 'Photo'
+        FieldName = 'A_EPOUX_PHOTO'
+      end    
+      item
+        Visible = False
+        FieldName = 'A_EPOUX_CLE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Époux'
+        FieldName = 'A_EPOUX_NOMPRENOM'
+      end    
+      item
+        DBTitle = 'Naissance'
+        FieldName = 'A_EPOUX_NAISSANCE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'À'
+        FieldName = 'A_EPOUX_LIEU_NAISSANCE'
+      end    
+      item
+        DBTitle = 'Décès'
+        FieldName = 'A_EPOUX_DECES'
+      end    
+      item
+        DBTitle = 'À'
+        FieldName = 'A_EPOUX_LIEU_DECES'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom de la mère'
+        FieldName = 'A_EPOUX_MERE_NOM'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom du père'
+        FieldName = 'A_EPOUX_PERE_NOM'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom de la mère'
+        FieldName = 'A_EPOUX_MERE_NOM'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom de la mère'
+        FieldName = 'A_EPOUX_MERE_PRENOM'
+      end    
+      item
+        DBTitle = 'Sosa'
+        DisplayFormat = '#0'
+        FieldName = 'A_EPOUX_SOSA'
+      end    
+      item
+        DBTitle = 'Âge'
+        FieldName = 'A_EPOUX_AGE'
+      end    
+      item
+        FieldName = 'SOSAS_EPOUX'
+      end    
+      item
+        Width = 20
+        DBTitle = 'Époux'
+        FieldName = 'A_EPOUSE_PHOTO'
+      end    
+      item
+        Width = 20
+        Visible = False
+        DBTitle = 'Épouse'
+        FieldName = 'A_EPOUSE_CLE'
+      end    
+      item
+        FieldName = 'A_EPOUSE_NOMPRENOM'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Née le'
+        FieldName = 'A_EPOUSE_NAISSANCE'
+      end    
+      item
+        DBTitle = 'Née à'
+        FieldName = 'A_EPOUSE_LIEU_NAISSANCE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Née à'
+        FieldName = 'A_EPOUSE_DECES'
+      end    
+      item
+        DBTitle = 'Décès à'
+        FieldName = 'A_EPOUSE_LIEU_DECES'
+      end    
+      item
+        FieldName = 'A_EPOUSE_PERE_NOM'
+      end    
+      item
+        FieldName = 'A_EPOUSE_PERE_PRENOM'
+      end    
+      item
+        FieldName = 'A_EPOUSE_MERE_NOM'
+      end    
+      item
+        FieldName = 'A_EPOUSE_MERE_PRENOM'
+      end    
+      item
+        FieldName = 'A_EPOUSE_SOSA'
+      end    
+      item
+        FieldName = 'A_SOSA1_NOMPRENOM'
+      end    
+      item
+        DBTitle = 'Âge'
+        FieldName = 'A_EPOUSE_AGE'
+      end    
+      item
+        FieldName = 'A_EPOUSE_SOSA'
+      end    
+      item
+        Visible = False
+        FieldName = 'A_SOSA1_NOMPRENOM'
+      end    
+      item
+        Visible = False
+        FieldName = 'A_EPOUX_NOM'
+      end    
+      item
+        Visible = False
+        FieldName = 'SOSAS_EPOUSE'
+      end    
+      item
+        Visible = False
+        FieldName = 'A_EPOUX_AGE'
+      end>
+    Preview = RLPreview
+    left = 144
+    top = 352
+  end
+  object PDSEnfantsCouple: TFWPrintData[85]
+    Datasource = DSEnfantsCouple
+    Columns = <    
+      item
+        Visible = False
+        FieldName = 'CLE_FICHE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom'
+        FieldName = 'NOM'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom'
+        FieldName = 'PRENOM'
+      end    
+      item
+        Width = 20
+        DBTitle = 'Sexe'
+        FieldName = 'SEXE'
+        Images = dm.ImageSexe
+      end    
+      item
+        FieldName = 'DATE_NAISSANCE'
+      end    
+      item
+        DBTitle = 'Décès'
+        FieldName = 'DATE_DECES'
+      end    
+      item
+        Visible = False
+        FieldName = 'KLE_DOSSIER'
+      end    
+      item
+        FieldName = 'SOSA'
+      end    
+      item
+        FieldName = 'PHOTO'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Né(e) à'
+        FieldName = 'VILLE_NAISS'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Décès à'
+        FieldName = 'VILLE_DECES'
+      end    
+      item
+        DBTitle = 'Année'
+        FieldName = 'ANNEE'
+      end    
+      item
+        DBTitle = 'Année'
+        FieldName = 'ANNEE_DECES'
+      end    
+      item
+        DBTitle = 'Âge'
+        FieldName = 'AGE_DECES'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_PERE'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_MERE'
+      end    
+      item
+        DBTitle = 'Sosas'
+        FieldName = 'SOSAS'
+      end    
+      item
+        DBTitle = 'Âge'
+        FieldName = 'AGE_PERE'
+      end    
+      item
+        DBTitle = 'Âge'
+        FieldName = 'AGE_MERE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Commentaires'
+        FieldName = 'AGE_DECES_TEXTE'
+      end>
+    Preview = RLPreview
+    left = 144
+    top = 416
+  end
+  object PDSEveCouple: TFWPrintData[86]
+    Datasource = DSEveCouple
+    Columns = <    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_CLEF'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_KLE_FAMILLE'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_KLE_DOSSIER'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_TYPE'
+      end    
+      item
+        Width = 127
+        DBTitle = 'Date'
+        FieldName = 'EV_FAM_DATE_WRITEN'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_DATE_YEAR'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_DATE'
+      end    
+      item
+        Width = 111
+        Resize = True
+        DBTitle = 'Libellé'
+        FieldName = 'REF_EVE_LIB_LONG'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_ADRESSE'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_CP'
+      end    
+      item
+        Width = 55
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'EV_FAM_VILLE'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_DEPT'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Pays'
+        FieldName = 'EV_FAM_PAYS'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_SOURCE'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_COMMENT'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_REGION'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_SUBD'
+      end    
+      item
+        DBTitle = 'Acte'
+        FieldName = 'EV_FAM_ACTE'
+        Images = ImgChecks
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_INSEE'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_ORDRE'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_HEURE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Titre'
+        FieldName = 'EV_FAM_TITRE_EVENT'
+      end    
+      item
+        Visible = False
+        FieldName = 'ID_IMPORT_GEDCOM'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_DATE_MOIS'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_DATE_MOIS_FIN'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_DATE_YEAR_FIN'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_LATITUDE'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_LONGITUDE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Description'
+        FieldName = 'EV_FAM_DESCRIPTION'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_CAUSE'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_DATE_JOUR'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_DATECODE'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_DATE_JOUR_FIN'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_DATECODE_TOT'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_DATECODE_TARD'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_TYPE_TOKEN1'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_TYPE_TOKEN2'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_DATE_COURTE'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_CALENDRIER1'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_FAM_CALENDRIER2'
+      end>
+    Preview = RLPreview
+    left = 720
+    top = 424
+  end
+  object PDSAgePremiereUnion: TFWPrintData[87]
+    Datasource = DSAgePremiereUnion
+    Columns = <    
+      item
+        Width = 60
+        DBTitle = 'Début'
+        FieldName = 'ANNEE_DEBUT'
+      end    
+      item
+        Width = 60
+        DBTitle = 'Fin'
+        FieldName = 'ANNEE_FIN'
+      end    
+      item
+        Width = 60
+        Resize = True
+        DBTitle = 'Femmes'
+        FieldName = 'FEMMES'
+      end    
+      item
+        Width = 60
+        DBTitle = 'Âge'
+        FieldName = 'AGE_FEMMES'
+      end    
+      item
+        Width = 60
+        Resize = True
+        DBTitle = 'Hommes'
+        FieldName = 'HOMMES'
+      end    
+      item
+        Width = 60
+        DBTitle = 'Âge'
+        FieldName = 'AGE_HOMMES'
+      end>
+    Preview = RLPreview
+    left = 584
+    top = 432
+  end
+  object PDSLongevite: TFWPrintData[88]
+    Datasource = DSLongevite
+    Columns = <    
+      item
+        Width = 60
+        DBTitle = 'Début'
+        FieldName = 'INTERVAL_START'
+      end    
+      item
+        Width = 60
+        DBTitle = 'Fin'
+        FieldName = 'INTERVAL_END'
+      end    
+      item
+        Width = 60
+        DBTitle = 'Hommes'
+        FieldName = 'NB_HOMME'
+      end    
+      item
+        Width = 60
+        DBTitle = 'Âge moyen'
+        FieldName = 'MOYENNE_AGE_HOMME'
+      end    
+      item
+        Width = 60
+        Resize = True
+        DBTitle = 'Écart type'
+        FieldName = 'ECART_TYPE_AGE_HOMME'
+      end    
+      item
+        Width = 60
+        DBTitle = 'Femmes'
+        FieldName = 'NB_FEMME'
+      end    
+      item
+        Width = 60
+        DBTitle = 'Âge moyen'
+        FieldName = 'MOYENNE_AGE_FEMME'
+      end    
+      item
+        Width = 60
+        Resize = True
+        DBTitle = 'Écart type'
+        FieldName = 'ECART_TYPE_AGE_FEMME'
+      end>
+    Preview = RLPreview
+    left = 496
+    top = 432
+  end
+  object PDSNbEnfantUnion: TFWPrintData[89]
+    Datasource = DSNbEnfantUnion
+    Columns = <    
+      item
+        Width = 60
+        Resize = True
+        DBTitle = 'Début'
+        FieldName = 'INTERVAL_START'
+      end    
+      item
+        Width = 60
+        Resize = True
+        DBTitle = 'Fin'
+        FieldName = 'INTERVAL_END'
+      end    
+      item
+        Width = 60
+        Resize = True
+        DBTitle = 'Unions'
+        FieldName = 'NB_UNION'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Enfants'
+        FieldName = 'NB_ENFANTS'
+      end>
+    Preview = RLPreview
+    left = 384
+    top = 432
+  end
+  object PDSRecensement: TFWPrintData[90]
+    Datasource = DSRecensement
+    Columns = <    
+      item
+        Width = 60
+        DBTitle = 'Année'
+        FieldName = 'ANNEE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Individus'
+        FieldName = 'NOMBRE_INDIVIDUS'
+      end>
+    Preview = RLPreview
+    left = 72
+    top = 568
+  end
+  object PDSDenombreAscendance: TFWPrintData[91]
+    Datasource = DSDenombreAscendance
+    Columns = <    
+      item
+        Width = 30
+        DBTitle = 'Niveau'
+        FieldName = 'NIVEAU'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Total'
+        DisplayFormat = '#0'
+        FieldName = 'TOTAL_INDI'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Total identiques'
+        DisplayFormat = '#0'
+        FieldName = 'TOTAL_INDI_DISTINCT'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Total théorique'
+        DisplayFormat = '#0'
+        FieldName = 'TOTAL_INDI_THEORIQUE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Cumul'
+        DisplayFormat = '#0'
+        FieldName = 'CUMUL_INDI'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Cumul identiques'
+        DisplayFormat = '#0'
+        FieldName = 'CUMUL_INDI_DISTINCT'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Cumul théorique'
+        DisplayFormat = '#0'
+        FieldName = 'CUMUL_INDI_THEORIQUE'
+      end    
+      item
+        Resize = True
+        DBTitle = '% Implexe'
+        FieldName = 'POURCENT_IMPLEXE'
+      end>
+    Preview = RLPreview
+    left = 128
+    top = 496
+  end
+  object PDSDenombreDescendance: TFWPrintData[92]
+    Datasource = DSDenombreDescendance
+    Columns = <    
+      item
+        DBTitle = 'Niveau'
+        FieldName = 'NIVEAU'
+      end    
+      item
+        Width = 80
+        DBTitle = 'Individus'
+        DisplayFormat = '#0'
+        FieldName = 'TOTAL_INDI'
+      end    
+      item
+        Width = 80
+        DBTitle = 'Individus distincts'
+        DisplayFormat = '#0'
+        FieldName = 'TOTAL_INDI_DISTINCT'
+      end    
+      item
+        Width = 80
+        DBTitle = 'Cumul'
+        DisplayFormat = '#0'
+        FieldName = 'CUMUL_INDI'
+      end    
+      item
+        Width = 80
+        DBTitle = 'Cumul distincts'
+        DisplayFormat = '#0'
+        FieldName = 'CUMUL_INDI_DISTINCT'
+      end    
+      item
+        Width = 80
+        Resize = True
+        DBTitle = 'Implexe %'
+        FieldName = 'POURCENT_IMPLEXE'
+      end>
+    Preview = RLPreview
+    left = 128
+    top = 592
+  end
+  object PDSEclair: TFWPrintData[93]
+    Datasource = DSEclair
+    Columns = <    
+      item
+        Resize = True
+        DBTitle = 'Nom'
+        FieldName = 'NOM'
+      end    
+      item
+        Width = 66
+        Visible = False
+        DBTitle = 'Code postal'
+        FieldName = 'CP'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'VILLE'
+      end    
+      item
+        Width = 11
+        Resize = True
+        DBTitle = 'Pays'
+        FieldName = 'PAYS'
+      end    
+      item
+        Width = 66
+        DBTitle = 'Début'
+        FieldName = 'DATE_DEBUT'
+      end    
+      item
+        Width = 66
+        DBTitle = 'Fin'
+        FieldName = 'DATE_FIN'
+      end    
+      item
+        Width = 44
+        DBTitle = 'Naiss.'
+        FieldName = 'NAISSANCE'
+      end    
+      item
+        Width = 44
+        DBTitle = 'Bapt.'
+        FieldName = 'BAPTEME'
+      end    
+      item
+        Width = 44
+        DBTitle = 'Mari.'
+        FieldName = 'MARIAGE'
+      end    
+      item
+        Width = 44
+        DBTitle = 'Décès'
+        FieldName = 'DECES'
+      end    
+      item
+        Width = 66
+        DBTitle = 'Insee'
+        FieldName = 'INSEE'
+      end>
+    Preview = RLPreview
+    left = 576
+    top = 560
+  end
+  object PDSEveIndi: TFWPrintData[94]
+    Datasource = DSEveIndi
+    Columns = <    
+      item
+        Width = 127
+        DBTitle = 'Date'
+        FieldName = 'EV_IND_DATE_WRITEN'
+      end    
+      item
+        Width = 111
+        Resize = True
+        DBTitle = 'Événement'
+        FieldName = 'NOM_COMPLET'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Description'
+        FieldName = 'EV_IND_DESCRIPTION'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_IND_KLE_FICHE'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_IND_TYPE'
+      end    
+      item
+        Width = 55
+        Visible = False
+        DBTitle = 'Année'
+        FieldName = 'EV_IND_DATE_YEAR'
+      end    
+      item
+        Width = 88
+        Visible = False
+        DBTitle = 'Mois'
+        FieldName = 'EV_IND_DATE_MOIS'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_IND_DATECODE'
+      end    
+      item
+        Width = 127
+        Visible = False
+        DBTitle = 'Date'
+        FieldName = 'EV_IND_DATE'
+      end    
+      item
+        Visible = False
+        DBTitle = 'Heure'
+        FieldName = 'EV_IND_HEURE'
+      end    
+      item
+        Width = 66
+        Visible = False
+        DBTitle = 'Code postal'
+        FieldName = 'EV_IND_CP'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'EV_IND_VILLE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Département'
+        FieldName = 'EV_IND_DEPT'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Pays'
+        FieldName = 'EV_IND_PAYS'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Cause'
+        FieldName = 'EV_IND_CAUSE'
+      end    
+      item
+        DBTitle = 'Source'
+        FieldName = 'EV_IND_SOURCE'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Commentaires'
+        FieldName = 'EV_IND_COMMENT'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Région'
+        FieldName = 'EV_IND_REGION'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_IND_SUBD'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Libellé'
+        FieldName = 'EV_LIBELLE'
+      end    
+      item
+        Width = 55
+        Visible = False
+        DBTitle = 'Insee'
+        FieldName = 'EV_IND_INSEE'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Nom'
+        FieldName = 'NOM'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Prénom'
+        FieldName = 'PRENOM'
+      end    
+      item
+        Width = 33
+        Visible = False
+        DBTitle = 'Sexe'
+        FieldName = 'SEXE'
+        Images = dm.ImageSexe
+      end    
+      item
+        Width = 33
+        Visible = False
+        DBTitle = 'Év.'
+        FieldName = 'TYPE_EVENT'
+        Images = dm.imageEvent
+      end    
+      item
+        Width = 33
+        DBTitle = 'Pas de source'
+        FieldName = 'SOURCE_VIDE'
+        Images = ImgChecks
+      end    
+      item
+        Width = 44
+        Visible = False
+        DBTitle = '...'
+        FieldName = 'COMMENT_VIDE'
+        Images = ImgChecks
+      end    
+      item
+        Width = 55
+        Visible = False
+        DBTitle = 'Réf.'
+        FieldName = 'REF_EVE_ECRAN'
+      end>
+    Preview = RLPreview
+    left = 496
+    top = 560
+  end
+  object PDSMultimedia: TFWPrintData[95]
+    Datasource = DSMultimedia
+    Columns = <    
+      item
+        FieldName = 'ORDRE'
+      end    
+      item
+        FieldName = 'MP_CLEF'
+      end    
+      item
+        FieldName = 'MULTI_INFOS'
+      end    
+      item
+        FieldName = 'MULTI_MEDIA_NORMALE'
+      end    
+      item
+        FieldName = 'MULTI_MEMO'
+      end    
+      item
+        FieldName = 'MULTI_MEDIA'
+      end    
+      item
+        FieldName = 'EXTENSION'
+      end>
+    Preview = RLPreview
+    left = 405
+    top = 560
+  end
+  object PDSFratrie: TFWPrintData[96]
+    Datasource = DSFratrie
+    Columns = <    
+      item
+        Visible = False
+        FieldName = 'CLE_FICHE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom'
+        FieldName = 'NOM'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom'
+        FieldName = 'PRENOM'
+      end    
+      item
+        Width = 88
+        DBTitle = 'Né(e) le'
+        FieldName = 'DATE_NAISSANCE'
+      end    
+      item
+        Width = 88
+        DBTitle = 'Décès le'
+        FieldName = 'DATE_DECES'
+      end    
+      item
+        DBTitle = 'Sexe'
+        FieldName = 'SEXE'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_PERE'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_MERE'
+      end    
+      item
+        Visible = False
+        FieldName = 'F_1'
+      end    
+      item
+        Width = 55
+        DBTitle = 'Décédé'
+        FieldName = 'DECEDE'
+      end    
+      item
+        Width = 66
+        DBTitle = 'SOSA'
+        DisplayFormat = '#0'
+        FieldName = 'NUM_SOSA'
+      end    
+      item
+        Width = 55
+        DBTitle = 'Né(e) en'
+        FieldName = 'ANNEE_NAISSANCE'
+      end    
+      item
+        Width = 55
+        DBTitle = 'Décès en'
+        FieldName = 'ANNEE_DECES'
+      end>
+    Preview = RLPreview
+    left = 320
+    top = 560
+  end
+  object PDSOnclesTantes: TFWPrintData[97]
+    Datasource = DSOnclesTantes
+    Columns = <    
+      item
+        Visible = False
+        FieldName = 'CLE_FICHE'
+      end    
+      item
+        Width = 100
+        Resize = True
+        DBTitle = 'Nom'
+        FieldName = 'NOM'
+      end    
+      item
+        Width = 100
+        Resize = True
+        DBTitle = 'Prénom'
+        FieldName = 'PRENOM'
+      end    
+      item
+        DBTitle = 'Sexe'
+        FieldName = 'SEXE'
+        Images = dm.ImageSexe
+      end    
+      item
+        Width = 88
+        DBTitle = 'Né(e) le'
+        FieldName = 'DATE_NAISSANCE'
+      end    
+      item
+        Width = 88
+        DBTitle = 'Décès le'
+        FieldName = 'DATE_DECES'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_PERE'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_MERE'
+      end    
+      item
+        Width = 77
+        DBTitle = 'SOSA'
+        DisplayFormat = '#0'
+        FieldName = 'SOSA'
+      end    
+      item
+        Width = 55
+        DBTitle = 'Décédé'
+        FieldName = 'DECEDE'
+        Images = ImgChecks
+      end    
+      item
+        Visible = False
+        FieldName = 'NUM_SOSA'
+      end    
+      item
+        Width = 50
+        DBTitle = 'Né(e) en'
+        FieldName = 'ANNEE_NAISSANCE'
+      end    
+      item
+        Width = 50
+        DBTitle = 'Décès en'
+        FieldName = 'ANNEE_DECES'
+      end>
+    Preview = RLPreview
+    left = 224
+    top = 560
+  end
+  object PDSStatGraph: TFWPrintData[98]
+    Datasource = DSStatGraph
+    Columns = <    
+      item
+        Width = 100
+        DBTitle = 'Combien ?'
+        FieldName = 'COMBIEN'
+      end    
+      item
+        Width = 150
+        DBTitle = 'Département'
+        FieldName = 'dept'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Pays'
+        FieldName = 'pays'
+      end>
+    Preview = RLPreview
+    left = 752
+    top = 496
+  end
+  object PDSParentEnfants: TFWPrintData[99]
+    Datasource = DSParentEnfants
+    Columns = <    
+      item
+        Visible = False
+        FieldName = 'CLE_FICHE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom du pére'
+        FieldName = 'NOM_PERE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom du père'
+        FieldName = 'PRENOM_PERE'
+      end    
+      item
+        Visible = False
+        FieldName = 'PERE_CLE_FICHE'
+      end    
+      item
+        Width = 88
+        DBTitle = 'Né le'
+        FieldName = 'PERE_NAISSANCE'
+      end    
+      item
+        Width = 88
+        DBTitle = 'Décès le'
+        FieldName = 'PERE_DECES'
+      end    
+      item
+        Width = 77
+        DBTitle = 'SOSA'
+        DisplayFormat = '#0'
+        FieldName = 'PERE_SOSA'
+      end    
+      item
+        Width = 55
+        LineBreak = 0
+        DBTitle = 'Année'
+        FieldName = 'PERE_ANNEE'
+      end    
+      item
+        Resize = True
+        FieldName = 'NOM_MERE'
+      end    
+      item
+        Resize = True
+        FieldName = 'PRENOM_MERE'
+      end    
+      item
+        Visible = False
+        FieldName = 'MERE_CLE_FICHE'
+      end    
+      item
+        Width = 88
+        FieldName = 'MERE_NAISSANCE'
+      end    
+      item
+        Width = 88
+        FieldName = 'MERE_DECES'
+      end    
+      item
+        DBTitle = 'SOSA'
+        DisplayFormat = '#0'
+        FieldName = 'MERE_SOSA'
+      end    
+      item
+        Width = 55
+        DBTitle = 'Année'
+        FieldName = 'MERE_ANNEE'
+      end>
+    Preview = RLPreview
+    left = 640
+    top = 496
+  end
+  object ImgChecks: TImageList[100]
+    left = 56
+    top = 136
+    Bitmap = {
+      4C69020000001000000010000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF808080FF808080FF808080FF8080
+      80FF808080FF808080FF808080FF808080FF808080FF808080FF808080FF8080
+      80FF808080FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FFC0C0C0FFC0C0C0FFC0C0
+      C0FFC0C0C0FFC0C0C0FFC0C0C0FFC0C0C0FFC0C0C0FFC0C0C0FFC0C0C0FFC0C0
+      C0FFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF808080FF808080FF808080FF8080
+      80FF808080FF808080FF808080FF808080FF808080FF808080FF808080FF8080
+      80FF808080FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FFC0C0C0FF800000FFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FF
+      00FF00FF00FF800000FFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FF00FF00FF
+      00FF800000FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FF00FF00FF00FF8000
+      00FFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FF00FF00FF00FF800000FFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFF00FF00FF00FF00FF00FF00FF800000FFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF00FF00FF800000FFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFF00FF00FF00FF00FF800000FFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF00FF00FF00FF00FF00FF
+      00FF800000FFFFFFFFFF00FF00FF00FF00FF00FF00FF800000FFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FF00FF00FF00FF
+      00FF00FF00FF00FF00FF00FF00FF00FF00FF800000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFF00FF
+      00FF00FF00FF00FF00FF00FF00FF00FF00FF800000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FF000000FFFFFFFFFFFFFF
+      FFFF00FF00FF00FF00FF00FF00FF800000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFF808080FFC0C0C0FFC0C0C0FFC0C0
+      C0FF00FF00FF00FF00FF00FF00FF800000FFC0C0C0FFC0C0C0FFC0C0C0FFC0C0
+      C0FFC0C0C0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF00FF00FF800000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+    }
+  end
+  object PDSEnfants: TFWPrintData[101]
+    Datasource = DSEnfants
+    Columns = <    
+      item
+        Visible = False
+        FieldName = 'CLE_FICHE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Nom'
+        FieldName = 'NOM'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Prénom'
+        FieldName = 'PRENOM'
+        Images = dm.ImageSexe
+      end    
+      item
+        Width = 33
+        DBTitle = 'Sexe'
+        FieldName = 'SEXE'
+        Images = dm.ImageSexe
+      end    
+      item
+        Width = 127
+        DBTitle = 'Naissance'
+        FieldName = 'DATE_NAISSANCE'
+      end    
+      item
+        Width = 127
+        DBTitle = 'Décès'
+        FieldName = 'DATE_DECES'
+      end    
+      item
+        Visible = False
+        FieldName = 'KLE_DOSSIER'
+      end    
+      item
+        Width = 88
+        DBTitle = 'SOSA'
+        DisplayFormat = '#0'
+        FieldName = 'SOSA'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Photo'
+        FieldName = 'PHOTO'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Né(e) à'
+        FieldName = 'VILLE_NAISS'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'VILLE_DECES'
+      end    
+      item
+        Width = 55
+        DBTitle = 'Année'
+        FieldName = 'ANNEE'
+      end    
+      item
+        Width = 55
+        DBTitle = 'Décès en'
+        FieldName = 'ANNEE_DECES'
+      end    
+      item
+        Width = 55
+        DBTitle = 'Âge'
+        FieldName = 'AGE_DECES'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_PERE'
+      end    
+      item
+        Visible = False
+        FieldName = 'CLE_MERE'
+      end    
+      item
+        Width = 55
+        DBTitle = 'SOSAS'
+        FieldName = 'SOSAS'
+      end    
+      item
+        Width = 55
+        DBTitle = 'Âge père'
+        FieldName = 'AGE_PERE'
+      end    
+      item
+        Width = 55
+        DBTitle = 'Âge mère'
+        FieldName = 'AGE_MERE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Commentaires'
+        FieldName = 'AGE_DECES_TEXTE'
+      end>
+    Preview = RLPreview
+    left = 144
+    top = 416
+  end
+  object PDSEveConjoint: TFWPrintData[102]
+    Datasource = DSEveConjoint
+    Columns = <    
+      item
+        Width = 127
+        DBTitle = 'Date'
+        FieldName = 'EV_IND_DATE_WRITEN'
+      end    
+      item
+        Width = 111
+        Resize = True
+        DBTitle = 'Événement'
+        FieldName = 'NOM_COMPLET'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Description'
+        FieldName = 'EV_IND_DESCRIPTION'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_IND_KLE_FICHE'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_IND_TYPE'
+      end    
+      item
+        Width = 55
+        Visible = False
+        DBTitle = 'Année'
+        FieldName = 'EV_IND_DATE_YEAR'
+      end    
+      item
+        Width = 88
+        Visible = False
+        DBTitle = 'Mois'
+        FieldName = 'EV_IND_DATE_MOIS'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_IND_DATECODE'
+      end    
+      item
+        Width = 127
+        Visible = False
+        DBTitle = 'Date'
+        FieldName = 'EV_IND_DATE'
+      end    
+      item
+        Visible = False
+        DBTitle = 'Heure'
+        FieldName = 'EV_IND_HEURE'
+      end    
+      item
+        Width = 66
+        Visible = False
+        DBTitle = 'Code postal'
+        FieldName = 'EV_IND_CP'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Ville'
+        FieldName = 'EV_IND_VILLE'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Département'
+        FieldName = 'EV_IND_DEPT'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Pays'
+        FieldName = 'EV_IND_PAYS'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Cause'
+        FieldName = 'EV_IND_CAUSE'
+      end    
+      item
+        DBTitle = 'Source'
+        FieldName = 'EV_IND_SOURCE'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Commentaires'
+        FieldName = 'EV_IND_COMMENT'
+      end    
+      item
+        Resize = True
+        DBTitle = 'Région'
+        FieldName = 'EV_IND_REGION'
+      end    
+      item
+        Visible = False
+        FieldName = 'EV_IND_SUBD'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Libellé'
+        FieldName = 'EV_LIBELLE'
+      end    
+      item
+        Width = 55
+        Visible = False
+        DBTitle = 'Insee'
+        FieldName = 'EV_IND_INSEE'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Nom'
+        FieldName = 'NOM'
+      end    
+      item
+        Resize = True
+        Visible = False
+        DBTitle = 'Prénom'
+        FieldName = 'PRENOM'
+      end    
+      item
+        Width = 33
+        Visible = False
+        DBTitle = 'Sexe'
+        FieldName = 'SEXE'
+        Images = dm.ImageSexe
+      end    
+      item
+        Width = 33
+        Visible = False
+        DBTitle = 'Év.'
+        FieldName = 'TYPE_EVENT'
+        Images = dm.imageEvent
+      end    
+      item
+        Width = 33
+        DBTitle = 'Pas de source'
+        FieldName = 'SOURCE_VIDE'
+        Images = ImgChecks
+      end    
+      item
+        Width = 44
+        Visible = False
+        DBTitle = '...'
+        FieldName = 'COMMENT_VIDE'
+        Images = ImgChecks
+      end    
+      item
+        Width = 55
+        Visible = False
+        DBTitle = 'Réf.'
+        FieldName = 'REF_EVE_ECRAN'
+      end>
+    Preview = RLPreview
+    left = 496
+    top = 560
+  end
+end

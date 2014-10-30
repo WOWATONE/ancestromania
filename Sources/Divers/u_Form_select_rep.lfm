@@ -1,0 +1,96 @@
+object fSelect_rep: TfSelect_rep
+  Left = 782
+  Height = 310
+  Top = 188
+  Width = 300
+  BorderIcons = [biSystemMenu]
+  Caption = 'Sélection d''un répertoire'
+  ClientHeight = 310
+  ClientWidth = 300
+  Color = clWindow
+  Constraints.MinHeight = 310
+  Constraints.MinWidth = 300
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '1.0.14.0'
+  object ShellTV: TShellTreeView
+    Left = 0
+    Height = 248
+    Top = 30
+    Width = 300
+    Align = alClient
+    AutoExpand = True
+    FileSortType = fstNone
+    Indent = 19
+    ParentFont = False
+    ParentShowHint = False
+    RightClickSelect = True
+    ShowHint = True
+    TabOrder = 0
+    Options = [tvoAutoExpand, tvoAutoItemHeight, tvoHideSelection, tvoKeepCollapsedNodes, tvoRightClickSelect, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
+    ObjectTypes = [otFolders]
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 32
+    Top = 278
+    Width = 300
+    Align = alBottom
+    ClientHeight = 32
+    ClientWidth = 300
+    TabOrder = 1
+    object btnGO: TFWOK
+      Left = 80
+      Height = 25
+      Top = 2
+      Width = 106
+      Caption = 'Sélectionner'
+      TabOrder = 0
+      Default = True
+      ModalResult = 1
+      Spacing = 10
+      Align = alRight
+      Anchors = [akTop, akRight]
+    end
+    object btnclose: TFWClose
+      Left = 196
+      Height = 25
+      Top = 2
+      Width = 94
+      Caption = 'Fermer'
+      TabOrder = 1
+      Cancel = True
+      ModalResult = 2
+      Spacing = 10
+      Align = alRight
+      Anchors = [akTop, akRight]
+      ParentFont = False
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 30
+    Top = 0
+    Width = 300
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 30
+    ClientWidth = 300
+    TabOrder = 2
+    object lFonction: TLabel
+      Left = 5
+      Height = 1
+      Top = 12
+      Width = 1
+      ParentColor = False
+    end
+  end
+  object OnFormInfoIni: TOnFormInfoIni
+    SaveForm = [sfSavePos, sfSaveSize]
+    left = 110
+    top = 101
+  end
+end
