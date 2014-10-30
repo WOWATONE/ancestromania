@@ -1,0 +1,299 @@
+1	1	FRA	janvier	
+2	1	FRA	janv	
+3	2	FRA	février	
+4	2	FRA	févr	
+5	2	FRA	fevrier	
+6	2	FRA	fevr	
+7	2	FRA	fev	
+8	3	FRA	mars	
+9	4	FRA	avril	
+10	4	FRA	avr	
+11	5	FRA	mai	
+12	6	FRA	juin	
+13	7	FRA	juillet	
+14	7	FRA	juil	
+15	8	FRA	août	
+16	8	FRA	aout	
+17	9	FRA	septembre	
+18	9	FRA	sept	
+19	10	FRA	octobre	
+20	10	FRA	oct	
+21	11	FRA	novembre	
+22	11	FRA	nov	
+23	12	FRA	décembre	
+24	12	FRA	déc	
+25	12	FRA	decembre	
+26	12	FRA	dec	
+27	13	FRA	du	D
+28	13	FRA	depuis le	D1
+29	13	FRA	depuis	Y1
+30	13	FRA	de l'année	
+31	13	FRA	de l'annee	
+32	13	FRA	de l'an	
+33	13	FRA	de	Y
+34	14	FRA	à	Y
+35	14	FRA	à l'année	
+36	14	FRA	à l'annee	
+37	14	FRA	à l'an	
+38	14	FRA	jusque	
+39	14	FRA	jusqu'en	Y1
+40	14	FRA	jusqu'au	D1
+41	14	FRA	au	D
+42	14	FRA	a l'année	
+43	14	FRA	a l'annee	
+44	14	FRA	a l'an	
+45	14	FRA	a	
+46	15	FRA	avant le	D
+47	15	FRA	avant l'année	
+48	15	FRA	avant l'annee	
+49	15	FRA	avant l'an	
+50	15	FRA	avant	Y
+51	16	FRA	après le	D
+52	16	FRA	après l'année	
+53	16	FRA	après l'annee	
+54	16	FRA	après l'an	
+55	16	FRA	après	Y
+56	16	FRA	apres le	
+57	16	FRA	apres l'année	
+58	16	FRA	apres l'annee	
+59	16	FRA	apres l'an	
+60	16	FRA	apres	
+61	17	FRA	entre le	D
+62	17	FRA	entre l'année	
+63	17	FRA	entre	Y
+64	18	FRA	et le	D
+65	18	FRA	et l'année	
+66	18	FRA	et l'annee	
+67	18	FRA	et l'an	
+68	18	FRA	et	Y
+69	19	FRA	calculée	Y
+70	19	FRA	calculee	
+71	19	FRA	cal	
+72	20	FRA	estimée	Y
+73	20	FRA	estimee	
+74	20	FRA	est	
+75	21	FRA	vers le	D
+76	21	FRA	vers	Y
+77	22	FRA	/	
+78	22	FRA	.	
+79	22	FRA	-	
+80	23	FRA	DMY	
+81	23	FRA	DMY	
+82	24	FRA	LIT	
+83	1	ENG	january	
+84	1	ENG	jan	
+85	2	ENG	february	
+86	2	ENG	feb	
+87	3	ENG	march	
+88	3	ENG	mar	
+89	4	ENG	april	
+90	4	ENG	apr	
+91	5	ENG	may	
+92	6	ENG	june	
+93	6	ENG	jun	
+94	7	ENG	july	
+95	7	ENG	jul	
+96	8	ENG	august	
+97	8	ENG	aug	
+98	9	ENG	september	
+99	9	ENG	sep	
+100	10	ENG	october	
+101	10	ENG	oct	
+102	11	ENG	november	
+103	11	ENG	nov	
+104	12	ENG	december	
+105	12	ENG	dec	
+106	13	ENG	from	Y
+107	14	ENG	to	Y
+108	15	ENG	before	Y
+109	15	ENG	bef	
+110	16	ENG	after	Y
+111	16	ENG	aft	
+112	17	ENG	between	Y
+113	17	ENG	bet	
+114	18	ENG	and	Y
+115	19	ENG	calculated	Y
+116	19	ENG	cal	
+117	20	ENG	estimated	Y
+118	20	ENG	est	
+119	21	ENG	about	Y
+120	21	ENG	ab	
+121	22	ENG	/	
+122	22	ENG	.	
+123	22	ENG	-	
+124	23	ENG	DMY	
+125	23	ENG	DMY	
+126	24	ENG	LIT	
+127	1	DEU	januar	
+128	1	DEU	jan	
+129	2	DEU	februar	
+130	2	DEU	feb	
+131	3	DEU	märz	
+132	3	DEU	mrz	
+133	4	DEU	april	
+134	4	DEU	apr	
+135	5	DEU	mai	
+136	6	DEU	juni	
+137	6	DEU	jun	
+138	7	DEU	juli	
+139	7	DEU	jul	
+140	8	DEU	august	
+141	8	DEU	aug	
+142	9	DEU	september	
+143	9	DEU	sep	
+144	10	DEU	oktober	
+145	10	DEU	okt	
+146	11	DEU	november	
+147	11	DEU	nov	
+148	12	DEU	dezember	
+149	12	DEU	dez	
+150	13	DEU	vom	D
+151	13	DEU	seit dem	D1
+152	13	DEU	seit	Y1
+153	13	DEU	vom jahr	Y
+154	14	DEU	bis zu jahr	Y
+155	14	DEU	bis	
+156	14	DEU	bis zu jahr	Y1
+157	14	DEU	bis zum	D1
+158	14	DEU	bis zum	D
+159	14	DEU	bis	
+160	15	DEU	vor dem	D
+161	15	DEU	vor dem jahr	
+162	15	DEU	vor	Y
+163	16	DEU	nach dem	D
+164	16	DEU	nach dem jahr	
+165	16	DEU	nach	Y
+166	17	DEU	zwischen dem	D
+167	17	DEU	zwischen dem jahr	
+168	17	DEU	zwischen	Y
+169	18	DEU	und dem	D
+170	18	DEU	und das jahr	
+171	18	DEU	und	Y
+172	19	DEU	berechnet 	Y
+173	19	DEU	bere	
+174	20	DEU	geschätzt 	Y
+175	20	DEU	gesc	
+176	21	DEU	gegen	D
+177	21	DEU	gegen	Y
+178	22	DEU	/	
+179	22	DEU	.	
+180	22	DEU	-	
+181	23	DEU	DMY	
+182	23	DEU	DMY	
+183	24	DEU	LIT	
+184	1	ITA	gennaio	
+185	1	ITA	gen	
+186	2	ITA	febbraio	
+187	2	ITA	feb	
+188	3	ITA	marzo	
+189	3	ITA	mar	
+190	4	ITA	aprile	
+191	4	ITA	apr	
+192	5	ITA	maggio	
+193	5	ITA	mag	
+194	6	ITA	giugno	
+195	6	ITA	giu	
+196	7	ITA	luglio	
+197	7	ITA	lug	
+198	8	ITA	agosto	
+199	8	ITA	ago	
+200	9	ITA	settembre	
+201	9	ITA	set	
+202	10	ITA	ottobre	
+203	10	ITA	ott	
+204	11	ITA	novembre	
+205	11	ITA	nov	
+206	12	ITA	dicembre	
+207	12	ITA	dic	
+208	13	ITA	dal	D
+209	13	ITA	dal	D1
+210	13	ITA	da	Y1
+211	13	ITA	dell'anno	Y
+212	14	ITA	all'anno	Y
+213	14	ITA	fino	
+214	14	ITA	fino in	Y1
+215	14	ITA	fino al	D1
+216	14	ITA	al	D
+217	14	ITA	al	
+218	15	ITA	prima del	D
+219	15	ITA	prima dell'anno	
+220	15	ITA	prima	Y
+221	16	ITA	dopo il	D
+222	16	ITA	dopo l'anno	
+223	16	ITA	dopo	Y
+224	17	ITA	tra il	D
+225	17	ITA	tra l'anno	
+226	17	ITA	tra	Y
+227	18	ITA	ed	D
+228	18	ITA	e gli anni	
+229	18	ITA	e	Y
+230	19	ITA	calcolata	Y
+231	19	ITA	calc	
+232	20	ITA	estimata	Y
+233	20	ITA	esti	
+234	21	ITA	verso il	D
+235	21	ITA	versi	Y
+236	22	ITA	/	
+237	22	ITA	.	
+238	22	ITA	-	
+239	23	ITA	DMY	
+240	23	ITA	DMY	
+241	24	ITA	LIT	
+242	1	SPA	enero	
+243	1	SPA	ene	
+244	2	SPA	febrero	
+245	2	SPA	feb	
+246	3	SPA	marzo	
+247	3	SPA	mar	
+248	4	SPA	abril	
+249	4	SPA	abr	
+250	5	SPA	mayo	
+251	5	SPA	may	
+252	6	SPA	junio	
+253	6	SPA	jun	
+254	7	SPA	julio	
+255	7	SPA	jul	
+256	8	SPA	agosto	
+257	8	SPA	ago	
+258	9	SPA	septiembre	
+259	9	SPA	sep	
+260	10	SPA	octubre	
+261	10	SPA	oct	
+262	11	SPA	noviembre	
+263	11	SPA	nov	
+264	12	SPA	diciembre	
+265	12	SPA	dic	
+266	13	SPA	del	D
+267	13	SPA	desde el	D1
+268	13	SPA	desde	Y1
+269	13	SPA	del año	Y
+270	14	SPA	al año	Y
+271	14	SPA	en el	
+272	14	SPA	hasta	Y1
+273	14	SPA	hasta el	D1
+274	14	SPA	hasta	D
+275	14	SPA	hasta	
+276	15	SPA	antes del	D
+277	15	SPA	antes	
+278	15	SPA	antes del año	Y
+279	16	SPA	después del	D
+280	16	SPA	después del año	
+281	16	SPA	después	Y
+282	17	SPA	entre el	D
+283	17	SPA	entre el año	
+284	17	SPA	entre	Y
+285	18	SPA	y	D
+286	18	SPA	y el año	
+287	18	SPA	y	Y
+288	19	SPA	calculada	Y
+289	19	SPA	cal	
+290	20	SPA	estimada	Y
+291	20	SPA	est	
+292	21	SPA	hacia el	D
+293	21	SPA	hacia	Y
+294	22	SPA	/	
+295	22	SPA	.	
+296	22	SPA	-	
+297	23	SPA	DMY	
+298	23	SPA	DMY	
+299	24	SPA	LIT	

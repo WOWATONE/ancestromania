@@ -1,0 +1,17 @@
+
+[Desktop Entry]
+Version=0.33
+Encoding=UTF-8
+Name=Ancestromania - Généalogie
+Comment=Généalogie Ancestromania
+Exec=/usr/share/ancestromania/Ancestromania
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/Ancestromania.png
+Categories=Application;Office;Genealogy;
+MimeType=
+Patterns=
+GenericName[fr_FR]=Généalogie Ancestromania
+
+Name[fr_FR]=Ancestromania
+
