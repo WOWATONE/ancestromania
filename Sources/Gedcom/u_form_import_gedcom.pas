@@ -362,7 +362,7 @@ begin
   gs_GedcomCharsetFrom:=rs_charset_gedcom;
   AddCharsetsToStrings ( cb_WinCharset.Items );
   OnRefreshControls := SuperFormRefreshControls;
-  Animate.AnimatedGifToSprite(fs_getSoftImages + PLEASE_WAIT);
+  Animate.AnimatedGifToSprite(fs_getImagesSoftDir + PLEASE_WAIT);
   Color := gci_context.ColorLight;
   Panel6.Color := gci_context.ColorDark;
   btnNext.Color := gci_context.ColorDark;

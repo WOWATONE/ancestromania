@@ -17,6 +17,7 @@
         <DpiAware Value="True"/>
       </XPManifest>
       <Icon Value="0"/>
+      <ActiveWindowIndexAtStart Value="0"/>
     </General>
     <i18n>
       <EnableI18N Value="True" LFM="False"/>
@@ -131,7 +132,7 @@
         <PackageName Value="LCL"/>
       </Item29>
     </RequiredPackages>
-    <Units Count="1189">
+    <Units Count="1190">
       <Unit0>
         <Filename Value="Ancestromania.dpr"/>
         <IsPartOfProject Value="True"/>
@@ -400,10 +401,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_export_gedcom"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1450"/>
-        <CursorPos X="127" Y="1481"/>
+        <TopLine Value="568"/>
+        <CursorPos X="51" Y="581"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit24>
       <Unit25>
@@ -477,9 +480,14 @@
         <ComponentName Value="FImportGedcom"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="3429"/>
-        <CursorPos Y="3453"/>
+        <UnitName Value="u_form_import_gedcom"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="352"/>
+        <CursorPos X="50" Y="365"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit31>
       <Unit32>
@@ -1022,8 +1030,6 @@
         <Filename Value="Main/u_common_ancestro.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="u_common_ancestro"/>
-        <IsVisibleTab Value="True"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="4"/>
         <CursorPos X="49" Y="4"/>
         <UsageCount Value="200"/>
@@ -6278,10 +6284,12 @@
       <Unit861>
         <Filename Value="../../Extended/copy/fonctions_file.pas"/>
         <UnitName Value="fonctions_file"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="82"/>
-        <CursorPos X="1" Y="103"/>
+        <TopLine Value="53"/>
+        <CursorPos X="112" Y="65"/>
         <UsageCount Value="63"/>
+        <Loaded Value="True"/>
       </Unit861>
       <Unit862>
         <Filename Value="/lazarus/components/lazutils/fileutil.pas"/>
@@ -8401,8 +8409,56 @@
         <UsageCount Value="20"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1188>
+      <Unit1189>
+        <Filename Value="Web/u_ancestroweb.pas"/>
+        <UnitName Value="U_AncestroWeb"/>
+        <EditorIndex Value="0"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1158"/>
+        <CursorPos X="76" Y="1178"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit1189>
     </Units>
-    <JumpHistory Count="0" HistoryIndex="-1"/>
+    <JumpHistory Count="9" HistoryIndex="8">
+      <Position1>
+        <Filename Value="Web/u_ancestroweb.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
+      </Position1>
+      <Position2>
+        <Filename Value="Web/u_ancestroweb.pas"/>
+        <Caret Line="1170" Column="9" TopLine="1156"/>
+      </Position2>
+      <Position3>
+        <Filename Value="Web/u_ancestroweb.pas"/>
+        <Caret Line="1178" Column="22" TopLine="1158"/>
+      </Position3>
+      <Position4>
+        <Filename Value="Web/u_ancestroweb.pas"/>
+        <Caret Line="1169" Column="39" TopLine="1157"/>
+      </Position4>
+      <Position5>
+        <Filename Value="Web/u_ancestroweb.pas"/>
+        <Caret Line="1171" Column="70" TopLine="1157"/>
+      </Position5>
+      <Position6>
+        <Filename Value="Web/u_ancestroweb.pas"/>
+        <Caret Line="1170" Column="76" TopLine="1157"/>
+      </Position6>
+      <Position7>
+        <Filename Value="Gedcom/u_form_export_gedcom.pas"/>
+        <Caret Line="1481" Column="127" TopLine="1450"/>
+      </Position7>
+      <Position8>
+        <Filename Value="Gedcom/u_form_export_gedcom.pas"/>
+        <Caret Line="319" Column="53" TopLine="306"/>
+      </Position8>
+      <Position9>
+        <Filename Value="Gedcom/u_form_import_gedcom.pas"/>
+        <Caret Line="3453" Column="1" TopLine="3429"/>
+      </Position9>
+    </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>

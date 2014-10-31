@@ -1166,16 +1166,16 @@ begin
     lt_arg [0] := ls_Destination;
     if ( MyMessageDlg(fs_RemplaceMsg(gs_ANCESTROWEB_ExportDelete, lt_arg), mtWarning, mbYesNo) = mrYes ) then
       try
-        fb_EraseDir(ls_Destination, False);
-        fb_EraseDir(ls_Destination + CST_SUBDIR_HTML_CSS, True);
-        fb_EraseDir(ls_Destination + CST_SUBDIR_HTML_IMAGES, True);
-        fb_EraseDir(ls_Destination + CST_SUBDIR_HTML_LISTS , True);
-        fb_EraseDir(ls_Destination + CST_SUBDIR_HTML_MAILER, True);
-        fb_EraseDir(ls_Destination + CST_SUBDIR_HTML_SCRIPTS, True);
-        fb_EraseDir(ls_Destination + CST_SUBDIR_HTML_ARCHIVE, True);
-        fb_EraseDir(ls_Destination + CST_SUBDIR_HTML_FILES, True);
-        fb_EraseDir(ls_Destination + CST_SUBDIR_HTML_MAPS, True);
-        fb_EraseDir(ls_Destination+ CST_SUBDIR_HTML_TREE, True);
+        DeleteDirUTF8(ls_Destination, ddoDeleteFirstFiles);
+        DeleteDirUTF8(ls_Destination + CST_SUBDIR_HTML_CSS, ddoDeleteAll);
+        DeleteDirUTF8(ls_Destination + CST_SUBDIR_HTML_IMAGES, ddoDeleteAll );
+        DeleteDirUTF8(ls_Destination + CST_SUBDIR_HTML_LISTS , ddoDeleteAll );
+        DeleteDirUTF8(ls_Destination + CST_SUBDIR_HTML_MAILER, ddoDeleteAll );
+        DeleteDirUTF8(ls_Destination + CST_SUBDIR_HTML_SCRIPTS, ddoDeleteAll );
+        DeleteDirUTF8(ls_Destination + CST_SUBDIR_HTML_ARCHIVE, ddoDeleteAll );
+        DeleteDirUTF8(ls_Destination + CST_SUBDIR_HTML_FILES, ddoDeleteAll );
+        DeleteDirUTF8(ls_Destination + CST_SUBDIR_HTML_MAPS, ddoDeleteAll );
+        DeleteDirUTF8(ls_Destination+ CST_SUBDIR_HTML_TREE, ddoDeleteAll );
       except
         on E: Exception do
         begin

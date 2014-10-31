@@ -316,7 +316,7 @@ var
 begin
   OnRefreshControls := SuperFormRefreshControls;
   gs_GedcomCharsetTo:=rs_charset_gedcom;
-  PleaseWait.AnimatedGifToSprite(fs_getSoftImages+PLEASE_WAIT);
+  PleaseWait.AnimatedGifToSprite(fs_getImagesSoftDir+PLEASE_WAIT);
   Color:=gci_context.ColorLight;
   Panel3.Color:=gci_context.ColorDark;
   btnNewExport.Color:=gci_context.ColorDark;
@@ -578,7 +578,7 @@ begin
   if ( rbCheminImages.ItemIndex > 0 )
   and DirectoryExistsUTF8(FDirectoryImages)
     Then
-     fb_EraseDir(FDirectoryImages,True);
+     DeleteDirUTF8(FDirectoryImages,ddoKeepDirOnly);
   //initialisations
   StartTime:=Now;
   GoToPage(5);//On change de page
