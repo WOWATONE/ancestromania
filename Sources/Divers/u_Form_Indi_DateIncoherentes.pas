@@ -1,7 +1,7 @@
 {-----------------------------------------------------------------------}
 {                                                                       }
 {           Subprogram Name:                                            }
-{           Purpose:          Ancestromania                             }
+{           Purpose:          Ancestromania LGPL                             }
 {           Source Language:  Francais                                  }
 {           Auteurs :                                                   }
 {           Andr? Langlet (Main), Matthieu Giroux (LAZARUS),            }

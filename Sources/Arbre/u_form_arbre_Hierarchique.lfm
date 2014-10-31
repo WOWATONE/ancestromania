@@ -1,7 +1,7 @@
 inherited FArbreHierarchique: TFArbreHierarchique
   Left = 318
   Height = 479
-  Top = 187
+  Top = 64
   Width = 613
   Caption = 'Arbre de descendance'
   ClientHeight = 479
@@ -542,6 +542,7 @@ inherited FArbreHierarchique: TFArbreHierarchique
     AutoCalcFields = False
     BufferChunks = 1000
     CachedUpdates = False
+    GenerateParamNames = False
     GeneratorField.ApplyOnEvent = gaeOnNewRecord
     Params = <>
     UniDirectional = True

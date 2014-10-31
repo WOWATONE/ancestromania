@@ -17,7 +17,6 @@
         <DpiAware Value="True"/>
       </XPManifest>
       <Icon Value="0"/>
-      <ActiveWindowIndexAtStart Value="0"/>
     </General>
     <i18n>
       <EnableI18N Value="True" LFM="False"/>
@@ -136,12 +135,10 @@
       <Unit0>
         <Filename Value="Ancestromania.dpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="95"/>
         <CursorPos X="108" Y="123"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit0>
       <Unit1>
@@ -152,8 +149,8 @@
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="u_dm"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1201"/>
-        <CursorPos X="5" Y="1212"/>
+        <TopLine Value="1"/>
+        <CursorPos X="13" Y="4"/>
         <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1>
@@ -164,12 +161,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_main"/>
-        <EditorIndex Value="11"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="3144"/>
-        <CursorPos X="15" Y="3165"/>
+        <TopLine Value="1"/>
+        <CursorPos X="96" Y="2"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit2>
       <Unit3>
@@ -210,13 +205,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_arbre_Hierarchique"/>
-        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="103"/>
-        <CursorPos X="119" Y="120"/>
+        <CursorPos X="49" Y="4"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit6>
       <Unit7>
@@ -1030,12 +1022,11 @@
         <Filename Value="Main/u_common_ancestro.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="u_common_ancestro"/>
-        <EditorIndex Value="10"/>
+        <IsVisibleTab Value="True"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="109"/>
-        <CursorPos X="17" Y="133"/>
+        <TopLine Value="4"/>
+        <CursorPos X="49" Y="4"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit89>
       <Unit90>
@@ -1139,13 +1130,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_individu_Saisie_Rapide"/>
-        <EditorIndex Value="13"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1014"/>
-        <CursorPos X="1" Y="1024"/>
+        <CursorPos X="49" Y="4"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit100>
       <Unit101>
@@ -4193,12 +4181,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="U_DMWeb"/>
-        <EditorIndex Value="14"/>
         <WindowIndex Value="0"/>
         <TopLine Value="18"/>
         <CursorPos X="3" Y="53"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit538>
       <Unit539>
@@ -4212,7 +4198,6 @@
         <TopLine Value="208"/>
         <CursorPos X="26" Y="242"/>
         <UsageCount Value="200"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit539>
       <Unit540>
@@ -4263,12 +4248,10 @@
       </Unit545>
       <Unit546>
         <Filename Value="../../Extended/extends.inc"/>
-        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="10" Y="11"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit546>
       <Unit547>
         <Filename Value="../../Extended/composants/U_ExtNumEdits.pas"/>
@@ -5166,12 +5149,10 @@
       <Unit683>
         <Filename Value="../../../Lazarus/ccr/components/virtualtreeview-new/trunk/VirtualTrees.pas"/>
         <UnitName Value="VirtualTrees"/>
-        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="9285"/>
         <CursorPos X="13" Y="9305"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit683>
       <Unit684>
         <Filename Value="../../../Lazarus/ccr/components/rx/rxdbgrid.pas"/>
@@ -5628,12 +5609,10 @@
         <Filename Value="Arbre/u_common_tree.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="u_common_tree"/>
-        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="3"/>
         <CursorPos X="5" Y="19"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit755>
       <Unit756>
@@ -5966,12 +5945,10 @@
       <Unit809>
         <Filename Value="../../Extended/reportcomp/fonctions_reports.pas"/>
         <UnitName Value="fonctions_reports"/>
-        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
         <TopLine Value="842"/>
         <CursorPos X="13" Y="876"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit809>
       <Unit810>
         <Filename Value="../../Extended/core/fonctions_proprietes.pas"/>
@@ -6806,12 +6783,10 @@
       <Unit943>
         <Filename Value="../../Extended/base/fonctions_images.pas"/>
         <UnitName Value="fonctions_images"/>
-        <EditorIndex Value="12"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1031"/>
         <CursorPos X="1" Y="1050"/>
         <UsageCount Value="24"/>
-        <Loaded Value="True"/>
       </Unit943>
       <Unit944>
         <Filename Value="/lazarus/lcl/include/rasterimage.inc"/>
@@ -8391,33 +8366,27 @@
       <Unit1185>
         <Filename Value="../../MapViewer/kcMapViewerDESynapse.pas"/>
         <UnitName Value="kcMapViewerDESynapse"/>
-        <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
         <TopLine Value="6"/>
         <CursorPos X="100" Y="10"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit1185>
       <Unit1186>
         <Filename Value="../../../Lazarus/composants/DBNetProcessor/SynaCSockets.pas"/>
         <UnitName Value="SynaCSockets"/>
-        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
         <TopLine Value="32"/>
         <CursorPos X="11" Y="52"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1186>
       <Unit1187>
         <Filename Value="../../MapViewer/kcMapViewerInstall.pas"/>
         <UnitName Value="kcMapViewerInstall"/>
-        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit1187>
       <Unit1188>
         <Filename Value="Web/u_webmaps.pas"/>
@@ -8426,39 +8395,14 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_webmaps"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="137" Y="19"/>
         <UsageCount Value="20"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1188>
     </Units>
-    <JumpHistory Count="5" HistoryIndex="4">
-      <Position1>
-        <Filename Value="Web/u_webmaps.pas"/>
-        <Caret Line="61" Column="50" TopLine="36"/>
-      </Position1>
-      <Position2>
-        <Filename Value="Web/u_webmaps.pas"/>
-        <Caret Line="121" Column="26" TopLine="90"/>
-      </Position2>
-      <Position3>
-        <Filename Value="Web/u_webmaps.pas"/>
-        <Caret Line="122" Column="49" TopLine="90"/>
-      </Position3>
-      <Position4>
-        <Filename Value="Web/u_webmaps.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
-      </Position4>
-      <Position5>
-        <Filename Value="Web/u_webmaps.pas"/>
-        <Caret Line="97" Column="135" TopLine="80"/>
-      </Position5>
-    </JumpHistory>
+    <JumpHistory Count="0" HistoryIndex="-1"/>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>

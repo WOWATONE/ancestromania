@@ -1,14 +1,14 @@
 inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
   Left = 251
-  Height = 582
-  Top = 7
+  Height = 543
+  Top = 0
   Width = 434
   AutoSize = True
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   BorderWidth = 1
   Caption = 'Saisie rapide d''un individu'
-  ClientHeight = 582
+  ClientHeight = 543
   ClientWidth = 434
   Color = clWhite
   Font.CharSet = ANSI_CHARSET
@@ -23,12 +23,12 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
   Position = poOwnerFormCenter
   object panDock: TPanel[0]
     Left = 1
-    Height = 580
+    Height = 541
     Top = 1
     Width = 432
     Align = alClient
     BevelOuter = bvNone
-    ClientHeight = 580
+    ClientHeight = 541
     ClientWidth = 432
     Color = clWindow
     ParentColor = False
@@ -36,7 +36,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
     object fpBoutons: TPanel
       Left = 0
       Height = 28
-      Top = 552
+      Top = 513
       Width = 432
       Align = alBottom
       BevelOuter = bvNone
@@ -119,7 +119,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
       Top = 49
       Width = 432
       Align = alTop
-      ClientHeight = 40
+      ClientHeight = 58
       ClientWidth = 428
       ParentColor = False
       ParentFont = False
@@ -148,9 +148,9 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
           TabOrder = 0
           object LabNom: TLabel
             Left = 9
-            Height = 17
+            Height = 15
             Top = 4
-            Width = 37
+            Width = 36
             Caption = 'Nom :'
             Color = clDefault
             ParentColor = False
@@ -170,7 +170,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
           TabOrder = 1
           object sDBENom: TExtSearchEdit
             Left = -1
-            Height = 25
+            Height = 23
             Hint = 'Cliquer sur le bouton pour activer l''aide'
             Top = 2
             Width = 351
@@ -194,11 +194,11 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
     end
     object gbDetail: TGroupBox
       Left = 0
-      Height = 441
+      Height = 402
       Top = 111
       Width = 432
       Align = alClient
-      ClientHeight = 419
+      ClientHeight = 398
       ClientWidth = 428
       Enabled = False
       ParentColor = False
@@ -208,11 +208,11 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
       object gbSourcesIndi: TGroupBox
         Left = 0
         Height = 71
-        Top = 348
+        Top = 327
         Width = 428
         Align = alBottom
         Caption = 'Sources'
-        ClientHeight = 49
+        ClientHeight = 54
         ClientWidth = 424
         ParentColor = False
         ParentFont = False
@@ -221,7 +221,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
         OnClick = gbSourcesIndiClick
         object edSourcesIndi: TFWMemo
           Left = 0
-          Height = 49
+          Height = 54
           Top = 0
           Width = 424
           Align = alClient
@@ -238,12 +238,12 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
       end
       object gbNotesIndi: TGroupBox
         Left = 0
-        Height = 0
-        Top = 419
+        Height = 1
+        Top = 398
         Width = 428
         Align = alClient
         Caption = 'Notes'
-        ClientHeight = 0
+        ClientHeight = 1
         ClientWidth = 424
         ParentColor = False
         ParentFont = False
@@ -252,7 +252,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
         OnClick = gbNotesIndiClick
         object edNotesIndi: TFWMemo
           Left = 0
-          Height = 0
+          Height = 38
           Top = 0
           Width = 424
           Align = alClient
@@ -274,7 +274,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
         Width = 428
         Align = alTop
         Caption = 'Naissance'
-        ClientHeight = 122
+        ClientHeight = 127
         ClientWidth = 424
         ParentColor = False
         ParentFont = False
@@ -282,46 +282,46 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
         OnClick = gbDecesClick
         object Panel7: TPanel
           Left = 0
-          Height = 122
+          Height = 127
           Top = 0
           Width = 75
           Align = alLeft
           BevelOuter = bvNone
-          ClientHeight = 122
+          ClientHeight = 127
           ClientWidth = 75
           TabOrder = 0
           object LabDateNaissance: TLabel
             Left = 13
-            Height = 17
+            Height = 15
             Top = 4
-            Width = 38
+            Width = 36
             Caption = 'Date :'
             ParentColor = False
             OnClick = gbDecesClick
           end
           object LabLieuNaissance: TLabel
             Left = 13
-            Height = 17
+            Height = 15
             Top = 29
-            Width = 35
+            Width = 33
             Caption = 'Lieu :'
             ParentColor = False
             OnClick = LabLieuNaissanceClick
           end
           object LabNotesNaissance: TLabel
             Left = 13
-            Height = 17
+            Height = 15
             Top = 52
-            Width = 45
+            Width = 42
             Caption = 'Notes :'
             ParentColor = False
             OnClick = LabNotesNaissanceClick
           end
           object LabSourcesNaissance: TLabel
             Left = 13
-            Height = 17
+            Height = 15
             Top = 92
-            Width = 60
+            Width = 56
             Caption = 'Sources :'
             ParentColor = False
             OnClick = LabSourcesNaissanceClick
@@ -329,12 +329,12 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
         end
         object Panel8: TPanel
           Left = 75
-          Height = 122
+          Height = 127
           Top = 0
           Width = 349
           Align = alClient
           BevelOuter = bvNone
-          ClientHeight = 122
+          ClientHeight = 127
           ClientWidth = 349
           TabOrder = 1
           object Panel9: TPanel
@@ -388,7 +388,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
               TabOrder = 1
               object cxLieuNaissance: TFWEdit
                 Left = 0
-                Height = 25
+                Height = 23
                 Top = 1
                 Width = 43
                 Anchors = [akTop, akLeft, akRight]
@@ -415,9 +415,9 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
               TabOrder = 3
               object lbDayNaiss: TLabel
                 Left = 1
-                Height = 17
+                Height = 15
                 Top = 5
-                Width = 71
+                Width = 65
                 Caption = 'lbDayNaiss'
                 ParentColor = False
                 Visible = False
@@ -436,11 +436,11 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
               TabOrder = 2
               object cbActeNaissance: TFWComboBox
                 Left = 3
-                Height = 25
+                Height = 23
                 Top = 1
                 Width = 107
                 Anchors = [akTop, akLeft, akRight]
-                ItemHeight = 17
+                ItemHeight = 0
                 Items.Strings = (
                   'Acte absent'
                   'Acte à chercher'
@@ -537,7 +537,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
           end
           object edNotesNaissance: TFWMemo
             Left = 0
-            Height = 35
+            Height = 40
             Top = 48
             Width = 349
             Align = alClient
@@ -557,7 +557,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
           object edSourcesNaissance: TFWMemo
             Left = 0
             Height = 39
-            Top = 83
+            Top = 88
             Width = 349
             Align = alBottom
             Color = 11184810
@@ -596,18 +596,18 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
           TabOrder = 0
           object LabPrenom: TLabel
             Left = 9
-            Height = 17
+            Height = 15
             Top = 10
-            Width = 57
+            Width = 54
             Caption = 'Prénom :'
             ParentColor = False
             OnClick = gbDetailClick
           end
           object LabSexe: TLabel
             Left = 9
-            Height = 17
+            Height = 15
             Top = 35
-            Width = 39
+            Width = 37
             Caption = 'Sexe :'
             ParentColor = False
             OnClick = LabSexeClick
@@ -625,7 +625,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
           TabOrder = 1
           object sdbePrenom: TExtSearchEdit
             Left = 0
-            Height = 25
+            Height = 23
             Hint = 'Cliquer sur le bouton pour activer l''aide'
             Top = 3
             Width = 352
@@ -684,7 +684,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
               TabOrder = 1
               object cxSexe: TExtPictCombo
                 Left = 2
-                Height = 19
+                Height = 27
                 Hint = 'Cliquer sur le bouton pour activer l''aide'
                 Top = -2
                 Width = 206
@@ -716,7 +716,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
         Width = 428
         Align = alTop
         Caption = 'Profession'
-        ClientHeight = 122
+        ClientHeight = 127
         ClientWidth = 424
         ParentColor = False
         ParentFont = False
@@ -724,46 +724,46 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
         OnClick = gbDecesClick
         object Panel16: TPanel
           Left = 0
-          Height = 122
+          Height = 127
           Top = 0
           Width = 75
           Align = alLeft
           BevelOuter = bvNone
-          ClientHeight = 122
+          ClientHeight = 127
           ClientWidth = 75
           TabOrder = 0
           object LabDateProfession: TLabel
             Left = 13
-            Height = 17
+            Height = 15
             Top = 4
-            Width = 38
+            Width = 36
             Caption = 'Date :'
             ParentColor = False
             OnClick = gbDecesClick
           end
           object LabLieuProfession: TLabel
             Left = 13
-            Height = 17
+            Height = 15
             Top = 29
-            Width = 35
+            Width = 33
             Caption = 'Lieu :'
             ParentColor = False
             OnClick = LabLieuNaissanceClick
           end
           object LabNotesProfession: TLabel
             Left = 13
-            Height = 17
+            Height = 15
             Top = 52
-            Width = 45
+            Width = 42
             Caption = 'Notes :'
             ParentColor = False
             OnClick = LabNotesNaissanceClick
           end
           object LabSourcesProfession: TLabel
             Left = 13
-            Height = 17
+            Height = 15
             Top = 92
-            Width = 60
+            Width = 56
             Caption = 'Sources :'
             ParentColor = False
             OnClick = LabSourcesProfessionClick
@@ -771,12 +771,12 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
         end
         object Panel17: TPanel
           Left = 75
-          Height = 122
+          Height = 127
           Top = 0
           Width = 349
           Align = alClient
           BevelOuter = bvNone
-          ClientHeight = 122
+          ClientHeight = 127
           ClientWidth = 349
           TabOrder = 1
           object Panel18: TPanel
@@ -830,7 +830,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
               TabOrder = 1
               object cxLieuProfession: TFWEdit
                 Left = -2
-                Height = 25
+                Height = 23
                 Top = 0
                 Width = 43
                 Anchors = [akTop, akLeft, akRight]
@@ -857,9 +857,9 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
               TabOrder = 3
               object lbDayProf: TLabel
                 Left = 1
-                Height = 17
+                Height = 15
                 Top = 4
-                Width = 62
+                Width = 57
                 Caption = 'lbDayProf'
                 ParentColor = False
                 Visible = False
@@ -878,11 +878,11 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
               TabOrder = 2
               object cbActeProfession: TFWComboBox
                 Left = 3
-                Height = 25
+                Height = 23
                 Top = 1
                 Width = 107
                 Anchors = [akTop, akLeft, akRight]
-                ItemHeight = 17
+                ItemHeight = 0
                 Items.Strings = (
                   'Acte absent'
                   'Acte à chercher'
@@ -979,7 +979,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
           end
           object edNotesProfession: TFWMemo
             Left = 0
-            Height = 35
+            Height = 40
             Top = 48
             Width = 349
             Align = alClient
@@ -999,7 +999,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
           object edSourcesProfession: TFWMemo
             Left = 0
             Height = 39
-            Top = 83
+            Top = 88
             Width = 349
             Align = alBottom
             Color = 11184810
@@ -1023,7 +1023,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
         Width = 428
         Align = alTop
         Caption = 'Décès'
-        ClientHeight = 122
+        ClientHeight = 127
         ClientWidth = 424
         ParentColor = False
         ParentFont = False
@@ -1031,46 +1031,46 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
         OnClick = gbDecesClick
         object Panel25: TPanel
           Left = 0
-          Height = 122
+          Height = 127
           Top = 0
           Width = 75
           Align = alLeft
           BevelOuter = bvNone
-          ClientHeight = 122
+          ClientHeight = 127
           ClientWidth = 75
           TabOrder = 0
           object LabDateDeces: TLabel
             Left = 13
-            Height = 17
+            Height = 15
             Top = 4
-            Width = 38
+            Width = 36
             Caption = 'Date :'
             ParentColor = False
             OnClick = gbDecesClick
           end
           object LabLieuDeces: TLabel
             Left = 11
-            Height = 17
+            Height = 15
             Top = 29
-            Width = 35
+            Width = 33
             Caption = 'Lieu :'
             ParentColor = False
             OnClick = LabLieuNaissanceClick
           end
           object LabNotesDeces: TLabel
             Left = 13
-            Height = 17
+            Height = 15
             Top = 52
-            Width = 45
+            Width = 42
             Caption = 'Notes :'
             ParentColor = False
             OnClick = LabNotesNaissanceClick
           end
           object LabSourcesDeces: TLabel
             Left = 13
-            Height = 17
+            Height = 15
             Top = 92
-            Width = 60
+            Width = 56
             Caption = 'Sources :'
             ParentColor = False
             OnClick = LabSourcesNaissanceClick
@@ -1078,12 +1078,12 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
         end
         object Panel26: TPanel
           Left = 75
-          Height = 122
+          Height = 127
           Top = 0
           Width = 349
           Align = alClient
           BevelOuter = bvNone
-          ClientHeight = 122
+          ClientHeight = 127
           ClientWidth = 349
           TabOrder = 1
           object Panel27: TPanel
@@ -1137,7 +1137,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
               TabOrder = 1
               object cxLieuDeces: TFWEdit
                 Left = -2
-                Height = 25
+                Height = 23
                 Top = 0
                 Width = 43
                 Anchors = [akTop, akLeft, akRight]
@@ -1164,9 +1164,9 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
               TabOrder = 3
               object lbDayDeces: TLabel
                 Left = 1
-                Height = 17
+                Height = 15
                 Top = 4
-                Width = 76
+                Width = 70
                 Caption = 'lbDayDeces'
                 ParentColor = False
                 Visible = False
@@ -1185,11 +1185,11 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
               TabOrder = 2
               object cbActeDeces: TFWComboBox
                 Left = 3
-                Height = 25
+                Height = 23
                 Top = 1
                 Width = 107
                 Anchors = [akTop, akLeft, akRight]
-                ItemHeight = 17
+                ItemHeight = 0
                 Items.Strings = (
                   'Acte absent'
                   'Acte à chercher'
@@ -1286,7 +1286,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
           end
           object edNotesDeces: TFWMemo
             Left = 0
-            Height = 35
+            Height = 40
             Top = 48
             Width = 349
             Align = alClient
@@ -1306,7 +1306,7 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
           object edSourcesDeces: TFWMemo
             Left = 0
             Height = 39
-            Top = 83
+            Top = 88
             Width = 349
             Align = alBottom
             Color = 11184810
@@ -1650,4 +1650,4 @@ inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
     left = 336
     top = 1
   end
-end
+end
