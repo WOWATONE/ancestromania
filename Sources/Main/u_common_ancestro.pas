@@ -32,7 +32,7 @@ const IBQ_DLL_DOSSIER = 'dll_DOSSIER';
 
       EQUAL = '=';
 
-      CST_AUTHOR = 'LIBERLOG 2011';
+      CST_AUTHOR = 'LIBERLOG 2014';
 
       CST_PROGRESS_COUNTER_TITLE = 1;
       CST_PROGRESS_COUNTER_Surnames = 1;
@@ -48,7 +48,7 @@ const IBQ_DLL_DOSSIER = 'dll_DOSSIER';
       CST_PROGRESS_COUNTER_COPY = 1;
       SQL_OR = ' OR ';
       CST_AncestroWeb = 'AncestroWeb';
-      CST_AncestroWeb_WithLicense = CST_AncestroWeb + ' GPL';
+      CST_AncestroWeb_WithLicense = CST_AncestroWeb + ' LGPL';
 
       IBQ_CLE_FICHE = 'CLE_FICHE';
       IBQ_CLE_PERE = 'CLE_PERE';
