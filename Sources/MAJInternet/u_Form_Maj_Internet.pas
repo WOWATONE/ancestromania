@@ -39,6 +39,7 @@ uses
 {$IFDEF HTMLVIEW}
   FramView,HTMLView, Readhtml, HtmlGlobals,StyleTypes,
 {$ELSE}
+  lazbro,
 {$ENDIF}
   U_FormAdapt, Controls, Graphics, StdCtrls, ExtCtrls,
   ComCtrls, Classes, Forms,
@@ -85,7 +86,7 @@ type
     {$IFDEF HTMLVIEW}
     Browser : TFrameViewer;
     {$ELSE}
-    Browser : TMemo;
+    Browser : TLazbro;
     {$ENDIF}
     procedure FormDestroy(Sender: TObject);
     procedure NetUpdateDownloaded(const Sender: TObject; const TheFile: string;
@@ -112,6 +113,8 @@ type
       var Handled: boolean);
     procedure WebBrowserHotSpotCovered(Sender: TObject; const Target, URL: ThtString);
     procedure WebBrowserLink(Sender: TObject; const Rel, Rev, Href: THtString);
+    {$ELSE}
+    procedure WebBrowserLink(const Sender: TLazbro);
     {$ENDIF}
     procedure p_AfterDownloadExe;
   private
@@ -274,8 +277,9 @@ begin
     {$IFDEF HTMLVIEW}
 //    Browser.Base := UpdateDir + FilePage;
     {$ELSE}
+//      Browser.BaseUrl := UpdateDir + FilePage;
     {$ENDIF}
-    Browser.{$IFNDEF HTMLVIEW}Lines.{$ENDIF}LoadFromFile ( UpdateDir + FilePage );
+    Browser.LoadFromFile ( UpdateDir + FilePage );
     TabNews.TabVisible:=True;
     if bOK then
     begin
@@ -316,7 +320,7 @@ var
   VersionCur,VersionMax:string;
   lat_ArchitectureType : TArchitectureType;
 begin
-  Browser := {$IFDEF HTMLVIEW}TFrameViewer{$ELSE}TMemo{$ENDIF}.Create(Self);
+  Browser := {$IFDEF HTMLVIEW}TFrameViewer{$ELSE}TLazbro{$ENDIF}.Create(Self);
   Browser.Parent:=TabNews;
   Browser.Align:=alClient;
   Browser.Visible:=True;
@@ -325,7 +329,7 @@ begin
   Browser.OnHotSpotTargetClick  :=WebBrowserHotSpotClick;
   Browser.OnHotSpotTargetCovered:=WebBrowserHotSpotCovered;
   {$ELSE}
-  Browser.ReadOnly:=True;
+  Browser.OnUrlChange:=WebBrowserLink;
   {$ENDIF}
   Color:=gci_context.ColorLight;
   with NetUpdate do
@@ -537,6 +541,12 @@ procedure TFMajInternet.WebBrowserLink(Sender: TObject; const Rel, Rev,
   Href: THtString);
 begin
   p_OpenFileOrDirectory(Href);
+end;
+
+{$ELSE}
+procedure TFMajInternet.WebBrowserLink(const Sender: TLazbro);
+begin
+  p_OpenFileOrDirectory(Sender.BaseUrl);
 end;
 
 {$ENDIF}

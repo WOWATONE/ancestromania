@@ -41,98 +41,101 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="29">
+    <RequiredPackages Count="30">
       <Item1>
-        <PackageName Value="kcMapViewerPckg"/>
+        <PackageName Value="lazbrohtml"/>
       </Item1>
       <Item2>
-        <PackageName Value="lazextcopy"/>
+        <PackageName Value="kcMapViewerPckg"/>
       </Item2>
       <Item3>
-        <PackageName Value="lazextreports"/>
+        <PackageName Value="lazextcopy"/>
       </Item3>
       <Item4>
-        <PackageName Value="lazancestroibx"/>
+        <PackageName Value="lazextreports"/>
       </Item4>
       <Item5>
-        <PackageName Value="lazextnet"/>
+        <PackageName Value="lazancestroibx"/>
       </Item5>
       <Item6>
-        <PackageName Value="LazRichEdit"/>
+        <PackageName Value="lazextnet"/>
       </Item6>
       <Item7>
-        <PackageName Value="uniqueinstance_package"/>
+        <PackageName Value="LazRichEdit"/>
       </Item7>
       <Item8>
-        <PackageName Value="lazextinit"/>
+        <PackageName Value="uniqueinstance_package"/>
       </Item8>
       <Item9>
-        <PackageName Value="lazextcomponentsimg"/>
+        <PackageName Value="lazextinit"/>
       </Item9>
       <Item10>
-        <PackageName Value="lnetvisual"/>
+        <PackageName Value="lazextcomponentsimg"/>
       </Item10>
       <Item11>
-        <PackageName Value="lazrichview"/>
+        <PackageName Value="lnetvisual"/>
       </Item11>
       <Item12>
-        <PackageName Value="virtualtreeview_package"/>
+        <PackageName Value="lazrichview"/>
       </Item12>
       <Item13>
-        <PackageName Value="bgracontrols"/>
+        <PackageName Value="virtualtreeview_package"/>
       </Item13>
       <Item14>
-        <PackageName Value="ExtHTML"/>
+        <PackageName Value="bgracontrols"/>
       </Item14>
       <Item15>
-        <PackageName Value="lazancestrobuttons"/>
+        <PackageName Value="ExtHTML"/>
       </Item15>
       <Item16>
-        <PackageName Value="CodeTools"/>
+        <PackageName Value="lazancestrobuttons"/>
       </Item16>
       <Item17>
-        <PackageName Value="FCL"/>
-        <MinVersion Major="1" Valid="True"/>
+        <PackageName Value="CodeTools"/>
       </Item17>
       <Item18>
-        <PackageName Value="ZVDateTimeCtrls"/>
+        <PackageName Value="FCL"/>
+        <MinVersion Major="1" Valid="True"/>
       </Item18>
       <Item19>
-        <PackageName Value="lazancestrounits"/>
+        <PackageName Value="ZVDateTimeCtrls"/>
       </Item19>
       <Item20>
-        <PackageName Value="lazancestrocomponents"/>
+        <PackageName Value="lazancestrounits"/>
       </Item20>
       <Item21>
-        <PackageName Value="PasLibVlcPlayer"/>
+        <PackageName Value="lazancestrocomponents"/>
       </Item21>
       <Item22>
-        <PackageName Value="lazextbuttons"/>
-        <MinVersion Minor="9" Release="5" Build="2" Valid="True"/>
+        <PackageName Value="PasLibVlcPlayer"/>
       </Item22>
       <Item23>
-        <PackageName Value="fortes324forlaz"/>
+        <PackageName Value="lazextbuttons"/>
+        <MinVersion Minor="9" Release="5" Build="2" Valid="True"/>
       </Item23>
       <Item24>
-        <PackageName Value="CompoPerso"/>
+        <PackageName Value="fortes324forlaz"/>
       </Item24>
       <Item25>
-        <PackageName Value="Printer4Lazarus"/>
+        <PackageName Value="CompoPerso"/>
       </Item25>
       <Item26>
-        <PackageName Value="ExpertSuperForm"/>
+        <PackageName Value="Printer4Lazarus"/>
       </Item26>
       <Item27>
-        <PackageName Value="lazextcomponents"/>
+        <PackageName Value="ExpertSuperForm"/>
       </Item27>
       <Item28>
-        <PackageName Value="ibexpress"/>
+        <PackageName Value="lazextcomponents"/>
       </Item28>
       <Item29>
-        <PackageName Value="LCL"/>
+        <PackageName Value="ibexpress"/>
       </Item29>
+      <Item30>
+        <PackageName Value="LCL"/>
+      </Item30>
     </RequiredPackages>
-    <Units Count="1190">
+    <Units Count="1191">
       <Unit0>
         <Filename Value="Ancestromania.dpr"/>
         <IsPartOfProject Value="True"/>
@@ -149,10 +152,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="u_dm"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="13" Y="4"/>
+        <TopLine Value="35"/>
+        <CursorPos X="27" Y="47"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1>
       <Unit2>
@@ -401,7 +407,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_export_gedcom"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
         <TopLine Value="568"/>
         <CursorPos X="51" Y="581"/>
@@ -481,7 +487,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_import_gedcom"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
         <TopLine Value="352"/>
         <CursorPos X="50" Y="365"/>
@@ -720,10 +726,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_Form_Maj_Internet"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="505"/>
-        <CursorPos X="3" Y="532"/>
+        <TopLine Value="321"/>
+        <CursorPos X="13" Y="341"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit51>
       <Unit52>
@@ -1030,10 +1038,9 @@
         <Filename Value="Main/u_common_ancestro.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="u_common_ancestro"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="18"/>
+        <TopLine Value="25"/>
         <CursorPos X="58" Y="51"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
@@ -4214,7 +4221,7 @@
         <Filename Value="Web/ancestroweb_strings.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="AncestroWeb_strings"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="30" Y="6"/>
@@ -6294,7 +6301,7 @@
       <Unit861>
         <Filename Value="../../Extended/copy/fonctions_file.pas"/>
         <UnitName Value="fonctions_file"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
         <TopLine Value="53"/>
         <CursorPos X="112" Y="65"/>
@@ -6396,10 +6403,12 @@
       <Unit877>
         <Filename Value="../../Extended/extnet/u_netupdate.pas"/>
         <UnitName Value="u_netupdate"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="509"/>
-        <CursorPos X="24" Y="528"/>
+        <TopLine Value="128"/>
+        <CursorPos X="14" Y="142"/>
         <UsageCount Value="15"/>
+        <Loaded Value="True"/>
       </Unit877>
       <Unit878>
         <Filename Value="../../Extended/extcomp/u_dblistview.pas"/>
@@ -8416,7 +8425,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="137" Y="19"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1188>
       <Unit1189>
@@ -8430,84 +8439,138 @@
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1189>
+      <Unit1190>
+        <Filename Value="../../../Lazarus/composants/lazbro/lazbro.pas"/>
+        <UnitName Value="Lazbro"/>
+        <EditorIndex Value="2"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1905"/>
+        <CursorPos X="27" Y="1926"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit1190>
     </Units>
-    <JumpHistory Count="19" HistoryIndex="18">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="Gedcom/u_form_export_gedcom.pas"/>
+        <Caret Line="319" Column="53" TopLine="306"/>
       </Position1>
       <Position2>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1170" Column="9" TopLine="1156"/>
+        <Filename Value="Gedcom/u_form_import_gedcom.pas"/>
+        <Caret Line="3453" Column="1" TopLine="3429"/>
       </Position2>
       <Position3>
         <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1178" Column="22" TopLine="1158"/>
+        <Caret Line="1164" Column="23" TopLine="1158"/>
       </Position3>
       <Position4>
         <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1169" Column="39" TopLine="1157"/>
+        <Caret Line="480" Column="20" TopLine="476"/>
       </Position4>
       <Position5>
         <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1171" Column="70" TopLine="1157"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position5>
       <Position6>
         <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1170" Column="76" TopLine="1157"/>
+        <Caret Line="14" Column="18" TopLine="1"/>
       </Position6>
       <Position7>
-        <Filename Value="Gedcom/u_form_export_gedcom.pas"/>
-        <Caret Line="1481" Column="127" TopLine="1450"/>
-      </Position7>
-      <Position8>
-        <Filename Value="Gedcom/u_form_export_gedcom.pas"/>
-        <Caret Line="319" Column="53" TopLine="306"/>
-      </Position8>
-      <Position9>
-        <Filename Value="Gedcom/u_form_import_gedcom.pas"/>
-        <Caret Line="3453" Column="1" TopLine="3429"/>
-      </Position9>
-      <Position10>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1164" Column="23" TopLine="1158"/>
-      </Position10>
-      <Position11>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1" Column="1" TopLine="476"/>
-      </Position11>
-      <Position12>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="480" Column="20" TopLine="476"/>
-      </Position12>
-      <Position13>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
-      </Position13>
-      <Position14>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="14" Column="18" TopLine="1"/>
-      </Position14>
-      <Position15>
         <Filename Value="Main/u_common_ancestro.pas"/>
         <Caret Line="4" Column="49" TopLine="4"/>
-      </Position15>
-      <Position16>
+      </Position7>
+      <Position8>
         <Filename Value="Main/u_common_ancestro.pas"/>
         <Caret Line="35" Column="34" TopLine="7"/>
-      </Position16>
-      <Position17>
+      </Position8>
+      <Position9>
         <Filename Value="Main/u_common_ancestro.pas"/>
         <Caret Line="1" Column="1" TopLine="1"/>
-      </Position17>
-      <Position18>
+      </Position9>
+      <Position10>
         <Filename Value="Main/u_common_ancestro.pas"/>
         <Caret Line="4" Column="49" TopLine="1"/>
-      </Position18>
-      <Position19>
+      </Position10>
+      <Position11>
         <Filename Value="Main/u_common_ancestro.pas"/>
         <Caret Line="8" Column="53" TopLine="1"/>
+      </Position11>
+      <Position12>
+        <Filename Value="../../../Lazarus/composants/lazbro/lazbro.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
+      </Position12>
+      <Position13>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="517" Column="1" TopLine="507"/>
+      </Position13>
+      <Position14>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="39" Column="11" TopLine="26"/>
+      </Position14>
+      <Position15>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="40" Column="20" TopLine="26"/>
+      </Position15>
+      <Position16>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="89" Column="22" TopLine="66"/>
+      </Position16>
+      <Position17>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="278" Column="22" TopLine="266"/>
+      </Position17>
+      <Position18>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="331" Column="1" TopLine="310"/>
+      </Position18>
+      <Position19>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="330" Column="28" TopLine="318"/>
       </Position19>
+      <Position20>
+        <Filename Value="../../../Lazarus/composants/lazbro/lazbro.pas"/>
+        <Caret Line="199" Column="26" TopLine="174"/>
+      </Position20>
+      <Position21>
+        <Filename Value="../../../Lazarus/composants/lazbro/lazbro.pas"/>
+        <Caret Line="195" Column="76" TopLine="177"/>
+      </Position21>
+      <Position22>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="544" Column="42" TopLine="527"/>
+      </Position22>
+      <Position23>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
+      </Position23>
+      <Position24>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="116" Column="9" TopLine="99"/>
+      </Position24>
+      <Position25>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="331" Column="70" TopLine="321"/>
+      </Position25>
+      <Position26>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="117" Column="30" TopLine="105"/>
+      </Position26>
+      <Position27>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="549" Column="33" TopLine="531"/>
+      </Position27>
+      <Position28>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="280" Column="3" TopLine="267"/>
+      </Position28>
+      <Position29>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="282" Column="42" TopLine="267"/>
+      </Position29>
+      <Position30>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="341" Column="13" TopLine="321"/>
+      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -8516,8 +8579,8 @@
       <Filename Value="../$(TargetCPU)-$(TargetOS)/Ancestromania"/>
     </Target>
     <SearchPaths>
-      <IncludeFiles Value="Main;Cartographie;Divers;Arbre;Editions;Multimedia;Individus;MultiMediaWebCam;Context;Gedcom;Graph;MAJInternet;Evenements;MutationBase;CalculDate;Gestion des lieux;$(ProjOutDir);../../THtmlPort/source"/>
-      <OtherUnitFiles Value="Main;Cartographie;Divers;Arbre;Editions;Multimedia;Individus;MultiMediaWebCam;Context;Gedcom;Graph;MAJInternet;Evenements;MutationBase;CalculDate;Lieux;Web;../../THtmlPort/source"/>
+      <IncludeFiles Value="Main;Cartographie;Divers;Arbre;Editions;Multimedia;Individus;MultiMediaWebCam;Context;Gedcom;Graph;MAJInternet;Evenements;MutationBase;CalculDate;Lieux;$(ProjOutDir)"/>
+      <OtherUnitFiles Value="Main;Cartographie;Divers;Arbre;Editions;Multimedia;Individus;MultiMediaWebCam;Context;Gedcom;Graph;MAJInternet;Evenements;MutationBase;CalculDate;Lieux;Web"/>
       <UnitOutputDirectory Value="../$(TargetCPU)-$(TargetOS)/lib"/>
     </SearchPaths>
     <Parsing>
