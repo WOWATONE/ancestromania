@@ -277,7 +277,20 @@ inherited FtvAscendance: TFtvAscendance
             Width = 92
             Align = alRight
             BevelOuter = bvNone
+            ClientHeight = 27
+            ClientWidth = 92
             TabOrder = 2
+            object ch_pdf: TJvXPCheckbox
+              Left = 11
+              Height = 27
+              Top = 0
+              Width = 81
+              Caption = 'PDF'
+              TabOrder = 0
+              UseDockManager = False
+              Align = alRight
+              Anchors = [akTop, akRight]
+            end
           end
           object Panel7: TPanel
             Left = 413
@@ -531,6 +544,7 @@ inherited FtvAscendance: TFtvAscendance
     AutoCalcFields = False
     BufferChunks = 1000
     CachedUpdates = False
+    GenerateParamNames = False
     GeneratorField.ApplyOnEvent = gaeOnNewRecord
     Params = <>
     UniDirectional = True

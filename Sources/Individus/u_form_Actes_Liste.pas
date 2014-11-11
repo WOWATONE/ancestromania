@@ -35,6 +35,7 @@ type
   TFActesListe=class(TF_FormAdapt)
     cb_PaperSize: TComboBox;
     ch_portrait: TJvXPCheckbox;
+    ch_pdf: TJvXPCheckbox;
     Label3: TLabel;
     OnFormInfoIni1: TOnFormInfoIni;
     Panel3:TPanel;
@@ -288,7 +289,7 @@ procedure TFActesListe.btnPrintClick(Sender:TObject);
 begin
 // Matthieu
   ExtColumnFont.Size:=sp_Fonte.Value;
-  p_SetBtnPrint ( btnPrint, fs_RemplaceMsg(rs_List_of_acts_by_type_of,[lNom.Caption]),cb_PaperSize.Text,ch_portrait.Checked);
+  p_SetBtnPrint ( btnPrint, fs_RemplaceMsg(rs_List_of_acts_by_type_of,[lNom.Caption]),cb_PaperSize.Text,ch_portrait.Checked, Integer(ch_pdf.Checked), fPathBaseMedias);
 end;
 
 procedure TFActesListe.pmActesPopup(Sender:TObject);

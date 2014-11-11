@@ -160,6 +160,18 @@ inherited FActesListe: TFActesListe
       ParentFont = False
       Transparent = False
     end
+    object ch_pdf: TJvXPCheckbox
+      Left = 349
+      Height = 24
+      Top = 0
+      Width = 81
+      Caption = 'PDF'
+      TabOrder = 5
+      Checked = True
+      State = cbChecked
+      UseDockManager = False
+      Align = alLeft
+    end
   end
   object tvActe: TVirtualStringTree[2]
     Left = 0
@@ -291,6 +303,8 @@ inherited FActesListe: TFActesListe
   end
   object ibActes: TIBSQL[5]
     Database = dm.ibd_BASE
+    GenerateParamNames = False
+    UniqueParamNames = False
     ParamCheck = True
     SQL.Strings = (
       'select  case e.ev_fam_type'
@@ -391,4 +405,4 @@ inherited FActesListe: TFActesListe
     left = 218
     top = 157
   end
-end
+end

@@ -132,7 +132,7 @@
         <PackageName Value="LCL"/>
       </Item29>
     </RequiredPackages>
-    <Units Count="1192">
+    <Units Count="1196">
       <Unit0>
         <Filename Value="Ancestromania.dpr"/>
         <IsPartOfProject Value="True"/>
@@ -206,10 +206,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_arbre_Hierarchique"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="103"/>
-        <CursorPos X="49" Y="4"/>
+        <TopLine Value="571"/>
+        <CursorPos X="125" Y="592"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit6>
       <Unit7>
@@ -401,7 +404,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_export_gedcom"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="17"/>
         <WindowIndex Value="0"/>
         <TopLine Value="568"/>
         <CursorPos X="51" Y="581"/>
@@ -468,10 +471,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_graph_paintbox"/>
+        <EditorIndex Value="11"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="802"/>
-        <CursorPos X="168" Y="808"/>
+        <TopLine Value="722"/>
+        <CursorPos X="139" Y="743"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit30>
       <Unit31>
@@ -481,7 +487,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_import_gedcom"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="18"/>
         <WindowIndex Value="0"/>
         <TopLine Value="352"/>
         <CursorPos X="50" Y="365"/>
@@ -1316,8 +1322,14 @@
         <ComponentName Value="FActesListe"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <CursorPos X="20" Y="15"/>
+        <UnitName Value="u_form_Actes_Liste"/>
+        <EditorIndex Value="9"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="271"/>
+        <CursorPos X="124" Y="292"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit116>
       <Unit117>
@@ -1379,9 +1391,14 @@
         <ComponentName Value="FtvAscendance"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="151"/>
-        <CursorPos X="56" Y="183"/>
+        <UnitName Value="u_form_tv_ascendance"/>
+        <EditorIndex Value="5"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="334"/>
+        <CursorPos X="125" Y="353"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit123>
       <Unit124>
@@ -4215,7 +4232,7 @@
         <Filename Value="Web/ancestroweb_strings.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="AncestroWeb_strings"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="16"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="30" Y="6"/>
@@ -4615,9 +4632,13 @@
       </Unit599>
       <Unit600>
         <Filename Value="../../../Lazarus/composants/fortesreport/rlreport.pas"/>
-        <TopLine Value="1794"/>
-        <CursorPos X="3" Y="1818"/>
-        <UsageCount Value="44"/>
+        <UnitName Value="RLReport"/>
+        <EditorIndex Value="10"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1430"/>
+        <CursorPos X="19" Y="1448"/>
+        <UsageCount Value="45"/>
+        <Loaded Value="True"/>
       </Unit600>
       <Unit601>
         <Filename Value="../../../Lazarus/composants/fortesreport/rlmetafile.pas"/>
@@ -5626,10 +5647,12 @@
         <Filename Value="Arbre/u_common_tree.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="u_common_tree"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="3"/>
-        <CursorPos X="5" Y="19"/>
+        <CursorPos X="106" Y="17"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit755>
       <Unit756>
@@ -5949,9 +5972,14 @@
       </Unit806>
       <Unit807>
         <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
-        <TopLine Value="126"/>
-        <CursorPos X="17" Y="126"/>
-        <UsageCount Value="3"/>
+        <UnitName Value="u_reports_components"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="7"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="185"/>
+        <CursorPos X="23" Y="216"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
       </Unit807>
       <Unit808>
         <Filename Value="../../Extended/reportcomp/u_reports_rlcomponents.pas"/>
@@ -6295,11 +6323,11 @@
       <Unit861>
         <Filename Value="../../Extended/copy/fonctions_file.pas"/>
         <UnitName Value="fonctions_file"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="19"/>
         <WindowIndex Value="0"/>
         <TopLine Value="53"/>
         <CursorPos X="112" Y="65"/>
-        <UsageCount Value="63"/>
+        <UsageCount Value="64"/>
         <Loaded Value="True"/>
       </Unit861>
       <Unit862>
@@ -8087,7 +8115,7 @@
         <UnitName Value="ALFcnString"/>
         <TopLine Value="925"/>
         <CursorPos X="50" Y="949"/>
-        <UsageCount Value="32"/>
+        <UsageCount Value="33"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1147>
@@ -8172,10 +8200,12 @@
       <Unit1158>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestrotree.pas"/>
         <UnitName Value="u_ancestrotree"/>
+        <EditorIndex Value="13"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="4"/>
-        <CursorPos X="1" Y="572"/>
-        <UsageCount Value="18"/>
+        <TopLine Value="140"/>
+        <CursorPos X="20" Y="159"/>
+        <UsageCount Value="19"/>
+        <Loaded Value="True"/>
       </Unit1158>
       <Unit1159>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestroboxes.pas"/>
@@ -8417,7 +8447,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="137" Y="19"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="22"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1188>
       <Unit1189>
@@ -8427,134 +8457,191 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="46" Y="5"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1189>
       <Unit1190>
         <Filename Value="../../../Lazarus/composants/lazbro/lazbro.pas"/>
         <UnitName Value="Lazbro"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="15"/>
         <CursorPos X="20" Y="29"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1190>
       <Unit1191>
         <Filename Value="/usr/share/lazarus/1.2.6/fpmake.pp"/>
         <UnitName Value="fpmake"/>
-        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit1191>
+      <Unit1192>
+        <Filename Value="../../../../../../development/lazarus/lcl/controls.pp"/>
+        <UnitName Value="Controls"/>
+        <EditorIndex Value="15"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="18"/>
+        <CursorPos X="38" Y="34"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit1192>
+      <Unit1193>
+        <Filename Value="../../../../../../development/lazarus/lcl/forms.pp"/>
+        <UnitName Value="Forms"/>
+        <EditorIndex Value="14"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="20"/>
+        <CursorPos X="3" Y="40"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit1193>
+      <Unit1194>
+        <Filename Value="../Packages/AncestroComponents/forms/u_printreport.pas"/>
+        <UnitName Value="u_printreport"/>
+        <EditorIndex Value="12"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit1194>
+      <Unit1195>
+        <Filename Value="../../../../../../development/lazarus/lcl/lclclasses.pp"/>
+        <UnitName Value="LCLClasses"/>
+        <EditorIndex Value="6"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="6"/>
+        <CursorPos X="10" Y="26"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit1195>
     </Units>
-    <JumpHistory Count="25" HistoryIndex="24">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
+        <Caret Line="356" Column="63" TopLine="350"/>
       </Position1>
       <Position2>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1170" Column="9" TopLine="1156"/>
+        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
+        <Caret Line="354" Column="15" TopLine="334"/>
       </Position2>
       <Position3>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1178" Column="22" TopLine="1158"/>
+        <Filename Value="../Packages/AncestroComponents/forms/u_printreport.pas"/>
+        <Caret Line="111" Column="97" TopLine="104"/>
       </Position3>
       <Position4>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1169" Column="39" TopLine="1157"/>
+        <Filename Value="Graph/u_form_graph_paintbox.pas"/>
+        <Caret Line="21" Column="129" TopLine="10"/>
       </Position4>
       <Position5>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1171" Column="70" TopLine="1157"/>
+        <Filename Value="Graph/u_form_graph_paintbox.pas"/>
+        <Caret Line="80" Column="10" TopLine="47"/>
       </Position5>
       <Position6>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1170" Column="76" TopLine="1157"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="191" Column="148" TopLine="174"/>
       </Position6>
       <Position7>
-        <Filename Value="Gedcom/u_form_export_gedcom.pas"/>
-        <Caret Line="1481" Column="127" TopLine="1450"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="230" Column="81" TopLine="207"/>
       </Position7>
       <Position8>
-        <Filename Value="Gedcom/u_form_export_gedcom.pas"/>
-        <Caret Line="319" Column="53" TopLine="306"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="191" Column="141" TopLine="171"/>
       </Position8>
       <Position9>
-        <Filename Value="Gedcom/u_form_import_gedcom.pas"/>
-        <Caret Line="3453" Column="1" TopLine="3429"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="87" Column="6" TopLine="63"/>
       </Position9>
       <Position10>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1164" Column="23" TopLine="1158"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="600" Column="47" TopLine="567"/>
       </Position10>
       <Position11>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="480" Column="20" TopLine="476"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position11>
       <Position12>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="87" Column="16" TopLine="54"/>
       </Position12>
       <Position13>
-        <Filename Value="Web/u_ancestroweb.pas"/>
-        <Caret Line="14" Column="18" TopLine="1"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="119" Column="68" TopLine="87"/>
       </Position13>
       <Position14>
-        <Filename Value="Main/u_common_ancestro.pas"/>
-        <Caret Line="4" Column="49" TopLine="4"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="126" Column="16" TopLine="93"/>
       </Position14>
       <Position15>
-        <Filename Value="Main/u_common_ancestro.pas"/>
-        <Caret Line="35" Column="34" TopLine="7"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="154" Column="68" TopLine="121"/>
       </Position15>
       <Position16>
-        <Filename Value="Main/u_common_ancestro.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="249" Column="43" TopLine="216"/>
       </Position16>
       <Position17>
-        <Filename Value="Main/u_common_ancestro.pas"/>
-        <Caret Line="4" Column="49" TopLine="1"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="308" Column="63" TopLine="275"/>
       </Position17>
       <Position18>
-        <Filename Value="Main/u_common_ancestro.pas"/>
-        <Caret Line="8" Column="53" TopLine="1"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="499" Column="59" TopLine="466"/>
       </Position18>
       <Position19>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="532" Column="3" TopLine="505"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="600" Column="52" TopLine="567"/>
       </Position19>
       <Position20>
-        <Filename Value="../../../Lazarus/composants/lazbro/lazbro.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="87" Column="16" TopLine="67"/>
       </Position20>
       <Position21>
-        <Filename Value="../../../Lazarus/composants/lazbro/lazbro.pas"/>
-        <Caret Line="182" Column="66" TopLine="169"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="195" Column="1" TopLine="188"/>
       </Position21>
       <Position22>
-        <Filename Value="../../../Lazarus/composants/lazbro/lazbro.pas"/>
-        <Caret Line="451" Column="33" TopLine="438"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="308" Column="75" TopLine="288"/>
       </Position22>
       <Position23>
-        <Filename Value="../../../Lazarus/composants/lazbro/lazbro.pas"/>
-        <Caret Line="29" Column="1" TopLine="21"/>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="499" Column="71" TopLine="479"/>
       </Position23>
       <Position24>
-        <Filename Value="/usr/share/lazarus/1.2.6/fpmake.pp"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="Graph/u_form_graph_paintbox.pas"/>
+        <Caret Line="737" Column="25" TopLine="715"/>
       </Position24>
       <Position25>
-        <Filename Value="../../../Lazarus/composants/lazbro/lazbro.pas"/>
-        <Caret Line="460" Column="91" TopLine="440"/>
+        <Filename Value="Arbre/u_form_arbre_Hierarchique.pas"/>
+        <Caret Line="4" Column="49" TopLine="103"/>
       </Position25>
+      <Position26>
+        <Filename Value="Arbre/u_form_arbre_Hierarchique.pas"/>
+        <Caret Line="591" Column="3" TopLine="570"/>
+      </Position26>
+      <Position27>
+        <Filename Value="Individus/u_form_Actes_Liste.pas"/>
+        <Caret Line="15" Column="20" TopLine="1"/>
+      </Position27>
+      <Position28>
+        <Filename Value="Individus/u_form_Actes_Liste.pas"/>
+        <Caret Line="291" Column="166" TopLine="270"/>
+      </Position28>
+      <Position29>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="192" Column="121" TopLine="189"/>
+      </Position29>
+      <Position30>
+        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
+        <Caret Line="142" Column="9" TopLine="142"/>
+      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

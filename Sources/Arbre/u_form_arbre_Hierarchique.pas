@@ -49,6 +49,7 @@ type
     btOuvrir: TJvXPButton;
     cb_PaperSize: TComboBox;
     ch_portrait: TJvXPCheckbox;
+    ch_pdf: TJvXPCheckbox;
     cxSpinNiveaux: TFWSpinEdit;
     IATitle: TIATitle;
     Label2: TLabel;
@@ -588,7 +589,7 @@ procedure TFArbreHierarchique.btnPrintClick(Sender:TObject);
 begin
   // Matthieu
   ExtColumnFont.Size:=sp_Fonte.Value;
-  p_SetBtnPrint ( btnPrint, Label1.Caption, cb_PaperSize.Text, ch_portrait.Checked );
+  p_SetBtnPrint ( btnPrint, Label1.Caption, cb_PaperSize.Text, ch_portrait.Checked, Integer(ch_pdf.Checked), fPathBaseMedias );
 end;
 
 procedure TFArbreHierarchique.btOuvrirClick(Sender:TObject);
