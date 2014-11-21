@@ -221,7 +221,7 @@ type
     procedure cb_papersizeChange(Sender: TObject);
     procedure ch_photoClick(Sender: TObject);
     procedure ch_PortraitChange(Sender: TObject);
-    procedure cp_WidthsCloningControl(Sender: TObject);
+    procedure cp_WidthsCloningControl(const Sender : TExtClonedPanel; const ASource,ADestination : TControl);
     procedure FWRefreshClick(Sender: TObject);
     procedure pRienClick(Sender: TObject);
     procedure SuperFormCreate(Sender: TObject);
@@ -2433,7 +2433,7 @@ begin
 end;
 
 // setting links with controls created by component
-procedure TFListReport.cp_WidthsCloningControl(Sender: TObject);
+procedure TFListReport.cp_WidthsCloningControl(const Sender : TExtClonedPanel; const ASource,ADestination : TControl);
 var
   i, counter: integer;
 begin
@@ -2451,19 +2451,18 @@ begin
           if ((Sender as TControl).Tag = Counter) then
             with Columns[i] do
             begin
-              (Sender as TControl).Tag := i + 1;
-              if Sender is TLabel then
-                if DBTitle > '' then
-                  (Sender as TLabel).Caption := DBTitle
-                else
-                  (Sender as TLabel).Caption := rs_Column_mini + IntToStr((Sender as TControl).Tag);
+              (ADestination as TControl).Tag := i + 1;
+              if ADestination is TLabel then
+                if DBTitle > ''
+                 then (ADestination as TLabel).Caption := DBTitle
+                 else (ADestination as TLabel).Caption := rs_Column_mini + IntToStr((ADestination as TControl).Tag);
               Break;
             end;
           Inc(counter);
         end;
   end;
-  if Sender is TSpinEdit then
-    (Sender as TSpinEdit).MaxValue := se_Width.MaxValue;
+  if ADestination is TSpinEdit then
+    (ADestination as TSpinEdit).MaxValue := se_Width.MaxValue;
 end;
 
 procedure TFListReport.ch_photoClick(Sender: TObject);
