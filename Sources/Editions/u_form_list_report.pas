@@ -2439,7 +2439,7 @@ var
 begin
   if LFWPrint = nil then
     Exit;
-  with Sender as TControl do
+  with ADestination do
   begin
     Counter := Tag;
     Tag := Tag div 1000;
@@ -2448,14 +2448,14 @@ begin
       for i := 0 to Columns.Count - 1 do
         if fb_IsVisibleAPrintedColumn(Columns[i]) then
         begin
-          if ((Sender as TControl).Tag = Counter) then
+          if ADestination.Tag = Counter then
             with Columns[i] do
             begin
-              (ADestination as TControl).Tag := i + 1;
+              ADestination.Tag := i + 1;
               if ADestination is TLabel then
                 if DBTitle > ''
-                 then (ADestination as TLabel).Caption := DBTitle
-                 else (ADestination as TLabel).Caption := rs_Column_mini + IntToStr((ADestination as TControl).Tag);
+                 then ADestination.Caption := DBTitle
+                 else ADestination.Caption := rs_Column_mini + IntToStr(ADestination.Tag);
               Break;
             end;
           Inc(counter);
