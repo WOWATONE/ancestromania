@@ -146,10 +146,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="u_dm"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="13" Y="4"/>
+        <TopLine Value="2370"/>
+        <CursorPos X="36" Y="2390"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1>
       <Unit2>
@@ -655,11 +658,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_list_report"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="2434"/>
-        <CursorPos X="73" Y="2458"/>
+        <CursorPos X="158" Y="2465"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -718,10 +720,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_Form_Maj_Internet"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="29"/>
-        <CursorPos X="3" Y="42"/>
+        <TopLine Value="319"/>
+        <CursorPos X="1" Y="339"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit51>
       <Unit52>
@@ -1097,9 +1101,14 @@
         <ComponentName Value="FDeleteBranche"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="125"/>
-        <CursorPos X="52" Y="150"/>
+        <UnitName Value="u_Form_DeleteBranche"/>
+        <EditorIndex Value="4"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="93"/>
+        <CursorPos X="21" Y="126"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit96>
       <Unit97>
@@ -1512,7 +1521,7 @@
         <Filename Value="Editions/u_form_list_report.lfm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
         <TopLine Value="2658"/>
         <CursorPos X="35" Y="2681"/>
@@ -6153,9 +6162,13 @@
       </Unit836>
       <Unit837>
         <Filename Value="../../Extended/core/fonctions_system.pas"/>
-        <TopLine Value="63"/>
-        <CursorPos X="11" Y="79"/>
+        <UnitName Value="fonctions_system"/>
+        <EditorIndex Value="7"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="38"/>
+        <CursorPos X="35" Y="62"/>
         <UsageCount Value="12"/>
+        <Loaded Value="True"/>
       </Unit837>
       <Unit838>
         <Filename Value="../../ibx/runtime/IBSQLMonitor.pas"/>
@@ -8432,7 +8445,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="137" Y="19"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="25"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1188>
       <Unit1189>
@@ -8499,7 +8512,7 @@
       <Unit1196>
         <Filename Value="../../Extended/inicomp/u_scrollclones.pas"/>
         <UnitName Value="u_scrollclones"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
         <TopLine Value="46"/>
         <CursorPos X="1" Y="56"/>
@@ -8509,124 +8522,124 @@
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="2436" Column="117" TopLine="2434"/>
+        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
+        <Caret Line="20" Column="12" TopLine="1"/>
       </Position1>
       <Position2>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="2442" Column="93" TopLine="2414"/>
+        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
+        <Caret Line="22" Column="10" TopLine="1"/>
       </Position2>
       <Position3>
-        <Filename Value="Editions/u_form_list_report.lfm"/>
-        <Caret Line="3" Column="50" TopLine="1"/>
+        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
+        <Caret Line="33" Column="24" TopLine="1"/>
       </Position3>
       <Position4>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="39" Column="12" TopLine="13"/>
+        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
+        <Caret Line="95" Column="25" TopLine="62"/>
       </Position4>
       <Position5>
-        <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
-        <Caret Line="100" Column="20" TopLine="86"/>
+        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
+        <Caret Line="107" Column="18" TopLine="74"/>
       </Position5>
       <Position6>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="21" Column="24" TopLine="13"/>
+        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
+        <Caret Line="112" Column="18" TopLine="79"/>
       </Position6>
       <Position7>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="382" Column="34" TopLine="349"/>
+        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
+        <Caret Line="118" Column="18" TopLine="85"/>
       </Position7>
       <Position8>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="391" Column="24" TopLine="358"/>
+        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
+        <Caret Line="130" Column="18" TopLine="97"/>
       </Position8>
       <Position9>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="947" Column="30" TopLine="915"/>
+        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
+        <Caret Line="137" Column="70" TopLine="104"/>
       </Position9>
       <Position10>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="961" Column="30" TopLine="929"/>
+        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
+        <Caret Line="138" Column="86" TopLine="105"/>
       </Position10>
       <Position11>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="974" Column="30" TopLine="942"/>
+        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
+        <Caret Line="147" Column="18" TopLine="114"/>
       </Position11>
       <Position12>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="987" Column="30" TopLine="955"/>
+        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
+        <Caret Line="162" Column="39" TopLine="132"/>
       </Position12>
       <Position13>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="999" Column="30" TopLine="967"/>
+        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position13>
       <Position14>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="1140" Column="30" TopLine="1108"/>
+        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
+        <Caret Line="39" Column="12" TopLine="6"/>
       </Position14>
       <Position15>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="1171" Column="30" TopLine="1139"/>
+        <Filename Value="Main/u_dm.pas"/>
+        <Caret Line="47" Column="7" TopLine="42"/>
       </Position15>
       <Position16>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="1185" Column="30" TopLine="1153"/>
+        <Filename Value="Main/u_dm.pas"/>
+        <Caret Line="262" Column="33" TopLine="229"/>
       </Position16>
       <Position17>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="1199" Column="30" TopLine="1167"/>
+        <Filename Value="Main/u_dm.pas"/>
+        <Caret Line="228" Column="122" TopLine="208"/>
       </Position17>
       <Position18>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="1214" Column="30" TopLine="1182"/>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="42" Column="3" TopLine="29"/>
       </Position18>
       <Position19>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="1604" Column="20" TopLine="1571"/>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="340" Column="9" TopLine="319"/>
       </Position19>
       <Position20>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="1635" Column="19" TopLine="1602"/>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="344" Column="31" TopLine="319"/>
       </Position20>
       <Position21>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="1743" Column="87" TopLine="1710"/>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="340" Column="41" TopLine="321"/>
       </Position21>
       <Position22>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="1809" Column="60" TopLine="1776"/>
+        <Filename Value="Main/u_dm.pas"/>
+        <Caret Line="228" Column="14" TopLine="208"/>
       </Position22>
       <Position23>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="1825" Column="23" TopLine="1792"/>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="322" Column="1" TopLine="317"/>
       </Position23>
       <Position24>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="1910" Column="24" TopLine="1877"/>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="341" Column="1" TopLine="320"/>
       </Position24>
       <Position25>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="1918" Column="15" TopLine="1885"/>
+        <Filename Value="Main/u_dm.pas"/>
+        <Caret Line="230" Column="1" TopLine="222"/>
       </Position25>
       <Position26>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="1929" Column="23" TopLine="1896"/>
+        <Filename Value="Main/u_dm.pas"/>
+        <Caret Line="264" Column="36" TopLine="244"/>
       </Position26>
       <Position27>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="2282" Column="65" TopLine="2249"/>
+        <Filename Value="Main/u_dm.pas"/>
+        <Caret Line="229" Column="53" TopLine="208"/>
       </Position27>
       <Position28>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="2283" Column="65" TopLine="2250"/>
+        <Filename Value="Main/u_dm.pas"/>
+        <Caret Line="276" Column="16" TopLine="256"/>
       </Position28>
       <Position29>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="2284" Column="65" TopLine="2251"/>
+        <Filename Value="Main/u_dm.pas"/>
+        <Caret Line="1634" Column="27" TopLine="1614"/>
       </Position29>
       <Position30>
-        <Filename Value="Editions/u_form_list_report.pas"/>
-        <Caret Line="2457" Column="55" TopLine="2424"/>
+        <Filename Value="Main/u_dm.pas"/>
+        <Caret Line="2389" Column="105" TopLine="2370"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -8670,7 +8683,7 @@
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="Main/u_dm.pas"/>
-        <Line Value="1917"/>
+        <Line Value="1931"/>
       </Item1>
       <Item2>
         <Kind Value="bpkSource"/>

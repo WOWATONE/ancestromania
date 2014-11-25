@@ -225,7 +225,10 @@ var
 
 const
   sVersionBaseMini:string='5.180';
-  urlMajAuto='http://www.liberlog.fr/ancestroupdate/';
+  urlMajAutoMain = 'http://www.liberlog.fr/ancestroupdate/';
+  urlMajAuto:array[0..1] of string = (urlMajAutoMain,'http://www.liberlog.fr/ancestroupdate2/');
+
+function fs_geturlMajAuto : String;
 
 implementation
 
@@ -259,9 +262,20 @@ const CST_PARANCES = 'Parances.fdb';
 const
   urlSite:string='http://ancestrosphere.free.fr/forum/index.php';
 //  urlMajAuto:string='http://andre.langlet.free.fr/ancestroDD/';
-  urlInfosMaj=urlMajAuto+WebPage;
+  urlInfosMaj=urlMajAutoMain+WebPage;
   urlListeDiffusion:string='http://ancestrosphere.free.fr/forum/index.php';
   urlApiCoordonnees:string='http://maps.googleapis.com/maps/api/geocode/xml?';
+
+function fs_geturlMajAuto : String;
+var lpt_Packages : TPackageType;
+Begin
+  lpt_Packages := fpt_GetPackagesType;
+  case lpt_Packages of
+    ptDmg : Result:=urlMajAuto[1];
+    else
+      Result:=urlMajAutoMain;
+  End;
+end;
 
 procedure Tdm.DataModuleCreate(Sender:TObject);
 var
@@ -1617,7 +1631,7 @@ end;
 
 function Tdm.GetUrlMajAuto:string;
 begin
-  Result:=urlMajAuto;
+  Result:=fs_geturlMajAuto;
 end;
 
 function Tdm.GetUrlSite:string;
@@ -2372,8 +2386,8 @@ begin
          with NetUpdate do
           begin
             if FileExistsUTF8(IBBaseParam.DatabaseName) Then DeleteFileUTF8(IBBaseParam.DatabaseName);
-            doShowWorking(rs_Please_Wait+_CRLF+fs_RemplaceMsg(gs_Downloading_in_progress,[urlMajAuto+CST_PARANCES]));
-            URLBase:=urlMajAuto;
+            doShowWorking(rs_Please_Wait+_CRLF+fs_RemplaceMsg(gs_Downloading_in_progress,[urlMajAutoMain+CST_PARANCES]));
+            URLBase:=urlMajAutoMain;
             FileUpdate:=CST_PARANCES;
             UpdateDir:=ExtractFileDir(IBBaseParam.DatabaseName);
             Update;

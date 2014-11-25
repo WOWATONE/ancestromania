@@ -336,7 +336,7 @@ begin
    Begin
     UpdateDir:=sUpdateDir+'Updates' +DirectorySeparator;
     lat_ArchitectureType := fat_GetArchitectureType;
-    URLBase:=urlMajAuto;
+    URLBase:=fs_geturlMajAuto;
     FileIni:=fs_GetIniFileNameUpdate(lat_ArchitectureType,fpt_GetPackagesType,CST_PROCESSOR_TYPE,IniFilename);
     FilePage:= WebPage;
     FileUpdate:=fs_GetFileNameUpdate(lat_ArchitectureType,fpt_GetPackagesType,CST_PROCESSOR_TYPE,'Update_Ancestro');

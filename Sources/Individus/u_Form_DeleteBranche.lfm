@@ -15,7 +15,7 @@ object FDeleteBranche: TFDeleteBranche
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poMainFormCenter
-  LCLVersion = '1.2.0.3'
+  LCLVersion = '1.2.6.0'
   object Panel2: TPanel
     Left = 0
     Height = 58
@@ -880,9 +880,11 @@ object FDeleteBranche: TFDeleteBranche
   end
   object req: TIBSQL
     Database = dm.ibd_BASE
+    GenerateParamNames = False
+    UniqueParamNames = False
     ParamCheck = True
     Transaction = dm.IBT_BASE
     left = 259
     top = 19
   end
-end
+end
