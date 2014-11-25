@@ -1,0 +1,11 @@
+Compiling Ancestromania
+
+Need installing Extended and other packages. 
+Need to geting Extended and Ancestromania in tortoise hg.
+need some ccr lazarus components
+
+Here are the needed directories :
+Lazarus/ccr
+Lazarus/composants/lazbro
+Lazarus-Delphi/THtmlPort/
+Lazarus-Delphi/Ancestromania
