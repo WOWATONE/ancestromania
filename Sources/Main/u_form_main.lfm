@@ -6,7 +6,7 @@ inherited FMain: TFMain
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
   Caption = 'Ancestromania'
-  ClientHeight = 579
+  ClientHeight = 581
   ClientWidth = 882
   Color = clWindow
   Constraints.MinHeight = 600
@@ -387,26 +387,26 @@ inherited FMain: TFMain
   end
   object Panel3: TPanel[4]
     Left = 24
-    Height = 556
+    Height = 566
     Top = 0
     Width = 858
     Align = alClient
     BevelOuter = bvNone
     BorderWidth = 1
-    ClientHeight = 556
+    ClientHeight = 566
     ClientWidth = 858
     TabOrder = 0
     object panDock: TScrollBox
       Left = 1
-      Height = 554
+      Height = 564
       Top = 1
       Width = 856
       HorzScrollBar.Page = 325
       VertScrollBar.Page = 14
       Align = alClient
       AutoSize = True
-      ClientHeight = 552
-      ClientWidth = 854
+      ClientHeight = 560
+      ClientWidth = 852
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -426,8 +426,8 @@ inherited FMain: TFMain
   end
   object dxStatusBar: TStatusBar[5]
     Left = 0
-    Height = 23
-    Top = 556
+    Height = 15
+    Top = 566
     Width = 882
     Panels = <    
       item
@@ -446,7 +446,7 @@ inherited FMain: TFMain
   end
   object MenuLeft: TExtMenuToolBar[6]
     Left = 0
-    Height = 556
+    Height = 566
     Top = 0
     Width = 24
     Align = alLeft
@@ -711,8 +711,8 @@ inherited FMain: TFMain
         OnClick = mRechercheActesClick
       end
       object mAncetreSansParent: TMenuItem
-        Caption = 'Liste des ancêtres sans parents...'
-        Hint = 'Ancêtres sans parents.'
+        Caption = 'Liste des ancêtres sans parent...'
+        Hint = 'Ancêtres sans parent.'
         ImageIndex = 83
         OnClick = mAncetreSansParentClick
       end

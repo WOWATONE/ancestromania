@@ -129,7 +129,7 @@
         <PackageName Value="LCL"/>
       </Item28>
     </RequiredPackages>
-    <Units Count="1197">
+    <Units Count="1203">
       <Unit0>
         <Filename Value="Ancestromania.dpr"/>
         <IsPartOfProject Value="True"/>
@@ -146,13 +146,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="u_dm"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
         <TopLine Value="2370"/>
         <CursorPos X="36" Y="2390"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1>
       <Unit2>
@@ -162,10 +159,14 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_main"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="96" Y="2"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit2>
       <Unit3>
@@ -658,13 +659,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_list_report"/>
-        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="2434"/>
         <CursorPos X="158" Y="2465"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit46>
       <Unit47>
@@ -720,12 +718,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_Form_Maj_Internet"/>
-        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
         <TopLine Value="319"/>
         <CursorPos X="1" Y="339"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit51>
       <Unit52>
@@ -776,13 +772,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_param_reports"/>
-        <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="120"/>
         <CursorPos X="87" Y="125"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit56>
       <Unit57>
@@ -802,9 +795,14 @@
         <ComponentName Value="FPosthumes"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="u_Form_Posthumes"/>
+        <EditorIndex Value="10"/>
+        <WindowIndex Value="0"/>
         <TopLine Value="40"/>
         <CursorPos X="15" Y="57"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit58>
       <Unit59>
@@ -1102,13 +1100,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_Form_DeleteBranche"/>
-        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="93"/>
         <CursorPos X="21" Y="126"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit96>
       <Unit97>
@@ -1128,9 +1123,14 @@
         <ComponentName Value="FOrphelins"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="u_Form_Orphelins"/>
+        <EditorIndex Value="0"/>
+        <WindowIndex Value="0"/>
         <TopLine Value="29"/>
-        <CursorPos X="15" Y="56"/>
+        <CursorPos X="47" Y="31"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit98>
       <Unit99>
@@ -1348,9 +1348,13 @@
         <ComponentName Value="FRechercheAncetres"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="39"/>
-        <CursorPos X="89" Y="49"/>
+        <UnitName Value="u_Form_Recherche_Ancetres"/>
+        <EditorIndex Value="8"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="57"/>
+        <CursorPos X="1" Y="89"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit118>
       <Unit119>
@@ -1521,12 +1525,10 @@
         <Filename Value="Editions/u_form_list_report.lfm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
         <TopLine Value="2658"/>
         <CursorPos X="35" Y="2681"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit137>
       <Unit138>
@@ -1661,9 +1663,10 @@
       </Unit156>
       <Unit157>
         <Filename Value="Divers/u_Form_Recherche_Ancetres.lfm"/>
-        <TopLine Value="500"/>
-        <CursorPos X="27" Y="531"/>
-        <UsageCount Value="2"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="392"/>
+        <CursorPos X="1" Y="425"/>
+        <UsageCount Value="12"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit157>
       <Unit158>
@@ -1804,9 +1807,10 @@
         <Filename Value="Main/u_form_main.lfm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="1235"/>
-        <CursorPos X="8" Y="1289"/>
-        <UsageCount Value="3"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="681"/>
+        <CursorPos X="50" Y="714"/>
+        <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit177>
       <Unit178>
@@ -5968,22 +5972,18 @@
       <Unit807>
         <Filename Value="../../Extended/reportcomp/u_reports_components.pas"/>
         <UnitName Value="u_reports_components"/>
-        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
         <TopLine Value="86"/>
         <CursorPos X="20" Y="100"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit807>
       <Unit808>
         <Filename Value="../../Extended/reportcomp/u_reports_rlcomponents.pas"/>
         <UnitName Value="u_reports_rlcomponents"/>
-        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="322"/>
         <CursorPos X="15" Y="334"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit808>
       <Unit809>
         <Filename Value="../../Extended/reportcomp/fonctions_reports.pas"/>
@@ -6163,12 +6163,10 @@
       <Unit837>
         <Filename Value="../../Extended/core/fonctions_system.pas"/>
         <UnitName Value="fonctions_system"/>
-        <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
         <TopLine Value="38"/>
         <CursorPos X="35" Y="62"/>
         <UsageCount Value="12"/>
-        <Loaded Value="True"/>
       </Unit837>
       <Unit838>
         <Filename Value="../../ibx/runtime/IBSQLMonitor.pas"/>
@@ -6805,9 +6803,13 @@
       </Unit938>
       <Unit939>
         <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
-        <TopLine Value="68"/>
-        <CursorPos X="13" Y="98"/>
-        <UsageCount Value="9"/>
+        <UnitName Value="u_extdbgrid"/>
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="695"/>
+        <CursorPos X="1" Y="768"/>
+        <UsageCount Value="14"/>
+        <Loaded Value="True"/>
       </Unit939>
       <Unit940>
         <Filename Value="../svn/Divers/u_Form_Recherche_Ancetres.pas"/>
@@ -8115,7 +8117,7 @@
         <UnitName Value="ALFcnString"/>
         <TopLine Value="925"/>
         <CursorPos X="50" Y="949"/>
-        <UsageCount Value="33"/>
+        <UsageCount Value="37"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1147>
@@ -8445,7 +8447,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="137" Y="19"/>
-        <UsageCount Value="25"/>
+        <UsageCount Value="34"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1188>
       <Unit1189>
@@ -8512,135 +8514,183 @@
       <Unit1196>
         <Filename Value="../../Extended/inicomp/u_scrollclones.pas"/>
         <UnitName Value="u_scrollclones"/>
-        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
         <TopLine Value="46"/>
         <CursorPos X="1" Y="56"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit1196>
+      <Unit1197>
+        <Filename Value="/usr/share/lazarus/1.2.6/lcl/grids.pas"/>
+        <UnitName Value="Grids"/>
+        <EditorIndex Value="7"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="11354"/>
+        <CursorPos X="3" Y="11359"/>
+        <UsageCount Value="13"/>
+        <Loaded Value="True"/>
+      </Unit1197>
+      <Unit1198>
+        <Filename Value="/usr/share/lazarus/1.2.6/lcl/graphics.pp"/>
+        <UnitName Value="Graphics"/>
+        <EditorIndex Value="6"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1163"/>
+        <CursorPos X="14" Y="1222"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit1198>
+      <Unit1199>
+        <Filename Value="/usr/share/fpcsrc/2.6.4/packages/fcl-db/src/base/db.pas"/>
+        <UnitName Value="db"/>
+        <EditorIndex Value="4"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="92"/>
+        <CursorPos X="37" Y="112"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit1199>
+      <Unit1200>
+        <Filename Value="/usr/share/fpcsrc/2.6.4/packages/fcl-db/src/base/fields.inc"/>
+        <EditorIndex Value="5"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="3005"/>
+        <CursorPos X="3" Y="3008"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit1200>
+      <Unit1201>
+        <Filename Value="/usr/share/lazarus/1.2.6/lcl/dbctrls.pp"/>
+        <UnitName Value="DbCtrls"/>
+        <EditorIndex Value="2"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="834"/>
+        <CursorPos X="15" Y="853"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit1201>
+      <Unit1202>
+        <Filename Value="/usr/share/lazarus/1.2.6/lcl/include/dbmemo.inc"/>
+        <EditorIndex Value="3"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="202"/>
+        <CursorPos X="3" Y="230"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit1202>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
-        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
-        <Caret Line="20" Column="12" TopLine="1"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="727" Column="21" TopLine="725"/>
       </Position1>
       <Position2>
-        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
-        <Caret Line="22" Column="10" TopLine="1"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="865" Column="17" TopLine="833"/>
       </Position2>
       <Position3>
-        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
-        <Caret Line="33" Column="24" TopLine="1"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="864" Column="1" TopLine="833"/>
       </Position3>
       <Position4>
-        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
-        <Caret Line="95" Column="25" TopLine="62"/>
+        <Filename Value="Divers/u_Form_Recherche_Ancetres.pas"/>
+        <Caret Line="43" Column="76" TopLine="39"/>
       </Position4>
       <Position5>
-        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
-        <Caret Line="107" Column="18" TopLine="74"/>
+        <Filename Value="Divers/u_Form_Recherche_Ancetres.pas"/>
+        <Caret Line="81" Column="29" TopLine="49"/>
       </Position5>
       <Position6>
-        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
-        <Caret Line="112" Column="18" TopLine="79"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="753" Column="21" TopLine="741"/>
       </Position6>
       <Position7>
-        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
-        <Caret Line="118" Column="18" TopLine="85"/>
+        <Filename Value="/usr/share/fpcsrc/2.6.4/packages/fcl-db/src/base/db.pas"/>
+        <Caret Line="893" Column="14" TopLine="875"/>
       </Position7>
       <Position8>
-        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
-        <Caret Line="130" Column="18" TopLine="97"/>
+        <Filename Value="/usr/share/fpcsrc/2.6.4/packages/fcl-db/src/base/db.pas"/>
+        <Caret Line="857" Column="3" TopLine="836"/>
       </Position8>
       <Position9>
-        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
-        <Caret Line="137" Column="70" TopLine="104"/>
+        <Filename Value="/usr/share/lazarus/1.2.6/lcl/dbctrls.pp"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position9>
       <Position10>
-        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
-        <Caret Line="138" Column="86" TopLine="105"/>
+        <Filename Value="/usr/share/lazarus/1.2.6/lcl/include/dbmemo.inc"/>
+        <Caret Line="71" Column="18" TopLine="62"/>
       </Position10>
       <Position11>
-        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
-        <Caret Line="147" Column="18" TopLine="114"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="770" Column="14" TopLine="769"/>
       </Position11>
       <Position12>
-        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
-        <Caret Line="162" Column="39" TopLine="132"/>
+        <Filename Value="Divers/u_Form_Recherche_Ancetres.pas"/>
+        <Caret Line="62" Column="123" TopLine="49"/>
       </Position12>
       <Position13>
-        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="761" Column="48" TopLine="751"/>
       </Position13>
       <Position14>
-        <Filename Value="Individus/u_Form_DeleteBranche.pas"/>
-        <Caret Line="39" Column="12" TopLine="6"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="86" Column="27" TopLine="83"/>
       </Position14>
       <Position15>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="47" Column="7" TopLine="42"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="209" Column="120" TopLine="177"/>
       </Position15>
       <Position16>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="262" Column="33" TopLine="229"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="582" Column="30" TopLine="549"/>
       </Position16>
       <Position17>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="228" Column="122" TopLine="208"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="81" Column="1" TopLine="81"/>
       </Position17>
       <Position18>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="42" Column="3" TopLine="29"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="86" Column="69" TopLine="78"/>
       </Position18>
       <Position19>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="340" Column="9" TopLine="319"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="727" Column="22" TopLine="699"/>
       </Position19>
       <Position20>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="344" Column="31" TopLine="319"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="865" Column="39" TopLine="833"/>
       </Position20>
       <Position21>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="340" Column="41" TopLine="321"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="585" Column="52" TopLine="563"/>
       </Position21>
       <Position22>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="228" Column="14" TopLine="208"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="51" Column="21" TopLine="42"/>
       </Position22>
       <Position23>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="322" Column="1" TopLine="317"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="82" Column="56" TopLine="49"/>
       </Position23>
       <Position24>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="341" Column="1" TopLine="320"/>
+        <Filename Value="../../Extended/imgcomp/u_extdbgrid.pas"/>
+        <Caret Line="86" Column="75" TopLine="53"/>
       </Position24>
       <Position25>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="230" Column="1" TopLine="222"/>
+        <Filename Value="Divers/u_Form_Recherche_Ancetres.pas"/>
+        <Caret Line="183" Column="136" TopLine="161"/>
       </Position25>
       <Position26>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="264" Column="36" TopLine="244"/>
+        <Filename Value="Divers/u_Form_Recherche_Ancetres.pas"/>
+        <Caret Line="142" Column="1" TopLine="125"/>
       </Position26>
       <Position27>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="229" Column="53" TopLine="208"/>
+        <Filename Value="Divers/u_Form_Recherche_Ancetres.pas"/>
+        <Caret Line="161" Column="8" TopLine="124"/>
       </Position27>
       <Position28>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="276" Column="16" TopLine="256"/>
+        <Filename Value="Divers/u_Form_Recherche_Ancetres.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position28>
-      <Position29>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="1634" Column="27" TopLine="1614"/>
-      </Position29>
-      <Position30>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="2389" Column="105" TopLine="2370"/>
-      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -8660,7 +8710,6 @@
     </Parsing>
     <Linking>
       <Debugging>
-        <GenerateDebugInfo Value="False"/>
         <UseValgrind Value="True"/>
       </Debugging>
       <LinkSmart Value="True"/>

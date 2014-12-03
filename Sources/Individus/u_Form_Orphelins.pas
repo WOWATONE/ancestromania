@@ -32,7 +32,8 @@ uses
   jpeg, TPanelUnit, Windows,
 {$ELSE}
 {$ENDIF}
-  U_FormAdapt,Forms,SysUtils,Dialogs,Menus,DB,IBCustomDataSet,IBQuery,
+  U_FormAdapt,Forms,SysUtils,Dialogs,Menus,
+  DB,IBCustomDataSet,IBQuery,
   StdCtrls,Controls,ExtCtrls,Classes,
   u_buttons_appli,
   U_ExtDBGrid, U_OnFormInfoIni,PrintersDlgs,
@@ -308,4 +309,4 @@ begin
 end;
 
 end.
-
+

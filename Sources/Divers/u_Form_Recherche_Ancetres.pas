@@ -158,6 +158,7 @@ begin
    end;
 end;
 
+
 procedure TFRechercheAncetres.SuperFormClose(Sender:TObject;
   var Action:TCloseAction);
 begin
