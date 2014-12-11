@@ -16,6 +16,7 @@ uses
   fonctions_system,
   {$ENDIF}
   fonctions_file,
+  fonctions_string,
   {$IFDEF VERSIONS}
   fonctions_version,
   {$ENDIF}
@@ -165,8 +166,8 @@ function  fs_Create_DIV             ( const as_Name        : String      ;
                                       const Is_Visible  : Boolean   = False ):String ;
 function  fs_Create_Text            ( const as_Text        : String      ;
                                       const as_Option      : String = '' ):String ;
-function  fs_Format_Lines           ( const as_Text        : String      ;
-                                      const ReplaceWith : String = CST_HTML_BR ):String ;
+function  fs_html_Lines             ( const as_Text        : String      ;
+                                      const as_endofline: String =CST_ENDOFLINE):String ;
 
 function fs_createHead (const as_Describe, as_Keywords, as_title, as_language : String): String;
 procedure p_CreateHTMLFile ( const at_TabSheets : TAHTMLULTabSheet ;
@@ -210,7 +211,7 @@ var  gs_html_source_file : String = 'Files' + DirectorySeparator;
 
 implementation
 
-uses Dialogs,fonctions_languages, fonctions_string,
+uses Dialogs,fonctions_languages,
      unite_html_resources, StrUtils;
 
 
@@ -408,11 +409,11 @@ Begin
      Else as_Text:=copy ( as_Text, 1, ai_pos1 - 1 )+fs_Create_simple_Link(copy(as_Text,ai_pos1,ai_pos2-ai_pos1+1), CST_HTML_TARGET_BLANK)+copy ( as_Text, ai_pos2 +1, Length ( as_Text ) - ai_pos2 );
 End;
 
-function  fs_Format_Lines       ( const as_Text        : String      ;
-                                  const ReplaceWith : String = CST_HTML_BR ):String ;
+function  fs_html_Lines       ( const as_Text        : String      ;
+                                const as_endofline: String =CST_ENDOFLINE):String ;
 var li_Pos1, li_Pos2 : Longint;
 begin
-  Result := StringReplace ( as_Text, CST_ENDOFLINE, CST_HTML_BR+CST_ENDOFLINE,[rfReplaceAll] );
+  Result := StringReplace ( as_Text, CST_ENDOFLINE, CST_HTML_BR+as_endofline,[rfReplaceAll] );
   if  ( pos ( CST_HTML_A_BEGIN, Result ) = 0 )
   and ( pos ( CST_HTML_A_BEGIN_LOWER, Result ) = 0 ) Then
    begin
@@ -644,10 +645,10 @@ Begin
       AppendStr(ls_Text5, fs_CreateElementWithId(CST_HTML_DIV, 'title', CST_HTML_CLASS_EQUAL ) + CST_HTML_H1_BEGIN + as_title + CST_HTML_H1_END + CST_HTML_DIV_End);
     if assigned ( at_TabSheets ) Then
       AppendStr(ls_Text5, CST_ENDOFLINE + fs_CreateULTabsheets ( at_TabSheets, as_Subdir ) + CST_ENDOFLINE );
-    astl_Destination.Text := ls_Text5 + ls_Text3
-                          +  CST_ENDOFLINE + astl_Destination.Text
-                          +  CST_ENDOFLINE + fs_Format_Lines(as_EndPage)
-                          +  CST_ENDOFLINE + ls_Text4;
+    astl_Destination.Insert(0, ls_Text5 + ls_Text3
+                          +  CST_ENDOFLINE );
+    astl_Destination.Add(  CST_ENDOFLINE + fs_html_Lines(as_EndPage)
+                          +  CST_ENDOFLINE + ls_Text4);
   finally
     lstl_HTML.Destroy;
   end;
