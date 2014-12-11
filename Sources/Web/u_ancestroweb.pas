@@ -1669,7 +1669,7 @@ begin
                  if ch_ancestors.Checked
                    Then li_generation := fi_CreateHTMLTree(IBQ_Tree, lstl_HTMLTree2, StrToInt ( s_info ),not cb_treeWithoutJavascript.Checked)
                    Else li_generation := fi_CreateHTMLTree(IBQ_Tree, lstl_HTMLTree2, StrToInt ( s_info ),not cb_treeWithoutJavascript.Checked,True,True,False,IBQ_TQ_NUM_SOSA,False);
-                 lstl_HTMLTree2.Insert(0, fs_Format_Lines(me_HeadTree.Lines.Text));
+                 lstl_HTMLTree2.Insert(0, fs_html_Lines(me_HeadTree.Lines.Text));
                  lstl_HTMLTree2.Insert(0,lstl_HTMLTree.Text);
                  lstl_HTMLTree2.Add(CST_HTML_DIV_END);
                  p_CreateAHtmlFile(lstl_HTMLTree2, CST_SUBDIR_HTML_TREE, me_Description.Lines.Text,
@@ -1695,7 +1695,7 @@ begin
           if ch_ancestors.Checked
             Then li_generation := fi_CreateHTMLTree(IBQ_Tree, lstl_HTMLTree, gi_CleFiche,not cb_treeWithoutJavascript.Checked)
             Else li_generation := fi_CreateHTMLTree(IBQ_Tree, lstl_HTMLTree, gi_CleFiche,not cb_treeWithoutJavascript.Checked,True,True,False,IBQ_TQ_NUM_SOSA,False);
-          lstl_HTMLTree.Insert(0, fs_Format_Lines(me_HeadTree.Lines.Text));
+          lstl_HTMLTree.Insert(0, fs_html_Lines(me_HeadTree.Lines.Text));
           p_CreateAHtmlFile(lstl_HTMLTree, CST_SUBDIR_HTML_TREE, me_Description.Lines.Text,
             ( gs_AnceSTROWEB_FamilyTree ), gs_AnceSTROWEB_FullTree, fs_GetTitleTree ( gs_AnceSTROWEB_Ancestry, li_generation), gs_LinkGedcom, '../');
           // saving the page
@@ -1824,7 +1824,7 @@ begin
   lstl_HTMLHome := TStringlistUTF8.Create;
   try
     lstl_HTMLHome.Text := CST_HTML_CENTER_BEGIN + '<' + CST_HTML_Paragraph +
-      CST_HTML_ID_EQUAL + '"head">' + fs_Format_Lines(
+      CST_HTML_ID_EQUAL + '"head">' + fs_html_Lines(
       me_Description.Text) + CST_HTML_Paragraph_END;
 
     ls_Images := fs_AddImages(ImageEdit1.FileName, ImageEdit2.FileName,
@@ -3173,7 +3173,7 @@ begin
     CST_SUBDIR_HTML_FILES + CST_HTML_DIR_SEPARATOR, CST_HTML_SUBMENU)
     +CST_HTML_DIV_BEGIN+
     CST_HTML_CENTER_BEGIN + '<' + CST_HTML_Paragraph +
-    CST_HTML_ID_EQUAL + '"head">' + fs_Format_Lines(
+    CST_HTML_ID_EQUAL + '"head">' + fs_html_Lines(
     me_FilesHead.Text) + CST_HTML_Paragraph_END;
   lstl_HTMLPersons.Add(CST_HTML_CENTER_END);
   p_CreateKeyWords;
