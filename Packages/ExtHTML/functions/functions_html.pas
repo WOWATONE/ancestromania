@@ -167,7 +167,7 @@ function  fs_Create_DIV             ( const as_Name        : String      ;
 function  fs_Create_Text            ( const as_Text        : String      ;
                                       const as_Option      : String = '' ):String ;
 function  fs_html_Lines             ( const as_Text        : String      ;
-                                      const as_endofline: String =CST_ENDOFLINE):String ;
+                                      const as_endoflinereplacing: String =CST_ENDOFLINE):String ;
 
 function fs_createHead (const as_Describe, as_Keywords, as_title, as_language : String): String;
 procedure p_CreateHTMLFile ( const at_TabSheets : TAHTMLULTabSheet ;
@@ -410,10 +410,10 @@ Begin
 End;
 
 function  fs_html_Lines       ( const as_Text        : String      ;
-                                const as_endofline: String =CST_ENDOFLINE):String ;
+                                const as_endoflinereplacing: String =CST_ENDOFLINE):String ;
 var li_Pos1, li_Pos2 : Longint;
 begin
-  Result := StringReplace ( as_Text, CST_ENDOFLINE, CST_HTML_BR+as_endofline,[rfReplaceAll] );
+  Result := StringReplace ( as_Text, CST_ENDOFLINE, CST_HTML_BR+as_endoflinereplacing,[rfReplaceAll] );
   if  ( pos ( CST_HTML_A_BEGIN, Result ) = 0 )
   and ( pos ( CST_HTML_A_BEGIN_LOWER, Result ) = 0 ) Then
    begin
