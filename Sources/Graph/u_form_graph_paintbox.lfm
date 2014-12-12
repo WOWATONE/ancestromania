@@ -276,7 +276,7 @@ inherited FGraphPaintBox: TFGraphPaintBox
     object TrackBar: TScrollBar
       Cursor = crHandPoint
       Left = 6
-      Height = 16
+      Height = 18
       Top = 44
       Width = 230
       PageSize = 0
@@ -495,9 +495,9 @@ inherited FGraphPaintBox: TFGraphPaintBox
       TabOrder = 6
       object cbInversion: TCheckBox
         Left = 91
-        Height = 21
+        Height = 20
         Top = 6
-        Width = 78
+        Width = 77
         Caption = 'Inversion'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clWindowText
@@ -509,9 +509,9 @@ inherited FGraphPaintBox: TFGraphPaintBox
       end
       object sbDesc: TCheckBox
         Left = 8
-        Height = 21
+        Height = 20
         Top = 6
-        Width = 104
+        Width = 103
         Caption = 'Descendance'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clWindowText
@@ -524,7 +524,7 @@ inherited FGraphPaintBox: TFGraphPaintBox
       object edNbGeneration: TFWSpinEdit
         Cursor = crHandPoint
         Left = 91
-        Height = 23
+        Height = 25
         Top = 31
         Width = 37
         OnChange = edNbGenerationChange
@@ -547,7 +547,7 @@ inherited FGraphPaintBox: TFGraphPaintBox
       end
     end
     object Panel2: TPanel
-      Left = 363
+      Left = 422
       Height = 53
       Top = 1
       Width = 170
@@ -617,11 +617,31 @@ inherited FGraphPaintBox: TFGraphPaintBox
         Left = 0
         Height = 21
         Top = 32
-        Width = 65
+        Width = 64
         Align = alLeft
         Caption = 'Portrait'
         TabOrder = 2
       end
+    end
+    object btnPrintPicture: TFWPrintPicture
+      Cursor = crHandPoint
+      Left = 363
+      Height = 53
+      Hint = 'Impression'
+      Top = 1
+      Width = 59
+      Caption = 'Pleine page'
+      TabOrder = 7
+      Layout = blGlyphTop
+      Align = alLeft
+      Font.Color = clHighlightText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      Visible = False
+      OnClick = btnPrintPictureClick
     end
   end
   object Splitter1: TSplitter[3]

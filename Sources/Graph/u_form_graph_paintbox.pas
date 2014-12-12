@@ -40,6 +40,7 @@ uses
   u_form_graph_config_hierarchie, u_ancestrolink,
   u_ancestroarc, u_ancestrotree, u_ancestroviewer,
   u_form_graph_config_roue,u_form_graph_config_liens,
+  u_reports_components,
   u_common_graph_type, FPCanvas, types;
 
 type
@@ -54,6 +55,7 @@ type
     btnCfgGraph: TFWConfig;
     BtnGraphOnTopLeft: TFWInit;
     btnPrint: TFWPrint;
+    btnPrintPicture: TFWPrintPicture;
     btnRefresh: TFWRefresh;
     btnSelectIndiGraph: TFWOK;
     cbInversion: TCheckBox;
@@ -105,6 +107,7 @@ type
     N2:TMenuItem;
     mNgene:TMenuItem;
     enfants1:TMenuItem;
+    procedure btnPrintPictureClick(Sender: TObject);
     procedure cb_papersizeChange(Sender: TObject);
     procedure ch_PortraitClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -200,6 +203,8 @@ type
     procedure LoadDescendance;
     function LoadLinks: boolean;
     function LoadTree: boolean;
+    procedure p_EndPrinting;
+    procedure p_PreparePrinting;
     procedure p_PrintAll;
     procedure p_printAPage;
     procedure p_PrintClick(const ab_printAll: Boolean=True);
@@ -229,7 +234,6 @@ uses
   IBDatabase,
   u_common_graph_const,
   u_common_ancestro_functions,
-  u_reports_components,
   u_printreport,
   u_common_ancestro,
   fonctions_dialogs,
@@ -425,6 +429,16 @@ begin
   MajApresPrinterSetup;
 end;
 
+procedure TFGraphPaintBox.btnPrintPictureClick(Sender: TObject);
+begin
+  if PaintArc.ShowPrintRects Then
+   Begin
+    PaintArc.ShowPrintRects:=False;
+    PaintArc.Repaint;
+   end;
+  btnPrintPicture.Picture.Bitmap.Canvas.Assign(PaintArc.Canvas);
+end;
+
 procedure TFGraphPaintBox.ch_PortraitClick(Sender: TObject);
 begin
   p_SetPageSetup(PrintGraph.rp.PageSetup,ch_Portrait.Checked);
@@ -536,6 +550,7 @@ begin
   end
   else if fTypeGraph='ROUE' then
   begin
+    PaintArc.ShowPrintRects:=False;
     fgraph:=PaintArc;
     initgraph;
     FData := GraphArcData;
@@ -592,6 +607,7 @@ begin
     lNaisDec.Left:=lNaisDec.Left-deplacement;
   end;
 
+  btnPrintPicture.Visible:=fgraph=PaintArc;
   fgraph.Show;
   fMini .Show;
   Viewer.Data:=FData;
@@ -721,7 +737,7 @@ procedure TFGraphPaintBox.btnPrintClick(Sender:TObject);
 begin
   p_PrintClick ( True );
 end;
-procedure TFGraphPaintBox.p_PrintClick(const ab_printAll : Boolean = True);
+procedure TFGraphPaintBox.p_PreparePrinting;
 begin
   case rg_sortie.ItemIndex of
     1 : sd_PDFRTF.DefaultExt:='.pdf';
@@ -741,13 +757,23 @@ begin
    end;
   p_SetPageSetup ( PrintGraph.rp.PageSetup, cb_papersize.Text, ch_Portrait.Checked );
 
-  if ab_printAll
-   Then p_PrintAll
-   Else p_printAPage;
+end;
 
+procedure TFGraphPaintBox.p_EndPrinting;
+begin
   //if not printed open file
   if rg_sortie.ItemIndex > 0 Then
    p_OpenFileOrDirectory(sd_PDFRTF.FileName);
+
+end;
+
+procedure TFGraphPaintBox.p_PrintClick(const ab_printAll : Boolean = True);
+begin
+  p_PreparePrinting;
+  if ab_printAll
+   Then p_PrintAll
+   Else p_printAPage;
+  p_EndPrinting;
 end;
 
 procedure TFGraphPaintBox.p_printAPage;

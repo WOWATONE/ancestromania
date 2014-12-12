@@ -127,6 +127,8 @@ type
    FSaveIni, FLoadIni : Boolean;
    FInifile : TIniFile;
    FLineHeight: Byte;
+   FShowPrintRects:Boolean;
+
    procedure SetLoadFromIni(const AValue: Boolean);
    procedure SetSaveToIni(const AValue: Boolean);
   protected
@@ -181,6 +183,7 @@ type
     property FullRect : TFloatRect read FFullRect;
     property ReCalculate     : Boolean read FReCalculate     write FReCalculate;
   published
+   property ShowPrintRects: Boolean read FShowPrintRects write FShowPrintRects default True;
     property MargeLeft: single read FMargeLeft write FMargeLeft default GRAPH_DEFAULT_MARGE_LEFT;
     property MargeTop: single read FMargeTop write FMargeTop default GRAPH_DEFAULT_MARGE_TOP;
     property LineHeight: Byte read FLineHeight write FLineHeight default GRAPH_DEFAULT_LINE_HEIGHT;
@@ -1145,25 +1148,27 @@ begin
     p_SetAndFillBitmap ( ABitmap, Canvas.Width, Canvas.Height, Self.Color );
     Brush.Color:=Color;
     FillRect(0,0,Width,Height);
-
-    //on dessine les traits des feuilles de papier
-    if (fTPXV.Count>1)and(fTPYV.Count>1) then
-    begin
-      Pen.Color:=FColorView;
-      Pen.Width:=1;
-      Pen.Style:=psDot;
-
-      for n:=0 to fTPXV.count-1 do
+    if FShowPrintRects Then
+     Begin
+      //on dessine les traits des feuilles de papier
+      if (fTPXV.Count>1)and(fTPYV.Count>1) then
       begin
-        MoveTo(fTPXV[n]+FDecalX,fTPYV[0]+FDecalY);
-        LineTo(fTPXV[n]+FDecalX,fTPYV.Last+FDecalY);
+        Pen.Color:=FColorView;
+        Pen.Width:=1;
+        Pen.Style:=psDot;
+
+        for n:=0 to fTPXV.count-1 do
+        begin
+          MoveTo(fTPXV[n]+FDecalX,fTPYV[0]+FDecalY);
+          LineTo(fTPXV[n]+FDecalX,fTPYV.Last+FDecalY);
+        end;
+        for n:=0 to fTPYV.count-1 do
+        begin
+          MoveTo(fTPXV[0]+FDecalX,fTPYV[n]+FDecalY);
+          LineTo(fTPXV.last+FDecalX,fTPYV[n]+FDecalY);
+        end;
       end;
-      for n:=0 to fTPYV.count-1 do
-      begin
-        MoveTo(fTPXV[0]+FDecalX,fTPYV[n]+FDecalY);
-        LineTo(fTPXV.last+FDecalX,fTPYV[n]+FDecalY);
-      end;
-    end;
+     end;
 
     PaintGraph(ABitmap.Canvas,DecalX,DecalY);
     Canvas.Draw(0,0,ABitmap);
@@ -1241,6 +1246,7 @@ constructor TGraphComponent.create(AOwner: TComponent);
 begin
   inherited create(AOwner);
   FReCalculate:=False;
+  FShowPrintRects:=True;
   FSaveIni:=False;
   FLoadIni:=False;
 //  fMouseMode:=mmMoveOrSelect;
