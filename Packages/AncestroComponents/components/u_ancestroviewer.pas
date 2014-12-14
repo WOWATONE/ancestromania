@@ -204,11 +204,11 @@ type
   TGraphViewer=class ( TComponent )
 
   private
-    FCoeffEcran:Single;
+    FScreenRatio:Single;
     FGraphData: TGraphData;
     fGraphMiniature ,
     fGraph          :TGraphComponent;
-    fZoom:integer;
+    fZoom:Word;
     fDecalY:integer;
     fDecalX:integer;
     fOnZoomChanged:TNotifyEvent;
@@ -229,7 +229,7 @@ type
 
     FActivePersonKey : Integer;
 
-    procedure SetZoom(const Value:integer);
+    procedure SetZoom(const Value:Word);
     procedure SetGraph(const AValue:TGraphComponent);
     procedure SetGraphMiniature(const Value:TGraphComponent);
     procedure SetGraphData ( const GraphData : TGraphData );
@@ -280,13 +280,13 @@ type
     property ActivePersonKey : Integer read FActivePersonKey write FActivePersonKey default -1;
     //les ligne en pointill?s
     property PrintCanvas : TRLGraphicSurface read FPrintCanvas write FPrintCanvas;
-    property ScreenRatio : Single read FCoeffEcran;
+    property ScreenRatio : Single read FScreenRatio write FScreenRatio;
    published
     //Le chantier
 //    property Chantier:TGraphComponent read fChantier write SetChantier;
 
     //Diverses propriétés du viewer
-    property Zoom:integer read fZoom write SetZoom default GRAPH_DEFAULT_PAGE_ZOOM;
+    property Zoom:Word read fZoom write SetZoom default GRAPH_DEFAULT_PAGE_ZOOM;
     property IncrementZoom:integer read fIncrementZoom write fIncrementZoom default GRAPH_DEFAULT_PAGE_ZOOM_INC;
     property Font:TFont read fFont write fFont;
 
@@ -419,7 +419,7 @@ begin
   fTPYC:=TSingleList.create;
   fTPXV:=TIntegerList.create;
   fTPYV:=TIntegerList.create;
-  FCoeffEcran:=Screen.PixelsPerInch/2540;
+  FScreenRatio:=Screen.PixelsPerInch/2540;
 
   //objects init
   FGraphData      :=nil;
@@ -456,7 +456,7 @@ begin
 end;
 
 
-procedure TGraphViewer.SetZoom(const Value:integer);
+procedure TGraphViewer.SetZoom(const Value:Word);
 begin
   //la valeur du nouveau Zoom est-elle correcte ?
   if (Value>=_ZOOM_MIN)and(Value<=_ZOOM_MAX) then
@@ -489,8 +489,8 @@ begin
 
         if (wc>0)and(hc>0) then
         begin
-          fZoomW:=fGraph.Width/wc/FCoeffEcran;
-          fZoomH:=fGraph.Height/hc/FCoeffEcran;
+          fZoomW:=fGraph.Width/wc/FScreenRatio;
+          fZoomH:=fGraph.Height/hc/FScreenRatio;
 
           if fZoomW>fZoomH then
             fZoom:=trunc(fZoomH-1)
@@ -524,8 +524,8 @@ var
   n:integer;
 begin
   if AZoom > 0
-   Then e:=AZoom*FCoeffEcran
-   Else e:=fZoom*FCoeffEcran;
+   Then e:=AZoom*FScreenRatio
+   Else e:=fZoom*FScreenRatio;
   FGraph.InitGraph(e);
 
   for n:=0 to fTPXC.count-1 do
@@ -729,7 +729,7 @@ var
   e:single;
 begin
 //  e:=(fZoom*72)/(100*25.4);
-  e:=fZoom*FCoeffEcran;
+  e:=fZoom*FScreenRatio;
   xc:=(xv-fDecalX)/e;
   yc:=(yv-fDecalY)/e;
 end;
@@ -739,7 +739,7 @@ var
   e:single;
 begin
 //  e:=(fZoom*72)/(100*25.4);
-  e:=fZoom*FCoeffEcran;
+  e:=fZoom*FScreenRatio;
   xv:=trunc(xc*e);
   yv:=trunc(yc*e);
 end;
@@ -762,7 +762,7 @@ begin
       pcy:=(R.Bottom+R.Top)/2;
 
       //transformation des coord. pour le viewer
-      //FGraph.InitGraph(fZoom*FCoeffEcran);
+      //FGraph.InitGraph(fZoom*FScreenRatio);
       CoordChantier_To_CoordViewer(pcx,pcy,x,y);
 
       //Calcul des d?calages
@@ -801,8 +801,8 @@ begin
 
         if (wc>0)and(hc>0) then
         begin
-          fZoomW:=fGraphMiniature.Width/wc/FCoeffEcran;
-          fZoomH:=fGraphMiniature.Height/hc/FCoeffEcran;
+          fZoomW:=fGraphMiniature.Width/wc/FScreenRatio;
+          fZoomH:=fGraphMiniature.Height/hc/FScreenRatio;
 
           if fZoomW>fZoomH then
             fZoomMiniature:=fZoomH-0.1
@@ -828,7 +828,7 @@ begin
       end;
 
       //Calcul des coord de tous les pieux, dans le Viewer miniature
-      e:=fZoomMiniature*FCoeffEcran;
+      e:=fZoomMiniature*FScreenRatio;
       FGraph.InitGraph(e);
       RefreshMiniature;
     end;
@@ -848,13 +848,16 @@ end;
 
 procedure TGraphViewer.RefreshMiniature;
 begin
-  if fGraphMiniature<>nil then
+  if  (fGraphMiniature<>nil)
+  and (fGraphMiniature.Visible)
+   then
     fGraphMiniature.PaintMiniature;
 end;
 
 procedure TGraphViewer.RefreshGraph;
 begin
   if assigned ( fGraph )
+  and fGraph.Visible
    Then
     with fGraph do
      Begin
@@ -868,7 +871,7 @@ var
   e:single;
 begin
 //  e:=(fZoomMiniature*72)/(100*25.4);
-  e:=fZoomMiniature*FCoeffEcran;
+  e:=fZoomMiniature*FScreenRatio;
   xv:=trunc(xc*e);
   yv:=trunc(yc*e);
 end;
@@ -878,7 +881,7 @@ var
   e:single;
 begin
 //  e:=(fZoomMiniature*72)/(100*25.4);
-  e:=fZoomMiniature*FCoeffEcran;
+  e:=fZoomMiniature*FScreenRatio;
   xc:=(xv-fDecalMiniatureX)/e;
   yc:=(yv-fDecalMiniatureY)/e;
 end;
@@ -1139,16 +1142,13 @@ begin
 end;
 
 procedure TGraphComponent.PaintGraph(const DecalX, DecalY: integer);
-var ABitmap : TBitmap;
-    n : Integer ;
+var n : Integer ;
 begin
   if ( Canvas.Width  < 1 )
   or ( Canvas.Height < 1 ) Then
    Exit;
-  ABitmap := TBitmap.Create;
-  with ABitmap.Canvas, Viewer do
-  try
-    p_SetAndFillBitmap ( ABitmap, Canvas.Width, Canvas.Height, Self.Color );
+  with Canvas, Viewer do
+  Begin
     Brush.Color:=Color;
     FillRect(0,0,Width,Height);
     if FShowPrintRects Then
@@ -1173,10 +1173,7 @@ begin
       end;
      end;
 
-    PaintGraph(ABitmap.Canvas,DecalX,DecalY);
-    Canvas.Draw(0,0,ABitmap);
-  finally
-    ABitmap.Destroy;
+    PaintGraph(Canvas,DecalX,DecalY);
   end;
 end;
 

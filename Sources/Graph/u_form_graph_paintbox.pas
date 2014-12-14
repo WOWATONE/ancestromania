@@ -430,31 +430,47 @@ begin
 end;
 
 procedure TFGraphPaintBox.btnPrintPictureClick(Sender: TObject);
-var LShowPrintRects : Boolean;
+var li_shiftx,li_shifty:Integer;
+    lw_zoom : Word;
+    lsi_Ratio : Single;
 begin
   p_SetPageSetup(btnPrintPicture,cb_papersize.Text,ch_Portrait.Checked);
-  LShowPrintRects := PaintArc.ShowPrintRects;
-  PaintArc.ShowPrintRects:=False;
-  with Viewer,fgraph,btnPrintPicture,Picture.Bitmap do
+  with Viewer do
    Begin
-     case rg_sortie.ItemIndex of
-       0:PrinterType:=pfPrinter;
-       1:PrinterType:=pfPDF;
-       2:PrinterType:=pfRTF;
+    fgraph.Visible:=False;
+    lsi_Ratio:=ScreenRatio;
+    lw_zoom  :=Zoom;
+    li_shiftx:=ShiftX;
+    li_shifty:=ShiftY;
+    with Viewer,fgraph,btnPrintPicture,Picture.Bitmap do
+     try
+       case rg_sortie.ItemIndex of
+         0:PrinterType:=pfPrinter;
+         1:PrinterType:=pfPDF;
+         2:PrinterType:=pfRTF;
+       end;
+       if DrawWidth>DrawHeight
+        Then Orientation:=poLandscape
+        Else Orientation:=poPortrait;
+       ScreenRatio:=5/Data.Generations;
+       ApplyZoomAtPoint(6,0,0);
+       DrawWidth :=round(DrawWidth *Zoom*ScreenRatio/lsi_Ratio/lw_zoom);
+       DrawHeight:=round(DrawHeight*Zoom*ScreenRatio/lsi_Ratio/lw_zoom);
+       Width :=DrawWidth;
+       Height:=DrawHeight;
+       Canvas.Brush.Color:=clWhite;
+       Canvas.FillRect(0,0,Width,Height);
+       PaintGraph(Canvas,ShiftX,ShiftY);
+       Modified := True ;
+     finally
+       ScreenRatio:=lsi_Ratio;
+       Zoom   :=lw_zoom;
+       ShiftX:=li_shiftx;
+       ShiftY:=li_shifty;
+       fgraph.Visible:=True;
      end;
-     Width :=DrawWidth;
-     Height:=DrawHeight;
-     if DrawWidth>DrawHeight
-      Then Orientation:=poLandscape
-      Else Orientation:=poPortrait;
-     Canvas.Brush.Color:=clWhite;
-     Canvas.Pen  .Color:=clWhite;
-     Canvas.Rectangle(0,0,DrawWidth+1,DrawHeight+1);
-     PaintGraph(Canvas,ShiftX,ShiftY);
-     Modified := True ;
+
    end;
-  fgraph.Canvas.Draw(0,0,btnPrintPicture.Picture.Bitmap);
-  PaintArc.ShowPrintRects := LShowPrintRects;
 end;
 
 procedure TFGraphPaintBox.ch_PortraitClick(Sender: TObject);
@@ -568,7 +584,6 @@ begin
   end
   else if fTypeGraph='ROUE' then
   begin
-    PaintArc.ShowPrintRects:=False;
     fgraph:=PaintArc;
     initgraph;
     FData := GraphArcData;
