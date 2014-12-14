@@ -128,6 +128,7 @@ type
    FInifile : TIniFile;
    FLineHeight: Byte;
    FShowPrintRects:Boolean;
+   FDrawHeight,FDrawWidth:LongWord;
 
    procedure SetLoadFromIni(const AValue: Boolean);
    procedure SetSaveToIni(const AValue: Boolean);
@@ -145,7 +146,6 @@ type
     procedure InitGraph(const Coef : Single ); virtual; abstract;
     procedure InitGraphMiniature(const coef: single ); virtual; abstract;
     procedure PaintGraph( const DecalX, DecalY: integer   ); virtual; overload;
-    procedure PaintGraph( const ACanvas : TCanvas ; const DecalX, DecalY: integer   ); virtual; abstract;overload;
     procedure PaintGraphMiniature(const DecalX, DecalY: integer); virtual; abstract;
     function  GetSectionIni : String;
     function  GetKeyWordIni ( const AKeyWord : String ) : String;
@@ -162,6 +162,7 @@ type
     procedure ReadIni ; virtual;
     procedure WriteIni ; virtual;
   public
+    procedure PaintGraph( const ACanvas : TCanvas ; const DecalX, DecalY: integer ); virtual; abstract;overload;
     constructor create ( AOwner : TComponent ); override;
     destructor Destroy; override;
     procedure ReadSectionIni; virtual;
@@ -182,6 +183,8 @@ type
     property Inifile : TIniFile read FInifile write FInifile;
     property FullRect : TFloatRect read FFullRect;
     property ReCalculate     : Boolean read FReCalculate     write FReCalculate;
+    property DrawWidth  : LongWord read FDrawWidth write FDrawWidth default 0;
+    property DrawHeight : LongWord read FDrawHeight write FDrawHeight default 0;
   published
    property ShowPrintRects: Boolean read FShowPrintRects write FShowPrintRects default True;
     property MargeLeft: single read FMargeLeft write FMargeLeft default GRAPH_DEFAULT_MARGE_LEFT;
@@ -216,8 +219,8 @@ type
     fPanelGraph:TCustomPanel;
     fIncrementZoom:integer;
     fFont:TFont;
-    fPageHeight ,
-    fPageWidth  :single;
+    FPageHeight ,
+    FPageWidth  :single;
 
     //les lignes du papier
     fTPXC,fTPYC:TSingleList;
@@ -295,8 +298,8 @@ type
     property OnZoomChanged:TNotifyEvent read fOnZoomChanged write fOnZoomChanged;
 
     //Propriétés du papier : zone imprimable en mm
-    property PageWidth:single read fPageWidth write fPageWidth default GRAPH_DEFAULT_PAGE_WIDTH;
-    property PageHeight:single read fPageHeight write fPageHeight default GRAPH_DEFAULT_PAGE_HEIGHT;
+    property PageWidth:single read FPageWidth write FPageWidth default GRAPH_DEFAULT_PAGE_WIDTH;
+    property PageHeight:single read FPageHeight write FPageHeight default GRAPH_DEFAULT_PAGE_HEIGHT;
     //les composants d'affichage
     property Graph:TGraphComponent read fGraph write SetGraph;
     property PanelGraph:TCustomPanel read fPanelGraph write fPanelGraph;
@@ -405,8 +408,8 @@ begin
   Inherited;
   FActivePersonKey := -1;
   Init;
-  fPageWidth     := GRAPH_DEFAULT_PAGE_WIDTH;
-  fPageHeight    := GRAPH_DEFAULT_PAGE_HEIGHT;
+  FPageWidth     := GRAPH_DEFAULT_PAGE_WIDTH;
+  FPageHeight    := GRAPH_DEFAULT_PAGE_HEIGHT;
   fGraph:=nil;
   fPanelGraph:=nil;
   fGraphMiniature:=nil;
@@ -894,27 +897,27 @@ begin
   fGraph.GetFullRect(R);
   //il y en a au moins une.
   w:=R.Right-R.Left;
-  k:=trunc(w/fPageWidth)+1;
+  k:=trunc(w/FPageWidth)+1;
 
   w:=R.Left;
   for n:=1 to k do
   begin
     fTPXC.Add(w);
     fTPXV.Add(0);
-    w:=w+fPageWidth;
+    w:=w+FPageWidth;
   end;
   fTPXC.Add(w);
   fTPXV.Add(0);
 
   h:=R.Bottom-R.Top;
-  k:=trunc(h/fPageHeight)+1;
+  k:=trunc(h/FPageHeight)+1;
 
   h:=r.Top;
   for n:=1 to k do
   begin
     fTPYC.Add(h);
     fTPYV.Add(0);
-    h:=h+fPageHeight;
+    h:=h+FPageHeight;
   end;
   fTPYC.Add(h);
   fTPYV.Add(0);
@@ -1262,6 +1265,8 @@ begin
   FViewer    := nil;
   FInifile   := nil;
 
+  FDrawHeight:=0;
+  FDrawWidth :=0;
   Color := clWhite;
 end;
 

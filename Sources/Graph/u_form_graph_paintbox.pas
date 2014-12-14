@@ -430,13 +430,31 @@ begin
 end;
 
 procedure TFGraphPaintBox.btnPrintPictureClick(Sender: TObject);
+var LShowPrintRects : Boolean;
 begin
-  if PaintArc.ShowPrintRects Then
+  p_SetPageSetup(btnPrintPicture,cb_papersize.Text,ch_Portrait.Checked);
+  LShowPrintRects := PaintArc.ShowPrintRects;
+  PaintArc.ShowPrintRects:=False;
+  with Viewer,fgraph,btnPrintPicture,Picture.Bitmap do
    Begin
-    PaintArc.ShowPrintRects:=False;
-    PaintArc.Repaint;
+     case rg_sortie.ItemIndex of
+       0:PrinterType:=pfPrinter;
+       1:PrinterType:=pfPDF;
+       2:PrinterType:=pfRTF;
+     end;
+     Width :=DrawWidth;
+     Height:=DrawHeight;
+     if DrawWidth>DrawHeight
+      Then Orientation:=poLandscape
+      Else Orientation:=poPortrait;
+     Canvas.Brush.Color:=clWhite;
+     Canvas.Pen  .Color:=clWhite;
+     Canvas.Rectangle(0,0,DrawWidth+1,DrawHeight+1);
+     PaintGraph(Canvas,ShiftX,ShiftY);
+     Modified := True ;
    end;
-  btnPrintPicture.Picture.Bitmap.Canvas.Assign(PaintArc.Canvas);
+  fgraph.Canvas.Draw(0,0,btnPrintPicture.Picture.Bitmap);
+  PaintArc.ShowPrintRects := LShowPrintRects;
 end;
 
 procedure TFGraphPaintBox.ch_PortraitClick(Sender: TObject);

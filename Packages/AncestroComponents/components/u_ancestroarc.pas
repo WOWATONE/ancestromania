@@ -165,9 +165,9 @@ type
     procedure InitGraph(const coef:Single); override;
     procedure InitGraphMiniature(const coef:Single); override;
 
-    procedure PaintGraph(const ACanvas : TCanvas ; const DecalX,DecalY:integer); override;
     procedure PaintGraphMiniature(const DecalX,DecalY:integer); override;
   public
+    procedure PaintGraph(const ACanvas : TCanvas ; const DecalX,DecalY:integer); override;
     procedure ReadSectionIni; override;
     procedure WriteSectionIni; override;
 
@@ -441,38 +441,50 @@ var
   R: TRect;
   indi: TPersonArc;
 begin
+  DrawWidth :=0;
+  DrawHeight:=0;
   //on adapte la taille en fonction du zoom
-  ACanvas.Font.Size := fHeightFont;
-
-  ACanvas.Pen.Style := psSolid;
-
-  ACanvas.Brush.Style := bsClear;
+  with ACanvas,Font do
+    Begin
+     Size  := fHeightFont;
+     Pen.Style := psSolid;
+     Brush.Style := bsClear;
+    end;
 
   //les cercles
-
-  with ( TGraphArcData ( Data )) do
+  with TGraphArcData ( Data ),fCercleList do
     begin
-      LastCercle := TPlotList(fCercleList.last);
-      for n := 0 to fCercleList.Count - 1 do
+      LastCercle := TPlotList(last);
+      // draw size
+      DrawWidth  := round((Count+1) * fRayonV+DecalX)*2;
+      DrawHeight := LastCercle.last.YV + 2 + (DecalY*2);
+//      writeln('right '+IntToStr(Right)+'aCercle[0].XV '+IntToStr(aCercle[0].XV)+'aCercle.last.XV '+IntToStr(aCercle.last.XV));
+//      writeln('bottom '+IntToStr(Bottom)+'aCercle[0].YV '+IntToStr(aCercle[0].YV)+'aCercle.last.YV '+IntToStr(aCercle.last.YV));
+
+      for n := 0 to Count - 1 do
       begin
         aCercle := TPlotList(fCercleList[n]);
 
         w := round((n + 1) * fRayonV);
 
-        R.left := fCentre.XV - w + DecalX;
-        R.right := fCentre.XV + w + DecalX;
-        R.top := fCentre.YV - w + DecalY;
-        R.bottom := fCentre.YV + w + DecalY;
+        with R do
+          Begin
+            left := fCentre.XV - w + DecalX;
+            right := fCentre.XV + w + DecalX;
+            top := fCentre.YV - w + DecalY;
+            bottom := fCentre.YV + w + DecalY;
 
-        ACanvas.Pen.Color:=FColors[ceCircle];
+            ACanvas.Pen.Color:=FColors[ceCircle];
 
-        ACanvas.Arc(
-          R.Left, R.Top,
-          R.Right, R.Bottom,
-          aCercle[0].XV + DecalX,
-          aCercle[0].YV + DecalY,
-          aCercle.last.XV + DecalX,
-          aCercle.last.YV + DecalY);
+            ACanvas.Arc(
+              Left, Top,
+              Right, Bottom,
+              aCercle[0].XV + DecalX,
+              aCercle[0].YV + DecalY,
+              aCercle.last.XV + DecalX,
+              aCercle.last.YV + DecalY);
+
+          end;
 
         ACanvas.Pen.Color := FColors[ceRayon];
         p := trunc(Ldexp(1, fCercleList.Count - n - 1));
@@ -572,18 +584,21 @@ begin
         aCercle := TPlotList(fCercleList[n]);
         w := round((n + 1) * fRayonM);
 
-        R.left := fCentre.XM - w + DecalX;
-        R.right := fCentre.XM + w + DecalX;
-        R.top := fCentre.YM - w + DecalY;
-        R.bottom := fCentre.YM + w + DecalY;
+        with r do
+          Begin
+            left := fCentre.XM - w + DecalX;
+            right := fCentre.XM + w + DecalX;
+            top := fCentre.YM - w + DecalY;
+            bottom := fCentre.YM + w + DecalY;
 
-        Canvas.Arc(
-          R.Left, R.Top,
-          R.Right, R.Bottom,
-          aCercle[0].XM + DecalX,
-          aCercle[0].YM + DecalY,
-          aCercle.last.XM + DecalX,
-          aCercle.last.YM + DecalY);
+            Canvas.Arc(
+              Left, Top,
+              Right, Bottom,
+              aCercle[0].XM + DecalX,
+              aCercle[0].YM + DecalY,
+              aCercle.last.XM + DecalX,
+              aCercle.last.YM + DecalY);
+          end;
 
         p := trunc(Ldexp(1, fCercleList.Count - n - 1));
         i := p;

@@ -15,16 +15,12 @@ cp ../SQL/* Ancestromania-data.orig
 tar -czvf Ancestromania-data.orig.tar.gz Ancestromania-data.orig
 
 if [ ! -d ./Ancestromania-data/var/ ]; then
-	mkdir Ancestromania-data/var/
-	mkdir Ancestromania-data/var/lib/
-	mkdir Ancestromania-data/var/lib/firebird/
-	mkdir Ancestromania-data/var/lib/firebird/2.5
-	mkdir Ancestromania-data/var/lib/firebird/2.5/data
-	chmod -R 775 Ancestromania-data/var/
+	mkdir Ancestromania-data/src/
+	chmod -R 775 Ancestromania-data/src/
 fi
 
-cp ../i386-win32/MaBase.fdb Ancestromania-data/var/lib/firebird/2.5/data/Ancestromania-updated.fdb
-cp ../i386-win32/Parances.fdb Ancestromania-data/var/lib/firebird/2.5/data/
+cp ../i386-win32/MaBase.fdb Ancestromania-data/src/Ancestromania-updated.fdb
+cp ../i386-win32/Parances.fdb Ancestromania-data/src/Parances.fdb
 
 cp Ancestromania-data/var/lib/firebird/2.5/data/* Update_AncestroIntel.tar
 
@@ -32,7 +28,7 @@ cp Ancestromania-data/var/lib/firebird/2.5/data/* Update_AncestroIntel.tar
 
 cd Ancestromania-data
 
-debuild -S -sa --lintian-opts -i
+debuild -S -sa --source-option=--include-binaries --lintian-opts -i
 
 cd ..
 

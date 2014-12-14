@@ -360,7 +360,11 @@ begin
   //  StringToFont(_Context.LiensFont,PaintBox.ACanvas.Font);
 
   //on adapte la taille en fonction du zoom
-  ACanvas.Font.Size := round(fSizeFont);
+  with ACanvas.Font do
+    Begin
+     Size := round(fSizeFont);
+     Name := Font.Name;
+    end;
   bIndiPresent := False;//ne sera activé que si indi en cours dans l'Liens
   with Viewer, Data do
     for n := 0 to Persons.Count - 1 do

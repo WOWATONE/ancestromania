@@ -145,11 +145,11 @@ type
     procedure InitGraph(const coef: single); override;
     procedure InitGraphMiniature(const coef: single); override;
 
-    procedure PaintGraph(const ACanvas : TCanvas ; const DecalX, DecalY: integer); override;
     procedure PaintGraphMiniature(const DecalX, DecalY: integer); override;
 
   public
     constructor Create(Aowner: TComponent); override;
+    procedure PaintGraph(const ACanvas : TCanvas ; const DecalX, DecalY: integer); override;
     procedure ReadSectionIni; override;
     procedure WriteSectionIni; override;
     //    function GetNbIndi:integer;
@@ -749,8 +749,12 @@ var
   bIndiPresent: boolean;
 begin
   //on adapte la taille en fonction du zoom
-  ACanvas.Font.Size := round(fSizeFont);
-  ACanvas.Font.Name := Font.Name;
+  with ACanvas.Font do
+    Begin
+     Size := round(fSizeFont);
+     Name := Font.Name;
+    end;
+
   h := Abs(round(fSizeFont));
   h1 := Abs(round(fSizeFont * 2.5));//hauteur de la boîte mariage si une ligne
   h2 := Abs(round(fSizeFont * 4));//si 2 lignes

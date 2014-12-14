@@ -23,6 +23,9 @@ if [ ! -e "/var/lib/firebird/2.5/data/Ancestromania.fdb" ]; then
 	chmod 660 /var/lib/firebird/2.5/data/Ancestromania.fdb 
 fi
 
+chmod 660 /var/lib/firebird/2.5/data/Ancestromania-updated.fdb 
+chmod 660 /var/lib/firebird/2.5/data/Parances.fdb 
+
 chown firebird:firebird /var/lib/firebird/2.5/data/Ancestromania.fdb
 chown firebird:firebird /var/lib/firebird/2.5/data/Ancestromania-updated.fdb
 chown firebird:firebird /var/lib/firebird/2.5/data/Parances.fdb
