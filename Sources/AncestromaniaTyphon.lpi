@@ -119,7 +119,7 @@
         <PackageName Value="LCL"/>
       </Item25>
     </RequiredPackages>
-    <Units Count="1157">
+    <Units Count="1158">
       <Unit0>
         <Filename Value="Ancestromania.dpr"/>
         <IsPartOfProject Value="True"/>
@@ -135,7 +135,6 @@
         <ComponentName Value="dm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <UnitName Value="u_dm"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="360"/>
         <CursorPos X="44" Y="389"/>
@@ -148,7 +147,6 @@
         <ComponentName Value="FMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="u_form_main"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="708"/>
         <CursorPos Y="728"/>
@@ -1061,7 +1059,6 @@
         <ComponentName Value="FAbout"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="u_Form_About"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="19"/>
         <CursorPos Y="35"/>
@@ -2230,6 +2227,7 @@
       </Unit249>
       <Unit250>
         <Filename Value="Divers/u_form_Restore.lfm"/>
+
         <TopLine Value="32"/>
         <CursorPos X="16" Y="45"/>
         <UsageCount Value="4"/>
@@ -2901,6 +2899,7 @@
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit349>
       <Unit350>
+
         <Filename Value="../../ibx/runtime/IBCustomDataSet.pas"/>
         <TopLine Value="671"/>
         <CursorPos Y="697"/>
@@ -4197,7 +4196,6 @@
       </Unit545>
       <Unit546>
         <Filename Value="../../Extended/extends.inc"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="8" Y="18"/>
         <UsageCount Value="10"/>
@@ -6167,10 +6165,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="U_FormAdapt"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="87"/>
-        <CursorPos Y="105"/>
-        <UsageCount Value="14"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="7"/>
+        <CursorPos X="3" Y="22"/>
+        <UsageCount Value="15"/>
+        <Loaded Value="True"/>
       </Unit853>
       <Unit854>
         <Filename Value="../../Extended/inicomp/u_formmainini.pas"/>
@@ -6203,7 +6203,6 @@
       </Unit858>
       <Unit859>
         <Filename Value="../../Extended/inicomp/u_onforminfoini.pas"/>
-        <UnitName Value="U_OnFormInfoIni"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="330"/>
         <CursorPos Y="350"/>
@@ -8001,7 +8000,6 @@
       </Unit1148>
       <Unit1149>
         <Filename Value="../../Alcinoe/source/ALFcnString.pas"/>
-        <UnitName Value="ALFcnString"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="925"/>
         <CursorPos X="50" Y="949"/>
@@ -8022,13 +8020,11 @@
       </Unit1151>
       <Unit1152>
         <Filename Value="../Packages/AncestroComponents/components/u_registerbuttons.pas"/>
-        <UnitName Value="u_registerbuttons"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="11"/>
       </Unit1152>
       <Unit1153>
         <Filename Value="/usr/lib/codetyphon/typhon/lcl/forms.pp"/>
-        <UnitName Value="Forms"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="590"/>
         <CursorPos X="15" Y="608"/>
@@ -8050,14 +8046,30 @@
       </Unit1155>
       <Unit1156>
         <Filename Value="../Packages/SuperForm/CompSuperForm.pas"/>
-        <UnitName Value="CompSuperForm"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="164"/>
         <CursorPos Y="185"/>
         <UsageCount Value="10"/>
       </Unit1156>
+      <Unit1157>
+        <Filename Value="../../ibx/design/IBDBReg.pas"/>
+        <UnitName Value="IBDBReg"/>
+        <TopLine Value="41"/>
+        <CursorPos X="10" Y="58"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit1157>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="2" HistoryIndex="1">
+      <Position1>
+        <Filename Value="../../ibx/design/IBDBReg.pas"/>
+      </Position1>
+      <Position2>
+        <Filename Value="../../Extended/inicomp/u_formadapt.pas"/>
+        <Caret Line="105" TopLine="86"/>
+      </Position2>
+    </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
@@ -8067,7 +8079,7 @@
     <SearchPaths>
       <IncludeFiles Value="Main;Cartographie;Divers;Arbre;Editions;Multimedia;Individus;MultiMediaWebCam;Context;Gedcom;Graph;MAJInternet;Evenements;MutationBase;CalculDate;Gestion des lieux;$(ProjOutDir);../../THtmlPort/source"/>
       <OtherUnitFiles Value="Main;Cartographie;Divers;Arbre;Editions;Multimedia;Individus;MultiMediaWebCam;Context;Gedcom;Graph;MAJInternet;Evenements;MutationBase;CalculDate;Gestion des lieux;Web;../../THtmlPort/source"/>
-      <UnitOutputDirectory Value="../$(TargetCPU)-$(TargetOS)-k/lib"/>
+      <UnitOutputDirectory Value="../$(TargetCPU)-$(TargetOS)-k/typhon"/>
     </SearchPaths>
     <Parsing>
       <SyntaxOptions>
@@ -8245,4 +8257,4 @@
       </Item3>
     </Exceptions>
   </Debugging>
-</CONFIG>
+</CONFIG>
