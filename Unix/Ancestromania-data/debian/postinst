@@ -17,10 +17,13 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
+cd /var/lib/firebird/2.5/data
 
-if [ ! -e "/var/lib/firebird/2.5/data/Ancestromania.fdb" ]; then
-	cp "/var/lib/firebird/2.5/data/Ancestromania-updated.fdb" "/var/lib/firebird/2.5/data/Ancestromania.fdb"
-	chmod 660 /var/lib/firebird/2.5/data/Ancestromania.fdb 
+if [ ! -e "./Ancestromania.fdb" ]; then
+	echo "Creating /var/lib/firebird/2.5/data/Ancestromania.fdb"
+	cp "./Ancestromania-updated.fdb" "./Ancestromania.fdb"
+	chmod 660 ./Ancestromania.fdb 
+	gsec -user sysdba -mo sysdba -pw masterke
 fi
 
 chmod 660 /var/lib/firebird/2.5/data/Ancestromania-updated.fdb 
@@ -39,6 +42,10 @@ for USER in `awk -F':' -v "limit=${l##UID_MIN}" '{ if ( $3 >= limit ) print $1}'
 	usermod -a -G firebird $USER
 done
 
+if [ ! -e "/etc/firebird/2.5/SYSDBA.password" ]; then
+	echo "Creating 8 chars admin password"
+	gsec -user sysdba -mo sysdba -pw masterke
+fi
 
 if [ ! -z `grep Ancestromania /etc/firebird/2.5/aliases.conf -rL` ]; then
     echo "Adding Ancestromania to aliases"

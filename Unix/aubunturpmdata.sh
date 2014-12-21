@@ -11,9 +11,6 @@ cd $directory
 
 mkdir Ancestromania-data.orig
 
-cp ../SQL/* Ancestromania-data.orig
-tar -czvf Ancestromania-data.orig.tar.gz Ancestromania-data.orig
-
 if [ ! -d ./Ancestromania-data/var/ ]; then
 	mkdir Ancestromania-data/src/
 	chmod -R 775 Ancestromania-data/src/
@@ -21,6 +18,11 @@ fi
 
 cp ../i386-win32/MaBase.fdb Ancestromania-data/src/Ancestromania-updated.fdb
 cp ../i386-win32/Parances.fdb Ancestromania-data/src/Parances.fdb
+
+rm Ancestromania-data.orig/*.sql
+isql-fb -a -ch utf8 -o 'Ancestromania-data.orig/Ancestromania.sql' 'Ancestromania-data/src/Ancestromania-updated.fdb'
+isql-fb -a -ch utf8 -o 'Ancestromania-data.orig/Parances.sql' 'Ancestromania-data/src/Parances.fdb'
+tar -czvf Ancestromania-data.orig.tar.gz Ancestromania-data.orig
 
 cp Ancestromania-data/var/lib/firebird/2.5/data/* Update_AncestroIntel.tar
 
@@ -40,10 +42,10 @@ sudo chown -R root:root Ancestromania-data
 sudo pbuilder build ancestromania-data*.dsc
 sudo cp /var/cache/pbuilder/trusty-i386/result/ancestromania-data*.* ./
 sudo cp ancestromania-data*.deb Ancestromania-data.deb
-sudo chown -R matthieu Ancestromania-data
-sudo chown matthieu ?ncestromania-data*.*
+sudo chown -R $USERNAME Ancestromania-data
+sudo chown $USERNAME ?ncestromania-data*.*
 rm *data.rpm
 sudo alien -r --scripts Ancestromania-data.deb
-sudo chown matthieu *.rpm
+sudo chown $USERNAME *.rpm
 mv *noarch*.rpm Ancestromania-data.rpm
 

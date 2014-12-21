@@ -454,6 +454,7 @@ begin
         Else Orientation:=poPortrait;
        ScreenRatio:=5/Data.Generations;
        ApplyZoomAtPoint(6,0,0);
+       //create a correct resolution
        DrawWidth :=round(DrawWidth *Zoom*ScreenRatio/lsi_Ratio/lw_zoom);
        DrawHeight:=round(DrawHeight*Zoom*ScreenRatio/lsi_Ratio/lw_zoom);
        Width :=DrawWidth;
@@ -463,6 +464,7 @@ begin
        PaintGraph(Canvas,ShiftX,ShiftY);
        Modified := True ;
      finally
+       //retrieve screen resolution
        ScreenRatio:=lsi_Ratio;
        Zoom   :=lw_zoom;
        ShiftX:=li_shiftx;

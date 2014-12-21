@@ -178,13 +178,12 @@ uses
 {$IFNDEF FPC}
   windows,
 {$ELSE}
-  LCLIntf, LCLType, LMessages,
+  LCLIntf, LCLType,
 {$ENDIF}
   SysUtils, LConvEncoding,
   LazUTF8,
   FileUtil,
-  fonctions_file,
-  u_objet_TMotsClesDate;
+  fonctions_file;
 
 var
   aze:integer;
@@ -253,6 +252,7 @@ begin
     Result:='';
     c1:=SBefore[1];
     n:=2;
+    cc:=' ';
 
     repeat
       c2:=SBefore[n];
