@@ -13,7 +13,7 @@ cp ./_pbuilderrc $HOME/.pbuilderrc
 cp -R ./_gnupg $HOME/.gnupg
 
 # Installing structure
-sudo apt-get install debhelper cdbs lintian build-essential fakeroot devscripts pbuilder dh-make debootstrap
+sudo apt-get install debhelper cdbs lintian build-essential fakeroot devscripts pbuilder dh-make debootstrap quilt
 
 sudo pbuilder create
 
