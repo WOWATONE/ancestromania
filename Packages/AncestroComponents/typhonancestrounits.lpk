@@ -9,9 +9,6 @@
         <OtherUnitFiles Value="functions;objects;forms"/>
         <UnitOutputDirectory Value="typhon/$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
-      <Other>
-        <CompilerPath Value="$(CompPath)"/>
-      </Other>
     </CompilerOptions>
     <Files Count="29">
       <Item1>
@@ -131,7 +128,7 @@
         <UnitName Value="u_genealogy_context"/>
       </Item29>
     </Files>
-    <RequiredPkgs Count="8">
+    <RequiredPkgs Count="7">
       <Item1>
         <PackageName Value="typhonextnet"/>
       </Item1>
@@ -148,15 +145,12 @@
         <PackageName Value="typhonextcomponents"/>
       </Item5>
       <Item6>
-        <PackageName Value="ExpertSuperForm"/>
+        <PackageName Value="LCL"/>
       </Item6>
       <Item7>
-        <PackageName Value="LCL"/>
-      </Item7>
-      <Item8>
         <PackageName Value="FCL"/>
         <MinVersion Major="1" Valid="True"/>
-      </Item8>
+      </Item7>
     </RequiredPkgs>
     <UsageOptions>
       <UnitPath Value="$(PkgOutDir)"/>
