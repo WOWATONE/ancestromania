@@ -2343,8 +2343,8 @@ const CST_DUMMY_COORD = 2000000;
     Begin
       p_ReplaceLanguageString ( lstl_EndCase, CST_MAP_N, IntToStr(li_i) );
       p_ReplaceLanguageString ( lstl_HTMLAFolder, CST_MAP_CASE, lstl_ACase.Text );
-      p_ReplaceLanguageString ( lstl_HTMLAFolder, CST_MAP_FILE, StringReplace( CST_SUBDIR_HTML_MAPS +'/'+ ed_MapFileName.Text + CST_FILE_FILE + IntToStr(li_MapFileJS)+CST_EXTENSION_JS, '''', '\''',[rfReplaceAll]));
-      p_ReplaceLanguageString ( lstl_HTMLAFolder, CST_MAP_NAME    , StringReplace ( StringReplace ( as_Name, '"', '\"', [rfReplaceAll] ), '''', '\''', [rfReplaceAll] ) ,[rfReplaceAll]);
+      p_ReplaceLanguageString ( lstl_HTMLAFolder, CST_MAP_FILE, StringReplace ( CST_SUBDIR_HTML_MAPS +'/'+ ed_MapFileName.Text + CST_FILE_FILE + IntToStr(li_MapFileJS)+CST_EXTENSION_JS, '''', '\''',[rfReplaceAll]));
+      p_ReplaceLanguageString ( lstl_HTMLAFolder, CST_MAP_NAME, StringReplace ( StringReplace ( as_Name, '"', '\"', [rfReplaceAll] ), '''', '\''', [rfReplaceAll] ) ,[rfReplaceAll]);
       if as_Name > '' Then
         p_setACase(astl_Case, li_Name); //  load case file and set html var files
       astl_Case.AddStrings(lstl_EndCase);
