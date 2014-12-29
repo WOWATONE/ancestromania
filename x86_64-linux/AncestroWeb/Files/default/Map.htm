@@ -16,10 +16,8 @@
 			zoomControl: true
 		});
 
-		var defaultLayer = L.tileLayer.provider('Esri.DeLorme').addTo(map);
-
 		var baseLayers = {
-			'DeLorme': defaultLayer,
+			'DeLorme': L.tileLayer.provider('Esri.DeLorme'),
 			'WorldTopoMap': L.tileLayer.provider('Esri.WorldTopoMap'),
 			'WorldImagery': L.tileLayer.provider('Esri.WorldImagery'),
 			'WorldTerrain': L.tileLayer.provider('Esri.WorldTerrain'),
