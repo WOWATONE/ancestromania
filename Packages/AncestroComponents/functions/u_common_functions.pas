@@ -1404,7 +1404,7 @@ begin
      fs_ExecuteProcess('hh',GetAppDir+_REL_PATH_HELP+_FileNameHelp+'::/'+s+'.htm');
      {$ELSE}
      {$IFDEF LINUX}
-     fs_ExecuteProcess('chmsee',fs_getAppDir+_REL_PATH_HELP+_FileNameHelp+'::/'+s+'.htm');
+     fs_ExecuteProcess('chmsee',GetAppDir+_REL_PATH_HELP+_FileNameHelp+'::/'+s+'.htm');
      {$ENDIF}
      {$ENDIF}
     end;
@@ -1421,4 +1421,4 @@ finalization
 
   _MotsClesDate.Free;
 end.
-
+
