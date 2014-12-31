@@ -43,7 +43,7 @@ uses
 {$ENDIF}
   U_FormAdapt, Controls, Graphics, StdCtrls, ExtCtrls,
   ComCtrls, Classes, Forms,
-  SysUtils, Dialogs, u_buttons_appli, ExtJvXPButtons,
+  SysUtils, Dialogs, u_buttons_appli, ExtJvXPButtons, ExtJvXPCheckCtrls,
   lNetComponents, U_OnFormInfoIni, u_netupdate,
   u_ancestropictimages;
 
@@ -55,6 +55,7 @@ type
     btnFermer: TFWClose;
     btnMAJ: TJvXPButton;
     HTTPClient: TLHTTPClientComponent;
+    ch_test: TJvXPCheckbox;
     NetUpdate: TNetUpdate;
     OnFormInfoIni1: TOnFormInfoIni;
     Panel1: TPanel;
@@ -88,6 +89,7 @@ type
     {$ELSE}
     Browser : TLazbro;
     {$ENDIF}
+    procedure ch_testClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure NetUpdateDownloaded(const Sender: TObject; const TheFile: string;
       const TheStep: TUpdateStep);
@@ -145,6 +147,13 @@ uses u_dm,u_common_const,u_genealogy_context,
 procedure TFMajInternet.FormDestroy(Sender: TObject);
 begin
 
+end;
+
+procedure TFMajInternet.ch_testClick(Sender: TObject);
+begin
+  if ch_test.Checked
+   Then NetUpdate.URLBase:=fs_geturlMajAuto+'test/'
+   Else NetUpdate.URLBase:=fs_geturlMajAuto;
 end;
 
 procedure TFMajInternet.NetUpdateDownloaded(const Sender: TObject;

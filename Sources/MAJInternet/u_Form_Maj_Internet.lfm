@@ -35,10 +35,10 @@ inherited FMajInternet: TFMajInternet
       ImageOn = iaAncestromania
     end
     object Label2: TLabel
-      Left = 130
-      Height = 34
+      Left = 173
+      Height = 35
       Top = 6
-      Width = 374
+      Width = 331
       Alignment = taRightJustify
       Anchors = [akTop, akRight]
       Caption = 'Mises à jour en ligne...'
@@ -77,13 +77,13 @@ inherited FMajInternet: TFMajInternet
     TabOrder = 1
     object TabMaj: TTabSheet
       Caption = 'Mise à jour en ligne'
-      ClientHeight = 338
-      ClientWidth = 518
+      ClientHeight = 336
+      ClientWidth = 512
       object lRun: TLabel
         Left = 15
         Height = 13
         Top = 212
-        Width = 483
+        Width = 477
         Alignment = taCenter
         Anchors = [akTop, akLeft, akRight]
         AutoSize = False
@@ -124,7 +124,7 @@ inherited FMajInternet: TFMajInternet
         Left = 15
         Height = 15
         Top = 192
-        Width = 484
+        Width = 478
         Alignment = taCenter
         Anchors = [akTop, akLeft, akRight]
         AutoSize = False
@@ -218,7 +218,7 @@ inherited FMajInternet: TFMajInternet
         Top = 96
         Width = 192
         Caption = ' Votre version '
-        ClientHeight = 56
+        ClientHeight = 51
         ClientWidth = 188
         ParentColor = False
         ParentFont = False
@@ -257,7 +257,7 @@ inherited FMajInternet: TFMajInternet
         Top = 96
         Width = 192
         Caption = ' Version officielle sur le site '
-        ClientHeight = 56
+        ClientHeight = 51
         ClientWidth = 188
         ParentColor = False
         ParentFont = False
@@ -307,7 +307,7 @@ inherited FMajInternet: TFMajInternet
         Left = 15
         Height = 25
         Top = 266
-        Width = 484
+        Width = 478
         Anchors = [akTop, akLeft, akRight]
         TabOrder = 3
         Visible = False
@@ -316,10 +316,10 @@ inherited FMajInternet: TFMajInternet
         Left = 15
         Height = 34
         Top = 225
-        Width = 484
+        Width = 478
         Anchors = [akTop, akLeft, akRight]
-        ClientHeight = 30
-        ClientWidth = 480
+        ClientHeight = 12
+        ClientWidth = 474
         ParentColor = False
         ParentFont = False
         TabOrder = 1
@@ -421,8 +421,20 @@ inherited FMajInternet: TFMajInternet
       ParentFont = False
       OnClick = btnFermerClick
     end
+    object ch_test: TJvXPCheckbox
+      Left = 157
+      Height = 28
+      Top = 0
+      Width = 161
+      Caption = 'Version de test'
+      TabOrder = 2
+      UseDockManager = False
+      Align = alLeft
+      OnClick = ch_testClick
+    end
   end
   object OnFormInfoIni1: TOnFormInfoIni[3]
+    SaveEdits = [feTCheck]
     SaveForm = [sfSavePos, sfSaveSize, sfSameMonitor]
     left = 91
     top = 212
