@@ -1401,7 +1401,7 @@ begin
     if s<>'' then
     begin
      {$IFDEF WINDOWS}
-     fs_ExecuteProcess('hh',fs_getAppDir+_REL_PATH_HELP+_FileNameHelp+'::/'+s+'.htm');
+     fs_ExecuteProcess('hh',GetAppDir+_REL_PATH_HELP+_FileNameHelp+'::/'+s+'.htm');
      {$ELSE}
      {$IFDEF LINUX}
      fs_ExecuteProcess('chmsee',fs_getAppDir+_REL_PATH_HELP+_FileNameHelp+'::/'+s+'.htm');
@@ -1421,4 +1421,4 @@ finalization
 
   _MotsClesDate.Free;
 end.
-
+

@@ -972,7 +972,7 @@ initialization
   FaitTempPath;//création du répertoire temporaire _TempPath
 
   _Path_Appli:=ExtractFilePath(Application.ExeName);//À créer avant d'initialiser gci_context
-  AIniFile := TIniFile.Create(fs_getAppDir+ANCESTROMANIA+CST_EXTENSION_INI);
+  AIniFile := TIniFile.Create(GetAppDir+ANCESTROMANIA+CST_EXTENSION_INI);
   gr_ExeVersion := IniVersionExe ( AIniFile );
   AIniFile.free;
   gci_context:=TContextIni.create(Application);
