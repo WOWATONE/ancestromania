@@ -22,6 +22,6 @@ UpdateTar.gzIntel.ini
 
 Getting correct extension and file name is in Extended/core/fonctions_system.pas, ../Sources/Main/u_dm.pas and ../Sources/MAJInternet.
 
-When files have been tested just rename ancestroupdatetest to ancestroupdate.
+When files have been tested just rename ancestroupdatetest to ancestroupdate. Go to ../Inis directory.
 
 Data and Install files are in http://ancestromania.net/ancestroupdateinstall.
