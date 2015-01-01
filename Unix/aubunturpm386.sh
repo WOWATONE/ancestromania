@@ -8,6 +8,7 @@ echo "Working in $directory"
 cd $directory 
 sudo chown -R $USERNAME Update_AncestroIntel.orig/
 sudo chown -R $USERNAME Update_AncestroIntel.tar/
+sudo chmod 644 ../i386-win32/Scripts/*
 
 ./version.sh ./Update_AncestroIntel/debian/control ../i386-linux/Ancestromania.ini
 
@@ -17,8 +18,8 @@ rm Update_AncestroIntel/usr/share/ancestromania/Ancestromania
 cp ../i386-linux/Ancestromania.ini Update_AncestroIntel/usr/share/ancestromania
 cp ../i386-linux/Ancestromania Update_AncestroIntel.tar
 cp ../i386-linux/Ancestromania.ini Update_AncestroIntel.tar
-cp ../i386-linux/Scripts/* Update_AncestroIntel/usr/share/ancestromania/Scripts
-cp ../i386-linux/Scripts/* Update_AncestroIntel.tar/Scripts
+cp ../i386-win32/Scripts/* Update_AncestroIntel/usr/share/ancestromania/Scripts
+cp ../i386-win32/Scripts/* Update_AncestroIntel.tar/Scripts
 
 cp ../docs/Evolutions.html Update_AncestroIntel/usr/share/doc/ancestromania/
 
@@ -44,7 +45,6 @@ cd ..
 
 sudo  chmod 644 Update_AncestroIntel/usr/share/ancestromania/Scripts/*
 sudo  chmod 644 Update_AncestroIntel.tar/Scripts/*
-sudo  chmod 644 ../i386-linux/Scripts/*
 sudo chown -R root:root Update_AncestroIntel
 sudo pbuilder build ancestromania-gnome*.dsc
 sudo cp /var/cache/pbuilder/trusty-i386/result/ancestromania-gnome*.* ./
