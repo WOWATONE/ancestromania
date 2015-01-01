@@ -1,3 +1,0 @@
-
-popup[n].openPopup();
-
