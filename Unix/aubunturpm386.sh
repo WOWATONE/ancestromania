@@ -21,7 +21,7 @@ cp ../i386-linux/Ancestromania.ini Update_AncestroIntel.tar
 cp ../i386-win32/Scripts/* Update_AncestroIntel/usr/share/ancestromania/Scripts
 cp ../i386-win32/Scripts/* Update_AncestroIntel.tar/Scripts
 
-cp ../docs/Evolutions.html Update_AncestroIntel/usr/share/doc/ancestromania/
+cp ../Docs/Evolutions.html Update_AncestroIntel/usr/share/doc/ancestromania/
 
 tar -czvf  Update_AncestroIntel.orig/Ancestromania.tar.gz Update_AncestroIntel/usr
 tar -czvf  Update_AncestroIntel.orig/Resources.tar.gz ../Resources
