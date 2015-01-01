@@ -14,7 +14,7 @@
         <CompilerPath Value="$(CompPath)"/>
       </Other>
     </CompilerOptions>
-    <Version Major="1"/>
+    <Version Major="1" Build="1"/>
     <Files Count="18">
       <Item1>
         <Filename Value="components/u_ancestroarc.pas"/>

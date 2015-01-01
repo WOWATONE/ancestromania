@@ -225,10 +225,10 @@ var
 
 const
   sVersionBaseMini:string='5.180';
-  urlMajAutoMain = 'http://www.liberlog.fr/ancestroupdate/';
-  urlMajAuto:array[0..1] of string = (urlMajAutoMain,'http://www.liberlog.fr/ancestroupdate2/');
+  urlMajAutoMain = 'http://www.liberlog.fr/ancestroupdate';
+  urlMajAuto:array[0..1] of string = (urlMajAutoMain,'http://www.liberlog.fr/ancestroupdate2');
 
-function fs_geturlMajAuto : String;
+function fs_geturlMajAuto ( const ab_testDir : Boolean = False ) : String;
 
 implementation
 
@@ -266,7 +266,7 @@ const
   urlListeDiffusion:string='http://ancestrosphere.free.fr/forum/index.php';
   urlApiCoordonnees:string='http://maps.googleapis.com/maps/api/geocode/xml?';
 
-function fs_geturlMajAuto : String;
+function fs_geturlMajAuto ( const ab_testDir : Boolean = False ) : String;
 var lpt_Packages : TPackageType;
 Begin
   lpt_Packages := fpt_GetPackagesType;
@@ -275,6 +275,9 @@ Begin
     else
       Result:=urlMajAutoMain;
   End;
+  if ab_testDir
+   Then AppendStr(Result,'test/')
+   Else AppendStr(Result,'/');
 end;
 
 procedure Tdm.DataModuleCreate(Sender:TObject);
@@ -423,8 +426,10 @@ var
     ReqSansCheck.CLose;
    if gci_context.VersionBase>'' then
     begin
+      vm:=0;
       if ConvertStrToFloat(sVersionBaseMini,vm) then
       begin
+        va:=0;
         if ConvertStrToFloat(gci_context.VersionBase,va) then
           result:=va>=vm
         else
@@ -1223,7 +1228,7 @@ function Tdm.doExportImage(const s_Query:TIBQuery;const RepBaseMedia,sDossier,Ex
                            const ab_RecreateFilename,ab_Backup,ab_exportAll : Boolean):boolean;
 var
   s_file:string;
-  i,p,lRepBase:integer;
+  i:integer;
 Begin
   s_file:=fs_getMediaPath (nil,s_Query,RepBaseMedia,False);
   Result:=False;
@@ -1305,7 +1310,7 @@ Begin
 end;
 
 function Tdm.PrepareExportImages(var RepBaseMedia,sDossier : String ):Boolean;
-var i,p,lRepBase:integer;
+var i:integer;
 Begin
   if not ControleRepBase then
    Begin
@@ -1314,7 +1319,6 @@ Begin
    end;
   Result:=True;
   RepBaseMedia:=IncludeTrailingPathDelimiter(fPathBaseMedias);
-  lRepBase:=length(RepBaseMedia);
   if Length(sDossier)>0 then //appel depuis export gedcom
   begin
     i:=LastDelimiter('.',sDossier);
@@ -1332,13 +1336,14 @@ end;
 function Tdm.doExportImages(const nomDossier:string; iMode:integer ; const ab_RecreateFilename, ab_hasasubdir : boolean ):string;
 var
   s_Query:TIBQuery;
-  i,p,lRepBase:integer;
+  i:integer;
   Save_Cursor:TCursor;
   ok:boolean;
   reponse:word;
-  RepBaseMedia,sDossier,NomFich,Extension:String;
+  sDossier,Extension,RepBaseMedia:String;
 begin
   result:='';//pour indiquer que l'export n'a pas abouti
+  RepBaseMedia:='';
   sDossier:=NomDossier;
   if not PrepareExportImages ( RepBaseMedia,sDossier )
    Then Exit;

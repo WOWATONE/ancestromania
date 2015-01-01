@@ -28,6 +28,8 @@ unit u_Form_Maj_Internet;
 {$DEFINE HTMLVIEW}
 {$ENDIF}
 
+{$DEFINE MultiMediaMissing}
+
 interface
 
 uses
@@ -151,9 +153,7 @@ end;
 
 procedure TFMajInternet.ch_testClick(Sender: TObject);
 begin
-  if ch_test.Checked
-   Then NetUpdate.URLBase:=fs_geturlMajAuto+'test/'
-   Else NetUpdate.URLBase:=fs_geturlMajAuto;
+  NetUpdate.URLBase:=fs_geturlMajAuto(ch_test.checked);
 end;
 
 procedure TFMajInternet.NetUpdateDownloaded(const Sender: TObject;
@@ -467,7 +467,9 @@ const
   snd_Async = $0001;  { play asynchronously }
 {$endif}
 var
+  {$ifndef MultiMediaMissing}
   PC: array[0..255] of {$ifdef UNICODE} WideChar {$else} AnsiChar {$endif};
+  {$endif}
   S, Params: ThtString;
   Ext: string;
   I, J, K: integer;
@@ -495,7 +497,7 @@ begin
     begin
       Handled := True;
   {$ifndef MultiMediaMissing}
-//      sndPlaySound(StrPCopy(PC, S), snd_ASync);
+     sndPlaySound(StrPCopy(PC, S), snd_ASync);
   {$endif}
     end
     else if Ext = '.EXE' then

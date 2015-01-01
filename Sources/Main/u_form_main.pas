@@ -633,10 +633,6 @@ var
 {$IFDEF FPC}{$R *.lfm}{$ELSE}{$R *.DFM}{$ENDIF}
 
 procedure TFMain.FormCreate(Sender:TObject);
-var
-  s:string;
-  i,p,l,t:Integer;
-  R:TRect;
 begin
   OnRefreshControls := SuperFormRefreshControls;
   OnFirstActivate:=SuperFormFirstActivate;
@@ -2117,6 +2113,9 @@ procedure TFMain.OuvreCalculsDates(const DateCode:Integer);
 var
   An,Mois,Jour:Integer;
 begin
+  An:=0;
+  Mois:=0;
+  Jour:=0;
  DecodeDateCode(DateCode,An,Mois,Jour,cGRE);
  OuvreCalculsDates(An,Mois,Jour);
 end;

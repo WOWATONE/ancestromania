@@ -146,10 +146,6 @@ end;
 
 
 procedure TFSelectDatabase.SuperFormCreate(Sender:TObject);
-var
-  i:integer;
-  s:string;
-  fIni:TIniFile;
 begin
   f_GetMemIniFile;
   p_ReadComboBoxItems(lbEmplacementbdd,lbEmplacementbdd.Items);
