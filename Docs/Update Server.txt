@@ -1,4 +1,4 @@
-Updates must be sent to http://ancestromania.net/ancestroupdatetest/
+Updates must be sent to http://ancestromania.net/ancestroupdatetest/. Before an update, save old files into your archive directory.
 
 Example of files :
 Evolutions.html
