@@ -1195,7 +1195,7 @@ resourcestring
   rs_Info_Base_is_now_this = 'La base est maintenant ici :'+_CRLF+' @ARG';
   rs_Info_Base_must_use_utf8_characters = 'Vos données utilisaient les caractères ANSI.'+
                 _CRLF+' La base doit être migrée à partir du projet de migration vers les caractères internationaux. Ce projet est ici :'+
-                _CRLF+'http://genealogie.liberlog.fr'+_CRLF+'L''application va maintenant considérer que votre base est en caractères internationaux, au risque de mal fonctionner.';
+                _CRLF+'http://ancestromania.net'+_CRLF+'L''application va maintenant considérer que votre base est en caractères internationaux, au risque de mal fonctionner.';
   rs_Info_Export_is_a_success = 'L''exportation s''est bien passée.';
   rs_Info_Ancestry_calculate = 'Cette option permet d''afficher la parenté entre conjoints quand elle existe,'+_CRLF
       +'et autorise la mise à jour automatique de la parenté au Sosa n°1 si l''option'+_CRLF

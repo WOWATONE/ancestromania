@@ -146,14 +146,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="u_dm"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1630"/>
-        <CursorPos X="50" Y="1633"/>
+        <TopLine Value="207"/>
+        <CursorPos X="79" Y="230"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1>
       <Unit2>
@@ -1036,10 +1032,13 @@
         <Filename Value="Main/u_common_ancestro.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="u_common_ancestro"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="26"/>
-        <CursorPos X="58" Y="51"/>
+        <TopLine Value="1177"/>
+        <CursorPos X="48" Y="1198"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit89>
       <Unit90>
@@ -8687,127 +8686,19 @@
         <Loaded Value="True"/>
       </Unit1216>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="3" HistoryIndex="2">
       <Position1>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="271" Column="31" TopLine="269"/>
-      </Position1>
-      <Position2>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="231" Column="63" TopLine="220"/>
-      </Position2>
-      <Position3>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="1338" Column="6" TopLine="1327"/>
-      </Position3>
-      <Position4>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="1342" Column="24" TopLine="1331"/>
-      </Position4>
-      <Position5>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="1343" Column="78" TopLine="1327"/>
-      </Position5>
-      <Position6>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="1338" Column="5" TopLine="1327"/>
-      </Position6>
-      <Position7>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="1229" Column="4" TopLine="1218"/>
-      </Position7>
-      <Position8>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="1311" Column="7" TopLine="1300"/>
-      </Position8>
-      <Position9>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="1345" Column="20" TopLine="1335"/>
-      </Position9>
-      <Position10>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="431" Column="15" TopLine="425"/>
-      </Position10>
-      <Position11>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="419" Column="28" TopLine="418"/>
-      </Position11>
-      <Position12>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="419" Column="28" TopLine="418"/>
-      </Position12>
-      <Position13>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="1313" Column="10" TopLine="1311"/>
-      </Position13>
-      <Position14>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="1321" Column="41" TopLine="1311"/>
-      </Position14>
-      <Position15>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
-      </Position15>
-      <Position16>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="2375" Column="40" TopLine="2363"/>
-      </Position16>
-      <Position17>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
-      </Position17>
-      <Position18>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="2357" Column="28" TopLine="2325"/>
-      </Position18>
-      <Position19>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="2395" Column="22" TopLine="2363"/>
-      </Position19>
-      <Position20>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="229" Column="12" TopLine="208"/>
-      </Position20>
-      <Position21>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="2396" Column="39" TopLine="2364"/>
-      </Position21>
-      <Position22>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="229" Column="20" TopLine="209"/>
-      </Position22>
-      <Position23>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="2396" Column="39" TopLine="2373"/>
-      </Position23>
-      <Position24>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="266" Column="1" TopLine="245"/>
-      </Position24>
-      <Position25>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="277" Column="15" TopLine="245"/>
-      </Position25>
-      <Position26>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="1646" Column="1" TopLine="1629"/>
-      </Position26>
-      <Position27>
         <Filename Value="Main/u_form_main.pas"/>
         <Caret Line="2118" Column="11" TopLine="2109"/>
-      </Position27>
-      <Position28>
+      </Position1>
+      <Position2>
         <Filename Value="Main/u_form_main.pas"/>
         <Caret Line="1975" Column="19" TopLine="1954"/>
-      </Position28>
-      <Position29>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="1649" Column="34" TopLine="1610"/>
-      </Position29>
-      <Position30>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="47" Column="3" TopLine="19"/>
-      </Position30>
+      </Position2>
+      <Position3>
+        <Filename Value="Main/u_common_ancestro.pas"/>
+        <Caret Line="51" Column="58" TopLine="26"/>
+      </Position3>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
