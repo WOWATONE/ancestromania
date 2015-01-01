@@ -226,6 +226,7 @@ var
 const
   sVersionBaseMini:string='5.180';
   urlMajAutoMain = 'http://www.liberlog.fr/ancestroupdate';
+  urlMajAutoInstall = 'http://www.liberlog.fr/ancestroinstall/';
   urlMajAuto:array[0..1] of string = (urlMajAutoMain,'http://www.liberlog.fr/ancestroupdate2');
 
 function fs_geturlMajAuto ( const ab_testDir : Boolean = False ) : String;
@@ -262,7 +263,6 @@ const CST_PARANCES = 'Parances.fdb';
 const
   urlSite:string='http://ancestrosphere.free.fr/forum/index.php';
 //  urlMajAuto:string='http://andre.langlet.free.fr/ancestroDD/';
-  urlInfosMaj=urlMajAutoMain+WebPage;
   urlListeDiffusion:string='http://ancestrosphere.free.fr/forum/index.php';
   urlApiCoordonnees:string='http://maps.googleapis.com/maps/api/geocode/xml?';
 
@@ -1646,7 +1646,7 @@ end;
 
 function Tdm.GetUrlInfosMaj:string;
 begin
-  Result:=urlInfosMaj;
+  Result:=fs_geturlMajAuto+WebPage;
 end;
 
 function Tdm.GeturlListeDiffusion:string;
@@ -2392,7 +2392,7 @@ begin
           begin
             if FileExistsUTF8(IBBaseParam.DatabaseName) Then DeleteFileUTF8(IBBaseParam.DatabaseName);
             doShowWorking(rs_Please_Wait+_CRLF+fs_RemplaceMsg(gs_Downloading_in_progress,[urlMajAutoMain+CST_PARANCES]));
-            URLBase:=urlMajAutoMain;
+            URLBase:=urlMajAutoInstall;
             FileUpdate:=CST_PARANCES;
             UpdateDir:=ExtractFileDir(IBBaseParam.DatabaseName);
             Update;
