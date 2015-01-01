@@ -3619,7 +3619,7 @@ msgstr ""
 msgid ""
 "Vos données utilisaient les caractères ANSI.\n"
 " La base doit être migrée à partir du projet de migration vers les caractères internationaux. Ce projet est ici :\n"
-"http://genealogie.liberlog.fr\n"
+"http://ancestromania.net\n"
 "L'application va maintenant considérer que votre base est en caractères internationaux, au risque de mal fonctionner.\n"
 msgstr ""
 
