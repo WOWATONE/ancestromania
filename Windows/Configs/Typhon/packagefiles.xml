@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <UserPkgLinks Version="2" Count="135">
+    <Item1>
+      <Name Value="DateTimeCtrls"/>
+      <Version Major="1" Minor="5" Release="1"/>
+      <Filename Value="components\datetimectrls\datetimectrls.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item1>
+    <Item2>
+      <Name Value="EditorMacroScript"/>
+      <Version Major="1"/>
+      <Filename Value="components\macroscript\editormacroscript.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item2>
+    <Item3>
+      <Name Value="editortoolbar"/>
+      <Version Minor="6" Release="3"/>
+      <Filename Value="components\editortoolbar\editortoolbar.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item3>
+    <Item4>
+      <Name Value="LazCustForms"/>
+      <Version Major="1" Minor="1"/>
+      <Filename Value="components\customform\lazcustforms.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item4>
+    <Item5>
+      <Name Value="lazreportpdfexport"/>
+      <Version Minor="7"/>
+      <Filename Value="components\lazreport\source\addons\pdfexport\lazreportpdfexport.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item5>
+    <Item6>
+      <Name Value="lr_pdfexport"/>
+      <Version Minor="7"/>
+      <Filename Value="components\lazreport\source\addons\pdfexport\lr_pdfexport.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item6>
+    <Item7>
+      <Name Value="pl_abbrevia"/>
+      <Version Major="5" Minor="1" Release="8"/>
+      <Filename Value="components\pl_Abbrevia\pl_abbrevia.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item7>
+    <Item8>
+      <Name Value="pl_acs"/>
+      <Version Major="3"/>
+      <Filename Value="components\pl_ACS\pl_acs.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item8>
+    <Item9>
+      <Name Value="pl_acs"/>
+      <Version Major="3" Minor="3" Release="1"/>
+      <Filename Value="components\pl_ACS\pl_acs.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item9>
+    <Item10>
+      <Name Value="pl_aggpas"/>
+      <Version Major="2" Minor="5"/>
+      <Filename Value="components\pl_AGGPas\pl_aggpas.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item10>
+    <Item11>
+      <Name Value="pl_aggpas"/>
+      <Version Major="2" Minor="5" Release="1"/>
+      <Filename Value="components\pl_AGGPas\pl_aggpas.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item11>
+    <Item12>
+      <Name Value="pl_aggpasvs"/>
+      <Version Major="2" Minor="5" Release="1"/>
+      <Filename Value="components\pl_AGGPasVS\pl_aggpasvs.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item12>
+    <Item13>
+      <Name Value="pl_aggpasvs"/>
+      <Version Major="2" Minor="7" Release="1"/>
+      <Filename Value="components\pl_AGGPasVS\pl_aggpasvs.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item13>
+    <Item14>
+      <Name Value="pl_asiovst"/>
+      <Version Minor="3" Release="3"/>
+      <Filename Value="components\pl_ASIOVST\pl_asiovst.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item14>
+    <Item15>
+      <Name Value="pl_astronomy"/>
+      <Version Major="2" Minor="1"/>
+      <Filename Value="components\pl_Astronomy\pl_astronomy.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item15>
+    <Item16>
+      <Name Value="pl_barcodes"/>
+      <Version Major="2" Release="2"/>
+      <Filename Value="components\pl_Barcodes\pl_barcodes.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item16>
+    <Item17>
+      <Name Value="pl_bgrabitmap"/>
+      <Version Major="7" Minor="2"/>
+      <Filename Value="components\pl_BGRAbitmap\pl_bgrabitmap.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item17>
+    <Item18>
+      <Name Value="pl_bgrabitmap"/>
+      <Version Major="7" Minor="5" Release="4"/>
+      <Filename Value="components\pl_BGRAbitmap\pl_bgrabitmap.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item18>
+    <Item19>
+      <Name Value="pl_bgracontrols"/>
+      <Version Major="3" Build="1"/>
+      <Filename Value="components\pl_BGRAcontrols\pl_bgracontrols.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item19>
+    <Item20>
+      <Name Value="pl_bgracontrols"/>
+      <Version Major="3" Minor="3" Release="1"/>
+      <Filename Value="components\pl_BGRAcontrols\pl_bgracontrols.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item20>
+    <Item21>
+      <Name Value="pl_bgrauecontrols"/>
+      <Version Major="2" Release="1"/>
+      <Filename Value="components\pl_BGRAueControls\pl_bgrauecontrols.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item21>
+    <Item22>
+      <Name Value="pl_brook"/>
+      <Version Major="1" Release="1"/>
+      <Filename Value="components\pl_Brook\pl_brook.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item22>
+    <Item23>
+      <Name Value="pl_brook"/>
+      <Version Major="1" Release="4"/>
+      <Filename Value="components\pl_Brook\pl_brook.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item23>
+    <Item24>
+      <Name Value="pl_castle"/>
+      <Version Major="4"/>
+      <Filename Value="components\pl_Castle\pl_castle.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item24>
+    <Item25>
+      <Name Value="pl_castle"/>
+      <Version Major="4" Release="26"/>
+      <Filename Value="components\pl_Castle\pl_castle.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item25>
+    <Item26>
+      <Name Value="pl_CGILaz"/>
+      <Version Major="1"/>
+      <Filename Value="components\pl_CGILaz\pl_cgilaz.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item26>
+    <Item27>
+      <Name Value="pl_CGILazIDE"/>
+      <Version Major="1"/>
+      <Filename Value="components\pl_CGILazIDE\pl_cgilazide.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item27>
+    <Item28>
+      <Name Value="pl_cindy"/>
+      <Version Major="5" Minor="1"/>
+      <Filename Value="components\pl_Cindy\pl_cindy.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item28>
+    <Item29>
+      <Name Value="pl_cindy"/>
+      <Version Major="6" Minor="7" Release="3"/>
+      <Filename Value="components\pl_Cindy\pl_cindy.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item29>
+    <Item30>
+      <Name Value="pl_colorlib"/>
+      <Version Major="3" Minor="1" Build="1"/>
+      <Filename Value="components\pl_ColorLib\pl_colorlib.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item30>
+    <Item31>
+      <Name Value="pl_dataport"/>
+      <Version Major="1" Minor="1"/>
+      <Filename Value="components\pl_DataPort\pl_dataport.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item31>
+    <Item32>
+      <Name Value="pl_DCP"/>
+      <Version Major="2" Release="4" Build="1"/>
+      <Filename Value="components\pl_DCP\pl_dcp.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item32>
+    <Item33>
+      <Name Value="pl_DCPcomp"/>
+      <Version Major="2" Release="4" Build="1"/>
+      <Filename Value="components\pl_DCP\pl_dcpcomp.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item33>
+    <Item34>
+      <Name Value="pl_dwscript"/>
+      <Version Major="2" Release="10"/>
+      <Filename Value="components\pl_DWScript\pl_dwscript.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item34>
+    <Item35>
+      <Name Value="pl_dwscript"/>
+      <Version Major="2" Release="12"/>
+      <Filename Value="components\pl_DWScript\pl_dwscript.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item35>
+    <Item36>
+      <Name Value="pl_eccontrols"/>
+      <Version Release="1" Build="9"/>
+      <Filename Value="components\pl_ECControls\pl_eccontrols.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item36>
+    <Item37>
+      <Name Value="pl_excontrols"/>
+      <Version Major="1" Release="2"/>
+      <Filename Value="components\pl_ExControls\pl_excontrols.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item37>
+    <Item38>
+      <Name Value="pl_excontrols"/>
+      <Version Major="3" Minor="1" Build="1"/>
+      <Filename Value="components\pl_ExControls\pl_excontrols.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item38>
+    <Item39>
+      <Name Value="pl_exdatabase"/>
+      <Version Major="1"/>
+      <Filename Value="components\pl_ExDatabase\pl_exdatabase.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item39>
+    <Item40>
+      <Name Value="pl_exdesign"/>
+      <Version Major="1" Release="1"/>
+      <Filename Value="components\pl_ExDesign\pl_exdesign.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item40>
+    <Item41>
+      <Name Value="pl_exdesign"/>
+      <Version Major="3" Minor="1" Build="1"/>
+      <Filename Value="components\pl_ExDesign\pl_exdesign.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item41>
+    <Item42>
+      <Name Value="pl_exsystem"/>
+      <Version Major="2" Minor="1"/>
+      <Filename Value="components\pl_ExSystem\pl_exsystem.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item42>
+    <Item43>
+      <Name Value="pl_exsystem"/>
+      <Version Major="3" Minor="1" Build="1"/>
+      <Filename Value="components\pl_ExSystem\pl_exsystem.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item43>
+    <Item44>
+      <Name Value="pl_extentideman"/>
+      <Version Major="1" Minor="3"/>
+      <Filename Value="components\pl_ExtentIDE\pl_extentideman.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item44>
+    <Item45>
+      <Name Value="pl_extentideman"/>
+      <Version Major="1" Minor="5" Release="2"/>
+      <Filename Value="components\pl_ExtentIDE\pl_extentideman.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item45>
+    <Item46>
+      <Name Value="pl_ExText"/>
+      <Version Major="3" Release="1"/>
+      <Filename Value="components\pl_ExText\pl_extext.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item46>
+    <Item47>
+      <Name Value="pl_fortesreport"/>
+      <Version Major="3" Minor="24" Release="6" Build="1"/>
+      <Filename Value="components\pl_FortesReport\pl_fortesreport.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item47>
+    <Item48>
+      <Name Value="pl_fortesreport"/>
+      <Version Major="3" Minor="24" Release="7"/>
+      <Filename Value="components\pl_FortesReport\pl_fortesreport.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item48>
+    <Item49>
+      <Name Value="pl_fpspreadsheet"/>
+      <Version Major="1" Release="12"/>
+      <Filename Value="components\pl_FPSpreadsheet\pl_fpspreadsheet.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item49>
+    <Item50>
+      <Name Value="pl_fpspreadsheet"/>
+      <Version Major="1" Minor="1" Release="1"/>
+      <Filename Value="components\pl_FPSpreadsheet\pl_fpspreadsheet.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item50>
+    <Item51>
+      <Name Value="pl_freefpidercomp"/>
+      <Version Major="1" Minor="3" Release="3"/>
+      <Filename Value="components\pl_FreeSpider\pl_freefpidercomp.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item51>
+    <Item52>
+      <Name Value="pl_freespider"/>
+      <Version Major="1" Minor="3" Release="6"/>
+      <Filename Value="components\pl_FreeSpider\pl_freespider.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item52>
+    <Item53>
+      <Name Value="pl_fzcontrols"/>
+      <Version Major="1"/>
+      <Filename Value="components\pl_FZControls\pl_fzcontrols.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item53>
+    <Item54>
+      <Name Value="pl_gaiagis"/>
+      <Version Major="1" Minor="2"/>
+      <Filename Value="components\pl_GaiaGIS\pl_gaiagis.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item54>
+    <Item55>
+      <Name Value="pl_geogis"/>
+      <Version Major="2" Release="1"/>
+      <Filename Value="components\pl_GeoGIS\pl_geogis.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item55>
+    <Item56>
+      <Name Value="pl_geogiscomp"/>
+      <Version Major="1" Minor="3"/>
+      <Filename Value="components\pl_GeoGIS\pl_geogiscomp.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item56>
+    <Item57>
+      <Name Value="pl_glassdocking"/>
+      <Version Major="2"/>
+      <Filename Value="components\pl_GlassDocking\pl_glassdocking.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item57>
+    <Item58>
+      <Name Value="pl_glassdocking"/>
+      <Version Major="2" Minor="3" Release="6"/>
+      <Filename Value="components\pl_GlassDocking\pl_glassdocking.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item58>
+    <Item59>
+      <Name Value="pl_glscene"/>
+      <Version Major="4" Minor="3"/>
+      <Filename Value="components\pl_GLScene\pl_glscene.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item59>
+    <Item60>
+      <Name Value="pl_glscene"/>
+      <Version Major="4" Minor="4" Release="2"/>
+      <Filename Value="components\pl_GLScene\pl_glscene.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item60>
+    <Item61>
+      <Name Value="pl_graphics32"/>
+      <Version Major="4" Release="5"/>
+      <Filename Value="components\pl_Graphics32\pl_graphics32.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item61>
+    <Item62>
+      <Name Value="pl_graphics32"/>
+      <Version Major="4" Minor="3" Release="1"/>
+      <Filename Value="components\pl_Graphics32\pl_graphics32.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item62>
+    <Item63>
+      <Name Value="pl_graphics32ext"/>
+      <Version Major="2" Minor="1"/>
+      <Filename Value="components\pl_Graphics32EXT\pl_graphics32ext.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item63>
+    <Item64>
+      <Name Value="pl_graphics32ext"/>
+      <Version Major="3" Release="1"/>
+      <Filename Value="components\pl_Graphics32EXT\pl_graphics32ext.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item64>
+    <Item65>
+      <Name Value="pl_graphics32vpr"/>
+      <Version Major="2" Minor="1"/>
+      <Filename Value="components\pl_Graphics32VPR\pl_graphics32vpr.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item65>
+    <Item66>
+      <Name Value="pl_graphics32vpr"/>
+      <Version Major="3" Release="1"/>
+      <Filename Value="components\pl_Graphics32VPR\pl_graphics32vpr.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item66>
+    <Item67>
+      <Name Value="pl_indy"/>
+      <Version Major="10" Minor="6" Build="12"/>
+      <Filename Value="components\pl_Indy\pl_indy.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item67>
+    <Item68>
+      <Name Value="pl_indycomp"/>
+      <Version Major="10" Minor="5" Release="9" Build="18"/>
+      <Filename Value="components\pl_Indy\pl_indycomp.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item68>
+    <Item69>
+      <Name Value="pl_jujiboutils"/>
+      <Version Major="1" Build="4"/>
+      <Filename Value="components\pl_JujiboUtils\pl_jujiboutils.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item69>
+    <Item70>
+      <Name Value="pl_jujiboutils"/>
+      <Version Major="1" Release="8"/>
+      <Filename Value="components\pl_JujiboUtils\pl_jujiboutils.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item70>
+    <Item71>
+      <Name Value="pl_jvcl"/>
+      <Version Major="1"/>
+      <Filename Value="components\pl_JVCL\pl_jvcl.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item71>
+    <Item72>
+      <Name Value="pl_KControls"/>
+      <Version Major="1" Minor="3"/>
+      <Filename Value="components\pl_KControls\pl_kcontrols.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item72>
+    <Item73>
+      <Name Value="pl_KControls"/>
+      <Version Major="1" Minor="6"/>
+      <Filename Value="components\pl_KControls\pl_kcontrols.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item73>
+    <Item74>
+      <Name Value="pl_lazbarcodes"/>
+      <Version Major="1" Minor="1"/>
+      <Filename Value="components\pl_LazBarcodes\pl_lazbarcodes.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item74>
+    <Item75>
+      <Name Value="pl_lazsolutions"/>
+      <Version Major="1" Minor="1"/>
+      <Filename Value="components\pl_LazSolutions\pl_lazsolutions.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item75>
+    <Item76>
+      <Name Value="pl_lazsolutions"/>
+      <Version Major="1" Minor="1" Release="4"/>
+      <Filename Value="components\pl_LazSolutions\pl_lazsolutions.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item76>
+    <Item77>
+      <Name Value="pl_lazwebsolutions"/>
+      <Version Major="1" Release="1"/>
+      <Filename Value="components\pl_LazWebSolutions\pl_lazwebsolutions.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item77>
+    <Item78>
+      <Name Value="pl_lazwebsolutions"/>
+      <Version Major="1" Release="4"/>
+      <Filename Value="components\pl_LazWebSolutions\pl_lazwebsolutions.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item78>
+    <Item79>
+      <Name Value="pl_lclextensions"/>
+      <Version Minor="4" Release="8" Build="4"/>
+      <Filename Value="components\pl_lclextensions\pl_lclextensions.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item79>
+    <Item80>
+      <Name Value="pl_lnet"/>
+      <Version Minor="6" Release="4" Build="5"/>
+      <Filename Value="components\pl_LNet\pl_lnet.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item80>
+    <Item81>
+      <Name Value="pl_lnetcomp"/>
+      <Version Minor="6" Release="4" Build="3"/>
+      <Filename Value="components\pl_LNet\pl_lnetcomp.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item81>
+    <Item82>
+      <Name Value="pl_lockbox"/>
+      <Version Major="1"/>
+      <Filename Value="components\pl_LockBox\pl_lockbox.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item82>
+    <Item83>
+      <Name Value="pl_luicontrols"/>
+      <Version Major="1" Release="12"/>
+      <Filename Value="components\pl_LuiControls\pl_luicontrols.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item83>
+    <Item84>
+      <Name Value="pl_luicontrols"/>
+      <Version Major="1" Release="20"/>
+      <Filename Value="components\pl_LuiControls\pl_luicontrols.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item84>
+    <Item85>
+      <Name Value="pl_onguard"/>
+      <Version Major="5" Minor="1" Release="1"/>
+      <Filename Value="components\pl_OnGuard\pl_onguard.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item85>
+    <Item86>
+      <Name Value="pl_opengl"/>
+      <Version Major="6"/>
+      <Filename Value="components\pl_OpenGL\pl_opengl.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item86>
+    <Item87>
+      <Name Value="pl_opengl"/>
+      <Version Major="6" Minor="1" Release="6"/>
+      <Filename Value="components\pl_OpenGL\pl_opengl.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item87>
+    <Item88>
+      <Name Value="pl_openwire"/>
+      <Version Major="1" Release="2"/>
+      <Filename Value="components\pl_OpenWire\pl_openwire.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item88>
+    <Item89>
+      <Name Value="pl_ORCA"/>
+      <Version Major="3" Minor="4"/>
+      <Filename Value="components\pl_ORCA\pl_orca.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item89>
+    <Item90>
+      <Name Value="pl_orca"/>
+      <Version Major="4" Release="1"/>
+      <Filename Value="components\pl_ORCA\pl_orca.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item90>
+    <Item91>
+      <Name Value="pl_orca3d"/>
+      <Version Major="4" Release="1"/>
+      <Filename Value="components\pl_ORCA3D\pl_orca3d.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item91>
+    <Item92>
+      <Name Value="pl_orpheus"/>
+      <Version Minor="2" Release="3" Build="6"/>
+      <Filename Value="components\pl_Orpheus\pl_orpheus.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item92>
+    <Item93>
+      <Name Value="pl_orpheus"/>
+      <Version Major="2" Minor="6" Release="1"/>
+      <Filename Value="components\pl_Orpheus\pl_orpheus.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item93>
+    <Item94>
+      <Name Value="pl_pascalscada"/>
+      <Version Minor="7" Release="3" Build="9"/>
+      <Filename Value="components\pl_PascalSCADA\pl_pascalscada.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item94>
+    <Item95>
+      <Name Value="pl_pascalscada"/>
+      <Version Minor="7" Release="4" Build="1"/>
+      <Filename Value="components\pl_PascalSCADA\pl_pascalscada.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item95>
+    <Item96>
+      <Name Value="pl_pascalscript"/>
+      <Version Major="1" Release="1"/>
+      <Filename Value="components\pl_PascalScript\pl_pascalscript.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item96>
+    <Item97>
+      <Name Value="pl_pascalscript"/>
+      <Version Major="1" Release="4"/>
+      <Filename Value="components\pl_PascalScript\pl_pascalscript.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item97>
+    <Item98>
+      <Name Value="pl_pasdoc"/>
+      <Version Minor="13"/>
+      <Filename Value="components\pl_PasDoc\pl_pasdoc.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item98>
+    <Item99>
+      <Name Value="pl_pasdocpkg"/>
+      <Version Minor="12" Release="6"/>
+      <Filename Value="components\pl_PasDoc\pl_pasdocpkg.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item99>
+    <Item100>
+      <Name Value="pl_powerpdf"/>
+      <Version Minor="9" Release="12"/>
+      <Filename Value="components\pl_PowerPDF\pl_powerpdf.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item100>
+    <Item101>
+      <Name Value="pl_richmemo"/>
+      <Version Major="1" Release="1"/>
+      <Filename Value="components\pl_RichMemo\pl_richmemo.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item101>
+    <Item102>
+      <Name Value="pl_richview"/>
+      <Version Minor="5" Release="4"/>
+      <Filename Value="components\pl_RichView\pl_richview.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item102>
+    <Item103>
+      <Name Value="pl_richview"/>
+      <Version Major="1" Release="6"/>
+      <Filename Value="components\pl_RichView\pl_richview.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item103>
+    <Item104>
+      <Name Value="pl_rx"/>
+      <Version Major="2" Minor="4" Release="3"/>
+      <Filename Value="components\pl_RX\pl_rx.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item104>
+    <Item105>
+      <Name Value="pl_rx"/>
+      <Version Major="2" Minor="5" Release="1"/>
+      <Filename Value="components\pl_RX\pl_rx.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item105>
+    <Item106>
+      <Name Value="pl_shapes"/>
+      <Version Major="2" Minor="1"/>
+      <Filename Value="components\pl_Shapes\pl_shapes.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item106>
+    <Item107>
+      <Name Value="pl_shapespak"/>
+      <Version Major="2"/>
+      <Filename Value="components\pl_Shapes\pl_shapespak.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item107>
+    <Item108>
+      <Name Value="pl_spktoolbar"/>
+      <Version Major="1" Minor="1"/>
+      <Filename Value="components\pl_SpkToolBar\pl_spktoolbar.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item108>
+    <Item109>
+      <Name Value="pl_spktoolbar"/>
+      <Version Major="1" Minor="1" Release="2"/>
+      <Filename Value="components\pl_SpkToolBar\pl_spktoolbar.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item109>
+    <Item110>
+      <Name Value="pl_synapse"/>
+      <Version Major="40" Minor="1" Release="8"/>
+      <Filename Value="components\pl_Synapse\pl_synapse.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item110>
+    <Item111>
+      <Name Value="pl_synapsepkg"/>
+      <Version Major="1" Minor="1" Release="2" Build="6"/>
+      <Filename Value="components\pl_Synapse\pl_synapsepkg.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item111>
+    <Item112>
+      <Name Value="pl_synapsepkgvs"/>
+      <Version Major="1"/>
+      <Filename Value="components\pl_SynapseVS\pl_synapsepkgvs.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item112>
+    <Item113>
+      <Name Value="pl_synapsevs"/>
+      <Version Major="1" Minor="6"/>
+      <Filename Value="components\pl_SynapseVS\pl_synapsevs.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item113>
+    <Item114>
+      <Name Value="pl_titanscript"/>
+      <Version Major="2" Release="6"/>
+      <Filename Value="components\pl_TitanScript\pl_titanscript.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item114>
+    <Item115>
+      <Name Value="pl_titanscriptcomp"/>
+      <Version Major="1" Release="5"/>
+      <Filename Value="components\pl_TitanScript\pl_titanscriptcomp.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item115>
+    <Item116>
+      <Name Value="pl_uib"/>
+      <Version Major="2" Minor="5" Build="10"/>
+      <Filename Value="components\pl_UIB\pl_uib.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item116>
+    <Item117>
+      <Name Value="pl_uibcomp"/>
+      <Version Major="2" Minor="5" Build="10"/>
+      <Filename Value="components\pl_UIB\pl_uibcomp.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item117>
+    <Item118>
+      <Name Value="pl_virtualtrees"/>
+      <Version Major="4" Minor="8" Release="6" Build="10"/>
+      <Filename Value="components\pl_VirtualTrees\pl_virtualtrees.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item118>
+    <Item119>
+      <Name Value="pl_virtualtreesextra"/>
+      <Version Major="1" Build="2"/>
+      <Filename Value="components\pl_VirtualTreesExtra\pl_virtualtreesextra.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item119>
+    <Item120>
+      <Name Value="pl_visualplanit"/>
+      <Version Major="1" Minor="3"/>
+      <Filename Value="components\pl_VisualPlanIt\pl_visualplanit.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item120>
+    <Item121>
+      <Name Value="pl_visualplanitcomp"/>
+      <Version Major="1" Minor="2"/>
+      <Filename Value="components\pl_VisualPlanIt\pl_visualplanitcomp.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item121>
+    <Item122>
+      <Name Value="pl_Win_DirectX"/>
+      <Version Major="2" Release="3"/>
+      <Filename Value="components\pl_Win_DirectX\pl_win_directx.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item122>
+    <Item123>
+      <Name Value="pl_Win_DirectX"/>
+      <Version Major="3" Minor="1" Release="1"/>
+      <Filename Value="components\pl_Win_DirectX\pl_win_directx.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item123>
+    <Item124>
+      <Name Value="pl_Win_DirectX11"/>
+      <Version Major="3" Release="1"/>
+      <Filename Value="components\pl_Win_DirectX11\pl_win_directx11.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item124>
+    <Item125>
+      <Name Value="pl_Win_DSPack"/>
+      <Version Major="1"/>
+      <Filename Value="components\pl_Win_DSPack\pl_win_dspack.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item125>
+    <Item126>
+      <Name Value="pl_Win_GDI"/>
+      <Version Major="2" Minor="1"/>
+      <Filename Value="components\pl_Win_GDI\pl_win_gdi.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item126>
+    <Item127>
+      <Name Value="pl_Win_Midi"/>
+      <Version Major="1"/>
+      <Filename Value="components\pl_Win_MIDI\pl_win_midi.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item127>
+    <Item128>
+      <Name Value="pl_win_oledb"/>
+      <Version Major="1"/>
+      <Filename Value="components\pl_Win_OleDB\pl_win_oledb.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item128>
+    <Item129>
+      <Name Value="pl_wst"/>
+      <Version Major="1" Release="8"/>
+      <Filename Value="components\pl_WST\pl_wst.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item129>
+    <Item130>
+      <Name Value="pl_wst"/>
+      <Version Major="1" Release="20"/>
+      <Filename Value="components\pl_WST\pl_wst.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item130>
+    <Item131>
+      <Name Value="pl_zeosdbo"/>
+      <Version Major="7" Minor="2" Build="6"/>
+      <Filename Value="components\pl_ZeosDBO\pl_zeosdbo.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item131>
+    <Item132>
+      <Name Value="pl_zeosdbocomp"/>
+      <Version Major="7" Minor="1" Build="2"/>
+      <Filename Value="components\pl_ZeosDBO\pl_zeosdbocomp.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item132>
+    <Item133>
+      <Name Value="pl_zmsql"/>
+      <Version Minor="1" Release="13"/>
+      <Filename Value="components\pl_ZMSQL\pl_zmsql.lpk"/>
+      <LastUsed Value="20130402"/>
+    </Item133>
+    <Item134>
+      <Name Value="pl_zmsql"/>
+      <Version Minor="1" Release="18"/>
+      <Filename Value="components\pl_ZMSQL\pl_zmsql.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item134>
+    <Item135>
+      <Name Value="weblaz"/>
+      <Version Major="1" Minor="2"/>
+      <Filename Value="components\fpweb\weblaz.lpk"/>
+      <LastUsed Value="20140828"/>
+    </Item135>
+  </UserPkgLinks>
+</CONFIG>
