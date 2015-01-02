@@ -136,38 +136,24 @@ begin
   while not ExeOk do
   begin
     PathAppli := GetIniString( 'Path', 'PathAppli', ExpandConstant('{pf64}')+'\Ancestromania\', IniFile); 
-    if PathAppli > '' then
-    begin
-      if PathAppli<>AddBackslash(PathAppli) then
+    if PathAppli<>AddBackslash(PathAppli) then
       begin
         PathAppli:=AddBackslash(PathAppli);
         SetIniString( 'Path', 'PathAppli', PathAppli, IniFile);
       end;
-      if FileExists(PathAppli+'Ancestromania.exe') then
-        ExeOk:=true
-      else
-       if PathAppli = ExpandConstant('{commonappdata}')+'\Ancestromania\' Then
-        ExeOk:=True
-  	   else if MsgBox('Ancestromania.exe n''est pas dans le répertoire'+#13#10+PathAppli+#13#10
-               +'Confirmez-vous quand même la mise à jour dans ce répertoire?',mbConfirmation,MB_YESNO)=IDYES then
-          ExeOk:=true;
-    end;
-    if not ExeOk then
-    begin
-      PathAppli := GetIniString( 'Path', 'PathAppli', ExpandConstant('{pf64}')+'\Ancestromania\', IniFile); 
-      if PathAppli > '' then
-      begin
-        PathAppli:=AddBackslash(PathAppli);
-        if FileExists(PathAppli+'Ancestromania.exe') then
-          ExeOk:=true
-        else
-    	    if MsgBox('Ancestromania.exe n''est pas dans le répertoire'+#13#10+PathAppli+#13#10
-                  +'Confirmez-vous quand même la mise à jour dans ce répertoire?',mbConfirmation,MB_YESNO)=IDYES then
-              ExeOk:=true;
-        if ExeOk then
-          SetIniString( 'Path', 'PathAppli', PathAppli, IniFile);
-      end;
-    end;
+      // 64 bits directory
+    if ( pos ( ExpandConstant('{pf}'), PathAppli ) > 0 ) then
+     PathAppli:=ExpandConstant('{pf64}')+'\Ancestromania\';
+    if FileExists(PathAppli+'Ancestromania.exe') then
+       ExeOk:=true
+     else
+      if  (PathAppli > '')
+      and (MsgBox('Ancestromania.exe n''est pas dans le répertoire'+#13#10+PathAppli+#13#10
+                  +'Confirmez-vous quand même la mise à jour dans ce répertoire?',mbConfirmation,MB_YESNO)=IDYES) then
+         Begin
+           ExeOk:=true;
+           SetIniString( 'Path', 'PathAppli', PathAppli, IniFile);
+         End;
     if not ExeOk then
     begin
       MsgBox('Le répertoire d''installation d''Ancestromania n''a pas été trouvé.'+#13#10
