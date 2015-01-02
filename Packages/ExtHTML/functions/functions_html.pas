@@ -63,6 +63,8 @@ const CST_HTML_DIV                 = 'DIV' ;
       CST_HTML_A_BEGIN_LOWER       = '<a' ;
       CST_HTML_A_BEGIN_LINK        = 'www.' ;
       CST_HTML_A_BEGIN_LINK_HTTP   = 'http://' ;
+      CST_HTML_A_BEGIN_LINK_HTTPS  = 'https://' ;
+      CST_HTML_A_BEGIN_LINKS       : Array [0..1] of String = (CST_HTML_A_BEGIN_LINK_HTTP, CST_HTML_A_BEGIN_LINK_HTTPS) ;
       CST_HTML_A_END               = '</A>' ;
       CST_HTML_AHREF               = CST_HTML_A_BEGIN + ' HREF="' ;
       CST_HTML_SPAN                = 'SPAN' ;
@@ -159,6 +161,7 @@ function  fs_Create_Link           ( const as_href        : String   ;
                                      const as_Text        : String   ;
                                      const as_Target      : String = '';
                                      const as_Options     : String = ''):String ;
+function  fb_Link_has_got_http     ( const as_href_Text   : String   ):Boolean;
 function  fs_Create_simple_Link    ( const as_href_Text   : String   ;
                                      const as_Target      : String = ''):String ;
 function  fs_Create_DIV             ( const as_Name        : String      ;
@@ -399,36 +402,38 @@ Begin
    if Result Then
     if ai_pos1 = 1 Then
      Begin
-       if ai_pos2 = Length(as_Text)
+       if ai_pos2 >= Length(as_Text)
         Then as_Text:=fs_Create_simple_Link(as_Text,CST_HTML_TARGET_BLANK)
         Else as_Text:=fs_Create_simple_Link(copy(as_Text,1,ai_pos2), CST_HTML_TARGET_BLANK) +copy ( as_Text, ai_pos2 +1, Length ( as_Text ) - ai_pos2 );
       End
     Else
-    if ai_pos2 = Length(as_Text)
+    if ai_pos2 >= Length(as_Text)
      Then as_Text:=copy ( as_Text, 1, ai_pos1 - 1 )+fs_Create_simple_Link(copy(as_Text,ai_pos1,ai_pos2-ai_pos1+1), CST_HTML_TARGET_BLANK)
      Else as_Text:=copy ( as_Text, 1, ai_pos1 - 1 )+fs_Create_simple_Link(copy(as_Text,ai_pos1,ai_pos2-ai_pos1+1), CST_HTML_TARGET_BLANK)+copy ( as_Text, ai_pos2 +1, Length ( as_Text ) - ai_pos2 );
 End;
 
 function  fs_html_Lines       ( const as_Text        : String      ;
                                 const as_endoflinereplacing: String =CST_ENDOFLINE):String ;
-var li_Pos1, li_Pos2 : Longint;
+var li_Pos1, li_Pos2, li_lengthlink, li_i : Longint;
 begin
   Result := StringReplace ( as_Text, CST_ENDOFLINE, CST_HTML_BR+as_endoflinereplacing,[rfReplaceAll] );
   if  ( pos ( CST_HTML_A_BEGIN, Result ) = 0 )
   and ( pos ( CST_HTML_A_BEGIN_LOWER, Result ) = 0 ) Then
    begin
-     li_Pos1 := 1;
-     while ( posex ( CST_HTML_A_BEGIN_LINK_HTTP, Result, li_Pos1 ) > 0 ) do
-     Begin
-       li_Pos1 :=posex ( CST_HTML_A_BEGIN_LINK_HTTP, Result, li_Pos1 );
-       li_Pos2 := li_Pos1 + 7;
-       if  ( length ( Result ) > li_Pos2 )
-       and fb_isFileChar(Result[li_Pos2]) Then
+     for li_i := 0 to high(CST_HTML_A_BEGIN_LINKS) do
+      Begin
+       li_Pos1 := 1;
+       li_lengthlink:=length( CST_HTML_A_BEGIN_LINKS[li_i]);
+       while ( posex ( CST_HTML_A_BEGIN_LINKS[li_i], Result, li_Pos1 ) > 0 ) do
         Begin
-          fb_CreateAFromLink ( Result, li_Pos1, li_Pos2 );
-         end;
-       li_Pos1 := PosEx( CST_HTML_A_END, Result, li_Pos2 + li_Pos2 - li_Pos1 );
-     end;
+         li_Pos1 :=posex ( CST_HTML_A_BEGIN_LINKS[li_i], Result, li_Pos1 );
+         li_Pos2 := li_Pos1 + li_lengthlink;
+         if  ( length ( Result ) > li_Pos2 )
+         and fb_isFileChar(Result[li_Pos2]) Then
+            fb_CreateAFromLink ( Result, li_Pos1, li_Pos2 );
+         li_Pos1 := PosEx( CST_HTML_A_END, Result, li_Pos2 );
+        end;
+      end;
      li_Pos1 := 1;
      while ( posex ( CST_HTML_A_BEGIN_LINK, Result, li_Pos1 ) > 0 ) do
      Begin
@@ -488,12 +493,24 @@ function fs_CreateElementWithId ( const as_ElementType   : String ;
 Begin
   Result := '<' + as_ElementType + as_OptionToSetId + '"' + as_idElement + '">';
 end;
+function  fb_Link_has_got_http     ( const as_href_Text   : String   ):Boolean;
+var li_i : Integer;
+Begin
+  Result:=False;
+  for li_i := 0 to high ( CST_HTML_A_BEGIN_LINKS ) do
+   if pos ( CST_HTML_A_BEGIN_LINKS [li_i], as_href_Text ) > 0 Then
+    Begin
+      Result:=True;
+      Exit;
+    end;
+end;
+
 function  fs_Create_simple_Link    ( const as_href_Text   : String   ;
                                      const as_Target      : String = ''):String ;
 Begin
-  if pos ( CST_HTML_A_BEGIN_LINK_HTTP, as_href_Text ) = 0
-   Then Result := fs_Create_Link ( CST_HTML_A_BEGIN_LINK_HTTP + as_href_Text, as_href_Text, as_Target )
-   Else Result := fs_Create_Link ( as_href_Text, as_href_Text, as_Target );
+  if fb_Link_has_got_http ( as_href_Text )
+   Then Result := fs_Create_Link ( as_href_Text, as_href_Text, as_Target )
+   Else Result := fs_Create_Link ( CST_HTML_A_BEGIN_LINK_HTTP + as_href_Text, as_href_Text, as_Target );
 end;
 
 function  fs_Create_Link           ( const as_href        : String   ;
