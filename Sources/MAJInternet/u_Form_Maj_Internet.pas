@@ -63,7 +63,7 @@ type
     HTTPClient: TLHTTPClientComponent;
     ch_test: TJvXPCheckbox;
     NetUpdate: TNetUpdate;
-    OnFormInfoIni1: TOnFormInfoIni;
+    OnFormInfoIni: TOnFormInfoIni;
     Panel1: TPanel;
     Panel9:TPanel;
     Image2:TImage;
@@ -101,6 +101,7 @@ type
     {$ENDIF}
     procedure ch_testClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure SuperFormShow(Sender: TObject);
     procedure NetUpdateDownloaded(const Sender: TObject; const TheFile: string;
       const TheStep: TUpdateStep);
     procedure NetUpdateDownloading(const Sender: TObject;
@@ -334,6 +335,10 @@ begin
   end;
 end;
 
+procedure TFMajInternet.SuperFormShow(Sender:TObject);
+Begin
+  NetUpdate.URLBase:=fs_geturlMajAuto(ch_test.checked);
+end;
 
 procedure TFMajInternet.SuperFormCreate(Sender:TObject);
 var
@@ -359,7 +364,6 @@ begin
    Begin
     UpdateDir:=sUpdateDir+'Updates' +DirectorySeparator;
     lat_ArchitectureType := fat_GetArchitectureType;
-    URLBase:=fs_geturlMajAuto;
     FileIni:=fs_GetIniFileNameUpdate(lat_ArchitectureType,fpt_GetPackagesType,CST_PROCESSOR_TYPE,IniFilename);
     FilePage:= WebPage;
     FileUpdate:=fs_GetFileNameUpdate(lat_ArchitectureType,fpt_GetPackagesType,CST_PROCESSOR_TYPE,'Update_Ancestro');
@@ -442,7 +446,7 @@ procedure TFMajInternet.SuperFormClose(Sender:TObject;
   var Action:TCloseAction);
 begin
   Application.ProcessMessages;
-//  Action:=caFree; //lib?r?e par la fonction qui l'appelle
+//  Action:=caFree; //libérée par la fonction qui l'appelle
 end;
 
 procedure TFMajInternet.btnFermerClick(Sender:TObject);

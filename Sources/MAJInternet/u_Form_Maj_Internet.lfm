@@ -433,11 +433,12 @@ inherited FMajInternet: TFMajInternet
       OnClick = ch_testClick
     end
   end
-  object OnFormInfoIni1: TOnFormInfoIni[3]
+  object OnFormInfoIni: TOnFormInfoIni[3]
     SaveEdits = [feTCheck]
     SaveForm = [sfSavePos, sfSaveSize, sfSameMonitor]
+    OnFormShow = SuperFormShow
     left = 91
-    top = 212
+    top = 216
   end
   object NetUpdate: TNetUpdate[4]
     Progress = Gauge
@@ -449,7 +450,7 @@ inherited FMajInternet: TFMajInternet
     OnFileDownloaded = NetUpdateFileDownloaded
     LNetComponent = HTTPClient
     left = 224
-    top = 200
+    top = 208
   end
   object HTTPClient: TLHTTPClientComponent[5]
     Timeout = 0

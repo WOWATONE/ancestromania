@@ -4,15 +4,15 @@ cd $directory
 cd ..
 cd ..
 
-ln -s ../Windows/Output/Update_AncestroIntel.exe ./Inis/
-ln -s ../Windows/Output/Update_AncestroIntel64.exe ./Inis/
-ln -s ../Unix/Unsigned/Update_AncestroIntel.deb ./Inis/
-ln -s ../Unix/Unsigned/Update_AncestroIntel.rpm ./Inis/
-ln -s ../Unix/Unsigned/Update_AncestroIntel.tar.gz ./Inis/
-ln -s ../Unix/Unsigned/Update_AncestroIntel64.deb ./Inis/
-ln -s ../Unix/Unsigned/Update_AncestroIntel64.rpm ./Inis/
-ln -s ../Unix/Unsigned/Update_AncestroIntel64.tar.gz ./Inis/
-ln -s ../Docs/Evolutions.html ./Inis/
-ln -s ../Docs/Evolutions.rtf ./Inis/
-ln -s ../Docs/Evolutions.txt ./Inis/
+ln -s ../Windows/Output/Update_AncestroIntel.exe ./Update/
+ln -s ../Windows/Output/Update_AncestroIntel64.exe ./Update/
+ln -s ../Unix/Unsigned/Update_AncestroIntel.deb ./Update/
+ln -s ../Unix/Unsigned/Update_AncestroIntel.rpm ./Update/
+ln -s ../Unix/Unsigned/Update_AncestroIntel.tar.gz ./Update/
+ln -s ../Unix/Unsigned/Update_AncestroIntel64.deb ./Update/
+ln -s ../Unix/Unsigned/Update_AncestroIntel64.rpm ./Update/
+ln -s ../Unix/Unsigned/Update_AncestroIntel64.tar.gz ./Update/
+ln -s ../Docs/Evolutions.html ./Update/
+ln -s ../Docs/Evolutions.rtf ./Update/
+ln -s ../Docs/Evolutions.txt ./Update/
 
