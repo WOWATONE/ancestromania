@@ -13,6 +13,7 @@ cp ../../i386-linux/Scripts/* Update_AncestroIntel/usr/share/ancestromania/Scrip
 cp ../../i386-linux/Scripts/* Update_AncestroIntel.tar/Scripts
 sudo  chmod 644 Update_AncestroIntel/usr/share/ancestromania/Scripts/*
 sudo  chmod 644 Update_AncestroIntel.tar/Scripts/*
+sudo  chmod 666 Update_AncestroIntel.tar/*.fdb
 sudo  chmod 644 ../../i386-linux/Scripts/*
 sudo chown -R root.root Update_AncestroIntel
 sudo dpkg-deb -b Update_AncestroIntel 

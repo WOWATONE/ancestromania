@@ -6,9 +6,6 @@ directory=`dirname $0`
 echo "Working in $directory"
 cd $directory 
 
-chmod 660 ./Ancestromania-updated.fdb 
-chmod 660 ./Parances.fdb 
-
 ## get UID limit ##
 l=$(grep "^UID_MIN" /etc/login.defs)
 

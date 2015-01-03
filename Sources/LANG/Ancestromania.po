@@ -3827,6 +3827,10 @@ msgstr ""
 msgid " La taille de la base a augmenté de @ARG%"
 msgstr ""
 
+#: u_common_ancestro.rs_ini_download_again
+msgid "Retélécharger la configuration."
+msgstr ""
+
 #: u_common_ancestro.rs_integrity_age_hope_to_much_man
 msgid " Espérance de vie pour un homme, @ARG ans, dépassée."
 msgstr ""

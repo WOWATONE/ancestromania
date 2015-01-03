@@ -1318,6 +1318,7 @@ resourcestring
   rs_Individual_events = 'Événements individuels';
   rs_Individual_Media = 'Média individuel';
   rs_Individual_Medias = 'Médias individuels';
+  rs_Ini_Download_Again = 'Retélécharger la configuration.';
   rs_is_descent_with = 'figure dans la descendance de ';
   rs_is_ancestry_from = 'figure dans l''ascendance de';
   rs_is_always_parent_with = ' a déjà pour parent';

@@ -44,7 +44,7 @@ uses
   ExtCtrls, UniqueInstance, ExtDlgs;
 
 const
-  WebPage = 'Evolutions.'+'html';
+  WebPage = 'Evolutions.'+{$IFDEF WINDOWS}'html'{$ELSE}'txt'{$ENDIF};
   ScriptsDir = 'Scripts';
   Gbak='gbak'{$IFDEF WINDOWS}+'.exe'{$ENDIF};
 

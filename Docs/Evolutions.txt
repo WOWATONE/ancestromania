@@ -1,0 +1,1039 @@
+﻿
+Version 2014.1.b5.180
+V2014.1.4.1
+Nécessité de télécharger http://ancestromania.net/ancestroinstall/Ancestromania-data.deb sur Debian ou Ubuntu, ou http://ancestromania.net/ancestroinstall/Ancestromania-data.rpm sur Redhat. Histoire dans Parances.
+Recherche de prénoms à la suite. Carte de site web à jour. Arbre d'ascendance fonctionnel et zooming correct, Export OK. Débogage. Impression des roues. Affichage de la carte correct sur Ancestroweb. Version de test.
+
+Version 2014.1.b5.172
+V2014.1.2.11
+
+Caractères spéciaux tronqués enlevés. Bouton navigation fonctionnel. Meilleure interactivité dans les pays. Chargement de la fiche principale plus rapide. Non chargement des onglets de l'individu après chargement des domiciles enlevé. Chargement des onglets de l'individu un par un. Impression des arbres et liens correcte. Autres corrections. Possibilité d'imprimer les arborescences. Importation correcte et plus rapide.
+
+Version 2014.1.b5.171
+V2014.1.2.6
+Caractères spéciaux tronqués enlevés. Bouton date universelle fonctionnel. Meilleure Importation.
+
+Version 2014.1.b5.170
+V2014.1.2.5
+Passage aux caractères internationaux dans la base de données. Il est nécessaire de procéder à une Migration sur http://ancestromania.net/ancestroinstall/FBMigrateWindows32.zip.
+Plus d'interactivité. Meilleur rendu de rapport. Moins de bug de fonctionnement. Il reste cependant un problème de malformation de chaîne à l'import voire l'export GEDCOM.
+
+Version 2014.1.b5.161
+V2014.1.2.4
+Site web généalogique compatible chrome. Réparation de bugs. Améliorations sur la mise en majuscules ou minuscules et sur la présentation des fenêtres. Meilleure importation. Meilleure adaptation à l'environnement. Meilleure mise a jour. Revision.
+
+Version 2013.0.b5.160
+V2013.0.11.3
+Améliorations sur la mise à jour, l'import et l'export, les liens externes. Graphique de descendance qui s'affiche. Meilleure importation et meilleure mise à jour. Meilleure gestion des lieux.Sélectionner la base de données avec le bon curseur.
+Version 2013.0.b5.159
+Ancestromania.exe V2013.0.1.009, base b5.160. Tous les fichiers sont mis à jour. 
+Améliorations :
+Changement complet d'outil de développement : Passage à Lazarus et aux composants libres, afin de créer un logiciel complètement gratuit et libre.
+Il s'agit donc d'une version de test demandant des retours.
+Possibilité d'utiliser des grandes polices de caractères dans l'environnement ou les options générales. 
+Gestion d'une seule instance d'Ancestromania avec message d'informations.
+
+Version 2012.8 Ancestromania.exe V2012.8.0.643, base b5.159. Tous les fichiers sont mis à jour.
+
+Améliorations:
+Événements individuels et familiaux: une option ajoutée au menu contextuel permet de changer le type de l'événement.
+Bibliothèque Multimédias: en réseau, l'ajout d'une option de chargement sans les images réduites divise par deux le temps d'ouverture de la bibliothèque.
+Possibilité de trier les colonnes de la liste des villes voisines.
+Onglets Médias et Domiciles, fiche "Qui utilise ce média": affichage en grand format des images TIFF chargées depuis leur fichier original (comme les images aux formats JPG, BMP et PNG).
+
+Corrections:
+Menu "Lieu sur internet": désactivation du lancement de Cassinimania si le lieu ne comporte pas des coordonnées valides et un nom de ville en France.
+Bibliothèque Multimédias: si en réseau les médias étaient désactivés, la modification du mémo entrainait la suppression de l'image réduite.
+Histoire: correction erreur lors de l'ouverture.
+Correction erreur lors de l'ajout d'une image à l'Histoire (logique d'utilisation de la fiche Détails de l'événement historique entièrement revue).
+Liste des anniversaires: correction erreur à l'ouverture.
+Repositionnement des boutons partiellement recouverts par les bordures plus épaisses des fenêtres de W7.
+Version 2012.7 b5.159
+Ancestromania.exe V2012.7.0.626, base b5.159. Tous les fichiers sont mis à jour.
+
+Mise à jour Firebird embedded en version 2.5.2 (FB embedded doit être activé lors de l'exécution de la mise à jour).
+
+Saisie des dates: possibilité de saisir des dates du calendrier julien.
+Le type "julien" a été ajouté à la liste des "Mots clefs utilisés pour la saisie des dates". Ce mot clé doit être saisi à la fin de la date (ou de chaque date dans le cas d'un intervalle de dates) pour identifier une date du calendrier julien. Le premier mot de la liste ("Ju" par défaut) figurera dans la date après formatage.
+Il est possible de saisir des dates dans les calendriers grégorien ou julien dans toute l'étendue des années -5799999 à 7999.
+
+Calendrier universel (convertisseur de dates entre différents calendriers): 
+-les conversions réciproques de dates entre le calendrier grégorien et le calendrier julien sont possibles à partir de -4712. (plus de limitation au 15 octobre 1582 ni de jour de la semaine erroné avant cette date),
+-si lors de l'ouverture du calendrier universel depuis un événement la date est au format julien, elle est reconnue dans ce format d'origine,
+-si le calendrier d'origine julien est sélectionné, la date sélectionnée est retournée au format julien, au format grégorien dans tous les autres cas.
+
+Importation fichier gedcom: une date dont l'année est présentée sous la forme 1515/16 ou 1515-1516 est identifiée comme 1516. (Le 1 janvier n'ayant pas toujours été le premier jour de l'année, cette présentation permet d'identifier une date pendant la période au cours de laquelle le jour de l'an pouvait être défini jusqu'au 25 mars).
+
+Transfert de dossier, menu Import/export, Importer un dossier: "traduction" des dates du dossier d'origine lors du transfert si les mots clefs utilisés pour la saisie des dates dans ce dossier ne sont pas identiques à ceux utilisés dans le dossier de destination.
+
+Gestion des patronymes:
+-un patronyme associé "à tous" n'apparaît qu'une seule fois dans la liste,
+-ajout d'un patronyme individuel: aide par sélection soit dans la liste des patronymes déjà associés à des individus de même nom, soit dans la liste de tous les patronymes,
+-possibilité d'annuler les modifications en cours.
+
+Onglet Unions: l'indicateur est activé s'il y a des commentaires dans les champs Notes ou Sources d'une union.
+
+Version 2012.6 b5.158
+Ancestromania.exe V2012.6.0.609, base b5.158. Tous les fichiers sont mis à jour.
+
+Création dans les tables des événements des champs Date_Courte présentant les dates saisies dans un format condensé. Seules les années sont présentées et les mots-clés sont remplacés par des symboles:
+- après => >année
+- avant => <année
+- depuis => année>
+- jusqu'en => année<
+- entre AnnéeDébut et AnnéeFin => AnnéeDébut_AnnéeFin
+- vers, estimé, calculé => ~Année
+Dans les fiches cette nouvelle présentation remplace l'ancienne où seule la première année était affichée, lorsqu'il n'est pas nécessaire de pouvoir effectuer un tri sur ce champ.
+
+Lors de l'ajout d'un conjoint, l'onglet Unions n'est sélectionné que si l'événement mariage est créé automatiquement.
+
+Le contenu du champ Ville des événements ou de la Fiche de saisie rapide est utilisé pour pré-sélectionner la Ville dans l'Index des villes (appel par le bouton "Loupe").
+
+Fiche de saisie rapide: ajout du raccourci Ctrl+F dans les champs Lieux équivalent au clic sur le bouton Loupe pour ouvrir l'index des villes. Passage au champ Acte à la fermeture de l'index des villes.
+
+Ouverture de l'index des lieux favoris depuis un événement: la présélection par la ville et la subdivision est indifférente aux caractères accentués.
+
+Liste des événements de sa vie (onglet Identité):
+-Activation de la fiche détails de l'événement par un simple clic sur son icône dans la liste.
+-Correction anomalies: un enregistrement Détails de l'événement s'ouvre même si on double-clique dans la zone vide de la grille, l'infobulle s'active même si la liste est vide.
+
+Fiches messages: le premier bouton (à partir de la gauche) est par défaut activé par la touche "Entrée", le dernier bouton par la touche "Echap".
+
+Corrections d'anomalies:
+- affichage erroné du Nom dans l'onglet Acte de la fiche individu en lecture seule.
+- champs des événements correspondants à la 2ième date non remis à null lors de la suppression de la 2ième date.
+
+Version 2012.5 b5.157
+Ancestromania.exe V2012.5.1.599. Seul Ancestromania.exe est mis à jour.
+Correction d'une anomalie lors de la recherche d'une ville par le code INSEE dans l'index des lieux.
+Onglet Identité : les dates des mariages (conjoints et parents) sont encadrées de [] au lieu de {} si l'acte n'est pas trouvé.
+
+Ancestromania.exe V2012.5.0.596, base b5.157. Tous les fichiers sont mis à jour.
+ATTENTION: Si vous avez personnalisé des tables de référence des lieux (REF_CP_VILLE, REF_DEPARTEMENTS, REF_REGION, REF_PAYS), assurez-vous d'avoir enregistré ces modifications dans des fichiers texte par exportation des tables modifiées, avant d'effectuer la mise à jour.
+Principale modification : les tables de référence des lieux ne font plus partie de la base des données généalogiques de l'utilisateur, mais d'une base de données séparée PARANCES.FDB située dans le répertoire CSIDL_COMMON_APPDATA\Ancestromania (C:\Documents and Settings\All Users\Application Data\Ancestromania sous XP) .
+Principal intérêt de cette modification : cette base étant toujours locale, elle présente un temps d'accès court, point particulièrement sensible lors de l'accès à la base de données généalogiques par une connexion lente (internet). On peut alors sans inconvénients la faire grossir en y ajoutant les villes de plusieurs pays, l'ensemble des villes enregistrées étant accessible pour toutes les généalogies.
+Cette base est uniquement accédée lors de la sélection d'une nouvelle ville (ville ne figurant pas encore dans les lieux favoris), et lors de la mise à jour des coordonnées par les fonctions intégrées à Ancestromania.
+Intérêt secondaire : en b5.157 les tables REF_CP_VILLE et REF_REGION sont supprimées de la base des données généalogiques, la faisant maigrir de 7,5 Mo. Les tables REF_DEPARTEMENTS et REF_PAYS ne sont laissées dans dans cette base que pour assurer la compatibilité avec dllArbre.dll.
+
+La nouvelle base de référence des lieux PARANCES.FDB n'est pas installée lors de la mise à jour. Lors du démarrage d'Ancestromania, si cette base est absente un dialogue donne la possibilité de la télécharger par internet (10 Mo) et de l'installer automatiquement.
+Cassinimania a été modifié pour l'adapter à ces modifications. L'utilitaire TablesReference ne permet plus le chargement des tables de référence concernant les lieux, l'Index des Villes permettant d'importer et d'exporter ces tables.
+
+Version 2012.4 b5.156
+Ancestromania.exe V2012.4.1.589. Exe seul mis à jour, téléchargeable depuis le lien ci-dessus.
+
+Si les satellites GoogleMap ou Mapper.acme sont choisis pour la vue satellite, l'identification de cette vue peut être obtenue soit par les coordonnées soit par le nom du lieu.
+Lors de la définition d'un lieu (événement individuel ou familial, domicile ou modification d'un lieu favori), les coordonnées du lieu peuvent être obtenues par internet et enregistrées. 
+
+Ancestromania.exe V2012.4.0.573, base b5.156. Tous les fichiers sont mis à jour.
+
+Amélioration et clarification des fonctions de mise à jour des lieux utilisables après l'importation d'un fichier gedcom :
+-les deux premières options mettent à jour les noms (ville, département, région, pays), les lieux étant identifiés soit par Pays+INSEE, soit par Pays+CP+Ville, code postal et INSEE étant respectivement mis à jour.
+-la troisième met à jour les coordonnées géographiques existantes.
+Sauvegarde et rechargement de configurations des arbres :accès à ces fonctions dans le troisième volet de la fiche de paramètres des arbres imprimables,
+Désactivation de l'auto-complément des champs Nom, Prénom, profession lors de la modification d'une valeur existante, pour éviter l'écrasement de la fin du mot.
+Statistiques de naissances et décès par départements: ajout du pays lorsque le département est inconnu.
+Remplacement du lien vers Expedia qui ne présente plus de cartes, par un lien vers Geoportail.
+Lors du chargement d'un dossier par transfert direct, le contenu de l'ancien champ Lieu est transféré en Subdivision si disponible. 
+Corrections d'anomalies :
+-le nom de l'individu dans l'onglet Actes n'était pas mis à jour si cet onglet était sélectionné pendant le changement d'individu,
+-la mise à jour des coordonnées lors de la correction des noms dans les lieux sélectionnés par le code INSEE n'était pas effectuée,
+-lors du transfert entre dossiers de la même base par la fonction accessible par la fiche de sélection d'un dossier, un patronyme associé à un seul individu était associé à tous,
+-lors de la modification d'un lieu favori, un caractère n'appartenant pas au jeu ISO8859_1 dans le nom d'une seule ville pouvait occasionner une erreur bloquant toutes les modifications de lieux favoris.
+
+Version 2012.3 b5.155
+Ancestromania.exe V2012.3.2.563 tous les fichiers sont mis à jour. Exe seul, téléchargeable depuis le lien ci-dessus, et mise à jour de Cassinimania.exe en version 1.2.0.6 pour l'adapter aux modifications présentées ci-dessous (connexion à la base de données avec des identifiants différents de SYSDBA/masterkey).
+
+Ancestromania.exe V2012.3.1.562, base b5.155. Tous les fichiers sont mis à jour.
+
+Modifications du script de mise à jour de la base pour corriger l'anomalie signalée 'Impossibilité de création d'un raccourci de saisie'.
+
+Correction d'anomalies de fonctionnement :
+-Calendrier : mois supplémentaire du calendrier israélite absent de la liste de choix,
+la valeur retournée pouvait ne pas être interprétée car elle n'était pas liée aux mots-clés dans la saisie des dates,
+Améliorations diverses (circulation du curseur, signalisation erreur de saisie).
+-Index des lieux : les boutons Lieu sur internet et Villes voisines n'étaient pas mis à jour avec le lieu sélectionné.
+Autre amélioration : passage directe du champ Ville à la liste des résultats par la touche flèche en bas.
+-Événement individuel : si le champ Ville était sélectionné avant le changement d'événement, sa liste déroulante n'était pas mise à jour,
+la saisie d'une latitude ou longitude dans un format non conforme (plus de 7 chiffre avant le séparateur décimal) provoquait une erreur à la lecture, erreur qui en empêchant l'affichage rendait impossible sa correction,
+si la seule modification d'un événement était l'effacement des champs notes ou sources, et qu'on changeait d'événement avant la validation, l'effacement du champ n'était pas pris en compte.
+Autre amélioration : la fiche de l'événement reste au premier plan lorsqu'on clique sur le bouton Validation automatique.
+
+Contrôles devant éviter des incohérences :
+-Avant de supprimer une importation, les modifications en cours doivent être validées ou supprimées,
+-Lors de la sélection d'un père, d'une mère ou d'un conjoint, l'individu créé ou sélectionné doit être du sexe demandé. 
+
+Améliorations diverses :
+-Circulation entre individus par sélection d'un lien dans la fiche principale ou dans la fiche en lecture seule :
+Avant : la sélection sans appui sur la touche "Maj" mettait à jour la fiche principale, avec "Maj" la mise à jour s'effectuait dans la fiche en lecture seule.
+Maintenant : sans "Maj" le changement s'effectue dans la fiche appelante, avec "Maj" dans l'autre fiche (dans la fiche en lecture si appel depuis fiche principale, dans la fiche principale si appel depuis la fiche en lecture seule). Cette méthode me semble plus naturelle.
+-Menu principal : ajout d'une option pour sélectionner une fiche cachée ou fermer toutes les fenêtres secondaires.
+-Menu Généalogies : ajout de l'option 'Sauvegarde/Restauration d'une base...' lançant directement l'exécution de RestaureBases.exe.
+-Onglet Identité : les modifications effectuées dans le volet 'Identité complète' (nom, prénom, surnom, patronymes associés etc...) sont immédiatement appliquées dans le volet 'Identité réduite' sans qu'il soit nécessaire de valider.
+-Répertoire : lorsque le curseur est dans la colonne Patronymes, si le premier caractère frappé ne correspond pas à l'onglet en cours, le bon onglet est sélectionné.
+-Onglet Sa Vie : Ajout de la première ligne des notes du domicile dans le libellé de ce domicile.
+-Recherche et Environnement familial : possibilité de filtrer par Nom, Prénom et NIP.
+-Environnement familial : possibilité d'ajouter l'individu central dans la liste et tri par défaut dans l'ordre chronologique des naissances.
+
+Modifications lors de la connexion à la base :
+-Appuyer sur la touche Maj au lancement d'Ancestromania permet de sélectionner la base de données avant toute tentative de connexion.
+-Lorsque la base est gérée par Firebird version server (serveur local ou distant), il est possible de se connecter à cette base avec des identifiants autres que SYSDBA/masterkey. Une fiche permettant de saisir Identifiant, Mot de Passe et Rôle apparaît automatiquement en cas d'échec de la connexion avec les valeurs courantes (valeurs mémorisées dans la base de registre). La présentation de cette fiche peut être forcée en appuyant sur la touche Maj lors de la connexion à la base de données (Clic sur le bouton Ouvrir de la fiche de Sélection de la base de données).
+-RestaureBases et TablesReference ont été mis à jour pour tenir compte de ces changements d'identifiants lors de la connexion.
+
+Version 2012.2 b5.154
+Ancestromania.exe V2012.2.0.540, base b5.154. Tous les fichiers sont mis à jour.
+État statistiques de longévité: ajout de l'écart-type pour chaque tranche d'années d'observation. 
+Requêtes SQL: possibilité d'exécuter des scripts. L'option d'exécution d'un script se trouve dans le menu contextuel. Çà permet en particulier l'exécution d'opérations qui sans cela nécessitent plusieurs requêtes.
+La recherche des doublons de l'individu en cours tient compte des patronymes associés.
+Aide à la saisie des dates: dans le menu contextuel ne sont proposés que les mots-clés acceptables.
+Calculs sur les dates: fiche pouvant rester affichée tout en continuant à naviguer et appelable depuis les menus contextuels des "Événements de sa vie" et des "Événements associés à l'union", en se synchronisant avec la date de l'événement. La date résultat du calcul peut être copiée dans le presse-papier pour être collée dans le champ Date d'un événement par exemple.
+Meilleure précision des contrôles de cohérence et de la recherche des doublons, tenant compte en particulier des mots clés utilisés dans la formulation de la date d'un événement, quelque soit l'année comprise dans l'intervalle 5800000 avJC à 8000.
+Transfert de dossier pouvant "traduire" la date de l'événement si la langue du dossier d'origine est différente de celle du dossier de destination, opération qui n'était possible auparavant que lors d'un transfert par fichier GEDCOM.
+
+Version 2012.1 b5.153
+Ancestromania.exe V2012.1.0.518, base b5.153. Tous les fichiers sont mis à jour.
+Intégration de lieux sans ville dans la liste des lieux favoris.
+
+Version 2012.0 b5.152
+V2012.0.1.514. Mise à jour Ancestromania.exe uniquement.
+Parenté présentée sous forme graphique comme les liens entre individus dont la fiche partage les paramètres de présentation.
+On peut ajouter Père, Mère, Conjoints, Enfants, Témoins des événements individuels ou familiaux à l'aide de la souris par glisser-déposer (DragAndDrop) depuis les listes présentes dans le Répertoire, la fiche de Recherche ou celle de l'Environnement familial.
+V2012.0.0.508. Base inchangée. Tous les fichiers sont mis à jour.
+Initialisation de la liste des exclusions de WebExport par la liste des individus confidentiels.
+Synchronisation de QuiSontIls lors du changement d'individu dans la fiche principale.
+Corrections anomalies:
+Liste des actes par type: le dépassement de la capacité mémoire ne provoque plus de violations mémoire.
+Liens entre individus, une fiche affichant des liens avec témoins lors de l'ouverture, mais sans liens lors du second calcul ne prenant pas en compte les témoins, provoquait une violation lors de sa fermeture.
+Suppression d'anomalies provoquées par la suppression totale ou partielle des listes affichées dans les fiches de recherche, individus isolés et individus liés.
+
+Version 2011.5 b5.152
+V2011.5.0.505. Base inchangée. Tous les fichiers sont mis à jour.
+Modifications depuis la version 2011.4.4.496:
+La sauvegarde automatique au démarrage est possible même si la base est sur un serveur du réseau. Dans ce dernier cas cependant, Gbak.exe un utilitaire installé avec la version serveur de Firebird doit être disponible. Ancestromania le détecte automatiquement dans le répertoire d'installation de Firebird serveur V2.5.
+La présentation sous forme de liste des liens entre individus est remplacée par une présentation graphique utilisant la même fiche "support" que les arbres imprimables et la roue d'ascendance. On peut donc comme avec les arbres adapter la présentation à sa convenance et l'imprimer.
+Rappel: les liens avec le sosa n°1 peuvent être demandés depuis le menu contextuel de l'affichage du sosa. Depuis le répertoire, il est proposé d'afficher les liens entre un individu du répertoire et l'individu en cours dans la fiche principale.
+Il est possible de visualiser simultanément un arbre et la roue d'ascendance.
+Corrections d'anomalies diverses.
+
+Version 2011.4 b5.152
+V2011.4.4.496. Mise à jour Ancestromania.exe uniquement.
+Deux colonnes ajoutées à la fiche de configuration des Événements standards Gedcom permettent de sélectionner les types d'événements à exporter et importer.
+Exportation Gedcom: sélections distinctes des nombres de générations à exporter dans la descendance et dans la descendance lors de l'exportation d'une branche.
+
+V2011.4.4.493. Mise à jour Ancestromania.exe uniquement.
+Présélection du champ Nom à l'ouverture de la fiche de recherche.
+Correction anomalie lors de la sélection d'une URL dans un champ de type commentaires lorsque le symbole "<" n'était pas précédé d'un espace.
+Liste des actes par type: correction anomalie disparition des parents de la liste si un seul manquait.
+Possibilité de sélectionner plusieurs types d'actes dans la liste des actes par type.
+Onglet Unions: Nom de l'individu en cours et Parenté se soulignent au passage de la souris pour signaler un lien actif. Ouverture directe de la recherche du premier ancêtre commun depuis la parenté entre les conjoints.
+Recadrage de l'âge des conjoints lors d'un événement familial pour éviter qu'il chevauche le jour de la semaine.
+Gedcom: transfert de EV_IND_LIGNES_ADRESSE (champ adresse du domicile) avec l'étiquette ADDR.
+Suppression des virgules de composants de PLAC lors de l'export gedcom (peut arriver si l'utilisateur a mis une virgule dans un nom de ville, subdivision etc...).
+Import gedcom: l'ancien "Lieu" est récupéré dans Subdivision si vide, sinon en début des notes.
+Fonctionnement parenté automatique: mise à jour à la première lecture.
+Remise en ordre de l'affichage du sosa en fonction de l'activation du calcul automatique de la parenté avec le sosa n°1.
+L'indication du lien au Sosa n°1 peut être mise à jour si le "Lien au Sosa n°1" est consulté.
+Focalisation de la fiche événement individuel conservée si on valide par le bouton Enregistrer ou qu'on change d'événement dans la liste des événements de sa vie.
+Suppression de l'option "Fiche événement toujours au premier plan" devenue inutile.
+Ajout d'un préfixe de surnom féminin (paramétrage dans les préférences). Je trouvais plutôt "moche" un titre comme "Marie Constance XXX dit Contance".
+Renumérotation SOSA avec mise à jour du lien au sosa 1 ("Afficher les liens au Sosa n°1" activé) faisant moins grossir la base.
+Mise à jour de la fiche d'ajout à la liste des favoris.
+Désactivation du bouton de suppression d'un individu lors de l'affichage des onglets autres que Identité lorsque la confusion avec un bouton (-) est possible.
+
+V2011.4.3.474. Mise à jour Ancestromania.exe uniquement.
+Gestion photo d'identité: remplacement par le profil correspondant au sexe lors de la suppression sans nécessiter le rafraîchissement de la fiche.
+Dates de naissance/décès des parents en français plus correct.
+Création d'une fiche, remplaçant une boîte de dialogue standard de Delphi permettant de sélectionner un répertoire, plus "présentable" et pouvant être centrée sur la fiche appelante.
+Utilisations:
+-les répertoires dans les préférences générales,
+-la sélection du répertoire de base des médias (modification d'un dossier)
+-le répertoire de sauvegarde de la base
+-le répertoire pour modifier les adresses des médias dans la médiathèque.
+Correction du positionnement des fiches de paramétrages des états, arbre et roue pour qu'elles soient sur le même écran que la fiche dont elles dépendent.
+Correction erreur de comptage des événements et domiciles sur la fiche Informations de l'individu.
+Bouton Histoire accessible depuis la fiche en consultation.
+Fiches dont la position et/ou les dimensions sont enregistrées lors de la fermeture précédente: positionnement et redimensionnement éventuel sur le moniteur de la fiche principale lors de leur ouverture (règle les problèmes de débordement en cas de changement de moniteur).
+Ajout filtrage de la liste des événements par un menu ouvert en cliquant (gauche ou droit) sur le libellé "Événements de sa vie".
+Menu popup sur le libellé "N° Sosa" signalé par changement du curseur et déclanché indifféremment par un clic gauche ou droit de la souris.
+Identification des sosas dans le liste des individus ayant eu un événement dans ce lieu (ouverture depuis la liste des lieux favoris).
+Ordre des événements individuels et familiaux tenant compte de l'heure.
+Défilement vertical de certains états imprimables à l'aide de la roulette de la souris.
+Fiche Recherche dans Notes et Sources: ajout Année dans les résultats de la recherche, effacement des résultats lors de la modification du filtre.
+Onglet Unions: mise à jour bouton suppression média et des indicateurs dès l'ajout.
+Les fiches Individus isolés, Qui porte ce titre et Enfants nés posthumes ne sont plus exclusives et ont à peu près la même présentation que les autres:
+-possibilité d'imprimer
+-colonnes naissance et décès comprenant date et ville.
+Suppression lien à quid.fr (site fermé).
+Transfert des informations concernant le système des "Infos du dossier" à "À propos",
+Complément de "À propos" avec les versions de fbclient et isql.
+Arbres imprimables: tracé du trait d'identification des implexes au survol la boîte de l'individu dont l'ascendance ou la descendance est continuée.
+
+V2011.4.2.461. Mise à jour Ancestromania.exe uniquement.
+Importation gedcom: possibilité d'importer correctement des dates où le mois est formulé numériquement (compatibilité anciennes versions Brother's Keeper).
+Ajout encodage et décodage UTF8.
+Correction anomalies:
+Lors de l'importation d'un ficher gedcom encodé au format ANSEL, le dernier caractère d'une chaîne n'était pas importé s'il était de type ASCII (codé sur un seul octet) et précédé d'un caractère ANSEL (codé sur 2 octets).
+Import gedcom: l'affichage des exemples de lieux ne se mettaient pas à jour lors du changement de l'encodage.
+La fiche "Occupation" apparaît bien au milieu de la fiche principale même si elle est sur le moniteur secondaire.
+Centrage de la fiche message sur la fiche principale par défaut.
+Correction erreur lors de la tentative de visualisation d'un média dont le fichier n'est pas accessible.
+Correction erreur si double-clic dans champ Notes ou Sources vide.
+Les infobulles d'informations sur les individus s'affichent même lorsque l'affichage des bulles d'aide est désactivé dans les préférences générales.
+Ajout d'infobulles concernant des fonctions récentes jusqu'ici sans aide.
+
+V2011.4.1.453. Base 5.152. Tous les fichiers sont mis à jour.
+Modifications depuis la version 2011.3.4.438 et base b5.151
+Exécutable version 2011.4.1.453.
+Lors d'une importation depuis un fichier gedcom, un média n'est pas réimporté s'il existe déjà dans le même dossier (même adresse du fichier) avec la même description ou une description absente.
+Lors de l'ajout manuel d'un document dans la médiathèque, un message signale l'existence d'un document de même adresse dans le dossier.
+Importation/exportation de fichier texte (exportation, chargement/mise à jour des tables de référence depuis leur fiche respective):
+-les champs numériques nuls ne sont plus interdits (on ne pouvait les importer que s'ils étaient 0),
+-le séparateur décimal de la configuration est toujours remplacé par le point lors de l'exportation (il n'était pas possible d'importer un fichier généré à partir d'un PC "français" par défaut),
+-correction anomalie "il est possible d'importer un fichier si le répertoire 'documents' n'existe pas",
+-lors de l'importation, si la case "vider la table" n'est pas cochée, les enregistrements existants sont mis à jour (et non rejetés). Ceci permet la mise à jour de la table sans la vider au préalable, avec les conséquence de cette opération (ex: vider la tables des régions vide la table des départements),
+-le nom de la table à exporter ou mettre à jour apparaît dans la barre de titre de la fiche.
+Ajout/modification d'une ville de la table de référence des villes: amélioration du fonctionnement.
+Ajout modification d'une ville, d'un pays, d'une région ou d'un département depuis l'Index des lieux: la modification ne valide plus "en douce" les modifications en cours dans la fiche individu (sans possibilité d'annulation bien que le bouton Annuler soit actif).
+Affectation adresse à un autre individu depuis "Qui habite là": correction de l'anomalie d'attribution non effectuée si l'individu est seul et le premier dans la liste des prénoms.
+Suppression des espaces en début et fin des noms et prénoms lors de la saisie lorsqu'ils sont enregistrés tels que saisis.
+Arbre descendant avec conjoints: correction anomalie de classement du conjoint inconnu.
+Placement de la fiche principale sur un écran secondaire conservé au démarrage suivant.
+Saisie rapide: correction anomalie infobulle en arrière plan.
+Ajout option de réinitialisation de la liste des lieux favoris dans le menu de l'index des villes (intérêt dans le cas de travail depuis plusieurs sessions).
+Création d'un individu depuis l'Index des noms: le nom proposé est celui de l'individu sélectionné, et non plus le patronyme situé dans la liste des noms. Ce dernier pouvait être différent en cas de sélection par un patronyme associé.
+RestaureBases version 1.2.3.3 n'est plus limité aux bases locales. Pour accéder à une base distante il interface gbak.exe faisant partie de l'installation de Firebird version serveur.
+Base b5.152:
+Correction anomalie "AGE_AU_DECES plus mis à jour depuis le passage à Firebird 2.5".
+Correction de la table des régions pour les régions du Chili (code pays erroné).
+Nouveaux fichiers texte des tables de référence des régions et des villes tenant compte des améliorations du logiciel.
+Optimisations diverses et suppression de procédures et triggers inutilisés.
+Détails: voir fichier modificationsBDDInv.txt accompagnant la base vide.
+
+Version 2011.3
+V2011.3.4.438. Mise à jour Ancestromania.exe uniquement.
+Multimédias: ajout dans la médiathèque d'une case à cocher permettant de ne charger que les 20 derniers médias enregistrés.
+Si "onglet média désactivé" est coché dans les préférences générales, les vues réduites ne seront vues (chargées) dans la médiathèque que si la liste des médias est limitée aux 20 derniers enregistrés.
+Position et taille de la médiathèque sont conservées tout au long de la session même si elle est déchargée à chaque fermeture ("garder en mémoire" désactivé).
+
+Ajout dans la fiche de sélection du dossier d'une option permettant d'activer ou désactiver le paramètre "écriture forcée" de la base.
+
+Corrections d'anomalies d'import/export gedcom:
+- un enregistrement de source ne contenant que des médias (sans aucun texte) attaché à une événement individuel n'était pas importé.
+- les Notes, Sources, Individus associés et Médias d'un événement familial n'étaient pas exportés si tous les autres champs (de Désignation à Cause) étaient vides.
+- Le titre de l'événement familial Divers modifié n'était pas exporté (ni importé évidemment).
+- Une ligne vide était ajoutée en tête des lignes de l'adresse d'un domicile lors de l'importation.
+
+Autres modifications devant améliorer la vitesse d'importation d'un fichier gedcom.
+
+V2011.3.3.429. Mise à jour Ancestromania.exe uniquement.
+Correction d'une erreur provoquée lors de la création d'un événement familial de libellé plus long que 25 caractères.
+Mise à jour de l'historique des fiches parcourues en cas de modification ou suppression d'une fiche.
+
+V2011.3.3.426. Mise à jour Ancestromania.exe uniquement.
+Saisie rapide:
+-une case à cocher a été ajoutée à la fiche de saisie, permettant de cacher le répertoire.
+-le raccourci clavier Ctrl+I permettant de passer de la page "événements" à la page "informations" est remplacé par Ctrl+Entrée plus accessible.
+-ajout d'informations concernant l'utilisation de la fiche de saisie rapide.
+Répertoire: ajout d'un historique des individus visités depuis l'ouverture du répertoire avec les possibilités de retourner en arrière et de naviguer dans cet historique.
+Création des unions: ajout dans les préférences générales, onglet "Options de saisie" de deux options permettant de créer l'événement Union(mariage), l'une quand on ajoute un conjoint, l'autre quand on ajoute les parents. La première envoie directement le curseur dans le champ Date de l'événement créé.
+Médiathèque: mise en évidence des boutons servant à charger la médiathèque.
+Le raccourci clavier Ctrl+Tab permettant de naviguer dans les onglets de toutes les fiches contenant ce type de composant est utilisable même dans les événements familiaux.
+La durée d'affichage des infobulles varie avec la longueur du texte.
+
+V2011.3.1.414. Mise à jour Ancestromania.exe uniquement.
+Correction de l'anomalie de la fonction "Changer ce document" du menu de la bibliothèque multimédia. Lors du changement de média, seule la vue réduite était modifiée, la copie de grande taille (si elle devait être ajoutée) restant vide.
+
+V2011.3.0.410. Tous les fichiers sont mis à jour.
+Unions: sélection de l'union nouvellement créée en fin de création,
+-possibilité de remplacer un conjoint depuis les menus des arborescence conjoints-enfants (onglet Identité) et conjoints-parents (onglet Unions)
+-suppression de la possibilité de recréer une union existante.
+Fiche Recherche: réactivation de l'option "En voir plus sur la grille" de l'onglet Notes/Sources,
+-vidage des arborescences parents et enfants avec le bouton Effacer.
+
+Version 2011.2 b5.151
+V2011.2.0.405. Base version b5.151. Tous les fichiers sont mis à jour.
+Interdiction du bouclage de générations (exemple: fils figurant dans l'ascendance de son père) lors de la saisie d'un individu.
+Messages d'alerte prévenant des unions entre générations proches et du rattachement d'enfants issus de ces unions.
+Ajout de fonctions permettant de détecter les bouclage de générations dans une généalogie existante (ou après une importation gedcom).
+Améliorations et corrections d'anomalies mineures:
+-Ajout d'un texte d'aide dans la Bibliothèque des médias.
+-Si lors du rattachement d'un enfant à des parents cet enfant a déjà des parents, leurs noms sont affichés avant la suppression des liens existants.
+-Fiche de requêtes: les commentaires sont autorisés même en début de requête.
+
+Version 2011.1 b5.150
+V2011.1.1.397. Mise à jour Ancestromania.exe uniquement.
+Correction anomalie mineure au lancement de la liste des dates incohérentes.
+Utilisation de boutons radio pour les choix d'exécution à la place de case à cocher ou d'option du menu dans la liste des dates incohérentes et la liste des événements à l'occasion desquels l'individu est cité (bouton "livre bleu").
+Possibilité d'interrompre une exportation gedcom en cours.
+V2011.1.0.394. Base version b5.150. Tous les fichiers sont mis à jour.
+Classement des unions par ordre de création au cas où aucune date ne permet de les classer.
+Possibilité de forcer l'ordre des événements familiaux (même méthode que pour les événements individuels).
+Export GEDCOM:
+-exportation et importation des latitudes et longitudes par les étiquettes MAP, LATI et LONG conformément au projet de norme 5.5.1 pour compatibilité avec certains logiciels,
+-ajout d'une option pour ne pas exporter les notes de PLAC (contenant code INSEE ou postal, et les adresses des domiciles).
+Onglet Unions: affichage des âges des deux conjoints lors de chaque événement familial, affichage des âges au mariage dans la liste des conjoints.
+Menu Outils:
+-ajout des options de modifications et formatage des noms et prénoms (le formatage des noms s'applique aussi aux noms associés),
+-ajout des fonctions de contrôle de cohérence des données de la base,
+-ajout d'un requêteur pour remplacer le BOA. (suppression du plugin DLL_BOA.dll et de ses procédures spécifiques stockées dans la base).
+Saisie rapide: possibilité de désactiver dans la configuration le remplissage initial des listes de référence de Noms, Prénoms et Professions, avec dans ce cas réactivation ponctuelle en cliquant sur le bouton à l'extrémité droite du champ concerné.
+Accélération de l'affichage des lieux favoris dans l'index des villes et la fiche de saisie rapide (la liste temporaire des lieux favoris est définie à l'ouverture du dossier puis mise à jour en fonction des modifications des événements au lieu d'être reconstruite avant chaque utilisation).
+Fiche Individu est témoin de... : option de tri des individus par nom/prénom ou par date.
+Saisie des prénoms (saisie rapide et fiche identité): possibilité d'enregistrer le prénom tel que tapé (sans les options de formatage).
+Incohérences sur les dates: recherche des erreurs de format de saisie séparée de la recherche des incohérences dues aux valeurs des dates.
+
+Version 2011.0 b5.148
+V2011.0.3.371. Base version b5.148. Tous les fichiers sont mis à jour.
+Répertoire, Environnement familial, Recherche: corrections d'anomalies d'affichage mineures dans les grilles, mise à jour des icônes des menus.
+Saisie rapide: rétablissement des raccourcis de saisie pour les lieux, ajout du raccourci Ctrl+I pour basculer entre les pages NDP et Infos.
+V2011.0.0.366. Base version b5.148. Tous les fichiers sont mis à jour.
+Amélioration de la qualité des images compressées (images au format identité ou lorsqu'elles sont chargées dans la base).
+Onglet domiciles: mise à jour de la liste des domiciles lors de la création et la modification d'un domicile sans nécessiter l'enregistrement, repérage du domicile sur les images associées au domicile.
+Modification d'un lieu favori: accès direct à la vue sur internet et aux listes des villes voisines.
+Présentations en tableau (grille) diverses: modification des infobulles pour présenter le texte complet des cellules tronquées.
+Corrections anomalies mineures et améliorations diverses.
+
+Version 2010.17 b5.148
+V2010.17.0.356. Base version b5.148. Tous les fichiers sont mis à jour.
+Mise à jour de la base obligatoire.
+Événement Mariage (Union): le champ description se transforme en liste déroulante permettant de choisir un type d'union prédéfini ou différent de la liste de référence.
+Domiciles, gestion similaire aux autres événements individuels avec:
+-contrôle de cohérence des dates,
+-champ Sources et fiche de détails des sources,
+-rattachement de plusieurs médias gérés par l'intermédiaire de la Médiathèque. 
+Préférences générales: suppression des paramètres inutiles.
+
+Version 2010.15 b5.145
+V2010.15.3.340. Base version b5.146. Tous les fichiers sont mis à jour.
+Mise à jour de la base non imposée.
+Refonte de la fiche d'alerte sur les dates incohérentes lors de la saisie:
+-taille de la fiche s'adaptant aux messages d'alerte,
+-ajout des tests concernant une naissance après le décès de la mère ou 270 jours après le décès du père,
+-calcul des âges en fonction des dates réelles et non d'une année moyenne de 365.25 jours,
+-prise en compte des mots clés et des dates exprimées sous la forme d'une période ("de xxxx à yyyy" ou "entre xxxx et yyyy") pour déclencher une alerte.
+Base b5.146: refonte de la procédure stockée générant la liste des dates incohérentes pour tenir compte des dates réelles lors du calcul des alertes et des âges. 
+Corrections anomalies:
+-si la fiche d'alerte sur les dates incohérentes est présente à l'écran, elle ne disparaît pas lors de la création directe d'un nouvel individu,
+-la fiche d'alerte sur les dates incohérentes ne disparaît pas automatiquement lors de la suppression de l'événement individuel qui est la cause de l'incohérence, 
+-lors de la création directe d'un individu dans la fiche principale, il n'apparaît pas dans le répertoire tant que la fiche n'a pas été enregistrée, ce qui est plus particulièrement gênant pour l'ajout d'un enfant (nom par défaut absent),
+-message d'erreur pouvant amener une violation d'accès dans l'onglet Domiciles lors de la sélection d'un domicile dont le fichier de l'image liée n'est plus accessible ou est corrompu.
+
+V2010.15.0.334. Base version b5.145. Tous les fichiers sont mis à jour.
+Tests de cohérence des dates lors de l'affichage de la fiche principale:
+-Ajout du contrôle de l'écart entre deux naissances depuis la fiche d'une femme.
+-Modifications des tests de cohérence lorsque la date n'est pas complète pour supprimer des alertes inutiles.
+Liste des dates Incohérentes: Ajout du test de cohérence entre la date d'un événement et la période de vie des témoins.
+Arbres: ajout d'un repère clignotant pour repérer dans l'arbre l'individu en cours dans la fiche principale.
+Visionneuse CassiniVision: défilement de la carte à l'aide de la molette de la souris.
+Corrections d'anomalies:
+-Violation d'adresse lors de la vérification manuelle d'une nouvelle version si le contrôle d'une nouvelle version au démarrage était activé.
+-Saisie rapide: après le choix d'un lieu dans les favoris, il était possible d'enregistrer un lieu différent de celui affiché dans la fiche de saisie rapide.
+Version 2010.14 b5.144
+V2010.14.1.329. Tous les fichiers sont mis à jour.
+Correction anomalie de transaction verrouillée après modification d'un dossier.
+V2010.14.0.328. Tous les fichiers sont mis à jour.
+Il n'est plus nécessaire d'installer la version serveur de Firebird pour pouvoir consulter la carte de Cassini tout en continuant à naviguer dans Ancestromania. La carte de Cassini vue dans cette visionneuse est synchronisée automatiquement lors de l'appel depuis Ancestromania.
+La dll DllCassiniVision.dll du répertoire Plugins est remplacée par un fichier exécutable Cassinimania.exe (CassiniVision pour Ancestromania).
+Version 2010.13 b5.144 – Mise à jour Firebird 2.5
+V2010.13.1.323. Seul Ancestromania.exe est mis à jour.
+Raccourci de saisie d'un lieu favori depuis les champs Ville ou Subdivion des événements ou domiciles: remplacement de Alt+F par Ctrl+F plus couramment utilisé pour la recherche (F=Find).
+Onglet Domiciles: réaménagement pour que les champs de saisie soient dans des positions semblables à ce qu'elles sont dans les événements.
+Corrections anomalies mineures.
+V2010.13.0.318. Tous les fichiers sont mis à jour.
+A l'ATTENTION de ceux qui utilisent la version serveur de Firebird: rester en version 2.1 peut provoquer des anomalies, en particulier lors de la mise à jour de la base. Il est donc très fortement conseillé de mettre à niveau votre installation en Firebird 2.5.
+Cette mise à jour met également à jour la version embedded de Firebird installée d'origine dans le répertoire d'Ancestromania, à condition qu'elle soit active.
+Si, utilisateur habituel de la version serveur, vous avez désactivé sans la désinstaller complètement la version Firebird embedded dans le répertoire d'Ancestromania, réactivez-la avant d'exécuter cette mise à jour. Vous pourrez la désactiver après, et cela vous protégera d'incidents possibles en cas de réactivation.
+Autres modifications:
+Recherche ancêtres: correction d'une anomalie rare, les dates, villes, département et subdivision pouvaient venir d'événements de l'individu différents.
+Répertoire et Liste de Cousinage: refonte des requêtes permettant l'activation des onglets pour les rendre plus rapide (le répertoire s'affiche en moins de 2s même sur un dossier de 186000 individus).
+Événement individuel: correction anomalie, si on modifie un champ de l'événement (Notes par exemple) et que, sans sortir le curseur de ce champ, on clique sur un bouton permettant d'ajouter un autre événement, la modification en cours n'était pas sauvegardée.
+Export des médias (menu Import/Export Exporter tous les médias attachés): option pour exporter le fichier original au lieu de l'image compressée dans la base.
+Suppression de la fiche "Liste des événements uniques en double" cette fiche n'ayant plus d'utilité. Lors d'une importation, l'événement réputé unique arrivant en double est transformé en événement Divers avec son libellé en titre.
+Réaménagement du menu principal afin de regrouper en son début les options les plus utilisées et/ou similaires et améliorer l'accès aux Arbres.
+Réaménagement de la barre d'outils secondaire par défaut.
+Suppression des boutons "Imprimer" situés dans les onglets de la fiche principale, remplacés par l'activation de l'icône "Imprimante" (dans la rangée d'icônes inférieure) qui n'était utilisée que pour l'onglet Arbre.
+Exportation et importation d'un fichier GEDCOM: la date et l'heure de création de la source sont transférées.
+Version 2010.12 b5.144
+V2010.12.0.311. Tous les fichiers sont mis à jour.
+Fiche Liens entre deux individus: ajout d'une case à cocher permettant d'éliminer les liens par l'intermédiaire de témoins.
+Arbres imprimables: les sosas du dossier sont identifiés dans l'arbre par un cadre vert au lieu de la couleur attribuée normalement au sexe. Permanente dans la fiche à l'écran, cette fonction est optionnelle lors de l'impression (case à cocher dans le dernier onglet de la fiche de configuration de l'arbre).
+Fiche de Saisie Rapide: ajout d'un volet donnant accès aux champs Notes et Sources de la fiche de l'individu.
+Corrections anomalies dans la fiche de saisie rapide:
+Un sexe prédéfini lors de la création d'un père, une mère ou un conjoint était modifié lors de l'effacement du prénom.
+L'effacement du nom de la ville de naissance, décès ou profession ne supprimait pas son enregistrement.
+Version 2010.11 b5.144
+V2010.11.4.306. Seul Ancestromania.exe est mis à jour, il faut réinitialiser les fenêtres après copie du fichier (ou supprimer la clé HKEY_CURRENT_USER\Software\Ancestromania\W_NOUVEAUX_INDIS dans la base de registre).
+Correction de l'importation GEDCOM: dans les domiciles, la région n'était pas importée.
+Liste des individus saisis récemment: ajout optionnel des colonnes NIP, année de naissance, année de décès et modifiée par. Corrections pour que la date de modification soit mise à jour uniquement lors des modifications concernant l'individu, et pour la mise à jour correcte de l'identifiant de l'utilisateur ayant fait les modifications.
+Correction anomalie lors de la sauvegarde de la base: les modifications du nom du fichier sauvegardé n'étaient pas prises en compte immédiatement.
+Un fichier Communes.dat utilisé par la dll CassiniVision a été mis à jour dans le fichier InstLanceCassinivision.zip. Il permet de retrouver les arrondissements de Paris tels qu'ils sont inscrits dans la table de référence d'Ancestromania.
+V2010.11.3.303. Seul Ancestromania.exe est mis à jour.
+L'événement, le média ou le domicile sélectionné reste sélectionné après validation des modifications en cours par le bouton "Enregistrer".
+Une modification dans l'Histoire ne valide plus "sournoisement" des modifications en cours dans la fiche de l'individu.
+V2010.11.3.301. Tous les fichiers sont mis à jour.
+Arbre de la descendance: une option dans les paramètres de l'arbre permet d'afficher un indicateur "SP" en bas à droite des boîtes quand l'individu a été déclaré "Sans postérité" (Nombre d'enfants=0 dans le volet des détails de l'onglet Identité).
+Répertoire et Index des noms (version exclusive du même répertoire ouverte pour ajouter un enfant, un conjoint etc...): les paramètres dimensionnels sont les mêmes pour les deux et définis par le Répertoire, mais chacun mémorise la configuration de sa propre grille des prénoms. Il est possible de définir et mémoriser des filtres différents pour ces grilles.
+Création d'un événement individuel: quand "l'événement" créé est un attribut (titre, N° sécurité sociale, diplôme, religion, caste, nationalité, description physique etc...), le curseur se positionne dans le champ description au lieu de la date.
+Corrections d'anomalies mineures:
+Les fiches exclusives (que l'on doit refermer pour retourner à l'application) s'ouvre bien maintenant centrées sur leur fiche appelante. Elles se décalent pour ne pas déborder de l'écran où elles s'affichent ni être recouvertes par la barre de tâches, même sur l'écran secondaire. La fiche détail de l'événement individuel est volontairement décalée.
+Dans les documents imprimables, le fichier HTML généré prend bien le nom qu'on veut lui donner. 
+Ajustement de l'emplacement du numéro d'ordre du conjoint dans les documents Descendance/complet.
+V2010.11.2.296. Tous les fichiers sont mis à jour.
+Correction de 2 anomalies mineures:
+-Lorsque le répertoire était ouvert, sa forme exclusive ouverte pour la sélection d'un conjoint, enfant, père, mère ou témoin reprenait le format par défaut des colonnes de la liste des individus.
+-Depuis l'index des lieux, la liste des villes voisines s'ouvrait mais n'était pas accessible.
+V2010.11.0.293. Tous les fichiers sont mis à jour.
+-Fiche Individuelle: correction de l'anomalie "lorsque l'individu principal est une femme, dans ses événements familiaux figure son nom au lieu de celui de son époux". Dans les paramètres de cette Fiche Individuelle, possibilité de désactiver l'impression des naissances des enfants et des événements familiaux.
+-Fiches Villes voisines et Lieux voisins (boutons "Globe bleu" dans les événements, domiciles et Index des lieux): ces fiches ne sont plus exclusives, elles peuvent rester ouvertes sans bloquer l'accès aux autres fiches d'Ancestromania. Les titres de ces fenêtres ont été adaptés au contexte. Il est possible d'afficher les noms des départements, régions et pays (cause de la mise à jour de la base) et la direction des lieux par rapport au lieu d'origine.
+-Fiches où il est possible de sélectionner les champs à afficher (Répertoire, Environnement Familial, Recherche, Liste des unions etc...): la sélection par des options du menu surgissant a été remplacée par une petite boîte de dialogue située dans l'angle supérieur gauche des grilles concernées.
+
+
+Version 2010.10 b5.143
+V2010.10.2.285. Tous les fichiers sont mis à jour.
+Création des états (documents) Ascendance_Actes_Absents et Descendance_Actes_Absents permettant d'identifier les naissances, mariages et décès dont l'acte n'a pas été déclaré "trouvé" ou "à ignorer".
+Saisie rapide:
+-les champs Acte, Notes et Sources sont intégrés dans le circuit du curseur par la touche Tab et le cheminement inverse par Maj+Tab. L'appui des touches Ctrl+Tab permet d'aller directement au groupe (naissance, décès ou profession) suivant.
+-un click de souris sur l'étiquette d'un champ permet de sélectionner ce champ (utile pour la sélection à la souris d'un champ masqué par un champ mémo ouvert).
+-les étiquettes des champs Notes et Sources passent en style gras quand le champ est sélectionné.
+Fiche de recherche: ajout des arborescences des parents et des conjoints-enfants.
+Environnement familial: possibilité d'impression de la liste.
+Fiche de recherche et Environnement familial: la sélection d'un individu dans les arborescences affiche ses informations dans la barre d'état. Le click suivant sur le bouton "Sélectionner" sélectionne cet individu dans la fiche principale (ou la fiche en lecture seule si appui simultané sur la touche Maj). 
+Version 2010.9 b5.143
+V2010.9.0.278. Tous les fichiers sont mis à jour.
+Mise en ordre logique des événements intervenant à la même date (ex: naissance et baptême, décès et sépulture) sans que l'utilisateur soit obligé de forcer l'ordre des événements.
+Mémorisation des paramètres, position et dimensions de la liste des actes par type.
+Arbres imprimables ascendant ou descendant: rafraîchissement immédiat de la signalisation de l'individu en cours dans la fiche principale.
+Filtres de grilles: traduction des conditions et pré-filtrage des listes filtres en fonction des filtres déjà posés.
+Corrections ergonomiques diverses sur de nombreuses fiches. Activation des raccourcis standards dans les grilles (ex: Inser pour ajouter un enregistrement dans une grille) et désactivation des actions par défaut entrant en conflit avec l'utilisation de touches de raccourcis standards (ex: "Echap" utilisé classiquement pour annuler la modification en cours dans un champ qui provoquait la fermeture de la fiche).
+Version 2010.8 b5.142
+V2010.8.9.269. Tous les fichiers sont mis à jour.
+Fiches de mise à jour des tables de références (menu Configuration) et Patronymes: uniformisation du fonctionnement avec les raccourcis clavier "Ins" et "Ctrl+Supp" pour respectivement insérer et supprimer un enregistrement. Quand possible, le dépassement de la fin de la table insère un enregistrement.
+Possibilité d'intégrer des retours à la ligne dans le texte correspondant à un raccourci de saisie.
+Utilisation des raccourcis de saisie dans tous les champs de type Mémo (Notes, Sources et autres champs multi-lignes), et pour la saisie des villes.
+Utilisation des raccourcis de saisie dans la fiche de saisie rapide pour les lieux, notes et sources.
+V2010.8.7.262.
+Correction pour mise à jour automatique par internet.
+V2010.8.6.261. 
+Menu de l'environnement familial: ajout de l'option "Liens avec l'individu de départ".
+Ajout des raccourcis clavier "Ins" et "Ctrl+Supp" avec création des menus si nécessaires pour respectivement ajouter et supprimer des enregistrements. Ces raccourcis sont actifs lorsque les éléments suivants sont sélectionnés:
+-Onglet "Identité": "Evénements de sa vie", Arborescence conjoints/enfants ("Ins" pour ajouter un enfant, "Ctrl+Ins" pour ajouter un conjoint),
+-Onglet "Unions": Arborescence des conjoints pour ajouter et supprimer des enfants, "Evénements associés à l'union", "Personnes citées", "Médias",
+-Onglet "Médias": Liste des médias,
+-Onglet "Domiciles": Liste chronologique des domiciles,
+-Fiche "Détails de l'événement": "Personnes citées", "Médias".
+Corrections diverses (centrage Calendrier appelé depuis la saisie rapide, rôle du témoin pouvant ne pas être sauvegardé dans certaines circonstances etc...).
+V2010.8.5.258. 
+Répertoire: position mémorisée à la fermeture et retrouvée à l'ouverture.
+Environnement familial complété par les parents et beaux-parents des conjoints, et barre d'état affichant les informations de l'individu sélectionné.
+Onglet Domiciles: il n'est plus nécessaire d'enregistrer les modifications en cours avant d'ouvrir"Qui habite là?".
+"Vérifier les mises à jour sur internet": la mise à jour est proposée en fin de téléchargement même en cas de mise à jour mineure.
+V2010.8.2.255.
+Standardisation de la position des fiches lors de leur ouverture.
+Environnement familial:
+-pour en faciliter l'identification, le type du lien de l'individu sélectionné dans la liste est souligné dans la définition de l'environnement familial,
+-l'environnement familial d'un individu peut être demandé depuis le répertoire,
+-le rafraîchissement de la liste ne change pas l'individu de départ (celui dont on cherche l'environnement familial), le changement d'individu se faisant par appel de la fiche depuis la fiche principale ou le répertoire,
+-informations de l'individu sélectionné dans la barre d'état,
+-sélection des parents et beaux-parents des conjoints dans l'environnement familial. 
+V2010.8.0.252. 
+Suppression du choix Fiches incrustées/Fiches Flottantes pour ne garder que les fiches flottantes. Ce choix ne concernait que l'Arborescence ascendante, les documents et le répertoire.
+Correction d'une possible anomalie lors de l'optimisation de la largeur des arbres imprimables.
+Répertoire et fiche de recherche: ajout d'une barre d'état (barre inférieure) pour y faire apparaître les informations sur l'individu sélectionné.
+Fiche de recherche: Possibilité de sélectionner les critères Nom, Prénom, Métier, Ville et Pays de naissances et de décès dans des listes déroulantes ne contenant que les valeurs utilisées dans ces champ du dossier.
+Suppression des fiches Naissances par Ville, Décès par Ville, Individus sans ville, Qui fait ce métier, Qui porte ce prénom devenues inutiles (remplacement par la fiche de recherche) et ne fonctionnant qu'en mode exclusif.
+Regroupement des informations concernant les versions en cours dans la fiche "A propos".
+Apparition des messages et fiches secondaires au centre de la fiche appelante au lieu de la fiche principale.
+
+Version 2010.7 b5.142
+V2010.7.16.246. Seul Ancestromania.exe est mis à jour.
+Rappel des options d'affichage du menu surgissant des parents (onglet Identité) apparaissant dans la barre d'état.
+Compression supérieure du fichier exécutable.
+V2010.7.14.243. Seul Ancestromania.exe est mis à jour.
+L'individu de la fiche en cours est mis en évidence dans les arbres imprimables par un cadre plus épais.
+V2010.7.13.242. Tous les fichiers sont mis à jour.
+Lors de la création directe d'un individu (bouton "Nouvelle fiche"), il n'est plus nécessaire de valider après avoir saisi le nom. Le nom affiché à la création peut être modifié dans les préférences générales, onglet "Options de saisie".
+Quand on valide les modifications par le bouton "Enregistrer", la fiche est entièrement rafraîchie (rechargée).
+Corrections anomalies mineures diverses.
+V2010.7.10.239.
+Corrections anomalies:
+Liste des unions: cochage des options du menu d'affichage des colonnes subdivision, département, région pas mis à jour à l'initialisation de la fiche.
+Arborescence conjoints/enfants: lorsqu'aucune date ne permettait de définir l'ordre des conjoints (premier enfant, premier événement familial ou décès du conjoint), il pouvait arriver qu'un conjoint ayant plusieurs enfants soit affiché sur plusieurs lignes.
+Suppression de la mise à jour du journal des opérations par les modification d'un individu qui n'était pas rigoureuse et faisait doublon avec la liste des individus saisis récemment.
+V2010.7.7.236.
+Menu parents/Conjoints/enfants complété. En appuyant sur Maj à son ouverture, le 1ier niveau du menu montre les parents et le second niveau les grands-parents.
+Ce type de menu s'ouvre également dans les fiches de recherche et l'environnement familial.
+V2010.7.6.234.
+Onglets Identité et Unions: possibilité d'ouvrir le menu "parents" étendue à tous les liens de l'onglet Identité, et dans l'onglet Unions au titre (nom de l'individu principal) et à l'arborescence conjoints et leurs parents.
+Liste des dates incohérentes: ajout d'une colonne "Vue" signalant que l'indicateur "Sans alarme sur les dates" de l'individu concerné a été activée.
+V2010.7.5.232.
+Fiche Identité: un click droit sur un parent en appuyant sur la touche Ctrl ouvre le menu contenant les grands-parents de l'individu principal.
+V2010.7.3.230, b5.142.
+Module Histoire: Restructuration de la table et du logiciel pour permettre un accès plus rapide au module Histoire. Après la mise à jour, il est nécessaire de remplacer les dictionnaires d'histoire utilisés dans la base par ceux disponibles dans le répertoire des tables de référence. Le lien pour le téléchargement du répertoire complet et compressé figure en haut de cette page. Ceux qui ont personnalisé ou créé un dictionnaire devront l'exporter à l'aide du logiciel DicExpTxt.exe (à exécuter obligatoirement depuis le même répertoire qu'Ancestromania.exe en cas d'utilisation de FB embedded) pour supprimer du texte les balises de formatage RTF, puis le réimporter.
+Fiche Identité: les menus surgissants du père et de la mère montrent leurs enfants (la fratrie de l'individu principal) ainsi que leurs conjoints et enfants (beaux-frères, belles-sœurs, neveux et nièces de l'individu principal).
+Commandes de changement d'individu: toutes les commandes de changement d'individu dans la fiche principale (click sur un lien, click sur un bouton, option "Ouvrir le fiche" dans un menu etc...) exécutées simultanément à l'appui sur la touche "Maj" du clavier, ouvrent ou synchronisent la fiche en lecture seule (fiche en consultation). Si ces commandes sont exécutées sans appui sur la touche "Maj", elles changent l'individu dans la fiche principale, même si elles sont exécutées depuis la fiche en consultation.
+Conséquence de cette utilisation de la touche "Maj", dans les arbres imprimables, la touche "Maj" est remplacée par la touche "Alt" pour la fonction Zoom+.
+Boîtes de dialogue: présélection des boutons "Ok" ou "Oui".
+Correction anomalie de formatage des nombres dans la recherche par NIP.
+
+Version 2010.6
+V2010.6.7.224. Seul le fichier Ancestromania.exe est mis à jour sur le site.
+Impression des arbres: les marges sont minimisées aux valeurs transmises par l'imprimante. Les paramètres "Décalage à gauche" et "Décalage à droite" permettent d'agrandir les marges globales correspondantes (afin de centrer l'arbre sur l'ensemble des feuilles), le paramètre "Recouvrement d'impression" augmente les marges droite et basse de chaque feuille imprimée, augmentant le recouvrement des impressions pour la découpe et l'assemblage des feuilles. 
+V2010.6.6.223. Tous les fichiers sont mis à jour.
+Arbres imprimables: on peut choisir d'afficher le département par son code ou par son nom. Si l'affichage du code est demandé mais n'existe pas, il est remplacé par le nom.
+Le bouton de rafraîchissement de l'arbre reste toujours actif. Son changement de couleur signale uniquement qu'une modification des paramètres nécessite le rafraîchissement.
+Depuis le menu principal et le répertoire, on peut directement choisir d'ouvrir l'ascendance ou la descendance.
+La fiche de saisie rapide n'apparait plus au centre de l'écran, mais au milieu de la fiche appelante (fiche principale ou répertoire).
+Arbre de descendance avec conjoints imprimable: correction anomalie conjoint pouvant être mal positionné s'il est également implexe.
+Correction anomalie pouvant conduire à un dédoublement de lieux favoris.
+Suppression clignotement des arborescences du répertoire lors du changement d'individu. 
+V2010.6.3.220. Tous les fichiers sont mis à jour.
+Correction conflits d'accès lors de l'impression des fiches Individuelle et Familiale.
+Ajout date de mariage dans les menus contextuels du treeview conjoints/enfants (onglet Identité) et de l'arbre ascendant imprimable.
+V2010.6.1.218. Tous les fichiers sont mis à jour.
+Fiche de Recherche: ajout de la recherche d'un individu par son métier.
+Possibilité de définir un ordre des enfants remplaçant l'ordre par défaut (ordre chronologique, heure comprise, du premier événement individuel de l'enfant).
+Utilisation du glisser-déplacer à la souris dans la liste conjoints-enfants (onglet Identité) pour définir l'ordre des enfants d'un couple, ou attribuer l'enfant à un autre parent-conjoint.
+
+Version 2010.5
+V2010.5.8.216. Seul le fichier Ancestromania.exe est mis à jour sur le site.
+Corrections mise à jour de la liste des actes (onglet Actes) pour tenir compte de tous les types et améliorer le changement de type par drag&drop. 
+V2010.5.7.214. Tous les fichiers sont mis à jour.
+Correction anomalie "Erreur violation de clé primaire" intervenant lors de l'affichage des Fiches Individuelles et Familiales avec des médias (uniquement si base sur poste Windows, pas avec serveur Linux).
+V2010.5.6.214. Tous les fichiers sont mis à jour.
+Bibliothèque multimédias: corrections pour l'enregistrement des images directement depuis un scanner ou une webcam.
+Correction anomalie valeur de la BDR absente lors de la mise à jour,
+V2010.5.3.208. Tous les fichiers sont mis à jour.
+En fermant directement la fiche "Détails de l'événement" après modification du rôle d'un témoin ou de la désignation d'un média, on pouvait ne pas enregistrer ces modifications.
+Ajout du département dans le titre de la fiche "Individus ayant vécu des événements dans ce lieu".
+V2010.5.1.205. Tous les fichiers sont mis à jour.
+Refonte de la fiche "Individus ayant vécu des événements dans ce lieu", appelée depuis le menu contextuel des Lieux favoris.
+V2010.5.0.203. Tous les fichiers sont mis à jour.
+Menus contextuels complétés ou ajoutés pour afficher les conjoints et leurs enfants dans l'arborescence conjoints/enfants et les parents de l'individu principal (onglet Identité), ainsi que dans l'arbre imprimable ascendant.
+L'arbre imprimable peut être appelé depuis le répertoire.
+Améliorations ergonomiques dans les arborescences conjoints/enfants (onglet Identité) et conjoints (onglet Unions): transformation du curseur de la souris en main pour signaler un lien actif (icônes), ou en liste pour signaler la présence d'un menu contextuel.
+Retour à l'individu précédent au lieu du dernier individu créé dans le dossier, après la suppression d'un individu.
+Réparations d'anomalies mineures.
+Version 2010.4
+V2010.4.10.199. Seul le fichier Ancestromania.exe est mis à jour sur le site.
+Répertoire:
+-Un simple clic dans les arborescences en bas de la fiche suffit pour sélectionner l'individu dans la liste par prénom.
+-Ajout de l'année de mariage dans l'arborescence de la descendance.
+V2010.4.8.197. Tous les fichiers mis à jour.
+Arbre et roue imprimables: utilisation de la molette de la souris pour faire varier le zoom.
+Export gedcom: caractères interdits dans les noms de fichiers remplacés par '_' dans le nom proposé lors de l'exportation.
+Corrections diverses anomalies.
+Aménagements ergonomiques:
+-Dans les arbres imprimables, un double-clic sur une boîte ouvre directement la fiche de l'individu.
+-Dans la médiathèque la touche Tabulation fait passer le curseur du média au bouton Sélectionner ou Fermer.
+V2010.4.4.193.
+Correction d'une "vieille anomalie" qui empêchait la modification de certains lieux favoris.
+V2010.4.3.192. Base b5.141.
+Modifications de la gestion des médias.
+Quand un fichier est chargé comme "Fichier", seule une icône, ou son image réduite au format photo d'identité (140x120) s'il s'agit d'un fichier de type "image", est chargée dans la base en plus de son adresse. Si le fichier "image" se trouve à l'adresse enregistrée, celui-ci est utilisé pour afficher l'image en grand format: onglet "Médias", fiche "Qui utilise ce média", états Fiche individuelle et Fiche familiale.
+Dans les détails du dossier, une case à cocher a été ajoutée. Elle permet de choisir le mode de stockage des médias qui sera utilisé pour tous les chargements ou mises à jour suivants (par l'option "changer ce média" du menu contextuel). Le choix est rappelé dans la médiathèque.
+Le bouton "Image" de la médiathèque permet de présélectionner les fichiers de type image dans l'explorateur qu'il ouvre, et de charger une copie si ce mode est actif. Mais si le fichier image est chargé par le bouton fichier, il n'y aura pas de copie dans la base, quelque soit le mode en cours.
+Si une copie de l'image existe, dans la médiathèque son icône (ou vue réduite) est sur un fond rouge foncé.
+Dans la médiathèque ouverte depuis le menu principal, ajout de fonctions appelées depuis le menu contextuel permettant de recharger tous les médias "en intégrant" ou "sans intégrer" les copies des images dans la base, avec contrôle de la présence des fichiers originaux. L'utilisation de ces fonctions met à jour le mode de copie des médias du dossier selon le mode choisi pour recharger.
+Lors de l'importation d'un gedcom, le choix d'importation des médias est réduit à "sans" ou "avec". Dans ce dernier cas, c'est le mode du dossier (rappelé dans la fiche d'importation) qui est appliqué.
+Les icônes "fichier" et "vidéo" ont été remplacées par d'autres plus jolies. Mais pour les mettre à jour dans la médiathèque, il faut les recharger.
+Quand l'adresse du média est trop longue pour s'afficher complètement, une infobulle la présentant en entier vient la recouvrir au passage de la souris.
+
+Version 2010.3
+V2010.3.4.186.
+Modification de la méthode empêchant l'exécution simultanée de plusieurs sessions d'Ancestromania avec le même fichier exécutable. Une autre session peut toutefois être exécutée à partir du fichier Ancestromania.exe renommé différemment.
+V2010.3.3.185.
+Arbres imprimables: possibilité d'identifier les actes de mariage, naissance et décès non trouvés dans l'arbre lui-même. Paramètre accessible dans les "Paramètres de l'arbre", onglet "Textes".
+V2010.3.2.184.
+Fiche "Qui utilise ce média?": dans le menu contextuel de l'image, une option permet d'imprimer la fiche. Un séparateur horizontal permet d'en ajuster le format avant de l'imprimer.
+V2010.3.0.182 (base b5.139 inchangée).
+Création d'une fonction de repérage des individus sur les médias de type image et affichage du média avec tous les individus repérés (fiche "Qui utilise ce média?" accessible depuis les menus de l'onglet Médias et la médiathèque).
+Modification du chargement des médias et de leur lecture. Quand un média image est chargé comme "Fichier" dans la médiathèque (ou "adresse" lors d'une importation Gedcom), seule la vue réduite (format identité 140x120, compression jpeg) est chargée dans la base avec l'adresse de son fichier. Si le fichier du média image se trouve à son adresse d'enregistrement, dans l'onglet Médias et dans la nouvelle fiche "Qui utilise ce média?", il est lu depuis ce fichier, donc sans perte de qualité et sans charger excessivement la base.
+Ajout d'un état Fiche familiale sans médias: nécessite la mise à jour par la procédure normale (celle qui exécute Update_Ancestro.exe) pour être installée.
+Version 2010.2
+V2010.2.0.176 base b5.139.
+Rattachement des médias (actes) à l'événement. Il est maintenant possible de rattacher plusieurs documents à un événement individuel ou familial. Ceci n'est possible qu'avec une base à partir de la version b5.139.
+Version 2010.0
+V2010.0.0.167.
+Arbres imprimables: il est possible de définir les éléments entrant dans la désignation des lieux de naissance, décès et mariage.
+Correction anomalie "Liste des enfants nés posthumes" et diverses corrections minimes.
+La base doit être à la version b5.137 minimum.
+Base 5.137.
+Suppression de 33 procédures injustifiées ou remplacées par de simples requêtes exécutées par le logiciel.
+Suppression de paramètres d'entrée inutiles.
+Optimisation d'un déclencheurs pour le transfert de dossier.
+Cette base n'est pas utilisable avec un exécutable de version inférieure à V2010.0.
+V2010.0.5.172. (exécutable seul modifié)
+Arbres imprimables: affichage du nom de l'individu dans la barre de titre, affichage de la génération et des enfants dans le menu contextuel.
+Index des noms-répertoire: mise à jour des entêtes de colonnes et des titres.
+Onglet identité et répertoire: ajout d'une option montrant les liens existants entre l'individu en cours et le Sosa n°1 (onglet identité) ou l'individu sélectionné dans le répertoire. Cette option vient en complément de la visualisation des ascendances jusqu'au premier ancêtre commun, en montrant en particulier les liens par les conjoints et les témoins.
+Version 2009.32
+V2009.32.0.165.
+La base peut être sauvegardée même si elle n'est pas de la bonne version après une tentative de connexion.
+Les colonnes Subdivision, Département, Région peuvent être affichées en plus des colonnes Ville et Pays afin de définir les lieux dans la fiche de recherche et dans la liste des unions.
+Version 2009.31
+V2009.31.0.164.
+Fiche de recherche: suppression de l'erreur lors de la recherche dans les notes ou sources, ajout d'une option d'impression du résultat de la recherche.
+Onglet Identité: ajout d'infobulles contenant les lieux de naissance et décès des conjoints, enfants et parents, et le lieu de mariage des parents. Ces infobulles apparaissent lors du survol de la souris sur les dates concernées. Conjoints et enfants: affichage des dates complètes.
+V2009.31.1.165.
+La base peut être sauvegardée même si elle n'est pas de la bonne version après une tentative de connection.
+Version 2009.30
+V2009.30.0.158.
+Onglet identité: ajout de la date du mariage des parents mise à jour lors de l'ajout ou de la suppression d'un parent, sans nécessiter de rafraîchissement. Correction anomalie de mise à jour des dates de naissance et décès d'un parent lors de son ajout.
+Événement individuel: correction anomalie lors de la modification de la profession.
+V2009.30.3.161.
+Navigation: remplacement de l'affreux bouton d'impression en plein milieu par un menu surgissant, diverses retouches des textes.
+Impression des listes: formatage des impressions.
+Améliorations du fonctionnement de la fenêtre de tri des événements et de la fonction de suppression du tri.
+V2009.30.4.164.
+Fiche de recherche: suppression de l'erreur lors de la recherche dans les notes ou sources, ajout d'une option d'impression du résultat de la recherche.
+Onglet Identité: ajout d'infobulles contenant les lieux de naissance et décès des conjoints, enfants et parents, et le lieu de mariage des parents. Ces infobulles apparaissent lors du survol de la souris sur les dates concernées. Conjoints et enfants: affichage des dates complètes.
+Version 2009.29
+V2009.29.0.156.
+Lors de l'ajout d'un conjoint, d'un enfant ou d'un parent, vérification que l'individu ajouté n'appartient pas à la descendance ou l'ascendance du premier individu.
+Lors de l'ajout d'un enfant ou d'un parent, vérification que les parents de l'union qui peut être ainsi créée ne sont pas dans l'ascendance l'un de l'autre.
+Création d'une fonction de copier/coller un événement individuel.
+V2009.29.1.157.
+Corrections d'anomalies de transactions empêchant l'ouverture de plusieurs sessions sur une même base de données, et la perte de modifications en cours.
+Version 2009.28
+V2009.28.0.152.
+Ajout des conjoints sans enfants dans l'arbre imprimable de la descendances avec mariages. Identification comme "implexes" des conjoints présents plusieurs fois.
+Version 2009.27
+V2009.27.0.150 et base b5.136.
+Création des indicateurs "Identité incertaine" et "Recherches à continuer". Activation par les "Paramètres divers concernant l'individu" dans le volet Identité détaillée (saisie de l'identité de l'individu). Deux icônes signalent dans le volet Identité réduite l'activation de ces paramètres. Les fiches où ces indicateurs sont activés peuvent être listées dans la fiche de recherche, en sélectionnant l'option recherchée dans "Paramètres divers concernant l'individu".
+Fiche de saisie rapide, saisie d'un lieu: le nom de la subdivision apparaît à la suite du nom de la ville.
+Exportation gedcom et Exportation des médias: les médias exportés dans le répertoire accompagnant le fichier .ged (quand demandé) gardent leur nom et leur nom de répertoire d'origine.
+V2009.27.2.151.
+Correction d'une anomalie empêchant la suppression de la fiche d'un individu depuis la fiche "Rechercher..." et la "Liste des individus liés...".
+Suppression multiple rendue possible dans la fiche "Rechercher...".
+Version 2009.26
+V2009.26.2.148 et base b5.136.
+Base b5.136: modification de la procédure pour le calcul des arbres afin de pouvoir afficher plus de générations.
+Exécutable: adaptations des arbres imprimables pour afficher jusqu'à 128 générations dans une ascendance.
+Compatibilité Vista et Windows7:
+-fichier migration.log généré pendant la mise à jour de la base déplacé dans le répertoire temporaire de l'utilisateur au lieu du répertoire de l'exécutable.
+-changement des dialogues de sélection de répertoire pour les adapter à Widows7.
+Version 2009.25
+V2009.25.0.144 et base b5.135.
+Base b5.135: correction d'une anomalie pouvant provoquer dans les descendances un mauvais classement chronologique des enfants dont seule l'année de naissance est connue.
+Exécutable: ajout optionnel des mariages et conjoints dans l'arbre de descendance imprimable.
+Amélioration de l'optimisation de la largeur de l'arbre.
+Différentiation du repérage implexe-sosa selon le sexe de l'individu.
+Simplification du paramétrage des arbres: les hauteurs de boîtes et positions du texte doivent être définies sans l'affichage des mariages ni des villes. Lors de l'affichage et de l'impression, les hauteurs s'ajustent automatiquement en fonction de l'activation de ces dernières options. 
+V2009.25.1.145 mise à jour Ancestromania.exe et Update_Ancestro.exe
+Arbres imprimables: Optimisation de la largeur de l'arbre plus efficace et rapide,
+Numéro et nombre de pages ajoutés dans le menu contextuel.
+Version 2009.24
+V2009.24.0.142 et base b5.134.
+Modifications des arbres imprimables (menu: Impressions/ Arbre ascendance/descendance).
+Corrections de diverses anomalies dont: texte tronqué aux deux extrémités et pas imprimé lorsque la place est insuffisante, largeur des traits imprimés proportionnelle à la taille du pixel de l'imprimante...
+Déploiement vertical des arbres avec respect d'un sens plus "naturel" (et quasiment obligatoire pour ajouter les mariages): vers le haut pour l'ascendance, vers le bas pour la descendance. Inversion optionnelle.
+Affichage optionnel de la ville sous la date.
+Affichage optionnel des dates et villes de mariage dans l'arbre d'ascendance.
+Optimisation optionnelle de la largeur de l'arbre par recouvrement des branches.
+Identification de la boîte Sosa lors du survol par la souris de la boîte d'un individu Implexe.
+Inversion des fonctions Zoom+, Zoom- et Déplacement par l'appui des touches Maj ou Ctrl en cliquant.
+Si Déplacement actif (curseur Main), Maj active le Zoom+, Ctrl active le Zoom-.
+Si Zoom+ (curseur +) ou Zoom- (curseur -) actif, Maj inverse le sens du zoom, Ctrl active le déplacement.
+Version 2009.23
+V2009.23.0.133 et base b5.134.
+Compléments à la fiche dite de "Saisie rapide". Ajout des champs Date et Lieu pour la profession, ajout des champs Notes, Sources et Acte. Le raccourcis clavier Ctrl+Tab sélectionne directement le bouton "Enregistrer".
+Base: suppression de procédures inutiles.
+V2009.23.1.134 mise à jour Ancestromania.exe et Update_Ancestro.exe
+Correction inconstance du contrôle de cohérence des dates dans le contrôle par rapport à la naissance des enfants.
+Correction anomalie: mariage après décès de l'individu en cours non signalé si l'individu n'aurait pas atteint l'âge maximum pour se marier.
+Ajout du contrôle lors de la saisie d'une date d'événement familial.
+V2009.23.2.135 mise à jour Ancestromania.exe et Update_Ancestro.exe
+Insensibilité aux caractères accentués lors de la reconnaissance des mots clefs utilisés dans les dates (souplesse accrue avec nouvelle table des mots clefs).
+Index des lieux: présélection du pays et filtrage des lieux favoris par le pays en cours dans l'événement ou le domicile, en cas d'appel depuis ces fiches. Dans les mêmes conditions, le lieu pré-sélectionné dans la liste des lieux favoris se trouve en tête de la grille d'affichage. Si la subdivision n'est pas trouvée, la ville est pré-sélectionnée si elle existe dans les lieux favoris.
+Onglet Identité, remplacement de la case à cocher "Individu confidentiel" par le libellé "Paramètres divers concernant l'individu" contenant un menu surgissant à 2 options: la première pour déclarer l'individu confidentiel, la seconde pour empêcher l'apparition de la fenêtre bleue d'alerte pour incohérence de dates. Cette dernière option n'empêche pas l'apparition du panneau "sens interdit" en cas d'incohérence.
+Fiche de recherche: option de recherche des individus "Sans alerte sur dates" regroupée avec les "Individus confidentiels" selon le même principe que ci-dessus.
+Arborescences conjoints-enfants (onglet Identité), conjoints (onglet Unions) et témoins (détails de l'événement individuel): sélection directe de la fiche individu en cliquant sur l'icône.
+V2009.23.4.136 mise à jour Ancestromania.exe et Update_Ancestro.exe
+Fiche "Qui habite là": ajout copie optionnelle des notes, contrôle du format des dates en cas de modification.
+Fiche individu en lecture seule (ou consultation): 
+-le contenu des champs peut être sélectionné afin d'être copié,
+-la fiche n'est plus en mode exclusif, il est donc possible de la consulter tout en travaillant sur la fiche principale,
+-la fiche s'ouvre en prenant les dimensions de la fiche principale et est redimentionnable,
+-quand elle est ouverte, un nouvel appel la synchronise avec l'individu demandé sans qu'il soit nécessaire de la fermer.
+Fiche Liste des doublons: possibilité d'ouvrir la fiche individu en consultation.
+V2009.23.5.137 mise à jour Ancestromania.exe et Update_Ancestro.exe
+Arbres d'ascendance et de descendance sous forme d'arborescence: l'arborescence ne se ferme plus quand on double-clique sur un individu pour ouvrir la fiche correspondante.
+Arborescence de l'onglet Sa Vie: idem quand le double-clic envoie sur l'événement concerné. Sélection du bon domicile dans la liste de l'onglet Domiciles.
+Version 2009.22
+V2009.22.0.127 et base b5.133.
+Mise à jour de Firebird embedded en version 2.1.3.
+Correction d'une anomalie de calcul de l'âge au décès d'un individu, visible dans les états Fiche individuelle et Fiche familiale lorsque cet âge s'affiche en jours.
+V2009.22.1.128 mise à jour Ancestromania.exe et Update_Ancestro.exe
+Correction erreur lors de la suppression d'un événement familial unique.
+Répertoire: curseur dans Patronymes à l'ouverture et après sélection d'une lettre, à droite après tabulation.
+V2009.22.2.129 mise à jour Ancestromania.exe et Update_Ancestro.exe
+Correction erreur lors de la suppression d'un événement individuel unique.
+Contrôles de cohérence effectués sur dates sans autre précision que l'année.
+Informations de naissance et décès de l'identité réduite actualisées dès la modification des dates et villes concernées.
+V2009.22.3.130 mise à jour Ancestromania.exe seul.
+Suppression des possibilités d'affichage d'une fiche événement individuel vide au changement de la fiche individu.
+Suppression de la possibilité de modifier la profession ou le titre de l'événement divers quand la fiche est en lecture seule.
+Déplacement du curseur dans les champs sources ou notes lors de la sélection de l'onglet correspondant. 
+V2009.22.4.131 mise à jour Ancestromania.exe seul.
+Correction anomalie si la vérification de la mise à jour sur internet au démarrage est active et le site non trouvé (connexion interrompue).
+Latitude et longitude plus misent à 0 en cas d'absence lors de la création d'un lieu.
+Possibilité de supprimer les informations du lieu d'un événement individuel ou familial par une option du menu contextuel (clic droit).
+V2009.22.5.132 mise à jour Ancestromania.exe seul.
+Possibilité de garder la fiche "Détails de l'événement" au premier plan par une option accessible dans les préférences générales.
+Remise en ordre de la circulation du curseur par la tabulation dans cette même fiche.
+Version 2009.21
+V2009.21.0.121 et base b5.132.
+Positionnement automatique de l'événement Naissance en tête de liste des événements individuels, même s'il n'est pas daté (hors ordre imposé par l'utilisateur).
+V2009.21.1.122. 
+Suppression d'un blocage lors de l'optimisation si le répertoire de sauvegarde défini dans les préférences n'existe pas.
+Les optimisations génèrent un fichier type "backup" dans le répertoire de sauvegarde, dont le nom comprend la date-heure (il peut être ainsi conservé).
+V2009.21.4.125. ( Ancestromania.exe et Update_Ancestro.exe mis en ligne).
+Affichage des patronymes associés à l'individu en cours avec le nom. L'option est accessible dans le menu configuration.
+Définition des patronymes associés: formatage du patronyme selon les règles définies dans les préférences. Possibilité, comme pour les noms, de conserver le texte tel qu'il a été saisi (option ponctuelle dans le menu contextuel).
+V2009.21.5.127. ( Ancestromania.exe seul mis en ligne).
+Export Geneanet: ajout d'un texte explicatif sur cet exportation.
+Recherche des actes: correction anomalie lors de la sélection des actes des individus sosa.
+Identité: suppression de l'affichage du "en" quand la date de naissance ou de décès n'est pas saisie.
+Version 2009.20
+V2009.20.0.117 et base b5.131.
+Corrections des états statistiques de Longévité, Recensement, Age à la première union et nombre d'enfants par union.
+Déplacement de la définition des états de "C:\Program Files\Ancestromania\Reports" à "C:\Documents and Settings\All Users\Application Data\Ancestromania\Reports" (XP) ou "C:\ProgramData\Ancestromania\Reports" (Vista et W7), le précédent emplacement n'autorisant pas leurs modifications par les utilisateurs sous Vista/W7.
+V2009.20.2.119. (mise à jour exe seul).
+Suppression de la création automatique des répertoires des Reports dans "C:\Program Files\Ancestromania\Reports".
+Correction de l'anomalie dans la liste des actes par type qui empêchait dans certains cas la sélection d'un acte.
+Correction des exportations html pour que le répertoire par défaut soit \documents et que le fichiers portent les noms choisis par les utilisateurs.
+V2009.20.3.120. (mise à jour exe seul en ligne).
+Parenté "canonique" avec le SOSA n°1 calculée automatiquement pour les individus nouvellement créés.
+Version 2009.18
+V2009.18.0.109 et base b5.128.
+Nouvelle procédure de mise à jour permettant de respecter les normes de sécurité de Vista et Windows 7.
+L'exécution de Update_Ancestro.exe nécessite des droits d'administration. La base est mise à jour lors de la connexion par un utilisateur normal.
+V2009.18.4.113.
+Correction de la procédure de mise à jour (ajout de fbclient.dll).
+Calendrier: liste déroulante des mois pouvant contenir tous les mois,
+mise à jour automatique des dates calculées (suppression du bouton "Calculer").
+Onglet Unions: désactivation de "Etat de l'acte" quand il n'y a pas d'événement familial.
+Qui habite là: remise en service de la copie d'une adresse et de la modification des périodes et diverses anomalies.
+Sélection base: correction anomalie lors de la tentative de connexion à une base locale inexistante,
+liste des dernières bases connectées mise dans l'ordre inverse des dernières connexions.
+Suppression erreur lors de l'export gedcom de l'ascendance.
+Base 5.129 (non impérative): suppression de procédures inutiles.
+V2009.18.5.114: suppression de doublons dans les listes des cousins.
+V2009.18.6.115: vérification mise à jour par internet, contrôle de la version de la base en cours remplacé par le contrôle de la version des scripts de mise à jour copiés sur le pc.
+Version 2009.17
+V2009.17.2.108 et base b5.128.
+Base: mise à jour des traductions allemandes des libellés dans la table de référence des événements.
+Exécutable: Une fiche "Environnement familial" dans le menu Individus permet de lister les individus que l'on considère comme de la famille de l'individu en cours. La définition de l'environnement familial s'effectue dans le panneau gauche escamotable, par le type de lien avec l'individu principal. Tous les choix ainsi que l'affichage sont mémorisés à la fermeture de la fiche, pour être retrouvés à sa prochaine ouverture.
+Si la fiche est déjà ouverte, il faut la rappeler depuis le menu Individus pour l'actualiser avec un nouvel individu central.
+Un double-click sur un individu de la liste ou de l'un des deux treeview, synchronise la fiche individu.
+Le fichier Update_Ancestro.exe permettant la mise à jour est téléchargé et recherché à partir de cette version dans "c:\Documents and Settings\All Users\Application Data\Ancestromania\Update" au lieu de "c:\Documents and Settings\Mon Compte\Application Data\Ancestromania\Update" (ou leurs équivalents sous Vista).
+Version 2009.16
+V2009.16.1.100 et base b5.127
+Recharger les nouvelles tables de référence après mise à jour avec le nouveau TablesReference.exe installé.
+Mettre à jour le raccourcis de lancement (menu Démarrer/Ancestromania) de RestaureBase vers le nouveau fichier RestaureBases.exe.
+Modification des tables de référence afin de tenir compte de la langue des données. Tables redéfinies pour le français, l'anglais, l'allemand, l'italien et l'espagnol.
+Sont concernées: les désignations des événements (REF_EVENEMENTS), des mots clefs utilisés dans les dates (REF_TOKEN_DATE), des filiations (REF_FILIATION), des événements divers (REF_DIVERS_FAM et REF_DIVERS_IND) et des rôles et relations des témoins (REF_RELA_TEMOINS).
+La langue des données, spécifique à chaque dossier doit être spécifiée dans les caractéristiques du dossier, avant d'y créer un individu.
+Toutes les tables de référence (hors les tables de référence des lieux) peuvent être mises à jour, exportées et importées individuellement depuis le menu Configuration.
+La sélection de la base de données, déplacée dans le menu Généalogies, mémorise les 8 dernières bases utilisées.
+Le nom d'une base de données sur serveur distant doit être de la forme: serveur:fichier.
+"serveur" est le nom ou l'adresse IP du serveur,
+"fichier" est le nom complet du fichier sur ce serveur ou un nom d'alias défini dans le fichier alias.conf du serveur.
+Une base locale peut être nommée par son nom de fichier complet ou par son nom d'alias.
+Si une "Sauvegarde automatique de la base de données" est demandée (case à cocher dans les Préférences générales), un backup est exécuté à chaque connexion à la base (au démarrage et en cas de changement de base de données). Le nom du fichier de sauvegarde situé dans le sous répertoire \backup de répertoire où se situe le fichier de la base, contient la date et l'heure (sans minutes ni secondes). Le nouvel utilitaire RestaureBases.exe permet de restaurer une base, ou d'en créer une nouvelle, à un état antérieur.
+Onglet "Identité":
+Les conjoints et les enfants ont été regroupés, montrant directement le conjoint parent des enfants.
+Au survol de la souris, seuls les liens directement actifs se surlignent. Double cliquer sur les noms des conjoints ou enfants ouvre leurs fiches.
+Onglet "Unions":
+Nouvelle configuration.
+Présentation de la liste des événements associés à l'union dans le même style que la liste des événements individuels (mêmes icônes pour signaler la présence de notes, sources et acte).
+Possibilité de créer un événement divers avec gestion d'un titre spécifique et aide par la nouvelle liste de référence des événements divers familiaux. La saisie de ce titre se fait dans la liste elle-même, le libellé de l'événement devenant éditable pour ce type d'événement.
+Gestion directe des rôles et relations des témoins d'événements, la liste de référence n'étant plus utilisée que pour apporter une aide à la saisie et assurer la compatibilité à l'importation des anciens fichier GEDCOM d'Ancestrologie (et dans une faible mesure d'Heredis).
+Nouvelle présentation de la saisie des témoins dans les événements familiaux.
+V2009.16.4.102
+Ajout année de mariage dans l'onglet Identité.
+Retouches esthétiques.
+Correction anomalie sur modification d'un dossier.
+Version 2009.13
+V2009.13.0.89 et base b5.123
+Mise à jour des champs Date, Année, Mois et âges par des procédures intégrées au logiciel au lieu des procédures stockées dans la base.
+Meilleure réactivité du logiciel et acceptation des années négatives (dates avant notre ère), même avec le signe "-" en séparateur de dates.
+Information des utilisateurs par messages et infobulles dans la fiche de modification des Mots clés utilisés pour la saisie des dates.
+Possibilité d'utiliser des ordres d'affichage des éléments de la date différents selon le format littéraire (LIT) ou numérique (NUM) choisi pour l'affichage des dates.
+Mise à jour des dates affichées en sortie de la fiche de modification des mots clés, en accord avec les paramètres Format ou Ordre modifiés.
+Mise à jour des triggers et procédures stockées dans la base.
+
+V2009.13.3.92 et base b5.125
+Date de dernière modification de l'individu exportée dans le fichier GEDCOM et réimportée comme date de création de l'individu. Si cette date est absente du fichier, elle est remplacée par la date d'édition du fichier présente dans son entête.
+L'âge de l'individu lors d'un événement est calculé lors de la saisie de la date de cet événement.
+
+Version 2009.11
+V2009.11.0.80
+Arbre et Roue imprimables: 
+-Ascendance/descendance mémorisé,
+-Zoom mini de 5%,
+-Recadrage automatique après un changement de type ou de nombre de générations,
+-Ouverture de la fiche et recentrage de l'arbre sur l'individu sélectionné depuis le menu popup,
+-Paramètres de réglages de la visualisation (zoom, recentrage, cadrage par vue réduite) séparés des paramètres de réglages de l'arbre (dimensions, contenu) et accessible directement dans la fenêtre de visualisation.
+Onglet Identité: ajout des villes de naissance et de décès ainsi que le dernier métier dans l'identité réduite.
+Evénements individuels et familiaux: code postal optionnel.
+Evénements familiaux: ajout du jour et de la description de l'événement.
+Base b5.120: restructuration des procédures extrayant la liste ordonnée des conjoints.
+
+Version 2009.10
+V2009.10.0.75
+Arbre et Roue imprimables en fenêtres indépendantes.
+Implexes identifiés dans les arbres (Arbres imprimables et onglet Arbre).
+
+V2009.10.2.77
+Arbre et Roue imprimables: corrections d'anomalies dans les fiches de paramètrage.
+Identification de l'individu survolé par la souris dans l'arbre.
+Liens par lignes brisées au lieu de lignes directes.
+
+V2009.10.4.78 et base 5.119
+Base: mise à jour de Firebird embedded en version 2.1.2, réparation anomalie de la table créée par DLLArbre.dll empêchant l'importation des modèles d'arbres.
+Arbres imprimables: possibilité d'ajouter la ville aux dates de naissance et décès, liens entre boîtes plus larges lors de l'impression.
+
+Version 2009.9
+V2009.9.0.67
+Base 5.117 modifiée pour mémoriser des libellés de 255 caractères dans la tables des raccourcis de saisie.
+TablesReference.exe v4.2.0.0
+Choix entre 4 jeux d'icônes pour les signes du Zodiaque
+Choix des couleurs de fond, de sélection et des onglets
+Remplacement des onglets dessinés par des onglets natifs
+Affichage de l'âge au format texte constant et mieux synchronisé lors des modifications
+Correction anomalie calendrier révolutionnaire
+Nouveau style de boutons
+Corrections anomalies de la liste des documents
+Correction erreur et fonctionnement de l'assistance à la saisie du Nom et du Prénom dans l'onglet Identité similaire à la saisie rapide (complément automatique)
+Utilisation des raccourcis de saisie dans les champs de Notes et de Sources.
+
+V2009.9.1.68
+Correction de la saisie des Noms et Prénoms dans la fiche Identité pour faciliter les modifications.
+Correction anomalies dans la saisie rapide.
+
+V2009.9.2.71
+Corrections: de la fiche de saisie des raccourcis (modifications impossibles), 
+-de l'enregistrement d'un individu qui provoquait le retour à l'onglet Identité, 
+-de la non mise à jour des boutons N et D si un onglet autre que Identité était ouvert lors du changement d'individu
+-non mise à jour du code NIP au changement d'individu.
+Ajout de la possibilité d'ouvrir un fichier ou une URL en double-cliquant sur son nom entier figurant dans un champ Notes ou Sources,.
+
+Version 2009.6
+Base 5.116 modifiée pour la gestion de l'optimisation.
+Mise à jour de la table de référence des événements.
+
+V2009.6.0.47 Homogénéisation de certains types de composants.
+Gestion de l'optimisation.
+
+Version 2009.0
+Base 5.115 inchangée.
+
+V2009.0.0.0 Médiathèque: suppression format carte d'affichage des médias. Optimisation surface de travail.
+
+V2009.0.1.0 Importation, exportation gedcom: possibilité d'enregistrer à l'export et lire à l'import des notes de l'auteur du fichier. Suppression INT (tag date interprêtée) à l'importation.
+
+V2009.0.2.0 Fenêtre message modifiée pour pouvoir lire des messages plus grands que ce que permet sa taille maxi de 600x400. Texte du message sélectionnable.
+Import gedcom: correction anomalie première ligne découpée à l'importation si elle dépassait 248c (tous champs memo). Export gedcom: ajout possible de la date au nom par défaut du gedcom.
+
+V2009.0.3.0 Fenêtre message avec ascenseur pour grand message (utilisée pour lire les informations de l'auteur d'un fichier gedcom lors de l'importation). 
+Liste des unions: affichage du nombre d'unions dans le titre.
+Détails de l'événement individuel: fiche "normale" pouvant être recouverte par la fiche principale ou une autre fiche. Si elle est entièrement cachée, double-cliquer sur l'événement pour la faire réapparaître.
+
+V2009.0.4.0 Suppression anomalie lors de la création d'un événement Profession alors qu'un événement est déjà visible. 
+
+V2009.0.6.6 Regroupement des boutons Cassini et accès internet (expedia, Quid, Satellite, Wikipédia ajouté) en un seul bouton avec menu popup. 
+Regroupement des boutons Villes voisines et Lieux favoris voisins en un seul bouton avec menu popup.
+Utilisation dans les détails des événements individuels et familiaux, dans les domiciles et dans l'Index des villes.
+Réaménagement de la fiche détails de l'événement individuel.
+
+Version 2008.840
+Base 5.115 Table de référence des départements algériens mise à jour. 
+ATTENTION: utiliser l'utilitaire TableReference.exe situé dans le répertoire d'installation d'Ancestrologie pour mettre à jour votre base avec la nouvelle table de référence des départements fournie dans cette mise à jour.
+V2008.840.0.0 Correction anomalie du non agrandissement en hauteur de la zone d'affichage de l'onglet Médias.
+Version 2008.839
+Base 5.115 et documents "Fiche individuelle": affichage du titre de l'événement individuel dans le cas du type "Divers".
+V2008.839.0.0 Correction anomalie empêchant de lier un média à un acte familial. Panneau d'attente pour requête longue lors de la recherche des incohérences sur les dates.
+Version 2008.838
+Nouvelle base 5.114.
+V2008.837.0.1
+Vues réduites de l'arbre et de la roue imprimables déplacées du panneau latéral gauche vers les fiches de paramétrages de ces documents.
+Création d'une fiche "arbre hiérarchique d'ascendance" façon arbre hiérarchique descendant, avec identification des implexes.
+V2008.838.2.5 "arbre hiérarchique d'ascendance" renommé simplement "Ascendance" dans le menu Individu, "arbre hiérarchique descendant" renommé "Descendance". Accélération de l'affichage des arbres. Mises au point diverses. 
+V2008.838.3.6 Fonctionnement correct de l'orientation de l'arbre en onglet comme défini dans les préférences.
+Version 2008.836
+Base 5.111 inchangée.
+V2008.836.0.0 Correction des anomalies provoquées par la fiche individu en lecture seule (fiche en consultation seulement appelée depuis le Répertoire, la Liste des individus ayant un événement dans un lieu donné, les Arbres imprimables).
+Icônes dans les messages.
+V2008.836.1.1 Remplacement écusson de démarrage par un texte plus clair et moins "volumineux" (fichier exe plus petit de 80 ko). Message d'avertissement concernant le répertoire de base des Images plus explicite.
+V2008.836.2.3 Corrections des infobulles de l'onglet Identité, du menu popup de la photo d'identité. Case à cocher "Ouverture de la fenêtre Histoire au démarrage" transférée dans l'onglet Réseau des Préférences.
+Version 2008.835
+Base 5.111 inchangée.
+Mise à jour par internet: Utilisation du md5 pour contrôler la validité du fichier de mise à jour Update_Ancestro.exe, avant et après téléchargement par internet. Si le fichier en place est correct il n'est pas proposé de le télécharger, et il est possible d'effectuer directement la mise à jour d'Ancestrologie.
+Update_Ancestro.exe: Pendant la migration, les noms des copies de sauvegarde de l'exécutable et de la base sont notés dans le fichier de traçage migration.log.
+Fiche anniversaires flottante. Suppression de l'appel à la fiche en lecture seule depuis les anniversaires et l'index des noms. Quelques réparations de cette fiche qui mélange des informations de la fiche en cours et de la fiche sélectionnée.
+Destruction des fiches (libération mémoire) à la fermeture des fiches Recherche actes, Recherche Ancêtres, Incohérences des dates, Individus liés.
+Les fiches Navigation et Histoire ne sont créées que lorsqu'elles doivent être ouvertes, et détruites quand elles sont fermées.
+La fiche Histoire se synchronise réellement avec l'événement individuel ou familial sélectionné.
+La fiche Navigation ouverte permet de naviguer autour de l'individu central en ouvrant la fiche de l'individu sélectionné. Cliquer sur le bouton Naviguer de la fiche Individu pour changer l'individu central.
+Correction anomalie de création de lieux favoris en double.
+V2008.835.4.6. Correction anomalie lors de l'ajout d'un enfant abandonné en sortant de l'index des noms par le X de fermeture de la fiche.
+Version 2008.834
+Base 5.111 inchangée.
+Bannières Firebird enlevées des fiches "Emplacement de la base de données" et "Optimisation de la base de données" que des utilisateurs appelaient "fiches Firebird". Version de Firebird installée accessible depuis le menu Aide "Versions Ancestrologie/Firebird". Méthode d'obtention des versions compatible avec Vista.
+Lors de la vérification des mises à jour sur internet, le téléchargement n'est plus proposé, mais la mise à jour directe possible si le fichier Update_Ancestro.exe de la même version a déjà été téléchargé.
+Version 2008.833 base 5.111
+NON, vous ne trouverez pas ici de modifications dont les seules motivations sont le changement du "look" de l'interface et le "il faut changer", sans tenir compte des aspects pratiques du logiciel, en toute ignorance des règles de base de l'ergonomie. Vous ne trouverez pas non plus de ces "nouvelles fonctions" à la manière des décors hollywoodiens: belles façades, mais vides par derrière. 
+Les évolutions sont ici faites par des personnes qui pratiquent la généalogie, pour des utilisateurs qui font de la généalogie. L'objectif est d'obtenir un logiciel agréable et facile à utiliser qui respecte les normes de la discipline et apporte une aide efficace à l'amateur désireux de construire et montrer sa généalogie.
+En consultant les onglets et les menus vous pourrez constater que les premiers efforts ont portés sur l'ergonomie par le simple respect des règles élémentaires que sont:
+-la "normalisation" de l'aspect et de la position des commandes similaires telles que l'ajout et la suppression d'un élément,
+-la diminution des déplacements de la souris par exemple dans l'onglet Domiciles pour aller de la sélection d'un onglet au bouton qui permet d'ajouter un domicile, puis de ce bouton au premier champ à remplir.
+-faciliter l'accès aux commandes les plus utilisées. Les options du menu les plus utilisées sont placées en tête des menus. La barre d'outils utilisateur contient par défaut des commandes utilisées plus fréquemment.
+-la simplification du paramétrage. Dans les "Préférences" les choix qui ne présentent pas d'intérêt ont été supprimés. De même les choix qui relèvent de la même logique ont été regroupés.
+-laisser le maximum de la place disponible pour afficher des informations utiles. Par exemple en ne l'encombrant pas de boutons de commande peu utilisés, ou en aménageant correctement les éléments (voir onglets Identité, Médias...).
+-l'utilisation de la barre d'état pour ce qu'elle a été conçue: le passage d'informations instantanées utiles à l'utilisateur. Plus de commandes se déclenchant intempestivement lors de la sélection de la fenêtre par cette barre, ni de statistiques dont le suivi instantané ne présente aucun intérêt. Mais vous y trouverez parfois de l'aide (rappel du raccourci Alt+F quand la souris est dans les champs Ville et Subdivision), parfois des informations comme l'identification du Sosa n°1 de votre généalogie quand la souris passe sur le champ correspondant.
+-la préférence mise aux fenêtres flottantes, plus pratiques que les fenêtres incrustées parce qu'elles peuvent être consultées tout en continuant à naviguer dans la fenêtre principale. C'est le cas ici de la fenêtre des documents imprimables, qu'il est alors possible d'afficher en grande taille (sa taille est mémorisée) afin que le document soit lisible, même si la fenêtre principale reste en 800*600. Certains prétexteront que ce n'est utilisable que par les possesseurs de grands écrans. Ce n'est pas exact: le chevauchement des fenêtres n'empêche pas l'affichage de la fenêtre principale.
+-la présélection de l'élément le plus probable quand un choix doit être fait. Quand on doit sélectionner le témoin d'un événement, l'Index des noms s'ouvre sur le nom de l'individu en cours. S'il s'agit du décès d'une épouse, il s'ouvre sur le nom de son maris (le décès est plus souvent déclaré par un enfant). Pour le transfert d'un dossier, la fenêtre de sélection de la base d'origine s'ouvre sur le répertoire de la base en cours au lieu du bureau.
+L'accent a aussi été mis sur la simplification du code, à la suppression de fiches venant en doublons et la recherche des causes d'instabilité du logiciel. Les fiches inutiles alourdissent le logiciel au détriment de sa rapidité, en rendent la maintenance plus difficile et par conséquent à l'origine de violations.
+Ainsi l'Index des noms a été préféré au Répertoire. Il est plus rapide que ce dernier et moins sujet aux risques de "mémoire insuffisante" de par sa conception même. Les fonctions utiles du Répertoire que ne contient pas l'Index des noms (suppression de fiches, liste des sosas) ont été implantées dans la fiche de recherche réaménagée.
+La liste des lieux favoris était en doublon de l'onglet de même nom dans l'Index des lieux. Les fonctions manquantes dans l'index ont été ajoutées et la liste des lieux favoris supprimée.
+NOUVELLES FONCTIONS:
+Liens au decujus ou Sosa n°1:
+Une nouvelle case à cocher apparaît dans le paramètres, onglet Visuels: "Afficher les liens au Sosa n°1".
+Si cette case est cochée lorsqu'est effectuée la numérotation sosa, cette numérotation est suivie de la recherche des descendants du decujus et de la recherche d'un lien "par témoins" ou autre avec ce decujus.
+Ces informations viennent alors se substituer à l'affichage du n° Sosa dans l'onglet identité. Quand l'individu est simplement lié à la généalogie, un clic droit sur le champ permet d'accéder à une option calculant et affichant sa parenté avec le decujus si elle existe (ascendants de chacun jusqu'au premier ancêtre commun). La parenté en nombre de degrés de l'individu en cours et du decujus remplace alors l'affichage précédent. Étant mémorisée, il n'est pas nécessaire de la recalculer à chaque affichage de l'individu, mais une option du menu contextuel le permet (après l'ajout d'un ascendant par exemple).
+Parenté automatique.
+Lorsque la case "Calculer la parenté à la volée" est cochée dans les préférences, la parenté en nombre de degrés définie ci-dessus est calculée à chaque affichage:
+-la parenté avec le Sosa n°1 dans l'onglet Identité,
+-la parenté entre conjoints dans l'onglet Unions. Elle s'affiche pour le conjoint sélectionné, si elle existe, au dessus des onglets Détails, Notes etc...
+Comme ce calcul peut ralentir la navigation entre individus d'une base importante, il peut être désactivé depuis les préférences, mais le résultat de la parenté avec le Sosa n°1 étant mémorisé, il pourra donc être affiché.
+Numérotation Sosa automatique.
+Cette option est couplée au calcul de la parenté à la volée.
+L'ajout d'un parent à un individu déjà sosa entraîne la numérotation de ce parent et de toute son ascendance. Il n'est donc plus nécessaire d'effectuer une numérotation Sosa après avoir saisi des nouveaux individus pour en afficher l'appartenance à l'ascendance du decujus.
+Individus confidentiels.
+Une case à cocher "Individu confidentiel" a été ajoutée dans l'identité détaillée de l'onglet Identité.
+Cette information est exploitée lors de l'export gedcom dans le volet "Éléments à exporter". Si l'exportation des "individus confidentiels" est décochée, ces individus n'apparaîtront pas les individus exportés.
+Cette option ayant l'inconvénient de rendre la généalogie incompréhensible en découpant des lignées, il est possible d'uniquement supprimer l'identité de ces individus en décochant l'option d'exportation "identité des individus confidentiels". Leurs noms sont alors remplacés par --X-- et tous leurs événements, domiciles, notes, sources et médias sont supprimés de l'exportation.
+Les individus confidentiels sont identifiés dans l'identité simplifiée ainsi que dans l'index des noms et la fiche de recherche par un nom/prénom en caractères barrés.
+Une liste de ces individus peut être obtenue depuis la fiche de recherche (une case "confidentiel" a été ajoutée).
+Fiche de recherche.
+La fiche de recherche a été complétée par les éléments vus ci-dessus. Dans les champs "Année de naissance" et "Année de décès", il est possible de faire précéder l'année des symboles > ou <.
+> permet de sélectionner les individus nés ou décédés après l'année mentionnée, < sélectionne ceux nés ou décédés avant.
+Le menu popup des résultats offre les mêmes possibilités que l'index des noms pour la sélection des colonnes à afficher ou la sélection de la fiche d'un individu.
+SUPPRESSION D'ANOMALIES.
+Un calendrier universel qui fonctionne correctement, sans ajouter 1792 années dans certaines circonstances et qui calcule au lieu de sélectionner quand on valide par la touche Entrée.
+Dans le champ heure d'un événement, ajout d'une option dans le menu surgissant permettant de supprimer une heure précédemment enregistrée.
+Ordre des sexes dans les listes de choix identique pour la saisie rapide et pour l'onglet identité.
+Généralisation de la fonte Tahoma au lieu de MsSansSerif qui n'affiche pas certains caractères "français", exemple dans la fenêtre de navigation et toutes les infobulles.
+Réparation du mélange des références au pays dans l'Index des lieux selon que ce pays était sélectionné depuis l'onglet Villes ou l'onglet Pays/Régions/Départements.
+Commandes de mises à jour des lieux (menu Lieux) complétées par un message d'avertissement explicatif avant exécution.
+Liste de cousinage: correction de l'anomalie "impossible de voir les cousins d'un individu seul de son nom".
+La numérotation Sosa ne modifie plus la date de dernière modification de tous les individus.
+Le titre de l'Index des noms s'ouvrant pour la sélection du decujus est explicite.
+Onglet Sa Vie: sélection du bon média individuel, et affichage de la description de l'événement divers en complément de son titre.
+Désactivation de l'option du menu "Emplacement de la base de données" pendant le choix de cet emplacement. Un double-clic ou une deuxième sélection provoquait une erreur bloquante.
+Uniformisation de l'aspect des messages dans des boîtes de dialogue (hors quelques messages d'erreur).
+Impression au format PDF de Sa Vie, Actes, Arbre hiérarchique avec des icônes sur fond blanc au lieu de noir.
+Transfert de dossier de plus de 30000 individus impossible pour cause de mémoire insuffisante. Limite repoussée à plus de 40000, et message d'avertissement si le nombre d'individus dépasse ce nombre.
+Changement du format d'enregistrement de la version "2008.0.0.833" en "2008.833.0.x" standard et plus pratique lors des essais et mises à jour.
+Pour la mise à jour du logiciel, remplacement du nom de fichier migration_base.exe par Update_Ancestro.exe plus significatif des modifications qui peuvent être faites.
+

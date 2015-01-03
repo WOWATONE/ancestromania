@@ -14,4 +14,5 @@ ln -s ../Unix/Unsigned/Update_AncestroIntel64.rpm ./Inis/
 ln -s ../Unix/Unsigned/Update_AncestroIntel64.tar.gz ./Inis/
 ln -s ../Docs/Evolutions.html ./Inis/
 ln -s ../Docs/Evolutions.rtf ./Inis/
+ln -s ../Docs/Evolutions.txt ./Inis/
 

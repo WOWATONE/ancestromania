@@ -14,6 +14,7 @@ cp ../../x86_64-linux/Scripts/* Update_AncestroIntel64.tar/Scripts
 sudo chown -R root Update_AncestroIntel64
 sudo  chmod 644 Update_AncestroIntel64/usr/share/ancestromania/Scripts/*
 sudo  chmod 644 Update_AncestroIntel64.tar/Scripts/*
+sudo  chmod 666 Update_AncestroIntel64.tar/*.fdb
 sudo dpkg-deb -b Update_AncestroIntel64 
 sudo chown -R matthieu Update_AncestroIntel64
 rm *el64.rpm

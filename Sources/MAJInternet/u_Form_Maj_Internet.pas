@@ -26,6 +26,8 @@ unit u_Form_Maj_Internet;
 {$ENDIF}
 {$IFDEF WINDOWS}
 {$DEFINE HTMLVIEW}
+{$ELSE}
+{.$DEFINE LAZBRO}
 {$ENDIF}
 
 {$DEFINE MultiMediaMissing}
@@ -41,7 +43,9 @@ uses
 {$IFDEF HTMLVIEW}
   FramView,HTMLView, Readhtml, HtmlGlobals,StyleTypes,
 {$ELSE}
+{$IFDEF LAZBRO}
   lazbro,
+{$ENDIF}
 {$ENDIF}
   U_FormAdapt, Controls, Graphics, StdCtrls, ExtCtrls,
   ComCtrls, Classes, Forms,
@@ -89,7 +93,11 @@ type
     {$IFDEF HTMLVIEW}
     Browser : TFrameViewer;
     {$ELSE}
+    {$IFDEF LAZBRO}
     Browser : TLazbro;
+    {$ELSE}
+    Browser : TMemo;
+    {$ENDIF}
     {$ENDIF}
     procedure ch_testClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -118,7 +126,9 @@ type
     procedure WebBrowserHotSpotCovered(Sender: TObject; const Target, URL: ThtString);
     procedure WebBrowserLink(Sender: TObject; const Rel, Rev, Href: THtString);
     {$ELSE}
+    {$IFDEF LAZBRO}
     procedure WebBrowserLink(const Sender: TLazbro);
+    {$ENDIF}
     {$ENDIF}
     procedure p_AfterDownloadExe;
   private
@@ -154,6 +164,8 @@ end;
 procedure TFMajInternet.ch_testClick(Sender: TObject);
 begin
   NetUpdate.URLBase:=fs_geturlMajAuto(ch_test.checked);
+  btnmaj.caption:=rs_Ini_Download_Again;
+  btnmaj.enabled:=True;
 end;
 
 procedure TFMajInternet.NetUpdateDownloaded(const Sender: TObject;
@@ -288,7 +300,7 @@ begin
     {$ELSE}
 //      Browser.BaseUrl := UpdateDir + FilePage;
     {$ENDIF}
-    Browser.LoadFromFile ( UpdateDir + FilePage );
+    Browser.{$IFNDEF WINDOWS}Lines.{$ENDIF}LoadFromFile ( UpdateDir + FilePage );
     TabNews.TabVisible:=True;
     if bOK then
     begin
@@ -329,7 +341,7 @@ var
   VersionCur,VersionMax:string;
   lat_ArchitectureType : TArchitectureType;
 begin
-  Browser := {$IFDEF HTMLVIEW}TFrameViewer{$ELSE}TLazbro{$ENDIF}.Create(Self);
+  Browser := {$IFDEF HTMLVIEW}TFrameViewer{$ELSE}{$IFDEF LAZBRO}TLazbro{$ELSE}TMemo{$ENDIF}{$ENDIF}.Create(Self);
   Browser.Parent:=TabNews;
   Browser.Align:=alClient;
   Browser.Visible:=True;
@@ -338,7 +350,9 @@ begin
   Browser.OnHotSpotTargetClick  :=WebBrowserHotSpotClick;
   Browser.OnHotSpotTargetCovered:=WebBrowserHotSpotCovered;
   {$ELSE}
+  {$IFDEF LAZBRO}
   Browser.OnUrlChange:=WebBrowserLink;
+  {$ENDIF}
   {$ENDIF}
   Color:=gci_context.ColorLight;
   with NetUpdate do
@@ -555,11 +569,14 @@ begin
 end;
 
 {$ELSE}
+{$IFDEF LAZBRO}
 procedure TFMajInternet.WebBrowserLink(const Sender: TLazbro);
 begin
   p_OpenFileOrDirectory(Sender.BaseUrl);
 end;
 
+{$ELSE}
+{$ENDIF}
 {$ENDIF}
 
 
