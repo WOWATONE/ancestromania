@@ -15,7 +15,7 @@ DefaultDirName={code:doPathAncestro}
 AppPublisherURL=http://genealogie.liberlog.fr/
 DefaultGroupName=Ancestromania
 DisableProgramGroupPage=yes
-OutputBaseFilename=Update_AncestroIntel
+OutputBaseFilename=Install_AncestroIntel
 Compression=lzma
 SolidCompression=yes
 LicenseFile=LicenceTout.rtf
@@ -78,8 +78,8 @@ Source: "..\i386-win32\AncestroWeb\Themes\default\Images\*.*"; DestDir: "{app}\A
 Source: "..\i386-win32\AncestroWeb\Themes\default\Images\Map\*.*"; DestDir: "{app}\AncestroWeb\Themes\default\Images\Map";
 ;scripts de mise à jour de la base toujours terminer le nom par 4 caractères numériques
 Source: "..\i386-win32\Scripts\*.sql"; DestDir: "{commonappdata}\Ancestromania\Scripts";
-;Source: "..\i386-win32\MaBase.fdb"; DestDir: "{commonappdata}\Ancestromania\";Flags : onlyifdoesntexist
-;Source: "..\i386-win32\Parances.fdb"; DestDir: "{commonappdata}\Ancestromania\";
+Source: "..\i386-win32\MaBase.fdb"; DestDir: "{commonappdata}\Ancestromania\";Flags : onlyifdoesntexist
+Source: "..\i386-win32\Parances.fdb"; DestDir: "{commonappdata}\Ancestromania\";
 
 ;Source: "shfolder.dll"; Flags: dontcopy
                                                                                                                      
