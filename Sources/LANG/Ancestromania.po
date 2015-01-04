@@ -6,15 +6,15 @@ msgid "Aboville @ARG"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_ages
-msgid "Âges"
+msgid "Ãges"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_ages_long
-msgid "Statistiques de longévités"
+msgid "Statistiques de longÃ©vitÃ©s"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_anage
-msgid "Âge"
+msgid "Ãge"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_ancestry
@@ -23,22 +23,22 @@ msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_ancestry_man
 msgctxt "ancestroweb_strings.gs_ancestroweb_ancestry_man"
-msgid "Arrière @ARG"
+msgid "ArriÃ¨re @ARG"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_ancestry_man_minus
 msgctxt "ancestroweb_strings.gs_ancestroweb_ancestry_man_minus"
-msgid "arrière @ARG"
+msgid "arriÃ¨re @ARG"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_ancestry_woman
 msgctxt "ancestroweb_strings.gs_ancestroweb_ancestry_woman"
-msgid "Arrière @ARG"
+msgid "ArriÃ¨re @ARG"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_ancestry_woman_minus
 msgctxt "ancestroweb_strings.gs_ancestroweb_ancestry_woman_minus"
-msgid "arrière @ARG"
+msgid "arriÃ¨re @ARG"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_archivelinkbegin
@@ -46,16 +46,16 @@ msgid "A"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_at
-msgid " à "
+msgid " Ã  "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_a_job
 msgctxt "ancestroweb_strings.gs_ancestroweb_a_job"
-msgid "Métier"
+msgid "MÃ©tier"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_basenotopened
-msgid "Vous n'avez ouvert aucune donnée."
+msgid "Vous n'avez ouvert aucune donnÃ©e."
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_born
@@ -63,11 +63,11 @@ msgid "Naissance"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_cantconnect
-msgid "Impossible de se connecter à la base : "
+msgid "Impossible de se connecter Ã  la base : "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_cantcreateatree
-msgid "Impossible de créer l'arbre : "
+msgid "Impossible de crÃ©er l'arbre : "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_cantcreatecontact
@@ -83,7 +83,7 @@ msgid "Impossible de manipuler cette image : "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_cantopendata
-msgid "Impossible d'ouvrir les données sur "
+msgid "Impossible d'ouvrir les donnÃ©es sur "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_cantopenfile
@@ -99,7 +99,7 @@ msgid "Impossible de sauver l'arbre ici : "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_cantusedata
-msgid "Impossible d'utiliser les données sur "
+msgid "Impossible d'utiliser les donnÃ©es sur "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_contact
@@ -107,7 +107,7 @@ msgid "Contact"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_createdby
-msgid "Créé par"
+msgid "CrÃ©Ã© par"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_delete
@@ -120,27 +120,27 @@ msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_died
 msgctxt "ancestroweb_strings.gs_ancestroweb_died"
-msgid "Décès"
+msgid "DÃ©cÃ¨s"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_doeraseoldexport
-msgid "Effacer le répertoire "
+msgid "Effacer le rÃ©pertoire "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_downloadgedcom
-msgid "Téléchargez mon Gedcom ici."
+msgid "TÃ©lÃ©chargez mon Gedcom ici."
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_errorcreatesosa
-msgid "Erreur : Effectuez une numérotation SOSA."
+msgid "Erreur : Effectuez une numÃ©rotation SOSA."
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_errorfiles
-msgid "Erreur : Aucune source dans le répertoire "
+msgid "Erreur : Aucune source dans le rÃ©pertoire "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_errorthemes
-msgid "Erreur : Aucun thème dans le répertoire "
+msgid "Erreur : Aucun thÃ¨me dans le rÃ©pertoire "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_exportdelete
@@ -150,15 +150,15 @@ msgid ""
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_exporterrorcreate
-msgid "Erreur à la copie de "
+msgid "Erreur Ã  la copie de "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_exporterrorerase
-msgid "Erreur à l'effacement de "
+msgid "Erreur Ã  l'effacement de "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_exportmorethan5chars
-msgid "Le chemin d'exportation web doit faire plus de 5 caractères."
+msgid "Le chemin d'exportation web doit faire plus de 5 caractÃ¨res."
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_export_web_born
@@ -186,7 +186,7 @@ msgid "Union le "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_father
-msgid "Père @ARG"
+msgid "PÃ¨re @ARG"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_filename_notacopy
@@ -207,11 +207,11 @@ msgid "Finie."
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_form_caption
-msgid "Générer un Site Web Généalogique Statique"
+msgid "GÃ©nÃ©rer un Site Web GÃ©nÃ©alogique Statique"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_from_to_persons
-msgid "@ARG à @ARG"
+msgid "@ARG Ã  @ARG"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_fulltree
@@ -219,21 +219,21 @@ msgid "Arbre"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_generating
-msgid "Création : "
+msgid "CrÃ©ation : "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_generation
 msgctxt "ancestroweb_strings.gs_ancestroweb_generation"
-msgid " génération"
+msgid " gÃ©nÃ©ration"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_generations
-msgid " générations"
+msgid " gÃ©nÃ©rations"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_generation_child
 msgctxt "ancestroweb_strings.gs_ancestroweb_generation_child"
-msgid "Génération @ARG (@ARG) Enfant @ARG"
+msgid "GÃ©nÃ©ration @ARG (@ARG) Enfant @ARG"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_home
@@ -241,17 +241,17 @@ msgid "Accueil"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_htmltitle
-msgid "Généalogie @ARG"
+msgid "GÃ©nÃ©alogie @ARG"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_job
 msgctxt "ancestroweb_strings.gs_ancestroweb_job"
-msgid "Métier"
+msgid "MÃ©tier"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_jobs
 msgctxt "ancestroweb_strings.gs_ancestroweb_jobs"
-msgid "Métiers"
+msgid "MÃ©tiers"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_jobs_cities
@@ -260,19 +260,19 @@ msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_jobs_count
 msgctxt "ancestroweb_strings.gs_ancestroweb_jobs_count"
-msgid "Métiers"
+msgid "MÃ©tiers"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_jobs_long
-msgid "Statistiques des métiers"
+msgid "Statistiques des mÃ©tiers"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_jobs_total
-msgid "Totaux des métiers et villes :"
+msgid "Totaux des mÃ©tiers et villes :"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_language
-msgid "Français"
+msgid "FranÃ§ais"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_list
@@ -288,11 +288,11 @@ msgid "Envoyer un message"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_manbornon
-msgid "Né le "
+msgid "NÃ© le "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_mandiedon
-msgid "Décédé le "
+msgid "DÃ©cÃ©dÃ© le "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_map
@@ -300,7 +300,7 @@ msgid "Carte"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_mapcaptions
-msgid "Évaluation visuelle du nombre de membres de la famille"
+msgid "Ãvaluation visuelle du nombre de membres de la famille"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_mapcountry
@@ -312,11 +312,11 @@ msgid "13"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_mapproblemnocity
-msgid "Problème : Pas de ville"
+msgid "ProblÃ¨me : Pas de ville"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_mapproblemnopostalcode
-msgid "Problème : Pas de code postal"
+msgid "ProblÃ¨me : Pas de code postal"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_map_long
@@ -325,7 +325,7 @@ msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_map_to
 msgctxt "ancestroweb_strings.gs_ancestroweb_map_to"
-msgid "à"
+msgid "Ã "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_men_count
@@ -333,38 +333,38 @@ msgid "Hommes"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_mother
-msgid "Mère @ARG"
+msgid "MÃ¨re @ARG"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_nodata
-msgid "Pas de base de données ouvertes"
+msgid "Pas de base de donnÃ©es ouvertes"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_noone_to_show
 msgid ""
-"Rien à montrer.\n"
-"Si vous avez filtré par un individu il doit avoir des ascendants si \"Ascendants\" est cochée.\n"
+"Rien Ã  montrer.\n"
+"Si vous avez filtrÃ© par un individu il doit avoir des ascendants si \"Ascendants\" est cochÃ©e.\n"
 "Sinon il doit avoir des descendants.\n"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_old_father
 msgctxt "ancestroweb_strings.gs_ancestroweb_old_father"
-msgid "Grand-père @ARG (@ARG)"
+msgid "Grand-pÃ¨re @ARG (@ARG)"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_old_father_minus
 msgctxt "ancestroweb_strings.gs_ancestroweb_old_father_minus"
-msgid "grand-père @ARG (@ARG)"
+msgid "grand-pÃ¨re @ARG (@ARG)"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_old_mother
 msgctxt "ancestroweb_strings.gs_ancestroweb_old_mother"
-msgid "Grand-mère @ARG (@ARG)"
+msgid "Grand-mÃ¨re @ARG (@ARG)"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_old_mother_minus
 msgctxt "ancestroweb_strings.gs_ancestroweb_old_mother_minus"
-msgid "grand-mère @ARG (@ARG)"
+msgid "grand-mÃ¨re @ARG (@ARG)"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_page_of
@@ -380,13 +380,13 @@ msgid "Nombre d'individus"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_phase
-msgid "Étape : "
+msgid "Ãtape : "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_please_restart
 msgid ""
-"Succès de la mise à jour !\n"
-" Veuillez redémarrer...\n"
+"SuccÃ¨s de la mise Ã  jour !\n"
+" Veuillez redÃ©marrer...\n"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_reset
@@ -410,7 +410,7 @@ msgid "SOSA @ARG"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_startupdate
-msgid "Une mise à jour de la base est nécessaire à partir de ce script :"
+msgid "Une mise Ã  jour de la base est nÃ©cessaire Ã  partir de ce script :"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_statistics
@@ -426,15 +426,15 @@ msgid "Scruter les patronymes"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_the_medias
-msgid "les médias : "
+msgid "les mÃ©dias : "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_titre
-msgid "AncestroWeb : Générer un Site Web Généalogique"
+msgid "AncestroWeb :Â GÃ©nÃ©rer un Site Web GÃ©nÃ©alogique"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_totalagedead
-msgid "Total des individus avec un âge au décès :"
+msgid "Total des individus avec un Ã¢ge au dÃ©cÃ¨s :"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_union
@@ -446,7 +446,7 @@ msgid "Unions"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_unset_stats
-msgid "Veuillez désactiver les statistiques dans l'onglet \"Global\"."
+msgid "Veuillez dÃ©sactiver les statistiques dans l'onglet \"Global\"."
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_welcome
@@ -454,11 +454,11 @@ msgid "Bienvenue !"
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_womanbornon
-msgid "Née le "
+msgid "NÃ©e le "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_womandiedon
-msgid "Décédée le "
+msgid "DÃ©cÃ©dÃ©e le "
 msgstr ""
 
 #: ancestroweb_strings.gs_ancestroweb_women_count
@@ -471,39 +471,39 @@ msgstr ""
 
 #: u_common_ancestro.rs_actions_executed_from_commit_have_been_cancelled
 msgid ""
-"Les actions depuis le dernier COMMIT ou la dernière\n"
-"instruction DDL valide ont été annulées.\n"
+"Les actions depuis le dernier COMMIT ou la derniÃ¨re\n"
+"instruction DDL valide ont Ã©tÃ© annulÃ©es.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_action_can_be_long
-msgid "Cette action peut être longue."
+msgid "Cette action peut Ãªtre longue."
 msgstr ""
 
 #: u_common_ancestro.rs_action_corrects_closure
 msgid ""
-"Cette fonction permet de détecter d'éventuelles erreurs de bouclage entre\n"
-"générations. Elle liste les individus présents dans l'ascendance de leur @ARG\n"
-"Son exécution peut être longue (de l'ordre de la minute pour 6000 individus).\n"
+"Cette fonction permet de dÃ©tecter d'Ã©ventuelles erreurs de bouclage entre\n"
+"gÃ©nÃ©rations. Elle liste les individus prÃ©sents dans l'ascendance de leur @ARG\n"
+"Son exÃ©cution peut Ãªtre longue (de l'ordre de la minute pour 6000 individus).\n"
 msgstr ""
 
 #: u_common_ancestro.rs_action_corrects_consistency
 msgid ""
-"Cette fonction corrige d'éventuelles erreurs de cohérence\n"
-"de votre base telles qu'un événement individuel ou un\n"
-"média affecté à un individu n'existant pas, un événement\n"
+"Cette fonction corrige d'Ã©ventuelles erreurs de cohÃ©rence\n"
+"de votre base telles qu'un Ã©vÃ©nement individuel ou un\n"
+"mÃ©dia affectÃ© Ã  un individu n'existant pas, un Ã©vÃ©nement\n"
 "familial sans famille etc...\n"
 msgstr ""
 
 #: u_common_ancestro.rs_action_needs_backup
 msgid ""
-"Avant de l'exécuter il est impératif de sauvegarder votre\n"
-"base afin de pouvoir la récupérer en cas d'erreur.\n"
-"Il est aussi fortement conseillé de vérifier au préalable\n"
-"son utilité en visualisant les erreurs éventuelles.\n"
+"Avant de l'exÃ©cuter il est impÃ©ratif de sauvegarder votre\n"
+"base afin de pouvoir la rÃ©cupÃ©rer en cas d'erreur.\n"
+"Il est aussi fortement conseillÃ© de vÃ©rifier au prÃ©alable\n"
+"son utilitÃ© en visualisant les erreurs Ã©ventuelles.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_action_will_reset_some_ancestromania_parameters
-msgid "Cette action va réinitialiser certains paramètres d'Ancestromania."
+msgid "Cette action va rÃ©initialiser certains paramÃ¨tres d'Ancestromania."
 msgstr ""
 
 #: u_common_ancestro.rs_ancestries_arc_of
@@ -511,83 +511,83 @@ msgid "Roue des ascendants de @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_ancestries_of
-msgid "Ancêtres de "
+msgid "AncÃªtres de "
 msgstr ""
 
 #: u_common_ancestro.rs_ancestromania_is_connected_to_this_database
 msgid ""
-"Ancestromania est connecté à la base de données :\n"
+"Ancestromania est connectÃ© Ã  la base de donnÃ©es :\n"
 "@ARG\n"
 msgstr ""
 
 #: u_common_ancestro.rs_ancestromania_is_fully_updated
 msgid ""
-"Ancestromania est à jour, ainsi que les scripts nécessaires\n"
-"à la mise à jour de la base en dernière version.\n"
+"Ancestromania est Ã  jour, ainsi que les scripts nÃ©cessaires\n"
+"Ã  la mise Ã  jour de la base en derniÃ¨re version.\n"
 "\n"
-"Le téléchargement de la mise à jour n'est pas nécessaire.\n"
+"Le tÃ©lÃ©chargement de la mise Ã  jour n'est pas nÃ©cessaire.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_ancestromania_is_not_connected_to_a_database
-msgid "Ancestromania n'est pas connecté à une base de données."
+msgid "Ancestromania n'est pas connectÃ© Ã  une base de donnÃ©es."
 msgstr ""
 
 #: u_common_ancestro.rs_ancestromania_is_not_fully_updated
 msgid ""
-"Ancestromania est à jour, mais pas les scripts nécessaires\n"
-"à la mise à jour de la base en dernière version.\n"
+"Ancestromania est Ã  jour, mais pas les scripts nÃ©cessaires\n"
+"Ã  la mise Ã  jour de la base en derniÃ¨re version.\n"
 "Sur le site il y a la version suivante : @ARG\n"
 msgstr ""
 
 #: u_common_ancestro.rs_ancestromania_is_starting
-msgid "Ancestromania démarre"
+msgid "Ancestromania dÃ©marre"
 msgstr ""
 
 #: u_common_ancestro.rs_ancestromania_must_be_updated
-msgid "Ancestromania n'est pas à jour."
+msgid "Ancestromania n'est pas Ã  jour."
 msgstr ""
 
 #: u_common_ancestro.rs_ancestromania_should_be_updated
 msgctxt "u_common_ancestro.rs_ancestromania_should_be_updated"
-msgid "Il est conseillé de télécharger et d'exécuter cette mise à jour."
+msgid "Il est conseillÃ© de tÃ©lÃ©charger et d'exÃ©cuter cette mise Ã  jour."
 msgstr ""
 
 #: u_common_ancestro.rs_ancestromania_update_exists_on_your_computer
-msgid "Une mise à jour en @ARG existe sur votre ordinateur"
+msgid "Une mise Ã  jour en @ARG existe sur votre ordinateur"
 msgstr ""
 
 #: u_common_ancestro.rs_ancestromania_update_files_have_not_been_found
-msgid "Les fichiers de mise à jour n'ont pas été trouvés sur votre ordinateur"
+msgid "Les fichiers de mise Ã  jour n'ont pas Ã©tÃ© trouvÃ©s sur votre ordinateur"
 msgstr ""
 
 #: u_common_ancestro.rs_ancestromania_version_infos_too_old
 msgid ""
 "Votre version d'Ancestromania est @ARG\n"
-"Votre base doit être à la version @ARG au minimum.\n"
+"Votre base doit Ãªtre Ã  la version @ARG au minimum.\n"
 "\n"
 "Votre base: @ARG\n"
 "La version @ARG actuelle est trop ancienne.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_ancestromania_will_be_closed_youll_have_to_restart_it
-msgid "Ancestromania va être fermé, vous devrez le relancer."
+msgid "Ancestromania va Ãªtre fermÃ©, vous devrez le relancer."
 msgstr ""
 
 #: u_common_ancestro.rs_ancestromania_will_be_updated_and_saved
 msgid ""
-"Attention, vous avez choisi de mettre à jour Ancestromania.\n"
+"Attention, vous avez choisi de mettre Ã  jour Ancestromania.\n"
 "\n"
-"Pour exécuter cette mise à jour, vous devez utiliser un compte d'utilisateur\n"
-"possédant des droits d'administration (compte de type administrateur).\n"
+"Pour exÃ©cuter cette mise Ã  jour, vous devez utiliser un compte d'utilisateur\n"
+"possÃ©dant des droits d'administration (compte de type administrateur).\n"
 "\n"
-"Cette opération sauvegarde automatiquement l'ancienne version d'Ancestromania.exe\n"
-"dans le sous-répertoire \"Sauve_Avant_MAJ_Internet\" du répertoire où est\n"
-"installé le logiciel.\n"
+"Cette opÃ©ration sauvegarde automatiquement l'ancienne version d'Ancestromania.exe\n"
+"dans le sous-rÃ©pertoire \"Sauve_Avant_MAJ_Internet\" du rÃ©pertoire oÃ¹ est\n"
+"installÃ© le logiciel.\n"
 "\n"
-"Nul ne vous oblige à faire cette mise à jour.\n"
+"Nul ne vous oblige Ã  faire cette mise Ã  jour.\n"
 "Si vous le faites, c'est que vous acceptez en connaissance de cause.\n"
 "\n"
-"Si vous avez le moindre doûte, vous pouvez annuler cette mise à jour\n"
+"Si vous avez le moindre doÃ»te, vous pouvez annuler cette mise Ã  jour\n"
 "et la recommencer plus tard.\n"
 msgstr ""
 
@@ -614,7 +614,7 @@ msgid " et ses @ARG enfants"
 msgstr ""
 
 #: u_common_ancestro.rs_asked
-msgid "demandés"
+msgid "demandÃ©s"
 msgstr ""
 
 #: u_common_ancestro.rs_astro_aquarius
@@ -622,7 +622,7 @@ msgid "Verseau"
 msgstr ""
 
 #: u_common_ancestro.rs_astro_aries
-msgid "Bélier"
+msgid "BÃ©lier"
 msgstr ""
 
 #: u_common_ancestro.rs_astro_balance
@@ -638,7 +638,7 @@ msgid "Capricorne"
 msgstr ""
 
 #: u_common_ancestro.rs_astro_gemini
-msgid "Gémeaux"
+msgid "GÃ©meaux"
 msgstr ""
 
 #: u_common_ancestro.rs_astro_lion
@@ -667,7 +667,7 @@ msgstr ""
 
 #: u_common_ancestro.rs_at_where
 msgctxt "u_common_ancestro.rs_at_where"
-msgid "à"
+msgid "Ã "
 msgstr ""
 
 #: u_common_ancestro.rs_base
@@ -675,31 +675,31 @@ msgid " base "
 msgstr ""
 
 #: u_common_ancestro.rs_born_female
-msgid "née"
+msgid "nÃ©e"
 msgstr ""
 
 #: u_common_ancestro.rs_born_in_female
-msgid "Née à @ARG"
+msgid "NÃ©e Ã  @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_born_in_male
-msgid "Né à @ARG"
+msgid "NÃ© Ã  @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_born_male
-msgid "né"
+msgid "nÃ©"
 msgstr ""
 
 #: u_common_ancestro.rs_born_on
-msgid "Né(e) le @ARG"
+msgid "NÃ©(e) le @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_born_on_female
-msgid "Née le @ARG"
+msgid "NÃ©e le @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_born_on_male
-msgid "Né le @ARG"
+msgid "NÃ© le @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_bytes
@@ -715,19 +715,19 @@ msgid "Ajout aux Favoris"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_age_on_first_union
-msgid "Âge à la première union: @ARG"
+msgid "Ãge Ã  la premiÃ¨re union: @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_ancestries_shown
-msgid " ascendants affichés"
+msgid " ascendants affichÃ©s"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_ancestries_without_parents
-msgid "Ancêtres sans parent de @ARG."
+msgid "AncÃªtres sans parent de @ARG."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_ancestry_from_to
-msgid "Parenté entre @ARG et @ARG"
+msgid "ParentÃ© entre @ARG et @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_andpersons_on_the_list
@@ -749,7 +749,7 @@ msgid "Association de patronymes"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_bad_dates
-msgid "Dates incohérentes"
+msgid "Dates incohÃ©rentes"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_base_folder_no_path
@@ -761,11 +761,11 @@ msgid "Les anniversaires"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_birth_death_job
-msgid "N·D·P"
+msgid "NÂ·DÂ·P"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_brothers_sisters
-msgid "Frères/Soeurs (@ARG)"
+msgid "FrÃ¨res/Soeurs (@ARG)"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_calculate_dates
@@ -785,7 +785,7 @@ msgid "Tout cocher"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_childless
-msgid "Sans postérité"
+msgid "Sans postÃ©ritÃ©"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_children
@@ -797,7 +797,7 @@ msgid "Fermer tout"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_complete_descent_of
-msgid "Descendance complète de"
+msgid "Descendance complÃ¨te de"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_connect
@@ -805,11 +805,11 @@ msgid "Connecter"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_consanguinity
-msgid "Consanguinité"
+msgid "ConsanguinitÃ©"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_consult_the_file_on_another_window
-msgid "Consulter la fiche dans une autre fenêtre"
+msgid "Consulter la fiche dans une autre fenÃªtre"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_countries
@@ -825,7 +825,7 @@ msgid "Enfants du couple :"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_couple_events
-msgid "Événements du couple :"
+msgid "ÃvÃ©nements du couple :"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_cousins
@@ -841,35 +841,35 @@ msgid "Cousin de @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_create_child
-msgid "Création d'un enfant."
+msgid "CrÃ©ation d'un enfant."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_create_father
-msgid "Création du père."
+msgid "CrÃ©ation du pÃ¨re."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_create_joint
-msgid "Création d'un conjoint."
+msgid "CrÃ©ation d'un conjoint."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_create_mother
-msgid "Création de la mère."
+msgid "CrÃ©ation de la mÃ¨re."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_create_person
-msgid "Création d'un individu."
+msgid "CrÃ©ation d'un individu."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_create_witness
-msgid "Création d'un individu cité."
+msgid "CrÃ©ation d'un individu citÃ©."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_create_your_thema_in
-msgid "Créez votre thème dans @ARG"
+msgid "CrÃ©ez votre thÃ¨me dans @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_ctrl_f_in_city_and_division_selects_a_favorite_site
-msgid "Le raccourci Ctrl+F dans Ville ou Subdivision présélectionne un lieu favori"
+msgid "Le raccourci Ctrl+F dans Ville ou Subdivision prÃ©sÃ©lectionne un lieu favori"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_database_source_version_no
@@ -878,29 +878,29 @@ msgstr ""
 
 #: u_common_ancestro.rs_caption_default_config_makes_exporting_everything
 msgid ""
-"Par défaut tous les éléments sont exportés.\n"
-"Vous pouvez choisir ci-dessous de ne pas exporter certains éléments\n"
-"en décochant les cases correspondantes.\n"
-"Les événements à exporter sont définis dans la liste des \"Événements\n"
+"Par dÃ©faut tous les Ã©lÃ©ments sont exportÃ©s.\n"
+"Vous pouvez choisir ci-dessous de ne pas exporter certains Ã©lÃ©ments\n"
+"en dÃ©cochant les cases correspondantes.\n"
+"Les Ã©vÃ©nements Ã  exporter sont dÃ©finis dans la liste des \"ÃvÃ©nements\n"
 "standards Gedcom\" modifiable par le menu Configuration ci-dessus.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_default_config_makes_importing_everything
 msgid ""
-"Par défaut tous les éléments sont importés.\n"
-"Vous pouvez choisir ci-dessous de ne pas importer certains éléments\n"
-"en décochant les cases correspondantes.\n"
+"Par dÃ©faut tous les Ã©lÃ©ments sont importÃ©s.\n"
+"Vous pouvez choisir ci-dessous de ne pas importer certains Ã©lÃ©ments\n"
+"en dÃ©cochant les cases correspondantes.\n"
 "\n"
-"Les événements à importer sont définis dans la liste des \"Événements\n"
+"Les Ã©vÃ©nements Ã  importer sont dÃ©finis dans la liste des \"ÃvÃ©nements\n"
 "standards Gedcom\" modifiable par le menu Configuration ci-dessus.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_degrees_of_ancestry_to_sosa_no_1_female
-msgid "Parente à (@ARG) degrés du Sosa n°1"
+msgid "Parente Ã  (@ARG) degrÃ©s du Sosa nÂ°1"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_degrees_of_ancestry_to_sosa_no_1_male
-msgid "Parent à (@ARG) degrés du Sosa n°1"
+msgid "Parent Ã  (@ARG) degrÃ©s du Sosa nÂ°1"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_delete_current_filter
@@ -908,23 +908,23 @@ msgid "Supprimer le filtre en cours"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_delete_selected_person_s_file
-msgid "Supprimer la fiche sélectionnée"
+msgid "Supprimer la fiche sÃ©lectionnÃ©e"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_delete_selected_person_s_files
-msgid "Supprimer les @ARG fiches sélectionnées"
+msgid "Supprimer les @ARG fiches sÃ©lectionnÃ©es"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_departments
-msgid "Départements"
+msgid "DÃ©partements"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_descending_at_arggeneration_female
-msgid "Descendante à @ARG @ARG du Sosa n°1"
+msgid "Descendante Ã  @ARG @ARG du Sosa nÂ°1"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_descending_at_arggeneration_male
-msgid "Descendant à @ARG @ARG du Sosa n°1"
+msgid "Descendant Ã  @ARG @ARG du Sosa nÂ°1"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_descending_tree
@@ -936,7 +936,7 @@ msgid "Descendance par les "
 msgstr ""
 
 #: u_common_ancestro.rs_caption_describe_you_can_press_arg_chars
-msgid "Description : reste à taper @ARG caractères"
+msgid "Description : reste Ã  taper @ARG caractÃ¨res"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_destination_persons
@@ -945,15 +945,15 @@ msgid " Destination : @ARG individus "
 msgstr ""
 
 #: u_common_ancestro.rs_caption_details_of_event
-msgid "Détails de l'événement"
+msgid "DÃ©tails de l'Ã©vÃ©nement"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_directory_showing_folder_s_persons
-msgid "Répertoire des individus du dossier en cours"
+msgid "RÃ©pertoire des individus du dossier en cours"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_disconnect
-msgid "Déconnecter"
+msgid "DÃ©connecter"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_duplicated_cities
@@ -961,7 +961,7 @@ msgid "Liste des villes en double"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_eandvents_on_the_list
-msgid " é&vénements dans la liste"
+msgid " Ã©&vÃ©nements dans la liste"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_environment_family_of
@@ -973,15 +973,15 @@ msgid "Erreur dans une date."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_events_order
-msgid "Ordre des événements"
+msgid "Ordre des Ã©vÃ©nements"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_event_s_sources
-msgid "Sources de l'événement @ARG"
+msgid "Sources de l'Ã©vÃ©nement @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_executing_requests_on_database
-msgid "Exécution de requêtes. Base: @ARG"
+msgid "ExÃ©cution de requÃªtes. Base: @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_exe_database
@@ -993,7 +993,7 @@ msgid "Exporter"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_export_from_arg
-msgid "Exporter à partir de : @ARG"
+msgid "Exporter Ã  partir de : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_export_in_table_from_textfile
@@ -1007,7 +1007,7 @@ msgid ""
 msgstr ""
 
 #: u_common_ancestro.rs_caption_filter_events_of_this_type
-msgid "Filtrer les événements du type suivant:"
+msgid "Filtrer les Ã©vÃ©nements du type suivant:"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_folder_infos
@@ -1019,11 +1019,11 @@ msgid "Petits enfants (@ARG)"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_has_got_father
-msgid "A pour père : "
+msgid "A pour pÃ¨re : "
 msgstr ""
 
 #: u_common_ancestro.rs_caption_has_got_mother
-msgid "A pour mère : "
+msgid "A pour mÃ¨re : "
 msgstr ""
 
 #: u_common_ancestro.rs_caption_have_a_look_at_person
@@ -1044,7 +1044,7 @@ msgid "Ses @ARG enfants"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_her_his_father
-msgid "Son père"
+msgid "Son pÃ¨re"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_her_his_joint
@@ -1058,7 +1058,7 @@ msgid "Ses @ARG conjoints"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_her_his_mother
-msgid "Sa mère"
+msgid "Sa mÃ¨re"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_her_his_parents
@@ -1070,7 +1070,7 @@ msgid "Lui : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_history_events
-msgid "Histoire : @ARG événements."
+msgid "Histoire : @ARG Ã©vÃ©nements."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_history_module_is_empty_clic_on_import_button
@@ -1078,15 +1078,15 @@ msgid "Votre module d'histoire est vide, cliquez sur le bouton Importer pour ajo
 msgstr ""
 
 #: u_common_ancestro.rs_caption_history_no_event
-msgid "Histoire : pas d'événement."
+msgid "Histoire : pas d'Ã©vÃ©nement."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_history_no_event_in_folder_change_folder_or_import
-msgid "Pas d'événement dans cette catégorie, changez de catégorie ou cliquez sur le bouton Importer pour ajouter un dictionnaire."
+msgid "Pas d'Ã©vÃ©nement dans cette catÃ©gorie, changez de catÃ©gorie ou cliquez sur le bouton Importer pour ajouter un dictionnaire."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_history_one_event
-msgid "Histoire : un événement."
+msgid "Histoire : un Ã©vÃ©nement."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_import
@@ -1103,14 +1103,14 @@ msgstr ""
 
 #: u_common_ancestro.rs_caption_import_medias_only_address_and_icon_will_be_set_in_database
 msgid ""
-"En cas d'importation des médias, seules l'adresse et une icône seront intégrées\n"
-"dans la base comme il est défini dans les \"détails\" de ce dossier.\n"
+"En cas d'importation des mÃ©dias, seules l'adresse et une icÃ´ne seront intÃ©grÃ©es\n"
+"dans la base comme il est dÃ©fini dans les \"dÃ©tails\" de ce dossier.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_import_medias_some_copy_of_pictures_will_be_set_in_database
 msgid ""
-"En cas d'importation des médias, une copie des images sera intégrée\n"
-"dans la base comme il est défini dans les \"détails\" de ce dossier.\n"
+"En cas d'importation des mÃ©dias, une copie des images sera intÃ©grÃ©e\n"
+"dans la base comme il est dÃ©fini dans les \"dÃ©tails\" de ce dossier.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_invalid_date_or_value
@@ -1139,35 +1139,35 @@ msgid "@ARG unions connues"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_labels_of_default_events
-msgid "Libellés des événements standards"
+msgid "LibellÃ©s des Ã©vÃ©nements standards"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_label_of_other_events_of_families
-msgid "Libellés des événements divers familiaux"
+msgid "LibellÃ©s des Ã©vÃ©nements divers familiaux"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_label_of_other_events_of_persons
-msgid "Libellés des événements divers individuels"
+msgid "LibellÃ©s des Ã©vÃ©nements divers individuels"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_label_of_unions
-msgid "Libellés de unions (mariages)"
+msgid "LibellÃ©s de unions (mariages)"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_last_job
-msgid "Dernier métier: @ARG"
+msgid "Dernier mÃ©tier: @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_last_persons_files
-msgid "Fiches saisies récemment"
+msgid "Fiches saisies rÃ©cemment"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_linked_to_sosa_no_1_genealogy_female
-msgid "Liée à la généalogie du Sosa n°1"
+msgid "LiÃ©e Ã  la gÃ©nÃ©alogie du Sosa nÂ°1"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_linked_to_sosa_no_1_genealogy_male
-msgid "Lié à la généalogie du Sosa n°1"
+msgid "LiÃ© Ã  la gÃ©nÃ©alogie du Sosa nÂ°1"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_list_of_acts
@@ -1183,7 +1183,7 @@ msgid "Liste des @ARG unions du dossier."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_list_of_isolated_persons
-msgid "Liste des individus isolés"
+msgid "Liste des individus isolÃ©s"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_list_of_probably_cloned_persons
@@ -1200,19 +1200,19 @@ msgid "Consulter la fiche"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_medias_library
-msgid "Bibliothèque multimédia."
+msgid "BibliothÃ¨que multimÃ©dia."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_medias_library_consult
-msgid "Bibliothèque multimédia : En consultation..."
+msgid "BibliothÃ¨que multimÃ©dia : En consultation..."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_medias_library_has_gone_modified_waiting_validate
-msgid "La bibliothèque multimédia a été modifiée : En attente de validation..."
+msgid "La bibliothÃ¨que multimÃ©dia a Ã©tÃ© modifiÃ©e : En attente de validation..."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_media_s_users
-msgid "Utilisateurs du média."
+msgid "Utilisateurs du mÃ©dia."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_menu_children_children_ctrl_menu_parents_children_maj_menu_parents_parents_children
@@ -1232,11 +1232,11 @@ msgid "Modification d'une ville"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_names_of_files_to_export
-msgid "Noms des fichiers à exporter"
+msgid "Noms des fichiers Ã  exporter"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_name_of_file_to_export
-msgid "Nom du fichier à exporter"
+msgid "Nom du fichier Ã  exporter"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_neighbor_cities_in_cities_index
@@ -1248,11 +1248,11 @@ msgid "Villes voisines de @ARG dans l'index des villes"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_neighbor_sites_recorded_in_folder
-msgid "Lieux voisins enregistrés dans ce dossier"
+msgid "Lieux voisins enregistrÃ©s dans ce dossier"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_nephews_nieces
-msgid "Neveux/Nièces (@ARG)"
+msgid "Neveux/NiÃ¨ces (@ARG)"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_new_folder
@@ -1264,7 +1264,7 @@ msgid "Pas d'enfant"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_none_copy_will_be_added_into_database
-msgid "Aucune copie de l'image ne sera ajoutée dans la base lors de son chargement."
+msgid "Aucune copie de l'image ne sera ajoutÃ©e dans la base lors de son chargement."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_none_joint
@@ -1284,15 +1284,15 @@ msgid "Aucune union dans ce dossier."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_noone_in_this_folder
-msgid "Pas d'individu isolé dans ce dossier"
+msgid "Pas d'individu isolÃ© dans ce dossier"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_noone_with_this_surname_in_selection
-msgid "Aucun individu de ce patronyme dans la sélection"
+msgid "Aucun individu de ce patronyme dans la sÃ©lection"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_no_link_to_sosa_no_1_genealogy
-msgid "Sans lien à la généalogie du Sosa n°1"
+msgid "Sans lien Ã  la gÃ©nÃ©alogie du Sosa nÂ°1"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_number_of_cities_by_country
@@ -1304,11 +1304,11 @@ msgid "1 &individu dans la liste"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_one_copy_will_be_added_into_database_loading_itself
-msgid "Une copie de l'image sera ajoutée dans la base lors de son chargement."
+msgid "Une copie de l'image sera ajoutÃ©e dans la base lors de son chargement."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_one_eandvent_on_the_list
-msgid "1 é&vénement dans la liste"
+msgid "1 Ã©&vÃ©nement dans la liste"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_one_known_child
@@ -1320,7 +1320,7 @@ msgid "Une union connue"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_one_person_in_this_folder
-msgid "1 individu isolé dans ce dossier"
+msgid "1 individu isolÃ© dans ce dossier"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_one_person_on_the_list
@@ -1328,11 +1328,11 @@ msgid "1 individu dans la liste"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_one_person_with_this_surname_in_selection
-msgid "Un seul individu porte ce patronyme dans la sélection"
+msgid "Un seul individu porte ce patronyme dans la sÃ©lection"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_one_union_found
-msgid "Une seule union trouvée."
+msgid "Une seule union trouvÃ©e."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_one_union_in_this_folder
@@ -1340,7 +1340,7 @@ msgid "Une seule union dans ce dossier."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_only_one_ancestry_shown
-msgid "Un seul ascendant affiché"
+msgid "Un seul ascendant affichÃ©"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_on_families
@@ -1348,7 +1348,7 @@ msgid "familiaux"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_on_family_events
-msgid "év.familiaux"
+msgid "Ã©v.familiaux"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_on_persons
@@ -1356,7 +1356,7 @@ msgid "sur individus"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_on_persons_events
-msgid "à ev.individuels"
+msgid "Ã  ev.individuels"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_on_sources
@@ -1376,7 +1376,7 @@ msgid " Origine "
 msgstr ""
 
 #: u_common_ancestro.rs_caption_own_at_the_same_address
-msgid "Habitent à la même adresse..."
+msgid "Habitent Ã  la mÃªme adresse..."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_pages_count
@@ -1386,13 +1386,13 @@ msgstr ""
 #: u_common_ancestro.rs_caption_panel_disabled
 msgid ""
 "Panneau\n"
-"verrouillé\n"
+"verrouillÃ©\n"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_panel_enabled
 msgid ""
 "Panneau\n"
-"déverrouillé\n"
+"dÃ©verrouillÃ©\n"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_percent
@@ -1400,11 +1400,11 @@ msgid "@ARG %"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_persons_born_after_father_s_death
-msgid "Individus nés après le décès de leur père"
+msgid "Individus nÃ©s aprÃ¨s le dÃ©cÃ¨s de leur pÃ¨re"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_persons_in_this_folder
-msgid "@ARG individus isolés dans ce dossier"
+msgid "@ARG individus isolÃ©s dans ce dossier"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_persons_linked_or_linked_with_central_person
@@ -1424,17 +1424,17 @@ msgid "Individus sans lien avec"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_persons_with_an_event_in_the_site
-msgid "Individus ayant eu un événement dans ce lieu."
+msgid "Individus ayant eu un Ã©vÃ©nement dans ce lieu."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_persons_with_this_surname_in_selection
-msgid "@ARG individus portent ce patronyme dans la sélection"
+msgid "@ARG individus portent ce patronyme dans la sÃ©lection"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_person_s_consanguinity_is_equal_to_parents_parenty
 msgid ""
-"La consanguinité d'un individu est égale\n"
-"à la parenté de ses parents.\n"
+"La consanguinitÃ© d'un individu est Ã©gale\n"
+"Ã  la parentÃ© de ses parents.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_person_s_file_in_consult_mode
@@ -1442,11 +1442,11 @@ msgid "Fiche individu en mode consultation uniquement"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_preferences
-msgid " Préférences générales"
+msgid " PrÃ©fÃ©rences gÃ©nÃ©rales"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_preparing_to_import_on_table
-msgid "Préparation importation @ARG..."
+msgid "PrÃ©paration importation @ARG..."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_printed_documents_options
@@ -1466,31 +1466,31 @@ msgid "Imprimer cet arbre"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_recorded_sites_on_this_folder_neighbor_of
-msgid "Lieux enregistrés dans ce dossier, voisins de @ARG"
+msgid "Lieux enregistrÃ©s dans ce dossier, voisins de @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_refering_childness
-msgid "Références: Filiations"
+msgid "RÃ©fÃ©rences: Filiations"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_refering_civilities
-msgid "Références: Civilités"
+msgid "RÃ©fÃ©rences: CivilitÃ©s"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_refering_particles
-msgid "Références: Particules"
+msgid "RÃ©fÃ©rences: Particules"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_refering_the_keywords_to_set_the_dates
-msgid "Références: Mots clefs pour saisir les dates"
+msgid "RÃ©fÃ©rences: Mots clefs pour saisir les dates"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_regions
-msgid "Régions"
+msgid "RÃ©gions"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_renumber
-msgid "Renuméroter"
+msgid "RenumÃ©roter"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_reports_editing
@@ -1502,7 +1502,7 @@ msgid "Restauration base @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_roles_and_relationships_of_the_witnesses
-msgid "Rôles et relations des témoins"
+msgid "RÃ´les et relations des tÃ©moins"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_save_in
@@ -1518,51 +1518,51 @@ msgid "Rechercher des individus"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_select_a_folder
-msgid "Sélection d'un dossier"
+msgid "SÃ©lection d'un dossier"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_select_child
-msgid "Sélection d'un enfant."
+msgid "SÃ©lection d'un enfant."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_select_father
-msgid "Sélection du père."
+msgid "SÃ©lection du pÃ¨re."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_select_joint
-msgid "Sélection d'un conjoint."
+msgid "SÃ©lection d'un conjoint."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_select_mother
-msgid "Sélection de la mère."
+msgid "SÃ©lection de la mÃ¨re."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_select_person
-msgid "Sélection d'un individu."
+msgid "SÃ©lection d'un individu."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_select_persons_to_set_this_address
-msgid "Sélectionner les individus auxquels affecter cette adresse."
+msgid "SÃ©lectionner les individus auxquels affecter cette adresse."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_select_persons_whose_set_the_media
-msgid "Sélectionner les individus auquels affecter ce média."
+msgid "SÃ©lectionner les individus auquels affecter ce mÃ©dia."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_select_starting_person
-msgid "Sélectionner l'individu de départ."
+msgid "SÃ©lectionner l'individu de dÃ©part."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_select_the_father
-msgid "Sélectionner le père"
+msgid "SÃ©lectionner le pÃ¨re"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_select_the_mother
-msgid "Sélectionner la mère"
+msgid "SÃ©lectionner la mÃ¨re"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_select_witness
-msgid "Sélection ou création d'un individu cité."
+msgid "SÃ©lection ou crÃ©ation d'un individu citÃ©."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_session
@@ -1571,27 +1571,27 @@ msgstr ""
 
 #: u_common_ancestro.rs_caption_setting_person_as_confidential_permits_to_hide_himherself
 msgid ""
-"Déclarer un individu comme confidentiel permet\n"
-"de le cacher ou de cacher son identité lors\n"
+"DÃ©clarer un individu comme confidentiel permet\n"
+"de le cacher ou de cacher son identitÃ© lors\n"
 "d'une exportation au format Gedcom.\n"
 "\n"
-"'Sans alerte sur dates' permet de désactiver\n"
-"l'apparition de la fenêtre d'alerte\n"
-"en cas d'une incohérence de dates.\n"
+"'Sans alerte sur dates' permet de dÃ©sactiver\n"
+"l'apparition de la fenÃªtre d'alerte\n"
+"en cas d'une incohÃ©rence de dates.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_set_to_other_persons
 msgid ""
-"Affecter à\n"
+"Affecter Ã \n"
 "d'autres individus\n"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_sosa_no_1_not_defined_in_folder
-msgid "Sosa n°1 non défini dans ce dossier"
+msgid "Sosa nÂ°1 non dÃ©fini dans ce dossier"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_sosa_no_generation
-msgid "N° Sosa : @ARG - Génération : @ARG"
+msgid "NÂ° Sosa : @ARG - GÃ©nÃ©ration : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_sosa_no_generation_mini
@@ -1599,7 +1599,7 @@ msgid "S @ARG - G @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_sources_of_home_event
-msgid "Sources de l'événement domicile"
+msgid "Sources de l'Ã©vÃ©nement domicile"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_source_persons
@@ -1607,11 +1607,11 @@ msgid " Origine : @ARG individus "
 msgstr ""
 
 #: u_common_ancestro.rs_caption_start_tree_from_this_person
-msgid "Démarrer l'arbre depuis cet individu"
+msgid "DÃ©marrer l'arbre depuis cet individu"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_surnames_associated_with
-msgid "Patronymes associés à : "
+msgid "Patronymes associÃ©s Ã  : "
 msgstr ""
 
 #: u_common_ancestro.rs_caption_these_persons_are_not_linked
@@ -1619,7 +1619,7 @@ msgid "Ces individus n'ont pas de liens."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_these_persons_have_no_mixed_ancestor
-msgid "Ces individus n'ont pas d'ancêtre commun."
+msgid "Ces individus n'ont pas d'ancÃªtre commun."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_title_s_owner
@@ -1631,11 +1631,11 @@ msgid "Porteurs du titre: @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_title_you_can_press_arg_chars
-msgid "Titre : reste à taper @ARG caractères"
+msgid "Titre : reste Ã  taper @ARG caractÃ¨res"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_uncheck_all
-msgid "Tout décocher"
+msgid "Tout dÃ©cocher"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_uncles_aunts
@@ -1643,23 +1643,23 @@ msgid "Oncles/Tantes (@ARG)"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_unions_found
-msgid "@ARG unions trouvées."
+msgid "@ARG unions trouvÃ©es."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_unknown_genealogy_link_with_sosa_no_1
-msgid "Lien avec la généalogie du Sosa n°1 inconnu"
+msgid "Lien avec la gÃ©nÃ©alogie du Sosa nÂ°1 inconnu"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_updating_father_key_of_person
-msgid "Mise à jour INDIVIDU cle_pere..."
+msgid "Mise Ã  jour INDIVIDU cle_pere..."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_updating_mother_key_of_person
-msgid "Mise à jour INDIVIDU cle_mere..."
+msgid "Mise Ã  jour INDIVIDU cle_mere..."
 msgstr ""
 
 #: u_common_ancestro.rs_caption_verify_updates
-msgid "Vérification des mises à jour"
+msgid "VÃ©rification des mises Ã  jour"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_who_has_this_job
@@ -1672,15 +1672,15 @@ msgid "Sans conjoint ni enfant connu"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_without_witness_links
-msgid "Sans les liens de témoins"
+msgid "Sans les liens de tÃ©moins"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_witness_link_to_sosa_no_1_female
-msgid "Liée par témoin à la généalogie du Sosa n°1"
+msgid "LiÃ©e par tÃ©moin Ã  la gÃ©nÃ©alogie du Sosa nÂ°1"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_witness_link_to_sosa_no_1_male
-msgid "Lié par témoin à la généalogie du Sosa n°1"
+msgid "LiÃ© par tÃ©moin Ã  la gÃ©nÃ©alogie du Sosa nÂ°1"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_women_of
@@ -1693,22 +1693,22 @@ msgstr ""
 
 #: u_common_ancestro.rs_caption_you_can_add_the_father_by_drag_drop
 msgid ""
-"On peut ajouter le père par glisser/déposer depuis le Répertoire\n"
+"On peut ajouter le pÃ¨re par glisser/dÃ©poser depuis le RÃ©pertoire\n"
 "ou les fiches Recherche et Environnement familial\n"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_you_can_add_the_mother_by_drag_drop
 msgid ""
-"On peut ajouter la mère par glisser/déposer depuis le Répertoire\n"
+"On peut ajouter la mÃ¨re par glisser/dÃ©poser depuis le RÃ©pertoire\n"
 "ou les fiches Recherche et Environnement familial\n"
 msgstr ""
 
 #: u_common_ancestro.rs_caption_you_have_disabled_this_sheet_in_preferences
 msgid ""
-"Vous avez désactivé cet onglet dans les \"Préférences générales\".\n"
+"Vous avez dÃ©sactivÃ© cet onglet dans les \"PrÃ©fÃ©rences gÃ©nÃ©rales\".\n"
 "\n"
-"Pour le faire réapparaître, dans l'onglet \"Réseau\" des \"Préférences générales\",\n"
-"cochez l'option \"Activer onglet média même en réseau\"\n"
+"Pour le faire rÃ©apparaÃ®tre, dans l'onglet \"RÃ©seau\" des \"PrÃ©fÃ©rences gÃ©nÃ©rales\",\n"
+"cochez l'option \"Activer onglet mÃ©dia mÃªme en rÃ©seau\"\n"
 msgstr ""
 
 #: u_common_ancestro.rs_cat_birth
@@ -1717,33 +1717,61 @@ msgstr ""
 
 #: u_common_ancestro.rs_cat_death
 msgctxt "u_common_ancestro.rs_cat_death"
-msgid "Décès"
+msgid "DÃ©cÃ¨s"
 msgstr ""
 
 #: u_common_ancestro.rs_cat_dscr
 msgctxt "u_common_ancestro.rs_cat_dscr"
-msgid "Décès"
+msgid "DÃ©cÃ¨s"
 msgstr ""
 
 #: u_common_ancestro.rs_cat_educ
-msgid "Éducation"
+msgid "Ãducation"
+msgstr ""
+
+#: u_common_ancestro.rs_cat_emig
+msgid ""
 msgstr ""
 
 #: u_common_ancestro.rs_cat_event
-msgid "Événement"
+msgid "ÃvÃ©nement"
+msgstr ""
+
+#: u_common_ancestro.rs_cat_grad
+msgid ""
+msgstr ""
+
+#: u_common_ancestro.rs_cat_idno
+msgid ""
+msgstr ""
+
+#: u_common_ancestro.rs_cat_immi
+msgid ""
 msgstr ""
 
 #: u_common_ancestro.rs_cat_job
 msgctxt "u_common_ancestro.rs_cat_job"
-msgid "Métier"
+msgid "MÃ©tier"
+msgstr ""
+
+#: u_common_ancestro.rs_cat_nati
+msgid ""
 msgstr ""
 
 #: u_common_ancestro.rs_cat_naturalisation
 msgid "Naturalisation"
 msgstr ""
 
+#: u_common_ancestro.rs_cat_prop
+msgid ""
+msgstr ""
+
 #: u_common_ancestro.rs_cat_religion
 msgid "Religion"
+msgstr ""
+
+#: u_common_ancestro.rs_cat_ssn
+msgid ""
 msgstr ""
 
 #: u_common_ancestro.rs_cat_title
@@ -1764,9 +1792,9 @@ msgstr ""
 
 #: u_common_ancestro.rs_confirm_adding_report
 msgid ""
-"Pour être utilisable, le rapport doit être enregistré dans la structure des répertoires d'Ancestromania.\n"
+"Pour Ãªtre utilisable, le rapport doit Ãªtre enregistrÃ© dans la structure des rÃ©pertoires d'Ancestromania.\n"
 "\n"
-"Souhaitez-vous copier ce fichier dans le bon répertoire ?\n"
+"Souhaitez-vous copier ce fichier dans le bon rÃ©pertoire ?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_address_copying
@@ -1775,29 +1803,29 @@ msgstr ""
 
 #: u_common_ancestro.rs_confirm_address_found_on_the_web_do_you_want_to_record_it
 msgid ""
-"Adresse trouvée sur Internet:\n"
+"Adresse trouvÃ©e sur Internet:\n"
 "@ARG\n"
 "\n"
-"Voulez-vous enregistrer @ARG les coordonnées de ce lieu?\n"
+"Voulez-vous enregistrer @ARG les coordonnÃ©es de ce lieu?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_copying_media
-msgid "Confirmez-vous la copie de ce média ?"
+msgid "Confirmez-vous la copie de ce mÃ©dia ?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_creating_sosa_from_first_imported_person
-msgid "Voulez-vous renuméroter les SOSA à partir de la première personne importée ?"
+msgid "Voulez-vous renumÃ©roter les SOSA Ã  partir de la premiÃ¨re personne importÃ©e ?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_creating_sosa_from_selected_person
-msgid "Voulez-vous renuméroter les SOSA à partir de l'individu courant ?"
+msgid "Voulez-vous renumÃ©roter les SOSA Ã  partir de l'individu courant ?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_database
 msgid ""
 "Cette commande va supprimer tous vos dossiers!!\n"
 "\n"
-"Confirmez-vous la réinitialisation de votre base de données ?\n"
+"Confirmez-vous la rÃ©initialisation de votre base de donnÃ©es ?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_document
@@ -1805,7 +1833,7 @@ msgid "Confirmez-vous la suppression de ce document?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_every_events_and_other
-msgid "Cette action supprimera tous les événements associés à cette fiche : adresses, actes, etc..."
+msgid "Cette action supprimera tous les Ã©vÃ©nements associÃ©s Ã  cette fiche : adresses, actes, etc..."
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_favorite_shortcuts
@@ -1814,13 +1842,13 @@ msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_folder
 msgid ""
-"Si vous continuez, tout le contenu de cette généalogie sera perdu !\n"
+"Si vous continuez, tout le contenu de cette gÃ©nÃ©alogie sera perdu !\n"
 "\n"
 "Confirmez-vous le vidage ou la suppression de ce dossier ?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_selected_cities
-msgid "Confirmez-vous la suppression des @ARG villes sélectionnées?"
+msgid "Confirmez-vous la suppression des @ARG villes sÃ©lectionnÃ©es?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_selected_city
@@ -1828,11 +1856,11 @@ msgid "Confirmez-vous la suppression de cette ville?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_selected_file
-msgid "Confirmez-vous la suppression de la fiche sélectionnée?"
+msgid "Confirmez-vous la suppression de la fiche sÃ©lectionnÃ©e?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_selected_files
-msgid "Confirmez-vous la suppression des @ARG fiches sélectionnées?"
+msgid "Confirmez-vous la suppression des @ARG fiches sÃ©lectionnÃ©es?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_selected_persons_files
@@ -1848,13 +1876,13 @@ msgid "Confirmez-vous la suppression de cet enfant :"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_this_civility
-msgid "Voulez-vous supprimer cette civilité?"
+msgid "Voulez-vous supprimer cette civilitÃ©?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_this_event
 msgid ""
 "Confirmez-vous la suppression\n"
-"de cet événement?\n"
+"de cet Ã©vÃ©nement?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_this_keyword
@@ -1863,7 +1891,7 @@ msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_this_media_with_links_deleting
 msgid ""
-"La suppression de ce média\n"
+"La suppression de ce mÃ©dia\n"
 "@ARG\n"
 "supprimera aussi tous les liens de ce media..\n"
 "\n"
@@ -1875,7 +1903,7 @@ msgid "Voulez-vous supprimer cette particule?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_this_witness_associated_with
-msgid "Confirmez-vous la suppression de ce témoin associé à"
+msgid "Confirmez-vous la suppression de ce tÃ©moin associÃ© Ã "
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_deleting_union
@@ -1884,43 +1912,43 @@ msgstr ""
 
 #: u_common_ancestro.rs_confirm_documents_reload_option_do_you_reload_with_this_mode
 msgid ""
-"Cette option recharge tous les documents dans la médiathèque à partir\n"
-"des fichiers dont l'adresse est mémorisée. Cette adresse est celle du\n"
-"fichier ayant servi au chargement initial, éventuellement modifiée en\n"
+"Cette option recharge tous les documents dans la mÃ©diathÃ¨que Ã  partir\n"
+"des fichiers dont l'adresse est mÃ©morisÃ©e. Cette adresse est celle du\n"
+"fichier ayant servi au chargement initial, Ã©ventuellement modifiÃ©e en\n"
 "utilisant la fonction \"Remplacer chemin\".\n"
-"Il est donc nécessaire que ces fichiers existent aux adresses mémorisées,\n"
-"sans cela les enregistrements concernés dans la médiathèque seront inchangés.\n"
+"Il est donc nÃ©cessaire que ces fichiers existent aux adresses mÃ©morisÃ©es,\n"
+"sans cela les enregistrements concernÃ©s dans la mÃ©diathÃ¨que seront inchangÃ©s.\n"
 "\n"
-"En mode \"Sans copies des images\", seules l'adresse du fichier et une icône\n"
-"sont conservées dans la base de données. Dans le cas des fichiers de type\n"
-"image (fichiers d'extension bmp, jpg, jpeg, png, tif ou tiff) l'icône est\n"
-"remplacée par une image réduite (format photo d'identité). Cette option\n"
-"permet de diminuer la taille de la base de données mais nécessite la présence\n"
-"des fichiers originaux aux mêmes adresses pour les afficher dans l'onglet\n"
-"\"Médias\" et divers états du logiciel.\n"
-"L'exécution de cette fonction met à jour le paramètre correspondant dans\n"
-"les \"détails\" du dossier.\n"
+"En mode \"Sans copies des images\", seules l'adresse du fichier et une icÃ´ne\n"
+"sont conservÃ©es dans la base de donnÃ©es. Dans le cas des fichiers de type\n"
+"image (fichiers d'extension bmp, jpg, jpeg, png, tif ou tiff) l'icÃ´ne est\n"
+"remplacÃ©e par une image rÃ©duite (format photo d'identitÃ©). Cette option\n"
+"permet de diminuer la taille de la base de donnÃ©es mais nÃ©cessite la prÃ©sence\n"
+"des fichiers originaux aux mÃªmes adresses pour les afficher dans l'onglet\n"
+"\"MÃ©dias\" et divers Ã©tats du logiciel.\n"
+"L'exÃ©cution de cette fonction met Ã  jour le paramÃ¨tre correspondant dans\n"
+"les \"dÃ©tails\" du dossier.\n"
 "\n"
-"Voulez-vous recharger la médiathèque dans ce mode?\n"
+"Voulez-vous recharger la mÃ©diathÃ¨que dans ce mode?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_executing_full_medias_renaming
 msgid ""
-"Ce renommage complet n'est utile que si vous avez placé correctement\n"
-"vos nouveaux médias dans le répertoire de la base.\n"
-"Confirmez-vous l'exécution de renommage de répertoires ?\n"
+"Ce renommage complet n'est utile que si vous avez placÃ© correctement\n"
+"vos nouveaux mÃ©dias dans le rÃ©pertoire de la base.\n"
+"Confirmez-vous l'exÃ©cution de renommage de rÃ©pertoires ?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_executing_this_action
-msgid "Confirmez-vous l'exécution de cette fonction?"
+msgid "Confirmez-vous l'exÃ©cution de cette fonction?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_executing_this_option
-msgid "Confirmez-vous l'exécution de cette option?"
+msgid "Confirmez-vous l'exÃ©cution de cette option?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_father_s_link
-msgid "Confirmez-vous qu'il est aussi son père?"
+msgid "Confirmez-vous qu'il est aussi son pÃ¨re?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_folder_copy_in
@@ -1933,60 +1961,60 @@ msgstr ""
 
 #: u_common_ancestro.rs_confirm_importing_textfile_into_data
 msgid ""
-"Confirmez-vous l'importation des données\n"
-"du fichier texte dans la base de données?\n"
+"Confirmez-vous l'importation des donnÃ©es\n"
+"du fichier texte dans la base de donnÃ©es?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_is_not_the_father_of
 msgid ""
 "Confirmez-vous que\n"
 "@ARG\n"
-"n'est pas le père de\n"
+"n'est pas le pÃ¨re de\n"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_is_not_the_mother_of
 msgid ""
 "Confirmez-vous que\n"
 "@ARG\n"
-"n'est pas la mère de\n"
+"n'est pas la mÃ¨re de\n"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_links_will_be_deleted
-msgid "En confirmant, les liens avec ces parents seront brisés."
+msgid "En confirmant, les liens avec ces parents seront brisÃ©s."
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_link_will_be_deleted
-msgid "En confirmant, le lien avec ces parents sera brisé."
+msgid "En confirmant, le lien avec ces parents sera brisÃ©."
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_media_unlink_from_event
-msgid "Confirmez-vous le détachement de ce média de l'événement en cours?"
+msgid "Confirmez-vous le dÃ©tachement de ce mÃ©dia de l'Ã©vÃ©nement en cours?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_option_which_consists_in_replacing_joint_in_union_and_parents
 msgid ""
 "Cette option permet de remplacer le conjoint en cours\n"
-"dans l'union ainsi que comme père ou mère des enfants.\n"
+"dans l'union ainsi que comme pÃ¨re ou mÃ¨re des enfants.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_pictures_reload_option_do_you_reload_with_this_mode
 msgid ""
-"Cette option recharge tous les documents dans la médiathèque à partir\n"
-"des fichiers dont l'adresse est mémorisée. Cette adresse est celle du\n"
-"fichier ayant servi au chargement initial, éventuellement modifiée en\n"
+"Cette option recharge tous les documents dans la mÃ©diathÃ¨que Ã  partir\n"
+"des fichiers dont l'adresse est mÃ©morisÃ©e. Cette adresse est celle du\n"
+"fichier ayant servi au chargement initial, Ã©ventuellement modifiÃ©e en\n"
 "utilisant la fonction \"Remplacer chemin\".\n"
-"Il est donc nécessaire que ces fichiers existent aux adresses mémorisées,\n"
-"sans cela les enregistrements concernés dans la médiathèque seront inchangés.\n"
+"Il est donc nÃ©cessaire que ces fichiers existent aux adresses mÃ©morisÃ©es,\n"
+"sans cela les enregistrements concernÃ©s dans la mÃ©diathÃ¨que seront inchangÃ©s.\n"
 "\n"
-"En mode \"Avec copies des images\", une version compressée des fichiers de type\n"
-"image (fichiers d'extension bmp, jpg, jpeg, png, tif ou tiff) sera conservée\n"
-"dans la base de données. Cette option augmente en conséquence la taille\n"
-"de la base de données mais permet d'afficher les images dans le logiciel,\n"
-"même en l'absence des fichiers originaux.\n"
-"L'exécution de cette fonction met à jour le paramètre correspondant dans\n"
-"les \"détails\" du dossier.\n"
+"En mode \"Avec copies des images\", une version compressÃ©e des fichiers de type\n"
+"image (fichiers d'extension bmp, jpg, jpeg, png, tif ou tiff) sera conservÃ©e\n"
+"dans la base de donnÃ©es. Cette option augmente en consÃ©quence la taille\n"
+"de la base de donnÃ©es mais permet d'afficher les images dans le logiciel,\n"
+"mÃªme en l'absence des fichiers originaux.\n"
+"L'exÃ©cution de cette fonction met Ã  jour le paramÃ¨tre correspondant dans\n"
+"les \"dÃ©tails\" du dossier.\n"
 "\n"
-"Voulez-vous recharger la médiathèque dans ce mode?\n"
+"Voulez-vous recharger la mÃ©diathÃ¨que dans ce mode?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_quitting_ancestromania
@@ -2002,19 +2030,19 @@ msgid "Confirmez-vous le remplacement?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_she_is_the_mother_too
-msgid "Confirmez-vous qu'elle est aussi sa mère?"
+msgid "Confirmez-vous qu'elle est aussi sa mÃ¨re?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_sosa_deleting
-msgid "Confirmez-vous la suppression de la numérotation SOSA ?"
+msgid "Confirmez-vous la suppression de la numÃ©rotation SOSA ?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_sosa_renumbering
-msgid "Confirmez-vous le lancement de la renumérotation SOSA ?"
+msgid "Confirmez-vous le lancement de la renumÃ©rotation SOSA ?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_supressing_database_readonly
-msgid "Êtes-vous certain d'enlever l'attribut \"lecture seule\" de cette base de données?"
+msgid "Ãtes-vous certain d'enlever l'attribut \"lecture seule\" de cette base de donnÃ©es?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_this_deleting
@@ -2023,23 +2051,23 @@ msgstr ""
 
 #: u_common_ancestro.rs_confirm_this_function_updates_city_names_departments_countries_etc
 msgid ""
-"Cette fonction met à jour les noms des villes, départements, regions, pays\n"
-"et codes postaux (s'ils sont vides) de tous les événements et domiciles.\n"
-"Les lieux sont identifiés par leur pays et leur code INSEE.\n"
+"Cette fonction met Ã  jour les noms des villes, dÃ©partements, regions, pays\n"
+"et codes postaux (s'ils sont vides) de tous les Ã©vÃ©nements et domiciles.\n"
+"Les lieux sont identifiÃ©s par leur pays et leur code INSEE.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_this_function_updates_geographic_coord_of_every_events_and_sites
 msgid ""
-"Cette fonction met à jour les coordonnées géographiques de tous\n"
-"les événements et domiciles.\n"
-"Les lieux sont identifiés par le nom du pays, le code INSEE, le code\n"
-"postal, le nom de la ville et éventuellement celui de la subdivision.\n"
-"Il est donc préférable de mettre à jour ces champs avant d'exécuter\n"
+"Cette fonction met Ã  jour les coordonnÃ©es gÃ©ographiques de tous\n"
+"les Ã©vÃ©nements et domiciles.\n"
+"Les lieux sont identifiÃ©s par le nom du pays, le code INSEE, le code\n"
+"postal, le nom de la ville et Ã©ventuellement celui de la subdivision.\n"
+"Il est donc prÃ©fÃ©rable de mettre Ã  jour ces champs avant d'exÃ©cuter\n"
 "cette fonction.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_unlinking_this_actual_home_media
-msgid "Confirmez-vous le détachement de ce média du domicile en cours?"
+msgid "Confirmez-vous le dÃ©tachement de ce mÃ©dia du domicile en cours?"
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_update
@@ -2047,7 +2075,7 @@ msgid "Validation des modifications."
 msgstr ""
 
 #: u_common_ancestro.rs_confirm_your_selection
-msgid "Confirmez-vous votre sélection ?"
+msgid "Confirmez-vous votre sÃ©lection ?"
 msgstr ""
 
 #: u_common_ancestro.rs_database
@@ -2055,43 +2083,43 @@ msgid "Base"
 msgstr ""
 
 #: u_common_ancestro.rs_database_copied_in
-msgid "La copie s'est bien effectuée dans"
+msgid "La copie s'est bien effectuÃ©e dans"
 msgstr ""
 
 #: u_common_ancestro.rs_database_must_be_updated
-msgid "Base pas à jour"
+msgid "Base pas Ã  jour"
 msgstr ""
 
 #: u_common_ancestro.rs_dead_female
-msgid "Décédée"
+msgid "DÃ©cÃ©dÃ©e"
 msgstr ""
 
 #: u_common_ancestro.rs_dead_male
-msgid "Décédé"
+msgid "DÃ©cÃ©dÃ©"
 msgstr ""
 
 #: u_common_ancestro.rs_death_date_unknown
-msgid "Date de décès inconnue"
+msgid "Date de dÃ©cÃ¨s inconnue"
 msgstr ""
 
 #: u_common_ancestro.rs_death_in_female
-msgid "Décédée à @ARG"
+msgid "DÃ©cÃ©dÃ©e Ã  @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_death_in_male
-msgid "Décédé à @ARG"
+msgid "DÃ©cÃ©dÃ© Ã  @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_death_on
-msgid "Décédé(e) le @ARG"
+msgid "DÃ©cÃ©dÃ©(e) le @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_death_on_female
-msgid "Décédée le @ARG"
+msgid "DÃ©cÃ©dÃ©e le @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_death_on_male
-msgid "Décédé le @ARG"
+msgid "DÃ©cÃ©dÃ© le @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_destination_persons_count
@@ -2100,22 +2128,22 @@ msgid " Destination : @ARG individus "
 msgstr ""
 
 #: u_common_ancestro.rs_did_you_copy_this_database_before_updating
-msgid "Avez-vous sauvegardé cette base de données avant d'effectuer cette mise à jour?"
+msgid "Avez-vous sauvegardÃ© cette base de donnÃ©es avant d'effectuer cette mise Ã  jour?"
 msgstr ""
 
 #: u_common_ancestro.rs_directory_of_medias
-msgid "Répertoire de base des médias:"
+msgid "RÃ©pertoire de base des mÃ©dias:"
 msgstr ""
 
 #: u_common_ancestro.rs_document_recorded_on_date
-msgid "Document enregistré le : @ARG"
+msgid "Document enregistrÃ© le : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_configure_this_action_to_default_in_software
 msgid ""
-"Ce n'est pas l'option de saisie choisie dans les préférences générales.\n"
+"Ce n'est pas l'option de saisie choisie dans les prÃ©fÃ©rences gÃ©nÃ©rales.\n"
 "\n"
-"Voulez vous aussi mettre à jour la configuration?\n"
+"Voulez vous aussi mettre Ã  jour la configuration?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_continue
@@ -2123,11 +2151,11 @@ msgid "Voulez-vous continuer ?"
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_continue_executing
-msgid "Voulez-vous tout de même poursuivre l'exécution?"
+msgid "Voulez-vous tout de mÃªme poursuivre l'exÃ©cution?"
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_create_it
-msgid "Voulez-vous le créer?"
+msgid "Voulez-vous le crÃ©er?"
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_delete_the_content_of_this_notebook
@@ -2143,7 +2171,7 @@ msgid "Voulez-vous supprimer cette filiation?"
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_delete_this_label
-msgid "Voulez-vous supprimer ce libellé?"
+msgid "Voulez-vous supprimer ce libellÃ©?"
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_delete_this_name
@@ -2155,27 +2183,27 @@ msgid "Voulez-vous supprimer ce raccourci de saisie?"
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_ignore_case_difference
-msgid "Le remplacement doit-il ignorer la différence de casse?"
+msgid "Le remplacement doit-il ignorer la diffÃ©rence de casse?"
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_overwrite_it
-msgid "Souhaitez-vous l'écraser ?"
+msgid "Souhaitez-vous l'Ã©craser ?"
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_record_unless
-msgid "Voulez-vous quand même l'enregistrer?"
+msgid "Voulez-vous quand mÃªme l'enregistrer?"
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_replace_media_by_other_media_file_with_name
 msgid ""
 "Le fichier @ARG\n"
-"figure déjà dans la bibliothèque des médias.\n"
+"figure dÃ©jÃ  dans la bibliothÃ¨que des mÃ©dias.\n"
 "\n"
 "Voulez-vous en charger une autre version ?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_reset_the_menu
-msgid "Voulez-vous réinitialiser la barre "
+msgid "Voulez-vous rÃ©initialiser la barre "
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_save_the_changes
@@ -2184,17 +2212,17 @@ msgstr ""
 
 #: u_common_ancestro.rs_do_you_update_export_list_with_confidential_persons
 msgid ""
-"Souhaitez-vous mettre à jour la liste des exclusions de l'exportation\n"
+"Souhaitez-vous mettre Ã  jour la liste des exclusions de l'exportation\n"
 "avec la liste des individus confidentiels?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_validate
-msgid "Voulez-vous valider les modifications effectuées?"
+msgid "Voulez-vous valider les modifications effectuÃ©es?"
 msgstr ""
 
 #: u_common_ancestro.rs_do_you_validate_changed_data
 msgid ""
-"Des données ont changé.\n"
+"Des donnÃ©es ont changÃ©.\n"
 "\n"
 "Voulez-vous les valider ?\n"
 msgstr ""
@@ -2206,8 +2234,8 @@ msgstr ""
 #: u_common_ancestro.rs_do_you_want_to_see_bad_formated_dates
 msgid ""
 "Cette fonction permet de lister les erreurs de dates.\n"
-"Les erreurs de format dues à la saisie et les erreurs\n"
-"dues à des valeurs incohérentes sont listées séparément.\n"
+"Les erreurs de format dues Ã  la saisie et les erreurs\n"
+"dues Ã  des valeurs incohÃ©rentes sont listÃ©es sÃ©parÃ©ment.\n"
 "\n"
 "Voulez-vous voir d'abord les erreurs de format de saisie?\n"
 msgstr ""
@@ -2221,23 +2249,23 @@ msgid "Erreurs en copiant l'adresse."
 msgstr ""
 
 #: u_common_ancestro.rs_error_access_refused
-msgid "Accès interdit."
+msgid "AccÃ¨s interdit."
 msgstr ""
 
 #: u_common_ancestro.rs_error_address_cannot_be_obtained
-msgid "L'adresse et les coordonnées du lieu ne peuvent être obtenues."
+msgid "L'adresse et les coordonnÃ©es du lieu ne peuvent Ãªtre obtenues."
 msgstr ""
 
 #: u_common_ancestro.rs_error_address_transfer
-msgid "Erreur transfert adresse n° "
+msgid "Erreur transfert adresse nÂ° "
 msgstr ""
 
 #: u_common_ancestro.rs_error_bad_connection
-msgid "Problème de connexion à @ARG."
+msgid "ProblÃ¨me de connexion Ã  @ARG."
 msgstr ""
 
 #: u_common_ancestro.rs_error_bad_format_or_cannot_create_temp_file
-msgid "Mauvais format enregistré ou impossible de créer le fichier temporaire."
+msgid "Mauvais format enregistrÃ© ou impossible de crÃ©er le fichier temporaire."
 msgstr ""
 
 #: u_common_ancestro.rs_error_bad_gateway
@@ -2245,7 +2273,7 @@ msgid "Mauvaise passerelle"
 msgstr ""
 
 #: u_common_ancestro.rs_error_bad_request
-msgid "Mauvaise requête"
+msgid "Mauvaise requÃªte"
 msgstr ""
 
 #: u_common_ancestro.rs_error_bad_url
@@ -2253,17 +2281,17 @@ msgid "Mauvaise URL : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_error_bad_web_connection
-msgid "Problème de connexion internet."
+msgid "ProblÃ¨me de connexion internet."
 msgstr ""
 
 #: u_common_ancestro.rs_error_cannot_backup_because_there_is_no_gbak_exe
 msgid ""
-"Sauvegarde initiale de la base réseau impossible,\n"
+"Sauvegarde initiale de la base rÃ©seau impossible,\n"
 "@ARG est absent de ce poste.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_cannot_begin_backup
-msgid "La sauvegarde initiale de la base a échoué."
+msgid "La sauvegarde initiale de la base a Ã©chouÃ©."
 msgstr ""
 
 #: u_common_ancestro.rs_error_cannot_copy_address
@@ -2272,19 +2300,19 @@ msgstr ""
 
 #: u_common_ancestro.rs_error_cannot_copy_database_folder
 msgid ""
-"La copie ne peut être effectuée car ces dossiers\n"
-"utilisent des langues différentes.\n"
+"La copie ne peut Ãªtre effectuÃ©e car ces dossiers\n"
+"utilisent des langues diffÃ©rentes.\n"
 "\n"
 "Utilisez l'importation d'un dossier.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_cannot_copy_media
-msgid "Impossible de copier le média :"
+msgid "Impossible de copier le mÃ©dia :"
 msgstr ""
 
 #: u_common_ancestro.rs_error_cannot_create_this_directory
 msgctxt "u_common_ancestro.rs_error_cannot_create_this_directory"
-msgid "Ce répertoire ne peut être créé."
+msgid "Ce rÃ©pertoire ne peut Ãªtre crÃ©Ã©."
 msgstr ""
 
 #: u_common_ancestro.rs_error_cannot_delete_logbook
@@ -2305,12 +2333,12 @@ msgstr ""
 
 #: u_common_ancestro.rs_error_cannot_scan_no_source
 msgid ""
-"Aucune source Twain installée.\n"
+"Aucune source Twain installÃ©e.\n"
 "Acquisition impossible\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_cannot_update_database
-msgid "Impossible de mettre à jour la base"
+msgid "Impossible de mettre Ã  jour la base"
 msgstr ""
 
 #: u_common_ancestro.rs_error_cannot_validate_on_database
@@ -2320,20 +2348,20 @@ msgstr ""
 #: u_common_ancestro.rs_error_cannot_verify_update
 msgctxt "u_common_ancestro.rs_error_cannot_verify_update"
 msgid ""
-"La vérification d'une mise à jour par internet\n"
-"ne peut être effectuée.\n"
+"La vÃ©rification d'une mise Ã  jour par internet\n"
+"ne peut Ãªtre effectuÃ©e.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_child_link_not_to_be_empty_or_spaces_filled
-msgid "La filiation ne doit pas être vide ou constituée uniquement d'espaces."
+msgid "La filiation ne doit pas Ãªtre vide ou constituÃ©e uniquement d'espaces."
 msgstr ""
 
 #: u_common_ancestro.rs_error_city_not_found
-msgid "La ville de: @ARG n'a pas été trouvée."
+msgid "La ville de: @ARG n'a pas Ã©tÃ© trouvÃ©e."
 msgstr ""
 
 #: u_common_ancestro.rs_error_civilit_not_to_be_empty_or_spaces_filled
-msgid "La civilté ne doit pas être vide ou constituée uniquement d'espaces."
+msgid "La civiltÃ© ne doit pas Ãªtre vide ou constituÃ©e uniquement d'espaces."
 msgstr ""
 
 #: u_common_ancestro.rs_error_closing
@@ -2345,7 +2373,7 @@ msgid "La copie n'a pas pu se faire."
 msgstr ""
 
 #: u_common_ancestro.rs_error_default_country_not_found
-msgid "Pays par défaut inconnu."
+msgid "Pays par dÃ©faut inconnu."
 msgstr ""
 
 #: u_common_ancestro.rs_error_deleting_joint_with_child_is_forbidden
@@ -2356,18 +2384,18 @@ msgstr ""
 
 #: u_common_ancestro.rs_error_different_language_for_dates
 msgid ""
-"La langue utilisée pour la saisie des dates dans le dossier d'origine\n"
-"est différente de celle du dossier en cours.\n"
-"Utilisez plutôt le transfert par un fichier gedcom.\n"
+"La langue utilisÃ©e pour la saisie des dates dans le dossier d'origine\n"
+"est diffÃ©rente de celle du dossier en cours.\n"
+"Utilisez plutÃ´t le transfert par un fichier gedcom.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_directory_cannot_be_created
-msgid "Le répertoire @ARG ne peut être créé."
+msgid "Le rÃ©pertoire @ARG ne peut Ãªtre crÃ©Ã©."
 msgstr ""
 
 #: u_common_ancestro.rs_error_directory_name_empty
 msgctxt "u_common_ancestro.rs_error_directory_name_empty"
-msgid "Ce répertoire doit avoir un nom."
+msgid "Ce rÃ©pertoire doit avoir un nom."
 msgstr ""
 
 #: u_common_ancestro.rs_error_disk_space_not_enough_you_have_bytes
@@ -2383,58 +2411,58 @@ msgstr ""
 
 #: u_common_ancestro.rs_error_dowloading_parances_file_try_later
 msgid ""
-"Erreur pendant le téléchargement du fichier PARANCES.FDB.\n"
+"Erreur pendant le tÃ©lÃ©chargement du fichier PARANCES.FDB.\n"
 "\n"
-"Réessayez plus tard.\n"
+"RÃ©essayez plus tard.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_every_medias_adresses_in_library_and_homes_begining_by_will_be_modified
 msgid ""
-"Toutes les adresses de médias mémorisées dans la bibliothèque et dans les domiciles\n"
-"qui commencent par @ARG seront modifiées.\n"
+"Toutes les adresses de mÃ©dias mÃ©morisÃ©es dans la bibliothÃ¨que et dans les domiciles\n"
+"qui commencent par @ARG seront modifiÃ©es.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_execute_line
-msgid "Erreur d'exécution ligne "
+msgid "Erreur d'exÃ©cution ligne "
 msgstr ""
 
 #: u_common_ancestro.rs_error_execute_only_one_ancestromania_session
 msgid ""
-"N'exécutez qu'une seule session d'Ancestromania depuis\n"
-"un même fichier exécutable.\n"
+"N'exÃ©cutez qu'une seule session d'Ancestromania depuis\n"
+"un mÃªme fichier exÃ©cutable.\n"
 "\n"
-"Pour exécuter plusieurs sessions simultanément, renommez une\n"
+"Pour exÃ©cuter plusieurs sessions simultanÃ©ment, renommez une\n"
 "copie d'Ancestromania.exe sous un autre nom (Ancestromania2.exe\n"
-"par exemple) dans le même répertoire et exécutez ce fichier.\n"
+"par exemple) dans le mÃªme rÃ©pertoire et exÃ©cutez ce fichier.\n"
 "\n"
 "Rappels :\n"
-"A partir de sa version 2.5, Firebird embedded autorise l'exécution de\n"
+"A partir de sa version 2.5, Firebird embedded autorise l'exÃ©cution de\n"
 "plusieurs sessions d'Ancestromania selon les conditions ci-dessus.\n"
-"Mais pour accéder simultanément à la base depuis des applications situées\n"
-"dans un répertoire différent de celui d'Ancestromania, il est nécessaire\n"
-"d'installer Firebird version serveur et de désactiver la version embedded\n"
-"installée par défaut avec Ancestromania.\n"
-"En cas d'accès à la même fiche individu depuis deux sessions différentes,\n"
+"Mais pour accÃ©der simultanÃ©ment Ã  la base depuis des applications situÃ©es\n"
+"dans un rÃ©pertoire diffÃ©rent de celui d'Ancestromania, il est nÃ©cessaire\n"
+"d'installer Firebird version serveur et de dÃ©sactiver la version embedded\n"
+"installÃ©e par dÃ©faut avec Ancestromania.\n"
+"En cas d'accÃ¨s Ã  la mÃªme fiche individu depuis deux sessions diffÃ©rentes,\n"
 "une seule doit modifier la fiche.\n"
-"Certaines opérations globales, comme l'optimisation, exigent\n"
-"qu'une seule session soit connectée à la base.\n"
+"Certaines opÃ©rations globales, comme l'optimisation, exigent\n"
+"qu'une seule session soit connectÃ©e Ã  la base.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_exporting_medias
-msgid "Erreur lors de l'exportation des médias."
+msgid "Erreur lors de l'exportation des mÃ©dias."
 msgstr ""
 
 #: u_common_ancestro.rs_error_family_events_have_not_been_updated
 msgctxt "u_common_ancestro.rs_error_family_events_have_not_been_updated"
-msgid "Les événements individuels n'ont pas été mis à jour."
+msgid "Les Ã©vÃ©nements individuels n'ont pas Ã©tÃ© mis Ã  jour."
 msgstr ""
 
 #: u_common_ancestro.rs_error_family_event_transfer
-msgid "Erreur transfert événement familial n° "
+msgid "Erreur transfert Ã©vÃ©nement familial nÂ° "
 msgstr ""
 
 #: u_common_ancestro.rs_error_father_cannot_be_a_woman
-msgid "Le père d'un individu ne peut pas être une femme."
+msgid "Le pÃ¨re d'un individu ne peut pas Ãªtre une femme."
 msgstr ""
 
 #: u_common_ancestro.rs_error_file_format
@@ -2442,14 +2470,14 @@ msgid "Erreur de format du fichier:"
 msgstr ""
 
 #: u_common_ancestro.rs_error_file_is_not_on_the_web_site
-msgid "Le fichier que vous essayez de télécharger est absent du site."
+msgid "Le fichier que vous essayez de tÃ©lÃ©charger est absent du site."
 msgstr ""
 
 #: u_common_ancestro.rs_error_file_named_doesnt_exists_please_select_your_database_file
 msgid ""
-"Le fichier demandé : @ARG n'existe pas.\n"
+"Le fichier demandÃ© : @ARG n'existe pas.\n"
 "\n"
-"Sélectionnez le fichier de votre base de données dans l'écran suivant.\n"
+"SÃ©lectionnez le fichier de votre base de donnÃ©es dans l'Ã©cran suivant.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_firebird
@@ -2457,11 +2485,11 @@ msgid "Erreur Firebird"
 msgstr ""
 
 #: u_common_ancestro.rs_error_fmain_message_not_processed
-msgid "Message reçu par la fenêtre principale et non traité:"
+msgid "Message reÃ§u par la fenÃªtre principale et non traitÃ©:"
 msgstr ""
 
 #: u_common_ancestro.rs_error_folders_not_defined
-msgid "Dossier d'origine ou de destination non défini."
+msgid "Dossier d'origine ou de destination non dÃ©fini."
 msgstr ""
 
 #: u_common_ancestro.rs_error_forbidden_access
@@ -2469,7 +2497,7 @@ msgid "Acces interdit"
 msgstr ""
 
 #: u_common_ancestro.rs_error_gbak_backup_aborted
-msgid "La sauvegarde initiale de la base avec @ARG a échoué."
+msgid "La sauvegarde initiale de la base avec @ARG a Ã©chouÃ©."
 msgstr ""
 
 #: u_common_ancestro.rs_error_has_append_during_restore
@@ -2477,8 +2505,8 @@ msgctxt "u_common_ancestro.rs_error_has_append_during_restore"
 msgid ""
 "Une erreur s'est produite pendant l'optimisation.\n"
 "\n"
-"Vérifiez que vous possédez les droits d'administration\n"
-"de cette base pour exécuter cette opération.\n"
+"VÃ©rifiez que vous possÃ©dez les droits d'administration\n"
+"de cette base pour exÃ©cuter cette opÃ©ration.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_import_forbidden
@@ -2487,7 +2515,7 @@ msgstr ""
 
 #: u_common_ancestro.rs_error_individual_events_have_not_been_updated
 msgctxt "u_common_ancestro.rs_error_individual_events_have_not_been_updated"
-msgid "Les événements individuels n'ont pas été mis à jour."
+msgid "Les Ã©vÃ©nements individuels n'ont pas Ã©tÃ© mis Ã  jour."
 msgstr ""
 
 #: u_common_ancestro.rs_error_initializing_internet_update
@@ -2497,19 +2525,19 @@ msgstr ""
 #: u_common_ancestro.rs_error_key_of_table_must_be_set_to_import
 msgid ""
 ", champ clef de la table @ARG\n"
-"doit être affecté pour faire l'importation !\n"
+"doit Ãªtre affectÃ© pour faire l'importation !\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_label_not_to_be_empty_or_spaces_filled
-msgid "Le libellé ne doit pas être vide ou constitué uniquement d'espaces."
+msgid "Le libellÃ© ne doit pas Ãªtre vide ou constituÃ© uniquement d'espaces."
 msgstr ""
 
 #: u_common_ancestro.rs_error_latitud_interval
-msgid "La valeur de la latitude doit être comprise entre -90° et 90°."
+msgid "La valeur de la latitude doit Ãªtre comprise entre -90Â° et 90Â°."
 msgstr ""
 
 #: u_common_ancestro.rs_error_latitud_must_be_a_number
-msgid "La valeur de la latitude n'est pas numérique."
+msgid "La valeur de la latitude n'est pas numÃ©rique."
 msgstr ""
 
 #: u_common_ancestro.rs_error_launching
@@ -2517,7 +2545,7 @@ msgid "Erreur de lancement de"
 msgstr ""
 
 #: u_common_ancestro.rs_error_link_transfer
-msgid "Erreur transfert association n° "
+msgid "Erreur transfert association nÂ° "
 msgstr ""
 
 #: u_common_ancestro.rs_error_loading
@@ -2525,30 +2553,30 @@ msgid "Erreur de chargement de"
 msgstr ""
 
 #: u_common_ancestro.rs_error_longitud_interval
-msgid "La valeur de la longitude doit être comprise entre -180° et 180°."
+msgid "La valeur de la longitude doit Ãªtre comprise entre -180Â° et 180Â°."
 msgstr ""
 
 #: u_common_ancestro.rs_error_md5
 msgid ""
-"Le fichier téléchargé n'est pas correct.\n"
+"Le fichier tÃ©lÃ©chargÃ© n'est pas correct.\n"
 "\n"
-"Recommencez le téléchargement.\n"
+"Recommencez le tÃ©lÃ©chargement.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_media_number_transfer
-msgid "Erreur transfert média n° "
+msgid "Erreur transfert mÃ©dia nÂ° "
 msgstr ""
 
 #: u_common_ancestro.rs_error_memory
-msgid "Erreur mémoire"
+msgid "Erreur mÃ©moire"
 msgstr ""
 
 #: u_common_ancestro.rs_error_mother_cannot_be_a_woman
-msgid "La mère d'un individu ne peut pas être un homme."
+msgid "La mÃ¨re d'un individu ne peut pas Ãªtre un homme."
 msgstr ""
 
 #: u_common_ancestro.rs_error_must_not_to_be_empty
-msgid "@ARG ne doit pas être vide."
+msgid "@ARG ne doit pas Ãªtre vide."
 msgstr ""
 
 #: u_common_ancestro.rs_error_must_record_file_before_deleting
@@ -2558,12 +2586,12 @@ msgid ""
 msgstr ""
 
 #: u_common_ancestro.rs_error_must_select_one_record_s_type_to_list
-msgid "Vous devez sélectionner au moins un type d'actes à lister."
+msgid "Vous devez sÃ©lectionner au moins un type d'actes Ã  lister."
 msgstr ""
 
 #: u_common_ancestro.rs_error_name_not_to_be_empty_or_spaces_filled
 msgctxt "u_common_ancestro.rs_error_name_not_to_be_empty_or_spaces_filled"
-msgid "Le patronyme ne doit pas être vide ou constitué uniquement d'espaces."
+msgid "Le patronyme ne doit pas Ãªtre vide ou constituÃ© uniquement d'espaces."
 msgstr ""
 
 #: u_common_ancestro.rs_error_need_disk_space_to_continue
@@ -2575,13 +2603,13 @@ msgstr ""
 
 #: u_common_ancestro.rs_error_need_disk_space_to_continue_directory_cannot_be_created
 msgid ""
-"Sauvegarde initiale de la base impossible, le répertoire de sauvegarde\n"
+"Sauvegarde initiale de la base impossible, le rÃ©pertoire de sauvegarde\n"
 "@ARG\n"
-"ne peut être créé.\n"
+"ne peut Ãªtre crÃ©Ã©.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_none_coord_of
-msgid "Il manque les coordonnées géographiques de @ARG"
+msgid "Il manque les coordonnÃ©es gÃ©ographiques de @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_error_none_file
@@ -2603,21 +2631,21 @@ msgstr ""
 #: u_common_ancestro.rs_error_not_enough_space_only_bytes_but_bytes_needed
 msgid ""
 "L'espace disponible sur le support choisi n'est pas suffisant.\n"
-"Il ne reste que @ARG octets alors que @ARG sont nécessaires.\n"
+"Il ne reste que @ARG octets alors que @ARG sont nÃ©cessaires.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_no_info_of_udpate_for_your_software
 msgctxt "u_common_ancestro.rs_error_no_info_of_udpate_for_your_software"
-msgid "Aucune information de mise à jour sur internet pour votre programme."
+msgid "Aucune information de mise Ã  jour sur internet pour votre programme."
 msgstr ""
 
 #: u_common_ancestro.rs_error_no_site_found_on_the_web
-msgid "Sur internet, aucun lieu ne correspond à cette adresse."
+msgid "Sur internet, aucun lieu ne correspond Ã  cette adresse."
 msgstr ""
 
 #: u_common_ancestro.rs_error_no_update_info
 msgctxt "u_common_ancestro.rs_error_no_update_info"
-msgid "Aucune information de mise à jour sur internet pour votre programme."
+msgid "Aucune information de mise Ã  jour sur internet pour votre programme."
 msgstr ""
 
 #: u_common_ancestro.rs_error_one_error_has_occured_while_optimising_verify_if_you_are_admin
@@ -2625,63 +2653,63 @@ msgctxt "u_common_ancestro.rs_error_one_error_has_occured_while_optimising_verif
 msgid ""
 "Une erreur s'est produite pendant l'optimisation.\n"
 "\n"
-"Vérifiez que vous possédez les droits d'administration\n"
-"de cette base pour exécuter cette opération.\n"
+"VÃ©rifiez que vous possÃ©dez les droits d'administration\n"
+"de cette base pour exÃ©cuter cette opÃ©ration.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_on_request
-msgid "Erreur sur la requête - @ARG"
+msgid "Erreur sur la requÃªte - @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_error_overflow_capacity
-msgid "Erreur dépassement capacité"
+msgid "Erreur dÃ©passement capacitÃ©"
 msgstr ""
 
 #: u_common_ancestro.rs_error_parances_file_isnt_downloadable
 msgid ""
-"Le fichier PARANCES.FDB que vous essayez de télécharger est absent du site.\n"
+"Le fichier PARANCES.FDB que vous essayez de tÃ©lÃ©charger est absent du site.\n"
 "\n"
-"Réessayez plus tard.\n"
+"RÃ©essayez plus tard.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_particle_not_to_be_empty_or_spaces_filled
-msgid "La particule ne doit pas être vide ou constituée uniquement d'espaces."
+msgid "La particule ne doit pas Ãªtre vide ou constituÃ©e uniquement d'espaces."
 msgstr ""
 
 #: u_common_ancestro.rs_error_period_must_be_set
-msgid "La période est obligatoire..."
+msgid "La pÃ©riode est obligatoire..."
 msgstr ""
 
 #: u_common_ancestro.rs_error_person_cannot_be_herself_and_the_mother
-msgid "L'individu ne peut pas être à la fois lui même et sa mère."
+msgid "L'individu ne peut pas Ãªtre Ã  la fois lui mÃªme et sa mÃ¨re."
 msgstr ""
 
 #: u_common_ancestro.rs_error_person_cannot_be_himself_and_the_father
-msgid "L'individu ne peut pas être à la fois lui même et son père."
+msgid "L'individu ne peut pas Ãªtre Ã  la fois lui mÃªme et son pÃ¨re."
 msgstr ""
 
 #: u_common_ancestro.rs_error_person_cannot_be_itself_and
-msgid "L'individu ne peut pas être à la fois lui même et "
+msgid "L'individu ne peut pas Ãªtre Ã  la fois lui mÃªme et "
 msgstr ""
 
 #: u_common_ancestro.rs_error_person_cannot_be_itself_and_the_child
-msgid "L'individu ne peut pas être à la fois lui même et son enfant."
+msgid "L'individu ne peut pas Ãªtre Ã  la fois lui mÃªme et son enfant."
 msgstr ""
 
 #: u_common_ancestro.rs_error_person_cannot_be_the_couple
-msgid "L'individu ne peut pas être à la fois lui même et son conjoint."
+msgid "L'individu ne peut pas Ãªtre Ã  la fois lui mÃªme et son conjoint."
 msgstr ""
 
 #: u_common_ancestro.rs_error_person_cle_mere_mother_key
-msgid "Erreur mise à jour cle_mere"
+msgid "Erreur mise Ã  jour cle_mere"
 msgstr ""
 
 #: u_common_ancestro.rs_error_person_cle_pere_father_key
-msgid "Erreur mise à jour cle_pere"
+msgid "Erreur mise Ã  jour cle_pere"
 msgstr ""
 
 #: u_common_ancestro.rs_error_person_event_transfer
-msgid "Erreur transfert événement individuel n° "
+msgid "Erreur transfert Ã©vÃ©nement individuel nÂ° "
 msgstr ""
 
 #: u_common_ancestro.rs_error_person_opened_in_other_form
@@ -2701,22 +2729,22 @@ msgid "Erreur lors de la lecture des lieux favoris."
 msgstr ""
 
 #: u_common_ancestro.rs_error_request_error
-msgid "Erreur @ARG : Problème de requête.."
+msgid "Erreur @ARG : ProblÃ¨me de requÃªte.."
 msgstr ""
 
 #: u_common_ancestro.rs_error_request_execute
-msgid "Erreur lors de l'exécution de la requête @ARG"
+msgid "Erreur lors de l'exÃ©cution de la requÃªte @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_error_request_syntax
-msgid "Erreur de conception de la requête"
+msgid "Erreur de conception de la requÃªte"
 msgstr ""
 
 #: u_common_ancestro.rs_error_restore_directory_does_not_exists
 msgid ""
-"Opération impossible, le répertoire de sauvegarde\n"
+"OpÃ©ration impossible, le rÃ©pertoire de sauvegarde\n"
 "@ARG\n"
-"n'existe pas et ne peut être créé.\n"
+"n'existe pas et ne peut Ãªtre crÃ©Ã©.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_same_folders
@@ -2724,7 +2752,7 @@ msgid "Dossiers d'origine et de destination identiques."
 msgstr ""
 
 #: u_common_ancestro.rs_error_script_execute
-msgid "Erreur lors de l'exécution du script"
+msgid "Erreur lors de l'exÃ©cution du script"
 msgstr ""
 
 #: u_common_ancestro.rs_error_set_old_and_new_path_before_asking_replacing
@@ -2735,41 +2763,41 @@ msgstr ""
 
 #: u_common_ancestro.rs_error_sites_base_is_unavailable_it_doesnt_exists
 msgid ""
-"La base de référence des lieux n'est pas accessible.\n"
-"Elle n'est pas visible par l'application pas à l'adresse :\n"
+"La base de rÃ©fÃ©rence des lieux n'est pas accessible.\n"
+"Elle n'est pas visible par l'application pas Ã  l'adresse :\n"
 "@ARG.\n"
-"Sans cet accès, l'aide à la saisie des lieux est limitée aux lieux déjà utilisés.\n"
+"Sans cet accÃ¨s, l'aide Ã  la saisie des lieux est limitÃ©e aux lieux dÃ©jÃ  utilisÃ©s.\n"
 "\n"
-"Si votre ordinateur est connecté à internet, vous avez la possibilité de le\n"
-"télécharger et de l'installer directement.\n"
-"Voulez-vous le télécharger et l'installer maintenant?\n"
+"Si votre ordinateur est connectÃ© Ã  internet, vous avez la possibilitÃ© de le\n"
+"tÃ©lÃ©charger et de l'installer directement.\n"
+"Voulez-vous le tÃ©lÃ©charger et l'installer maintenant?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_sites_base_is_unavailable_it_exists
 msgid ""
-"La base de référence des lieux n'est pas accessible.\n"
-"Elle existe bien à l'adresse :\n"
+"La base de rÃ©fÃ©rence des lieux n'est pas accessible.\n"
+"Elle existe bien Ã  l'adresse :\n"
 "@ARG.\n"
-"Vérifiez que vous possédez les droits d'accès à cette base (Paramètres, Options de saisie).\n"
-"Sans cet accès l'aide à la saisie des lieux est limitée aux lieux déjà utilisés.\n"
+"VÃ©rifiez que vous possÃ©dez les droits d'accÃ¨s Ã  cette base (ParamÃ¨tres, Options de saisie).\n"
+"Sans cet accÃ¨s l'aide Ã  la saisie des lieux est limitÃ©e aux lieux dÃ©jÃ  utilisÃ©s.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_site_found_but_in_this_city
-msgid "Lieu trouvé, mais dans la ville de:"
+msgid "Lieu trouvÃ©, mais dans la ville de:"
 msgstr ""
 
 #: u_common_ancestro.rs_error_sources_transfer
 msgid ""
-"Les sources ne peuvent pas être transférées,\n"
+"Les sources ne peuvent pas Ãªtre transfÃ©rÃ©es,\n"
 "TYPE_TABLE absent de la base d'origine.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_source_transfer
-msgid "Erreur transfert source n° "
+msgid "Erreur transfert source nÂ° "
 msgstr ""
 
 #: u_common_ancestro.rs_error_subd_not_found_in_city
-msgid "La subdivision @ARG n'a pas été trouvée à @ARG."
+msgid "La subdivision @ARG n'a pas Ã©tÃ© trouvÃ©e Ã  @ARG."
 msgstr ""
 
 #: u_common_ancestro.rs_error_syntax
@@ -2779,36 +2807,36 @@ msgstr ""
 #: u_common_ancestro.rs_error_table_media_pointeurs
 msgid ""
 "Table MEDIA_POINTEURS absente,\n"
-"vérifier les médias après importation.\n"
+"vÃ©rifier les mÃ©dias aprÃ¨s importation.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_the_name_mustnt_be_empty_or_spaces_filled
 msgctxt "u_common_ancestro.rs_error_the_name_mustnt_be_empty_or_spaces_filled"
-msgid "Le patronyme ne doit pas être vide ou constitué uniquement d'espaces."
+msgid "Le patronyme ne doit pas Ãªtre vide ou constituÃ© uniquement d'espaces."
 msgstr ""
 
 #: u_common_ancestro.rs_error_this_database_version_is_too_old
 msgid ""
 "Base version @ARG\n"
-"trop ancienne pour être transférée par cette fonction.\n"
+"trop ancienne pour Ãªtre transfÃ©rÃ©e par cette fonction.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_this_directory_cannot_be_created
 msgctxt "u_common_ancestro.rs_error_this_directory_cannot_be_created"
-msgid "Ce répertoire ne peut être créé."
+msgid "Ce rÃ©pertoire ne peut Ãªtre crÃ©Ã©."
 msgstr ""
 
 #: u_common_ancestro.rs_error_this_directory_must_have_a_name
 msgctxt "u_common_ancestro.rs_error_this_directory_must_have_a_name"
-msgid "Ce répertoire doit avoir un nom."
+msgid "Ce rÃ©pertoire doit avoir un nom."
 msgstr ""
 
 #: u_common_ancestro.rs_error_this_name_is_set_to_everybody
-msgid "Ce patronyme est déjà attribué à tous."
+msgid "Ce patronyme est dÃ©jÃ  attribuÃ© Ã  tous."
 msgstr ""
 
 #: u_common_ancestro.rs_error_timeout_problem
-msgid "Problème de timeOut"
+msgid "ProblÃ¨me de timeOut"
 msgstr ""
 
 #: u_common_ancestro.rs_error_tq_consang_deleting
@@ -2816,19 +2844,19 @@ msgid "Erreur effacement TQ_CONSANG."
 msgstr ""
 
 #: u_common_ancestro.rs_error_two_many_times_to_respond
-msgid "Problème de délai de réponse."
+msgid "ProblÃ¨me de dÃ©lai de rÃ©ponse."
 msgstr ""
 
 #: u_common_ancestro.rs_error_t_import_gedcom_update
-msgid "Erreur mise à jour T_IMPORT_GEDCOM."
+msgid "Erreur mise Ã  jour T_IMPORT_GEDCOM."
 msgstr ""
 
 #: u_common_ancestro.rs_error_union_alreadx_exists
-msgid "Cette union existe déjà."
+msgid "Cette union existe dÃ©jÃ ."
 msgstr ""
 
 #: u_common_ancestro.rs_error_union_transfer
-msgid "Erreur transfert union n° "
+msgid "Erreur transfert union nÂ° "
 msgstr ""
 
 #: u_common_ancestro.rs_error_unknown
@@ -2837,33 +2865,33 @@ msgstr ""
 
 #: u_common_ancestro.rs_error_unknown_language_for_dates
 msgid ""
-"La langue utilisée pour la saisie des dates\n"
+"La langue utilisÃ©e pour la saisie des dates\n"
 "dans le dossier d'origine est inconnue.\n"
 "\n"
-"Ne continuez que si vous êtes sûr que cette langue\n"
-"est la même que celle de votre dossier, ou utilisez\n"
+"Ne continuez que si vous Ãªtes sÃ»r que cette langue\n"
+"est la mÃªme que celle de votre dossier, ou utilisez\n"
 "le transfert par un fichier gedcom.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_unknown_sexe_please_set_it
 msgid ""
 "Le sexe de cet individu est inconnu!\n"
-"Définissez son sexe avant de lui attribuer un enfant.\n"
+"DÃ©finissez son sexe avant de lui attribuer un enfant.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_update_cancelled
-msgid "Modifications annulées."
+msgid "Modifications annulÃ©es."
 msgstr ""
 
 #: u_common_ancestro.rs_error_update_info_not_possible
 msgctxt "u_common_ancestro.rs_error_update_info_not_possible"
 msgid ""
-"La vérification d'une mise à jour par internet\n"
-"ne peut être effectuée.\n"
+"La vÃ©rification d'une mise Ã  jour par internet\n"
+"ne peut Ãªtre effectuÃ©e.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_updating_old_tags
-msgid "Erreur mise à jour des anciens tags."
+msgid "Erreur mise Ã  jour des anciens tags."
 msgstr ""
 
 #: u_common_ancestro.rs_error_validate_other_form
@@ -2875,7 +2903,7 @@ msgid "Erreur de valeur ou de format."
 msgstr ""
 
 #: u_common_ancestro.rs_error_web_site_unaccessible
-msgid "Le site ne répond pas."
+msgid "Le site ne rÃ©pond pas."
 msgstr ""
 
 #: u_common_ancestro.rs_error_while_closing
@@ -2883,19 +2911,19 @@ msgid "Erreur lors la fermeture de"
 msgstr ""
 
 #: u_common_ancestro.rs_error_while_downloading_the_file
-msgid "Erreur pendant le téléchargement du fichier."
+msgid "Erreur pendant le tÃ©lÃ©chargement du fichier."
 msgstr ""
 
 #: u_common_ancestro.rs_error_while_getting_medias
-msgid "Erreur lors de la récupération des médias"
+msgid "Erreur lors de la rÃ©cupÃ©ration des mÃ©dias"
 msgstr ""
 
 #: u_common_ancestro.rs_error_while_loading_data
-msgid "Erreur lors du chargement des données."
+msgid "Erreur lors du chargement des donnÃ©es."
 msgstr ""
 
 #: u_common_ancestro.rs_error_while_reading_events
-msgid "Erreur lors de la lecture de la liste des événements."
+msgid "Erreur lors de la lecture de la liste des Ã©vÃ©nements."
 msgstr ""
 
 #: u_common_ancestro.rs_error_while_reading_sites_list
@@ -2903,7 +2931,7 @@ msgid "Erreur lors de la lecture de la liste des domiciles."
 msgstr ""
 
 #: u_common_ancestro.rs_error_while_reading_union_events
-msgid "Erreur lors de la lecture de la liste des événements des unions."
+msgid "Erreur lors de la lecture de la liste des Ã©vÃ©nements des unions."
 msgstr ""
 
 #: u_common_ancestro.rs_error_while_replacing
@@ -2911,41 +2939,41 @@ msgid "Erreur pendant le remplacement."
 msgstr ""
 
 #: u_common_ancestro.rs_error_writing_is_forbidden_on_this_dir_or_device
-msgid "L'écriture vous est interdite dans ce répertoire ou sur ce support."
+msgid "L'Ã©criture vous est interdite dans ce rÃ©pertoire ou sur ce support."
 msgstr ""
 
 #: u_common_ancestro.rs_error_xml_of_google_api
 msgid ""
-"Erreur lors du traitement de la réponse XML.\n"
+"Erreur lors du traitement de la rÃ©ponse XML.\n"
 "\n"
-"Réponse complète de l'Api Google:\n"
+"RÃ©ponse complÃ¨te de l'Api Google:\n"
 msgstr ""
 
 #: u_common_ancestro.rs_error_you_have_to_select_a_person_before
-msgid "Vous devez d'abord sélectionner un individu...."
+msgid "Vous devez d'abord sÃ©lectionner un individu...."
 msgstr ""
 
 #: u_common_ancestro.rs_error_you_should_choose_another_save_directory_without_readonly
 msgid ""
-"Vous devriez choisir un autre répertoire de sauvegarde\n"
-"dans les \"Préférences générales\" car celui-ci n'est pas\n"
-"accessible en écriture.\n"
+"Vous devriez choisir un autre rÃ©pertoire de sauvegarde\n"
+"dans les \"PrÃ©fÃ©rences gÃ©nÃ©rales\" car celui-ci n'est pas\n"
+"accessible en Ã©criture.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_execute_cancelled_due_to_error
-msgid "Exécution annulée suite à erreur."
+msgid "ExÃ©cution annulÃ©e suite Ã  erreur."
 msgstr ""
 
 #: u_common_ancestro.rs_export_only_departments_of_selected_region
-msgid "Exporter seulement les départements de la région sélectionnée ?"
+msgid "Exporter seulement les dÃ©partements de la rÃ©gion sÃ©lectionnÃ©e ?"
 msgstr ""
 
 #: u_common_ancestro.rs_export_only_regions_of_selected_country
-msgid "Exporter seulement les régions du pays sélectionné ?"
+msgid "Exporter seulement les rÃ©gions du pays sÃ©lectionnÃ© ?"
 msgstr ""
 
 #: u_common_ancestro.rs_father
-msgid "Père : @ARG"
+msgid "PÃ¨re : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_filename_notacopy
@@ -2954,7 +2982,7 @@ msgid "-original"
 msgstr ""
 
 #: u_common_ancestro.rs_file_downloaded
-msgid "Fichier téléchargé avec succès."
+msgid "Fichier tÃ©lÃ©chargÃ© avec succÃ¨s."
 msgstr ""
 
 #: u_common_ancestro.rs_file_new_path
@@ -2962,7 +2990,7 @@ msgid "Nouvel emplacement : @ARG."
 msgstr ""
 
 #: u_common_ancestro.rs_file_not_found_in
-msgid "Fichier @ARG non trouvé dans @ARG."
+msgid "Fichier @ARG non trouvÃ© dans @ARG."
 msgstr ""
 
 #: u_common_ancestro.rs_file_replacing
@@ -2982,7 +3010,7 @@ msgid "Modification d'un dossier"
 msgstr ""
 
 #: u_common_ancestro.rs_found
-msgid "trouvés"
+msgid "trouvÃ©s"
 msgstr ""
 
 #: u_common_ancestro.rs_from
@@ -2991,85 +3019,85 @@ msgstr ""
 
 #: u_common_ancestro.rs_function_fast_creating_infos
 msgid ""
-"Cette fenêtre permet de créer la fiche d'un individu\n"
-"en saisissant ses éléments principaux.\n"
+"Cette fenÃªtre permet de crÃ©er la fiche d'un individu\n"
+"en saisissant ses Ã©lÃ©ments principaux.\n"
 "\n"
-"La saisie du nom est obligatoire avant de pouvoir accéder au\n"
+"La saisie du nom est obligatoire avant de pouvoir accÃ©der au\n"
 "autres champs de la fiche.\n"
-"Vous avez trois possibilités pour saisir un lieu:\n"
-"a)le lieu a déjà été utilisé et fait donc partie de la liste\n"
-"  des lieux favoris. Dans ce cas commencez à taper directement\n"
-"  le nom de la commune et aidez-vous de la liste déroulante.\n"
-"b)vous pensez que le lieu n'a pas été utilisé dans cette généalogie\n"
-"  mais figure dans la table de référence des villes. Cliquez sur le\n"
+"Vous avez trois possibilitÃ©s pour saisir un lieu:\n"
+"a)le lieu a dÃ©jÃ  Ã©tÃ© utilisÃ© et fait donc partie de la liste\n"
+"  des lieux favoris. Dans ce cas commencez Ã  taper directement\n"
+"  le nom de la commune et aidez-vous de la liste dÃ©roulante.\n"
+"b)vous pensez que le lieu n'a pas Ã©tÃ© utilisÃ© dans cette gÃ©nÃ©alogie\n"
+"  mais figure dans la table de rÃ©fÃ©rence des villes. Cliquez sur le\n"
 "  bouton rond pour le saisir dans l'Index des lieux.\n"
-"c)le lieu n'a jamais été utilisé et ne figure pas dans l'Index des\n"
-"  villes. Cochez la case en extrémité de ligne avant de taper le\n"
+"c)le lieu n'a jamais Ã©tÃ© utilisÃ© et ne figure pas dans l'Index des\n"
+"  villes. Cochez la case en extrÃ©mitÃ© de ligne avant de taper le\n"
 "  nom de la commune.\n"
 "\n"
 "Raccourcis clavier:\n"
-"- la touche Tab permet un passage séquentiel classique d'un champ au\n"
-"  suivant. Utilisée conjointement, la touche Maj permet le cheminement\n"
+"- la touche Tab permet un passage sÃ©quentiel classique d'un champ au\n"
+"  suivant. UtilisÃ©e conjointement, la touche Maj permet le cheminement\n"
 "  inverse.\n"
-"- Ctrl+Tab permet le passage direct d'un événement au champ date de\n"
-"  l'événement suivant et de l'événement Décès au bouton Enregistrer.\n"
-"- Ctrl+Entrée permet de passer de la page des événements à la page des\n"
-"  informations (champs Notes et Sources de la fiche) et réciproquement.\n"
+"- Ctrl+Tab permet le passage direct d'un Ã©vÃ©nement au champ date de\n"
+"  l'Ã©vÃ©nement suivant et de l'Ã©vÃ©nement DÃ©cÃ¨s au bouton Enregistrer.\n"
+"- Ctrl+EntrÃ©e permet de passer de la page des Ã©vÃ©nements Ã  la page des\n"
+"  informations (champs Notes et Sources de la fiche) et rÃ©ciproquement.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_function_to_calculate_dates_infos1
 msgid ""
-"Cette fonction permet de calculer la différence entre deux dates.\n"
-"Si vous entrez une première date supérieure à la deuxième, le logiciel\n"
+"Cette fonction permet de calculer la diffÃ©rence entre deux dates.\n"
+"Si vous entrez une premiÃ¨re date supÃ©rieure Ã  la deuxiÃ¨me, le logiciel\n"
 "fait automatiquement l'inversion.\n"
-"En cas de date erronée, 32 dans le jour par exemple, un message \"Erreur dans\n"
+"En cas de date erronÃ©e, 32 dans le jour par exemple, un message \"Erreur dans\n"
 "une date\" indique qu'au moins une des deux dates n'est pas conforme.\n"
 "Il suffit de rectifier l'erreur pour relancer le calcul.\n"
 "\n"
-"Une fois les deux dates spécifiées, le logiciel calcule les nombres de jours,\n"
-"de mois et d'années qui les séparent.\n"
-"Le passage du calendrier julien au calendrier grégorien s'étant effectué à\n"
-"des époques différentes selon les pays, ce calcul considère que les dates\n"
-"sont saisies dans le calendrier grégorien.\n"
+"Une fois les deux dates spÃ©cifiÃ©es, le logiciel calcule les nombres de jours,\n"
+"de mois et d'annÃ©es qui les sÃ©parent.\n"
+"Le passage du calendrier julien au calendrier grÃ©gorien s'Ã©tant effectuÃ© Ã \n"
+"des Ã©poques diffÃ©rentes selon les pays, ce calcul considÃ¨re que les dates\n"
+"sont saisies dans le calendrier grÃ©gorien.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_function_to_calculate_dates_infos2
 msgid ""
-"Cette fonction permet d'ajouter ou d'enlever, des jours, des mois ou/et des années\n"
-"à une date précise.\n"
-"Entrez une date de référence, puis spécifiez le sens de l'opération.\n"
+"Cette fonction permet d'ajouter ou d'enlever, des jours, des mois ou/et des annÃ©es\n"
+"Ã  une date prÃ©cise.\n"
+"Entrez une date de rÃ©fÃ©rence, puis spÃ©cifiez le sens de l'opÃ©ration.\n"
 "Indiquez ce que vous voulez ajouter ou enlever: des jours ou/et des mois\n"
-"ou/et des années.\n"
+"ou/et des annÃ©es.\n"
 "Vous pouvez ainsi retrouver plus facilement, une date de naissance, en fonction\n"
-"de la date de décés ou de mariage et de l'âge de l'individu à ce moment là.\n"
-"La date résultat de l'opération peut être copiée dans le presse-papier afin de\n"
-"la coller par Ctrl+V dans le champ Date d'un événement par exemple.\n"
+"de la date de dÃ©cÃ©s ou de mariage et de l'Ã¢ge de l'individu Ã  ce moment lÃ .\n"
+"La date rÃ©sultat de l'opÃ©ration peut Ãªtre copiÃ©e dans le presse-papier afin de\n"
+"la coller par Ctrl+V dans le champ Date d'un Ã©vÃ©nement par exemple.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_generation
-msgid "Génération @ARG"
+msgid "GÃ©nÃ©ration @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_generations_minus
-msgid "générations"
+msgid "gÃ©nÃ©rations"
 msgstr ""
 
 #: u_common_ancestro.rs_generation_minus
-msgid "génération"
+msgid "gÃ©nÃ©ration"
 msgstr ""
 
 #: u_common_ancestro.rs_greetings_boa
 msgid ""
-"Développement d'après une idée originale de Laurent Robbe,\n"
-"développeur du BOA (Boîte à Outils pour Ancestromania).\n"
+"DÃ©veloppement d'aprÃ¨s une idÃ©e originale de Laurent Robbe,\n"
+"dÃ©veloppeur du BOA (BoÃ®te Ã  Outils pour Ancestromania).\n"
 "\n"
-"ATTENTION: l'exécution de requêtes peut modifier le\n"
+"ATTENTION: l'exÃ©cution de requÃªtes peut modifier le\n"
 "contenu des tables de la base.\n"
 "Il est indispensable d'effectuer une sauvegarde de votre\n"
-"base avant d'exécuter des requêtes avec cet outil.\n"
-"C'est la seule méthode permettant de ramener votre base\n"
-"dans son état initial en cas d'erreur lors de la modification\n"
-"de vos données.\n"
+"base avant d'exÃ©cuter des requÃªtes avec cet outil.\n"
+"C'est la seule mÃ©thode permettant de ramener votre base\n"
+"dans son Ã©tat initial en cas d'erreur lors de la modification\n"
+"de vos donnÃ©es.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_he_is_joint_with
@@ -3077,59 +3105,59 @@ msgid "est un conjoint de "
 msgstr ""
 
 #: u_common_ancestro.rs_hint_add_a_doc_to_this_event
-msgid "Ajoute un document à cet événement"
+msgid "Ajoute un document Ã  cet Ã©vÃ©nement"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_add_a_witness_to_this_event
-msgid "Ajoute un témoin à cet événement"
+msgid "Ajoute un tÃ©moin Ã  cet Ã©vÃ©nement"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_affect_a_noone_is_deleted_e_person_not_in_the_group_are_deleted_s_supress_persons_of_group
 msgid ""
-"EFFET = A - Aucun individu n'est supprimé de la base  \n"
-"        E - Elagage: les individus qui ne font pas partie du groupe sélectionné sont supprimés.\n"
-"        S - Suppression des individus du groupe sélectionné Si I_INDIVIDU=0 seule l'action prévue par EFFET est exécutée.\n"
+"EFFET = A - Aucun individu n'est supprimÃ© de la base  \n"
+"        E - Elagage: les individus qui ne font pas partie du groupe sÃ©lectionnÃ© sont supprimÃ©s.\n"
+"        S - Suppression des individus du groupe sÃ©lectionnÃ© Si I_INDIVIDU=0 seule l'action prÃ©vue par EFFET est exÃ©cutÃ©e.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_associate_a_surname_with_a_person_permits_to_see_it_in_the_surnames_index_for
 msgid ""
-"Associer un patronyme à un individu permet de le\n"
+"Associer un patronyme Ã  un individu permet de le\n"
 "retrouver dans l'Index des noms et dans le Repertoire\n"
-"en y sélectionnant ce patronyme.\n"
+"en y sÃ©lectionnant ce patronyme.\n"
 "Pour qu'une association fonctionne avec tous les\n"
 "\"@ARG\",\n"
-"il suffit d'un seul \"à tous\"=\"Oui\" pour ce patronyme.\n"
+"il suffit d'un seul \"Ã  tous\"=\"Oui\" pour ce patronyme.\n"
 "\n"
-"L'aide à la saisie d'un patronyme est initialement\n"
-"limitée aux patronymes déjà associés à des individus de\n"
-"même nom. Pour étendre l'aide à tous les patronymes\n"
-"cliquez sur l'entête de la colonne.\n"
+"L'aide Ã  la saisie d'un patronyme est initialement\n"
+"limitÃ©e aux patronymes dÃ©jÃ  associÃ©s Ã  des individus de\n"
+"mÃªme nom. Pour Ã©tendre l'aide Ã  tous les patronymes\n"
+"cliquez sur l'entÃªte de la colonne.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_associate_surnames_to_this_person
-msgid "Associer des patronymes à cet individu."
+msgid "Associer des patronymes Ã  cet individu."
 msgstr ""
 
 #: u_common_ancestro.rs_hint_auto_validation_disabled
 msgid ""
-"Validation automatique désactivée.\n"
+"Validation automatique dÃ©sactivÃ©e.\n"
 "Cliquer pour enregistrer sans confirmation.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_auto_validation_enabled
 msgid ""
-"Attention, validation automatique activée. Les\n"
-"modifications sont enregistrées sans confirmation.\n"
+"Attention, validation automatique activÃ©e. Les\n"
+"modifications sont enregistrÃ©es sans confirmation.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_click_twice_or_click_on_icon_to_see_details
 msgid ""
-"Cliquez sur l'événement ou \n"
-"sur son icône pour en voir les détails.\n"
+"Cliquez sur l'Ã©vÃ©nement ou \n"
+"sur son icÃ´ne pour en voir les dÃ©tails.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_copy_bottom_coord
-msgid "Ctrl+D copie champ par champ, Ctrl+G demande les coordonnées sur Google Maps."
+msgid "Ctrl+D copie champ par champ, Ctrl+G demande les coordonnÃ©es sur Google Maps."
 msgstr ""
 
 #: u_common_ancestro.rs_hint_copy_everything_ctrl_d_copy_field_by_field_and_next
@@ -3151,42 +3179,42 @@ msgid "Ctrl+D ou DblClick copie champ par champ et passe au suivant."
 msgstr ""
 
 #: u_common_ancestro.rs_hint_ctrl_and_enter_to_access_with_keyboard
-msgid "Ctrl+Entrée pour un accès au clavier."
+msgid "Ctrl+EntrÃ©e pour un accÃ¨s au clavier."
 msgstr ""
 
 #: u_common_ancestro.rs_hint_d1_m1_y1_indentify_same_cases_when_second_date_is_empty
 msgid ""
-"D1, M1 et Y1 identifient les mêmes cas lorsque la deuxième date de la\n"
-"période est absente.\n"
-"D, M, Y, D1, M1 et Y1 ne doivent figurer qu'une seule fois par période.\n"
+"D1, M1 et Y1 identifient les mÃªmes cas lorsque la deuxiÃ¨me date de la\n"
+"pÃ©riode est absente.\n"
+"D, M, Y, D1, M1 et Y1 ne doivent figurer qu'une seule fois par pÃ©riode.\n"
 "En cas d'absence de l'une d'elle, c'est la suivante dans l'ordre DMY qui\n"
-"identifie le mot clé qui sera utilisée.\n"
-"En cas d'absence totale de cette valeur, le premier mot clé est utilisé.\n"
+"identifie le mot clÃ© qui sera utilisÃ©e.\n"
+"En cas d'absence totale de cette valeur, le premier mot clÃ© est utilisÃ©.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_default_parameters_to_access_to_refering_base_are
 msgid ""
-"Par défaut les paramètres d'accès à la base de référence des lieux sont:\n"
+"Par dÃ©faut les paramÃ¨tres d'accÃ¨s Ã  la base de rÃ©fÃ©rence des lieux sont:\n"
 "Nom d'utilisateur: SYSDBA\n"
 "Mot de passe: masterkey\n"
-"Rôle: <vide>\n"
-"Ces paramètres ne doivent être modifiés que si vous utilisez la version serveur de Firebird\n"
-"avec des droits d'accès différents.\n"
+"RÃ´le: <vide>\n"
+"Ces paramÃ¨tres ne doivent Ãªtre modifiÃ©s que si vous utilisez la version serveur de Firebird\n"
+"avec des droits d'accÃ¨s diffÃ©rents.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_delete_the_doc_s_link
-msgid "Enlève le lien avec le document sélectionné"
+msgid "EnlÃ¨ve le lien avec le document sÃ©lectionnÃ©"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_delete_the_witness_s_link
-msgid "Enlève le lien avec le témoin sélectionné"
+msgid "EnlÃ¨ve le lien avec le tÃ©moin sÃ©lectionnÃ©"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_directory_select
 msgid ""
-"Pour sélectionner un répertoire,\n"
-"sélectionnez d'abord un fichier\n"
-"de ce répertoire par le bouton ...\n"
+"Pour sÃ©lectionner un rÃ©pertoire,\n"
+"sÃ©lectionnez d'abord un fichier\n"
+"de ce rÃ©pertoire par le bouton ...\n"
 "puis supprimez le nom du fichier\n"
 "dans ce champ.\n"
 msgstr ""
@@ -3198,129 +3226,129 @@ msgid ""
 msgstr ""
 
 #: u_common_ancestro.rs_hint_double_clic_to_select
-msgid "Double-cliquer pour sélectionner."
+msgid "Double-cliquer pour sÃ©lectionner."
 msgstr ""
 
 #: u_common_ancestro.rs_hint_duplicates_will_be_searched_in_persons_with_a_same_or_similar_surname
 msgid ""
-"Les doublons de l'individu en cours seront recherchés parmi\n"
-"les individus de même nom, ou ayant un patronyme associé\n"
-"identique à l'un des siens.\n"
+"Les doublons de l'individu en cours seront recherchÃ©s parmi\n"
+"les individus de mÃªme nom, ou ayant un patronyme associÃ©\n"
+"identique Ã  l'un des siens.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_d_m_y_must_be_only_once_per_period
 msgid ""
-"Les lettres D, M, et Y ne doivent figurer qu'une seule fois par période.\n"
+"Les lettres D, M, et Y ne doivent figurer qu'une seule fois par pÃ©riode.\n"
 "En cas d'absence de l'une d'elle, c'est la suivante dans l'ordre DMY qui\n"
-"identifie le mot clé qui sera utilisé.\n"
-"En cas d'absence totale de cette valeur, le premier mot clé sera utilisé.\n"
+"identifie le mot clÃ© qui sera utilisÃ©.\n"
+"En cas d'absence totale de cette valeur, le premier mot clÃ© sera utilisÃ©.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_events_folder
-msgid "Catégorie d'événements: "
+msgid "CatÃ©gorie d'Ã©vÃ©nements: "
 msgstr ""
 
 #: u_common_ancestro.rs_hint_every_changes_are_executed_in_form_with_key_maj
 msgid ""
-"Tous les changements d'individu demandés en appuyant\n"
-"simultanément sur la touche <maj> s'exécutent dans\n"
+"Tous les changements d'individu demandÃ©s en appuyant\n"
+"simultanÃ©ment sur la touche <maj> s'exÃ©cutent dans\n"
 "la fiche @ARG\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_every_recorded_medias_are_loaded_in_library
 msgid ""
-"Tous les médias enregistrés sont\n"
-"chargés dans la bibliothèque.\n"
+"Tous les mÃ©dias enregistrÃ©s sont\n"
+"chargÃ©s dans la bibliothÃ¨que.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_forced_writing_modify_is_quickly_saved_but_it_slows_software
 msgid ""
-"Lorsque l'écriture forcée est activée, les modifications des\n"
-"informations sont immédiatement enregistrées dans le fichier de\n"
-"la base sans attendre dans le cache de Windows. Il en résulte une\n"
-"plus grande sécurité en cas d'interruption inattendue du système.\n"
-"En contrepartie celà peut ralentir le logiciel, en particulier lors\n"
-"d'opérations demandant beaucoup d'écritures comme l'importation\n"
+"Lorsque l'Ã©criture forcÃ©e est activÃ©e, les modifications des\n"
+"informations sont immÃ©diatement enregistrÃ©es dans le fichier de\n"
+"la base sans attendre dans le cache de Windows. Il en rÃ©sulte une\n"
+"plus grande sÃ©curitÃ© en cas d'interruption inattendue du systÃ¨me.\n"
+"En contrepartie celÃ  peut ralentir le logiciel, en particulier lors\n"
+"d'opÃ©rations demandant beaucoup d'Ã©critures comme l'importation\n"
 "d'un dossier ou d'un fichier au format GEDCOM.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_for_ancestry_d_for_descent_a_c_every_persons
 msgid ""
-"MODE = A - permet de sélectionner les Ascendants de I_INDIVIDU,\n"
-"       D - permet de sélectionner les Descendants de I_INDIVIDU, \n"
-"       C -  permet de sélectionner l'ensemble de la Branche, I_INDIVIDU compris.\n"
+"MODE = A - permet de sÃ©lectionner les Ascendants de I_INDIVIDU,\n"
+"       D - permet de sÃ©lectionner les Descendants de I_INDIVIDU, \n"
+"       C -  permet de sÃ©lectionner l'ensemble de la Branche, I_INDIVIDU compris.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_full_path
 msgid ""
-"Chemin complet : seule l'adresse du média original\n"
+"Chemin complet : seule l'adresse du mÃ©dia original\n"
 "                 figurera dans le fichier gedcom.\n"
-"Pas de médias : les médias seront absents du fichier.\n"
-"Copie interne exportée : les médias internes à la base\n"
-"      seront copiés dans un répertoire de même nom que\n"
+"Pas de mÃ©dias : les mÃ©dias seront absents du fichier.\n"
+"Copie interne exportÃ©e : les mÃ©dias internes Ã  la base\n"
+"      seront copiÃ©s dans un rÃ©pertoire de mÃªme nom que\n"
 "      le fichier.\n"
-"Original exporté : les fichiers médias originaux seront\n"
-"      copiés dans un répertoire de même nom que le fichier.\n"
+"Original exportÃ© : les fichiers mÃ©dias originaux seront\n"
+"      copiÃ©s dans un rÃ©pertoire de mÃªme nom que le fichier.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_generic_action_maj_with_select_open_a_consult_form
 msgid ""
-"Fonction générale:\n"
-"Appuyer sur la touche Maj en sélectionnant\n"
+"Fonction gÃ©nÃ©rale:\n"
+"Appuyer sur la touche Maj en sÃ©lectionnant\n"
 "ouvre une fiche en mode consultation.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_history_on_year_of_birth_of
-msgid "Histoire de l'année de naissance de @ARG"
+msgid "Histoire de l'annÃ©e de naissance de @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_if_server_version_is_used_maj_will_open_connexion_dialog
 msgid ""
-"Si la version serveur de Firebird est utilisée, appuyer\n"
-"sur la touche MAJ en ouvrant la base de données ouvre la\n"
-"boîte de dialogue de connexion permettant de spécifier un\n"
-"identifiant et un mot de passe pour accéder à la base.\n"
+"Si la version serveur de Firebird est utilisÃ©e, appuyer\n"
+"sur la touche MAJ en ouvrant la base de donnÃ©es ouvre la\n"
+"boÃ®te de dialogue de connexion permettant de spÃ©cifier un\n"
+"identifiant et un mot de passe pour accÃ©der Ã  la base.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_init_y_empty_table_n_do_delete_nothing_p_delete_records_of_same_group
 msgid ""
-"INITIALISATION = Y - vide complètement la table TA_GROUPES avant de commencer, \n"
+"INITIALISATION = Y - vide complÃ¨tement la table TA_GROUPES avant de commencer, \n"
 "                 N - n'en supprime aucun enregistrement,\n"
-"                 P - en supprime les enregistrement du même groupe.(P comme Partiel)\n"
+"                 P - en supprime les enregistrement du mÃªme groupe.(P comme Partiel)\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_library_loading_can_be_strongly_accelerated_removing_the_display_thumbnail_images
 msgid ""
-"Le chargement de la bibliothèque peut être fortement\n"
-"accéléré en supprimant l'affichage des images réduites.\n"
+"Le chargement de la bibliothÃ¨que peut Ãªtre fortement\n"
+"accÃ©lÃ©rÃ© en supprimant l'affichage des images rÃ©duites.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_look_at_ancestry
-msgid "Voir parenté"
+msgid "Voir parentÃ©"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_modifying_act_s_type_with_drag_drop
-msgid "On peut modifier le type de l'acte par glisser/déposer à l'aide de la souris."
+msgid "On peut modifier le type de l'acte par glisser/dÃ©poser Ã  l'aide de la souris."
 msgstr ""
 
 #: u_common_ancestro.rs_hint_modify_a_surname_infos_base_dir_language_of_data_notes_file
 msgid ""
 "Modifications du nom, de la description,\n"
-"du répertoire de base des images et fichiers attachés\n"
-"de la langue des données et du fichier des notes de ce dossier.\n"
+"du rÃ©pertoire de base des images et fichiers attachÃ©s\n"
+"de la langue des donnÃ©es et du fichier des notes de ce dossier.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_move_graph
 msgid ""
-"Déplacement du graphe.\n"
+"DÃ©placement du graphe.\n"
 "Avec touche Alt, augmente la taille.\n"
 "Avec touche Ctrl, diminue la taille.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_notes
 msgid ""
-"Des liens hypertextes peuvent être insérés dans tous les champs Notes et Sources.\n"
-"Mettez l'adresse complète du document dans une ligne vide ou encadrez-la par les\n"
+"Des liens hypertextes peuvent Ãªtre insÃ©rÃ©s dans tous les champs Notes et Sources.\n"
+"Mettez l'adresse complÃ¨te du document dans une ligne vide ou encadrez-la par les\n"
 "symboles < et > sans ajouter d'espaces.\n"
 "Double-cliquez sur cette adresse pour ouvrir le document.\n"
 "\n"
@@ -3329,46 +3357,46 @@ msgstr ""
 
 #: u_common_ancestro.rs_hint_only_50_first_recorded_medias_are_loaded_in_library
 msgid ""
-"Seuls les 50 derniers médias enregistrés\n"
-"sont chargés dans la bibliothèque.\n"
+"Seuls les 50 derniers mÃ©dias enregistrÃ©s\n"
+"sont chargÃ©s dans la bibliothÃ¨que.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_opens_favorite_sites_window_ctrl_f_from_city_or_division_fields
 msgid ""
-"Ouvre la fenêtre de vos lieux favoris.\n"
+"Ouvre la fenÃªtre de vos lieux favoris.\n"
 "Raccourci:\n"
 "Ctrl+F depuis les champs Ville ou Subdivision\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_person_s_events_access
-msgid "Accès à la Naissance, au Décès et à la Profession de l'individu."
+msgid "AccÃ¨s Ã  la Naissance, au DÃ©cÃ¨s et Ã  la Profession de l'individu."
 msgstr ""
 
 #: u_common_ancestro.rs_hint_person_s_notes_and_sources_access
-msgid "Accès aux champs Notes et Sources de la fiche de l'individu."
+msgid "AccÃ¨s aux champs Notes et Sources de la fiche de l'individu."
 msgstr ""
 
 #: u_common_ancestro.rs_hint_plac_stick
 msgid ""
-"Code exporté sous l'étiquette PLAC\n"
+"Code exportÃ© sous l'Ã©tiquette PLAC\n"
 "Le code postal est plus habituel.\n"
-"Ancestromania exporte le code ignoré dans\n"
+"Ancestromania exporte le code ignorÃ© dans\n"
 "les notes de PLAC, et sait l'importer\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_press_first_key_of_name_to_be_helped
-msgid "Tapez la première lettre du prénom pour obtenir de l'assistance."
+msgid "Tapez la premiÃ¨re lettre du prÃ©nom pour obtenir de l'assistance."
 msgstr ""
 
 #: u_common_ancestro.rs_hint_press_first_key_of_surname_to_be_helped
-msgid "Tapez la première lettre du nom pour obtenir de l'assistance."
+msgid "Tapez la premiÃ¨re lettre du nom pour obtenir de l'assistance."
 msgstr ""
 
 #: u_common_ancestro.rs_hint_press_for_every_cities_bottom_arrow_selects_cities
 msgid ""
 "Tapez * pour toutes les villes, ou un mot pour trouver\n"
 "les villes dont le nom commence ou contient ce mot.\n"
-"La touche \"flêche en bas\" sélectionne les villes.\n"
+"La touche \"flÃªche en bas\" sÃ©lectionne les villes.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_print_upside_acts_list
@@ -3391,61 +3419,61 @@ msgstr ""
 
 #: u_common_ancestro.rs_hint_select_a_person_with_stick
 msgid ""
-"Cliquez sur l'étiquette pour sélectionner l'individu dans la liste.\n"
+"Cliquez sur l'Ã©tiquette pour sÃ©lectionner l'individu dans la liste.\n"
 "Double-cliquez pour ouvrir sa fiche.\n"
-"Maintenez le bouton de la souris enfoncé pour déplacer l'étiquette.\n"
+"Maintenez le bouton de la souris enfoncÃ© pour dÃ©placer l'Ã©tiquette.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_story_of_year
-msgid "Histoire de l'année : "
+msgid "Histoire de l'annÃ©e : "
 msgstr ""
 
 #: u_common_ancestro.rs_hint_surnames_associated_to_this_person
-msgid "Patronymes associés à cet individu."
+msgid "Patronymes associÃ©s Ã  cet individu."
 msgstr ""
 
 #: u_common_ancestro.rs_hint_these_keywords_can_identify_the_event_period
 msgid ""
-"Ces mots clés permettent d'identifier la période de l'événement.\n"
-"La colonne Utilisation identifie les formes à afficher selon les cas:\n"
-" D si le jour est présent,\n"
-" M si le mois est présent sans le jour,\n"
-" Y si seule l'année est présente.\n"
+"Ces mots clÃ©s permettent d'identifier la pÃ©riode de l'Ã©vÃ©nement.\n"
+"La colonne Utilisation identifie les formes Ã  afficher selon les cas:\n"
+" D si le jour est prÃ©sent,\n"
+" M si le mois est prÃ©sent sans le jour,\n"
+" Y si seule l'annÃ©e est prÃ©sente.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_the_first_keyword_on_the_first_line_must_be_name_of_month
 msgid ""
-"Le mot clé en première ligne doit être le nom du mois comme\n"
-"il doit s'afficher dans une date au format littéraire.\n"
-"Les mots clés des lignes suivantes sont des formes abrégées\n"
-"ou erronées permettant d'identifier le mois.\n"
-"Tous les mots clés de mois doivent donc être différents.\n"
+"Le mot clÃ© en premiÃ¨re ligne doit Ãªtre le nom du mois comme\n"
+"il doit s'afficher dans une date au format littÃ©raire.\n"
+"Les mots clÃ©s des lignes suivantes sont des formes abrÃ©gÃ©es\n"
+"ou erronÃ©es permettant d'identifier le mois.\n"
+"Tous les mots clÃ©s de mois doivent donc Ãªtre diffÃ©rents.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_the_first_keyword_on_the_first_line_must_be_used_separator
 msgid ""
-"Le mot clé en première ligne doit être le séparateur utilisé\n"
-"normalement dans les dates au format numérique.\n"
-"Les mots clés des lignes suivantes sont des formes autorisées\n"
-"permettant d'identifier un séparateur des éléments d'une date.\n"
+"Le mot clÃ© en premiÃ¨re ligne doit Ãªtre le sÃ©parateur utilisÃ©\n"
+"normalement dans les dates au format numÃ©rique.\n"
+"Les mots clÃ©s des lignes suivantes sont des formes autorisÃ©es\n"
+"permettant d'identifier un sÃ©parateur des Ã©lÃ©ments d'une date.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_this_keyword_can_identify_the_alpha_or_numeric_format_of_dates
 msgid ""
-"Ce mot clé permet d'identifier le format littéraire ou numérique des\n"
+"Ce mot clÃ© permet d'identifier le format littÃ©raire ou numÃ©rique des\n"
 "dates lors de leur affichage.\n"
-"Valeurs autorisées:\n"
-" LIT pour un affichage au format littéraire,\n"
-" NUM pour un affichage au format numérique.\n"
+"Valeurs autorisÃ©es:\n"
+" LIT pour un affichage au format littÃ©raire,\n"
+" NUM pour un affichage au format numÃ©rique.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_this_keyword_can_identify_the_events_sorting_of_date
 msgid ""
-"Ce mot clé permet d'identifier l'ordre des éléments de la date\n"
-"(D=jour, M=mois, Y=année) lors de la saisie ou l'affichage de cette date.\n"
-"La première ligne identifie cet ordre dans les dates au format littéraire (LIT).\n"
-"La seconde ligne identifie cet ordre dans les dates au format numérique (NUM).\n"
-"Seuls les ordres DMY, MDY et YMD sont autorisés.\n"
+"Ce mot clÃ© permet d'identifier l'ordre des Ã©lÃ©ments de la date\n"
+"(D=jour, M=mois, Y=annÃ©e) lors de la saisie ou l'affichage de cette date.\n"
+"La premiÃ¨re ligne identifie cet ordre dans les dates au format littÃ©raire (LIT).\n"
+"La seconde ligne identifie cet ordre dans les dates au format numÃ©rique (NUM).\n"
+"Seuls les ordres DMY, MDY et YMD sont autorisÃ©s.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_this_person_has_got_child_ren
@@ -3454,18 +3482,18 @@ msgstr ""
 
 #: u_common_ancestro.rs_hint_unless_identity_of_names_duplicates_will_be_searched
 msgid ""
-"Au lieu de l'identité de l'ensemble des prénoms,\n"
-"les doublons seront recherchés parmi des individus\n"
-"dont au moins un prénom est commun.\n"
+"Au lieu de l'identitÃ© de l'ensemble des prÃ©noms,\n"
+"les doublons seront recherchÃ©s parmi des individus\n"
+"dont au moins un prÃ©nom est commun.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_usefull_sites_for_satellites_views
 msgid ""
-"Sites utilisables pour accéder à des vues par satellites.\n"
+"Sites utilisables pour accÃ©der Ã  des vues par satellites.\n"
 "\n"
-"La localisation des vues se fait à l'aide des coordonnées\n"
-"enregistrées pour les lieux.\n"
-"Seuls GoogleMap et Mapper.acme autorisent la localisation à l'aide de\n"
+"La localisation des vues se fait Ã  l'aide des coordonnÃ©es\n"
+"enregistrÃ©es pour les lieux.\n"
+"Seuls GoogleMap et Mapper.acme autorisent la localisation Ã  l'aide de\n"
 "l'adresse du lieu.\n"
 msgstr ""
 
@@ -3476,24 +3504,24 @@ msgstr ""
 #: u_common_ancestro.rs_hint_use_right_button_to_modify_a_site_or_see_an_event
 msgid ""
 "Utiliser le bouton droit de la souris pour modifier un lieu\n"
-"ou voir qui a eu un événement dans ce lieu.\n"
+"ou voir qui a eu un Ã©vÃ©nement dans ce lieu.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_witnesses_y_select_also_witness_n_not
 msgid ""
-"TEMOINS= Y - sélectionne également les témoins (option très dangereuse),\n"
-"         N - ne les sélectionne pas.\n"
+"TEMOINS= Y - sÃ©lectionne Ã©galement les tÃ©moins (option trÃ¨s dangereuse),\n"
+"         N - ne les sÃ©lectionne pas.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_you_can_add_a_joint_by_drag_drop
 msgid ""
-"On peut ajouter un conjoint par glisser/déposer depuis le Répertoire\n"
+"On peut ajouter un conjoint par glisser/dÃ©poser depuis le RÃ©pertoire\n"
 "ou les fiches Recherche et Environnement familial\n"
 msgstr ""
 
 #: u_common_ancestro.rs_hint_you_can_add_a_wittness_by_drag_drop
 msgid ""
-"On peut ajouter un témoin par glisser/déposer depuis le Répertoire\n"
+"On peut ajouter un tÃ©moin par glisser/dÃ©poser depuis le RÃ©pertoire\n"
 "ou les fiches Recherche et Environnement familial\n"
 msgstr ""
 
@@ -3505,11 +3533,11 @@ msgstr ""
 msgid ""
 "STRICTE = Y ou N (oui ou non) \n"
 "STRICTE = Y - s'utilise avec MODE A ou D pour exclure de la liste l'individu et son conjoint ainsi que, les ascendants et leurs conjoints si MODE = D, ou les descendants et leurs conjoints si MODE= A .\n"
-"STRICTE = N - n'empêche pas la sélection, mais les individus qui auraient été éliminés de la sélection avec STRICTE = Y sont listés en fin de procédure.\n"
+"STRICTE = N - n'empÃªche pas la sÃ©lection, mais les individus qui auraient Ã©tÃ© Ã©liminÃ©s de la sÃ©lection avec STRICTE = Y sont listÃ©s en fin de procÃ©dure.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_history_file_has_got_this_name
-msgid "Le fichier Histoire créé porte le nom:"
+msgid "Le fichier Histoire crÃ©Ã© porte le nom:"
 msgstr ""
 
 #: u_common_ancestro.rs_homes_of
@@ -3517,68 +3545,68 @@ msgid "Liste des domiciles de @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_if_no_you_should_cancel_update
-msgid "Si non, il est préférable d'annuler afin d'exécuter cette sauvegarde."
+msgid "Si non, il est prÃ©fÃ©rable d'annuler afin d'exÃ©cuter cette sauvegarde."
 msgstr ""
 
 #: u_common_ancestro.rs_if_you_use_server_version_you_must_have_got_the_rights_from_server
 msgid ""
-"Si vous utilisez la version serveur de Firebird, vous devez posséder les droits\n"
-"d'administration de la base de données pour exécuter cette opération.\n"
+"Si vous utilisez la version serveur de Firebird, vous devez possÃ©der les droits\n"
+"d'administration de la base de donnÃ©es pour exÃ©cuter cette opÃ©ration.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_image_recorded_on_date
-msgid "Image enregistrée le : @ARG"
+msgid "Image enregistrÃ©e le : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_importing_a_big_file_can_be_long
 msgid ""
-"L'importation d'un gros ficher, peut être longue,\n"
+"L'importation d'un gros ficher, peut Ãªtre longue,\n"
 "de l'ordre de 30 minutes sur un PC moyen pour un fichier\n"
 "gedcom de 75 000 individus et 40 000 familles.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_import_document
-msgid "Document importé le : @ARG à @ARG"
+msgid "Document importÃ© le : @ARG Ã  @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_import_finished
-msgid "Importation terminée"
+msgid "Importation terminÃ©e"
 msgstr ""
 
 #: u_common_ancestro.rs_import_image
-msgid "Image importée le : @ARG à @ARG"
+msgid "Image importÃ©e le : @ARG Ã  @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_import_sound
-msgid "Son importé le : @ARG à @ARG"
+msgid "Son importÃ© le : @ARG Ã  @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_import_video
-msgid "Vidéo importée le : @ARG à @ARG"
+msgid "VidÃ©o importÃ©e le : @ARG Ã  @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_inbreeding_calculation_on_the_entire_folder
-msgid "Calcul de la consanguinité sur tout le dossier."
+msgid "Calcul de la consanguinitÃ© sur tout le dossier."
 msgstr ""
 
 #: u_common_ancestro.rs_inbreeding_calculation_on_the_sosa
-msgid "Calcul de la consanguinité sur les SOSA."
+msgid "Calcul de la consanguinitÃ© sur les SOSA."
 msgstr ""
 
 #: u_common_ancestro.rs_individual_event
-msgid "Événement individuel"
+msgid "ÃvÃ©nement individuel"
 msgstr ""
 
 #: u_common_ancestro.rs_individual_events
-msgid "Événements individuels"
+msgid "ÃvÃ©nements individuels"
 msgstr ""
 
 #: u_common_ancestro.rs_individual_media
-msgid "Média individuel"
+msgid "MÃ©dia individuel"
 msgstr ""
 
 #: u_common_ancestro.rs_individual_medias
-msgid "Médias individuels"
+msgid "MÃ©dias individuels"
 msgstr ""
 
 #: u_common_ancestro.rs_information
@@ -3595,9 +3623,9 @@ msgstr ""
 
 #: u_common_ancestro.rs_info_ancestry_calculate
 msgid ""
-"Cette option permet d'afficher la parenté entre conjoints quand elle existe,\n"
-"et autorise la mise à jour automatique de la parenté au Sosa n°1 si l'option\n"
-"\"Afficher les liens au Sosa n°1\" est activée (onglet Visuels). Mais elle\n"
+"Cette option permet d'afficher la parentÃ© entre conjoints quand elle existe,\n"
+"et autorise la mise Ã  jour automatique de la parentÃ© au Sosa nÂ°1 si l'option\n"
+"\"Afficher les liens au Sosa nÂ°1\" est activÃ©e (onglet Visuels). Mais elle\n"
 "peut augmenter le temps d'affichage au changement d'individu.\n"
 msgstr ""
 
@@ -3606,7 +3634,7 @@ msgctxt "u_common_ancestro.rs_info_a_new_realease_can_be_downloaded_go_into_help
 msgid ""
 "Une nouvelle version existe sur Internet : @ARG\n"
 "\n"
-"Allez dans le menu Aide, et vérifiez les mises à jour en ligne\n"
+"Allez dans le menu Aide, et vÃ©rifiez les mises Ã  jour en ligne\n"
 msgstr ""
 
 #: u_common_ancestro.rs_info_base_is_now_this
@@ -3617,10 +3645,10 @@ msgstr ""
 
 #: u_common_ancestro.rs_info_base_must_use_utf8_characters
 msgid ""
-"Vos données utilisaient les caractères ANSI.\n"
-" La base doit être migrée à partir du projet de migration vers les caractères internationaux. Ce projet est ici :\n"
+"Vos donnÃ©es utilisaient les caractÃ¨res ANSI.\n"
+" La base doit Ãªtre migrÃ©e Ã  partir du projet de migration vers les caractÃ¨res internationaux. Ce projet est ici :\n"
 "http://ancestromania.net\n"
-"L'application va maintenant considérer que votre base est en caractères internationaux, au risque de mal fonctionner.\n"
+"L'application va maintenant considÃ©rer que votre base est en caractÃ¨res internationaux, au risque de mal fonctionner.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_info_build
@@ -3628,7 +3656,7 @@ msgid "Construction: @ARG."
 msgstr ""
 
 #: u_common_ancestro.rs_info_connected_database
-msgid "Base connectée: @ARG."
+msgid "Base connectÃ©e: @ARG."
 msgstr ""
 
 #: u_common_ancestro.rs_info_database_version
@@ -3636,59 +3664,59 @@ msgid "Version de la base: @ARG."
 msgstr ""
 
 #: u_common_ancestro.rs_info_export_has_fallen_before_updating_database
-msgid "L'exportation a échoué lors de la mise à jour de la base."
+msgid "L'exportation a Ã©chouÃ© lors de la mise Ã  jour de la base."
 msgstr ""
 
 #: u_common_ancestro.rs_info_export_has_fallen_ged_can_not_be_written
-msgid "L'exportation a échoué, le fichier .ged ne peut être écrit."
+msgid "L'exportation a Ã©chouÃ©, le fichier .ged ne peut Ãªtre Ã©crit."
 msgstr ""
 
 #: u_common_ancestro.rs_info_export_has_fallen_medias_could_not_be_exported
-msgid "L'exportation a échoué, les fichiers médias n'ont pu être exportés."
+msgid "L'exportation a Ã©chouÃ©, les fichiers mÃ©dias n'ont pu Ãªtre exportÃ©s."
 msgstr ""
 
 #: u_common_ancestro.rs_info_export_has_fallen_while_families_export
-msgid "L'exportation a échoué lors de l'exportation des familles."
+msgid "L'exportation a Ã©chouÃ© lors de l'exportation des familles."
 msgstr ""
 
 #: u_common_ancestro.rs_info_export_has_fallen_while_persons_export
-msgid "L'exportation a échoué lors de l'exportation des individus."
+msgid "L'exportation a Ã©chouÃ© lors de l'exportation des individus."
 msgstr ""
 
 #: u_common_ancestro.rs_info_export_has_fallen_while_selecting_objects
-msgid "L'exportation a échoué lors de la sélection des objets à exporter."
+msgid "L'exportation a Ã©chouÃ© lors de la sÃ©lection des objets Ã  exporter."
 msgstr ""
 
 #: u_common_ancestro.rs_info_export_has_fallen_while_sources_export
-msgid "L'exportation a échoué lors de l'exportation des sources."
+msgid "L'exportation a Ã©chouÃ© lors de l'exportation des sources."
 msgstr ""
 
 #: u_common_ancestro.rs_info_export_is_a_success
-msgid "L'exportation s'est bien passée."
+msgid "L'exportation s'est bien passÃ©e."
 msgstr ""
 
 #: u_common_ancestro.rs_info_export_is_a_success_in_hour_minutes_seconds
-msgid "L'exportation a été effectuée avec succès, en @ARGh, @ARG min, @ARG sec."
+msgid "L'exportation a Ã©tÃ© effectuÃ©e avec succÃ¨s, en @ARGh, @ARGÂ min, @ARGÂ sec."
 msgstr ""
 
 #: u_common_ancestro.rs_info_export_of_pictures_and_documents_will_begin_in_directory
 msgid ""
-"L'exportation des images et des documents va se faire dans le répertoire\n"
+"L'exportation des images et des documents va se faire dans le rÃ©pertoire\n"
 "@ARG\n"
-"Les fichiers portant les mêmes noms seront écrasés.\n"
+"Les fichiers portant les mÃªmes noms seront Ã©crasÃ©s.\n"
 "\n"
-"Voulez-vous exporter les images originales à la place de la version compressée dans la base?\n"
+"Voulez-vous exporter les images originales Ã  la place de la version compressÃ©e dans la base?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_info_export_of_pictures_is_a_success_they_are_in_this_directory
 msgid ""
-"L'exportation de @ARG image(s) s'est bien passée.\n"
+"L'exportation de @ARG image(s) s'est bien passÃ©e.\n"
 "\n"
-"Celles-ci se trouvent dans le répertoire : \n"
+"Celles-ci se trouvent dans le rÃ©pertoire : \n"
 msgstr ""
 
 #: u_common_ancestro.rs_info_export_stopped_by_user
-msgid "Exportation arrêtée par l'utilisateur."
+msgid "Exportation arrÃªtÃ©e par l'utilisateur."
 msgstr ""
 
 #: u_common_ancestro.rs_info_files_library_versions
@@ -3698,8 +3726,8 @@ msgstr ""
 #: u_common_ancestro.rs_info_file_is_not_windows_formated_will_create_a_copy_named
 msgid ""
 "Ce fichier n'est pas au format Windows\n"
-"Ancestromania en crée une copie au même emplacement\n"
-"appelée \n"
+"Ancestromania en crÃ©e une copie au mÃªme emplacement\n"
+"appelÃ©e \n"
 msgstr ""
 
 #: u_common_ancestro.rs_info_file_size
@@ -3711,74 +3739,74 @@ msgid "Structure du fichier version: @ARG octets."
 msgstr ""
 
 #: u_common_ancestro.rs_info_firebird_embedded_is_installed
-msgid "Firebird embedded est installé."
+msgid "Firebird embedded est installÃ©."
 msgstr ""
 
 #: u_common_ancestro.rs_info_forced_writing_off
-msgid "Écriture forcée désactivée."
+msgid "Ãcriture forcÃ©e dÃ©sactivÃ©e."
 msgstr ""
 
 #: u_common_ancestro.rs_info_forced_writing_on
-msgid "Écriture forcée activée."
+msgid "Ãcriture forcÃ©e activÃ©e."
 msgstr ""
 
 #: u_common_ancestro.rs_info_geneanet_export_is_a_success_import_it_on_geneanet_org
 msgid ""
-"L'exportation au format \"Geneanet\" est réalisée.\n"
+"L'exportation au format \"Geneanet\" est rÃ©alisÃ©e.\n"
 "\n"
-"Il vous reste maintenant à télécharger le fichier sur le site Internet \"www.geneanet.org\".\n"
+"Il vous reste maintenant Ã  tÃ©lÃ©charger le fichier sur le site Internet \"www.geneanet.org\".\n"
 msgstr ""
 
 #: u_common_ancestro.rs_info_import_is_a_success_in_hour_minutes_seconds
-msgid "L'importation a été effectuée avec succès, en @ARGh, @ARG min, @ARG sec."
+msgid "L'importation a Ã©tÃ© effectuÃ©e avec succÃ¨s, en @ARGh, @ARGÂ min, @ARGÂ sec."
 msgstr ""
 
 #: u_common_ancestro.rs_info_it_is_necessary_to_optimise_your_database
 msgid ""
-"Il est fortement conseillé de faire\n"
-"une optimisation de votre base de données.\n"
+"Il est fortement conseillÃ© de faire\n"
+"une optimisation de votre base de donnÃ©es.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_info_medias_library
 msgid ""
-"Avant de pouvoir attacher un média, image ou autre document à un individu, une source ou un événement, il doit être enregistré dans cette Bibliothèque multimédia par l'un des cinq boutons situés en haut dans la colonne de gauche de la fenêtre.\n"
-"Pour vous faciliter la vie lorsque vous devrez un jour ou l'autre transférer ces documents sur un autre ordinateur, il est fortement conseillé de stocker tous les documents liés à votre dossier à l'intérieur d'une structure dont le point d'entrée est le \"répertoire de base des images et fichiers attachés au dossier\" défini dans les propriétés particulières à chaque dossier, menu \"Généalogies / Dossiers de la base\", bouton \"Modifier/détails\".\n"
+"Avant de pouvoir attacher un mÃ©dia, image ou autre document Ã  un individu, une source ou un Ã©vÃ©nement, il doit Ãªtre enregistrÃ© dans cette BibliothÃ¨que multimÃ©dia par l'un des cinq boutons situÃ©s en haut dans la colonne de gauche de la fenÃªtre.\n"
+"Pour vous faciliter la vie lorsque vous devrez un jour ou l'autre transfÃ©rer ces documents sur un autre ordinateur, il est fortement conseillÃ© de stocker tous les documents liÃ©s Ã  votre dossier Ã  l'intÃ©rieur d'une structure dont le point d'entrÃ©e est le \"rÃ©pertoire de base des images et fichiers attachÃ©s au dossier\" dÃ©fini dans les propriÃ©tÃ©s particuliÃ¨res Ã  chaque dossier, menu \"GÃ©nÃ©alogies / Dossiers de la base\", bouton \"Modifier/dÃ©tails\".\n"
 "\n"
-"Au même endroit vous devez définir également la façon dont Ancestromania conservera les images que vous allez charger dans cette bibliothèque.\n"
-"Si la case \"Intégrer une copie des images dans la base\" n'est pas cochée, seules l'adresse et une copie très réduite (format \"identité\") de votre image seront stockées dans la base lorsque vous la chargerez dans cette bibliothèque. Vous aurez alors l'avantage d'une base de données de taille plus réduite donc plus rapide, mais avec la contrainte de devoir garder les fichiers originaux à l'adresse depuis laquelle ils ont été chargés pour obtenir la meilleure qualité d'affichage dans les fiches et les états.\n"
-"Si la case \"Intégrer une copie des images dans la base\" est cochée, une copie, réduite à 1024 pixels dans sa plus grande dimension si nécessaire, est ajoutée dans la base. Celà fait grossir plus rapidement votre base et peut diminuer la qualité de l'affichage, mais il sera plus aisé de transporter votre généalogie en assurant une qualité d'affichage généralement suffisante.\n"
-"Une option du menu contextuel permet de changer de mode de chargement et met à jour votre base en rechargeant la totalité des images selon le nouveau mode si les fichiers originaux sont trouvés aux adresses enregistrées.\n"
-"Le bouton \"Remplacer chemin\" donne l'accès à une fonction permettant de mettre à jour les adresses des fichiers originaux, suite à leur déplacement.\n"
+"Au mÃªme endroit vous devez dÃ©finir Ã©galement la faÃ§on dont Ancestromania conservera les images que vous allez charger dans cette bibliothÃ¨que.\n"
+"Si la case \"IntÃ©grer une copie des images dans la base\" n'est pas cochÃ©e, seules l'adresse et une copie trÃ¨s rÃ©duite (format \"identitÃ©\") de votre image seront stockÃ©es dans la base lorsque vous la chargerez dans cette bibliothÃ¨que. Vous aurez alors l'avantage d'une base de donnÃ©es de taille plus rÃ©duite donc plus rapide, mais avec la contrainte de devoir garder les fichiers originaux Ã  l'adresse depuis laquelle ils ont Ã©tÃ© chargÃ©s pour obtenir la meilleure qualitÃ© d'affichage dans les fiches et les Ã©tats.\n"
+"Si la case \"IntÃ©grer une copie des images dans la base\" est cochÃ©e, une copie, rÃ©duite Ã  1024 pixels dans sa plus grande dimension si nÃ©cessaire, est ajoutÃ©e dans la base. CelÃ  fait grossir plus rapidement votre base et peut diminuer la qualitÃ© de l'affichage, mais il sera plus aisÃ© de transporter votre gÃ©nÃ©alogie en assurant une qualitÃ© d'affichage gÃ©nÃ©ralement suffisante.\n"
+"Une option du menu contextuel permet de changer de mode de chargement et met Ã  jour votre base en rechargeant la totalitÃ© des images selon le nouveau mode si les fichiers originaux sont trouvÃ©s aux adresses enregistrÃ©es.\n"
+"Le bouton \"Remplacer chemin\" donne l'accÃ¨s Ã  une fonction permettant de mettre Ã  jour les adresses des fichiers originaux, suite Ã  leur dÃ©placement.\n"
 "\n"
-"La durée du chargement de cette bibliothèque peut devenir relativement longue si elle contient beaucoup de médias. Pour la réduire lorsqu'elle devient trop importante 3 solutions vous sont proposées: la première consiste à ne pas vider la liste à chaque fermeture de la bibliothèque, la deuxième consiste à ne charger que les 50 derniers médias enregistrés et la troisième supprime l'affichage de la colonne des images réduites.\n"
-"La première solution est activable depuis le sous-menu du bouton \"Fermer\", la deuxième par la case à cocher \"Tout charger\" et la troisième par la case à cocher \"Sans mini-images\".\n"
-"Chaque solution a ses avantages et ses inconvénients.\n"
-"La première permet de faire en permanence toutes les recherches possibles avec les outils de tri et de filtrage intégrés, mais peut demander un temps de chargement important et les descriptions modifiées depuis les événements ou l'onglet \"Médias\" de la fiche principale n'y sont pas mises à jour. Les ajouts ou modifications effectués depuis une autre session d'Ancestromania n'y sont pas visibles non plus. Cependant une option du menu déroulant principal permet de rafraîchir la liste pour tenir compte des modifications faites hors de la bibliothèque.\n"
-"La deuxième solution permet un chargement rapide mais limite la portée des tris et filtres aux 50 derniers médias chargés.\n"
+"La durÃ©e du chargement de cette bibliothÃ¨que peut devenir relativement longue si elle contient beaucoup de mÃ©dias. Pour la rÃ©duire lorsqu'elle devient trop importante 3 solutions vous sont proposÃ©es: la premiÃ¨re consiste Ã  ne pas vider la liste Ã  chaque fermeture de la bibliothÃ¨que, la deuxiÃ¨me consiste Ã  ne charger que les 50 derniers mÃ©dias enregistrÃ©s et la troisiÃ¨me supprime l'affichage de la colonne des images rÃ©duites.\n"
+"La premiÃ¨re solution est activable depuis le sous-menu du bouton \"Fermer\", la deuxiÃ¨me par la case Ã  cocher \"Tout charger\" et la troisiÃ¨me par la case Ã  cocher \"Sans mini-images\".\n"
+"Chaque solution a ses avantages et ses inconvÃ©nients.\n"
+"La premiÃ¨re permet de faire en permanence toutes les recherches possibles avec les outils de tri et de filtrage intÃ©grÃ©s, mais peut demander un temps de chargement important et les descriptions modifiÃ©es depuis les Ã©vÃ©nements ou l'onglet \"MÃ©dias\" de la fiche principale n'y sont pas mises Ã  jour. Les ajouts ou modifications effectuÃ©s depuis une autre session d'Ancestromania n'y sont pas visibles non plus. Cependant une option du menu dÃ©roulant principal permet de rafraÃ®chir la liste pour tenir compte des modifications faites hors de la bibliothÃ¨que.\n"
+"La deuxiÃ¨me solution permet un chargement rapide mais limite la portÃ©e des tris et filtres aux 50 derniers mÃ©dias chargÃ©s.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_info_nobody_to_export
-msgid "Il n'y a personne à exporter !"
+msgid "Il n'y a personne Ã  exporter !"
 msgstr ""
 
 #: u_common_ancestro.rs_info_nothing_to_export
-msgid "Il n'y a rien à exporter !"
+msgid "Il n'y a rien Ã  exporter !"
 msgstr ""
 
 #: u_common_ancestro.rs_info_not_present_at_install
-msgid "@ARG manque à l'installation"
+msgid "@ARG manque Ã  l'installation"
 msgstr ""
 
 #: u_common_ancestro.rs_info_no_picture_to_export
-msgid "Il n'y avait aucune image à exporter."
+msgid "Il n'y avait aucune image Ã  exporter."
 msgstr ""
 
 #: u_common_ancestro.rs_info_no_record_to_export
-msgid "Il n'y a aucun enregistrement à exporter !"
+msgid "Il n'y a aucun enregistrement Ã  exporter !"
 msgstr ""
 
 #: u_common_ancestro.rs_info_optimising_is_recomended
-msgid "Optimisation conseillée."
+msgid "Optimisation conseillÃ©e."
 msgstr ""
 
 #: u_common_ancestro.rs_info_optimising_is_unusefull
@@ -3787,28 +3815,28 @@ msgstr ""
 
 #: u_common_ancestro.rs_info_os
 msgid ""
-"Système d'exploitation:\n"
+"SystÃ¨me d'exploitation:\n"
 "@ARG\n"
 msgstr ""
 
 #: u_common_ancestro.rs_info_scan_cancelled
-msgid "Acquisition annulée."
+msgid "Acquisition annulÃ©e."
 msgstr ""
 
 #: u_common_ancestro.rs_info_scan_cancelled_from_source
-msgid "Acquisition annulée depuis la source Twain."
+msgid "Acquisition annulÃ©e depuis la source Twain."
 msgstr ""
 
 #: u_common_ancestro.rs_info_sosa_no_1
-msgid "Sosa n°1: [@ARG] "
+msgid "Sosa nÂ°1: [@ARG] "
 msgstr ""
 
 #: u_common_ancestro.rs_info_turn_it_off_if_software_slows_down
-msgid "Désactivez-là en cas de ralentissement important du logiciel."
+msgid "DÃ©sactivez-lÃ  en cas de ralentissement important du logiciel."
 msgstr ""
 
 #: u_common_ancestro.rs_info_used_memory
-msgid "Mémoire utilisée: @ARG."
+msgid "MÃ©moire utilisÃ©e: @ARG."
 msgstr ""
 
 #: u_common_ancestro.rs_info_user
@@ -3824,98 +3852,98 @@ msgid "Version: @ARG."
 msgstr ""
 
 #: u_common_ancestro.rs_info_weight_of_base_has_growed_of
-msgid " La taille de la base a augmenté de @ARG%"
+msgid " La taille de la base a augmentÃ© de @ARG%"
 msgstr ""
 
 #: u_common_ancestro.rs_ini_download_again
-msgid "Retélécharger la configuration."
+msgid "RetÃ©lÃ©charger la configuration."
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_age_hope_to_much_man
-msgid " Espérance de vie pour un homme, @ARG ans, dépassée."
+msgid " EspÃ©rance de vie pour un homme, @ARG ans, dÃ©passÃ©e."
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_age_hope_to_much_woman
-msgid " Espérance de vie pour une femme, @ARG ans, dépassée."
+msgid " EspÃ©rance de vie pour une femme, @ARG ans, dÃ©passÃ©e."
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_child_birth_date_less_than_man_mini
 msgid ""
-" Âge à la naissance d'un enfant inférieur\n"
-" à l'âge minimum pour un homme: @ARG ans.\n"
+" Ãge Ã  la naissance d'un enfant infÃ©rieur\n"
+" Ã  l'Ã¢ge minimum pour un homme: @ARG ans.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_child_birth_date_less_than_woman_mini
 msgid ""
-" Âge à la naissance d'un enfant inférieur\n"
-" à l'âge minimum pour une femme: @ARG ans.\n"
+" Ãge Ã  la naissance d'un enfant infÃ©rieur\n"
+" Ã  l'Ã¢ge minimum pour une femme: @ARG ans.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_child_birth_date_more_than_man_maxi
 msgid ""
-" Âge à la naissance d'un enfant supérieur\n"
-" à l'âge maximum pour un homme: @ARG ans.\n"
+" Ãge Ã  la naissance d'un enfant supÃ©rieur\n"
+" Ã  l'Ã¢ge maximum pour un homme: @ARG ans.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_child_birth_date_more_than_woman_maxi
 msgid ""
-" Âge à la naissance d'un enfant supérieur\n"
-" à l'âge maximum pour une femme: @ARG ans.\n"
+" Ãge Ã  la naissance d'un enfant supÃ©rieur\n"
+" Ã  l'Ã¢ge maximum pour une femme: @ARG ans.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_child_born_after_mother_death
-msgid " Enfant né après le décès de sa mère."
+msgid " Enfant nÃ© aprÃ¨s le dÃ©cÃ¨s de sa mÃ¨re."
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_child_born_more_than_270_days_after_father_death
-msgid " Enfant né plus de 270 jours après le décès de son père."
+msgid " Enfant nÃ© plus de 270 jours aprÃ¨s le dÃ©cÃ¨s de son pÃ¨re."
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_dead_before_birth_man
-msgid " Décédé avant sa naissance."
+msgid " DÃ©cÃ©dÃ© avant sa naissance."
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_dead_before_birth_woman
-msgid " Décédée avant sa naissance."
+msgid " DÃ©cÃ©dÃ©e avant sa naissance."
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_family_event_after_death
-msgid " Événement familial après le décès."
+msgid " ÃvÃ©nement familial aprÃ¨s le dÃ©cÃ¨s."
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_family_event_before_birth
-msgid " Événement familial avant la naissance."
+msgid " ÃvÃ©nement familial avant la naissance."
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_individual_event_after_death
-msgid " Événement individuel après le décès."
+msgid " ÃvÃ©nement individuel aprÃ¨s le dÃ©cÃ¨s."
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_individual_event_before_birth
-msgid " Événement individuel avant la naissance."
+msgid " ÃvÃ©nement individuel avant la naissance."
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_married_age_less_than_minimum_man
 msgid ""
-" Âge au mariage inférieur à l'âge minimum\n"
+" Ãge au mariage infÃ©rieur Ã  l'Ã¢ge minimum\n"
 " pour un homme: @ARG ans.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_married_age_less_than_minimum_woman
 msgid ""
-" Âge au mariage inférieur à l'âge minimum\n"
+" Ãge au mariage infÃ©rieur Ã  l'Ã¢ge minimum\n"
 " pour une femme: @ARG ans.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_married_more_than_maximum_man
 msgid ""
-" Âge au mariage supérieur à l'âge maximum\n"
+" Ãge au mariage supÃ©rieur Ã  l'Ã¢ge maximum\n"
 " pour un homme: @ARG ans.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_integrity_married_more_than_maximum_woman
 msgid ""
-" Âge au mariage supérieur à l'âge maximum\n"
+" Ãge au mariage supÃ©rieur Ã  l'Ã¢ge maximum\n"
 " pour une femme: @ARG ans.\n"
 msgstr ""
 
@@ -3930,7 +3958,7 @@ msgid "en"
 msgstr ""
 
 #: u_common_ancestro.rs_is_always_parent_with
-msgid " a déjà pour parent"
+msgid " a dÃ©jÃ  pour parent"
 msgstr ""
 
 #: u_common_ancestro.rs_is_ancestry_from
@@ -3942,16 +3970,16 @@ msgid "figure dans la descendance de "
 msgstr ""
 
 #: u_common_ancestro.rs_item_other_known_father
-msgid "Autre père connu"
+msgid "Autre pÃ¨re connu"
 msgstr ""
 
 #: u_common_ancestro.rs_item_other_known_mother
-msgid "Autre mère connue"
+msgid "Autre mÃ¨re connue"
 msgstr ""
 
 #: u_common_ancestro.rs_it_is_preferable_to_download_and_install_this_update
 msgctxt "u_common_ancestro.rs_it_is_preferable_to_download_and_install_this_update"
-msgid "Il est conseillé de télécharger et d'exécuter cette mise à jour."
+msgid "Il est conseillÃ© de tÃ©lÃ©charger et d'exÃ©cuter cette mise Ã  jour."
 msgstr ""
 
 #: u_common_ancestro.rs_job_is
@@ -3971,7 +3999,7 @@ msgid "Conjoint(s), enfant(s) de @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_link_from_person_to_document_will_be_erased
-msgid "L'affectation du document à l'individu en cours va être supprimée."
+msgid "L'affectation du document Ã  l'individu en cours va Ãªtre supprimÃ©e."
 msgstr ""
 
 #: u_common_ancestro.rs_list_of_acts_by_type
@@ -3983,7 +4011,7 @@ msgid "Liste des actes par type de @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_list_of_procedures
-msgid "liste des procédures"
+msgid "liste des procÃ©dures"
 msgstr ""
 
 #: u_common_ancestro.rs_list_of_tables
@@ -3992,7 +4020,7 @@ msgstr ""
 
 #: u_common_ancestro.rs_log_copy_database_in
 msgctxt "u_common_ancestro.rs_log_copy_database_in"
-msgid "Copie de la base de données dans "
+msgid "Copie de la base de donnÃ©es dans "
 msgstr ""
 
 #: u_common_ancestro.rs_log_database_closing
@@ -4017,11 +4045,11 @@ msgid "ErreursImport"
 msgstr ""
 
 #: u_common_ancestro.rs_log_errors_file_import
-msgid "Fichier des erreurs d'importation: @ARG généré le @ARG."
+msgid "Fichier des erreurs d'importation: @ARG gÃ©nÃ©rÃ© le @ARG."
 msgstr ""
 
 #: u_common_ancestro.rs_log_favorite_sites_coord_update
-msgid "MAJ des coordonnées géographiques des lieux favoris "
+msgid "MAJ des coordonnÃ©es gÃ©ographiques des lieux favoris "
 msgstr ""
 
 #: u_common_ancestro.rs_log_file_bad_picture_format
@@ -4029,15 +4057,15 @@ msgid "Fichier @ARG : mauvais format d'image."
 msgstr ""
 
 #: u_common_ancestro.rs_log_file_cannot_read
-msgid "Fichier @ARG : enregistrement verrouillé."
+msgid "Fichier @ARG : enregistrement verrouillÃ©."
 msgstr ""
 
 #: u_common_ancestro.rs_log_file_not_modified_record
-msgid "Fichier @ARG absent, enregistrement non modifié."
+msgid "Fichier @ARG absent, enregistrement non modifiÃ©."
 msgstr ""
 
 #: u_common_ancestro.rs_log_forms_reset
-msgid "Réinitialisation des fenêtres"
+msgid "RÃ©initialisation des fenÃªtres"
 msgstr ""
 
 #: u_common_ancestro.rs_log_gedcom_export_to_file
@@ -4053,11 +4081,11 @@ msgid "Import d'un dossier depuis la base : "
 msgstr ""
 
 #: u_common_ancestro.rs_log_medias_errors_file_import
-msgid "Fichier des erreurs d'importation des médias: @ARG généré le @ARG."
+msgid "Fichier des erreurs d'importation des mÃ©dias: @ARG gÃ©nÃ©rÃ© le @ARG."
 msgstr ""
 
 #: u_common_ancestro.rs_log_medias_errors_file_infos
-msgid "Ce fichier étant supprimé lors de la fermeture d'Ancestromania, enregistrez le à l'emplacement souhaité si vous voulez le conserver."
+msgid "Ce fichier Ã©tant supprimÃ© lors de la fermeture d'Ancestromania, enregistrez le Ã  l'emplacement souhaitÃ© si vous voulez le conserver."
 msgstr ""
 
 #: u_common_ancestro.rs_log_menu_reset
@@ -4066,16 +4094,16 @@ msgstr ""
 
 #: u_common_ancestro.rs_log_optimising_database
 msgctxt "u_common_ancestro.rs_log_optimising_database"
-msgid "Optimisation de la base de données"
+msgid "Optimisation de la base de donnÃ©es"
 msgstr ""
 
 #: u_common_ancestro.rs_log_purge_processes_logbook
-msgid "Purge du journal des opérations"
+msgid "Purge du journal des opÃ©rations"
 msgstr ""
 
 #: u_common_ancestro.rs_log_replace_media_by
 msgctxt "u_common_ancestro.rs_log_replace_media_by"
-msgid "Médias: remplacement @ARG par "
+msgid "MÃ©dias: remplacement @ARG par "
 msgstr ""
 
 #: u_common_ancestro.rs_main
@@ -4083,18 +4111,18 @@ msgid "principale"
 msgstr ""
 
 #: u_common_ancestro.rs_married_on
-msgid "Marié(e) le @ARG"
+msgid "MariÃ©(e) le @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_message_database_directory_which_is_used_to_set_database_site
 msgid ""
-"Le répertoire @ARG\n"
-"pour placer la base de données n'est pas accessible.\n"
+"Le rÃ©pertoire @ARG\n"
+"pour placer la base de donnÃ©es n'est pas accessible.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_message_exporting_medias
 msgid ""
-"Exportation des médias:\n"
+"Exportation des mÃ©dias:\n"
 "\n"
 "@ARG\n"
 msgstr ""
@@ -4104,15 +4132,15 @@ msgid "absents"
 msgstr ""
 
 #: u_common_ancestro.rs_modify_an_used_site
-msgid "Modification d'un lieu utilisé"
+msgid "Modification d'un lieu utilisÃ©"
 msgstr ""
 
 #: u_common_ancestro.rs_mother
-msgid "Mère : @ARG"
+msgid "MÃ¨re : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_must_select_a_database
-msgid "Vous devez d'abord sélectionner une base de données!"
+msgid "Vous devez d'abord sÃ©lectionner une base de donnÃ©es!"
 msgstr ""
 
 #: u_common_ancestro.rs_mydatabase
@@ -4128,7 +4156,7 @@ msgctxt "u_common_ancestro.rs_new_version_please_update"
 msgid ""
 "Une nouvelle version existe sur Internet : @ARG\n"
 "\n"
-"Allez dans le menu Aide, et vérifiez les mises à jour en ligne\n"
+"Allez dans le menu Aide, et vÃ©rifiez les mises Ã  jour en ligne\n"
 msgstr ""
 
 #: u_common_ancestro.rs_next
@@ -4136,15 +4164,15 @@ msgid "Suivant"
 msgstr ""
 
 #: u_common_ancestro.rs_not_connected_to_database
-msgid "Pas de base connectée"
+msgid "Pas de base connectÃ©e"
 msgstr ""
 
 #: u_common_ancestro.rs_now_olded_female
-msgid "Âgée aujourd'hui"
+msgid "ÃgÃ©e aujourd'hui"
 msgstr ""
 
 #: u_common_ancestro.rs_now_olded_male
-msgid "Âgé aujourd'hui"
+msgid "ÃgÃ© aujourd'hui"
 msgstr ""
 
 #: u_common_ancestro.rs_no_person_with_this_key
@@ -4152,7 +4180,7 @@ msgid "Il n'y a pas d'individu de ce code dans ce dossier."
 msgstr ""
 
 #: u_common_ancestro.rs_no_result_with_request
-msgid "Aucun résultat à cette requête."
+msgid "Aucun rÃ©sultat Ã  cette requÃªte."
 msgstr ""
 
 #: u_common_ancestro.rs_of_age
@@ -4160,21 +4188,21 @@ msgid "de @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_oldd
-msgid " à l'âge d'@ARG"
+msgid " Ã  l'Ã¢ge d'@ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_olded
-msgid " à l'âge de @ARG"
+msgid " Ã  l'Ã¢ge de @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_one_record_selected
-msgid "1 enregistrement sélectionné."
+msgid "1 enregistrement sÃ©lectionnÃ©."
 msgstr ""
 
 #: u_common_ancestro.rs_only_modifying_from_last_commit_can_be_valided
 msgid ""
 "Seules les modifications depuis le dernier COMMIT ou la\n"
-"dernière instruction DDL valide peuvent être annulées.\n"
+"derniÃ¨re instruction DDL valide peuvent Ãªtre annulÃ©es.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_on_date
@@ -4183,11 +4211,11 @@ msgstr ""
 
 #: u_common_ancestro.rs_on_when
 msgctxt "u_common_ancestro.rs_on_when"
-msgid "à"
+msgid "Ã "
 msgstr ""
 
 #: u_common_ancestro.rs_optimising_database_is_a_success
-msgid "L'optimisation de la base s'est bien passée."
+msgid "L'optimisation de la base s'est bien passÃ©e."
 msgstr ""
 
 #: u_common_ancestro.rs_o_age
@@ -4199,7 +4227,7 @@ msgid "Parents de @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_person_file_has_been_modified
-msgid "La fiche de l'individu en cours a été modifiée."
+msgid "La fiche de l'individu en cours a Ã©tÃ© modifiÃ©e."
 msgstr ""
 
 #: u_common_ancestro.rs_please_wait
@@ -4215,7 +4243,7 @@ msgid "Post'it"
 msgstr ""
 
 #: u_common_ancestro.rs_previous_request_may_modify_data
-msgid "La requête précédente a pu modifier des données."
+msgid "La requÃªte prÃ©cÃ©dente a pu modifier des donnÃ©es."
 msgstr ""
 
 #: u_common_ancestro.rs_print_list_of_cousins_of
@@ -4223,11 +4251,11 @@ msgid "Liste des cousins de @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_prior
-msgid "Précédent"
+msgid "PrÃ©cÃ©dent"
 msgstr ""
 
 #: u_common_ancestro.rs_processes_logbook
-msgid "Journal des opérations"
+msgid "Journal des opÃ©rations"
 msgstr ""
 
 #: u_common_ancestro.rs_readonly_only
@@ -4239,11 +4267,11 @@ msgid "Actes"
 msgstr ""
 
 #: u_common_ancestro.rs_records_selected
-msgid " enregistrements sélectionnés."
+msgid " enregistrements sÃ©lectionnÃ©s."
 msgstr ""
 
 #: u_common_ancestro.rs_replace_done
-msgid "Remplacement effectué."
+msgid "Remplacement effectuÃ©."
 msgstr ""
 
 #: u_common_ancestro.rs_replacing_of_a_surname
@@ -4251,19 +4279,19 @@ msgid "Remplacement d'un patronyme."
 msgstr ""
 
 #: u_common_ancestro.rs_report_ages_on_first_union
-msgid "Âges à la première union"
+msgid "Ãges Ã  la premiÃ¨re union"
 msgstr ""
 
 #: u_common_ancestro.rs_report_alphabet_list
-msgid "Liste alphabétique complète"
+msgid "Liste alphabÃ©tique complÃ¨te"
 msgstr ""
 
 #: u_common_ancestro.rs_report_alphabet_list_by_men
-msgid "Liste alphabétique par les hommes"
+msgid "Liste alphabÃ©tique par les hommes"
 msgstr ""
 
 #: u_common_ancestro.rs_report_alphabet_list_by_women
-msgid "Liste alphabétique par les femmes"
+msgid "Liste alphabÃ©tique par les femmes"
 msgstr ""
 
 #: u_common_ancestro.rs_report_ascending_men_of
@@ -4271,7 +4299,7 @@ msgid "Ascendance par les hommes de : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_report_ascending_of
-msgid "Ascendance complète de : @ARG"
+msgid "Ascendance complÃ¨te de : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_report_ascending_women_of
@@ -4279,7 +4307,7 @@ msgid "Ascendance par les femmes de : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_report_average_longevities
-msgid "Longévités moyennes"
+msgid "LongÃ©vitÃ©s moyennes"
 msgstr ""
 
 #: u_common_ancestro.rs_report_birthdays_by_countries
@@ -4287,7 +4315,7 @@ msgid "Naissances par pays"
 msgstr ""
 
 #: u_common_ancestro.rs_report_birthdays_by_department
-msgid "Naissances par départements"
+msgid "Naissances par dÃ©partements"
 msgstr ""
 
 #: u_common_ancestro.rs_report_birth_list_of_month
@@ -4295,7 +4323,7 @@ msgid "Liste des des anniversaires du mois : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_report_brothers_and_sisters_of
-msgid "Frères et sœurs de : @ARG"
+msgid "FrÃ¨res et sÅurs de : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_report_children_count_by_families
@@ -4307,11 +4335,11 @@ msgid "Enfants de : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_report_counting_ascending
-msgid "Dénombrement des ascendants"
+msgid "DÃ©nombrement des ascendants"
 msgstr ""
 
 #: u_common_ancestro.rs_report_counting_descent
-msgid "Dénombrement des descendants"
+msgid "DÃ©nombrement des descendants"
 msgstr ""
 
 #: u_common_ancestro.rs_report_cousins_of
@@ -4319,11 +4347,11 @@ msgid "Cousins de : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_report_deathdays_by_countries
-msgid "Décès par pays"
+msgid "DÃ©cÃ¨s par pays"
 msgstr ""
 
 #: u_common_ancestro.rs_report_deathdays_by_department
-msgid "Décès par départements"
+msgid "DÃ©cÃ¨s par dÃ©partements"
 msgstr ""
 
 #: u_common_ancestro.rs_report_descent_of
@@ -4331,7 +4359,7 @@ msgid "Descendance de @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_report_events_list
-msgid "Liste des événements"
+msgid "Liste des Ã©vÃ©nements"
 msgstr ""
 
 #: u_common_ancestro.rs_report_everything_about
@@ -4343,7 +4371,7 @@ msgid "Fiche familiale de : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_report_fast_list
-msgid "Liste éclair"
+msgid "Liste Ã©clair"
 msgstr ""
 
 #: u_common_ancestro.rs_report_haunts_and_uncles_of
@@ -4363,7 +4391,7 @@ msgid "Liste des professions"
 msgstr ""
 
 #: u_common_ancestro.rs_report_names_list
-msgid "Liste des prénoms"
+msgid "Liste des prÃ©noms"
 msgstr ""
 
 #: u_common_ancestro.rs_report_surnames_descent_of
@@ -4380,7 +4408,7 @@ msgid "Il n'y a aucune imprimante disponible."
 msgstr ""
 
 #: u_common_ancestro.rs_report_this_report_generated_an_error
-msgid "Cette édition a généré une erreur..."
+msgid "Cette Ã©dition a gÃ©nÃ©rÃ© une erreur..."
 msgstr ""
 
 #: u_common_ancestro.rs_report_unions_list
@@ -4389,26 +4417,26 @@ msgid "Liste des unions"
 msgstr ""
 
 #: u_common_ancestro.rs_request_executed
-msgid "Requête exécutée avec succès."
+msgid "RequÃªte exÃ©cutÃ©e avec succÃ¨s."
 msgstr ""
 
 #: u_common_ancestro.rs_resume_records_treated_records_back_records_with_error
 msgid ""
-"Résumé :\n"
+"RÃ©sumÃ© :\n"
 "\n"
-"@ARG enregistrement(s) traité(s).\n"
-"@ARG enregistrement(s) récupéré(s).\n"
-"@ARG enregistrement(s) non récupéré(s) car erreur.\n"
+"@ARG enregistrement(s) traitÃ©(s).\n"
+"@ARG enregistrement(s) rÃ©cupÃ©rÃ©(s).\n"
+"@ARG enregistrement(s) non rÃ©cupÃ©rÃ©(s) car erreur.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_script_executed
-msgid "Script exécuté avec succès."
+msgid "Script exÃ©cutÃ© avec succÃ¨s."
 msgstr ""
 
 #: u_common_ancestro.rs_script_executed_valided
 msgid ""
-"Script exécuté avec succès.\n"
-"et modifications validées.\n"
+"Script exÃ©cutÃ© avec succÃ¨s.\n"
+"et modifications validÃ©es.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_searching_in_progress
@@ -4419,67 +4447,67 @@ msgstr ""
 msgid ""
 "Cette fiche permet deux types de recherche:\n"
 "\n"
-"L'onglet Standard permet de sélectionner un individu selon\n"
-"son numéro SOSA, son nom, son prénom et les propriétés de ses\n"
-"événements naissance ou décès.\n"
+"L'onglet Standard permet de sÃ©lectionner un individu selon\n"
+"son numÃ©ro SOSA, son nom, son prÃ©nom et les propriÃ©tÃ©s de ses\n"
+"Ã©vÃ©nements naissance ou dÃ©cÃ¨s.\n"
 "La recherche par SOSA est exclusive et ne tient pas compte\n"
-"des autres critères.\n"
-"Les autres critères se cumulent : pour être sélectionné, un\n"
-"individu doit satisfaire ? l'ensemble des critères.\n"
-"Le mot recherché peut être n'importe où dans le champ\n"
-"correspondant au critère, seuls les critères Nom et Prénom\n"
-"permettent de choisir si ce mot doit être au d?but du champ.\n"
-"Les critères SOSA, Année de naissance ou de décès sont\n"
-"exclusivement numériques.\n"
+"des autres critÃ¨res.\n"
+"Les autres critÃ¨res se cumulent : pour Ãªtre sÃ©lectionnÃ©, un\n"
+"individu doit satisfaire ? l'ensemble des critÃ¨res.\n"
+"Le mot recherchÃ© peut Ãªtre n'importe oÃ¹ dans le champ\n"
+"correspondant au critÃ¨re, seuls les critÃ¨res Nom et PrÃ©nom\n"
+"permettent de choisir si ce mot doit Ãªtre au d?but du champ.\n"
+"Les critÃ¨res SOSA, AnnÃ©e de naissance ou de dÃ©cÃ¨s sont\n"
+"exclusivement numÃ©riques.\n"
 "\n"
-"L'onglet Notes/Sources permet de sélectionner un individu\n"
+"L'onglet Notes/Sources permet de sÃ©lectionner un individu\n"
 "en fonction du contenu des divers champs Notes ou Sources\n"
-"de sa fiche, selon le champ de critère utilisé.\n"
-"Le mot recherché peut se trouver n'importe où dans le champ\n"
+"de sa fiche, selon le champ de critÃ¨re utilisÃ©.\n"
+"Le mot recherchÃ© peut se trouver n'importe oÃ¹ dans le champ\n"
 "correspondant.\n"
 "\n"
-"L'utilisation du symbole % dans un critère de recherche non\n"
-"numérique permet de rechercher la présence de plusieurs mots\n"
+"L'utilisation du symbole % dans un critÃ¨re de recherche non\n"
+"numÃ©rique permet de rechercher la prÃ©sence de plusieurs mots\n"
 "dans le champ. Exemple: \"mariage%catherine\" permet de retrouver\n"
 "\"mariagede Catherine\" ainsi que \"mariage de sa petite fille\n"
 "Catherine\".\n"
-"Un symbole < ou > placé devant une année de naissance ou de décès\n"
-"signifie avant ou après cette année.\n"
-"Un symbole < ou > placé devant le nombre d'unions signifie moins\n"
+"Un symbole < ou > placÃ© devant une annÃ©e de naissance ou de dÃ©cÃ¨s\n"
+"signifie avant ou aprÃ¨s cette annÃ©e.\n"
+"Un symbole < ou > placÃ© devant le nombre d'unions signifie moins\n"
 "ou plus que ce nombre.\n"
-"La recherche est insensible ? la casse des caractères.\n"
+"La recherche est insensible ? la casse des caractÃ¨res.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_selected_file_exists
-msgid "Le fichier sélectionné existe déjà."
+msgid "Le fichier sÃ©lectionnÃ© existe dÃ©jÃ ."
 msgstr ""
 
 #: u_common_ancestro.rs_select_dir_backup_directory
-msgid "Répertoire des sauvegardes:"
+msgid "RÃ©pertoire des sauvegardes:"
 msgstr ""
 
 #: u_common_ancestro.rs_select_dir_directory_destination_of_base
-msgid "Répertoire où copier la base:"
+msgid "RÃ©pertoire oÃ¹ copier la base:"
 msgstr ""
 
 #: u_common_ancestro.rs_select_dir_documents_directory
-msgid "Répertoire des documents:"
+msgid "RÃ©pertoire des documents:"
 msgstr ""
 
 #: u_common_ancestro.rs_select_dir_gedcom_directory
-msgid "Répertoire des fichiers GEDCOM:"
+msgid "RÃ©pertoire des fichiers GEDCOM:"
 msgstr ""
 
 #: u_common_ancestro.rs_select_dir_new_media_directory
-msgid "Nouveau répertoire de ces médias:"
+msgid "Nouveau rÃ©pertoire de ces mÃ©dias:"
 msgstr ""
 
 #: u_common_ancestro.rs_select_dir_whoarethey_directory
-msgid "Répertoire de QuiSontIls:"
+msgid "RÃ©pertoire de QuiSontIls:"
 msgstr ""
 
 #: u_common_ancestro.rs_select_sosa_number_one
-msgid "Sélectionner le Sosa n°1"
+msgid "SÃ©lectionner le Sosa nÂ°1"
 msgstr ""
 
 #: u_common_ancestro.rs_server_side
@@ -4491,7 +4519,7 @@ msgid "est une conjointe de "
 msgstr ""
 
 #: u_common_ancestro.rs_should_better_cancel_update
-msgid "Il est préférable d'annuler les modifications."
+msgid "Il est prÃ©fÃ©rable d'annuler les modifications."
 msgstr ""
 
 #: u_common_ancestro.rs_sosa
@@ -4499,11 +4527,11 @@ msgid "SOSA"
 msgstr ""
 
 #: u_common_ancestro.rs_sosa_is_not_a_number
-msgid "Le n° SOSA n'est pas numérique."
+msgid "Le nÂ° SOSA n'est pas numÃ©rique."
 msgstr ""
 
 #: u_common_ancestro.rs_sound_recorded_on_date
-msgid "Son enregistré le : @ARG"
+msgid "Son enregistrÃ© le : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_suppressing_temp_table
@@ -4525,11 +4553,11 @@ msgid "Ses @ARG conjoints"
 msgstr ""
 
 #: u_common_ancestro.rs_this_action_is_minutes_longer
-msgid "Cette action IRRÉVERSIBLE peut durer plusieurs minutes."
+msgid "Cette action IRRÃVERSIBLE peut durer plusieurs minutes."
 msgstr ""
 
 #: u_common_ancestro.rs_this_file_has_been_imported_with_success
-msgid "Le fichier: @ARG a été importé avec succès."
+msgid "Le fichier: @ARG a Ã©tÃ© importÃ© avec succÃ¨s."
 msgstr ""
 
 #: u_common_ancestro.rs_title_have_a_look_into
@@ -4541,50 +4569,50 @@ msgid "Base d'origine:"
 msgstr ""
 
 #: u_common_ancestro.rs_title_select_folder_to_open
-msgid "Sélectionner le fichier à ouvrir"
+msgid "SÃ©lectionner le fichier Ã  ouvrir"
 msgstr ""
 
 #: u_common_ancestro.rs_to_every
-msgid "à tous les "
+msgid "Ã  tous les "
 msgstr ""
 
 #: u_common_ancestro.rs_to_ignore
-msgid "à ignorer"
+msgid "Ã  ignorer"
 msgstr ""
 
 #: u_common_ancestro.rs_to_other
-msgid "à d'autres"
+msgid "Ã  d'autres"
 msgstr ""
 
 #: u_common_ancestro.rs_to_search
-msgid "à chercher"
+msgid "Ã  chercher"
 msgstr ""
 
 #: u_common_ancestro.rs_try_later
-msgid "Réessayez plus tard."
+msgid "RÃ©essayez plus tard."
 msgstr ""
 
 #: u_common_ancestro.rs_try_to_destroy_task_intro
-msgid "Il semble que vous ayez du mal à démarrer le logiciel."
+msgid "Il semble que vous ayez du mal Ã  dÃ©marrer le logiciel."
 msgstr ""
 
 #: u_common_ancestro.rs_try_to_destroy_task_what_to_do
 msgid ""
-"Il se peut que le logiciel soit sur un autre écran ou bureau.\n"
-"Si ça n'est pas le cas et que vous ne voyez plus Ancestromania,\n"
-"allez dans le gestionnaire de tâches, ou bien dans le gestionnaire système,\n"
-"ou sur une ligne de commandes ou console, et tuez la tâche Ancestromania.\n"
+"Il se peut que le logiciel soit sur un autre Ã©cran ou bureau.\n"
+"Si Ã§a n'est pas le cas et que vous ne voyez plus Ancestromania,\n"
+"allez dans le gestionnaire de tÃ¢ches, ou bien dans le gestionnaire systÃ¨me,\n"
+"ou sur une ligne de commandes ou console, et tuez la tÃ¢che Ancestromania.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_try_to_destroy_task_windows
 msgid ""
-"Sur Windows il est possible que des spywares ralentissent le démarrage de l'application.\n"
-"Si c'est le cas installez Spybot (gratuit) et effectuez une vérification,\n"
-"ou bien, après avoir sauvegardé votre compte et vos fichiers, réinstallez Windows en le réparant.\n"
+"Sur Windows il est possible que des spywares ralentissent le dÃ©marrage de l'application.\n"
+"Si c'est le cas installez Spybot (gratuit) et effectuez une vÃ©rification,\n"
+"ou bien, aprÃ¨s avoir sauvegardÃ© votre compte et vos fichiers, rÃ©installez Windows en le rÃ©parant.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_unknown_father
-msgid "Père Inconnu"
+msgid "PÃ¨re Inconnu"
 msgstr ""
 
 #: u_common_ancestro.rs_unknown_female
@@ -4597,7 +4625,7 @@ msgid "inconnu"
 msgstr ""
 
 #: u_common_ancestro.rs_unknown_mother
-msgid "Mère Inconnue"
+msgid "MÃ¨re Inconnue"
 msgstr ""
 
 #: u_common_ancestro.rs_unknown_parents
@@ -4605,19 +4633,19 @@ msgid "Parents Inconnus"
 msgstr ""
 
 #: u_common_ancestro.rs_update
-msgid "Mettre à jour"
+msgid "Mettre Ã  jour"
 msgstr ""
 
 #: u_common_ancestro.rs_updating_coord
-msgid "Mise à jour des coordonnées."
+msgid "Mise Ã  jour des coordonnÃ©es."
 msgstr ""
 
 #: u_common_ancestro.rs_updating_deprecated_events_sticks
-msgid "Mise à jour des étiquettes d'événements obsolètes."
+msgid "Mise Ã  jour des Ã©tiquettes d'Ã©vÃ©nements obsolÃ¨tes."
 msgstr ""
 
 #: u_common_ancestro.rs_updating_sites_names
-msgid "Mise à jour des noms de lieux."
+msgid "Mise Ã  jour des noms de lieux."
 msgstr ""
 
 #: u_common_ancestro.rs_version
@@ -4625,7 +4653,7 @@ msgid "Version"
 msgstr ""
 
 #: u_common_ancestro.rs_video_recorded_on_date
-msgid "Vidéo enregistrée le : @ARG"
+msgid "VidÃ©o enregistrÃ©e le : @ARG"
 msgstr ""
 
 #: u_common_ancestro.rs_wait
@@ -4641,11 +4669,11 @@ msgid "Adaptation des dates individuelles."
 msgstr ""
 
 #: u_common_ancestro.rs_wait_adding_medias
-msgid "Référencement des médias."
+msgid "RÃ©fÃ©rencement des mÃ©dias."
 msgstr ""
 
 #: u_common_ancestro.rs_wait_analysing_gedcom_file
-msgid "Décodage du fichier GEDCOM."
+msgid "DÃ©codage du fichier GEDCOM."
 msgstr ""
 
 #: u_common_ancestro.rs_wait_asking_to_database
@@ -4659,7 +4687,7 @@ msgstr ""
 #: u_common_ancestro.rs_wait_exporting_medias_files
 msgid ""
 "Exportation des fichiers\n"
-"des médias.\n"
+"des mÃ©dias.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_wait_exporting_persons
@@ -4671,7 +4699,7 @@ msgid "Exportation des sources."
 msgstr ""
 
 #: u_common_ancestro.rs_wait_importing_witnesses
-msgid "Importation des témoins."
+msgid "Importation des tÃ©moins."
 msgstr ""
 
 #: u_common_ancestro.rs_wait_loading_families
@@ -4679,11 +4707,11 @@ msgid "Chargement des familles."
 msgstr ""
 
 #: u_common_ancestro.rs_wait_loading_families_events
-msgid "Chargement des événts. familiaux."
+msgid "Chargement des Ã©vÃ©nts. familiaux."
 msgstr ""
 
 #: u_common_ancestro.rs_wait_loading_medias
-msgid "Chargement des médias."
+msgid "Chargement des mÃ©dias."
 msgstr ""
 
 #: u_common_ancestro.rs_wait_loading_persons
@@ -4691,7 +4719,7 @@ msgid "Chargement des individus."
 msgstr ""
 
 #: u_common_ancestro.rs_wait_loading_persons_events
-msgid "Chargement des événts. individuels."
+msgid "Chargement des Ã©vÃ©nts. individuels."
 msgstr ""
 
 #: u_common_ancestro.rs_wait_loading_sources
@@ -4703,55 +4731,55 @@ msgid "Optimisation de la base"
 msgstr ""
 
 #: u_common_ancestro.rs_wait_preparing_export
-msgid "Préparation de l'exportation."
+msgid "PrÃ©paration de l'exportation."
 msgstr ""
 
 #: u_common_ancestro.rs_wait_preparing_import
-msgid "Préparation de l'importation."
+msgid "PrÃ©paration de l'importation."
 msgstr ""
 
 #: u_common_ancestro.rs_wait_script_execution
-msgid "Exécution du script"
+msgid "ExÃ©cution du script"
 msgstr ""
 
 #: u_common_ancestro.rs_wait_step_number
-msgid "Patientez SVP, étape "
+msgid "Patientez SVP, Ã©tape "
 msgstr ""
 
 #: u_common_ancestro.rs_wait_updating_database
-msgid "Mise à jour de la base."
+msgid "Mise Ã  jour de la base."
 msgstr ""
 
 #: u_common_ancestro.rs_wait_updating_medias
 msgid ""
-"Patientez, mise à jour\n"
-"des médias en cours...\n"
+"Patientez, mise Ã  jour\n"
+"des mÃ©dias en cours...\n"
 msgstr ""
 
 #: u_common_ancestro.rs_wait_validating_data
-msgid "Validation des données."
+msgid "Validation des donnÃ©es."
 msgstr ""
 
 #: u_common_ancestro.rs_wait_verifying_media_files_presence
 msgid ""
-"Contrôle présence des fichiers\n"
-"des médias.\n"
+"ContrÃ´le prÃ©sence des fichiers\n"
+"des mÃ©dias.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_warning_action_will_separate_names_by_a_comma_with_space
-msgid "Cette fonction sépare les prénoms par une virgule et un espace."
+msgid "Cette fonction sÃ©pare les prÃ©noms par une virgule et un espace."
 msgstr ""
 
 #: u_common_ancestro.rs_warning_action_will_update_only_names_putting_first_char_to_upper
-msgid "Cette fonction met seulement la première lettre des prénoms en majuscule."
+msgid "Cette fonction met seulement la premiÃ¨re lettre des prÃ©noms en majuscule."
 msgstr ""
 
 #: u_common_ancestro.rs_warning_action_will_update_only_names_putting_them_to_upper
-msgid "Cette fonction met les prénoms tout en majuscules."
+msgid "Cette fonction met les prÃ©noms tout en majuscules."
 msgstr ""
 
 #: u_common_ancestro.rs_warning_action_will_update_only_surnames_putting_first_char_to_upper
-msgid "Cette fonction met seulement la première lettre des patronymes en majuscule."
+msgid "Cette fonction met seulement la premiÃ¨re lettre des patronymes en majuscule."
 msgstr ""
 
 #: u_common_ancestro.rs_warning_action_will_update_only_surnames_putting_them_to_upper
@@ -4760,23 +4788,23 @@ msgstr ""
 
 #: u_common_ancestro.rs_warning_action_will_update_sites_identified_by_postal_code_city_country
 msgid ""
-"Cette fonction met à jour les codes INSEE des événements et domiciles.\n"
-"Les lieux sont identifiés par le code postal, la ville et le pays.\n"
+"Cette fonction met Ã  jour les codes INSEE des Ã©vÃ©nements et domiciles.\n"
+"Les lieux sont identifiÃ©s par le code postal, la ville et le pays.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_warning_database_empty_fill_a_folder
 msgid ""
-"Votre base de données est vide.\n"
+"Votre base de donnÃ©es est vide.\n"
 "\n"
-"Commencez par créer un dossier dans l'écran suivant.\n"
+"Commencez par crÃ©er un dossier dans l'Ã©cran suivant.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_warning_database_is_readonly_do_you_want_to_use_it
 msgctxt "u_common_ancestro.rs_warning_database_is_readonly_do_you_want_to_use_it"
 msgid ""
-"La base sélectionnée est en lecture seule !\n"
+"La base sÃ©lectionnÃ©e est en lecture seule !\n"
 "\n"
-"Désirez-vous quand même l'utiliser ?\n"
+"DÃ©sirez-vous quand mÃªme l'utiliser ?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_warning_date_sorting_excepting_birth_will_be_default
@@ -4793,69 +4821,69 @@ msgid ""
 msgstr ""
 
 #: u_common_ancestro.rs_warning_directory_does_not_exists
-msgid "Ce répertoire n'existe pas."
+msgid "Ce rÃ©pertoire n'existe pas."
 msgstr ""
 
 #: u_common_ancestro.rs_warning_file_already_exists_do_you_overwrite_it
 msgid ""
-"Le fichier sélectionné existe déjà.\n"
+"Le fichier sÃ©lectionnÃ© existe dÃ©jÃ .\n"
 "\n"
-"Souhaitez-vous l'écraser ?\n"
+"Souhaitez-vous l'Ã©craser ?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_warning_file_and_directory_already_exists_do_you_overwrite_it
 msgid ""
-"Ce fichier et ce dossier sélectionnés existent déjà:\n"
+"Ce fichier et ce dossier sÃ©lectionnÃ©s existent dÃ©jÃ :\n"
 "@ARG\n"
 "@ARG\n"
 "\n"
-"Souhaitez-vous les écraser ?\n"
+"Souhaitez-vous les Ã©craser ?\n"
 msgstr ""
 
 #: u_common_ancestro.rs_warning_if_cannot_access_to_database_please_reopen_session
-msgid "Si vous ne pouvez accéder à la base veuillez rouvrir la session."
+msgid "Si vous ne pouvez accÃ©der Ã  la base veuillez rouvrir la session."
 msgstr ""
 
 #: u_common_ancestro.rs_warning_number_already_exists_a_new_number_will_be_set
 msgid ""
-"Le N° fixe @ARG existe déjà dans la base.\n"
+"Le NÂ° fixe @ARG existe dÃ©jÃ  dans la base.\n"
 "\n"
-"Un nouveau N° sera attribué par le logiciel.\n"
+"Un nouveau NÂ° sera attribuÃ© par le logiciel.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_warning_there_is_another_report_with_same_name
-msgid "Il existe déjà un rapport du même nom !"
+msgid "Il existe dÃ©jÃ  un rapport du mÃªme nom !"
 msgstr ""
 
 #: u_common_ancestro.rs_warning_the_base_image_and_folder_files_directory_must_be_correct
 msgid ""
-"Le \"Répertoire de base des images et fichiers attachés au dossier\" doit\n"
-"être valide et défini dans les détails du dossier en cours avant de\n"
-"pouvoir attacher des médias, les exporter ou modifier leur chemin.\n"
+"Le \"RÃ©pertoire de base des images et fichiers attachÃ©s au dossier\" doit\n"
+"Ãªtre valide et dÃ©fini dans les dÃ©tails du dossier en cours avant de\n"
+"pouvoir attacher des mÃ©dias, les exporter ou modifier leur chemin.\n"
 "\n"
-"Accédez à la fonction permettant de le définir par le menu:\n"
-"\"Généalogies / Dossiers de la base\", bouton \"Modifier/détails\".\n"
+"AccÃ©dez Ã  la fonction permettant de le dÃ©finir par le menu:\n"
+"\"GÃ©nÃ©alogies / Dossiers de la base\", bouton \"Modifier/dÃ©tails\".\n"
 "\n"
-"La possibilité de transférer vos données sur un autre ordinateur\n"
+"La possibilitÃ© de transfÃ©rer vos donnÃ©es sur un autre ordinateur\n"
 "exige une bonne organisation de vos fichiers. Pour la faciliter,\n"
-"il est recommandé d'organiser le stockage de tous les fichiers\n"
-"attachés à votre dossier, à l'intérieur d'un seul répertoire de base.\n"
-"La modification des adresses consécutive au tranfert des fichiers,\n"
-"à l'aide de la fonction \"Remplacer chemin\", en sera grandement facilitée.\n"
+"il est recommandÃ© d'organiser le stockage de tous les fichiers\n"
+"attachÃ©s Ã  votre dossier, Ã  l'intÃ©rieur d'un seul rÃ©pertoire de base.\n"
+"La modification des adresses consÃ©cutive au tranfert des fichiers,\n"
+"Ã  l'aide de la fonction \"Remplacer chemin\", en sera grandement facilitÃ©e.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_warning_this_database_version_is_old
 msgid ""
 "Base version @ARG.\n"
 "\n"
-"Il est possible que des informations ne soient pas transférées\n"
+"Il est possible que des informations ne soient pas transfÃ©rÃ©es\n"
 "et que cela perturbe le fonctionnement du logiciel.\n"
 "Nous vous conseillons fortement de faire ce transfert sur une\n"
-"copie de votre base et de la vérifier.\n"
+"copie de votre base et de la vÃ©rifier.\n"
 msgstr ""
 
 #: u_common_ancestro.rs_when_a_sosa_is_searched_there_other_criterias_are_ignored
-msgid "Lorsqu'un N° SOSA est recherché, les autres critères sont ignorés."
+msgid "Lorsqu'un NÂ° SOSA est recherchÃ©, les autres critÃ¨res sont ignorÃ©s."
 msgstr ""
 
 #: u_common_ancestro.rs_where_one_parent_is_unknown
@@ -4863,7 +4891,7 @@ msgid "dont au moins un parent est inconnu."
 msgstr ""
 
 #: u_common_ancestro.rs_while_executing_request
-msgid " pendant l'exécution de la requête."
+msgid " pendant l'exÃ©cution de la requÃªte."
 msgstr ""
 
 #: u_common_ancestro.rs_while_showing
@@ -4880,18 +4908,18 @@ msgid "Sans conjoint ni enfant connu"
 msgstr ""
 
 #: u_common_ancestro.rs_witness
-msgid "Témoin"
+msgid "TÃ©moin"
 msgstr ""
 
 #: u_common_ancestro.rs_witnesses
-msgid "Témoins"
+msgid "TÃ©moins"
 msgstr ""
 
 #: u_common_ancestro.rs_youll_delete_the_record_of_this_event
-msgid "Vous allez supprimer l'enregistrement de cet événement."
+msgid "Vous allez supprimer l'enregistrement de cet Ã©vÃ©nement."
 msgstr ""
 
 #: u_common_ancestro.rs_youll_update_after_having_copied
-msgid "Vous pourrez ensuite recommencer cette mise à jour."
+msgid "Vous pourrez ensuite recommencer cette mise Ã  jour."
 msgstr ""
 

@@ -39,7 +39,7 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="25">
+    <RequiredPackages Count="23">
       <Item1>
         <PackageName Value="typhonancestroibx"/>
       </Item1>
@@ -47,79 +47,73 @@
         <PackageName Value="typhonextnet"/>
       </Item2>
       <Item3>
-        <PackageName Value="LazRichEdit"/>
+        <PackageName Value="pl_luicontrols"/>
       </Item3>
       <Item4>
-        <PackageName Value="pl_luicontrols"/>
+        <PackageName Value="typhonextinit"/>
       </Item4>
       <Item5>
-        <PackageName Value="typhonextinit"/>
+        <PackageName Value="typhonextcomponentsimg"/>
       </Item5>
       <Item6>
-        <PackageName Value="typhonextcomponentsimg"/>
+        <PackageName Value="pl_richview"/>
       </Item6>
       <Item7>
-        <PackageName Value="pl_richview"/>
+        <PackageName Value="pl_virtualtrees"/>
       </Item7>
       <Item8>
-        <PackageName Value="pl_virtualtrees"/>
+        <PackageName Value="typhonextreports"/>
       </Item8>
       <Item9>
-        <PackageName Value="typhonextreports"/>
+        <PackageName Value="pl_bgracontrols"/>
       </Item9>
       <Item10>
-        <PackageName Value="pl_bgracontrols"/>
+        <PackageName Value="ExtHTMLTyphon"/>
       </Item10>
       <Item11>
-        <PackageName Value="ExtHTMLTyphon"/>
+        <PackageName Value="typhonancestrobuttons"/>
       </Item11>
       <Item12>
-        <PackageName Value="typhonancestrobuttons"/>
+        <PackageName Value="CodeTools"/>
       </Item12>
       <Item13>
-        <PackageName Value="CodeTools"/>
-      </Item13>
-      <Item14>
         <PackageName Value="TyphonExtCopy"/>
         <MinVersion Minor="9" Valid="True"/>
-      </Item14>
-      <Item15>
+      </Item13>
+      <Item14>
         <PackageName Value="FCL"/>
         <MinVersion Major="1" Valid="True"/>
+      </Item14>
+      <Item15>
+        <PackageName Value="typhonancestrounits"/>
       </Item15>
       <Item16>
-        <PackageName Value="typhonancestrounits"/>
+        <PackageName Value="typhonancestrocomponents"/>
       </Item16>
       <Item17>
-        <PackageName Value="typhonancestrocomponents"/>
+        <PackageName Value="PasLibVlcPlayer"/>
       </Item17>
       <Item18>
-        <PackageName Value="PasLibVlcPlayer"/>
-      </Item18>
-      <Item19>
         <PackageName Value="typhonextbuttons"/>
         <MinVersion Minor="9" Release="5" Build="2" Valid="True"/>
+      </Item18>
+      <Item19>
+        <PackageName Value="pl_fortesreport"/>
       </Item19>
       <Item20>
-        <PackageName Value="pl_fortesreport"/>
+        <PackageName Value="CompoPersoTyphon"/>
       </Item20>
       <Item21>
-        <PackageName Value="CompoPersoTyphon"/>
+        <PackageName Value="typhonextcomponents"/>
       </Item21>
       <Item22>
-        <PackageName Value="ExpertSuperForm"/>
+        <PackageName Value="ibexpress"/>
       </Item22>
       <Item23>
-        <PackageName Value="typhonextcomponents"/>
-      </Item23>
-      <Item24>
-        <PackageName Value="ibexpress"/>
-      </Item24>
-      <Item25>
         <PackageName Value="LCL"/>
-      </Item25>
+      </Item23>
     </RequiredPackages>
-    <Units Count="1158">
+    <Units Count="1159">
       <Unit0>
         <Filename Value="Ancestromania.dpr"/>
         <IsPartOfProject Value="True"/>
@@ -147,10 +141,12 @@
         <ComponentName Value="FMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="708"/>
-        <CursorPos Y="728"/>
+        <UnitName Value="u_form_main"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="726"/>
+        <CursorPos X="69" Y="742"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit2>
       <Unit3>
@@ -2227,7 +2223,6 @@
       </Unit249>
       <Unit250>
         <Filename Value="Divers/u_form_Restore.lfm"/>
-
         <TopLine Value="32"/>
         <CursorPos X="16" Y="45"/>
         <UsageCount Value="4"/>
@@ -2899,7 +2894,6 @@
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit349>
       <Unit350>
-
         <Filename Value="../../ibx/runtime/IBCustomDataSet.pas"/>
         <TopLine Value="671"/>
         <CursorPos Y="697"/>
@@ -6165,12 +6159,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="U_FormAdapt"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="7"/>
-        <CursorPos X="3" Y="22"/>
+        <TopLine Value="111"/>
+        <CursorPos Y="127"/>
         <UsageCount Value="15"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit853>
       <Unit854>
         <Filename Value="../../Extended/inicomp/u_formmainini.pas"/>
@@ -8060,8 +8054,19 @@
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1157>
+      <Unit1158>
+        <Filename Value="/usr/lib/codetyphon/typhon/components/pl_ORCA/source/orca_scene2d.pas"/>
+        <UnitName Value="orca_scene2d"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="9"/>
+        <CursorPos X="36" Y="25"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit1158>
     </Units>
-    <JumpHistory Count="2" HistoryIndex="1">
+    <JumpHistory Count="8" HistoryIndex="7">
       <Position1>
         <Filename Value="../../ibx/design/IBDBReg.pas"/>
       </Position1>
@@ -8069,6 +8074,29 @@
         <Filename Value="../../Extended/inicomp/u_formadapt.pas"/>
         <Caret Line="105" TopLine="86"/>
       </Position2>
+      <Position3>
+        <Filename Value="Main/u_form_main.pas"/>
+        <Caret Line="728" TopLine="708"/>
+      </Position3>
+      <Position4>
+        <Filename Value="Main/u_form_main.pas"/>
+        <Caret Line="65" Column="3" TopLine="49"/>
+      </Position4>
+      <Position5>
+        <Filename Value="../../Extended/inicomp/u_formadapt.pas"/>
+        <Caret Line="127" TopLine="111"/>
+      </Position5>
+      <Position6>
+        <Filename Value="Main/u_form_main.pas"/>
+        <Caret Line="642" TopLine="626"/>
+      </Position6>
+      <Position7>
+        <Filename Value="Main/u_form_main.pas"/>
+        <Caret Line="708" TopLine="692"/>
+      </Position7>
+      <Position8>
+        <Filename Value="/usr/lib/codetyphon/typhon/components/pl_ORCA/source/orca_scene2d.pas"/>
+      </Position8>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -8078,7 +8106,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="Main;Cartographie;Divers;Arbre;Editions;Multimedia;Individus;MultiMediaWebCam;Context;Gedcom;Graph;MAJInternet;Evenements;MutationBase;CalculDate;Gestion des lieux;$(ProjOutDir);../../THtmlPort/source"/>
-      <OtherUnitFiles Value="Main;Cartographie;Divers;Arbre;Editions;Multimedia;Individus;MultiMediaWebCam;Context;Gedcom;Graph;MAJInternet;Evenements;MutationBase;CalculDate;Gestion des lieux;Web;../../THtmlPort/source"/>
+      <OtherUnitFiles Value="Main;Cartographie;Divers;Arbre;Editions;Multimedia;Individus;MultiMediaWebCam;Context;Gedcom;Graph;MAJInternet;Evenements;MutationBase;CalculDate;Lieux;Web;../../THtmlPort/source"/>
       <UnitOutputDirectory Value="../$(TargetCPU)-$(TargetOS)-k/typhon"/>
     </SearchPaths>
     <Parsing>
@@ -8103,7 +8131,7 @@
     </Other>
   </CompilerOptions>
   <Debugging>
-    <BreakPoints Count="20">
+    <BreakPoints Count="16">
       <Item1>
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
@@ -8199,51 +8227,23 @@
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
-        <Source Value="Main/u_form_main.pas"/>
-        <Line Value="642"/>
+        <Source Value="/usr/lib/codetyphon/typhon/lcl/include/customform.inc"/>
+        <Line Value="2183"/>
       </Item14>
       <Item15>
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
-        <Source Value="../../Extended/inicomp/u_formadapt.pas"/>
-        <Line Value="127"/>
+        <Source Value="Main/u_form_main.pas"/>
+        <Line Value="2259"/>
       </Item15>
       <Item16>
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="Main/u_form_main.pas"/>
-        <Line Value="708"/>
-      </Item16>
-      <Item17>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="Main/u_form_main.pas"/>
-        <Line Value="742"/>
-      </Item17>
-      <Item18>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="/usr/lib/codetyphon/typhon/lcl/include/customform.inc"/>
-        <Line Value="2183"/>
-      </Item18>
-      <Item19>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="Main/u_form_main.pas"/>
-        <Line Value="2259"/>
-      </Item19>
-      <Item20>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="Main/u_form_main.pas"/>
         <Line Value="726"/>
-      </Item20>
+      </Item16>
     </BreakPoints>
     <Exceptions Count="3">
       <Item1>
@@ -8257,4 +8257,4 @@
       </Item3>
     </Exceptions>
   </Debugging>
-</CONFIG>
+</CONFIG>
