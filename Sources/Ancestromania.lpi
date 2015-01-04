@@ -126,7 +126,7 @@
         <PackageName Value="LCL"/>
       </Item27>
     </RequiredPackages>
-    <Units Count="1216">
+    <Units Count="1219">
       <Unit0>
         <Filename Value="Ancestromania.dpr"/>
         <IsPartOfProject Value="True"/>
@@ -145,8 +145,8 @@
         <UnitName Value="u_dm"/>
         <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="27"/>
-        <CursorPos X="60" Y="47"/>
+        <TopLine Value="1228"/>
+        <CursorPos X="15" Y="1247"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
@@ -158,7 +158,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_main"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1954"/>
         <CursorPos X="15" Y="1975"/>
@@ -3935,12 +3935,10 @@
       <Unit496>
         <Filename Value="../../../Lazarus/composants/lzRichEdit/richbox.pas"/>
         <UnitName Value="RichBox"/>
-        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
         <TopLine Value="208"/>
         <CursorPos X="1" Y="1"/>
         <UsageCount Value="13"/>
-        <Loaded Value="True"/>
       </Unit496>
       <Unit497>
         <Filename Value="../../../Lazarus/composants/lzRichEdit/tcustomrichbox.inc"/>
@@ -3950,12 +3948,10 @@
       <Unit498>
         <Filename Value="../../../Lazarus/composants/lzRichEdit/widgetset/wsrichbox.pas"/>
         <UnitName Value="WSRichBox"/>
-        <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
         <TopLine Value="106"/>
         <CursorPos X="85" Y="144"/>
         <UsageCount Value="13"/>
-        <Loaded Value="True"/>
       </Unit498>
       <Unit499>
         <Filename Value="../../../Lazarus/composants/lzRichEdit/interfaces/gtk2/gtk2wsrichboxfactory.pas"/>
@@ -4290,10 +4286,12 @@
       </Unit545>
       <Unit546>
         <Filename Value="../../Extended/extends.inc"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="10" Y="11"/>
-        <UsageCount Value="7"/>
+        <TopLine Value="10"/>
+        <CursorPos X="3" Y="22"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit546>
       <Unit547>
         <Filename Value="../../Extended/composants/U_ExtNumEdits.pas"/>
@@ -5506,12 +5504,10 @@
       <Unit733>
         <Filename Value="../../../Lazarus/composants/lzRichEdit/lazrichedit.pas"/>
         <UnitName Value="LazRichEdit"/>
-        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
         <UsageCount Value="13"/>
-        <Loaded Value="True"/>
       </Unit733>
       <Unit734>
         <Filename Value="Divers/u_Form_About.lfm"/>
@@ -6323,7 +6319,6 @@
       <Unit859>
         <Filename Value="../../Extended/inicomp/u_onforminfoini.pas"/>
         <UnitName Value="U_OnFormInfoIni"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="171"/>
@@ -8706,124 +8701,149 @@
         <CursorPos X="3" Y="20"/>
         <UsageCount Value="12"/>
       </Unit1215>
+      <Unit1216>
+        <Filename Value="/usr/share/lazarus/1.2.6/packager/registration/fcllaz.pas"/>
+        <UnitName Value="fcllaz"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="10"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit1216>
+      <Unit1217>
+        <Filename Value="../../Extended/inicomp/u_registerforms.pas"/>
+        <UnitName Value="u_registerforms"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="10" Y="20"/>
+        <UsageCount Value="10"/>
+      </Unit1217>
+      <Unit1218>
+        <Filename Value="../Packages/AncestroComponents/objects/u_objet_TBooleanList.pas"/>
+        <UnitName Value="u_objet_TBooleanList"/>
+        <EditorIndex Value="7"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="83"/>
+        <CursorPos X="11" Y="104"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit1218>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
         <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="364" Column="1" TopLine="331"/>
+        <Caret Line="167" Column="28" TopLine="134"/>
       </Position1>
       <Position2>
         <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="105" Column="1" TopLine="81"/>
+        <Caret Line="342" Column="28" TopLine="309"/>
       </Position2>
       <Position3>
         <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="105" Column="1" TopLine="81"/>
+        <Caret Line="369" Column="30" TopLine="336"/>
       </Position3>
       <Position4>
         <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="85" Column="37" TopLine="81"/>
+        <Caret Line="362" Column="68" TopLine="336"/>
       </Position4>
       <Position5>
         <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="167" Column="28" TopLine="134"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position5>
       <Position6>
         <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="342" Column="28" TopLine="309"/>
+        <Caret Line="167" Column="20" TopLine="134"/>
       </Position6>
       <Position7>
         <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="369" Column="30" TopLine="336"/>
+        <Caret Line="168" Column="32" TopLine="135"/>
       </Position7>
       <Position8>
         <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="362" Column="68" TopLine="336"/>
+        <Caret Line="177" Column="32" TopLine="144"/>
       </Position8>
       <Position9>
         <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Caret Line="342" Column="20" TopLine="309"/>
       </Position9>
       <Position10>
         <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="167" Column="20" TopLine="134"/>
+        <Caret Line="169" Column="1" TopLine="147"/>
       </Position10>
       <Position11>
         <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="168" Column="32" TopLine="135"/>
+        <Caret Line="177" Column="32" TopLine="147"/>
       </Position11>
       <Position12>
         <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="177" Column="32" TopLine="144"/>
+        <Caret Line="342" Column="67" TopLine="309"/>
       </Position12>
       <Position13>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="342" Column="20" TopLine="309"/>
+        <Filename Value="../../Extended/inicomp/u_onforminfoini.pas"/>
+        <Caret Line="29" Column="40" TopLine="24"/>
       </Position13>
       <Position14>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="169" Column="1" TopLine="147"/>
+        <Filename Value="../../Extended/inicomp/u_onforminfoini.pas"/>
+        <Caret Line="93" Column="43" TopLine="60"/>
       </Position14>
       <Position15>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="177" Column="32" TopLine="147"/>
+        <Filename Value="../../Extended/inicomp/u_onforminfoini.pas"/>
+        <Caret Line="255" Column="14" TopLine="222"/>
       </Position15>
       <Position16>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="342" Column="67" TopLine="309"/>
+        <Filename Value="../../Extended/inicomp/u_onforminfoini.pas"/>
+        <Caret Line="354" Column="44" TopLine="321"/>
       </Position16>
       <Position17>
         <Filename Value="../../Extended/inicomp/u_onforminfoini.pas"/>
-        <Caret Line="29" Column="40" TopLine="24"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position17>
       <Position18>
         <Filename Value="../../Extended/inicomp/u_onforminfoini.pas"/>
-        <Caret Line="93" Column="43" TopLine="60"/>
+        <Caret Line="156" Column="16" TopLine="123"/>
       </Position18>
       <Position19>
-        <Filename Value="../../Extended/inicomp/u_onforminfoini.pas"/>
-        <Caret Line="255" Column="14" TopLine="222"/>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="343" Column="3" TopLine="309"/>
       </Position19>
       <Position20>
-        <Filename Value="../../Extended/inicomp/u_onforminfoini.pas"/>
-        <Caret Line="354" Column="44" TopLine="321"/>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position20>
       <Position21>
-        <Filename Value="../../Extended/inicomp/u_onforminfoini.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="168" Column="1" TopLine="135"/>
       </Position21>
       <Position22>
-        <Filename Value="../../Extended/inicomp/u_onforminfoini.pas"/>
-        <Caret Line="156" Column="16" TopLine="123"/>
+        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
+        <Caret Line="176" Column="1" TopLine="143"/>
       </Position22>
       <Position23>
         <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="343" Column="3" TopLine="309"/>
+        <Caret Line="330" Column="87" TopLine="308"/>
       </Position23>
       <Position24>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
-      </Position24>
-      <Position25>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="168" Column="1" TopLine="135"/>
-      </Position25>
-      <Position26>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="176" Column="1" TopLine="143"/>
-      </Position26>
-      <Position27>
-        <Filename Value="MAJInternet/u_Form_Maj_Internet.pas"/>
-        <Caret Line="330" Column="87" TopLine="308"/>
-      </Position27>
-      <Position28>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestropictbuttons.pas"/>
         <Caret Line="13" Column="18" TopLine="2"/>
-      </Position28>
-      <Position29>
+      </Position24>
+      <Position25>
         <Filename Value="../../Extended/reportcomp/u_reportform.pas"/>
         <Caret Line="18" Column="39" TopLine="1"/>
-      </Position29>
+      </Position25>
+      <Position26>
+        <Filename Value="Main/u_dm.pas"/>
+        <Caret Line="47" Column="60" TopLine="27"/>
+      </Position26>
+      <Position27>
+        <Filename Value="../Packages/AncestroComponents/objects/u_objet_TBooleanList.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
+      </Position27>
+      <Position28>
+        <Filename Value="/usr/share/lazarus/1.2.6/packager/registration/fcllaz.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
+      </Position28>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -8841,10 +8861,6 @@
         <SyntaxMode Value="Delphi"/>
       </SyntaxOptions>
     </Parsing>
-    <CodeGeneration>
-      <TargetCPU Value="i386"/>
-      <TargetOS Value="win32"/>
-    </CodeGeneration>
     <Linking>
       <Debugging>
         <GenerateDebugInfo Value="False"/>
@@ -8984,4 +9000,4 @@
     </Exceptions>
   </Debugging>
   <EditorMacros Count="0"/>
-</CONFIG>
+</CONFIG>
