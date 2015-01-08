@@ -1,0 +1,15920 @@
+SET ECHO ON;
+/*Ce script maj_b51xx.sql ne doit s'appliquer qu'à des bases de niveau mini b5.060 pour les faire passer en b5.1xx sous FB2.1.
+Afin d'assurer la compatibilité avec FB2.1 il vide tous les triggers, les procédures, supprime les fonctions UDF (elles sont maintenant intégrées à FB2.1),
+supprime certaines tables temporaires, et reconstruit le tout. Il ne devrait pas provoquer d'erreurs.
+Firebird 2.5 minimum doit être installé.*/
+
+SET ECHO OFF;
+set sql dialect 3;
+SET NAMES ISO8859_1;
+COMMIT WORK;
+SET AUTODDL OFF;
+
+SET TERM ^ ;
+
+CREATE OR ALTER PROCEDURE PASSE_EN_5100 
+as
+declare variable procedure_name char(31);
+begin
+  for select rdb$trigger_name
+      from rdb$triggers
+      where rdb$system_flag=0
+      into :procedure_name
+  do
+  begin
+    execute statement 'DROP TRIGGER '||procedure_name;
+  end
+end^
+commit^
+execute procedure passe_en_5100^
+commit^
+CREATE OR ALTER PROCEDURE PASSE_EN_5100 
+as
+declare variable procedure_name char(31);
+declare variable i integer;
+begin
+  i=1;
+  while (i>0) do
+  begin
+    i=0;
+    for select pp.rdb$procedure_name
+        from rdb$procedures pp
+        where rdb$procedure_name<>'PASSE_EN_5100'
+          and not exists (select * from rdb$dependencies
+                          where rdb$depended_on_name=pp.rdb$procedure_name)
+        into :procedure_name
+    do
+    begin
+      execute statement 'DROP PROCEDURE '||procedure_name;
+      delete from rdb$dependencies
+      where rdb$dependent_name=:procedure_name;
+      i=i+1;
+    end
+  end
+end^
+commit^
+execute procedure passe_en_5100^
+commit^
+CREATE OR ALTER PROCEDURE PASSE_EN_5100 
+as
+declare variable procedure_name char(31);
+begin
+  for select rdb$function_name
+      from rdb$functions
+      where rdb$system_flag is null or rdb$system_flag=0
+      into :procedure_name
+  do
+  begin
+    execute statement 'DROP EXTERNAL FUNCTION "'||procedure_name||'"';
+  end
+end^
+commit^
+execute procedure passe_en_5100^
+commit^
+
+drop procedure passe_en_5100^
+commit^
+
+SET ECHO ON^
+/*Instructions pouvant provoquer des erreurs normales si l'action a déjà été faite lors d'une précédente mise à jour*/
+ALTER TABLE DOSSIER
+ADD DS_FIC_NOTES VARCHAR(254) CHARACTER SET ISO8859_1 
+COLLATE ISO8859_1 ^
+commit^
+
+ALTER TABLE NOM_ATTACHEMENT
+ADD NOM_LETTRE VARCHAR(1)^
+commit^
+
+CREATE INDEX IDX_NOM_ATTACHEMENT_NOM
+ON NOM_ATTACHEMENT (NOM)^
+commit^
+
+CREATE INDEX IDX_NOM_ATTACHEMENT_NOM_LETTRE
+ON NOM_ATTACHEMENT (NOM_LETTRE)^
+commit^
+
+CREATE INDEX IDX_NOM_ATTACHEMENT_DOSSIER
+ON NOM_ATTACHEMENT (KLE_DOSSIER)^
+commit^
+
+ALTER TABLE INDIVIDU ADD TYPE_LIEN_GENE INTEGER^
+commit^
+
+CREATE INDEX INDIVIDU_TYPE_LIEN_GENE ON INDIVIDU (TYPE_LIEN_GENE)^
+commit^
+
+drop TABLE TQ_ANC^
+commit^
+
+ALTER TABLE INDIVIDU ADD IND_CONFIDENTIEL SMALLINT^
+commit^
+
+drop TABLE TT_ASCENDANCE^
+commit^
+
+CREATE SEQUENCE GEN_TT_ASCENDANCE^
+commit^
+
+ALTER TABLE T_VERSION_BASE ADD OCTETS_FICHIER BIGINT^
+commit^
+
+--mis ici pour réparer erreur d'import d'un modèle d'arbre et ne pas être bloquant si la table n'existe pas AL2009
+CREATE OR ALTER TRIGGER EX_ARBRES_BI0 FOR EX_ARBRES
+ACTIVE BEFORE INSERT POSITION 0
+as
+begin
+  if (new.ar_id is null) then
+    new.ar_id=gen_id(gen_ex_arbres_id,1);
+end^
+commit^
+COMMENT ON TRIGGER EX_ARBRES_BI0 IS 
+'créé par André en 2009 pour importation des modèles d''arbres.'^
+commit^
+
+DROP INDEX REF_EVENEMENTS_LANGUE^
+commit^
+ALTER TABLE REF_EVENEMENTS DROP LANGUE^
+commit^
+ALTER TABLE REF_EVENEMENTS DROP REF_EVE_SECTION^
+commit^
+
+DROP INDEX REF_EVENEMENTS_LIB_COURT^
+commit^
+
+CREATE INDEX IDX_LIB_COURT_LANGUE
+ON REF_EVENEMENTS (REF_EVE_LIB_COURT,REF_EVE_LANGUE)^
+commit^
+
+update ref_evenements
+set ref_eve_langue='FRA' where ref_eve_langue='FR'^
+commit^
+
+DROP INDEX REF_PARTICULES_LANGUE^
+commit^
+ALTER TABLE REF_PARTICULES DROP LANGUE^
+commit^
+
+DROP TABLE REF_RELIGION^
+commit^
+DROP SEQUENCE GEN_REF_RELIGIONS^
+commit^
+DROP SEQUENCE GEN_RELI_CLEF^
+commit^
+
+DROP TABLE REF_TYPE_UNION^
+commit^
+
+DROP SEQUENCE GEN_REF_TU_CLEF^
+commit^
+
+ALTER TABLE DOSSIER
+ADD DS_LANGUE VARCHAR(3) CHARACTER SET ISO8859_1 
+DEFAULT 'FRA' 
+COLLATE ISO8859_1^
+commit^
+
+ALTER TABLE REF_RACCOURCIS DROP RAC_DOSSIER^
+commit^
+
+alter table ref_raccourcis
+alter rac_libelle type varchar(255) character set ISO8859_1^
+commit^
+
+DROP INDEX REF_PREFIXES_IDX1^
+commit^
+ALTER TABLE REF_PREFIXES DROP LANGUE^
+commit^
+
+ALTER TABLE T_ASSOCIATIONS
+ADD ASSOC_LIBELLE VARCHAR(90) CHARACTER SET ISO8859_1 
+COLLATE FR_FR^
+commit^
+update t_associations t
+set t.assoc_libelle=(select r.ref_rela_libelle from ref_rela_temoins r
+where r.langue='FRA' and r.ref_rela_code=t.assoc_type)^
+commit^
+ALTER TABLE T_ASSOCIATIONS DROP ASSOC_TYPE^
+ALTER TABLE REF_RELA_TEMOINS DROP REF_RELA_TAG_A^
+ALTER TABLE REF_RELA_TEMOINS DROP REF_RELA_TAG_N^
+ALTER TABLE REF_RELA_TEMOINS DROP REF_RELA_CODE^
+commit^ --commit de l'ensemble concernant les relations témoins
+
+DROP INDEX ADRESSES_IND_TYPE^
+ALTER TABLE ADRESSES_IND DROP ADR_TYPE^
+commit^
+
+ALTER TABLE ADRESSES_IND
+ADD ADR_TYPE COMPUTED BY (1)^
+COMMENT ON TABLE ADRESSES_IND IS 'ADR_TYPE recréé uniquement pour compatibilité avec dll Arbres'^
+commit^
+
+CREATE TABLE REF_DIVERS_IND (
+    REF_LANGUE VARCHAR(3) CHARACTER SET ISO8859_1 NOT NULL,
+    REF_LIBELLE VARCHAR(25) CHARACTER SET ISO8859_1 NOT NULL)^
+commit^
+alter table REF_DIVERS_IND
+add constraint PK_REF_DIVERS_IND
+primary key (REF_LANGUE,REF_LIBELLE)
+using index PK_REF_DIVERS_IND^
+commit^
+insert into ref_divers_ind
+(ref_libelle,ref_langue)
+select substring(ref_eve_lib_long from 1 for 25),ref_eve_langue
+from ref_evenements where ref_eve_type='T' and substring(ref_eve_lib_court from 1 for 3)<>'IDS'^
+commit^
+
+CREATE TABLE REF_DIVERS_FAM (
+    REF_LANGUE VARCHAR(3) CHARACTER SET ISO8859_1 NOT NULL,
+    REF_LIBELLE VARCHAR(25) CHARACTER SET ISO8859_1 NOT NULL)^
+commit^
+alter table REF_DIVERS_FAM
+add constraint PK_REF_DIVERS_FAM
+primary key (REF_LANGUE,REF_LIBELLE)
+using index PK_REF_DIVERS_FAM^
+commit^
+
+DROP INDEX individu_cle_parents^
+DROP INDEX individu_religion^
+CREATE INDEX individu_num_sosa
+ON individu (num_sosa)^
+commit^
+
+ALTER TABLE MEDIA_POINTEURS
+ADD MP_POSITION INTEGER^
+commit^
+
+drop TABLE TQ_MEDIAS^ --création en b5.140
+commit^
+
+DROP SEQUENCE GEN_FAMILLE^
+commit^
+
+CREATE SEQUENCE GEN_TQ_MEDIA^
+commit^
+ALTER SEQUENCE GEN_TQ_MEDIA RESTART WITH 0^
+commit^
+
+ALTER TABLE DOSSIER
+ADD DS_INDICATEURS INTEGER
+DEFAULT 0 
+NOT NULL^
+commit^
+
+ALTER TABLE REF_HISTOIRE
+ADD HI_DATE_CODE_DEBUT INTEGER^
+ALTER TABLE REF_HISTOIRE
+ADD HI_DATE_CODE_FIN INTEGER^
+DROP INDEX IDX_REF_HISTOIRE_DEBUT^
+DROP INDEX IDX_REF_HISTOIRE_DEBUT_DESC^
+DROP INDEX IDX_REF_HISTOIRE_FIN^
+CREATE INDEX IDX_REF_HISTOIRE_DEBUT ON REF_HISTOIRE (HI_DATE_CODE_DEBUT)^
+CREATE DESCENDING INDEX IDX_REF_HISTOIRE_DEBUT_DESC ON REF_HISTOIRE (HI_DATE_CODE_DEBUT)^
+CREATE INDEX IDX_REF_HISTOIRE_FIN ON REF_HISTOIRE (HI_DATE_CODE_FIN)^
+ALTER TABLE REF_HISTOIRE DROP HI_DATE_DEBUT^
+ALTER TABLE REF_HISTOIRE DROP HI_DATE_FIN^
+commit^
+
+CREATE TABLE REF_MARR (
+    REF_LANGUE   VARCHAR(3) NOT NULL,
+    REF_LIBELLE  VARCHAR(90) NOT NULL COLLATE FR_CA)^
+    
+ALTER TABLE REF_MARR ADD CONSTRAINT PK_REF_MARR PRIMARY KEY (REF_LANGUE, REF_LIBELLE)
+USING INDEX IDX_LANGUE_LIBELLE^
+commit^
+insert into ref_marr(ref_langue,ref_libelle) values('FRA','Mariage civil')^
+insert into ref_marr(ref_langue,ref_libelle) values('FRA','Mariage religieux')^
+insert into ref_marr(ref_langue,ref_libelle) values('FRA','PACS')^
+insert into ref_marr(ref_langue,ref_libelle) values('FRA','Union libre')^
+commit^
+
+/*remplacement table ADRESSES*/
+ALTER TABLE EVENEMENTS_IND
+ADD EV_IND_LIGNES_ADRESSE BLOB SUB_TYPE 1 SEGMENT SIZE 80 CHARACTER SET WIN1252^
+ALTER TABLE EVENEMENTS_IND
+ADD EV_IND_TEL BLOB SUB_TYPE 1 SEGMENT SIZE 80 CHARACTER SET WIN1252^
+ALTER TABLE EVENEMENTS_IND
+ADD EV_IND_MAIL VARCHAR(120) CHARACTER SET WIN1252^
+ALTER TABLE EVENEMENTS_IND
+ADD EV_IND_WEB VARCHAR(120) CHARACTER SET WIN1252^
+commit^
+
+CREATE OR ALTER PROCEDURE MAJRESI
+as
+declare variable clef integer;
+declare variable indi integer;
+declare variable dossier integer;
+declare variable photo varchar(255);
+declare variable clef_media integer;
+declare variable clef_ev integer;
+begin
+  rdb$set_context('USER_SESSION','TRIGGERS_DATES_INACTIFS','1');
+  for select adr_clef
+    ,adr_kle_ind
+    ,adr_kle_dossier
+    ,adr_photo
+    from adresses_ind
+    into
+     :clef
+    ,:indi
+    ,:dossier
+    ,:photo
+  do
+  begin
+    clef_ev=gen_id(gen_ev_ind_clef,1);
+    insert into evenements_ind (
+       ev_ind_clef
+      ,ev_ind_kle_fiche
+      ,ev_ind_kle_dossier
+      ,ev_ind_type
+      ,ev_ind_date_writen
+      ,ev_ind_date_year
+      ,ev_ind_date
+      ,ev_ind_cp
+      ,ev_ind_ville
+      ,ev_ind_dept
+      ,ev_ind_pays
+      ,ev_ind_comment
+      ,ev_ind_region
+      ,ev_ind_subd
+      ,ev_ind_acte
+      ,ev_ind_insee
+      ,ev_ind_date_mois
+      ,ev_ind_date_mois_fin
+      ,ev_ind_date_year_fin
+      ,ev_ind_date_fin
+      ,ev_ind_latitude
+      ,ev_ind_longitude
+      ,ev_ind_lignes_adresse
+      ,ev_ind_tel
+      ,ev_ind_mail
+      ,ev_ind_web)
+    select
+       :clef_ev
+      ,:indi
+      ,:dossier
+      ,'RESI'
+      ,adr_date_writen
+      ,adr_date_year_1
+      ,adr_date_1
+      ,adr_cp
+      ,adr_ville
+      ,adr_dept
+      ,adr_pays
+      ,adr_memo
+      ,adr_region
+      ,adr_subd
+      ,-3
+      ,adr_insee
+      ,adr_date_mois_1
+      ,adr_date_mois_2
+      ,adr_date_year_2
+      ,adr_date_2
+      ,adr_latitude
+      ,adr_longitude
+      ,adr_adresse
+      ,adr_tel
+      ,substring(adr_mail from 1 for 120)
+      ,substring(adr_web from 1 for 120)
+      from adresses_ind where adr_clef=:clef;
+    if (photo is not null) then
+    begin
+      clef_media=null;
+      select first(1) multi_clef from multimedia
+      where multi_dossier=:dossier and multi_path=:photo
+      into :clef_media;
+      if (clef_media is null) then
+      begin
+        clef_media=gen_id(gen_multimedia,1);
+        insert into multimedia
+           (multi_clef
+          ,multi_infos
+          ,multi_dossier
+          ,multi_date_modif
+          ,multi_memo
+          ,multi_image_rtf
+          ,multi_path)
+         values(
+           :clef_media
+          ,'Image domicile transférée le '||cast(current_timestamp as varchar(30))
+          ,:dossier
+          ,current_timestamp
+          ,'Image domicile transférée'
+          ,1
+          ,:photo);
+      end
+      insert into media_pointeurs (
+         mp_clef
+        ,mp_media
+        ,mp_cle_individu
+        ,mp_pointe_sur
+        ,mp_table
+        ,mp_identite
+        ,mp_kle_dossier
+        ,mp_type_image
+        ,mp_position)
+      values(
+         gen_id(biblio_pointeurs_id_gen,1)
+        ,:clef_media
+        ,:indi
+        ,:clef_ev
+        ,'I'
+        ,0
+        ,:dossier
+        ,'A'
+        ,0);
+    end
+  end
+  rdb$set_context('USER_SESSION','TRIGGERS_DATES_INACTIFS',null);
+end^
+execute procedure MAJRESI^
+drop procedure MAJRESI^
+delete from adresses_ind^
+--drop table adresses_ind^ conservée pour compatibilité avec plugin lesArbres.dll
+
+DROP SEQUENCE GEN_ADRESSES_IND^
+commit^
+
+/*Fin du remplacement de la table ADRESSES*/
+
+/* suppression du BOA*/
+DROP TABLE T_GROUPES^
+commit^
+DROP TABLE VERSION_DLL^
+commit^
+
+--gestion des lieux favoris
+drop table lieux_favoris^
+commit^
+
+CREATE SEQUENCE GEN_CONSANG^
+commit^
+
+DROP SEQUENCE TQ_TRANSIT_CLEF_GEN^
+commit^
+
+DROP SEQUENCE GEN_TT_ASCENDANCE^
+commit^
+
+/*Fin des instructions pouvant provoquer des erreurs normales*/
+set echo off^
+
+update RDB$RELATION_FIELDS set
+RDB$COLLATION_ID = 5,
+RDB$NULL_FLAG = NULL
+where (RDB$FIELD_NAME = 'NOM_INDI') and
+(RDB$RELATION_NAME = 'NOM_ATTACHEMENT')^
+commit^
+
+update RDB$RELATION_FIELDS set
+RDB$COLLATION_ID = 5
+where (RDB$FIELD_NAME = 'NOM') and
+(RDB$RELATION_NAME = 'NOM_ATTACHEMENT')^
+commit^
+
+SET TERM ; ^
+
+drop TABLE PRENOMS;
+drop TABLE T_DOUBLONS;
+drop TABLE TQ_ARBREDESCENDANT;
+drop TABLE TQ_ARBREREDUIT;
+drop TABLE TQ_ASCEND_DESCEND;
+drop TABLE TQ_ASCENDANCE;
+drop TABLE TQ_CONSANG;
+drop TABLE TQ_ECLAIR;
+drop TABLE TQ_ID;
+drop TABLE TQ_PRENOMS;
+drop TABLE TQ_TRANSIT;
+drop TABLE TQ_RECH_DOUBLONS;
+drop TABLE TRACES;
+commit;
+
+CREATE GLOBAL TEMPORARY TABLE LIEUX_FAVORIS (
+    VILLE      VARCHAR(50),
+    SUBD       VARCHAR(50),
+    CP         VARCHAR(10),
+    DEPT       VARCHAR(30),
+    REGION     VARCHAR(50),
+    PAYS       VARCHAR(30),
+    INSEE      VARCHAR(6),
+    LATITUDE   DECIMAL(15,8),
+    LONGITUDE  NUMERIC(15,8)
+) ON COMMIT PRESERVE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE PRENOMS (
+    PRENOM  VARCHAR(60) NOT NULL COLLATE FR_FR,
+    M       INTEGER DEFAULT 0,
+    F       INTEGER DEFAULT 0,
+    SEXE    COMPUTED BY (iif((F>M),2,1))
+) ON COMMIT PRESERVE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE T_DOUBLONS (
+    CLE_FICHE  INTEGER NOT NULL
+) ON COMMIT DELETE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE TQ_ANC (
+    DECUJUS  INTEGER,
+    NIVEAU   INTEGER,
+    INDI     INTEGER,
+    ENFANT   INTEGER
+) ON COMMIT DELETE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE TQ_ARBREDESCENDANT (
+    TQ_NIVEAU     INTEGER,
+    TQ_CLE_FICHE  INTEGER,
+    TQ_SOSA       VARCHAR(120),
+    TQ_CLE_PERE   INTEGER,
+    TQ_CLE_MERE   INTEGER,
+    TQ_NUM_SOSA   VARCHAR(120),
+    TQ_ASCENDANT  INTEGER
+) ON COMMIT DELETE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE TQ_ARBREREDUIT (
+    TQ_NIVEAU      INTEGER,
+    TQ_CLE_FICHE   INTEGER,
+    TQ_SOSA        DOUBLE PRECISION,
+    TQ_DOSSIER     INTEGER,
+    IMPLEXE        DOUBLE PRECISION,
+    TQ_DESCENDANT  INTEGER
+) ON COMMIT DELETE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE TQ_ASCEND_DESCEND (
+    NIVEAU     INTEGER,
+    CLE_FICHE  INTEGER
+) ON COMMIT DELETE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE TQ_ASCENDANCE (
+    TQ_NIVEAU     INTEGER,
+    TQ_CLE_FICHE  INTEGER,
+    TQ_DOSSIER    INTEGER
+) ON COMMIT DELETE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE TQ_CONSANG (
+    ID       INTEGER,
+    DECUJUS  INTEGER,
+    NIVEAU   INTEGER,
+    INDI     INTEGER,
+    ENFANT   INTEGER
+) ON COMMIT PRESERVE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE TQ_ECLAIR (
+    TQ_CLEF       INTEGER NOT NULL,
+    TQ_NOM        VARCHAR(40),
+    TQ_CP         VARCHAR(10),
+    TQ_VILLE      VARCHAR(50),
+    TQ_PAYS       VARCHAR(30),
+    TQ_DATE       INTEGER,
+    TQ_NAISSANCE  INTEGER,
+    TQ_BAPTEME    INTEGER,
+    TQ_MARIAGE    INTEGER,
+    TQ_DECES      INTEGER,
+    TQ_INSEE      VARCHAR(6),
+    TQ_SEPULTURE  INTEGER,
+    TQ_DEPT       VARCHAR(30) COLLATE FR_FR,
+    TQ_REGION     VARCHAR(50) COLLATE FR_FR
+) ON COMMIT DELETE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE TQ_ID (
+    ID1  INTEGER NOT NULL,
+    ID2  INTEGER NOT NULL
+) ON COMMIT DELETE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE TQ_PRENOMS (
+    COMBIEN  INTEGER,
+    DOSSIER  INTEGER NOT NULL,
+    PRENOM   VARCHAR(80)
+) ON COMMIT DELETE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE TQ_RECH_DOUBLONS (
+    CLE_FICHE           INTEGER NOT NULL,
+    DATE_NAISSANCE      INTEGER,
+    DATE_NAISSANCE_FIN  INTEGER,
+    VILLE_NAISSANCE     VARCHAR(50),
+    DATE_DECES          INTEGER,
+    DATE_DECES_FIN      INTEGER,
+    VILLE_DECES         VARCHAR(50)
+) ON COMMIT PRESERVE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE TQ_TRANSIT (
+    CHAMP1  VARCHAR(50),
+    CHAMP2  VARCHAR(50),
+    CHAMP3  VARCHAR(50),
+    CHAMP4  VARCHAR(50)
+) ON COMMIT DELETE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE TRACES (
+    MOMENT         TIMESTAMP DEFAULT current_timestamp,
+    NOM_TABLE      VARCHAR(25),
+    ENR_TABLE      INTEGER,
+    TEXTE_MESSAGE  VARCHAR(255)
+) ON COMMIT PRESERVE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE TT_ASCENDANCE (
+    ORDRE     INTEGER NOT NULL,
+    NIVEAU    SMALLINT,
+    INDI      INTEGER,
+    SEXE      SMALLINT,
+    CONJOINT  INTEGER,
+    ENFANT    INTEGER,
+    SOSA      BIGINT,
+    IMPLEXE   INTEGER
+) ON COMMIT DELETE ROWS;
+
+CREATE GLOBAL TEMPORARY TABLE TQ_MEDIAS (
+    MULTI_CLEF   INTEGER NOT NULL,
+    MULTI_PATH   VARCHAR(255),
+    MULTI_MEDIA  BLOB SUB_TYPE 0 SEGMENT SIZE 80
+) ON COMMIT DELETE ROWS;
+
+commit;
+
+
+ALTER TABLE PRENOMS ADD CONSTRAINT PK_PRENOMS_PRENOM PRIMARY KEY (PRENOM);
+ALTER TABLE TQ_ECLAIR ADD PRIMARY KEY (TQ_CLEF);
+ALTER TABLE TQ_RECH_DOUBLONS ADD CONSTRAINT PK_TQ_RECH_DOUBLONS PRIMARY KEY (CLE_FICHE);
+ALTER TABLE TT_ASCENDANCE ADD CONSTRAINT PK_TT_ASCENDANCE PRIMARY KEY (ORDRE);
+ALTER TABLE TQ_MEDIAS ADD CONSTRAINT PK_TQ_MEDIAS PRIMARY KEY (MULTI_CLEF);
+
+commit;
+
+CREATE INDEX CLEF_LIEUX_FAVORIS ON LIEUX_FAVORIS (VILLE, SUBD, CP, DEPT, REGION, PAYS, INSEE, LATITUDE, LONGITUDE);
+CREATE INDEX T_DOUBLONS_IDX1 ON T_DOUBLONS (CLE_FICHE);
+CREATE INDEX TQ_ANC_DECUJUS ON TQ_ANC (DECUJUS);
+CREATE INDEX TQ_ANC_ENFANT ON TQ_ANC (ENFANT);
+CREATE INDEX TQ_ANC_INDI ON TQ_ANC (INDI);
+CREATE INDEX TQ_ANC_NIVEAU ON TQ_ANC (NIVEAU);
+CREATE INDEX TQ_ARBREDESCENDANT_ASCENDANT ON TQ_ARBREDESCENDANT (TQ_ASCENDANT);
+CREATE INDEX TQ_ARBREDESCENDANT_IDX1 ON TQ_ARBREDESCENDANT (TQ_NIVEAU);
+CREATE INDEX TQ_ARBREDESCENDANT_IDX2 ON TQ_ARBREDESCENDANT (TQ_CLE_FICHE);
+CREATE INDEX TQ_ARBREDESCENDANT_IDX4 ON TQ_ARBREDESCENDANT (TQ_CLE_PERE);
+CREATE INDEX TQ_ARBREDESCENDANT_IDX5 ON TQ_ARBREDESCENDANT (TQ_CLE_MERE);
+CREATE INDEX TQ_ARBREDESCENDANT_NUM_SOSA ON TQ_ARBREDESCENDANT (TQ_NUM_SOSA);
+CREATE INDEX TQ_ARBREDESCENDANT_SOSA ON TQ_ARBREDESCENDANT (TQ_SOSA);
+CREATE INDEX TQ_ARBREREDUIT_IDX1 ON TQ_ARBREREDUIT (TQ_NIVEAU);
+CREATE INDEX TQ_ARBREREDUIT_IDX2 ON TQ_ARBREREDUIT (TQ_CLE_FICHE);
+CREATE INDEX TQ_ARBREREDUIT_IDX3 ON TQ_ARBREREDUIT (IMPLEXE);
+CREATE INDEX TQ_ARBREREDUIT_SOSA ON TQ_ARBREREDUIT (TQ_SOSA);
+CREATE INDEX TQ_ASCENDANCE_NIVEAU ON TQ_ASCENDANCE (TQ_NIVEAU);
+CREATE INDEX TQ_ASCENDANCE_CLE_FICHE ON TQ_ASCENDANCE (TQ_CLE_FICHE);
+CREATE INDEX TQ_ASCENDANCE_DOSSIER ON TQ_ASCENDANCE (TQ_DOSSIER);
+CREATE INDEX TQ_CONSANG_DECUJUS ON TQ_CONSANG (DECUJUS);
+CREATE INDEX TQ_CONSANG_ENFANT ON TQ_CONSANG (ENFANT);
+CREATE INDEX TQ_CONSANG_ID ON TQ_CONSANG (ID);
+CREATE INDEX TQ_CONSANG_INDI ON TQ_CONSANG (INDI);
+CREATE INDEX TQ_CONSANG_NIVEAU ON TQ_CONSANG (NIVEAU);
+CREATE INDEX IDX_TQ_ECLAIR_DATE ON TQ_ECLAIR (TQ_DATE);
+CREATE INDEX IDX_TQ_ECLAIR_NOM ON TQ_ECLAIR (TQ_NOM);
+CREATE INDEX IDX_TQ_ECLAIR_VILLE ON TQ_ECLAIR (TQ_VILLE);
+CREATE INDEX TQ_ID_IDX_ID2 ON TQ_ID (ID2);
+CREATE INDEX TQ_ID_IDX_ID1 ON TQ_ID (ID1);
+CREATE INDEX TQ_PRENOMS_COMBIEN ON TQ_PRENOMS (COMBIEN);
+CREATE INDEX TQ_PRENOMS_DOSSIER ON TQ_PRENOMS (DOSSIER);
+CREATE INDEX TQ_PRENOMS_PRENOM ON TQ_PRENOMS (PRENOM);
+CREATE INDEX IDX_TRACES_MOMENT ON TRACES (MOMENT);
+CREATE INDEX IDX_TRACES_TABLE ON TRACES (NOM_TABLE);
+CREATE INDEX TT_ASCENDANCE_IDX_INDI ON TT_ASCENDANCE (INDI);
+commit;
+
+SET TERM ^ ; 
+
+/******************************************************************************/
+/****                          Stored Procedures                           ****/
+/******************************************************************************/
+
+CREATE OR ALTER PROCEDURE F_DATE_MOIS (
+    mois integer,
+    annee integer,
+    maximize integer)
+returns (
+    date_out date)
+as
+declare variable sannee varchar(4);
+begin
+  sannee=cast(annee as varchar(4));
+  if (annee<100) then
+    sannee='00'||sannee;
+  if (mois<1) then
+    mois=null;
+  if (maximize=0) then --au plus tôt
+    date_out=cast(coalesce(mois,1)||'/1/'||sannee as date);
+  else if (maximize=1) then --au plus tard
+  begin
+    date_out=cast(coalesce(mois,12)||'/1/'||sannee as date);
+    date_out=dateadd(-1 day to dateadd(1 month to date_out));
+  end
+  else --if (maximize=2) then --au milieu
+    date_out=cast(coalesce(mois||'/15/','7/1/')||sannee as date);
+  suspend;
+end^
+
+COMMENT ON PROCEDURE F_DATE_MOIS IS
+'Procédure créée par André Langlet le 28/11/2010
+Retourne la date du premier ou du dernier jour du mois ou de l''année si le mois est nul.'^
+
+CREATE OR ALTER PROCEDURE F_MAJ (
+    S_IN VARCHAR(255))
+RETURNS (
+    S_OUT VARCHAR(255))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE F_MAJ_SANS_ACCENT (
+    S_IN VARCHAR(255))
+RETURNS (
+    S_OUT VARCHAR(255))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_AGE_A_DATE (
+    I_CLEF_INDI INTEGER,
+    DATE_EVE DATE,
+    MOIS_EVE INTEGER,
+    AN_EVE INTEGER)
+RETURNS (
+    AGE INTEGER,
+    DATE_NAIS DATE,
+    MOIS_NAIS INTEGER,
+    AN_NAIS INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_AGE_TEXTE (
+    DATE_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100))
+RETURNS (
+    AGE_TEXTE VARCHAR(60))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_ANC_COMMUNS (
+    INDIVIDU1 INTEGER,
+    INDIVIDU2 INTEGER)
+RETURNS (
+    COMMUN INTEGER,
+    ENFANT_1 INTEGER,
+    NIVEAU_MIN_1 INTEGER,
+    ENFANT_2 INTEGER,
+    NIVEAU_MIN_2 INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_ARBRE_EXPORT (
+    I_CLEF INTEGER,
+    I_NIVEAU INTEGER,
+    I_DOSSIER INTEGER,
+    I_PARQUI INTEGER)
+RETURNS (
+    NIVEAU INTEGER,
+    SOSA DOUBLE PRECISION,
+    CLE_FICHE INTEGER,
+    CLE_IMPORTATION VARCHAR(20),
+    CLE_PARENTS INTEGER,
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    PREFIXE VARCHAR(30),
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    SURNOM VARCHAR(120),
+    SUFFIXE VARCHAR(30),
+    SEXE INTEGER,
+    DATE_NAISSANCE VARCHAR(100),
+    ANNEE_NAISSANCE INTEGER,
+    DATE_DECES VARCHAR(100),
+    ANNEE_DECES INTEGER,
+    DECEDE INTEGER,
+    AGE_AU_DECES INTEGER,
+    SOURCE BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    COMMENT BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    FILLIATION VARCHAR(30),
+    NUM_SOSA DOUBLE PRECISION,
+    OCCUPATION VARCHAR(90),
+    NCHI INTEGER,
+    NMR INTEGER,
+    CLE_FIXE INTEGER,
+    IMPLEXE DOUBLE PRECISION,
+    DESCENDANT INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_ASCEND_DESCEND (
+    I_CLEF INTEGER,
+    I_NIVEAU INTEGER,
+    I_DOSSIER INTEGER,
+    I_PARQUI INTEGER)
+RETURNS (
+    MODE CHAR(1),
+    CLE_FICHE INTEGER,
+    PREFIXE VARCHAR(30),
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    SURNOM VARCHAR(120),
+    SUFFIXE VARCHAR(30),
+    SEXE INTEGER,
+    CLE_PARENTS INTEGER,
+    SOURCE BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    COMMENT BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    NUM_SOSA VARCHAR(120),
+    NIVEAU INTEGER,
+    FILLIATION VARCHAR(30),
+    CLE_MERE INTEGER,
+    CLE_PERE INTEGER,
+    NCHI INTEGER,
+    NMR INTEGER,
+    CLE_FIXE INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_ASCEND_ORDONNEE (
+    decujus integer,
+    max_niveau smallint,
+    mode_implexe smallint)
+returns (
+    ordre integer,
+    niveau smallint,
+    indi integer,
+    sexe smallint,
+    conjoint integer,
+    enfant integer,
+    sosa bigint,
+    implexe integer)
+as
+begin
+    suspend;
+end^
+
+
+CREATE OR ALTER PROCEDURE PROC_COMPTAGE (
+    I_DOSSIER INTEGER)
+RETURNS (
+    LIBELLE VARCHAR(10),
+    COMPTAGE INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_CONJOINTS_ORDONNES (
+    indi integer,
+    c_inconnu integer)
+returns (
+    ordre integer,
+    clef_union integer,
+    conjoint integer,
+    clef_marr integer)
+as
+begin
+  suspend;
+end^
+
+
+CREATE OR ALTER PROCEDURE PROC_CONSANG (
+    INDIVIDU INTEGER,
+    INDIVIDU2 INTEGER,
+    NIVEAU_CALCUL INTEGER)
+RETURNS (
+    CONSANGUINITE DOUBLE PRECISION)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_COPIE_DOSSIER (
+    DOSSIERS INTEGER,
+    I_DOSSIERC INTEGER)
+RETURNS (
+    DOSSIERC INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_DATE_WRITEN (
+    date_writen varchar(100))
+returns (
+    ijour integer,
+    imois integer,
+    ian integer,
+    ddate date,
+    ijour_fin integer,
+    imois_fin integer,
+    ian_fin integer,
+    ddate_fin date,
+    date_writen_s varchar(100),
+    type_token1 integer,
+    type_token2 integer,
+    valide smallint)
+as
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_DATE_WRITEN_UN (
+    date_writen varchar(100),
+    langue varchar(3))
+returns (
+    ijour integer,
+    imois integer,
+    ian integer,
+    ddate date,
+    token varchar(30),
+    type_token integer,
+    date_writen_s varchar(100),
+    valide smallint)
+as
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_DATES_INCOHERENTES (
+    i_dossier integer,
+    min_mar_hom integer,
+    min_mar_fem integer,
+    max_mar_hom integer,
+    max_mar_fem integer,
+    min_enf_hom integer,
+    min_enf_fem integer,
+    max_enf_hom integer,
+    max_enf_fem integer,
+    max_vie_hom integer,
+    max_vie_fem integer,
+    max_ecart_epoux integer,
+    min_entre_enf integer,
+    mode integer = 0)
+returns (
+    clef_ind integer,
+    libelle varchar(121),
+    sexe integer,
+    age decimal(15,1),
+    titre smallint)
+as
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_DELTA_DATES (
+    DATE_DEB DATE,
+    MOIS_DEB INTEGER,
+    AN_DEB INTEGER,
+    TENDANCE_DEB INTEGER,
+    DATE_FIN DATE,
+    MOIS_FIN INTEGER,
+    AN_FIN INTEGER,
+    TENDANCE_FIN INTEGER)
+RETURNS (
+    DELTA_JOURS INTEGER,
+    ANS INTEGER,
+    MOIS INTEGER,
+    JOURS INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_DERNIER_METIER (
+    I_CLEF INTEGER)
+RETURNS (
+    OCCUPATION VARCHAR(90))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_DESCENDANCE (
+    I_CLEF INTEGER,
+    I_NIVEAU INTEGER,
+    I_DOSSIER INTEGER)
+RETURNS (
+    NIVEAU INTEGER,
+    SOSA VARCHAR(120),
+    DATE_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100),
+    OCCUPATION VARCHAR(90),
+    CLE_FICHE INTEGER,
+    CLE_IMPORTATION VARCHAR(20),
+    CLE_PARENTS INTEGER,
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    PREFIXE VARCHAR(30),
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    SURNOM VARCHAR(120),
+    SUFFIXE VARCHAR(30),
+    SEXE INTEGER,
+    I_DATE_NAISSANCE VARCHAR(100),
+    ANNEE_NAISSANCE INTEGER,
+    I_DATE_DECES VARCHAR(100),
+    ANNEE_DECES INTEGER,
+    DECEDE INTEGER,
+    AGE_AU_DECES INTEGER,
+    SOURCE BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    COMMENT BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    FILLIATION VARCHAR(30),
+    NUM_SOSA DOUBLE PRECISION,
+    ORDRE VARCHAR(255),
+    NCHI INTEGER,
+    NMR INTEGER,
+    CLE_FIXE INTEGER,
+    ASCENDANT INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_DOUBLONS_FIND (
+    I_DOSSIER INTEGER,
+    CLE_IND INTEGER,
+    PRENOM_VARIABLE INTEGER)
+RETURNS (
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    DATE_NAISS VARCHAR(100),
+    LIEU_NAISS VARCHAR(50),
+    DATE_DECES VARCHAR(100),
+    LIEU_DECES VARCHAR(50))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_ECLATE_DESCRIPTION (
+    DESCRIPTION VARCHAR(255),
+    SEPARATEUR CHAR(1))
+RETURNS (
+    S_DESCRIPTION VARCHAR(255))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_ECLATE_PRENOM (
+    S_PRENOM VARCHAR(255))
+RETURNS (
+    PRENOM VARCHAR(255))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_AGE_PREM_UNION (
+    a_cle_dossier integer,
+    limit_on_date integer,
+    limit_on_sosa integer,
+    year_from integer,
+    year_to integer,
+    interval integer)
+returns (
+    annee_debut integer,
+    annee_fin integer,
+    femmes integer,
+    age_femmes decimal(15,2),
+    hommes integer,
+    age_hommes decimal(15,2))
+as
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_ANNIV_ORDER (
+    A_MOIS INTEGER,
+    I_DOSSIER INTEGER,
+    GET_BIRT INTEGER,
+    GET_DEAT INTEGER,
+    GET_MARR INTEGER)
+RETURNS (
+    NOM VARCHAR(100),
+    PRENOM VARCHAR(100),
+    ADATE VARCHAR(100),
+    ANNEE INTEGER,
+    EV_TYPE VARCHAR(7),
+    SEXE INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_ASCENDANCE (
+    I_CLEF INTEGER,
+    I_GENERATION INTEGER,
+    I_DOSSIER INTEGER,
+    I_PARQUI INTEGER)
+RETURNS (
+    GENERATTION INTEGER,
+    SOSA DOUBLE PRECISION,
+    NOM VARCHAR(101),
+    DATE_NAISSANCE VARCHAR(100),
+    CP_NAISSANCE VARCHAR(10),
+    VILLE_NAISSANCE VARCHAR(50),
+    LIEU_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100),
+    CP_DECES VARCHAR(10),
+    VILLE_DECES VARCHAR(50),
+    LIEU_DECES VARCHAR(100),
+    SEXE INTEGER,
+    AGE INTEGER,
+    CLE_FICHE INTEGER,
+    IMPLEXE DOUBLE PRECISION,
+    DATE_MARIAGE VARCHAR(100),
+    CP_MARIAGE VARCHAR(10),
+    VILLE_MARIAGE VARCHAR(50),
+    NUM_SOSA DOUBLE PRECISION)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_DENOMB_ASCEND (
+    A_CLE_FICHE INTEGER)
+RETURNS (
+    NIVEAU INTEGER,
+    TOTAL_INDI INTEGER,
+    TOTAL_INDI_DISTINCT INTEGER,
+    TOTAL_INDI_THEORIQUE DOUBLE PRECISION,
+    CUMUL_INDI INTEGER,
+    CUMUL_INDI_DISTINCT INTEGER,
+    CUMUL_INDI_THEORIQUE DOUBLE PRECISION,
+    POURCENT_IMPLEXE DOUBLE PRECISION)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_DENOMB_DESCEND (
+    A_CLE_FICHE INTEGER)
+RETURNS (
+    NIVEAU INTEGER,
+    TOTAL_INDI INTEGER,
+    TOTAL_INDI_DISTINCT INTEGER,
+    CUMUL_INDI INTEGER,
+    CUMUL_INDI_DISTINCT INTEGER,
+    POURCENT_IMPLEXE DOUBLE PRECISION)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_DESCENDANCE (
+    I_CLEF INTEGER,
+    I_NIVEAU INTEGER,
+    I_DOSSIER INTEGER)
+RETURNS (
+    NIVEAU INTEGER,
+    SOSA VARCHAR(120),
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    DATE_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100),
+    SEXE INTEGER,
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    AGE INTEGER,
+    ORDRE VARCHAR(255),
+    CLE_NAISSANCE INTEGER,
+    VILLE_NAISSANCE VARCHAR(50),
+    CP_NAISSANCE VARCHAR(10),
+    DEPT_NAISSANCE VARCHAR(30),
+    PAYS_NAISSANCE VARCHAR(30),
+    CODE_DEPT_NAISSANCE VARCHAR(2),
+    CLE_DECES INTEGER,
+    VILLE_DECES VARCHAR(50),
+    CP_DECES VARCHAR(10),
+    DEPT_DECES VARCHAR(30),
+    PAYS_DECES VARCHAR(30),
+    CODE_DEPT_DECES VARCHAR(2),
+    OCCUPATION VARCHAR(90),
+    CLE_CONJOINT INTEGER,
+    NOM_CONJOINT VARCHAR(40),
+    PRENOM_CONJOINT VARCHAR(60),
+    CLE_NAISSANCE_CONJOINT INTEGER,
+    DATE_NAISSANCE_CONJOINT VARCHAR(100),
+    VILLE_NAISSANCE_CONJOINT VARCHAR(50),
+    CP_NAISSANCE_CONJOINT VARCHAR(10),
+    DEPT_NAISSANCE_CONJOINT VARCHAR(30),
+    PAYS_NAISSANCE_CONJOINT VARCHAR(30),
+    CODE_DEPT_NAISSANCE_CONJOINT VARCHAR(2),
+    CLE_DECES_CONJOINT INTEGER,
+    DATE_DECES_CONJOINT VARCHAR(100),
+    VILLE_DECES_CONJOINT VARCHAR(50),
+    CP_DECES_CONJOINT VARCHAR(10),
+    DEPT_DECES_CONJOINT VARCHAR(30),
+    PAYS_DECES_CONJOINT VARCHAR(30),
+    CODE_DEPT_DECES_CONJOINT VARCHAR(2),
+    OCCUPATION_CONJOINT VARCHAR(90),
+    CLE_MARIAGE INTEGER,
+    DATE_MARIAGE VARCHAR(100),
+    VILLE_MARIAGE VARCHAR(100),
+    CP_MARIAGE VARCHAR(10),
+    DEPT_MARIAGE VARCHAR(30),
+    PAYS_MARIAGE VARCHAR(30),
+    CODE_DEPT_MARIAGE VARCHAR(2),
+    CLE_UNION INTEGER,
+    ORDRE_UNION INTEGER,
+    ISSU_UNION INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_ECLAIR (
+    I_DOSSIER INTEGER,
+    I_SOSA INTEGER,
+    A_VILLE VARCHAR(50))
+RETURNS (
+    NOM VARCHAR(40),
+    CP VARCHAR(10),
+    VILLE VARCHAR(50),
+    PAYS VARCHAR(30),
+    DATE_DEBUT INTEGER,
+    DATE_FIN INTEGER,
+    NAISSANCE INTEGER,
+    BAPTEME INTEGER,
+    MARIAGE INTEGER,
+    DECES INTEGER,
+    SEP INTEGER,
+    INSEE VARCHAR(6),
+    DEPT VARCHAR(30),
+    REGION VARCHAR(50))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_FICHE (
+    I_CLEF INTEGER)
+RETURNS (
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    DATE_NAISSANCE VARCHAR(100),
+    LIEU_NAISSANCE VARCHAR(210),
+    DATE_DECES VARCHAR(100),
+    LIEU_DECES VARCHAR(210),
+    SEXE INTEGER,
+    FILLIATION VARCHAR(30),
+    COMMENT BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    PERE_NOM VARCHAR(120),
+    PERE_NAISSANCE VARCHAR(100),
+    PERE_LIEU_NAISSANCE VARCHAR(210),
+    PERE_DECES VARCHAR(100),
+    PERE_LIEU_DECES VARCHAR(210),
+    MERE_NOM VARCHAR(120),
+    MERE_NAISSANCE VARCHAR(100),
+    MERE_LIEU_NAISSANCE VARCHAR(210),
+    MERE_DECES VARCHAR(100),
+    MERE_LIEU_DECES VARCHAR(210),
+    PHOTO BLOB SUB_TYPE 0 SEGMENT SIZE 80,
+    PREFIXE VARCHAR(30),
+    SUFFIXE VARCHAR(30),
+    SURNOM VARCHAR(120),
+    NUM_SOSA DOUBLE PRECISION,
+    SOSA1_NOMPRENOM VARCHAR(105),
+    SOSAS VARCHAR(30),
+    SOSAS_PERE VARCHAR(30),
+    SOSAS_MERE VARCHAR(30),
+    AGE_DECES VARCHAR(60),
+    AGE_DECES_PERE VARCHAR(60),
+    AGE_DECES_MERE VARCHAR(60))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_FICHE_FAMILIALE (
+    ACLE_UNION INTEGER)
+RETURNS (
+    A_EPOUX_CLE INTEGER,
+    A_EPOUX_NOMPRENOM VARCHAR(105),
+    A_EPOUX_NAISSANCE VARCHAR(100),
+    A_EPOUX_LIEU_NAISSANCE VARCHAR(166),
+    A_EPOUX_DECES VARCHAR(100),
+    A_EPOUX_LIEU_DECES VARCHAR(166),
+    A_EPOUSE_CLE INTEGER,
+    A_EPOUSE_NOMPRENOM VARCHAR(105),
+    A_EPOUSE_NAISSANCE VARCHAR(100),
+    A_EPOUSE_LIEU_NAISSANCE VARCHAR(166),
+    A_EPOUSE_DECES VARCHAR(100),
+    A_EPOUSE_LIEU_DECES VARCHAR(166),
+    A_EPOUX_PHOTO BLOB SUB_TYPE 0 SEGMENT SIZE 80,
+    A_EPOUSE_PHOTO BLOB SUB_TYPE 0 SEGMENT SIZE 80,
+    A_EPOUX_PERE_NOM VARCHAR(40),
+    A_EPOUX_PERE_PRENOM VARCHAR(60),
+    A_EPOUX_MERE_NOM VARCHAR(40),
+    A_EPOUX_MERE_PRENOM VARCHAR(60),
+    A_EPOUSE_PERE_NOM VARCHAR(40),
+    A_EPOUSE_PERE_PRENOM VARCHAR(60),
+    A_EPOUSE_MERE_NOM VARCHAR(40),
+    A_EPOUSE_MERE_PRENOM VARCHAR(60),
+    A_EPOUX_ANNEE INTEGER,
+    A_EPOUSE_ANNEE INTEGER,
+    A_EPOUX_AGE_DECES INTEGER,
+    A_EPOUSE_AGE_DECES INTEGER,
+    A_EPOUX_SOSA DOUBLE PRECISION,
+    A_EPOUSE_SOSA DOUBLE PRECISION,
+    A_SOSA1_NOMPRENOM VARCHAR(105),
+    A_EPOUX_NOM VARCHAR(40),
+    A_EPOUSE_NOM VARCHAR(40),
+    SOSAS_EPOUX VARCHAR(30),
+    SOSAS_EPOUSE VARCHAR(30),
+    A_EPOUX_AGE VARCHAR(60),
+    A_EPOUSE_AGE VARCHAR(60))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_LONGEVITE (
+    a_cle_dossier integer,
+    limit_on_date integer,
+    limit_on_sosa integer,
+    year_from integer,
+    year_to integer,
+    interval integer)
+returns (
+    interval_start integer,
+    interval_end integer,
+    nb_homme integer,
+    cumul_age_homme integer,
+    nb_femme integer,
+    cumul_age_femme integer)
+as
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_NB_ENFANT_UNION (
+    A_CLE_DOSSIER INTEGER,
+    LIMIT_ON_DATE INTEGER,
+    LIMIT_ON_SOSA INTEGER,
+    YEAR_FROM INTEGER,
+    YEAR_TO INTEGER,
+    INTERVAL INTEGER)
+RETURNS (
+    INTERVAL_START INTEGER,
+    INTERVAL_END INTEGER,
+    NB_UNION INTEGER,
+    NB_ENFANTS INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_RECENSEMENT (
+    a_cle_dossier integer,
+    limit_on_date integer,
+    limit_on_sosa integer,
+    year_from integer,
+    year_to integer,
+    interval integer,
+    longevite_h integer,
+    longevite_f integer)
+returns (
+    annee integer,
+    nombre_individus integer)
+as
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_EVE_IND (
+    I_CLE INTEGER)
+RETURNS (
+    EV_IND_CLEF INTEGER,
+    EV_IND_KLE_FICHE INTEGER,
+    EV_IND_KLE_DOSSIER INTEGER,
+    EV_IND_TYPE VARCHAR(7),
+    EV_IND_DATE_WRITEN VARCHAR(100),
+    EV_IND_DATE_YEAR INTEGER,
+    EV_IND_DATE DATE,
+    EV_IND_ADRESSE VARCHAR(50),
+    EV_IND_CP VARCHAR(10),
+    EV_IND_VILLE VARCHAR(50),
+    EV_IND_DEPT VARCHAR(30),
+    EV_IND_PAYS VARCHAR(30),
+    EV_IND_CAUSE VARCHAR(90),
+    EV_IND_SOURCE BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    EV_IND_COMMENT BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    EV_IND_TYPEANNEE INTEGER,
+    EV_IND_DESCRIPTION VARCHAR(90),
+    EV_IND_REGION VARCHAR(50),
+    EV_IND_SUBD VARCHAR(50),
+    EV_LIBELLE VARCHAR(30),
+    EV_IND_ACTE INTEGER,
+    EV_IND_INSEE VARCHAR(6),
+    EV_IND_HEURE TIME,
+    EV_IND_ORDRE INTEGER,
+    EV_IND_TITRE_EVENT VARCHAR(40),
+    EV_IND_LATITUDE DECIMAL(15,8),
+    EV_IND_LONGITUDE NUMERIC(15,8),
+    EV_IND_MEDIA INTEGER,
+    EV_IND_AGE INTEGER,
+    EV_IND_DETAILS INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_EXPORT_IMAGES (
+    I_DOSSIER INTEGER)
+RETURNS (
+    MULTI_CLEF INTEGER,
+    NOM VARCHAR(105),
+    MULTI_MEDIA BLOB SUB_TYPE 0 SEGMENT SIZE 80)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_GESTION_DLL
+RETURNS (
+    DOSSIER INTEGER,
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    OPEN_BASE INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_GET_CLEF_UNIQUE (
+    A_TABLE VARCHAR(30))
+RETURNS (
+    CLE_UNIQUE INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_GROUPE (
+    I_GROUPE INTEGER,
+    I_INDIVIDU INTEGER,
+    MODE VARCHAR(1),
+    STRICTE VARCHAR(1),
+    TEMOINS VARCHAR(1),
+    INITIALISATION VARCHAR(1),
+    EFFET VARCHAR(1),
+    VERBOSE VARCHAR(1))
+RETURNS (
+    INFO VARCHAR(50))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_INCOHERENCES (
+    I_KLE_DOSSIER INTEGER,
+    I_MODE INTEGER)
+RETURNS (
+    O_TABLE VARCHAR(30),
+    O_CLE_TABLE INTEGER,
+    O_CLE_FICHE INTEGER,
+    O_LIBELLE VARCHAR(160))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_INSERT_FAVORIS (
+    I_DOSSIER INTEGER,
+    I_CLE INTEGER,
+    I_NBRE INTEGER)
+AS
+BEGIN
+  EXIT;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_JOURS_TEXTE (
+    ANS INTEGER,
+    MOIS INTEGER,
+    JOURS INTEGER,
+    PRECIS INTEGER)
+RETURNS (
+    JOURS_TEXTE VARCHAR(25))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_LISTE_PARENTE (
+    indi1 integer,
+    indi2 integer)
+returns (
+    ancetre_1 integer,
+    nom_1 varchar(130),
+    sexe_1 integer,
+    sosa_1 integer,
+    ancetre_2 integer,
+    nom_2 varchar(130),
+    sexe_2 integer,
+    sosa_2 integer)
+as
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_LISTE_PRENOM (
+    I_DOSSIER INTEGER)
+RETURNS (
+    PRENOM VARCHAR(60),
+    SEXE INTEGER,
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM_COMPLET VARCHAR(60),
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    DATE_NAISSANCE VARCHAR(100),
+    ANNEE_NAISSANCE INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_LISTE_PROFESSION (
+    I_DOSSIER INTEGER)
+RETURNS (
+    PROFESSION VARCHAR(90),
+    CLE_FICHE INTEGER,
+    SEXE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    DATE_NAISSANCE VARCHAR(100),
+    ANNEE_NAISSANCE INTEGER,
+    DATE_DECES VARCHAR(100),
+    ANNEE_DECES INTEGER,
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    DESCRIPTION VARCHAR(90),
+    DATE_PROFESSION VARCHAR(100),
+    ANNEE_PROFESSION INTEGER,
+    VILLE_PROFESSION VARCHAR(50),
+    DEPT_PROFESSION VARCHAR(30))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_LISTE_UNIONS (
+    i_dossier integer)
+returns (
+    union_cle integer,
+    mari_cle integer,
+    mari_nom varchar(40),
+    mari_prenom varchar(60),
+    mari_num_sosa double precision,
+    age_mari integer,
+    femme_cle integer,
+    femme_nom varchar(40),
+    femme_prenom varchar(60),
+    femme_num_sosa double precision,
+    age_femme integer,
+    cle_marr integer,
+    date_marr varchar(100),
+    an_marr integer,
+    mois_marr integer,
+    date_union date,
+    subd varchar(50),
+    ville varchar(50),
+    dept varchar(30),
+    region varchar(50),
+    pays varchar(30))
+as
+begin
+	suspend;
+end^
+
+CREATE OR ALTER PROCEDURE PROC_MAJ_COORDONNEES (
+    I_DOSSIER INTEGER,
+    I_MODE INTEGER)
+AS
+BEGIN
+  EXIT;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_MAJ_INSEE (
+    I_DOSSIER INTEGER)
+AS
+BEGIN
+  EXIT;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_MAJ_LIEUX_FAVORIS (
+    I_DOSSIER INTEGER)
+AS
+BEGIN
+  EXIT;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_MAJ_TAGS 
+as
+BEGIN
+  EXIT;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_MODIF_FILIATION (
+    I_KLE_DOSSIER INTEGER,
+    I_INDIVIDU INTEGER,
+    I_PERE INTEGER,
+    I_MERE INTEGER)
+AS
+BEGIN
+  EXIT;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_NAVIGATION (
+    I_CLEF INTEGER,
+    I_DOSSIER INTEGER,
+    I_MAX INTEGER)
+RETURNS (
+    NIVEAU INTEGER,
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(60),
+    PRENOM VARCHAR(100),
+    DATE_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100),
+    SEXE INTEGER,
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    SOSA DOUBLE PRECISION,
+    DECEDE INTEGER,
+    VILLE_NAISSANCE VARCHAR(50),
+    VILLE_DECES VARCHAR(50),
+    AGE_EN_JOURS INTEGER,
+    PROFESSION VARCHAR(90),
+    DATE_UNION VARCHAR(90),
+    VILLE_UNION VARCHAR(50),
+    PHOTO BLOB SUB_TYPE 0 SEGMENT SIZE 80,
+    ENFANTS INTEGER,
+    NUM_SOSA DOUBLE PRECISION,
+    PERIODE_VIE VARCHAR(15),
+    AGE_UNION_JOURS INTEGER,
+    AGE_UNION_IND_JOURS INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_NEW_PRENOMS (
+    I_DOSSIER INTEGER)
+AS
+BEGIN
+  EXIT;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_PREP_PRENOMS (
+    I_DOSSIER INTEGER)
+RETURNS (
+    PRENOM VARCHAR(60),
+    SEXE INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_PREP_PROFESSIONS (
+    I_DOSSIER INTEGER)
+RETURNS (
+    PROFESSION VARCHAR(90))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_PREP_VILLES_FAVORIS (
+    I_DOSSIER INTEGER)
+RETURNS (
+    EV_IND_VILLE VARCHAR(50),
+    EV_IND_CP VARCHAR(10),
+    EV_IND_DEPT VARCHAR(30),
+    EV_IND_REGION VARCHAR(50),
+    EV_IND_PAYS VARCHAR(30),
+    EV_IND_INSEE VARCHAR(6),
+    EV_IND_SUBD VARCHAR(50),
+    EV_IND_LATITUDE decimal(15,8),
+    EV_IND_LONGITUDE numeric(15,8))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_PREP_VILLES_RAYON (
+    limite double precision,
+    latitudea double precision,
+    longitudea double precision,
+    i_dossier integer)
+returns (
+    cp_code integer,
+    cp_cp varchar(8),
+    cp_prefixe varchar(4),
+    cp_ville varchar(103),
+    cp_indic_tel varchar(2),
+    cp_dept integer,
+    cp_region integer,
+    cp_pays integer,
+    cp_insee varchar(6),
+    cp_habitants double precision,
+    cp_densite double precision,
+    cp_divers varchar(90),
+    cp_latitude double precision,
+    cp_longitude double precision,
+    cp_maj_insee integer,
+    cp_ville_maj varchar(50),
+    distance double precision,
+    departement varchar(30) collate fr_fr,
+    region varchar(50) collate fr_fr,
+    pays varchar(30) collate fr_fr)
+as
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_PURGE_IMPORT_GEDCOM (
+    I_CLEF INTEGER,
+    I_MODE INTEGER)
+RETURNS (
+    INFO VARCHAR(50))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_RENUM_SOSA (
+    I_CLEF INTEGER,
+    I_NIVEAU INTEGER,
+    I_DOSSIER INTEGER)
+AS
+BEGIN
+  EXIT;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_SEPARATION_PRENOMS (
+    I_DOSSIER INTEGER,
+    I_VIRGULE INTEGER)
+AS
+BEGIN
+  EXIT;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_SOSAS (
+    I_CLEF INTEGER)
+RETURNS (
+    SOSAS VARCHAR(30))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_STATISTIQUES (
+    I_DOSSIER INTEGER,
+    I_QUI INTEGER,
+    I_QUOI INTEGER)
+RETURNS (
+    COMBIEN INTEGER,
+    DEPT VARCHAR(30),
+    CODE VARCHAR(30))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_SUIVANT (
+    IND_ORIGINE INTEGER,
+    DELTA INTEGER)
+RETURNS (
+    CLE_FICHE INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_SUPPRESSION_FILIATION (
+    I_KLE_DOSSIER INTEGER,
+    I_INDIVIDU INTEGER,
+    I_MODE INTEGER)
+AS
+BEGIN
+  EXIT;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_TEST_ASC (
+    indi1 integer,
+    indi2 integer,
+    ignorenfant integer = 0)
+returns (
+    niveau integer)
+as
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_TEST_DESC (
+    indi1 integer,
+    indi2 integer,
+    ignorenfant integer = 0)
+returns (
+    niveau integer)
+as
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_TEST_PARENTE (
+    INDI1 INTEGER,
+    INDI2 INTEGER,
+    NIVEAU_MAX INTEGER)
+RETURNS (
+    OUI INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_TQ_ASCENDANCE (
+    I_CLEF INTEGER,
+    I_NIVEAU INTEGER,
+    I_PARQUI INTEGER,
+    I_MODE INTEGER)
+RETURNS (
+    TQ_NIVEAU INTEGER,
+    TQ_CLE_FICHE INTEGER,
+    TQ_SOSA DOUBLE PRECISION,
+    TQ_DOSSIER INTEGER,
+    IMPLEXE DOUBLE PRECISION,
+    TQ_DESCENDANT INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_TQ_DESCENDANCE (
+    I_CLEF INTEGER,
+    I_NIVEAU INTEGER,
+    I_PARQUI INTEGER,
+    I_MODE INTEGER)
+RETURNS (
+    TQ_NIVEAU INTEGER,
+    TQ_CLE_FICHE INTEGER,
+    TQ_SOSA VARCHAR(120),
+    TQ_CLE_PERE INTEGER,
+    TQ_CLE_MERE INTEGER,
+    TQ_NUM_SOSA VARCHAR(120),
+    TQ_ASCENDANT INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_CONJOINTS (
+    I_DOSSIER INTEGER,
+    I_CLEF INTEGER)
+RETURNS (
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(60),
+    PRENOM VARCHAR(100),
+    DATE_NAISSANCE VARCHAR(100),
+    ANNEE_NAISSANCE INTEGER,
+    DATE_DECES VARCHAR(100),
+    ANNEE_DECES INTEGER,
+    SEXE INTEGER,
+    TYPE_UNION INTEGER,
+    UNION_CLEF INTEGER,
+    SOSA DOUBLE PRECISION,
+    DATE_MARIAGE VARCHAR(100),
+    ANNEE_MARIAGE INTEGER,
+    CLE_MARIAGE INTEGER,
+    ORDRE_UNION INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_COUSINS_COUSINES (
+    I_CLEF INTEGER,
+    I_DOSSIER INTEGER,
+    I_MAX INTEGER)
+RETURNS (
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    SEXE INTEGER,
+    DATE_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100),
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    SOSA DOUBLE PRECISION)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_DOSSIER (
+    i_cle integer,
+    i_nom varchar(30),
+    i_infos varchar(254),
+    i_langue varchar(3))
+returns (
+    cle_dossier integer,
+    nom_dossier varchar(30),
+    dernier integer,
+    langue varchar(3),
+    path_images varchar(254),
+    fic_notes varchar(254),
+    indicateurs integer)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_ENFANTS (
+    A_CLE_PERE INTEGER,
+    A_CLE_MERE INTEGER,
+    I_DOSSIER INTEGER)
+RETURNS (
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    SEXE INTEGER,
+    DATE_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100),
+    KLE_DOSSIER INTEGER,
+    SOSA DOUBLE PRECISION,
+    PHOTO BLOB SUB_TYPE 0 SEGMENT SIZE 80,
+    VILLE_NAISS VARCHAR(166),
+    VILLE_DECES VARCHAR(166),
+    ANNEE INTEGER,
+    ANNEE_DECES INTEGER,
+    AGE_DECES INTEGER,
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    SOSAS VARCHAR(30),
+    AGE_PERE VARCHAR(60),
+    AGE_MERE VARCHAR(60),
+    AGE_DECES_TEXTE VARCHAR(60))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_FRERES_SOEURS (
+    I_CLEF INTEGER)
+RETURNS (
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    DATE_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100),
+    SEXE INTEGER,
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    F_1 INTEGER,
+    DECEDE INTEGER,
+    NUM_SOSA DOUBLE PRECISION,
+    ANNEE_NAISSANCE INTEGER,
+    ANNEE_DECES INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_GRANDS_PARENT (
+    I_CLEF INTEGER)
+RETURNS (
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    DATE_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100),
+    SEXE INTEGER,
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    SOSA INTEGER,
+    DECEDE INTEGER,
+    NUM_SOSA DOUBLE PRECISION,
+    ANNEE_NAISSANCE INTEGER,
+    ANNEE_DECES INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_IND_PAR_LETTRE (
+    A_LETTRE VARCHAR(1),
+    I_DOSSIER INTEGER)
+RETURNS (
+    NOM VARCHAR(40))
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_ONCLES_TANTES (
+    I_CLEF INTEGER)
+RETURNS (
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    SEXE INTEGER,
+    DATE_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100),
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    SOSA DOUBLE PRECISION,
+    DECEDE INTEGER,
+    NUM_SOSA DOUBLE PRECISION,
+    ANNEE_NAISSANCE INTEGER,
+    ANNEE_DECES INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_MERE (
+    i_clef integer)
+returns (
+    cle_fiche integer,
+    nom varchar(40),
+    prenom varchar(60),
+    date_naissance varchar(100),
+    date_deces varchar(100),
+    sexe integer,
+    cle_pere integer,
+    cle_mere integer,
+    sosa integer)
+as
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_PARENTS (
+    i_clef integer,
+    i_dossier integer)
+returns (
+    cle_fiche integer,
+    nom_pere varchar(40),
+    prenom_pere varchar(60),
+    pere_cle_fiche integer,
+    pere_naissance varchar(100),
+    pere_deces varchar(100),
+    pere_sosa double precision,
+    nom_mere varchar(40),
+    prenom_mere varchar(60),
+    mere_cle_fiche integer,
+    mere_naissance varchar(100),
+    mere_deces varchar(100),
+    mere_sosa double precision,
+    pere_annee integer,
+    mere_annee integer)
+as
+begin
+   suspend;
+end^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_PERE (
+    i_clef integer)
+returns (
+    cle_fiche integer,
+    nom varchar(40),
+    prenom varchar(60),
+    date_naissance varchar(100),
+    date_deces varchar(100),
+    sexe integer,
+    cle_pere integer,
+    cle_mere integer,
+    sosa integer)
+as
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_UNIONS (
+    I_DOSSIER INTEGER,
+    I_CLEF INTEGER)
+RETURNS (
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    DATE_NAISSANCE VARCHAR(100),
+    ANNEE_NAISSANCE INTEGER,
+    DATE_DECES VARCHAR(100),
+    ANNEE_DECES INTEGER,
+    SEXE INTEGER,
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    NUM_SOSA DOUBLE PRECISION,
+    TYPE_UNION INTEGER,
+    UNION_CLEF INTEGER,
+    ANNEE_MARIAGE INTEGER,
+    DECEDE INTEGER)
+AS
+BEGIN
+  SUSPEND;
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_VIDE_BASE (
+    I_CLEF INTEGER)
+AS
+BEGIN
+  EXIT;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_VIDE_DOSSIER (
+    I_CLEF INTEGER)
+AS
+BEGIN
+  EXIT;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_VIDE_TABLES_REF (
+    I_CLEF INTEGER)
+AS
+BEGIN
+  EXIT;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_VIDE_VILLES (
+    I_CLEF INTEGER)
+AS
+BEGIN
+  EXIT;
+END^
+
+commit^
+
+/******************************************************************************/
+/****                         Triggers for tables                          ****/
+/******************************************************************************/
+
+
+
+CREATE OR ALTER TRIGGER DOSSIER_BIU0 FOR DOSSIER
+ACTIVE BEFORE INSERT OR UPDATE POSITION 0
+as
+begin
+  if (new.ds_langue is null) then
+    new.ds_langue='FRA';
+  new.ds_langue=upper(new.ds_langue);
+end
+^
+COMMENT ON TRIGGER DOSSIER_BIU0 IS 'Créé par André Langlet le 10/05/2009'^
+
+/* Trigger: BI_NOM_ATTACHEMENT_ID */
+CREATE OR ALTER TRIGGER BI_NOM_ATTACHEMENT_ID FOR NOM_ATTACHEMENT
+ACTIVE BEFORE INSERT OR UPDATE POSITION 0
+AS
+BEGIN
+  IF (NEW.ID IS NULL) THEN
+      NEW.ID = GEN_ID(NOM_ATTACHEMENT_ID_GEN, 1);
+  select substring(s_out from 1 for 1) from f_maj_sans_accent(new.nom) into new.nom_lettre;
+END
+^
+
+/* Trigger: AI_REF_CP_VILLE_CP_CODE */
+CREATE OR ALTER TRIGGER AI_REF_CP_VILLE_CP_CODE FOR REF_CP_VILLE
+ACTIVE BEFORE INSERT POSITION 0
+AS
+BEGIN
+  IF (NEW.CP_CODE IS NULL) THEN
+      NEW.CP_CODE = GEN_ID(GEN_REF_CP_VILLE, 1);
+  select s_out from f_maj_sans_accent(NEW.CP_VILLE) into NEW.CP_VILLE_MAJ;
+END
+^
+
+/* Trigger: AUI_REF_CP_VILLE */
+CREATE OR ALTER TRIGGER AUI_REF_CP_VILLE FOR REF_CP_VILLE
+ACTIVE AFTER INSERT OR UPDATE POSITION 0
+as
+begin
+update EVENEMENTS_IND e
+  set  e.EV_IND_LATITUDE=new.CP_LATITUDE,
+       e.EV_IND_LONGITUDE=new.CP_LONGITUDE
+  where coalesce(e.EV_IND_CP,'')=coalesce(new.CP_CP,'')
+    and e.EV_IND_VILLE=new.CP_VILLE
+    and coalesce(e.EV_IND_INSEE,'')=coalesce(new.CP_INSEE,'')
+    and e.EV_IND_SUBD is null;
+update EVENEMENTS_FAM e
+  set  e.EV_FAM_LATITUDE=new.CP_LATITUDE,
+       e.EV_FAM_LONGITUDE=new.CP_LONGITUDE
+  where coalesce(e.EV_FAM_CP,'')=coalesce(new.CP_CP,'')
+    and e.EV_FAM_VILLE=new.CP_VILLE
+    and coalesce(e.EV_FAM_INSEE,'')=coalesce(new.CP_INSEE,'')
+    and e.EV_FAM_SUBD is null;
+end
+^
+
+/* Trigger: BU_REF_CP_VILLE */
+CREATE OR ALTER TRIGGER BU_REF_CP_VILLE FOR REF_CP_VILLE
+ACTIVE BEFORE UPDATE POSITION 0
+as
+begin
+  select s_out from f_maj_sans_accent(NEW.CP_VILLE) into NEW.CP_VILLE_MAJ;
+end
+^
+
+/* Trigger: DEL_CASCADE_PAYS */
+CREATE OR ALTER TRIGGER DEL_CASCADE_PAYS FOR REF_PAYS
+ACTIVE AFTER DELETE POSITION 0
+as
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 01/08/2001
+   à : 05:33:45
+   Modifiée le :
+   à : :
+   par :
+   Description : 
+   Usage       :
+   ---------------------------------------------------------------------------*/
+  DELETE FROM REF_REGION WHERE RRG_PAYS = OLD.RPA_CODE ;
+end
+^
+
+/* Trigger: DEL_CASCADE_REGION */
+CREATE OR ALTER TRIGGER DEL_CASCADE_REGION FOR REF_REGION
+ACTIVE AFTER DELETE POSITION 0
+as
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 01/08/2001
+   à : 05:33:53
+   Modifiée le :
+   à : :
+   par :
+   Description : 
+   Usage       :
+   ---------------------------------------------------------------------------*/
+  DELETE FROM REF_DEPARTEMENTS WHERE RRG_CODE = OLD.RRG_CODE ;
+end
+^
+
+CREATE OR ALTER TRIGGER EVENEMENTS_FAM_BIU2 FOR EVENEMENTS_FAM
+ACTIVE BEFORE INSERT OR UPDATE POSITION 2
+as
+declare variable langue varchar(3);
+begin
+  if (rdb$get_context('USER_SESSION','TRIGGERS_DATES_INACTIFS') is null) then
+    if (inserting or(updating and new.ev_fam_date_writen is distinct from old.ev_fam_date_writen))then
+    begin
+      select first(1) ds.ds_langue
+      from t_union u
+      inner join dossier ds on ds.cle_dossier=u.kle_dossier
+      where u.union_clef=new.ev_fam_kle_famille
+        and exists(select * from individu where (u.union_mari>0 and cle_fiche=u.union_mari)
+                            or (u.union_femme>0 and cle_fiche=u.union_femme))
+      into :langue;
+      rdb$set_context('USER_SESSION','LANGUE',langue);
+      select imois
+            ,ian
+            ,ddate
+            ,imois_fin
+            ,ian_fin
+            ,ddate_fin
+            ,date_writen_s
+      from proc_date_writen(new.ev_fam_date_writen)
+      into new.ev_fam_date_mois
+          ,new.ev_fam_date_year
+          ,new.ev_fam_date
+          ,new.ev_fam_date_mois_fin
+          ,new.ev_fam_date_year_fin
+          ,new.ev_fam_date_fin
+          ,new.ev_fam_date_writen;
+    end
+end^
+
+COMMENT ON TRIGGER EVENEMENTS_FAM_BIU2 IS 
+'Trigger créé par André Langlet le 20/04/2009.
+A n''activer que dans le cas de transfert de la date par DATE_WRITEN uniquement.'^
+
+/* Trigger: EVENEMENTS_FAM_BI */
+CREATE OR ALTER TRIGGER EVENEMENTS_FAM_BI FOR EVENEMENTS_FAM
+ACTIVE BEFORE INSERT POSITION 0
+as
+declare variable valide smallint;
+begin
+  if (new.ev_fam_clef is null) then
+      new.ev_fam_clef = gen_id(gen_ev_fam_clef,1);
+  if (rdb$get_context('USER_SESSION','TRACE_DATE')='1'
+      and char_length(new.ev_fam_date_writen)>0) then
+  begin
+    select valide
+    from proc_date_writen(new.ev_fam_date_writen)
+    into :valide;
+    if (valide=0) then
+      insert into traces (nom_table,enr_table,texte_message)
+      values('EVENEMENTS_FAM',new.ev_fam_clef,'date invalide: '||new.ev_fam_date_writen);
+  end
+  new.ev_fam_description=trim(new.ev_fam_description);
+  if (new.ev_fam_description in('y','Y')) then
+    new.ev_fam_description=null;
+end
+^
+
+COMMENT ON TRIGGER EVENEMENTS_FAM_BI IS 
+'Modifié par André depuis le 01/06/2006 traitement Y
+04/05/2008 traçage des dates invalides'^
+
+/* Trigger: EVENEMENTS_FAM_BIU */
+CREATE OR ALTER TRIGGER EVENEMENTS_FAM_BIU FOR EVENEMENTS_FAM
+ACTIVE BEFORE INSERT OR UPDATE POSITION 1
+as
+begin
+  if (new.ev_fam_titre_event is not null) then
+  begin
+    new.ev_fam_titre_event=trim(new.ev_fam_titre_event);
+    if (new.ev_fam_titre_event='') then
+      new.ev_fam_titre_event=null;
+     else
+      new.ev_fam_titre_event=upper(substring(new.ev_fam_titre_event from 1 for 1))
+        ||substring(new.ev_fam_titre_event from 2);
+  end
+  if (new.ev_fam_source is not null) then
+  begin
+    new.ev_fam_source=trim(new.ev_fam_source);
+    if (new.ev_fam_source='') then
+      new.ev_fam_source=null;
+  end
+end
+^
+COMMENT ON TRIGGER EVENEMENTS_FAM_BIU IS 
+'Création André Langlet
+Dernière mise à jour AL le 23/07/2009'^
+
+CREATE OR ALTER TRIGGER EVENEMENTS_IND_BIU2 FOR EVENEMENTS_IND
+ACTIVE BEFORE INSERT OR UPDATE POSITION 2
+as
+declare variable langue varchar(3);
+begin
+  if (rdb$get_context('USER_SESSION','TRIGGERS_DATES_INACTIFS') is null) then
+    if (inserting or(updating and new.ev_ind_date_writen is distinct from old.ev_ind_date_writen))then
+    begin
+      select ds.ds_langue
+      from individu i
+      inner join dossier ds on ds.cle_dossier=i.kle_dossier
+      where i.cle_fiche=new.ev_ind_kle_fiche
+      into langue;
+      rdb$set_context('USER_SESSION','LANGUE',langue);
+      select imois
+            ,ian
+            ,ddate
+            ,imois_fin
+            ,ian_fin
+            ,ddate_fin
+            ,date_writen_s
+      from proc_date_writen(new.ev_ind_date_writen)
+        into new.ev_ind_date_mois
+            ,new.ev_ind_date_year
+            ,new.ev_ind_date
+            ,new.ev_ind_date_mois_fin
+            ,new.ev_ind_date_year_fin
+            ,new.ev_ind_date_fin
+            ,new.ev_ind_date_writen;
+    end
+end
+^
+
+COMMENT ON TRIGGER EVENEMENTS_IND_BIU2 IS 
+'Trigger créé par André Langlet le 20/04/2009.
+A n''activer que dans le cas de transfert de la date par DATE_WRITEN uniquement.'^
+
+/* Trigger: EVENEMENTS_IND_BI */
+CREATE OR ALTER TRIGGER EVENEMENTS_IND_BI FOR EVENEMENTS_IND
+ACTIVE BEFORE INSERT POSITION 0
+as
+declare variable i integer;
+declare variable l integer;
+declare variable valide smallint;
+begin
+  if (new.ev_ind_clef is null) then
+      new.ev_ind_clef = gen_id(gen_ev_ind_clef,1);
+  if (rdb$get_context('USER_SESSION','TRACE_DATE')='1'
+    and char_length(new.ev_ind_date_writen)>0) then
+  begin
+    select valide
+    from proc_date_writen(new.ev_ind_date_writen)
+    into :valide;
+    if (valide=0) then
+      insert into traces (nom_table,enr_table,texte_message)
+      values('EVENEMENTS_IND',new.ev_ind_clef,'date invalide: '||new.ev_ind_date_writen);
+  end
+  new.ev_ind_description=trim(new.ev_ind_description);
+  if (upper(new.ev_ind_description)='Y') then
+    new.ev_ind_description=null;
+  else
+    if (new.ev_ind_type='EVEN') then
+    begin
+      l=char_length(new.ev_ind_description);
+      i=1;
+      while (i<=l-3 and i<27) do
+      begin
+        if (substring(new.ev_ind_description from i for 4)=' -  ') then--ancien séparateur
+        begin
+          new.ev_ind_titre_event=substring(new.ev_ind_description from 1 for i-1);
+          if (i<l-3) then
+            new.ev_ind_description=substring(new.ev_ind_description from i+4);
+          else
+            new.ev_ind_description=null;
+          exit;
+        end
+        i=i+1;
+      end
+    end
+  for select substring(r.ref_eve_lib_long from 1 for 25)
+        ,'EVEN'
+      from individu i
+      inner join dossier ds on ds.cle_dossier=i.kle_dossier
+      inner join ref_evenements r on r.ref_eve_lib_court=new.ev_ind_type
+        and r.ref_eve_langue=ds.ds_langue
+      where i.cle_fiche=new.ev_ind_kle_fiche
+        and exists (select *
+                    from evenements_ind e
+                    inner join ref_evenements r on r.ref_eve_lib_court=e.ev_ind_type
+                                               and r.ref_eve_une_fois=1
+                    where e.ev_ind_kle_fiche=new.ev_ind_kle_fiche
+                      and e.ev_ind_type=new.ev_ind_type)
+  into new.ev_ind_titre_event
+      ,new.ev_ind_type
+  do
+    if (rdb$get_context('USER_SESSION','TRACE_DATE')='1') then
+      insert into traces (nom_table,enr_table,texte_message)
+      values('EVENEMENTS_IND',new.ev_ind_clef,new.ev_ind_titre_event||' en trop'
+             ||coalesce(', date:'||new.ev_ind_date_writen,''));
+end
+^
+COMMENT ON TRIGGER EVENEMENTS_IND_BI IS 
+'Modifié par André le 01/06/2006 ajout des mois, dates de fin et normalisation date saisie
+le 1/10/2006 traitement Y et EVEN, 12/2/2007 contrôle événement en double
+le 04/05/2008 traçage des dates invalides, le 16/04/2009 traçage des événements en double'^
+
+/* Trigger: EVENEMENTS_IND_BIU */
+CREATE OR ALTER TRIGGER EVENEMENTS_IND_BIU FOR EVENEMENTS_IND
+ACTIVE BEFORE INSERT OR UPDATE POSITION 1
+as
+begin
+  if (new.ev_ind_titre_event is not null) then
+  begin
+    new.ev_ind_titre_event=trim(new.ev_ind_titre_event);
+    if (new.ev_ind_titre_event='') then
+      new.ev_ind_titre_event=null;
+    else
+      new.ev_ind_titre_event=upper(substring(new.ev_ind_titre_event from 1 for 1))
+        ||substring(new.ev_ind_titre_event from 2);
+  end
+  if (new.ev_ind_source is not null) then
+  begin
+    new.ev_ind_source=trim(new.ev_ind_source);
+    if (new.ev_ind_source='') then
+      new.ev_ind_source=null;
+  end
+  if (new.ev_ind_type='BIRT' and new.ev_ind_ordre is null) then
+    new.ev_ind_ordre=0;
+end
+^
+COMMENT ON TRIGGER EVENEMENTS_IND_BIU IS 
+'Créé par André LANGLET le 27/02/2007
+Dernière modification par AL le 08/09/2009'^
+
+/* Trigger: MEDIA_POINTEURS_BIU */
+CREATE OR ALTER TRIGGER MEDIA_POINTEURS_BIU FOR MEDIA_POINTEURS
+ACTIVE BEFORE INSERT OR UPDATE POSITION 0
+AS
+/*créé par André le 20/04/2007 pour empêcher d'attribuer 2 photos d'identité*/
+begin
+  if (new.mp_identite=1) then
+    update media_pointeurs
+      set mp_identite=0
+      where mp_clef<>new.mp_clef
+        and mp_cle_individu=new.mp_cle_individu
+        and mp_identite=1;
+  else
+    new.mp_identite=0;
+end
+^
+
+CREATE OR ALTER TRIGGER REF_DIVERS_FAM_BIU0 FOR REF_DIVERS_FAM
+ACTIVE BEFORE INSERT OR UPDATE POSITION 0
+as
+begin
+  new.ref_langue=upper(new.ref_langue);
+end
+^
+COMMENT ON TRIGGER REF_DIVERS_FAM_BIU0 IS 
+'Création André Langlet 2009'^
+
+CREATE OR ALTER TRIGGER REF_DIVERS_IND_BIU0 FOR REF_DIVERS_IND
+ACTIVE BEFORE INSERT OR UPDATE POSITION 0
+as
+begin
+  new.ref_langue=upper(new.ref_langue);
+end
+^
+COMMENT ON TRIGGER REF_DIVERS_IND_BIU0 IS 
+'Création André Langlet 2009'^
+
+/* Trigger: REF_EVENEMENTS_BI */
+CREATE OR ALTER TRIGGER REF_EVENEMENTS_BI FOR REF_EVENEMENTS
+ACTIVE BEFORE INSERT POSITION 0
+AS
+BEGIN
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 01/08/2001
+   à : 05:35:59
+   Modifiée le :
+   à : :
+   par :
+   Description : Incremente la table ref_evenements
+   Usage       :
+   ---------------------------------------------------------------------------*/
+  IF (NEW.REF_EVE_CODE IS NULL) THEN
+      NEW.REF_EVE_CODE = GEN_ID(gen_ref_evenements,1);
+END
+^
+
+/* Trigger: REF_EVENEMENTS_BU */
+CREATE OR ALTER TRIGGER REF_EVENEMENTS_BU FOR REF_EVENEMENTS
+ACTIVE BEFORE UPDATE POSITION 0
+as
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 01/08/2001
+   à : 05:36:15
+   Modifiée le :
+   à : :
+   par :
+   Description : mets a jour le champ obligatoire
+   Usage       :
+   ---------------------------------------------------------------------------*/
+  if (NEW.ref_eve_obligatoire = 1) then
+     NEW.ref_eve_a_traiter = 1;
+end
+^
+
+/* Trigger: REF_HISTOIRE_BIU */
+CREATE OR ALTER TRIGGER REF_HISTOIRE_BIU FOR REF_HISTOIRE
+ACTIVE BEFORE INSERT OR UPDATE POSITION 0
+as
+declare variable i_mois_deb integer;
+declare variable i_an_deb integer;
+declare variable i_jour_deb integer;
+declare variable valide smallint;
+begin
+  if (new.hi_id is null) then
+      new.hi_id = gen_id(gen_ref_histoire,1);
+  select imois,ian,ijour,date_writen_s,valide
+  from proc_date_writen(new.hi_date_texte)
+    into :i_mois_deb,:i_an_deb,:i_jour_deb,
+         new.hi_date_texte,:valide;
+  if (valide=1) then
+  begin
+    if (i_mois_deb is null) then
+      i_mois_deb=1;
+    if (i_jour_deb is null) then
+      i_jour_deb=1;
+    new.hi_date_code_debut=i_an_deb*372+i_mois_deb*31+i_jour_deb-404;
+  end
+  new.hi_dicorigine=upper(new.hi_dicorigine);
+end
+^
+COMMENT ON TRIGGER REF_HISTOIRE_BIU IS 
+'Déclencheur créé par André le 18/01.2007
+Dernière modification par André le 22/03/2010'^
+
+CREATE OR ALTER TRIGGER REF_MARR_BIU0 FOR REF_MARR
+ACTIVE BEFORE INSERT OR UPDATE POSITION 0
+as
+begin
+  new.ref_langue=upper(new.ref_langue);
+end^
+commit^
+
+/* Trigger: REF_RELA_TEMOINS_BI */
+CREATE OR ALTER TRIGGER REF_RELA_TEMOINS_BI FOR REF_RELA_TEMOINS
+ACTIVE BEFORE INSERT POSITION 0
+AS
+BEGIN
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 01/08/2001
+   à : 05:36:32
+   Modifiée le :
+   à : :
+   par :
+   Description : increment la table des relations temoins
+   Usage       :
+   ---------------------------------------------------------------------------*/
+  IF (NEW.REF_RELA_CLEF IS NULL) THEN
+      NEW.REF_RELA_CLEF = GEN_ID(GEN_REF_RELA_CLEF,1);
+END
+^
+
+/* Trigger: TAD_EVENEMENTS_IND */
+CREATE OR ALTER TRIGGER TAD_EVENEMENTS_IND FOR EVENEMENTS_IND
+ACTIVE AFTER DELETE POSITION 0
+as
+begin
+  if (old.ev_ind_type='BIRT') then
+    update individu
+      set date_naissance=null,
+          annee_naissance=null,
+          age_au_deces=null
+      where cle_fiche=old.ev_ind_kle_fiche;
+  if (old.ev_ind_type='DEAT') then
+    update individu
+      set date_deces=null,
+          annee_deces=null,
+          age_au_deces=null
+      where cle_fiche=old.ev_ind_kle_fiche;
+  if (old.ev_ind_type in('DEAT','BURI','CREM')) then
+    update individu
+      set decede=null
+      where cle_fiche=old.ev_ind_kle_fiche
+          and not exists (select * from evenements_ind
+              where ev_ind_type in('DEAT','BURI','CREM')
+                and ev_ind_kle_fiche=old.ev_ind_kle_fiche);
+end
+^
+
+/* Trigger: TAD_MEDIA_POINTEURS */
+CREATE OR ALTER TRIGGER TAD_MEDIA_POINTEURS FOR MEDIA_POINTEURS
+ACTIVE AFTER DELETE POSITION 0
+as
+declare variable ttable char(1);
+begin
+  ttable='I';
+  if (old.mp_type_image='F') then
+    select type_table
+    from sources_record
+    where id=old.mp_pointe_sur
+    into :ttable;
+  else
+    if ((old.mp_type_image='A') and (old.mp_table='F')) then
+      ttable='F';
+  if (ttable='F') then
+    delete from media_pointeurs
+    where mp_media=old.mp_media
+      and mp_pointe_sur=old.mp_pointe_sur
+      and mp_table=old.mp_table
+      and mp_kle_dossier=old.mp_kle_dossier
+      and mp_type_image=old.mp_type_image ;
+end
+^
+COMMENT ON TRIGGER TAD_MEDIA_POINTEURS IS 
+'Création par André Langlet pour fonctionnement des médias le 01/10/2005.
+Dernière modifications par AL le 23/07/2009.
+Suppression de l''enregistrement pour le conjoint
+s''il est lié au même événement familial.'^
+
+CREATE OR ALTER TRIGGER EVENEMENTS_IND_AIU FOR EVENEMENTS_IND
+ACTIVE AFTER INSERT OR UPDATE POSITION 0
+as
+begin
+  if (inserting or(updating and new.ev_ind_date_writen is distinct from old.ev_ind_date_writen)) then
+    if (new.ev_ind_type='BIRT') then
+      update individu
+      set date_naissance=new.ev_ind_date_writen
+         ,annee_naissance=new.ev_ind_date_year
+         ,age_au_deces=annee_deces-annee_naissance
+      where cle_fiche=new.ev_ind_kle_fiche;
+    else if (new.ev_ind_type='DEAT') then
+      update individu
+      set date_deces=new.ev_ind_date_writen
+         ,annee_deces=new.ev_ind_date_year
+         ,age_au_deces=annee_deces-annee_naissance
+         ,decede=1
+      where cle_fiche=new.ev_ind_kle_fiche;
+
+  if (inserting and new.ev_ind_type in('BURI','CREM')) then
+    update individu set decede=1
+    where cle_fiche=new.ev_ind_kle_fiche;
+
+  delete from sources_record s
+  where new.ev_ind_source is null
+    and s.data_id=new.ev_ind_clef
+    and s.type_table='I'
+    and char_length(s.auth)=0
+    and char_length(s.titl)=0
+    and char_length(s.abr)=0
+    and char_length(s.publ)=0
+    and not exists(select * from media_pointeurs p
+                   where p.mp_table='F'
+                     and p.mp_type_image='F'
+                     and p.mp_pointe_sur=s.id);
+
+  if (row_count=0) then
+  begin
+    update sources_record s
+    set s.texte=new.ev_ind_source
+    where s.data_id=new.ev_ind_clef and s.type_table='I';
+    if ((row_count=0) and (char_length(new.ev_ind_source)>0)) then
+      insert into sources_record
+        (id
+        ,data_id
+        ,texte
+        ,change_date
+        ,kle_dossier
+        ,type_table)
+      values(gen_id(sources_record_id_gen,1)
+        ,new.ev_ind_clef
+        ,new.ev_ind_source
+        ,current_timestamp
+        ,new.ev_ind_kle_dossier
+        ,'I');
+  end
+end
+^
+COMMENT ON TRIGGER EVENEMENTS_IND_AIU IS 
+'Création par André Langlet
+Dernière mise à Jour AL le 23/07/2009
+Met à jour les champs de la table INDIVIDU et permet l''enregistrement du champ
+Sources de l''événement dans un enregistrement de SOURCES_RECORD.'^
+
+CREATE OR ALTER TRIGGER SOURCES_RECORD_BI0 FOR SOURCES_RECORD
+ACTIVE BEFORE INSERT POSITION 0
+AS
+begin
+  delete from sources_record
+  where data_id=new.data_id
+    and type_table=new.type_table;
+end^
+
+/* Trigger: TAI_EVENEMENTS_FAM */
+CREATE OR ALTER TRIGGER TAI_EVENEMENTS_FAM FOR EVENEMENTS_FAM
+ACTIVE AFTER INSERT OR UPDATE POSITION 0
+as
+begin
+  update sources_record s
+  set s.texte=new.ev_fam_source
+  where s.data_id=new.ev_fam_clef and s.type_table='F';
+  if (row_count=0) then
+    insert into sources_record (id
+                               ,data_id
+                               ,texte
+                               ,change_date
+                               ,kle_dossier
+                               ,type_table)
+                         values(gen_id(sources_record_id_gen,1)
+                               ,new.ev_fam_clef
+                               ,new.ev_fam_source
+                               ,current_timestamp
+                               ,new.ev_fam_kle_dossier
+                               ,'F');
+END^
+COMMENT ON TRIGGER TAI_EVENEMENTS_FAM IS 
+'Création par André pour fonctionnement média (01/10/05)
+Le doublement de l''enregistrement dans MEDIA_POINTEURS
+pour le conjoint ne fonctionne pas si l''enregistrement
+de l''évènement familial dans SOURCES_RECORD n''existe pas.
+Ne sera plus nécessaire le jour où le programme créera
+l''enregistrement dans SOURCES_RECORD avant celui dans
+MEDIA_POINTEURS que si le champ Sources de l''événement n''est pas vide'^
+
+
+
+/* Trigger: TAI_MEDIA_POINTEURS */
+CREATE OR ALTER TRIGGER TAI_MEDIA_POINTEURS FOR MEDIA_POINTEURS
+ACTIVE AFTER INSERT POSITION 0
+as
+declare variable ttable char(1);
+declare variable did integer;
+declare variable mari integer;
+declare variable femme integer;
+declare variable conjoint integer;
+declare variable compte integer;
+begin
+  ttable='I';
+  if (new.mp_type_image='F') then  --Déclaration par les sources
+  begin                            --Nécessite l'existence dans
+    select type_table,             --SOURCES_RECORD
+           data_id
+    from sources_record
+    where id=new.mp_pointe_sur
+    into :ttable,
+         :did ;
+  end
+  else
+    if ((new.mp_type_image='A') and (new.mp_table='F')) then
+    begin
+      ttable='F';
+      did=new.mp_pointe_sur;
+    end
+  if (ttable='F') then
+  begin
+    delete from media_pointeurs  --Supprime les doublons qui pourraient être
+      --créés par les 2 conjoints lors de la récupération d'un gedcom.
+      --On ne garde que l'enregistrement en cours.
+    where mp_clef<>new.mp_clef
+      and mp_media=new.mp_media
+      and mp_cle_individu=new.mp_cle_individu
+      and mp_pointe_sur=new.mp_pointe_sur
+      and mp_table=new.mp_table
+      and mp_kle_dossier=new.mp_kle_dossier
+      and mp_type_image=new.mp_type_image ;
+    select count(mp_clef)
+    from media_pointeurs
+    where mp_media=new.mp_media
+      and mp_pointe_sur=new.mp_pointe_sur
+      and mp_table=new.mp_table
+      and mp_kle_dossier=new.mp_kle_dossier
+      and mp_type_image=new.mp_type_image
+    into :compte;
+    if (compte>1) then
+      exit; --enregistrement déjà créé pour conjoint
+    select u.union_mari
+          ,u.union_femme
+    from evenements_fam ev
+    inner join t_union u on u.union_clef=ev.ev_fam_kle_famille
+    where ev.ev_fam_clef=:did
+    into :mari
+        ,:femme;
+    if (new.mp_cle_individu=mari) then
+      conjoint=femme;
+    else
+      if (new.mp_cle_individu=femme) then
+        conjoint=mari;
+      else
+        exit; --Union "orpheline"
+    insert into media_pointeurs
+          (mp_clef
+          ,mp_media
+          ,mp_cle_individu
+          ,mp_pointe_sur
+          ,mp_table
+          ,mp_identite
+          ,mp_kle_dossier
+          ,mp_type_image)
+    values(gen_id(biblio_pointeurs_id_gen, 1)
+          ,new.mp_media
+          ,:conjoint
+          ,new.mp_pointe_sur
+          ,new.mp_table
+          ,0
+          ,new.mp_kle_dossier
+          ,new.mp_type_image);
+  end
+end
+^
+COMMENT ON TRIGGER TAI_MEDIA_POINTEURS IS 
+'Création par André Langlet pour fonctionnement des médias le 01/10/2005.
+Dernière modification par AL le 23/07/2009.
+Double l''enregistrement pour le conjoint s''il est lié à un évènement familial.'^
+
+/* Trigger: TBD_DOSSIER */
+CREATE OR ALTER TRIGGER TBD_DOSSIER FOR DOSSIER
+ACTIVE BEFORE DELETE POSITION 0
+AS
+begin
+/*créé par André le 23/08/2007 pour assurer l'intégrité des données*/
+  execute procedure proc_vide_dossier(old.cle_dossier);
+end
+^
+
+/* Trigger: TBD_EVENEMENTS_FAM */
+CREATE OR ALTER TRIGGER TBD_EVENEMENTS_FAM FOR EVENEMENTS_FAM
+ACTIVE BEFORE DELETE POSITION 0
+as
+begin
+  delete from sources_record
+  where data_id=old.ev_fam_clef
+    and type_table='F';
+  delete from media_pointeurs
+  where mp_pointe_sur=old.ev_fam_clef
+    and mp_type_image='A'
+    and mp_table='F';
+  delete from t_associations
+  where assoc_evenement=old.ev_fam_clef
+    and assoc_table='U';
+end
+^
+COMMENT ON TRIGGER TBD_EVENEMENTS_FAM IS 
+'Création André Langlet
+Dernière modification 23/07/2009'^
+
+/* Trigger: TBD_EVENEMENTS_IND */
+CREATE OR ALTER TRIGGER TBD_EVENEMENTS_IND FOR EVENEMENTS_IND
+ACTIVE BEFORE DELETE POSITION 0
+as
+begin
+  delete from sources_record
+  where data_id=old.ev_ind_clef
+    and type_table='I';
+  delete from media_pointeurs
+  where mp_pointe_sur=old.ev_ind_clef
+    and mp_type_image='A'
+    and mp_table='I';
+  delete from t_associations
+  where assoc_evenement=old.ev_ind_clef
+    and assoc_table='I';
+end
+^
+COMMENT ON TRIGGER TBD_EVENEMENTS_IND IS 
+'Création par André Langlet pour fonctionnement média (01/10/05)
+Suppression des enregistrements dans SOURCES_RECORD et
+dans MEDIA_POINTEURS si l''enregistrement disparaît.
+24/10/05 ajout maj table T_ASSOCIATIONS'^
+
+/* Trigger: TBD_SOURCES_RECORD */
+CREATE OR ALTER TRIGGER TBD_SOURCES_RECORD FOR SOURCES_RECORD
+ACTIVE BEFORE DELETE POSITION 0
+as
+/* Création par André pour fonctionnement média (01/10/05)
+   Suppression des enregistrements de MEDIA_POINTEURS
+   liés à cet enregistrement */
+BEGIN
+  DELETE FROM MEDIA_POINTEURS
+    WHERE MP_TYPE_IMAGE = 'F' AND
+          MP_POINTE_SUR = OLD.ID ;
+END
+^
+
+/* Trigger: TBD_T_UNION */
+CREATE OR ALTER TRIGGER TBD_T_UNION FOR T_UNION
+ACTIVE BEFORE DELETE POSITION 0
+as
+/* Créé par André le 25/10/2005 pour assurer intégrité*/
+BEGIN
+  DELETE FROM EVENEMENTS_FAM
+  WHERE EV_FAM_KLE_FAMILLE = OLD.UNION_CLEF ;
+END
+^
+
+/* Trigger: TBU_EVENEMENTS_FAM */
+CREATE OR ALTER TRIGGER TBU_EVENEMENTS_FAM FOR EVENEMENTS_FAM
+ACTIVE BEFORE UPDATE POSITION 0
+as
+declare variable valide smallint;
+begin
+  if (new.ev_fam_date_writen is distinct from old.ev_fam_date_writen) then
+    if (rdb$get_context('USER_SESSION','TRACE_DATE')='1') then
+      if (char_length(new.ev_fam_date_writen)>0) then
+      begin
+        select valide
+        from proc_date_writen(new.ev_fam_date_writen)
+        into :valide;
+        if (valide=0) then
+          insert into traces (nom_table,enr_table,texte_message)
+          values('EVENEMENTS_FAM',old.ev_fam_clef,'date invalide: '||new.ev_fam_date_writen);
+      end
+  if (new.ev_fam_acte is null) then
+    new.ev_fam_acte=0;
+end^
+
+COMMENT ON TRIGGER TBU_EVENEMENTS_FAM IS 
+'Créé par André le 18/11/2005
+01/06/2006 ajout des mois,date de fin et normalisation des dates
+11/05/2007 mise à jour media_pointeurs
+04/05/2008 traçage des erreurs de dates
+08/01/2010 maj pour gestion des actes.'^
+
+/* Trigger: TBU_EVENEMENTS_IND */
+CREATE OR ALTER TRIGGER TBU_EVENEMENTS_IND FOR EVENEMENTS_IND
+ACTIVE BEFORE UPDATE POSITION 0
+as
+declare variable valide smallint;
+begin
+  if (new.ev_ind_date_writen is distinct from old.ev_ind_date_writen) then
+    if (rdb$get_context('USER_SESSION','TRACE_DATE')='1') then
+      if (char_length(new.ev_ind_date_writen)>0) then
+      begin
+        select valide
+        from proc_date_writen(new.ev_ind_date_writen)
+        into :valide;
+        if (valide=0) then
+          insert into traces (nom_table,enr_table,texte_message)
+          values('EVENEMENTS_IND',old.ev_ind_clef,'date invalide: '||new.ev_ind_date_writen);
+      end
+  if (new.ev_ind_type is distinct from old.ev_ind_type) then
+    select substring(r.ref_eve_lib_long from 1 for 25)
+          ,'EVEN'
+      from individu i
+      inner join dossier ds on ds.cle_dossier=i.kle_dossier
+      inner join ref_evenements r on r.ref_eve_lib_court=new.ev_ind_type
+        and r.ref_eve_langue=ds.ds_langue
+      where i.cle_fiche=new.ev_ind_kle_fiche
+        and exists (select *
+                    from evenements_ind e
+                    inner join ref_evenements r on r.ref_eve_lib_court=e.ev_ind_type
+                                               and r.ref_eve_une_fois=1
+                    where e.ev_ind_kle_fiche=new.ev_ind_kle_fiche
+                      and e.ev_ind_type=new.ev_ind_type)
+    into new.ev_ind_titre_event
+        ,new.ev_ind_type;
+  if (new.ev_ind_acte is null) then
+    new.ev_ind_acte=0;
+end^
+
+COMMENT ON TRIGGER TBU_EVENEMENTS_IND IS 
+'Créé par André le 18/11/2005
+12/2/2007 contrôle événement en double
+11/05/2007 mise à jour media_pointeurs
+14/11/2007 optimisation
+16/04/2009 Traçage des erreurs
+10/01/2010 maj pour gestion des actes.'^
+
+/* Trigger: TBU_T_UNION */
+CREATE OR ALTER TRIGGER TBU_T_UNION FOR T_UNION
+ACTIVE BEFORE UPDATE POSITION 0
+as
+/* Créé par André le 05/03/2006 pour assurer intégrité*/
+BEGIN
+  IF (NEW.UNION_MARI IS NULL OR NEW.UNION_FEMME IS NULL) THEN
+    DELETE FROM EVENEMENTS_FAM
+           WHERE EV_FAM_KLE_FAMILLE=NEW.UNION_CLEF;
+END
+^
+
+/* Trigger: TQ_ECLAIR_BI */
+CREATE OR ALTER TRIGGER TQ_ECLAIR_BI FOR TQ_ECLAIR
+ACTIVE BEFORE INSERT POSITION 0
+AS
+BEGIN
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 01/08/2001
+   à : 05:37:19
+   Modifiée le :
+   à : :
+   par :
+   Description : 
+   Usage       :
+   ---------------------------------------------------------------------------*/
+  IF (NEW.TQ_CLEF IS NULL) THEN
+      NEW.TQ_CLEF = GEN_ID(GEN_TQ_ECLAIR,1);
+END
+^
+
+/* Trigger: TRIG_MULTIMEDIA_BD */
+CREATE OR ALTER TRIGGER TRIG_MULTIMEDIA_BD FOR MULTIMEDIA
+ACTIVE BEFORE DELETE POSITION 0
+as
+/* Création par André pour fonctionnement média le 20/06/06*/
+BEGIN
+DELETE FROM MEDIA_POINTEURS
+WHERE MP_MEDIA=OLD.MULTI_CLEF;
+END
+^
+
+CREATE OR ALTER TRIGGER T_AD_INDIVIDU FOR INDIVIDU
+ACTIVE AFTER DELETE POSITION 0
+AS
+DECLARE VARIABLE TEST INTEGER;
+begin
+  if (rdb$get_context('USER_TRANSACTION','ACTIVE_MAJ_SOSA')is not null) then
+  begin
+    if (old.num_sosa is not null) then
+    begin
+      select rdb$set_context('USER_TRANSACTION','INACTIVE_MAJ_DATE','1')
+      from rdb$database into :test;
+      if (old.cle_pere is not null) then --rechercher s'il n'a pas un autre enfant sosa sinon le mettre à null
+        update individu
+        set num_sosa=(select first (1) 2*num_sosa from individu
+                      where cle_pere=old.cle_pere
+                      and num_sosa is not null)
+        where cle_fiche=old.cle_pere and num_sosa=2*old.num_sosa;
+      if (old.cle_mere is not null) then --rechercher s'il n'a pas un autre enfant sosa sinon le mettre à null
+        update individu
+        set num_sosa=(select first (1) 2*num_sosa+1 from individu
+                      where cle_mere=old.cle_mere
+                      and num_sosa is not null)
+        where cle_fiche=old.cle_mere and num_sosa=2*old.num_sosa+1;
+      if (test=0) then
+        rdb$set_context('USER_TRANSACTION','INACTIVE_MAJ_DATE',null);
+    end
+  end
+end
+^
+
+CREATE OR ALTER TRIGGER T_AI_INDIVIDU FOR INDIVIDU
+ACTIVE AFTER INSERT POSITION 0
+as
+declare variable s_prenom varchar(60);
+begin
+  for select prenom from proc_eclate_prenom(new.prenom)
+      where prenom is not null and prenom<>''
+      into :S_PRENOM
+  do
+  begin
+    if (new.sexe>1) then
+      update prenoms set F=F+1 where prenom=:s_prenom;
+    else
+      update prenoms set M=M+1 where prenom=:s_prenom;
+    if (row_count=0) then
+      if (new.sexe>1) then
+        insert into prenoms (prenom,F)
+        values(:s_prenom,1);
+       else
+        insert into prenoms (prenom,M)
+        values(:s_prenom,1);
+  end
+end
+^
+
+CREATE OR ALTER TRIGGER T_AU_INDIVIDU FOR INDIVIDU
+ACTIVE AFTER UPDATE POSITION 0
+as
+DECLARE VARIABLE S_PRENOM VARCHAR(60) CHARACTER SET ISO8859_1;
+DECLARE VARIABLE TEST INTEGER;
+begin
+  if (new.prenom<>old.prenom or new.sexe<>old.sexe)  then
+  begin
+    for select prenom from proc_eclate_prenom(old.prenom)
+        where prenom is not null and prenom<>''
+        into :S_PRENOM
+    do
+    begin
+      if (old.sexe>1) then
+        update prenoms set F=F-1 where prenom=:s_prenom;
+      else
+        update prenoms set M=M-1 where prenom=:s_prenom;
+    end
+
+    for select prenom from proc_eclate_prenom(new.prenom)
+        where prenom is not null and prenom<>''
+        into :S_PRENOM
+    do
+    begin
+      if (new.sexe>1) then
+        update prenoms set F=F+1 where prenom=:s_prenom;
+      else
+        update prenoms set M=M+1 where prenom=:s_prenom;
+      if (row_count=0) then
+        if (new.sexe>1) then
+          insert into prenoms (prenom,F)
+          values(:s_prenom,1);
+        else
+          insert into prenoms (prenom,M)
+          values(:s_prenom,1);
+    end
+  end
+
+  if (new.nom<>old.nom) then
+    update nom_attachement
+    set nom_indi=new.nom
+    where id_indi=new.cle_fiche and nom_indi=old.nom;
+
+  if (rdb$get_context('USER_TRANSACTION','ACTIVE_MAJ_SOSA')is not null) then
+  begin
+    if (new.num_sosa is distinct from old.num_sosa
+        or new.cle_pere is distinct from old.cle_pere
+        or new.cle_mere is distinct from old.cle_mere) then
+    begin
+      if (old.num_sosa is null) then
+      begin
+        if (new.num_sosa is not null) then
+        begin --autrement rien à faire car num_sosa est resté null
+          select rdb$set_context('USER_TRANSACTION','INACTIVE_MAJ_DATE','1')
+            from rdb$database into :test;
+          if (new.cle_pere is not null) then
+            update individu set num_sosa=2*new.num_sosa
+            where cle_fiche=new.cle_pere and num_sosa is null;
+          if (new.cle_mere is not null) then
+            update individu set num_sosa=2*new.num_sosa+1
+            where cle_fiche=new.cle_mere and num_sosa is null;
+          if (test=0) then
+            rdb$set_context('USER_TRANSACTION','INACTIVE_MAJ_DATE',null);
+        end
+      end
+      else --old.num_sosa n'était pas null
+      begin
+        if (new.num_sosa is null) then
+        begin
+          select rdb$set_context('USER_TRANSACTION','INACTIVE_MAJ_DATE','1')
+            from rdb$database into :test;
+          if (old.cle_pere is not null) then --rechercher s'il n'a pas un autre enfant sosa sinon le mettre à null
+            update individu
+            set num_sosa=(select first (1) 2*num_sosa from individu
+                          where cle_pere=old.cle_pere
+                          and num_sosa is not null)
+            where cle_fiche=old.cle_pere and num_sosa=2*old.num_sosa;
+            --rien à faire pour le nouveau père
+          if (old.cle_mere is not null) then --rechercher s'il n'a pas un autre enfant sosa sinon le mettre à null
+            update individu
+            set num_sosa=(select first (1) 2*num_sosa+1 from individu
+                          where cle_mere=old.cle_mere
+                          and num_sosa is not null)
+            where cle_fiche=old.cle_mere and num_sosa=2*old.num_sosa+1;
+          --rien à faire pour la nouvelle mère
+          if (test=0) then
+            rdb$set_context('USER_TRANSACTION','INACTIVE_MAJ_DATE',null);
+        end
+        else --le num_sosa a gardé ou pas sa valeur
+        begin
+          select rdb$set_context('USER_TRANSACTION','INACTIVE_MAJ_DATE','1')
+            from rdb$database into :test;
+          if (new.cle_pere is distinct from old.cle_pere) then
+          begin
+            if (old.cle_pere is not null) then --rechercher s'il n'a pas un autre enfant sosa sinon le mettre à null
+              update individu
+              set num_sosa=(select first (1) 2*num_sosa from individu
+                            where cle_pere=old.cle_pere
+                            and num_sosa is not null)
+              where cle_fiche=old.cle_pere and num_sosa=2*old.num_sosa;
+            if (new.cle_pere is not null) then
+              update individu set num_sosa=2*new.num_sosa
+              where cle_fiche=new.cle_pere and num_sosa is null;
+          end
+          else
+          begin
+            if (new.num_sosa<>old.num_sosa and new.cle_pere is not null) then
+              update individu set num_sosa=2*new.num_sosa
+              where cle_fiche=new.cle_pere and num_sosa=2*old.num_sosa;
+          end
+          if (new.cle_mere is distinct from old.cle_mere) then
+          begin
+            if (old.cle_mere is not null) then --rechercher s'il n'a pas un autre enfant sosa sinon le mettre à null
+              update individu
+              set num_sosa=(select first (1) 2*num_sosa+1 from individu
+                            where cle_mere=old.cle_mere
+                            and num_sosa is not null)
+              where cle_fiche=old.cle_mere and num_sosa=2*old.num_sosa+1;
+            if (new.cle_mere is not null) then
+              update individu set num_sosa=2*new.num_sosa+1
+              where cle_fiche=new.cle_mere and num_sosa is null;
+          end
+          else
+          begin
+            if (new.num_sosa<>old.num_sosa and new.cle_mere is not null) then
+              update individu set num_sosa=2*new.num_sosa+1
+              where cle_fiche=new.cle_mere and num_sosa=2*old.num_sosa+1;
+          end
+          if (test=0) then
+            rdb$set_context('USER_TRANSACTION','INACTIVE_MAJ_DATE',null);
+        end
+      end
+    end
+  end
+end
+^
+
+/* Trigger: T_BD_INDIVIDU */
+CREATE OR ALTER TRIGGER T_BD_INDIVIDU FOR INDIVIDU
+ACTIVE BEFORE DELETE POSITION 0
+as
+declare variable parent integer;
+declare variable s_prenom varchar(60);
+begin
+/*créé par André le 23/08/2007 pour assurer l'intégrité des données*/
+  delete from favoris where kle_fiche=old.cle_fiche;
+  delete from t_associations where (assoc_kle_ind=old.cle_fiche and assoc_table='I')
+                                   or assoc_kle_associe=old.cle_fiche;
+  delete from media_pointeurs where mp_cle_individu=old.cle_fiche;
+  delete from evenements_ind where ev_ind_kle_fiche=old.cle_fiche;
+  delete from nom_attachement where id_indi=old.cle_fiche;
+/* Cas d'un enfant unique avec seulement un parent :
+   suppression de l'enregistrement T_UNION du parent */
+  if (old.cle_pere is not null and old.cle_pere>0
+      and (old.cle_mere is null or old.cle_mere=0)) then
+  begin
+     delete from t_union
+     where union_mari=old.cle_pere
+       and (union_femme is null or union_femme=0)
+       and not exists (select 0 from individu
+                       where cle_pere=old.cle_pere
+                         and (cle_mere is null or cle_mere=0)
+                         and cle_fiche<>old.cle_fiche);
+  end
+  else
+    if (old.cle_mere is not null and old.cle_mere>0
+        and (old.cle_pere is null or old.cle_pere=0)) then
+    begin
+       delete from t_union
+       where union_femme=old.cle_mere
+         and (union_mari is null or union_mari=0)
+         and not exists (select 0 from individu
+                         where cle_mere=old.cle_mere
+                           and (cle_pere is null or cle_pere=0)
+                           and cle_fiche<>old.cle_fiche);
+    end
+/* -- Détachement des enfants (cas suppression du père avec conjoint) */
+  for select i.cle_mere from individu i
+      where i.cle_pere=old.cle_fiche
+        and i.cle_mere is not null
+        and i.cle_mere <> 0
+        and not exists (select 0 from t_union
+                        where union_femme=i.cle_mere
+                          and (union_mari is null or union_mari=0))
+      into :parent
+  do
+    insert into t_union (union_femme,kle_dossier,union_type)
+                 values (:parent,old.kle_dossier,0);
+  update individu
+     set cle_pere=null
+   where cle_pere=old.cle_fiche;
+/* -- Détachement des enfants (cas suppression de la mère avec conjoint) */
+  for select i.cle_pere from individu i
+      where i.cle_mere=old.cle_fiche
+        and i.cle_pere is not null
+        and i.cle_pere <> 0
+        and not exists (select 0 from t_union
+                        where union_mari=i.cle_pere
+                          and (union_femme is null or union_femme=0))
+      into :parent
+  do
+    insert into t_union (union_mari,kle_dossier,union_type)
+                 values (:parent,old.kle_dossier,0);
+  update individu
+     set cle_mere=null
+   where cle_mere=old.cle_fiche;
+  delete from t_union where union_mari=old.cle_fiche or union_femme=old.cle_fiche;
+--ajout André le 28/07/2008 pour maj table PRENOMS
+  for select prenom from proc_eclate_prenom(old.prenom)
+      where prenom is not null and prenom<>''
+      into :S_PRENOM
+  do
+  begin
+    if (old.sexe>1) then
+      update prenoms set F=F-1 where prenom=:s_prenom;
+    else
+      update prenoms set M=M-1 where prenom=:s_prenom;
+  end
+end
+^
+
+/* Trigger: T_BI_INDIVIDU */
+CREATE OR ALTER TRIGGER T_BI_INDIVIDU FOR INDIVIDU
+ACTIVE BEFORE INSERT POSITION 0
+as
+begin
+  if (NEW.DATE_CREATION is null) then
+    NEW.DATE_CREATION='NOW';
+  if  (NEW.DATE_MODIF is null) then
+    NEW.DATE_MODIF='NOW';
+  if (NEW.NOM IS NOT NULL) then
+    select s_out from f_maj_sans_accent(NEW.NOM)
+    into NEW.INDI_TRIE_NOM;
+end
+^
+
+/* Trigger: T_BI_INDIVIDU_2 */
+CREATE OR ALTER TRIGGER T_BI_INDIVIDU_2 FOR INDIVIDU
+ACTIVE BEFORE INSERT POSITION 1
+as
+declare variable cmpt_cfx integer;
+begin
+   /*---------------------------------------------------------------------------
+   Créé le : 28/10/2005 par André pour vérifier que la CLE_FIXE est unique
+   si non en chercher une nouvelle
+   ---------------------------------------------------------------------------*/
+  if (new.cle_fixe is null) then exit;
+  select first 1 1 from individu
+  where cle_fixe=new.cle_fixe
+  into :cmpt_cfx;
+  if (cmpt_cfx is not null and new.cle_fixe<>new.cle_fiche) then
+  begin
+    new.cle_fixe=new.cle_fiche;
+    cmpt_cfx=null;
+    select first 1 1 from individu
+    where cle_fixe=new.cle_fixe
+    into :cmpt_cfx;
+  end
+  if (cmpt_cfx is not null) then
+  begin
+    new.cle_fixe=0;
+    while (cmpt_cfx is not null) do
+    begin
+      cmpt_cfx=null;
+      new.cle_fixe=new.cle_fixe+1;
+      select first 1 1 from individu
+      where cle_fixe=new.cle_fixe
+      into :cmpt_cfx;
+    end
+  end
+ end
+^
+
+/* Trigger: T_BI_REF_PARTICULES */
+CREATE OR ALTER TRIGGER T_BI_REF_PARTICULES FOR REF_PARTICULES
+ACTIVE BEFORE INSERT POSITION 0
+AS
+begin
+  if (new.part_clef is null) then
+    new.part_clef=gen_id(gen_ref_particules,1);
+end
+^
+
+/* Trigger: T_BU_INDIVIDU */
+CREATE OR ALTER TRIGGER T_BU_INDIVIDU FOR INDIVIDU
+ACTIVE BEFORE UPDATE POSITION 0
+as
+begin
+  if  (rdb$get_context('USER_TRANSACTION','INACTIVE_MAJ_DATE')is null) then
+    new.date_modif='NOW';
+  if (new.nom is distinct from old.nom) then
+    select s_out from f_maj_sans_accent(new.nom)
+    into new.indi_trie_nom;
+end
+^
+
+/* Trigger: T_BU_INDIVIDU_2 */
+CREATE OR ALTER TRIGGER T_BU_INDIVIDU_2 FOR INDIVIDU
+ACTIVE BEFORE UPDATE POSITION 1
+as
+declare variable cmpt_cfx integer;
+begin
+   /*---------------------------------------------------------------------------
+   Créé le : 28/10/2005 par André pour vérifier que la CLE_FIXE est unique
+   si non en chercher une nouvelle
+   ---------------------------------------------------------------------------*/
+  if (new.cle_fixe = old.cle_fixe or new.cle_fixe is null) then exit;
+  select first 1 1 from individu
+  where cle_fixe=new.cle_fixe
+  into :cmpt_cfx;
+  if (cmpt_cfx is not null and new.cle_fixe<>new.cle_fiche) then
+  begin
+    new.cle_fixe=new.cle_fiche;
+    select first 1 1 from individu
+    where cle_fixe=new.cle_fixe
+    into :cmpt_cfx;
+  end
+  if (cmpt_cfx is not null) then
+  begin
+    new.cle_fixe=0;
+    while (cmpt_cfx is not null) do
+    begin
+      new.cle_fixe=new.cle_fixe+1;
+      cmpt_cfx=null;
+      select first 1 1 from individu
+      where cle_fixe=new.cle_fixe
+      into :cmpt_cfx;
+    end
+  end
+end
+^
+
+/* Trigger: T_REF_TOKEN_DATE_BUI */
+CREATE OR ALTER TRIGGER T_REF_TOKEN_DATE_BUI FOR REF_TOKEN_DATE
+ACTIVE BEFORE INSERT OR UPDATE POSITION 0
+AS
+begin
+  NEW.SOUS_TYPE=UPPER(NEW.SOUS_TYPE);
+  if (new.id is null) then
+    new.id=gen_id(gen_token_date,1);
+end^
+
+/* Trigger: T_UNION_BI */
+CREATE OR ALTER TRIGGER T_UNION_BI FOR T_UNION
+ACTIVE BEFORE INSERT POSITION 0
+AS
+BEGIN
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 01/08/2001
+   à : 05:38:30
+   Modifiée le :
+   à : :
+   par :
+   Description : Incremente la table des unions
+   Usage       :
+   ---------------------------------------------------------------------------*/
+  IF (NEW.UNION_CLEF IS NULL) THEN
+      NEW.UNION_CLEF = GEN_ID(GEN_T_UNION,1);
+END
+^
+
+/* Trigger: TT_ASCENDANCE_AI0 */
+CREATE OR ALTER TRIGGER TT_ASCENDANCE_AI0 FOR TT_ASCENDANCE
+ACTIVE AFTER INSERT POSITION 0
+AS
+DECLARE VARIABLE MAX_NIVEAU SMALLINT;
+DECLARE VARIABLE PERE INTEGER;
+DECLARE VARIABLE MERE INTEGER;
+DECLARE VARIABLE MODE_IMPLEXE SMALLINT;
+begin
+  max_niveau=rdb$get_context('USER_TRANSACTION','MAX_NIVEAU');
+  mode_implexe=rdb$get_context('USER_TRANSACTION','MODE_IMPLEXE');
+  if (new.niveau<max_niveau) then
+  begin
+    if (mode_implexe=0) then --pas d'implexes
+    begin
+      select cle_pere,cle_mere
+      from individu where cle_fiche=new.indi
+      into :pere,:mere;
+      if (pere is not null and pere>0) then
+        if (not exists(select * from tt_ascendance where indi=:pere)) then
+          insert into tt_ascendance (niveau,indi,sexe,conjoint,enfant,sosa)
+          values(new.niveau+1
+                ,:pere
+                ,1
+                ,:mere
+                ,new.ordre
+                ,bin_shl(new.sosa,1));
+      if (mere is not null and mere>0) then
+        if (not exists(select * from tt_ascendance where indi=:mere)) then
+          insert into tt_ascendance (niveau,indi,sexe,conjoint,enfant,sosa)
+          values(new.niveau+1
+                ,:mere
+                ,2
+                ,:pere
+                ,new.ordre
+                ,bin_shl(new.sosa,1)+1);
+    end
+    else
+    if (mode_implexe=1) then --implexes une seule fois
+    begin
+      if (new.implexe is null) then
+      begin
+        select cle_pere,cle_mere
+        from individu where cle_fiche=new.indi
+        into :pere,:mere;
+        if (pere is not null and pere>0) then
+          insert into tt_ascendance (niveau,indi,sexe,conjoint,enfant,sosa,implexe)
+          values(new.niveau+1
+                ,:pere
+                ,1
+                ,:mere
+                ,new.ordre
+                ,bin_shl(new.sosa,1)
+                ,(select first(1) ordre from tt_ascendance
+                  where indi=:pere order by ordre));
+        if (mere is not null and mere>0) then
+          insert into tt_ascendance (niveau,indi,sexe,conjoint,enfant,sosa,implexe)
+          values(new.niveau+1
+                  ,:mere
+                  ,2
+                  ,:pere
+                  ,new.ordre
+                  ,bin_shl(new.sosa,1)+1
+                  ,(select first(1) ordre from tt_ascendance
+                    where indi=:mere order by ordre));
+      end
+    end
+    else --mode_implexe=2  tous les implexes
+    begin
+      select cle_pere,cle_mere
+      from individu where cle_fiche=new.indi
+      into :pere,:mere;
+      if (pere is not null and pere>0) then
+        insert into tt_ascendance (niveau,indi,sexe,conjoint,enfant,sosa,implexe)
+        values(new.niveau+1
+              ,:pere
+              ,1
+              ,:mere
+              ,new.ordre
+              ,bin_shl(new.sosa,1)
+              ,(select first(1) ordre from tt_ascendance
+                where indi=:pere order by ordre));
+      if (mere is not null and mere>0) then
+        insert into tt_ascendance (niveau,indi,sexe,conjoint,enfant,sosa,implexe)
+        values(new.niveau+1
+              ,:mere
+              ,2
+              ,:pere
+              ,new.ordre
+              ,bin_shl(new.sosa,1)+1
+              ,(select first(1) ordre from tt_ascendance
+                where indi=:mere order by ordre));
+    end
+  end
+end
+^
+
+CREATE OR ALTER TRIGGER T_CONNECTION
+ACTIVE ON CONNECT POSITION 0
+as
+declare variable taille_initiale bigint;
+declare variable taille_actuelle bigint;
+declare variable ratio smallint;
+declare variable i integer;
+begin
+  select first(1) octets_fichier from t_version_base into :taille_initiale;
+  select mon$page_size*mon$pages from mon$database into :taille_actuelle;
+  if (taille_initiale is null) then
+  begin
+    update t_version_base
+    set octets_fichier=:taille_actuelle;
+    taille_initiale=taille_actuelle;
+    i = gen_id(gen_tq_eclair,-gen_id(gen_tq_eclair, 0));
+    i = gen_id(gen_tq_id,-gen_id(gen_tq_id, 0));
+    i = gen_id(gen_consang,-gen_id(gen_consang, 0));
+    i = gen_id(gen_tq_media,-gen_id(gen_tq_media, 0));
+  end
+  ratio=(taille_actuelle-taille_initiale)*100/taille_initiale;
+  rdb$set_context('USER_SESSION','RATIO_TAILLE',ratio);
+end^
+
+COMMENT ON TRIGGER T_CONNECTION IS 
+'Création André Langlet le 06/02/2009
+Dernière modification le 13/04/2011'^
+
+/* Trigger: TT_ASCENDANCE_BI0 */
+CREATE OR ALTER TRIGGER TT_ASCENDANCE_BI0 FOR TT_ASCENDANCE
+ACTIVE BEFORE INSERT POSITION 0
+as
+begin
+  new.ordre=rdb$get_context('USER_TRANSACTION','NUM_ORDRE');
+  if (new.ordre is null) then
+    new.ordre=0;
+  rdb$set_context('USER_TRANSACTION','NUM_ORDRE',new.ordre+1);
+end^
+
+CREATE OR ALTER TRIGGER TQ_MEDIAS_BIU0 FOR TQ_MEDIAS
+ACTIVE BEFORE INSERT OR UPDATE POSITION 0
+as
+begin
+  if (new.multi_clef is null) then
+    new.multi_clef=gen_id(gen_tq_media,1);
+end^
+
+CREATE OR ALTER TRIGGER EV_IND_TRIG_MAJ_LIEUX_FAVORIS FOR EVENEMENTS_IND
+ACTIVE AFTER INSERT OR UPDATE OR DELETE POSITION 1
+as
+begin
+  if (rdb$get_context('USER_TRANSACTION','INACTIVE_MAJ_LIEUX')is null) then
+  begin
+    if (inserting or deleting or (updating and
+      (new.ev_ind_ville is distinct from old.ev_ind_ville
+      or new.ev_ind_subd is distinct from old.ev_ind_subd
+      or new.ev_ind_cp is distinct from old.ev_ind_cp
+      or new.ev_ind_insee is distinct from old.ev_ind_insee
+      or new.ev_ind_dept is distinct from old.ev_ind_dept
+      or new.ev_ind_region is distinct from old.ev_ind_region
+      or new.ev_ind_pays is distinct from old.ev_ind_pays
+      or new.ev_ind_latitude is distinct from old.ev_ind_latitude
+      or new.ev_ind_longitude is distinct from old.ev_ind_longitude))) then
+    begin
+      if (updating or deleting) then
+        if (not exists(select * from evenements_ind where
+          ev_ind_kle_dossier=old.ev_ind_kle_dossier
+          and ev_ind_ville=old.ev_ind_ville
+          and ev_ind_subd is not distinct from old.ev_ind_subd
+          and ev_ind_cp is not distinct from old.ev_ind_cp
+          and ev_ind_insee is not distinct from old.ev_ind_insee
+          and ev_ind_dept is not distinct from old.ev_ind_dept
+          and ev_ind_region is not distinct from old.ev_ind_region
+          and ev_ind_pays is not distinct from old.ev_ind_pays
+          and ev_ind_latitude is not distinct from old.ev_ind_latitude
+          and ev_ind_longitude is not distinct from old.ev_ind_longitude)
+          and not exists(select * from evenements_fam where
+          ev_fam_kle_dossier=old.ev_ind_kle_dossier
+          and ev_fam_ville=old.ev_ind_ville
+          and ev_fam_subd is not distinct from old.ev_ind_subd
+          and ev_fam_cp is not distinct from old.ev_ind_cp
+          and ev_fam_insee is not distinct from old.ev_ind_insee
+          and ev_fam_dept is not distinct from old.ev_ind_dept
+          and ev_fam_region is not distinct from old.ev_ind_region
+          and ev_fam_pays is not distinct from old.ev_ind_pays
+          and ev_fam_latitude is not distinct from old.ev_ind_latitude
+          and ev_fam_longitude is not distinct from old.ev_ind_longitude))then
+          delete from lieux_favoris where
+          ville=old.ev_ind_ville
+          and subd is not distinct from old.ev_ind_subd
+          and cp is not distinct from old.ev_ind_cp
+          and insee is not distinct from old.ev_ind_insee
+          and dept is not distinct from old.ev_ind_dept
+          and region is not distinct from old.ev_ind_region
+          and pays is not distinct from old.ev_ind_pays
+          and latitude is not distinct from old.ev_ind_latitude
+          and longitude is not distinct from old.ev_ind_longitude;
+
+      if ((inserting or updating)and new.ev_ind_ville is not null
+        and not exists(select * from lieux_favoris where
+        ville=new.ev_ind_ville
+        and subd is not distinct from new.ev_ind_subd
+        and cp is not distinct from new.ev_ind_cp
+        and insee is not distinct from new.ev_ind_insee
+        and dept is not distinct from new.ev_ind_dept
+        and region is not distinct from new.ev_ind_region
+        and pays is not distinct from new.ev_ind_pays
+        and latitude is not distinct from new.ev_ind_latitude
+        and longitude is not distinct from new.ev_ind_longitude)) then
+        insert into lieux_favoris
+          (ville
+          ,subd
+          ,cp
+          ,insee
+          ,dept
+          ,region
+          ,pays
+          ,latitude
+          ,longitude)
+          values(
+           new.ev_ind_ville
+          ,new.ev_ind_subd
+          ,new.ev_ind_cp
+          ,new.ev_ind_insee
+          ,new.ev_ind_dept
+          ,new.ev_ind_region
+          ,new.ev_ind_pays
+          ,new.ev_ind_latitude
+          ,new.ev_ind_longitude);
+    end
+  end
+end
+^
+
+COMMENT ON TRIGGER EV_IND_TRIG_MAJ_LIEUX_FAVORIS IS
+'Création André Langlet 03/2011 pour la gestion des lieux favoris.'^
+
+CREATE OR ALTER TRIGGER EV_FAM_TRIG_MAJ_LIEUX_FAVORIS FOR EVENEMENTS_FAM
+ACTIVE AFTER INSERT OR UPDATE OR DELETE POSITION 1
+as
+begin
+  if (rdb$get_context('USER_TRANSACTION','INACTIVE_MAJ_LIEUX')is null) then
+  begin
+    if (inserting or deleting or (updating and
+      (new.ev_fam_ville is distinct from old.ev_fam_ville
+      or new.ev_fam_subd is distinct from old.ev_fam_subd
+      or new.ev_fam_cp is distinct from old.ev_fam_cp
+      or new.ev_fam_insee is distinct from old.ev_fam_insee
+      or new.ev_fam_dept is distinct from old.ev_fam_dept
+      or new.ev_fam_region is distinct from old.ev_fam_region
+      or new.ev_fam_pays is distinct from old.ev_fam_pays
+      or new.ev_fam_latitude is distinct from old.ev_fam_latitude
+      or new.ev_fam_longitude is distinct from old.ev_fam_longitude))) then
+    begin
+      if (updating or deleting) then
+        if (not exists(select * from evenements_ind where
+          ev_ind_kle_dossier=old.ev_fam_kle_dossier
+          and ev_ind_ville=old.ev_fam_ville
+          and ev_ind_subd is not distinct from old.ev_fam_subd
+          and ev_ind_cp is not distinct from old.ev_fam_cp
+          and ev_ind_insee is not distinct from old.ev_fam_insee
+          and ev_ind_dept is not distinct from old.ev_fam_dept
+          and ev_ind_region is not distinct from old.ev_fam_region
+          and ev_ind_pays is not distinct from old.ev_fam_pays
+          and ev_ind_latitude is not distinct from old.ev_fam_latitude
+          and ev_ind_longitude is not distinct from old.ev_fam_longitude)
+          and not exists(select * from evenements_fam where
+          ev_fam_kle_dossier=old.ev_fam_kle_dossier
+          and ev_fam_ville=old.ev_fam_ville
+          and ev_fam_subd is not distinct from old.ev_fam_subd
+          and ev_fam_cp is not distinct from old.ev_fam_cp
+          and ev_fam_insee is not distinct from old.ev_fam_insee
+          and ev_fam_dept is not distinct from old.ev_fam_dept
+          and ev_fam_region is not distinct from old.ev_fam_region
+          and ev_fam_pays is not distinct from old.ev_fam_pays
+          and ev_fam_latitude is not distinct from old.ev_fam_latitude
+          and ev_fam_longitude is not distinct from old.ev_fam_longitude))then
+          delete from lieux_favoris where
+          ville=old.ev_fam_ville
+          and subd is not distinct from old.ev_fam_subd
+          and cp is not distinct from old.ev_fam_cp
+          and insee is not distinct from old.ev_fam_insee
+          and dept is not distinct from old.ev_fam_dept
+          and region is not distinct from old.ev_fam_region
+          and pays is not distinct from old.ev_fam_pays
+          and latitude is not distinct from old.ev_fam_latitude
+          and longitude is not distinct from old.ev_fam_longitude;
+
+      if ((inserting or updating)and new.ev_fam_ville is not null
+        and not exists(select * from lieux_favoris where
+        ville=new.ev_fam_ville
+        and subd is not distinct from new.ev_fam_subd
+        and cp is not distinct from new.ev_fam_cp
+        and insee is not distinct from new.ev_fam_insee
+        and dept is not distinct from new.ev_fam_dept
+        and region is not distinct from new.ev_fam_region
+        and pays is not distinct from new.ev_fam_pays
+        and latitude is not distinct from new.ev_fam_latitude
+        and longitude is not distinct from new.ev_fam_longitude)) then
+        insert into lieux_favoris
+          (ville
+          ,subd
+          ,cp
+          ,insee
+          ,dept
+          ,region
+          ,pays
+          ,latitude
+          ,longitude)
+          values(
+           new.ev_fam_ville
+          ,new.ev_fam_subd
+          ,new.ev_fam_cp
+          ,new.ev_fam_insee
+          ,new.ev_fam_dept
+          ,new.ev_fam_region
+          ,new.ev_fam_pays
+          ,new.ev_fam_latitude
+          ,new.ev_fam_longitude);
+    end
+  end
+end
+^
+
+COMMENT ON TRIGGER EV_FAM_TRIG_MAJ_LIEUX_FAVORIS IS 
+'Création André Langlet 03/2011 pour la gestion des lieux favoris.'^
+
+commit^
+
+/******************************************************************************/
+/****                          Stored Procedures                           ****/
+/******************************************************************************/
+
+
+CREATE OR ALTER PROCEDURE F_MAJ (
+    S_IN VARCHAR(255))
+RETURNS (
+    S_OUT VARCHAR(255))
+AS
+begin
+  S_OUT=UPPER(S_IN)collate FR_CA;
+  suspend;
+end
+^
+
+CREATE OR ALTER PROCEDURE F_MAJ_SANS_ACCENT (
+    S_IN VARCHAR(255))
+RETURNS (
+    S_OUT VARCHAR(255))
+AS
+DECLARE VARIABLE L INTEGER;
+DECLARE VARIABLE I INTEGER;
+DECLARE VARIABLE CAR CHAR(1) CHARACTER SET ISO8859_1;
+DECLARE VARIABLE S_TEMP VARCHAR(255) CHARACTER SET ISO8859_1;
+begin
+  S_OUT=coalesce(upper(lower(S_IN)collate FR_FR),'');
+  for select :s_out from rdb$database
+  where :s_out containing ''
+     or :s_out containing ''
+     or :s_out containing 'Æ'
+     or :s_out containing 'Ä'
+     or :s_out containing 'Ã'
+     or :s_out containing 'Ö'
+     or :s_out containing 'Õ'
+     or :s_out containing 'Ñ'
+     or :s_out containing 'Ý'
+     or :s_out containing 'Ð'
+     or :s_out containing 'Ø'
+  into :s_temp
+  do
+  begin
+    l=char_length(s_temp);
+    s_out='';
+    i=1;
+    while (i<=l) do
+    begin
+      car=substring(s_temp from i for 1);
+      if (car='') then s_out=s_out||'OE';
+      else if (car='') then s_out=s_out||'OE';
+      else if (car='Æ') then s_out=s_out||'AE';
+      else if (car='Ä') then s_out=s_out||'A';
+      else if (car='Ã') then s_out=s_out||'A';
+      else if (car='Ö') then s_out=s_out||'O';
+      else if (car='Õ') then s_out=s_out||'O';
+      else if (car='Ñ') then s_out=s_out||'N';
+      else if (car='Ý') then s_out=s_out||'Y';
+      else if (car='Ð') then s_out=s_out||'D';
+      else if (car='Ø') then s_out=s_out||'O';
+      else s_out=s_out||car;
+      i=i+1;
+    end
+  end
+  suspend;
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_AGE_A_DATE (
+    I_CLEF_INDI INTEGER,
+    DATE_EVE DATE,
+    MOIS_EVE INTEGER,
+    AN_EVE INTEGER)
+RETURNS (
+    AGE INTEGER,
+    DATE_NAIS DATE,
+    MOIS_NAIS INTEGER,
+    AN_NAIS INTEGER)
+AS
+begin
+  if (date_eve is null and an_eve is null) then
+  begin
+    suspend;
+    exit;
+  end
+  select first 1
+    ev_ind_date
+   ,ev_ind_date_mois
+   ,ev_ind_date_year
+   from evenements_ind
+   where ev_ind_kle_fiche=:i_clef_indi
+     and ev_ind_type='BIRT'
+   into
+     :date_nais
+    ,:mois_nais
+    ,:an_nais;
+  if (an_nais is not null) then
+  begin
+    select delta_jours
+    from proc_delta_dates(:date_nais,:mois_nais,:an_nais,0
+                          ,:date_eve,:mois_eve,:an_eve,0)
+    into :age;
+  end
+  suspend;
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_AGE_TEXTE (
+    DATE_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100))
+RETURNS (
+    AGE_TEXTE VARCHAR(60))
+AS
+DECLARE VARIABLE VALIDE SMALLINT;
+DECLARE VARIABLE MOIS_D_N INTEGER;
+DECLARE VARIABLE AN_D_N INTEGER;
+DECLARE VARIABLE DATE_D_N DATE;
+DECLARE VARIABLE TOKEN_D_N INTEGER;
+DECLARE VARIABLE MOIS_F_N INTEGER;
+DECLARE VARIABLE AN_F_N INTEGER;
+DECLARE VARIABLE DATE_F_N DATE;
+DECLARE VARIABLE TOKEN_F_N INTEGER;
+DECLARE VARIABLE MOIS_D_D INTEGER;
+DECLARE VARIABLE AN_D_D INTEGER;
+DECLARE VARIABLE DATE_D_D DATE;
+DECLARE VARIABLE TOKEN_D_D INTEGER;
+DECLARE VARIABLE MOIS_F_D INTEGER;
+DECLARE VARIABLE AN_F_D INTEGER;
+DECLARE VARIABLE DATE_F_D DATE;
+DECLARE VARIABLE TOKEN_F_D INTEGER;
+DECLARE VARIABLE AGE_TEXTE_MIN VARCHAR(25);
+DECLARE VARIABLE AGE_TEXTE_MAX VARCHAR(25);
+DECLARE VARIABLE PRECIS INTEGER;
+DECLARE VARIABLE ANS INTEGER;
+DECLARE VARIABLE MOIS INTEGER;
+DECLARE VARIABLE JOURS INTEGER;
+begin
+  if (char_length(date_naissance)=0 or char_length(date_deces)=0) then
+  begin
+    suspend;
+    exit;
+  end
+
+  select valide
+        ,imois
+        ,ian
+        ,ddate
+        ,type_token1
+        ,imois_fin
+        ,ian_fin
+        ,ddate_fin
+        ,type_token2
+  from proc_date_writen(:date_naissance)
+  into :valide
+      ,:mois_d_n
+      ,:an_d_n
+      ,:date_d_n
+      ,:token_d_n
+      ,:mois_f_n
+      ,:an_f_n
+      ,:date_f_n
+      ,:token_f_n;
+  if (valide=0) then
+  begin
+    suspend;
+    exit;
+  end
+
+  select valide
+        ,imois
+        ,ian
+        ,ddate
+        ,type_token1
+        ,imois_fin
+        ,ian_fin
+        ,ddate_fin
+        ,type_token2
+  from proc_date_writen(:date_deces)
+  into :valide
+      ,:mois_d_d
+      ,:an_d_d
+      ,:date_d_d
+      ,:token_d_d
+      ,:mois_f_d
+      ,:an_f_d
+      ,:date_f_d
+      ,:token_f_d;
+  if (valide=0) then
+  begin
+    suspend;
+    exit;
+  end
+
+  if ((token_d_n in (15,16) and token_d_d=token_d_n) --âge indéterminé si avant-avant ou après-aprè
+      or(token_d_n=14 and token_d_d=15) --si naissance jusque et décès avant
+      ) then
+  begin
+    suspend;
+    exit;
+  end
+
+  if (token_d_n is null and token_d_d is null) then  --aucun mot-clef naissance et décès exacts
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_max;
+    if (age_texte_max<>age_texte) then
+    begin
+      age_texte=age_texte||' à '||age_texte_max;
+    end
+    suspend;
+    exit;
+  end
+
+  if (token_d_n is null and token_d_d=13) then --naissance exacte, décès "depuis"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    if (token_f_d is null) then
+      age_texte='au moins '||age_texte_min;
+    else
+    begin   --décès "de x à y"
+      if (mois_d_n is null or mois_f_d is null) then
+        precis=0;
+      else
+        precis=1;
+      select ans,mois,jours
+      from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                            ,:date_f_d,:mois_f_d,:an_f_d,1)
+      into :ans,:mois,:jours;
+      select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+      into :age_texte_max;
+      if (age_texte_max=age_texte_min) then
+        age_texte=age_texte_min;
+      else
+        age_texte=age_texte_min||' à '||age_texte_max;
+    end
+    suspend;
+    exit;
+  end
+
+  if (token_d_n is null and token_d_d=14) then --naissance exacte, décès "jusque"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte;
+    age_texte='au plus '||age_texte;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n is null and token_d_d=15) then --naissance exacte, décès "avant"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte;
+    age_texte='au plus '||age_texte;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n is null and token_d_d=16) then --naissance exacte, décès "après"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte;
+    age_texte='au moins '||age_texte;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n is null and token_d_d=17 and token_f_d=18) then --naissance exacte, décès "entre x et y"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    if (mois_d_n is null or mois_f_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_f_d,:mois_f_d,:an_f_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_max;
+    if (age_texte_max=age_texte_min) then
+      age_texte=age_texte_min;
+    else
+      age_texte=age_texte_min||' à '||age_texte_max;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n is null and token_d_d in (19,20,21)) then --naissance exacte, décès "environ"
+  begin
+    precis=0;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,0
+                          ,:date_d_d,:mois_d_d,:an_d_d,0)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte;
+    age_texte='environ '||age_texte;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=13 and token_f_n=14 and token_d_d is null) then  --naissance "depuis x jusque y", décès exact
+  begin
+    if (mois_f_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_f_n,:mois_f_n,:an_f_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_max;
+    if (age_texte_max<>age_texte) then
+    begin
+      age_texte=age_texte||' à '||age_texte_max;
+    end
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=13 and token_f_n=14 and token_d_d=13) then  --naissance "depuis x jusque y", décès "depuis"
+  begin
+    if (mois_f_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_f_n,:mois_f_n,:an_f_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    if (token_f_d is null) then
+      age_texte='au moins '||age_texte_min;
+    else
+    begin   --décès "de x à y"
+      if (mois_d_n is null or mois_f_d is null) then
+        precis=0;
+      else
+        precis=1;
+      select ans,mois,jours
+      from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                            ,:date_f_d,:mois_f_d,:an_f_d,1)
+      into :ans,:mois,:jours;
+      select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+      into :age_texte_max;
+      if (age_texte_max=age_texte_min) then
+        age_texte=age_texte_min;
+      else
+        age_texte=age_texte_min||' à '||age_texte_max;
+    end
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=13 and token_f_n=14 and token_d_d=14) then  --naissance "depuis x jusque y", décès "jusque"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='au plus '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=13 and token_f_n=14 and token_d_d=15) then  --naissance "depuis x jusque y", décès "avant"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='au plus '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=13 and token_f_n=14 and token_d_d=16) then  --naissance "depuis x jusque y", décès "après"
+  begin
+    if (mois_f_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_f_n,:mois_f_n,:an_f_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='au moins '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=13 and token_f_n=14 and token_d_d=17 and token_f_d=18) then --naissance "depuis x jusque y", décès "entre x et y"
+  begin
+    if (mois_f_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_f_n,:mois_f_n,:an_f_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    if (mois_d_n is null or mois_f_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_f_d,:mois_f_d,:an_f_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_max;
+    if (age_texte_max=age_texte_min) then
+      age_texte=age_texte_min;
+    else
+      age_texte=age_texte_min||' à '||age_texte_max;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=13 and token_f_n=14 and token_d_d in (19,20,21)) then --naissance "depuis x jusque y", décès "environ"
+  begin
+    precis=0;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,0)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte;
+    age_texte='environ '||age_texte;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=14 and token_d_d is null) then  --naissance "jusque", décès exact
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte;
+    age_texte='au moins '||age_texte;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=14 and token_d_d=13) then  --naissance "jusque", décès "depuis" (jusque sans influence)
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='au moins '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=14 and token_d_d=13) then  --naissance "jusque", décès "après"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='au moins '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=14 and token_d_d=17) then  --naissance "jusque", décès "entre" ("et y" indifférent)
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='au moins '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=14 and token_d_d in (19,20,21)) then  --naissance "jusque", décès "environ"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,0)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='environ '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=15 and token_d_d is null) then  --naissance "avant", décès exact
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte;
+    age_texte='au moins '||age_texte;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=15 and token_d_d=13) then  --naissance "avant", décès "depuis" (jusque sans influence)
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='au moins '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=15 and token_d_d=16) then  --naissance "avant", décès "après"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='au moins '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=15 and token_d_d=17) then  --naissance "avant", décès "entre" ("et y" indifférent)
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='au moins '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=15 and token_d_d in (19,20,21)) then  --naissance "avant", décès "environ"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,0)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='environ '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=16 and token_d_d is null) then  --naissance "après", décès exact
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte;
+    age_texte='au plus '||age_texte;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=16 and (token_d_d=14 or token_f_d=14)) then  --naissance "après", décès "jusque" (depuis sans influence)
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='au plus '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=16 and token_d_d=15) then  --naissance "après", décès "avant"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='au plus '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=16 and token_f_d=18) then  --naissance "après", décès "entre et y"
+  begin
+    if (mois_d_n is null or mois_f_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_f_d,:mois_f_d,:an_f_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='au plus '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=16 and token_d_d in (19,20,21)) then  --naissance "après", décès "environ"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,0)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='environ '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=17 and token_d_d is null) then  --naissance "entre x et y", décès exact
+  begin
+    if (mois_f_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_f_n,:mois_f_n,:an_f_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_max;
+    if (age_texte_max=age_texte_min) then
+      age_texte=age_texte_min;
+    else
+      age_texte=age_texte_min||' à '||age_texte_max;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=17 and token_d_d=13) then  --naissance "entre x et y", décès "depuis jusque"
+  begin
+    if (mois_f_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_f_n,:mois_f_n,:an_f_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    if (token_f_d is null) then
+      age_texte='au moins '||age_texte_min;
+    else
+    begin
+      if (mois_d_n is null or mois_f_d is null) then
+        precis=0;
+      else
+        precis=1;
+      select ans,mois,jours
+      from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                            ,:date_f_d,:mois_f_d,:an_f_d,1)
+      into :ans,:mois,:jours;
+      select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+      into :age_texte_max;
+      if (age_texte_max=age_texte_min) then
+        age_texte=age_texte_min;
+      else
+        age_texte=age_texte_min||' à '||age_texte_max;
+    end
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=17 and token_d_d=14) then  --naissance "entre x et y", décès "jusque"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='au plus '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=17 and token_d_d=15) then  --naissance "entre x et y", décès "avant"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='au plus '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=17 and token_d_d=16) then  --naissance "entre x et y", décès "après"
+  begin
+    if (mois_f_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_f_n,:mois_f_n,:an_f_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_max;
+    age_texte='au moins '||age_texte_max;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=17 and token_d_d=17) then  --naissance "entre x et y", décès "entre x et y"
+  begin
+    if (mois_f_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_f_n,:mois_f_n,:an_f_n,-1
+                          ,:date_d_d,:mois_d_d,:an_d_d,1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    if (mois_d_n is null or mois_f_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_f_d,:mois_f_d,:an_f_d,-1)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_max;
+    if (age_texte_max=age_texte_min) then
+      age_texte=age_texte_min;
+    else
+      age_texte=age_texte_min||' à '||age_texte_max;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n=17 and token_d_d in (19,20,21)) then  --naissance "entre x et y", décès "environ"
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,1
+                          ,:date_d_d,:mois_d_d,:an_d_d,0)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='environ '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+  if (token_d_n in (19,20,21)) then  --naissance "environ" autre indifférent
+  begin
+    if (mois_d_n is null or mois_d_d is null) then
+      precis=0;
+    else
+      precis=1;
+    select ans,mois,jours
+    from proc_delta_dates(:date_d_n,:mois_d_n,:an_d_n,0
+                          ,:date_d_d,:mois_d_d,:an_d_d,0)
+    into :ans,:mois,:jours;
+    select jours_texte from proc_jours_texte(:ans,:mois,:jours,:precis)
+    into :age_texte_min;
+    age_texte='environ '||age_texte_min;
+    suspend;
+    exit;
+  end
+
+end^
+
+CREATE OR ALTER PROCEDURE PROC_ANC_COMMUNS (
+    individu1 integer,
+    individu2 integer)
+returns (
+    commun integer,
+    enfant_1 integer,
+    niveau_min_1 integer,
+    enfant_2 integer,
+    niveau_min_2 integer)
+as
+declare variable pere integer;
+declare variable mere integer;
+declare variable k integer;
+declare variable i_count integer;
+declare variable indip integer;
+declare variable indim integer;
+declare variable enfant integer;
+declare variable ascendant integer;
+begin
+--  delete from tq_anc;
+  if (individu2<>0) then
+  begin
+    k=0;
+    pere=individu1;
+    mere=individu2;
+  end
+  else
+  begin
+    k=1;
+    select cle_pere,cle_mere from individu
+    where cle_fiche=:individu1
+    into :pere,:mere;
+  end
+  if (pere=0 or pere is null or mere=0 or mere is null) then
+  begin
+    suspend;
+    exit;
+  end
+  if (pere=mere) then
+  begin
+    suspend;
+    exit;
+  end
+  insert into tq_anc (decujus,niveau,indi,enfant)
+                 values(:pere,:k,:pere,:pere);
+  insert into tq_anc (decujus,niveau,indi,enfant)
+                 values(:mere,:k,:mere,:mere);
+  i_count=1;
+  while (i_count>0) do
+  begin
+    i_count=0;
+    for select i.cle_pere,i.cle_mere,tq.indi,tq.decujus
+        from tq_anc tq
+        inner join individu i on i.cle_fiche=tq.indi
+        where tq.decujus in(:pere,:mere)
+          and tq.niveau=:k
+        into :indip,:indim,:enfant,:ascendant
+    do
+    begin
+      --par les hommes
+      if (:indip>0) then
+        if (not exists (select * from tq_anc where decujus=:ascendant
+                                     and indi=:indip
+                                     and enfant=:enfant)) then
+        begin
+          insert into tq_anc (decujus,niveau,indi,enfant)
+          values(:ascendant,:k+1,:indip,:enfant);
+          i_count=1;
+        end
+      --par les femmes
+      if (:indim>0) then
+        if (not exists (select * from tq_anc where decujus=:ascendant
+                                     and indi=:indim
+                                     and enfant=:enfant)) then
+        begin
+          insert into tq_anc (decujus,niveau,indi,enfant)
+            values(:ascendant,:k+1,:indim,:enfant);
+          i_count=1;
+        end
+    end
+    k=k+1;
+  end
+  for select distinct p.indi
+                     ,p.enfant
+                     ,p.niveau
+                     ,m.enfant
+                     ,m.niveau
+      from tq_anc p
+      inner join tq_anc m on m.decujus=:mere
+                             and m.indi=p.indi
+                             and m.enfant<>p.enfant
+      where p.decujus=:pere
+      into :commun
+          ,:enfant_1
+          ,:niveau_min_1
+          ,:enfant_2
+          ,:niveau_min_2
+  do
+  begin
+    suspend;
+  end
+end^
+
+COMMENT ON PROCEDURE PROC_ANC_COMMUNS IS
+'Procédure créée par André. Dernière modification: 30/10/2010
+Cette procédure liste les ancêtres communs à 2 individus. INDIVIDU et INDIVIDU2
+ENFANT_1 et ENFANT_2 sont les enfants de l''ancêtre à l''origine de la branche
+arrivant respectivement à INDIVIDU et INDIVIDU2. NIVEAU_MIN_1 et NIVEAU_MIN_2
+sont les nombres de générations minimum séparant respectivement INDIVIDU et
+INDIVIDU2 de l''ancêtre en passant par les branches issues de ENFANT_1 et ENFANT_2.
+Si INDIVIDU2 est nul, les ancêtres communs aux parents de INDIVIDU sont recherchés.
+Les nombres de générations sont celles qui séparent INDIVIDU de son ancêtre par
+chacune des branches paternelle et maternelle.'^
+
+
+CREATE OR ALTER PROCEDURE PROC_ARBRE_EXPORT (
+    I_CLEF INTEGER,
+    I_NIVEAU INTEGER,
+    I_DOSSIER INTEGER,
+    I_PARQUI INTEGER)
+RETURNS (
+    NIVEAU INTEGER,
+    SOSA DOUBLE PRECISION,
+    CLE_FICHE INTEGER,
+    CLE_IMPORTATION VARCHAR(20),
+    CLE_PARENTS INTEGER,
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    PREFIXE VARCHAR(30),
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    SURNOM VARCHAR(120),
+    SUFFIXE VARCHAR(30),
+    SEXE INTEGER,
+    DATE_NAISSANCE VARCHAR(100),
+    ANNEE_NAISSANCE INTEGER,
+    DATE_DECES VARCHAR(100),
+    ANNEE_DECES INTEGER,
+    DECEDE INTEGER,
+    AGE_AU_DECES INTEGER,
+    SOURCE BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    COMMENT BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    FILLIATION VARCHAR(30),
+    NUM_SOSA DOUBLE PRECISION,
+    OCCUPATION VARCHAR(90),
+    NCHI INTEGER,
+    NMR INTEGER,
+    CLE_FIXE INTEGER,
+    IMPLEXE DOUBLE PRECISION,
+    DESCENDANT INTEGER)
+AS
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   à : 18:10:14
+   Modifiée le :12/02/2006 par André pour séparer le remplissage de la table temporaire
+   à : : et le calcul du dernier métier
+   par :
+   Description : Cette procedure permet de récuperer la fam d'un individu
+   en se servant d'une table technique
+   Le remplissage de la table est fonction de Niveaux
+   0 - Lui Meme
+   1 - Parents
+   x - les autres
+   I_PARQUI : 1 par les hommes
+              2 par les femmes
+              0 tous
+   Usage       :
+   ---------------------------------------------------------------------------*/
+   for
+      SELECT  t.tq_niveau,
+              t.tq_sosa,
+              i.CLE_FICHE,
+              i.CLE_IMPORTATION,
+              i.CLE_PARENTS,
+              i.CLE_PERE,
+              i.CLE_MERE,
+              i.PREFIXE,
+              i.NOM,
+              i.PRENOM,
+              i.SURNOM,
+              i.SUFFIXE,
+              i.SEXE,
+              i.DATE_NAISSANCE,
+              i.ANNEE_NAISSANCE,
+              i.DATE_DECES,
+              i.ANNEE_DECES,
+              i.DECEDE,
+              i.AGE_AU_DECES,
+              i.SOURCE,
+              i.COMMENT,
+              i.FILLIATION,
+              i.NUM_SOSA,
+              i.NCHI,
+              i.NMR,
+              i.CLE_FIXE,
+              t.IMPLEXE,
+              t.tq_descendant
+         FROM PROC_TQ_ASCENDANCE(:I_CLEF,:I_NIVEAU,:I_PARQUI,1) t
+              inner join individu i on i.cle_fiche=t.tq_cle_fiche
+         ORDER BY t.tq_SOSA
+         INTO :NIVEAU,
+              :SOSA,
+              :CLE_FICHE,
+              :CLE_IMPORTATION,
+              :CLE_PARENTS,
+              :CLE_PERE,
+              :CLE_MERE,
+              :PREFIXE,
+              :NOM,
+              :PRENOM,
+              :SURNOM,
+              :SUFFIXE,
+              :SEXE,
+              :DATE_NAISSANCE,
+              :ANNEE_NAISSANCE,
+              :DATE_DECES,
+              :ANNEE_DECES,
+              :DECEDE,
+              :AGE_AU_DECES,
+              :SOURCE,
+              :COMMENT,
+              :FILLIATION,
+              :NUM_SOSA,
+              :NCHI,
+              :NMR,
+              :CLE_FIXE,
+              :IMPLEXE,
+              :descendant
+   do
+     begin
+       OCCUPATION=NULL;
+       SELECT OCCUPATION FROM PROC_DERNIER_METIER(:CLE_FICHE)
+             INTO :OCCUPATION;
+       suspend;
+     end
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_ASCEND_DESCEND (
+    I_CLEF INTEGER,
+    I_NIVEAU INTEGER,
+    I_DOSSIER INTEGER,
+    I_PARQUI INTEGER)
+RETURNS (
+    MODE CHAR(1),
+    CLE_FICHE INTEGER,
+    PREFIXE VARCHAR(30),
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    SURNOM VARCHAR(120),
+    SUFFIXE VARCHAR(30),
+    SEXE INTEGER,
+    CLE_PARENTS INTEGER,
+    SOURCE BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    COMMENT BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    NUM_SOSA VARCHAR(120),
+    NIVEAU INTEGER,
+    FILLIATION VARCHAR(30),
+    CLE_MERE INTEGER,
+    CLE_PERE INTEGER,
+    NCHI INTEGER,
+    NMR INTEGER,
+    CLE_FIXE INTEGER)
+AS
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   à : 18:11:02
+   Modifiée le :27/12/2005 par André à cause de la gestion des implexes
+   le 02/10/2007 suppression renumérotation sosa du dossier.
+   par :
+   Description : Recupere les ascendant et descendants d'un individu
+   Usage       :
+   ---------------------------------------------------------------------------*/
+    FOR
+    SELECT  'A',
+            CLE_FICHE,
+            PREFIXE,
+            NOM,
+            PRENOM,
+            SURNOM,
+            SUFFIXE,
+            SEXE,
+            CLE_PARENTS,
+            SOURCE,
+            COMMENT,
+            CAST(SOSA AS VARCHAR(120)),
+            NIVEAU,
+            FILLIATION,
+            CLE_MERE,
+            CLE_PERE,
+            NCHI,
+            NMR,
+            CLE_FIXE
+    FROM PROC_ARBRE_EXPORT (:I_CLEF, :I_NIVEAU, :I_DOSSIER, :I_PARQUI)
+         WHERE IMPLEXE IS NULL
+    UNION all
+    SELECT  'D',
+            CLE_FICHE,
+            PREFIXE,
+            NOM,
+            PRENOM,
+            SURNOM,
+            SUFFIXE,
+            SEXE,
+            CLE_PARENTS,
+            SOURCE,
+            COMMENT,
+            SOSA,
+            NIVEAU,
+            FILLIATION,
+            CLE_MERE,
+            CLE_PERE,
+            NCHI,
+            NMR,
+            CLE_FIXE
+    FROM PROC_DESCENDANCE (:I_CLEF, :I_NIVEAU, :I_DOSSIER)
+    WHERE CLE_FICHE <> :I_CLEF AND ORDRE IS NULL
+    INTO    :MODE,
+            :CLE_FICHE,
+            :PREFIXE,
+            :NOM,
+            :PRENOM,
+            :SURNOM,
+            :SUFFIXE,
+            :SEXE,
+            :CLE_PARENTS,
+            :SOURCE,
+            :COMMENT,
+            :NUM_SOSA,
+            :NIVEAU,
+            :FILLIATION,
+            :CLE_MERE,
+            :CLE_PERE,
+            :nchi, 
+            :NMR,
+            :CLE_FIXE
+    DO
+    suspend;
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_ASCEND_ORDONNEE (
+    decujus integer,
+    max_niveau smallint,
+    mode_implexe smallint)
+returns (
+    ordre integer,
+    niveau smallint,
+    indi integer,
+    sexe smallint,
+    conjoint integer,
+    enfant integer,
+    sosa bigint,
+    implexe integer)
+as
+begin
+  delete from tt_ascendance;
+  if (max_niveau is null or max_niveau=0) then
+    max_niveau=128;
+  else
+    max_niveau=minvalue(max_niveau,128);
+  if (mode_implexe is null or mode_implexe<0) then
+    mode_implexe=0;
+  else
+    mode_implexe=minvalue(mode_implexe,2);
+  rdb$set_context('USER_TRANSACTION','MAX_NIVEAU',max_niveau);
+  rdb$set_context('USER_TRANSACTION','MODE_IMPLEXE',mode_implexe);
+  rdb$set_context('USER_TRANSACTION','NUM_ORDRE',0);
+  insert into tt_ascendance (niveau,indi,sosa)
+    values (0,:decujus,1);
+  for select ordre
+            ,niveau
+            ,indi
+            ,sexe
+            ,conjoint
+            ,enfant
+            ,sosa
+            ,implexe
+       from tt_ascendance
+       order by ordre
+       into ordre
+            ,niveau
+            ,indi
+            ,sexe
+            ,conjoint
+            ,enfant
+            ,sosa
+            ,implexe
+  do
+    suspend;
+end^
+COMMENT ON PROCEDURE PROC_ASCEND_ORDONNEE IS
+'Création André le 14/12/2008 pour automatiser le calcul de l''ascendance.
+Dernière modification 14/04/2011: ordre donné par variable du contexte.'^
+
+CREATE OR ALTER PROCEDURE PROC_COMPTAGE (
+    i_dossier integer)
+returns (
+    libelle varchar(7),
+    comptage integer)
+as
+declare variable s_ville varchar(50);
+declare variable s_dept varchar(30);
+declare variable s_region varchar(50);
+declare variable s_pays varchar(30);
+declare variable i integer;
+begin
+  delete from tq_transit;
+  for select coalesce(lower(trim(ev_ind_ville)),'')
+            ,coalesce(lower(trim(ev_ind_dept)),'')
+            ,coalesce(lower(trim(ev_ind_region)),'')
+            ,coalesce(lower(trim(ev_ind_pays)),'')
+      from evenements_ind
+      where ev_ind_kle_dossier=:i_dossier
+        and not(ev_ind_ville is null and ev_ind_dept is null
+                and ev_ind_region is null and ev_ind_pays is null)
+      union
+      select coalesce(lower(trim(ev_fam_ville)),'')
+            ,coalesce(lower(trim(ev_fam_dept)),'')
+            ,coalesce(lower(trim(ev_fam_region)),'')
+            ,coalesce(lower(trim(ev_fam_pays)),'')
+      from evenements_fam
+      where ev_fam_kle_dossier=:i_dossier
+        and not(ev_fam_ville is null and ev_fam_dept is null
+                and ev_fam_region is null and ev_fam_pays is null)
+      into :s_ville
+          ,:s_dept
+          ,:s_region
+          ,:s_pays
+  do insert into tq_transit (champ1,champ2,champ3,champ4)
+            values(:s_ville,:s_dept,:s_region,:s_pays);
+  for select cast('EVE_IND' as varchar(7)),count(*)
+      from evenements_ind
+      where (ev_ind_kle_dossier=:i_dossier and ev_ind_type<>'RESI')
+      union
+      select cast('EVE_FAM' as varchar(7)),count(*)
+      from evenements_fam
+      where (ev_fam_kle_dossier=:i_dossier)
+      union
+      select cast('_VILLES' as varchar(7)),count(*)
+      from (select distinct champ1,champ2,champ3,champ4 from  tq_transit)
+      union
+      select cast('DEPARTE' as varchar(7)),count(*)
+      from (select distinct champ2,champ3,champ4 from  tq_transit)
+      union
+      select cast('REGIONS' as varchar(7)),count(*)
+      from (select distinct champ3,champ4 from  tq_transit)
+      union
+      select cast('___PAYS' as varchar(7)),count(*)
+      from (select distinct champ4 from  tq_transit)
+      union
+      select cast('ADRESSE' as varchar(7)),count(*)
+      from evenements_ind
+      where (ev_ind_kle_dossier=:i_dossier and ev_ind_type='RESI')
+      union
+      select cast('MULTIME' as varchar(7)),count(*)
+      from multimedia
+      where multi_dossier=:i_dossier
+      union
+      select cast('INDIVID' as varchar(7)), count(*)
+      from individu
+      where kle_dossier=:i_dossier
+      union
+      select cast('PATRONY' as varchar(7)),count(distinct nom)
+      from individu
+      where kle_dossier=:i_dossier
+      union
+      select cast('TUNIONS' as varchar(7)),count(*)
+      from t_union
+      where kle_dossier=:i_dossier and union_mari>0 and union_femme>0
+      union
+      select cast('_HOMMES' as varchar(7)),count(*)
+      from  individu
+      where kle_dossier=:i_dossier and sexe=1
+      union
+      select cast('_FEMMES' as varchar(7)),count(*)
+      from  individu
+      where kle_dossier=:i_dossier and sexe=2
+      union
+      select cast('INDETER' as varchar(7)),count(*)
+      from individu
+      where kle_dossier=:i_dossier and sexe<>1 and sexe<>2
+      into :libelle
+          ,:comptage
+  do suspend;
+  delete from tq_transit;
+end^
+COMMENT ON PROCEDURE PROC_COMPTAGE IS
+'Informations sur le dossier en cours
+Refonte par André Langlet:
+le 8/12/2005 comptage villes, dept, régions et pays du dossier
+le 12/12/2005 ignorer les erreurs de minuscules, espaces
+le 23/08/2007 suppression du comptage des lieux, unions avec 2 conjoints
+le 26/12/2009 suppression du mode
+le 25/10/2010 suppression des références à la table adresses_ind
+le 26/03/2011 modification remplissage de TQ_TRANSIT'^
+
+CREATE OR ALTER PROCEDURE PROC_CONJOINTS_ORDONNES (
+    indi integer,
+    c_inconnu integer)
+returns (
+    ordre integer,
+    clef_union integer,
+    conjoint integer,
+    clef_marr integer)
+as
+begin
+  ordre=0;
+  for SELECT distinct
+      :ordre+1
+     ,r.union_clef
+     ,r.conjoint
+     ,r.clef_marr
+  from (select
+     u.union_clef
+     ,case u.union_mari
+        when :indi then u.union_femme
+        else u.union_mari
+        end as conjoint
+     ,(select first(1) ev_fam_clef
+       from evenements_fam
+       where ev_fam_kle_famille=u.union_clef and ev_fam_type='MARR'
+       order by ev_fam_date_year,ev_fam_date_mois,ev_fam_date) as clef_marr
+     ,(select first(1) ev_fam_date_year*372+coalesce(ev_fam_date_mois-1,0)*31+coalesce(extract(day from ev_fam_date)-1,0)
+       from evenements_fam
+       where ev_fam_kle_famille=u.union_clef and ev_fam_date_year is not null
+       order by ev_fam_date_year,ev_fam_date_mois,ev_fam_date) as date_prem_fam
+     ,(select first(1) n.ev_ind_date_year*372+coalesce(n.ev_ind_date_mois-1,0)*31+coalesce(extract(day from n.ev_ind_date)-1,0)
+       from individu e inner join evenements_ind n on n.ev_ind_kle_fiche=e.cle_fiche
+       where e.cle_pere is not distinct from u.union_mari
+         and e.cle_mere is not distinct from u.union_femme
+         and n.ev_ind_date_year is not null
+       order by n.ev_ind_date_year,n.ev_ind_date_mois,n.ev_ind_date) as date_prem_enf
+     ,(select first(1) ev_ind_date_year*372+coalesce(ev_ind_date_mois-1,0)*31+coalesce(extract(day from ev_ind_date)-1,0)
+       from evenements_ind
+       where ev_ind_kle_fiche=case u.union_mari
+                              when :indi then u.union_femme
+                              else u.union_mari
+                              end
+        and ev_ind_date_year is not null
+       order by ev_ind_date_year desc,ev_ind_date_mois desc,ev_ind_date desc) as date_dern_eve
+     FROM t_union u
+      left join individu e on e.cle_pere is not distinct from u.union_mari and e.cle_mere is not distinct from u.union_femme
+     Where :indi in (u.union_mari,u.union_femme)) as r
+
+     ORDER BY case
+              when (r.date_prem_enf is null) and (r.date_prem_fam is null) then r.date_dern_eve
+              when (r.date_prem_enf is null) then r.date_prem_fam
+              when (r.date_prem_fam is null) then r.date_prem_enf
+              when (r.date_prem_fam<=r.date_prem_enf) then r.date_prem_fam
+              else r.date_prem_enf
+              end
+              ,r.union_clef
+     into
+        ordre
+       ,clef_union
+       ,conjoint
+       ,clef_marr
+  do
+    if ((c_inconnu=1) or (conjoint>0)) then
+    suspend;
+end^
+
+
+CREATE OR ALTER PROCEDURE PROC_CONSANG (
+    individu integer,
+    individu2 integer,
+    niveau_calcul integer)
+returns (
+    consanguinite double precision)
+as
+declare variable pere integer;
+declare variable mere integer;
+declare variable i double precision;
+declare variable k integer;
+declare variable i_count integer;
+declare variable niveaux integer;
+declare variable id integer;
+begin
+  if (individu2<>0) then
+    begin
+      pere=individu;
+      mere=individu2;
+    end
+  else
+      select cle_pere,cle_mere from individu
+          where cle_fiche=:individu
+          into :pere,:mere;
+  if (pere=0 or pere is null or mere=0 or mere is null) then
+    begin
+      consanguinite=0;
+      suspend;
+      exit;
+    end
+  if (pere=mere) then
+    begin
+      consanguinite=1;
+      suspend;
+      exit;
+    end
+  id=gen_id(gen_consang,1);
+  insert into tq_consang (id,decujus,niveau,indi,enfant)
+                 values(:id,:pere,0,:pere,:pere);
+  insert into tq_consang (id,decujus,niveau,indi,enfant)
+                 values(:id,:mere,0,:mere,:mere);
+  i_count=1;
+  k=0;
+  while (i_count>0) do
+    begin
+      /* l'ascendance du père*/
+      /*par les hommes*/
+      insert into tq_consang (id,decujus,niveau,indi,enfant)
+                select :id,:pere,:k+1,i.cle_pere,tq.indi
+            from tq_consang tq, individu i
+            where tq.id=:id
+              and tq.decujus=:pere
+              and tq.niveau=:k
+              and i.cle_fiche= tq.indi
+              and i.cle_pere is not null;
+      /*par les femmes*/
+      insert into tq_consang (id,decujus,niveau,indi,enfant)
+                select :id,:pere,:k+1,i.cle_mere,tq.indi
+            from tq_consang tq, individu i
+            where tq.id=:id
+              and tq.decujus=:pere
+              and tq.niveau=:k
+              and i.cle_fiche= tq.indi
+              and i.cle_mere is not null;
+      /* l'ascendance de la mère*/
+      /*par les hommes*/
+      insert into tq_consang (id,decujus,niveau,indi,enfant)
+                select :id,:mere,:k+1,i.cle_pere,tq.indi
+            from tq_consang tq, individu i
+            where tq.id=:id
+              and tq.decujus=:mere
+              and tq.niveau=:k
+              and i.cle_fiche= tq.indi
+              and i.cle_pere is not null;
+      /*par les femmes*/
+      insert into tq_consang (id,decujus,niveau,indi,enfant)
+                select :id,:mere,:k+1,i.cle_mere,tq.indi
+            from tq_consang tq, individu i
+            where tq.id=:id
+              and tq.decujus=:mere
+              and tq.niveau=:k
+              and i.cle_fiche= tq.indi
+              and i.cle_mere is not null;
+      select count(*) from tq_consang where id=:id and niveau=:k+1
+            into :i_count;
+      k=k+1;
+      if (k=niveau_calcul) then i_count=0; /* pas plus de NIVEAU_CALCUL générations si boucle*/
+    end
+  consanguinite=0;
+  for select all p.niveau+m.niveau+1
+            from tq_consang p,tq_consang m
+            where p.id=:id
+              and p.decujus=:pere
+              and m.id=:id
+              and m.decujus=:mere
+              and p.indi=m.indi
+              and p.enfant<>m.enfant
+          into :niveaux
+      do
+        begin
+          k=1;
+          i=1;
+          while (k<=niveaux) do
+            begin
+              i=i/2;
+              k=k+1;
+            end
+          consanguinite=consanguinite+i;
+        end
+  suspend;
+end^
+
+COMMENT ON PROCEDURE PROC_CONSANG IS
+'Création par André Langlet le 16/12/2005. Dernière modification 13/04/2011
+Si INDIVIDU2=0, retourne dans CONSANGUINITE la consanguinité de INDIVIDU.
+Sinon, retourne dans CONSANGUINITE la parenté entre INDIVIDU et INDIVIDU2
+NIVEAU_CALCUL limite le nombre de niveaux sur lequel est effectué le calcul.'^
+
+CREATE OR ALTER PROCEDURE PROC_COPIE_DOSSIER (
+    dossiers integer,
+    i_dossierc integer)
+returns (
+    dossierc integer)
+as
+declare variable ig_id integer;
+declare variable old_id integer;
+declare variable new_id integer;
+declare variable source_page varchar(248);
+declare variable even varchar(15);
+declare variable even_role varchar(25);
+declare variable data_even varchar(90);
+declare variable data_even_period varchar(35);
+declare variable data_even_plac varchar(120);
+declare variable data_agnc varchar(120);
+declare variable quay integer;
+declare variable auth blob sub_type 1 segment size 80;
+declare variable titl blob sub_type 1 segment size 80;
+declare variable abr varchar(60);
+declare variable publ blob sub_type 1 segment size 80;
+declare variable texte blob sub_type 1 segment size 80;
+declare variable user_ref blob sub_type 1 segment size 80;
+declare variable rin varchar(12);
+declare variable change_note blob sub_type 1 segment size 80;
+declare variable point_enr char(8);
+declare variable i_pere integer;
+declare variable i_mere integer;
+begin
+  select cle_dossier from dossier
+  where cle_dossier=:i_dossierc
+  into :dossierc; --si n'existe pas reste null
+  if (dossierc is null) then
+  begin --création d'un nouveau dossier
+    dossierc=gen_id(gen_dossier,1);
+    insert into dossier (cle_dossier
+                         ,nom_dossier
+                         ,ds_verrou
+                         ,ds_infos
+                         ,ds_last)
+                  values( :dossierc
+                         ,'Copie du dossier '||:dossiers
+                         ,0
+                         ,'Dossier créé le '||current_date||' à:'
+                          ||substring(cast(current_time as varchar(15)) from 1 for 5)
+                         ,-1);
+  end
+  else
+  begin --enregistrement comme importation
+    ig_id=gen_id(t_import_gedcom_ig_id_gen,1);
+    insert into t_import_gedcom ( ig_id
+                                 ,ig_path)
+                          values( :ig_id
+                                 ,'Copie du dossier '||:dossiers||
+                                  ' dans le dossier '||:dossierc);
+  end
+  delete from  tq_consang; --nettoyage de la table temporaire
+  insert into tq_consang (id,indi,decujus) --correspondances individus
+         select 1
+               ,cle_fiche
+               ,gen_id(gen_individu,1)
+         from individu
+         where kle_dossier=:dossiers;
+  insert into individu ( cle_fiche
+                        ,kle_dossier
+                        ,cle_pere
+                        ,cle_mere
+                        ,prefixe
+                        ,nom
+                        ,prenom
+                        ,surnom
+                        ,suffixe
+                        ,sexe
+                        ,source
+                        ,comment
+                        ,filliation
+                        ,modif_par_qui
+                        ,nchi
+                        ,nmr
+                        ,cle_fixe
+                        ,ind_confidentiel
+                        ,id_import_gedcom)
+                 select t.decujus
+                       ,:dossierc
+                       ,i.cle_pere
+                       ,i.cle_mere
+                       ,i.prefixe
+                       ,i.nom
+                       ,i.prenom
+                       ,i.surnom
+                       ,i.suffixe
+                       ,i.sexe
+                       ,i.source
+                       ,i.comment
+                       ,i.filliation
+                       ,i.modif_par_qui
+                       ,i.nchi
+                       ,i.nmr
+                       ,i.cle_fixe
+                       ,i.ind_confidentiel
+                       ,:ig_id
+                 from tq_consang t
+                 inner join individu i on i.cle_fiche=t.indi
+                 where t.id=1;
+  for select i.rdb$db_key --mise à jour cle_père et cle_mere
+            ,i.cle_pere
+            ,i.cle_mere
+    from tq_consang t
+    inner join individu i on i.cle_fiche=t.decujus
+    where t.id=1
+    into :point_enr
+        ,:i_pere
+        ,:i_mere
+    do
+    begin
+      if (i_pere is not null) then
+        update individu
+        set cle_pere=(select decujus from tq_consang where id=1 and indi=:i_pere)
+        where rdb$db_key=:point_enr;
+      if (i_mere is not null) then
+        update individu
+        set cle_mere=(select decujus from tq_consang where id=1 and indi=:i_mere)
+        where rdb$db_key=:point_enr;
+    end
+  insert into tq_consang (id,indi,decujus) --correspondances multimedia
+         select 2
+               ,multi_clef
+               ,gen_id(gen_multimedia,1)
+         from multimedia
+         where multi_dossier=:dossiers;
+  insert into multimedia ( multi_clef
+                          ,multi_infos
+                          ,multi_media
+                          ,multi_dossier
+                          ,multi_date_modif
+                          ,multi_memo
+                          ,multi_reduite
+                          ,multi_image_rtf
+                          ,multi_path
+                          ,id_import_gedcom)
+                   select t.decujus
+                         ,m.multi_infos
+                         ,m.multi_media
+                         ,:dossierc
+                         ,m.multi_date_modif
+                         ,m.multi_memo
+                         ,m.multi_reduite
+                         ,m.multi_image_rtf
+                         ,m.multi_path
+                         ,:ig_id
+                   from tq_consang t
+                   inner join multimedia m on m.multi_clef=t.indi
+                   where t.id=2;
+  insert into tq_consang (id,indi,decujus) --correspondances événements individuels
+         select 3
+               ,e.ev_ind_clef
+               ,gen_id(gen_ev_ind_clef,1)
+         from evenements_ind e
+         inner join tq_consang t on t.id=1 and t.indi=e.ev_ind_kle_fiche;
+  insert into evenements_ind ( ev_ind_clef
+                              ,ev_ind_kle_fiche
+                              ,ev_ind_kle_dossier
+                              ,ev_ind_type
+                              ,ev_ind_date_writen
+                              ,ev_ind_date
+                              ,ev_ind_date_year
+                              ,ev_ind_date_mois
+                              ,ev_ind_date_fin
+                              ,ev_ind_date_year_fin
+                              ,ev_ind_date_mois_fin
+                              ,ev_ind_adresse
+                              ,ev_ind_cp
+                              ,ev_ind_ville
+                              ,ev_ind_dept
+                              ,ev_ind_pays
+                              ,ev_ind_cause
+                              ,ev_ind_source
+                              ,ev_ind_comment
+                              ,ev_ind_description
+                              ,ev_ind_region
+                              ,ev_ind_subd
+                              ,ev_ind_acte
+                              ,ev_ind_insee
+                              ,ev_ind_ordre
+                              ,ev_ind_heure
+                              ,ev_ind_titre_event
+                              ,ev_ind_latitude
+                              ,ev_ind_longitude
+                              ,ev_ind_lignes_adresse
+                              ,ev_ind_tel
+                              ,ev_ind_mail
+                              ,ev_ind_web)
+                       select t.decujus
+                             ,(select decujus from tq_consang where id=1 and indi=e.ev_ind_kle_fiche)
+                             ,:dossierc
+                             ,e.ev_ind_type
+                             ,e.ev_ind_date_writen
+                             ,e.ev_ind_date
+                             ,e.ev_ind_date_year
+                             ,e.ev_ind_date_mois
+                             ,e.ev_ind_date_fin
+                             ,e.ev_ind_date_year_fin
+                             ,e.ev_ind_date_mois_fin
+                             ,e.ev_ind_adresse
+                             ,e.ev_ind_cp
+                             ,e.ev_ind_ville
+                             ,e.ev_ind_dept
+                             ,e.ev_ind_pays
+                             ,e.ev_ind_cause
+                             ,e.ev_ind_source
+                             ,e.ev_ind_comment
+                             ,e.ev_ind_description
+                             ,e.ev_ind_region
+                             ,e.ev_ind_subd
+                             ,e.ev_ind_acte
+                             ,e.ev_ind_insee
+                             ,e.ev_ind_ordre
+                             ,e.ev_ind_heure
+                             ,e.ev_ind_titre_event
+                             ,e.ev_ind_latitude
+                             ,e.ev_ind_longitude
+                             ,e.ev_ind_lignes_adresse
+                             ,e.ev_ind_tel
+                             ,e.ev_ind_mail
+                             ,e.ev_ind_web
+                       from  tq_consang t
+                       inner join evenements_ind e on e.ev_ind_clef=t.indi
+                       where t.id=3;
+  insert into tq_consang (id,indi,decujus) --correspondances unions
+         select 4
+               ,t.union_clef
+               ,gen_id(gen_t_union,1)
+         from t_union t where (t.union_mari is not null
+                               and t.union_femme is not null --2 époux
+                               and exists (select 0 from tq_consang where id=1
+                                            and indi=t.union_mari)
+                               and exists (select 0 from tq_consang where id=1
+                                            and indi=t.union_femme))
+                           or (t.union_mari is not null --pères seuls
+                               and t.union_femme is null
+                               and exists (select 0 from tq_consang where id=1
+                                            and indi=t.union_mari))
+                           or (t.union_mari is null
+                               and t.union_femme is not null --mères seules
+                               and exists (select 0 from tq_consang where id=1
+                                            and indi=t.union_femme));
+  insert into t_union ( union_clef
+                       ,union_mari
+                       ,union_femme
+                       ,kle_dossier
+                       ,union_type
+                       ,source
+                       ,comment)
+                select t.decujus
+                      ,(select decujus from tq_consang where id=1 and indi=u.union_mari)
+                      ,(select decujus from tq_consang where id=1 and indi=u.union_femme)
+                      ,:dossierc
+                      ,u.union_type
+                      ,u.source
+                      ,u.comment
+                from tq_consang t
+                inner join t_union u on u.union_clef=t.indi
+                where t.id=4;
+  insert into tq_consang (id,indi,decujus) --correspondances événements familiaux
+         select 5
+               ,e.ev_fam_clef
+               ,gen_id(gen_ev_fam_clef,1)
+         from evenements_fam e
+         inner join tq_consang t on t.indi=e.ev_fam_kle_famille
+         where t.id=4;
+  insert into evenements_fam ( ev_fam_clef
+                              ,ev_fam_kle_famille
+                              ,ev_fam_kle_dossier
+                              ,ev_fam_type
+                              ,ev_fam_date_writen
+                              ,ev_fam_date
+                              ,ev_fam_date_year
+                              ,ev_fam_date_mois
+                              ,ev_fam_date_fin
+                              ,ev_fam_date_year_fin
+                              ,ev_fam_date_mois_fin
+                              ,ev_fam_adresse
+                              ,ev_fam_cp
+                              ,ev_fam_ville
+                              ,ev_fam_dept
+                              ,ev_fam_pays
+                              ,ev_fam_source
+                              ,ev_fam_comment
+                              ,ev_fam_region
+                              ,ev_fam_subd
+                              ,ev_fam_acte
+                              ,ev_fam_insee
+                              ,ev_fam_ordre
+                              ,ev_fam_heure
+                              ,ev_fam_titre_event
+                              ,ev_fam_latitude
+                              ,ev_fam_longitude
+                              ,ev_fam_description
+                              ,ev_fam_cause)
+                       select t.decujus
+                             ,(select decujus from tq_consang where id=4 and indi=e.ev_fam_kle_famille)
+                             ,:dossierc
+                             ,e.ev_fam_type
+                             ,e.ev_fam_date_writen
+                             ,e.ev_fam_date
+                             ,e.ev_fam_date_year
+                             ,e.ev_fam_date_mois
+                             ,e.ev_fam_date_fin
+                             ,e.ev_fam_date_year_fin
+                             ,e.ev_fam_date_mois_fin
+                             ,e.ev_fam_adresse
+                             ,e.ev_fam_cp
+                             ,e.ev_fam_ville
+                             ,e.ev_fam_dept
+                             ,e.ev_fam_pays
+                             ,e.ev_fam_source
+                             ,e.ev_fam_comment
+                             ,e.ev_fam_region
+                             ,e.ev_fam_subd
+                             ,e.ev_fam_acte
+                             ,e.ev_fam_insee
+                             ,e.ev_fam_ordre
+                             ,e.ev_fam_heure
+                             ,e.ev_fam_titre_event
+                             ,e.ev_fam_latitude
+                             ,e.ev_fam_longitude
+                             ,e.ev_fam_description
+                             ,e.ev_fam_cause
+                       from tq_consang t
+                       inner join evenements_fam e on e.ev_fam_clef=t.indi
+                       where t.id=5;
+  insert into t_associations ( assoc_clef --associés à événements individuels
+                              ,assoc_kle_ind
+                              ,assoc_kle_associe
+                              ,assoc_kle_dossier
+                              ,assoc_notes
+                              ,assoc_sources
+                              ,assoc_libelle
+                              ,assoc_evenement
+                              ,assoc_table)
+                      select gen_id(gen_assoc_clef,1)
+                            ,ev.ev_ind_kle_fiche
+                            ,a.decujus
+                            ,:dossierc
+                            ,t.assoc_notes
+                            ,t.assoc_sources
+                            ,t.assoc_libelle
+                            ,e.decujus
+                            ,'I'
+                      from  t_associations t
+                      inner join tq_consang a on a.id=1 and a.indi=t.assoc_kle_associe
+                      inner join tq_consang e on e.id=3 and e.indi=t.assoc_evenement
+                      inner join evenements_ind ev on ev.ev_ind_clef=e.decujus
+                      where t.assoc_table='I';
+  insert into t_associations ( assoc_clef --associés à événements familiaux
+                              ,assoc_kle_ind
+                              ,assoc_kle_associe
+                              ,assoc_kle_dossier
+                              ,assoc_notes
+                              ,assoc_sources
+                              ,assoc_libelle
+                              ,assoc_evenement
+                              ,assoc_table)
+                      select gen_id(gen_assoc_clef,1)
+                            ,e.decujus
+                            ,a.decujus
+                            ,:dossierc
+                            ,t.assoc_notes
+                            ,t.assoc_sources
+                            ,t.assoc_libelle
+                            ,e.decujus
+                            ,'U'
+                      from  t_associations t
+                      inner join tq_consang a on a.id=1 and a.indi=t.assoc_kle_associe
+                      inner join tq_consang e on e.id=5 and e.indi=t.assoc_evenement
+                      where t.assoc_table='U';
+  for select a.id  --mise à jour Sources_record familiaux
+            ,n.id
+            ,a.source_page
+            ,a.even
+            ,a.even_role
+            ,a.data_even
+            ,a.data_even_period
+            ,a.data_even_plac
+            ,a.data_agnc
+            ,a.quay
+            ,a.auth
+            ,a.titl
+            ,a.abr
+            ,a.publ
+            ,a.texte
+            ,a.user_ref
+            ,a.rin
+            ,a.change_note
+  from sources_record a
+  inner join tq_consang t on t.id=5 and t.indi=a.data_id
+  inner join sources_record n on n.data_id=t.decujus and n.type_table='F'
+  where a.kle_dossier=:dossiers and a.type_table='F'
+  into :old_id
+      ,:new_id
+      ,:source_page
+      ,:even
+      ,:even_role
+      ,:data_even
+      ,:data_even_period
+      ,:data_even_plac
+      ,:data_agnc
+      ,:quay
+      ,:auth
+      ,:titl
+      ,:abr
+      ,:publ
+      ,:texte
+      ,:user_ref
+      ,:rin
+      ,:change_note
+  do
+  begin
+    insert into tq_consang (id,indi,decujus) --correspondances Sources_record familiaux
+           values(6,:old_id,:new_id);
+    update sources_record set source_page=:source_page
+                             ,even=:even
+                             ,even_role=:even_role
+                             ,data_even=:data_even
+                             ,data_even_period=:data_even_period
+                             ,data_even_plac=:data_even_plac
+                             ,data_agnc=:data_agnc
+                             ,quay=:quay
+                             ,auth=:auth
+                             ,titl=:titl
+                             ,abr=:abr
+                             ,publ=:publ
+                             ,texte=:texte
+                             ,user_ref=:user_ref
+                             ,rin=:rin
+                             ,change_note=:change_note
+    where id=:new_id;
+  end
+  insert into tq_consang (id,indi,decujus) --correspondances Sources_record individuels
+         select 6
+               ,s.id
+               ,gen_id(sources_record_id_gen,1)
+         from sources_record s
+         inner join tq_consang t on t.indi=s.data_id and t.id=3
+         where s.type_table='I';
+  insert into sources_record ( id
+                              ,source_page
+                              ,even
+                              ,even_role
+                              ,data_id
+                              ,data_even
+                              ,data_even_period
+                              ,data_even_plac
+                              ,data_agnc
+                              ,quay
+                              ,auth
+                              ,titl
+                              ,abr
+                              ,publ
+                              ,texte
+                              ,user_ref
+                              ,rin
+                              ,change_date
+                              ,change_note
+                              ,kle_dossier
+                              ,type_table)
+                       select t.decujus
+                             ,s.source_page
+                             ,s.even
+                             ,s.even_role
+                             ,(select decujus from tq_consang where id=3 and indi=s.data_id)
+                             ,s.data_even
+                             ,s.data_even_period
+                             ,s.data_even_plac
+                             ,s.data_agnc
+                             ,s.quay
+                             ,s.auth
+                             ,s.titl
+                             ,s.abr
+                             ,s.publ
+                             ,s.texte
+                             ,s.user_ref
+                             ,s.rin
+                             ,'now'
+                             ,s.change_note
+                             ,:dossierc
+                             ,'I'
+                        from tq_consang t
+                        inner join sources_record s on s.id=t.indi and s.type_table='I'
+                        where t.id=6;
+  insert into media_pointeurs (mp_clef --1-MEDIA_POINTEURS sur individus
+                              ,mp_media
+                              ,mp_cle_individu
+                              ,mp_pointe_sur
+                              ,mp_table
+                              ,mp_identite
+                              ,mp_kle_dossier
+                              ,mp_type_image
+                              ,mp_position)
+                      select gen_id(biblio_pointeurs_id_gen,1)
+                            ,m.decujus
+                            ,i.decujus
+                            ,i.decujus
+                            ,'I'
+                            ,p.mp_identite
+                            ,:dossierc
+                            ,'I'
+                            ,p.mp_position
+                      from media_pointeurs p
+                      inner join tq_consang i on i.id=1 and i.indi=p.mp_cle_individu
+                      inner join tq_consang m on m.id=2 and m.indi=p.mp_media
+                      where p.mp_type_image='I';
+  insert into media_pointeurs (mp_clef --2-MEDIA_POINTEURS sur actes d'événements individuels
+                              ,mp_media
+                              ,mp_cle_individu
+                              ,mp_pointe_sur
+                              ,mp_table
+                              ,mp_identite
+                              ,mp_kle_dossier
+                              ,mp_type_image
+                              ,mp_position)
+                      select gen_id(biblio_pointeurs_id_gen,1)
+                            ,m.decujus
+                            ,i.decujus
+                            ,e.decujus
+                            ,'I'
+                            ,p.mp_identite
+                            ,:dossierc
+                            ,'A'
+                            ,p.mp_position
+                      from media_pointeurs p
+                      inner join tq_consang i on i.id=1 and i.indi=p.mp_cle_individu
+                      inner join tq_consang m on m.id=2 and m.indi=p.mp_media
+                      inner join tq_consang e on e.id=3 and e.indi=p.mp_pointe_sur
+                      where p.mp_type_image='A' and p.mp_table='I';
+  insert into media_pointeurs (mp_clef --3-MEDIA_POINTEURS sur actes d'événements familiaux
+                              ,mp_media
+                              ,mp_cle_individu
+                              ,mp_pointe_sur
+                              ,mp_table
+                              ,mp_identite
+                              ,mp_kle_dossier
+                              ,mp_type_image
+                              ,mp_position)
+                      select gen_id(biblio_pointeurs_id_gen,1)
+                            ,m.decujus
+                            ,i.decujus
+                            ,e.decujus
+                            ,'F'
+                            ,p.mp_identite
+                            ,:dossierc
+                            ,'A'
+                            ,p.mp_position
+                      from media_pointeurs p
+                      inner join tq_consang i on i.id=1 and i.indi=p.mp_cle_individu
+                      inner join tq_consang m on m.id=2 and m.indi=p.mp_media
+                      inner join tq_consang e on e.id=5 and e.indi=p.mp_pointe_sur
+                      where p.mp_type_image='A' and p.mp_table='F';
+  insert into media_pointeurs (mp_clef --4-MEDIA_POINTEURS sur sources d'événements
+                              ,mp_media
+                              ,mp_cle_individu
+                              ,mp_pointe_sur
+                              ,mp_table
+                              ,mp_identite
+                              ,mp_kle_dossier
+                              ,mp_type_image
+                              ,mp_position)
+                      select gen_id(biblio_pointeurs_id_gen,1)
+                            ,m.decujus
+                            ,i.decujus
+                            ,s.decujus
+                            ,'F'
+                            ,p.mp_identite
+                            ,:dossierc
+                            ,'F'
+                            ,p.mp_position
+                      from media_pointeurs p
+                      inner join tq_consang i on i.id=1 and i.indi=p.mp_cle_individu
+                      inner join tq_consang m on m.id=2 and m.indi=p.mp_media
+                      inner join tq_consang s on s.id=6 and s.indi=p.mp_pointe_sur
+                      where p.mp_type_image='F' and p.mp_table='F';
+  insert into nom_attachement ( id_indi
+                               ,nom
+                               ,nom_indi
+                               ,kle_dossier)
+                        select t.decujus
+                              ,n.nom
+                              ,i.nom
+                              ,:dossierc
+                         from nom_attachement n
+                         inner join tq_consang t on t.id=1 and t.indi=n.id_indi
+                         inner join individu i on i.cle_fiche=n.id_indi;
+  delete from  tq_consang; --nettoyage de la table temporaire
+  suspend;
+end^
+
+COMMENT ON PROCEDURE PROC_COPIE_DOSSIER IS
+'Procédure créée par André le 03/06/2007
+dernière modification le 25/10/2010
+Copie un dossier DOSSIERS (dossier source) dans un autre dossier I_DOSSIERC
+(dossier cible).
+Si I_DOSSIERC n''existe pas, un nouveau dossier est créé.
+Le code du dossier cible est retourné dans DOSSIERC.'^
+
+CREATE OR ALTER PROCEDURE PROC_DATE_WRITEN (
+    date_writen varchar(100))
+returns (
+    ijour integer,
+    imois integer,
+    ian integer,
+    ddate date,
+    ijour_fin integer,
+    imois_fin integer,
+    ian_fin integer,
+    ddate_fin date,
+    date_writen_s varchar(100),
+    type_token1 integer,
+    type_token2 integer,
+    valide smallint)
+as
+declare variable jour1 integer;
+declare variable mois1 integer;
+declare variable an1 integer;
+declare variable date1 date;
+declare variable token1 varchar(30);
+declare variable reste varchar(100);
+declare variable jour2 integer;
+declare variable mois2 integer;
+declare variable an2 integer;
+declare variable date2 date;
+declare variable token2 varchar(30);
+declare variable ordre varchar(30);
+declare variable forme varchar(30);
+declare variable langue varchar(3);
+declare variable i integer;
+declare variable smois varchar(30);
+declare variable sjour varchar(30);
+declare variable san varchar(30);
+declare variable ch varchar(30);
+declare variable separateur varchar(1);
+declare variable token varchar(30);
+declare variable ordren varchar(30);
+begin
+  langue=rdb$get_context('USER_SESSION','LANGUE');
+  if (langue is null) then
+  begin
+    valide=0;
+    date_writen_s=date_writen;
+    suspend;
+    exit;
+  end
+
+  select first(1) id,trim(upper(token)) --cherche ordre jour, mois, année dans TYPE_TOKEN 23
+    from ref_token_date  --ordre pour LIT
+    where type_token=23 and langue=:langue order by id
+    into :i,:ordre;
+  if ((ordre is null) or (char_length(ordre)=0) or
+    (ordre<>'DMY' and ordre<>'MDY' and ordre<>'YMD')) then --créer TYPE_TOKEN 23, fait une seule fois
+  begin
+    ordre='DMY';
+    if (i is null) then --il n'existe pas
+    begin
+      select max(id)+1 from ref_token_date into :i;
+      i=gen_id(gen_token_date,i-gen_id(gen_token_date,0));--recale le générateur au cas où
+      insert into ref_token_date (id,type_token,langue,token)
+                 values(:i,23,:langue,:ordre);
+    end
+    else
+      update ref_token_date
+      set token=:ordre
+      where id=:i and type_token=23;
+  end
+  i=null;
+  select first(1) skip (1) id,trim(upper(token)) --cherche ordre jour, mois, année dans TYPE_TOKEN 23
+    from ref_token_date  --ordre pour NUM
+    where type_token=23 and langue=:langue order by id
+    into :i,:ordren;
+  if ((ordren is null) or (char_length(ordren)=0) or
+    (ordren<>'DMY' and ordren<>'MDY' and ordren<>'YMD')) then --créer TYPE_TOKEN 23, fait une seule fois
+  begin --on utilise même ordre que LIT
+    ordren=ordre;
+    if (i is null) then --il n'existe pas
+    begin
+      select max(id)+1 from ref_token_date into :i;
+      i=gen_id(gen_token_date,i-gen_id(gen_token_date,0));--recale le générateur au cas où
+      insert into ref_token_date (id,type_token,langue,token)
+                 values(:i,23,:langue,:ordren);
+    end
+    else
+      update ref_token_date
+      set token=:ordren
+      where id=:i and type_token=23;
+  end
+  i=null;
+  select first(1) type_token,trim(upper(token)) --cherche la forme LIT ou NUM dans TYPE_TOKEN 24
+    from ref_token_date
+    where type_token=24
+    into :i,:forme;
+  if (forme is null) then --créer TYPE_TOKEN 24, fait une seule fois
+  begin
+    forme='LIT';
+    if (i is null) then
+    begin
+      select max(id)+1 from ref_token_date into :i;
+      i=gen_id(gen_token_date,i-gen_id(gen_token_date,0));
+      insert into ref_token_date (id,type_token,langue,token)
+             values(:i,24,:langue,:forme);
+    end
+    else
+      update ref_token_date
+      set langue=:langue,token=:forme
+      where type_token=24;
+  end
+  select ijour,imois,ian,token,type_token,date_writen_s,valide,ddate --extrait la première date
+    from proc_date_writen_un(:date_writen,:langue)
+    into :jour1,:mois1,:an1,:token1,:type_token1,:reste,:valide,:date1;
+  if (valide=0 or an1 is null or type_token1=18) then
+  begin
+    date_writen_s=date_writen;
+    valide=0;
+    suspend;
+    exit;
+  end
+  ijour=jour1;
+  imois=mois1;
+  ian=an1;
+  ddate=date1;
+  if (type_token1=15) then
+  begin
+    ijour_fin=jour1;
+    imois_fin=mois1;
+    ian_fin=an1;
+    ddate_fin=date1;
+  end
+  if (char_length(reste)>0) then --cherche deuxième date
+  begin
+    if (token1 is null or type_token1 in (14,15,16,19,20,21)) then
+    begin
+      valide=0;
+      date_writen_s=date_writen;
+      suspend;
+      exit;
+    end
+    select ijour,imois,ian,token,type_token,valide,ddate
+      from proc_date_writen_un(:reste,:langue)
+      into :jour2,:mois2,:an2,:token2,:type_token2,:valide,:date2;
+    if (valide=0
+        or an2 is null
+        or type_token2 not in (14,18)
+        or (type_token1=17 and type_token2=14)
+        or an1*372+coalesce(mois1-1,11)*31+coalesce(jour1,31)
+          >=an2*372+coalesce(mois2-1,0)*31+coalesce(jour2,1)
+        ) then
+    begin
+      valide=0;
+      date_writen_s=date_writen;
+      suspend;
+      exit;
+    end
+    if (abs(an2)<100) then
+    begin
+      i=cast(floor(an1/100) as integer);
+      if (100*i+an2>=an1) then
+        an2=100*i+an2;
+      else
+        an2=100*(i+1)+an2;
+    end
+    ijour_fin=jour2;
+    imois_fin=mois2;
+    ian_fin=an2;
+    ddate_fin=date2;
+  end
+  if (type_token1=17 and type_token2 is distinct from 18) then
+  begin
+    valide=0;
+    date_writen_s=date_writen;
+    suspend;
+    exit;
+  end
+
+  if (forme not in('LIT','NUM')) then
+  begin
+    date_writen_s=date_writen;
+    suspend;
+    exit;
+  end
+  if (type_token1 in (13,14) and char_length(reste)=0) then
+  begin
+    if (jour1 is not null) then
+      select first(1) token from ref_token_date
+             where type_token=:type_token1 and sous_type='D1'
+             into :token;
+    if (token is null and mois1 is not null) then
+      select first(1) token from ref_token_date
+             where type_token=:type_token1 and sous_type='M1'
+             into :token;
+    if (token is null) then
+      select first(1) token from ref_token_date
+             where type_token=:type_token1 and sous_type='Y1'
+             into :token;
+    if (token is not null) then
+      token1=token;
+  end
+  date_writen_s=coalesce(token1||' ','');
+  if (jour1<10 and forme='NUM') then --ajouter 0 devant
+    sjour='0'||cast(jour1 as varchar(1));
+  else
+    sjour=cast(jour1 as varchar(2));
+  if (forme='LIT') then
+    san=cast(an1 as varchar(5));
+  else
+  begin
+    if (an1<0) then
+    begin
+      san='-';
+      an1=-an1;
+    end
+    else
+      san='';
+    if (an1<10) then
+      san=san||'000'||cast(an1 as varchar(5));
+    else if (an1<100) then
+      san=san||'00'||cast(an1 as varchar(5));
+    else if (an1<1000) then
+      san=san||'0'||cast(an1 as varchar(5));
+    else
+      san=san||cast(an1 as varchar(5));
+  end
+  if (forme='LIT') then
+  begin
+    select first(1) token from ref_token_date
+         where type_token=:mois1
+         order by id
+         into :smois;
+    separateur=' ';
+  end
+  else
+  begin
+    if (mois1<10) then --ajouter 0 devant
+      smois='0'||cast(mois1 as varchar(1));
+    else
+      smois=cast(mois1 as varchar(2));
+    select first(1) token from ref_token_date
+         where type_token=22 and langue=:langue
+         order by id
+         into :separateur;
+  end
+  i=0;
+
+  if (forme='NUM') then
+    ordre=ordren;
+
+  while (i<3 and i<char_length(ordre)) do
+  begin
+    i=i +1;
+    ch=substring(ordre from i for 1);
+    if (i<3) then
+      if (ch ='D') then
+      begin
+        if (sjour is not null) then
+          date_writen_s=date_writen_s||sjour||separateur;
+      end
+      else
+        if (ch='M') then
+        begin
+          if (smois is not null) then
+            date_writen_s=date_writen_s||smois||separateur;
+        end
+        else
+          date_writen_s=date_writen_s||san||separateur;
+    else
+      if (ch ='D') then
+      begin
+        if (sjour is not null) then date_writen_s=date_writen_s||sjour;
+      end
+      else
+        if (ch='M') then
+        begin
+          if (smois is not null) then
+            date_writen_s=date_writen_s||smois;
+        end
+        else
+          date_writen_s=date_writen_s||san;
+  end
+  if (char_length(reste)=0) then --pas de deuxième date
+  begin
+    suspend;
+    exit;
+  end
+  sjour=null;
+  smois=null;
+  san=null;
+  date_writen_s=date_writen_s||' ';
+  if (token2 is not null) then date_writen_s=date_writen_s||token2||' ';
+  if (jour2<10 and forme='NUM') then --ajouter 0 devant
+    sjour='0'||cast(jour2 as varchar(1));
+  else
+    sjour=cast(jour2 as varchar(2));
+  if (forme='LIT') then
+    san=cast(an2 as varchar(5));
+  else
+  begin
+    if (an2<0) then
+    begin
+      san='-';
+      an2=-an2;
+    end
+    else
+      san='';
+    if (an2<10) then
+      san=san||'000'||cast(an2 as varchar(5));
+    else if (an2<100) then
+      san=san||'00'||cast(an2 as varchar(5));
+    else if (an2<1000) then
+      san=san||'0'||cast(an2 as varchar(5));
+    else
+      san=san||cast(an2 as varchar(5));
+  end
+  if (forme='LIT') then
+  begin
+    select first(1) token from ref_token_date
+      where type_token=:mois2 and langue=:langue
+      order by id
+      into :smois;
+  end
+  else
+  begin
+    if (mois2<10) then --ajouter 0 devant
+      smois='0'||cast(mois2 as varchar(1));
+    else
+      smois=cast(mois2 as varchar(2));
+  end
+  i=0;
+  while (i<3 and i<char_length(ordre)) do
+  begin
+    i=i+1;
+    ch=substring(ordre from i for 1);
+    if (i<3) then
+      if (ch ='D') then
+      begin
+        if (sjour is not null) then
+          date_writen_s=date_writen_s||sjour||separateur;
+      end
+      else
+        if (ch='M') then
+        begin
+          if (smois is not null) then
+            date_writen_s=date_writen_s||smois||separateur;
+        end
+        else
+          date_writen_s=date_writen_s||san||separateur;
+    else
+      if (ch ='D') then
+      begin
+        if (sjour is not null) then date_writen_s=date_writen_s||sjour;
+      end
+      else
+        if (ch='M') then
+        begin
+          if (smois is not null) then
+            date_writen_s=date_writen_s||smois;
+        end
+        else
+          date_writen_s=date_writen_s||san;
+  end
+  suspend;
+end^
+
+COMMENT ON PROCEDURE PROC_DATE_WRITEN IS
+'Procédure créée en 2006 par André Langlet.
+Dernière modification 28/04/2009 accepte date avJC et séparateur "-".
+20/01/2008, ordre DMY obligatoire pour import gedcom
+8/05/2008 tests sur token mal placés, dates dans le désordre, ajout jusqu''en.'^
+
+
+CREATE OR ALTER PROCEDURE PROC_DATE_WRITEN_UN (
+    date_writen varchar(100),
+    langue varchar(3))
+returns (
+    ijour integer,
+    imois integer,
+    ian integer,
+    ddate date,
+    token varchar(30),
+    type_token integer,
+    date_writen_s varchar(100),
+    valide smallint)
+as
+declare variable l integer;
+declare variable i integer;
+declare variable ch char(1);
+declare variable chd varchar(5);
+declare variable intd integer;
+declare variable placemois integer;
+declare variable chd1 varchar(5);
+declare variable chd2 varchar(5);
+declare variable chd3 varchar(5);
+declare variable cont varchar(3);
+declare variable m varchar(5);
+declare variable d varchar(5);
+declare variable y varchar(5);
+declare variable ordre varchar(3);
+begin
+  DATE_WRITEN_S=UPPER(TRIM(lower(DATE_WRITEN) collate FR_FR));
+  VALIDE=1;
+  IF (char_length(DATE_WRITEN_S)>0) THEN
+  BEGIN
+    VALIDE=0;
+    CHD1='';
+    CHD2='';
+    CHD3='';
+    PLACEMOIS=0;
+    L=1;
+    WHILE (L>0) DO   /*élimination des token et espaces*/
+    begin
+      L=0;
+      SELECT MAX(char_length(TOKEN))
+        FROM REF_TOKEN_DATE
+        WHERE TYPE_TOKEN>12 AND TYPE_TOKEN<22 and langue=:langue
+             AND :DATE_WRITEN_S STARTING WITH UPPER(lower(TOKEN) collate FR_FR)||' '
+        INTO :L;
+      IF (L>0) THEN
+      BEGIN
+        SELECT first(1) TYPE_TOKEN
+          FROM REF_TOKEN_DATE
+          WHERE TYPE_TOKEN>12 AND TYPE_TOKEN<22 and langue=:langue
+               AND UPPER(lower(TOKEN) collate FR_FR)=SUBSTRing(:DATE_WRITEN_S from 1 for :L)
+          INTO :TYPE_TOKEN;
+        IF (char_length(DATE_WRITEN_S)>L) THEN
+          DATE_WRITEN_S=TRIM(SUBSTRING(DATE_WRITEN_S from L+1));
+        ELSE
+        begin
+          DATE_WRITEN_S='';
+          L=0;
+        end
+      END
+      ELSE
+        L=0;
+    end
+    I=0;
+    WHILE (char_length(DATE_WRITEN_S)>0 AND I<3) DO /*Recherche composants de la date*/
+    BEGIN
+      I=I+1;
+      CONT='OUI';
+      L=0;
+      if (i>1) then
+      begin
+        if (SUBSTRING(DATE_WRITEN_S FROM 1 for 1)=' ') then
+        begin
+          DATE_WRITEN_S=TRIM(SUBSTRING(DATE_WRITEN_S FROM 1));
+          if (DATE_WRITEN_S='') then
+            cont='NON';
+        end
+        else
+          FOR SELECT first(1) char_length(TOKEN) /*élimination séparateurs*/
+            FROM REF_TOKEN_DATE
+            WHERE TYPE_TOKEN=22 and langue=:langue
+                  AND :DATE_WRITEN_S STARTING WITH TOKEN
+            INTO :L
+          DO IF (L>0) THEN
+          begin
+            IF (char_length(DATE_WRITEN_S)>L) THEN
+              DATE_WRITEN_S=TRIM(SUBSTRING(DATE_WRITEN_S FROM L+1));
+            ELSE
+            begin
+              DATE_WRITEN_S='';
+              CONT='NON';
+            end
+          end  /*fin de élimination séparateurs*/
+      end
+      CHD='';
+      IF (CONT='OUI') THEN /* si chiffres, premier caractère*/
+      begin
+        CH=SUBSTRing(DATE_WRITEN_S from 1 for 1);
+        IF (CH IN('-','(','0','1','2','3','4','5','6','7','8','9')) THEN
+        begin
+          if (CH='(') then
+            CH='-';
+          CHD=CH;
+          IF (char_length(DATE_WRITEN_S)>1) THEN
+          begin
+            DATE_WRITEN_S=SUBSTRING(DATE_WRITEN_S from 2);
+          end
+          ELSE
+          begin
+            DATE_WRITEN_S='';
+            CONT='NON';
+          end
+        end
+        ELSE
+          CONT='NON';
+      end
+      WHILE (CONT='OUI' AND char_length(CHD)<5) DO /* si chiffres, suivants*/
+      begin
+        CH=SUBSTRING(DATE_WRITEN_S from 1 for 1);
+        IF (CH IN(')','0','1','2','3','4','5','6','7','8','9')) THEN
+        begin
+          if (CH=')') then
+            CONT='NON';
+          else
+            CHD=CHD||CH;
+          IF (char_length(DATE_WRITEN_S)>1) THEN
+            DATE_WRITEN_S=SUBSTRING(DATE_WRITEN_S from 2);
+          ELSE
+          begin
+            DATE_WRITEN_S='';
+            CONT='NON';
+          end
+        end
+        ELSE
+          CONT='NON';
+      end
+      /* fin de si chiffres*/
+      IF (CHD='') THEN /* voir si token mois*/
+      BEGIN
+        L=0;
+        SELECT first(1) MAX(char_length(TOKEN)),TYPE_TOKEN
+          FROM REF_TOKEN_DATE
+          WHERE TYPE_TOKEN<13 and langue=:langue
+            AND :DATE_WRITEN_S STARTING WITH UPPER(lower(TOKEN) collate FR_FR)
+          GROUP BY TYPE_TOKEN
+          INTO :L,:INTD;
+        IF (L>0) THEN
+        begin
+          CHD=CAST(INTD AS varchar(5));
+          PLACEMOIS=I;
+          IF (char_length(DATE_WRITEN_S)>L) THEN
+            DATE_WRITEN_S=SUBSTRING(DATE_WRITEN_S from L+1);
+          ELSE
+            DATE_WRITEN_S='';
+        end
+      END  /* fin de si token mois*/
+      IF (CHD='-') THEN
+      BEGIN
+        SUSPEND;
+        EXIT;
+      END
+      IF (I=1) THEN
+        CHD1=CHD;
+      ELSE IF (I=2) THEN
+        CHD2=CHD;
+      ELSE CHD3=CHD;
+    END /*fin recherche des composants de la date*/
+
+    DATE_WRITEN_S=TRIM(DATE_WRITEN_S);
+
+    if (placemois=0) then --on décode une date au format NUM
+      select first(1) skip (1) trim(upper(token))
+      from ref_token_date  --ordre pour NUM
+      where type_token=23 and langue=:langue order by id
+      into :ordre;
+    else --c'est une date au format LIT
+      select first(1) trim(upper(token))
+      from ref_token_date  --ordre pour LIT
+      where type_token=23 and langue=:langue order by id
+      into :ordre;
+
+    if (CHD1='') then  --pas un nombre
+    begin
+      valide=0;
+    end
+    else
+    begin
+      if (CHD2='') then  --que l'année dans CHD1
+      begin
+        valide=1;
+        IJOUR=NULL;
+        IMOIS=NULL;
+        IAN=CAST(CHD1 as integer);
+        if (placemois>0) then
+        begin
+          valide=0;
+        end
+      end
+      else
+      begin
+        if (CHD3='') then  --que année et mois dans CHD1 et CHD2
+        begin
+          IJOUR=NULL;
+          I=0;
+          while (I<3) do
+          begin
+            I=I+1;
+            CH=SUBSTRING(ORDRE from I for 1);
+            if (CH in ('M','Y')) then  --pour le premier trouvé
+            begin
+              if (CH='M') then
+              begin
+                if (placemois=2) then
+                  M='0';
+                else
+                  M=CHD1;
+              end
+              else
+                Y=CHD1;
+              leave;
+            end
+          end
+          while (I<3) do
+          begin
+            I=I+1;
+            CH=SUBSTRING(ORDRE from I for 1);
+            if (CH in ('M','Y')) then  --pour le second trouvé
+            begin
+              if (CH='M') then
+              begin
+                if (placemois=1) then
+                  M='0';
+                else
+                  M=CHD2;
+              end
+              else
+                Y=CHD2;
+              leave;
+            end
+          end
+          IAN=CAST(Y as integer);
+          IMOIS=CAST(M as integer);
+          valide=1;
+          IF (IMOIS<1 OR IMOIS>12) THEN
+          begin
+            valide=0;
+          end
+        end
+        else  -- tout est complet
+        begin
+          I=0;
+          WHILE (I<3) DO
+          BEGIN
+            I=I+1;
+            CH=SUBSTRING(ORDRE from I for 1);
+            IF (I=1) THEN
+              CHD=CHD1;
+            ELSE IF (I=2) THEN
+                CHD=CHD2;
+            ELSE CHD=CHD3;
+            IF (CH ='D') THEN
+              D=CHD;
+            ELSE IF (CH='M') THEN
+              M=CHD;
+            ELSE Y=CHD;
+          END
+          IMOIS=CAST(M AS INTEGER);
+          IAN=CAST(Y AS INTEGER);
+          IJOUR=CAST(D AS INTEGER);
+          if ((imois<1)or(imois>12)or(ijour<1)or(ijour>31)) then
+          begin
+            valide=0;
+          end
+          else
+          begin
+            valide=1;
+            if (placemois>0) then
+            begin
+              if (placemois=1) then
+                CHD=CHD1;
+              else if (placemois=2) then
+                CHD=CHD2;
+              else if (placemois=3) then
+                CHD=CHD3;
+              if (CHD<>M) then
+              begin
+                valide=0;
+              end
+            end
+          end
+
+          if ((IAN>0)and(valide=1)) then
+          begin --bloc pour WHEN ANY
+            IF (ian<100) THEN
+              y='00'||ian;
+            DDATE=CAST(M||'/'||D||'/'||Y AS DATE);
+            WHEN ANY DO
+            begin
+              valide=0;
+            end
+          end
+        end
+      end
+    end
+
+    if (valide=0) then
+    begin
+      IJOUR=NULL;
+      IMOIS=NULL;
+      IAN=NULL;
+    end
+
+    IF (IJOUR IS NOT NULL) THEN
+      SELECT FIRST(1) TOKEN FROM REF_TOKEN_DATE
+               WHERE TYPE_TOKEN=:TYPE_TOKEN AND SOUS_TYPE='D' and langue=:langue
+               INTO :TOKEN;
+    IF (TOKEN IS NULL AND IMOIS IS NOT NULL) THEN
+      SELECT FIRST(1) TOKEN FROM REF_TOKEN_DATE
+               WHERE TYPE_TOKEN=:TYPE_TOKEN AND SOUS_TYPE='M' and langue=:langue
+               INTO :TOKEN;
+    IF (TOKEN IS NULL AND IAN IS NOT NULL) THEN
+      SELECT FIRST(1) TOKEN FROM REF_TOKEN_DATE
+               WHERE TYPE_TOKEN=:TYPE_TOKEN AND SOUS_TYPE='Y' and langue=:langue
+               INTO :TOKEN;
+    IF (TOKEN IS NULL AND IAN IS NOT NULL) THEN
+      SELECT FIRST(1) TOKEN FROM REF_TOKEN_DATE
+               WHERE TYPE_TOKEN=:TYPE_TOKEN and langue=:langue
+               ORDER BY ID
+         INTO :TOKEN;
+  END
+  SUSPEND;
+end^
+
+COMMENT ON PROCEDURE PROC_DATE_WRITEN_UN IS
+'Procédure créée en 2006 par André Langlet
+Dernière modification 28/04/2009 pour accepter les dates avJC et le séparateur "-".'^
+
+CREATE OR ALTER PROCEDURE PROC_DATES_INCOHERENTES (
+    i_dossier integer,
+    min_mar_hom integer,
+    min_mar_fem integer,
+    max_mar_hom integer,
+    max_mar_fem integer,
+    min_enf_hom integer,
+    min_enf_fem integer,
+    max_enf_hom integer,
+    max_enf_fem integer,
+    max_vie_hom integer,
+    max_vie_fem integer,
+    max_ecart_epoux integer,
+    min_entre_enf integer,
+    mode integer = 0)
+returns (
+    clef_ind integer,
+    libelle varchar(121),
+    sexe integer,
+    age decimal(15,1),
+    titre smallint)
+as
+declare variable date_nais date;
+declare variable date_eve date;
+declare variable epouse varchar(121);
+declare variable agetempo decimal(15,1);
+declare variable date_dc date;
+declare variable date_inh date;
+declare variable date_evf date;
+declare variable clef integer;
+declare variable clef_prec integer;
+declare variable date_cr date;
+declare variable nbr integer;
+declare variable langue varchar(3);
+begin
+  select ds_langue
+  from dossier
+  where cle_dossier=:i_dossier
+  into langue;
+  rdb$set_context('USER_SESSION','LANGUE',langue);
+
+  if (mode=0 or mode=1) then
+  begin
+  date_eve=cast('12/31/9999' as date);--pour minvalue
+  libelle='Individus(s) dont la date de décès est antérieure à la date de naissance:';
+  titre=1;
+  nbr=0;
+  suspend;
+  titre=null;
+  for select i.nom||coalesce(', '||i.prenom,'')||coalesce(' '||trim(iif(i.sexe=2,'née','né'))||' en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,i.sexe
+      from individu i
+      inner join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                   and ni.ev_ind_type='BIRT'
+                                   and ni.ev_ind_date_year>0
+      left join evenements_ind nd on nd.ev_ind_kle_fiche=i.cle_fiche
+                                  and nd.ev_ind_type='DEAT'
+                                  and nd.ev_ind_date_year>0
+      left join evenements_ind nb on nb.ev_ind_kle_fiche=i.cle_fiche
+                                  and nb.ev_ind_type='BURI'
+                                  and nb.ev_ind_date_year>0
+      left join evenements_ind nc on nc.ev_ind_kle_fiche=i.cle_fiche
+                                  and nc.ev_ind_type='CREM'
+                                  and nc.ev_ind_date_year>0
+      where i.kle_dossier=:i_dossier
+        and minvalue(coalesce(coalesce(nd.ev_ind_date,(select date_out from f_date_mois(nd.ev_ind_date_mois,nd.ev_ind_date_year,1))),:date_eve)
+            ,coalesce(coalesce(nb.ev_ind_date,(select date_out from f_date_mois(nb.ev_ind_date_mois,nb.ev_ind_date_year,1))),:date_eve)
+            ,coalesce(coalesce(nc.ev_ind_date,(select date_out from f_date_mois(nc.ev_ind_date_mois,nc.ev_ind_date_year,1))),:date_eve))
+        <coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,0)))
+        order by 1,i.annee_naissance,i.cle_fiche
+        into :libelle
+            ,:clef_ind
+            ,:sexe
+  do
+  begin
+    nbr=1;
+    suspend;
+  end
+  age=null;
+  clef_ind=null;
+  sexe=null;
+  if (nbr=0) then
+  begin
+    libelle='(néant)';
+    suspend;
+  end
+  libelle=null;
+  suspend;
+
+  if (max_vie_hom>0) then
+  begin
+    libelle='Homme(s) ayant dépassé l''âge de '|| max_vie_hom ||' ans: (âge en années)';
+    titre=1;
+    nbr=0;
+    suspend;
+    titre=null;
+    sexe=1;
+    for select i.nom||coalesce(', '||i.prenom,'')||coalesce(' né en '||i.annee_naissance,'')
+              ,i.cle_fiche
+              ,coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,0)))
+              ,minvalue(coalesce(coalesce(nd.ev_ind_date,(select date_out from f_date_mois(nd.ev_ind_date_mois,nd.ev_ind_date_year,1))),:date_eve)
+                ,coalesce(coalesce(nb.ev_ind_date,(select date_out from f_date_mois(nb.ev_ind_date_mois,nb.ev_ind_date_year,1))),:date_eve)
+                ,coalesce(coalesce(nc.ev_ind_date,(select date_out from f_date_mois(nc.ev_ind_date_mois,nc.ev_ind_date_year,1))),:date_eve))
+        from individu i
+        inner join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                     and ni.ev_ind_type='BIRT'
+                                     and ni.ev_ind_date_year>0
+        left join evenements_ind nd on nd.ev_ind_kle_fiche=i.cle_fiche
+                                    and nd.ev_ind_type='DEAT'
+                                    and nd.ev_ind_date_year>0
+        left join evenements_ind nb on nb.ev_ind_kle_fiche=i.cle_fiche
+                                    and nb.ev_ind_type='BURI'
+                                    and nb.ev_ind_date_year>0
+        left join evenements_ind nc on nc.ev_ind_kle_fiche=i.cle_fiche
+                                    and nc.ev_ind_type='CREM'
+                                    and nc.ev_ind_date_year>0
+        where i.kle_dossier=:i_dossier
+          and i.sexe=:sexe
+          order by 1,i.annee_naissance,i.cle_fiche
+          into :libelle
+              ,:clef_ind
+              ,:date_nais
+              ,:date_dc
+    do
+    begin
+      if (date_dc<date_eve and dateadd(max_vie_hom year to date_nais)<date_dc) then
+      begin
+        age=datediff(month from date_nais to date_dc)/12.0;--year retourne un entier
+        nbr=1;
+        suspend;
+      end
+    end
+    age=null;
+    clef_ind=null;
+    sexe=null;
+    if (nbr=0) then
+    begin
+      libelle='(néant)';
+      suspend;
+    end
+    libelle=null;
+    suspend;
+  end
+
+  if (max_vie_fem>0) then
+  begin
+    libelle='Femme(s) ayant dépassé l''âge de '|| max_vie_fem ||' ans: (âge en années)';
+    titre=1;
+    nbr=0;
+    suspend;
+    titre=null;
+    sexe=2;
+    for select i.nom||coalesce(', '||i.prenom,'')||coalesce(' née en '||i.annee_naissance,'')
+              ,i.cle_fiche
+              ,coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,0)))
+              ,minvalue(coalesce(coalesce(nd.ev_ind_date,(select date_out from f_date_mois(nd.ev_ind_date_mois,nd.ev_ind_date_year,1))),:date_eve)
+                ,coalesce(coalesce(nb.ev_ind_date,(select date_out from f_date_mois(nb.ev_ind_date_mois,nb.ev_ind_date_year,1))),:date_eve)
+                ,coalesce(coalesce(nc.ev_ind_date,(select date_out from f_date_mois(nc.ev_ind_date_mois,nc.ev_ind_date_year,1))),:date_eve))
+        from individu i
+        inner join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                     and ni.ev_ind_type='BIRT'
+                                     and ni.ev_ind_date_year>0
+        left join evenements_ind nd on nd.ev_ind_kle_fiche=i.cle_fiche
+                                    and nd.ev_ind_type='DEAT'
+                                    and nd.ev_ind_date_year>0
+        left join evenements_ind nb on nb.ev_ind_kle_fiche=i.cle_fiche
+                                    and nb.ev_ind_type='BURI'
+                                    and nb.ev_ind_date_year>0
+        left join evenements_ind nc on nc.ev_ind_kle_fiche=i.cle_fiche
+                                    and nc.ev_ind_type='CREM'
+                                    and nc.ev_ind_date_year>0
+        where i.kle_dossier=:i_dossier
+          and i.sexe=:sexe
+          order by 1,i.annee_naissance,i.cle_fiche
+          into :libelle
+              ,:clef_ind
+              ,:date_nais
+              ,:date_dc
+    do
+    begin
+      if (date_dc<date_eve and dateadd(max_vie_fem year to date_nais)<date_dc) then
+      begin
+        age=datediff(month from date_nais to date_dc)/12.0;
+        nbr=1;
+        suspend;
+      end
+    end
+    age=null;
+    clef_ind=null;
+    sexe=null;
+    if (nbr=0) then
+    begin
+      libelle='(néant)';
+      suspend;
+    end
+    libelle=null;
+    suspend;
+  end
+
+  if (min_mar_hom>0) then
+  begin
+    libelle='Homme(s) marié(s) avant l''âge de '|| min_mar_hom ||' ans: (âge en années)';
+    titre=1;
+    suspend;
+    nbr=0;
+    titre=null;
+    sexe=1;
+    for select i.nom||coalesce(', '||i.prenom,'')||coalesce(' né en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,0)))
+            ,coalesce(m.ev_fam_date,(select date_out from f_date_mois(m.ev_fam_date_mois,m.ev_fam_date_year,1)))
+          from evenements_fam m
+            inner join t_union u on u.union_clef=m.ev_fam_kle_famille
+            inner join individu i on i.cle_fiche=u.union_mari
+            inner join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                         and ni.ev_ind_type='BIRT'
+        where m.ev_fam_type='MARR'
+          and m.ev_fam_date_year>0
+          and i.kle_dossier=:i_dossier
+          and i.annee_naissance>0
+        order by 1,i.annee_naissance,i.cle_fiche
+        into :libelle
+            ,:clef_ind
+            ,:date_nais
+            ,:date_evf
+    do
+      if (date_evf<dateadd(min_mar_hom year to date_nais)) then
+      begin
+        age=datediff(month from date_nais to date_evf)/12.0;
+        nbr=1;
+        suspend;
+      end
+    age=null;
+    clef_ind=null;
+    sexe=null;
+    if (nbr=0) then
+    begin
+      libelle='(néant)';
+      suspend;
+    end
+    libelle=null;
+    suspend;
+  end
+
+  if (min_mar_fem>0) then
+  begin
+    libelle='Femme(s) mariée(s) avant l''âge de '|| min_mar_fem ||' ans: (âge en années)';
+    titre=1;
+    suspend;
+    nbr=0;
+    titre=null;
+    sexe=2;
+    for select i.nom||coalesce(', '||i.prenom,'')||coalesce(' née en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,0)))
+            ,coalesce(m.ev_fam_date,(select date_out from f_date_mois(m.ev_fam_date_mois,m.ev_fam_date_year,1)))
+          from evenements_fam m
+            inner join t_union u on u.union_clef=m.ev_fam_kle_famille
+            inner join individu i on i.cle_fiche=u.union_femme
+            inner join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                         and ni.ev_ind_type='BIRT'
+        where m.ev_fam_type='MARR'
+          and m.ev_fam_date_year>0
+          and i.kle_dossier=:i_dossier
+          and i.annee_naissance>0
+        order by 1,i.annee_naissance,i.cle_fiche
+        into :libelle
+            ,:clef_ind
+            ,:date_nais
+            ,:date_evf
+    do
+      if (date_evf<dateadd(min_mar_fem year to date_nais)) then
+      begin
+        age=datediff(month from date_nais to date_evf)/12.0;
+        nbr=1;
+        suspend;
+      end
+    age=null;
+    clef_ind=null;
+    sexe=null;
+    if (nbr=0) then
+    begin
+      libelle='(néant)';
+      suspend;
+    end
+    libelle=null;
+    suspend;
+  end
+
+  if (max_mar_hom>0) then
+  begin
+    libelle='Homme(s) marié(s) après l''âge de '|| max_mar_hom ||' ans: (âge en années)';
+    titre=1;
+    nbr=0;
+    suspend;
+    titre=null;
+    sexe=1;
+    for select i.nom||coalesce(', '||i.prenom,'')||coalesce(' né en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,1)))
+            ,coalesce(m.ev_fam_date,(select date_out from f_date_mois(m.ev_fam_date_mois,m.ev_fam_date_year,0)))
+          from evenements_fam m
+            inner join t_union u on u.union_clef=m.ev_fam_kle_famille
+            inner join individu i on i.cle_fiche=u.union_mari
+            inner join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                         and ni.ev_ind_type='BIRT'
+        where m.ev_fam_type='MARR'
+          and m.ev_fam_date_year>0
+          and i.kle_dossier=:i_dossier
+          and i.annee_naissance>0
+        order by 1,i.annee_naissance,i.cle_fiche
+        into :libelle
+            ,:clef_ind
+            ,:date_nais
+            ,:date_evf
+    do
+      if (date_evf>dateadd(max_mar_hom year to date_nais)) then
+      begin
+        age=datediff(month from date_nais to date_evf)/12.0;
+        nbr=1;
+        suspend;
+      end
+    age=null;
+    clef_ind=null;
+    sexe=null;
+    if (nbr=0) then
+    begin
+      libelle='(néant)';
+      suspend;
+    end
+    libelle=null;
+    suspend;
+  end
+
+  if (max_mar_fem>0) then
+  begin
+    libelle='Femme(s) mariée(s) après l''âge de '|| max_mar_fem ||' ans: (âge en années)';
+    titre=1;
+    nbr=0;
+    suspend;
+    titre=null;
+    sexe=2;
+    for select i.nom||coalesce(', '||i.prenom,'')||coalesce(' née en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,1)))
+            ,coalesce(m.ev_fam_date,(select date_out from f_date_mois(m.ev_fam_date_mois,m.ev_fam_date_year,0)))
+          from evenements_fam m
+            inner join t_union u on u.union_clef=m.ev_fam_kle_famille
+            inner join individu i on i.cle_fiche=u.union_femme
+            inner join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                         and ni.ev_ind_type='BIRT'
+        where m.ev_fam_type='MARR'
+          and m.ev_fam_date_year>0
+          and i.kle_dossier=:i_dossier
+          and i.annee_naissance>0
+        order by 1,i.annee_naissance,i.cle_fiche
+        into :libelle
+            ,:clef_ind
+            ,:date_nais
+            ,:date_evf
+    do
+      if (date_evf>dateadd(max_mar_fem year to date_nais)) then
+      begin
+        age=datediff(month from date_nais to date_evf)/12.0;
+        nbr=1;
+        suspend;
+      end
+    age=null;
+    clef_ind=null;
+    sexe=null;
+    if (nbr=0) then
+    begin
+      libelle='(néant)';
+      suspend;
+    end
+    libelle=null;
+    suspend;
+  end
+
+  if (min_enf_hom>0) then
+  begin
+    libelle='Homme(s) père(s) avant l''âge de '|| min_enf_hom ||' ans: (âge en années)';
+    titre=1;
+    nbr=0;
+    suspend;
+    titre=null;
+    sexe=1;
+    for select distinct i.nom||coalesce(', '||i.prenom,'')||coalesce(' né en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,0)))
+            ,coalesce(ne.ev_ind_date,(select date_out from f_date_mois(ne.ev_ind_date_mois,ne.ev_ind_date_year,1)))
+        from individu i
+             inner join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                         and ni.ev_ind_type='BIRT'
+                                         and ni.ev_ind_date_year>0
+             inner join individu e on e.cle_pere=i.cle_fiche
+             inner join evenements_ind ne on ne.ev_ind_kle_fiche=e.cle_fiche
+                                         and ne.ev_ind_type='BIRT'
+                                         and ne.ev_ind_date_year>0
+        where i.kle_dossier=:i_dossier
+          and i.sexe=1
+        order by 1,i.annee_naissance,i.cle_fiche
+        into :libelle
+            ,:clef_ind
+            ,:date_nais
+            ,:date_eve
+    do
+    begin
+      if (dateadd(min_enf_hom year to date_nais)>date_eve) then
+      begin
+        age=datediff(month from date_nais to date_eve)/12.0;
+        nbr=1;
+        suspend;
+      end
+    end
+    age=null;
+    clef_ind=null;
+    sexe=null;
+    if (nbr=0) then
+    begin
+      libelle='(néant)';
+      suspend;
+    end
+    libelle=null;
+    suspend;
+  end
+
+  if (min_enf_fem>0) then
+  begin
+    libelle='Femme(s) mère(s) avant l''âge de '|| min_enf_fem ||' ans: (âge en années)';
+    titre=1;
+    nbr=0;
+    suspend;
+    titre=null;
+    sexe=2;
+    for select distinct i.nom||coalesce(', '||i.prenom,'')||coalesce(' née en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,0)))
+            ,coalesce(ne.ev_ind_date,(select date_out from f_date_mois(ne.ev_ind_date_mois,ne.ev_ind_date_year,1)))
+        from individu i
+             inner join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                         and ni.ev_ind_type='BIRT'
+                                         and ni.ev_ind_date_year>0
+             inner join individu e on e.cle_mere=i.cle_fiche
+             inner join evenements_ind ne on ne.ev_ind_kle_fiche=e.cle_fiche
+                                         and ne.ev_ind_type='BIRT'
+                                         and ne.ev_ind_date_year>0
+        where i.kle_dossier=:i_dossier
+          and i.sexe=2
+        order by 1,i.annee_naissance,i.cle_fiche
+        into :libelle
+            ,:clef_ind
+            ,:date_nais
+            ,:date_eve
+    do
+    begin
+      if (dateadd(min_enf_fem year to date_nais)>date_eve) then
+      begin
+        age=datediff(month from date_nais to date_eve)/12.0;
+        nbr=1;
+        suspend;
+      end
+    end
+    age=null;
+    clef_ind=null;
+    sexe=null;
+    if (nbr=0) then
+    begin
+      libelle='(néant)';
+      suspend;
+    end
+    libelle=null;
+    suspend;
+  end
+
+  if (max_enf_hom>0) then
+  begin
+    libelle='Homme(s) père(s) après l''âge de '|| max_enf_hom ||' ans: (âge en années)';
+    titre=1;
+    nbr=0;
+    suspend;
+    titre=null;
+    sexe=1;
+    for select distinct i.nom||coalesce(', '||i.prenom,'')||coalesce(' né en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,1)))
+            ,coalesce(ne.ev_ind_date,(select date_out from f_date_mois(ne.ev_ind_date_mois,ne.ev_ind_date_year,0)))
+        from individu i
+             inner join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                         and ni.ev_ind_type='BIRT'
+                                         and ni.ev_ind_date_year>0
+             inner join individu e on e.cle_pere=i.cle_fiche
+             inner join evenements_ind ne on ne.ev_ind_kle_fiche=e.cle_fiche
+                                         and ne.ev_ind_type='BIRT'
+                                         and ne.ev_ind_date_year>0
+        where i.kle_dossier=:i_dossier
+          and i.sexe=1
+        order by 1,i.annee_naissance,i.cle_fiche
+        into :libelle
+            ,:clef_ind
+            ,:date_nais
+            ,:date_eve
+    do
+    begin
+      if (dateadd(max_enf_hom year to date_nais)<date_eve) then
+      begin
+        age=datediff(month from date_nais to date_eve)/12.0;
+        nbr=1;
+        suspend;
+      end
+    end
+    age=null;
+    clef_ind=null;
+    sexe=null;
+    if (nbr=0) then
+    begin
+      libelle='(néant)';
+      suspend;
+    end
+    libelle=null;
+    suspend;
+  end
+
+  if (max_enf_fem>0) then
+  begin
+    libelle='Femme(s) mère(s) après l''âge de '|| max_enf_fem ||' ans: (âge en années)';
+    titre=1;
+    nbr=0;
+    suspend;
+    titre=null;
+    sexe=2;
+    for select distinct i.nom||coalesce(', '||i.prenom,'')||coalesce(' née en '||i.annee_naissance,'')
+              ,i.cle_fiche
+            ,coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,1)))
+            ,coalesce(ne.ev_ind_date,(select date_out from f_date_mois(ne.ev_ind_date_mois,ne.ev_ind_date_year,0)))
+        from individu i
+             inner join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                         and ni.ev_ind_type='BIRT'
+                                         and ni.ev_ind_date_year>0
+             inner join individu e on e.cle_mere=i.cle_fiche
+             inner join evenements_ind ne on ne.ev_ind_kle_fiche=e.cle_fiche
+                                         and ne.ev_ind_type='BIRT'
+                                         and ne.ev_ind_date_year>0
+        where i.kle_dossier=:i_dossier
+          and i.sexe=2
+        order by 1,i.annee_naissance,i.cle_fiche
+        into :libelle
+            ,:clef_ind
+            ,:date_nais
+            ,:date_eve
+    do
+    begin
+      if (dateadd(max_enf_fem year to date_nais)<date_eve) then
+      begin
+        age=datediff(month from date_nais to date_eve)/12.0;
+        nbr=1;
+        suspend;
+      end
+    end
+    age=null;
+    clef_ind=null;
+    sexe=null;
+    if (nbr=0) then
+    begin
+      libelle='(néant)';
+      suspend;
+    end
+    libelle=null;
+    suspend;
+  end
+
+  if (max_ecart_epoux>0) then
+  begin
+    libelle='Couple(s) dont l''écart d''âge est supérieur à '|| max_ecart_epoux ||' ans: (écart en années)';
+    titre=1;
+    nbr=0;
+    suspend;
+    titre=null;
+    for select distinct m.nom||coalesce(', '||m.prenom,'')||coalesce(' né en '||m.annee_naissance,'')
+              ,'marié avec '||f.nom||', '||f.prenom||coalesce(' née en '||f.annee_naissance,'')
+              ,m.cle_fiche
+              ,f.cle_fiche
+              ,minvalue(abs(coalesce(nm.ev_ind_date,(select date_out from f_date_mois(nm.ev_ind_date_mois,nm.ev_ind_date_year,0)))
+                   -coalesce(nf.ev_ind_date,(select date_out from f_date_mois(nf.ev_ind_date_mois,nf.ev_ind_date_year,1))))
+                ,abs(coalesce(nm.ev_ind_date,(select date_out from f_date_mois(nm.ev_ind_date_mois,nm.ev_ind_date_year,1)))
+                   -coalesce(nf.ev_ind_date,(select date_out from f_date_mois(nf.ev_ind_date_mois,nf.ev_ind_date_year,0)))))
+        from evenements_fam e
+             inner join t_union u on u.union_clef=e.ev_fam_kle_famille
+             inner join individu m on m.cle_fiche=u.union_mari
+             inner join evenements_ind nm on nm.ev_ind_kle_fiche=m.cle_fiche
+                                         and nm.ev_ind_type='BIRT'
+                                         and nm.ev_ind_date_year>0
+             inner join individu f on f.cle_fiche =u.union_femme
+             inner join evenements_ind nf on nf.ev_ind_kle_fiche=f.cle_fiche
+                                         and nf.ev_ind_type='BIRT'
+                                         and nf.ev_ind_date_year>0
+        where m.kle_dossier=:i_dossier
+          and e.ev_fam_type='MARR'
+        order by 1,m.annee_naissance,m.cle_fiche
+        into :libelle
+            ,:epouse
+            ,:clef_ind
+            ,:clef
+            ,:agetempo --en jours
+    do
+    begin
+      if (agetempo/365.25>max_ecart_epoux) then
+      begin
+        age=null;
+        sexe=1;
+        suspend;
+        libelle=epouse;
+        clef_ind=clef;
+        age=agetempo/365.25;
+        sexe=2;
+        nbr=1;
+        suspend;
+      end
+    end
+    age=null;
+    clef_ind=null;
+    sexe=null;
+    if (nbr=0) then
+    begin
+      libelle='(néant)';
+      suspend;
+    end
+    libelle=null;
+    suspend;
+  end
+
+  if (min_entre_enf>0) then
+  begin
+    libelle='Femme(s) ayant eu deux enfants en moins de '|| min_entre_enf ||' jours: (écart en jours)';
+    titre=1;
+    nbr=0;
+    suspend;
+    titre=null;
+    sexe=2;
+    for select distinct m.nom||coalesce(', '||m.prenom,'')||coalesce(' née en '||m.annee_naissance,'')
+              ,m.cle_fiche
+              ,maxvalue(abs(coalesce(n2.ev_ind_date,(select date_out from f_date_mois(n2.ev_ind_date_mois,n2.ev_ind_date_year,0)))
+                   -coalesce(n1.ev_ind_date,(select date_out from f_date_mois(n1.ev_ind_date_mois,n1.ev_ind_date_year,1))))
+                ,abs(coalesce(n2.ev_ind_date,(select date_out from f_date_mois(n2.ev_ind_date_mois,n2.ev_ind_date_year,1)))
+                   -coalesce(n1.ev_ind_date,(select date_out from f_date_mois(n1.ev_ind_date_mois,n1.ev_ind_date_year,0)))))
+        from individu m
+             inner join individu e1 on e1.cle_mere=m.cle_fiche
+             inner join evenements_ind n1 on n1.ev_ind_kle_fiche=e1.cle_fiche
+                                         and n1.ev_ind_type='BIRT'
+                                         and n1.ev_ind_date_year>0
+             inner join individu e2 on e2.cle_mere=m.cle_fiche and e1.cle_fiche<>e2.cle_fiche
+             inner join evenements_ind n2 on n2.ev_ind_kle_fiche=e2.cle_fiche
+                                         and n2.ev_ind_type='BIRT'
+                                         and n2.ev_ind_date_year>0
+        where m.kle_dossier=:i_dossier
+        order by 1,m.annee_naissance,m.cle_fiche
+        into :libelle
+            ,:clef_ind
+            ,:age
+    do
+    begin
+      if (age<min_entre_enf and age>2) then
+      begin
+        nbr=1;
+        suspend;
+      end
+    end
+    age=null;
+    clef_ind=null;
+    sexe=null;
+    if (nbr=0) then
+    begin
+      libelle='(néant)';
+      suspend;
+    end
+    libelle=null;
+    suspend;
+  end
+
+  date_cr=cast('12/31/9999' as date);
+  libelle='Individu(s) né(s) plus de 270 jours après le décés de leur père: (écart en jours)';
+  titre=1;
+  nbr=0;
+  suspend;
+  titre=null;
+  for select i.nom||coalesce(', '||i.prenom,'')||coalesce(' né'
+             ||trim(case when i.sexe=2 then 'e' else '' end)||' en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,i.sexe
+            ,coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,0)))
+            ,dateadd(:max_vie_hom year to coalesce(np.ev_ind_date,(select date_out from f_date_mois(np.ev_ind_date_mois,np.ev_ind_date_year,1))))
+            ,minvalue(coalesce(coalesce(nd.ev_ind_date,(select date_out from f_date_mois(nd.ev_ind_date_mois,nd.ev_ind_date_year,1))),:date_cr)
+              ,coalesce(coalesce(nb.ev_ind_date,(select date_out from f_date_mois(nb.ev_ind_date_mois,nb.ev_ind_date_year,1))),:date_cr)
+              ,coalesce(coalesce(nc.ev_ind_date,(select date_out from f_date_mois(nc.ev_ind_date_mois,nc.ev_ind_date_year,1))),:date_cr))
+      from individu i
+         inner join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                     and ni.ev_ind_type='BIRT'
+                                     and ni.ev_ind_date_year>0
+         left join evenements_ind np on np.ev_ind_kle_fiche=i.cle_pere
+                                     and np.ev_ind_type='BIRT'
+                                     and np.ev_ind_date_year>0
+         left join evenements_ind nd on nd.ev_ind_kle_fiche=i.cle_pere
+                                     and nd.ev_ind_type='DEAT'
+                                     and nd.ev_ind_date_year>0
+         left join evenements_ind nb on nb.ev_ind_kle_fiche=i.cle_pere
+                                     and nb.ev_ind_type='BURI'
+                                     and nb.ev_ind_date_year>0
+         left join evenements_ind nc on nc.ev_ind_kle_fiche=i.cle_pere
+                                     and nc.ev_ind_type='CREM'
+                                     and nc.ev_ind_date_year>0
+      where i.kle_dossier=:i_dossier
+      order by 1,i.annee_naissance,i.cle_fiche
+      into :libelle
+          ,:clef_ind
+          ,:sexe
+          ,:date_eve
+          ,:date_nais
+          ,:date_dc
+  do
+  begin
+    if (max_vie_hom>0 or date_dc<>date_cr) then
+    begin
+      if (date_dc=date_cr) then
+        date_dc=date_nais;
+      if (dateadd(270 day to date_dc)<date_eve) then
+      begin
+        age=datediff(day from date_dc to date_eve);
+        nbr=1;
+        suspend;
+      end
+    end
+  end
+  age=null;
+  clef_ind=null;
+  sexe=null;
+  if (nbr=0) then
+  begin
+    libelle='(néant)';
+    suspend;
+  end
+  libelle=null;
+  suspend;
+
+  libelle='Individu(s) né(s) après le décés de leur mère:';
+  titre=1;
+  nbr=0;
+  suspend;
+  titre=null;
+  for select i.nom||coalesce(', '||i.prenom,'')||coalesce(' né'
+             ||trim(case when i.sexe=2 then 'e' else '' end)||' en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,i.sexe
+            ,coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,0)))
+            ,dateadd(:max_vie_fem year to coalesce(np.ev_ind_date,(select date_out from f_date_mois(np.ev_ind_date_mois,np.ev_ind_date_year,1))))
+            ,minvalue(coalesce(coalesce(nd.ev_ind_date,(select date_out from f_date_mois(nd.ev_ind_date_mois,nd.ev_ind_date_year,1))),:date_cr)
+              ,coalesce(coalesce(nb.ev_ind_date,(select date_out from f_date_mois(nb.ev_ind_date_mois,nb.ev_ind_date_year,1))),:date_cr)
+              ,coalesce(coalesce(nc.ev_ind_date,(select date_out from f_date_mois(nc.ev_ind_date_mois,nc.ev_ind_date_year,1))),:date_cr))
+      from individu i
+         inner join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                     and ni.ev_ind_type='BIRT'
+                                     and ni.ev_ind_date_year>0
+         left join evenements_ind np on np.ev_ind_kle_fiche=i.cle_mere
+                                     and np.ev_ind_type='BIRT'
+                                     and np.ev_ind_date_year>0
+         left join evenements_ind nd on nd.ev_ind_kle_fiche=i.cle_mere
+                                     and nd.ev_ind_type='DEAT'
+                                     and nd.ev_ind_date_year>0
+         left join evenements_ind nb on nb.ev_ind_kle_fiche=i.cle_mere
+                                     and nb.ev_ind_type='BURI'
+                                     and nb.ev_ind_date_year>0
+         left join evenements_ind nc on nc.ev_ind_kle_fiche=i.cle_mere
+                                     and nc.ev_ind_type='CREM'
+                                     and nc.ev_ind_date_year>0
+      where i.kle_dossier=:i_dossier
+      order by 1,i.annee_naissance,i.cle_fiche
+      into :libelle
+          ,:clef_ind
+          ,:sexe
+          ,:date_eve
+          ,:date_nais
+          ,:date_dc
+  do
+  begin
+    if (max_vie_fem>0 or date_dc<>date_cr) then
+    begin
+      if (date_dc=date_cr) then
+        date_dc=date_nais;
+      if (date_dc<date_eve) then
+      begin
+        nbr=1;
+        suspend;
+      end
+    end
+  end
+  age=null;
+  clef_ind=null;
+  sexe=null;
+  if (nbr=0) then
+  begin
+    libelle='(néant)';
+    suspend;
+  end
+  libelle=null;
+  suspend;
+
+  libelle='Individu(s) ayant un événement avant la naissance:';
+  titre=1;
+  nbr=0;
+  suspend;
+  titre=null;
+  for select distinct i.nom||coalesce(', '||i.prenom,'')||coalesce(' né'
+             ||trim(case when i.sexe=2 then 'e' else '' end)||' en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,i.sexe
+      from individu i
+         inner join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                     and ni.ev_ind_type='BIRT'
+         left join evenements_ind ne on ne.ev_ind_kle_fiche=i.cle_fiche
+                                     and ne.ev_ind_type<>'BIRT'
+                                     and ne.ev_ind_date_year>0
+         left join t_union u on (i.sexe=1 and u.union_mari=i.cle_fiche)
+                             or (i.sexe=2 and u.union_femme=i.cle_fiche)
+         left join evenements_fam f on f.ev_fam_kle_famille=u.union_clef
+                                   and f.ev_fam_date_year>0
+      where i.kle_dossier=:i_dossier
+        and i.annee_naissance>0
+        and (coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,0)))
+             >coalesce(ne.ev_ind_date,(select date_out from f_date_mois(ne.ev_ind_date_mois,ne.ev_ind_date_year,1)))
+         or coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,0)))
+             >coalesce(f.ev_fam_date,(select date_out from f_date_mois(f.ev_fam_date_mois,f.ev_fam_date_year,1))))
+      order by 1,i.annee_naissance,i.cle_fiche
+      into :libelle
+          ,:clef_ind
+          ,:sexe
+  do
+  begin
+    nbr=1;
+    suspend;
+  end
+  age=null;
+  clef_ind=null;
+  sexe=null;
+  if (nbr=0) then
+  begin
+    libelle='(néant)';
+    suspend;
+  end
+  libelle=null;
+  suspend;
+
+  date_cr=cast('12/31/9999' as date);
+  date_inh=cast('01/01/0001' as date);
+  libelle='Individu(s) ayant un événement après le décès, l''inhumation, la crémation ou l''espérance de vie:';
+  titre=1;
+  suspend;
+  nbr=0;
+  titre=null;
+  clef_prec=0;
+  sexe=0;
+  for select i.nom||coalesce(', '||i.prenom,'')||coalesce(' né'
+             ||trim(case when i.sexe=2 then 'e' else '' end)||' en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,i.sexe
+            ,dateadd(case when i.sexe=1 then :max_vie_hom else :max_vie_fem end year to
+                coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,1))))
+            ,minvalue(coalesce(coalesce(nd.ev_ind_date,(select date_out from f_date_mois(nd.ev_ind_date_mois,nd.ev_ind_date_year,1))),:date_cr)
+              ,coalesce(coalesce(nb.ev_ind_date,(select date_out from f_date_mois(nb.ev_ind_date_mois,nb.ev_ind_date_year,1))),:date_cr)
+              ,coalesce(coalesce(nc.ev_ind_date,(select date_out from f_date_mois(nc.ev_ind_date_mois,nc.ev_ind_date_year,1))),:date_cr))
+            ,maxvalue(coalesce(coalesce(ne.ev_ind_date,(select date_out from f_date_mois(ne.ev_ind_date_mois,ne.ev_ind_date_year,0))),:date_inh)
+              ,coalesce(coalesce(f.ev_fam_date,(select date_out from f_date_mois(f.ev_fam_date_mois,f.ev_fam_date_year,0))),:date_inh))
+      from individu i
+         left join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                     and ni.ev_ind_type='BIRT'
+                                     and ni.ev_ind_date_year>0
+         left join evenements_ind nd on nd.ev_ind_kle_fiche=i.cle_fiche
+                                     and nd.ev_ind_type='DEAT'
+                                     and nd.ev_ind_date_year>0
+         left join evenements_ind nb on nb.ev_ind_kle_fiche=i.cle_fiche
+                                     and nb.ev_ind_type='BURI'
+                                     and nb.ev_ind_date_year>0
+         left join evenements_ind nc on nc.ev_ind_kle_fiche=i.cle_fiche
+                                     and nc.ev_ind_type='CREM'
+                                     and nc.ev_ind_date_year>0
+         left join evenements_ind ne on ne.ev_ind_kle_fiche=i.cle_fiche
+                                     and ne.ev_ind_type not in('BIRT','DEAT','BURI','CREM')
+                                     and ne.ev_ind_date_year>0
+         left join t_union u on (i.sexe=1 and u.union_mari=i.cle_fiche)
+                             or (i.sexe=2 and u.union_femme=i.cle_fiche)
+         left join evenements_fam f on f.ev_fam_kle_famille=u.union_clef
+                                   and f.ev_fam_date_year>0
+      where i.kle_dossier=:i_dossier
+      order by 1,i.annee_naissance,i.cle_fiche
+      into :libelle
+          ,:clef_ind
+          ,:sexe
+          ,:date_nais
+          ,:date_dc
+          ,:date_eve
+  do
+  begin
+    if (clef_ind<>clef_prec and date_eve<>date_inh
+       and not ((date_nais is null or max_vie_hom=0 or max_vie_fem=0)
+                and date_dc=date_cr)) then
+    begin
+      if (date_dc=date_cr) then
+        date_dc=date_nais;
+      if (date_dc<date_eve) then
+      begin
+        clef_prec=clef_ind;
+        nbr=1;
+        suspend;
+      end
+    end
+  end
+  age=null;
+  clef_ind=null;
+  sexe=null;
+  if (nbr=0) then
+  begin
+    libelle='(néant)';
+    suspend;
+  end
+  libelle=null;
+  suspend;
+
+  libelle='Individu(s) déclaré(s) présent(s) à un événement hors de leur vie:';
+  titre=1;
+  suspend;
+  nbr=0;
+  titre=null;
+  clef_prec=0;
+  sexe=0;
+  for select i.nom||coalesce(', '||i.prenom,'')||coalesce(' né'
+             ||trim(case when i.sexe=2 then 'e' else '' end)||' en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,i.sexe
+            ,coalesce(ni.ev_ind_date,(select date_out from f_date_mois(ni.ev_ind_date_mois,ni.ev_ind_date_year,0)))
+            ,minvalue(coalesce(coalesce(nd.ev_ind_date,(select date_out from f_date_mois(nd.ev_ind_date_mois,nd.ev_ind_date_year,1))),:date_cr)
+              ,coalesce(coalesce(nb.ev_ind_date,(select date_out from f_date_mois(nb.ev_ind_date_mois,nb.ev_ind_date_year,1))),:date_cr)
+              ,coalesce(coalesce(nc.ev_ind_date,(select date_out from f_date_mois(nc.ev_ind_date_mois,nc.ev_ind_date_year,1))),:date_cr))
+            ,maxvalue(coalesce(coalesce(ne.ev_ind_date,(select date_out from f_date_mois(ne.ev_ind_date_mois,ne.ev_ind_date_year,0))),:date_inh)
+              ,coalesce(coalesce(f.ev_fam_date,(select date_out from f_date_mois(f.ev_fam_date_mois,f.ev_fam_date_year,0))),:date_inh))
+            ,minvalue(coalesce(coalesce(ne.ev_ind_date,(select date_out from f_date_mois(ne.ev_ind_date_mois,ne.ev_ind_date_year,1))),:date_cr)
+              ,coalesce(coalesce(f.ev_fam_date,(select date_out from f_date_mois(f.ev_fam_date_mois,f.ev_fam_date_year,1))),:date_cr))
+      from t_associations a
+         inner join individu i on i.cle_fiche=a.assoc_kle_associe
+         left join evenements_ind ni on ni.ev_ind_kle_fiche=i.cle_fiche
+                                     and ni.ev_ind_type='BIRT'
+                                     and ni.ev_ind_date_year>0
+         left join evenements_ind nd on nd.ev_ind_kle_fiche=i.cle_fiche
+                                     and nd.ev_ind_type='DEAT'
+                                     and nd.ev_ind_date_year>0
+         left join evenements_ind nb on nb.ev_ind_kle_fiche=i.cle_fiche
+                                     and nb.ev_ind_type='BURI'
+                                     and nb.ev_ind_date_year>0
+         left join evenements_ind nc on nc.ev_ind_kle_fiche=i.cle_fiche
+                                     and nc.ev_ind_type='CREM'
+                                     and nc.ev_ind_date_year>0
+         left join evenements_ind ne on a.assoc_table='I'
+                                     and ne.ev_ind_clef=a.assoc_evenement
+                                     and ne.ev_ind_date_year>0
+         left join evenements_fam f on a.assoc_table='U'
+                                   and f.ev_fam_clef=a.assoc_evenement
+                                   and f.ev_fam_date_year>0
+      where i.kle_dossier=:i_dossier
+      order by 1,i.annee_naissance,i.cle_fiche
+      into :libelle
+          ,:clef_ind
+          ,:sexe
+          ,:date_nais
+          ,:date_dc
+          ,:date_eve
+          ,:date_evf
+  do
+  begin
+    if (clef_ind<>clef_prec and date_eve<>date_inh
+       and not ((date_nais is null or max_vie_hom=0 or max_vie_fem=0)
+                and date_dc=date_cr)) then
+    begin
+      if (date_dc=date_cr) then
+        date_dc=dateadd(case when sexe=1 then max_vie_hom else max_vie_fem end year to date_nais);
+      if (date_dc<date_eve or date_nais>date_evf) then
+      begin
+        clef_prec=clef_ind;
+        nbr=1;
+        suspend;
+      end
+    end
+  end
+  age=null;
+  clef_ind=null;
+  sexe=null;
+  if (nbr=0) then
+  begin
+    libelle='(néant)';
+    suspend;
+  end
+  libelle=null;
+  suspend;
+  end
+
+  if (mode=0 or mode=2) then
+  begin
+  libelle='Individu(s) ayant une date d''événement individuel de forme anormale:';
+  titre=1;
+  suspend;
+  titre=null;
+  nbr=0;
+  for select i.nom||coalesce(', '||i.prenom,'')||coalesce(' né'
+             ||trim(case when i.sexe=2 then 'e' else '' end)||' en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,i.sexe
+      from individu i
+      inner join evenements_ind e on e.ev_ind_kle_fiche=i.cle_fiche
+                                 and e.ev_ind_date_writen is not null
+      where i.kle_dossier=:i_dossier
+        and (select valide from proc_date_writen(e.ev_ind_date_writen))=0
+      into :libelle
+          ,:clef_ind
+          ,:sexe
+  do
+  begin
+    nbr=1;
+    suspend;
+  end
+  age=null;
+  clef_ind=null;
+  sexe=null;
+  if (nbr=0) then
+  begin
+    libelle='(néant)';
+    suspend;
+  end
+  libelle=null;
+  suspend;
+
+  libelle='Individu(s) ayant une date d''événement familial de forme anormale:';
+  titre=1;
+  suspend;
+  titre=null;
+  nbr=0;
+  for select i.nom||coalesce(', '||i.prenom,'')||coalesce(' né'
+             ||trim(case when i.sexe=2 then 'e' else '' end)||' en '||i.annee_naissance,'')
+            ,i.cle_fiche
+            ,i.sexe
+      from individu i
+      inner join t_union u on u.union_mari=i.cle_fiche
+                           or u.union_femme=i.cle_fiche
+      inner join evenements_fam e on e.ev_fam_kle_famille=u.union_clef
+                                 and e.ev_fam_date_writen is not null
+      where i.kle_dossier=:i_dossier
+        and (select valide from proc_date_writen(e.ev_fam_date_writen))=0
+      into :libelle
+          ,:clef_ind
+          ,:sexe
+  do
+  begin
+    nbr=1;
+    suspend;
+  end
+  age=null;
+  clef_ind=null;
+  sexe=null;
+  if (nbr=0) then
+  begin
+    libelle='(néant)';
+    suspend;
+  end
+  libelle=null;
+  suspend;
+  end
+end^
+
+COMMENT ON PROCEDURE PROC_DATES_INCOHERENTES IS
+'Procédure créée par André. Dernière modification 28/03/2011'^
+
+CREATE OR ALTER PROCEDURE PROC_DELTA_DATES (
+    date_deb date,
+    mois_deb integer,
+    an_deb integer,
+    tendance_deb integer,
+    date_fin date,
+    mois_fin integer,
+    an_fin integer,
+    tendance_fin integer)
+returns (
+    delta_jours integer,
+    ans integer,
+    mois integer,
+    jours integer)
+as
+declare variable jour_deb integer;
+declare variable jour_fin integer;
+begin
+  if ((date_deb is null and an_deb is null)
+    or (date_fin is null and an_fin is null)
+    or (mois_deb is not null and mois_deb not between 1 and 12)
+    or (mois_fin is not null and mois_fin not between 1 and 12)) then
+  begin
+    suspend;
+    exit;
+  end
+  if ((date_deb is not null or an_deb>0) and (date_fin is not null or an_fin>0)) then
+  begin
+    if (date_deb is null) then
+      if (tendance_deb<0) then
+        date_deb=(select date_out from f_date_mois(:mois_deb,:an_deb,0));
+      else
+        if (tendance_deb>0) then
+          date_deb=(select date_out from f_date_mois(:mois_deb,:an_deb,1));
+        else
+          date_deb=(select date_out from f_date_mois(:mois_deb,:an_deb,2));
+    if (date_fin is null) then
+      if (tendance_fin<0) then
+        date_fin=(select date_out from f_date_mois(:mois_fin,:an_fin,0));
+      else
+        if (tendance_fin>0) then
+          date_fin=(select date_out from f_date_mois(:mois_fin,:an_fin,1));
+        else
+          date_fin=(select date_out from f_date_mois(:mois_fin,:an_fin,2));
+    delta_jours=maxvalue(0,date_fin-date_deb);
+    if (delta_jours=0) then
+    begin
+      ans=0;
+      mois=0;
+      jours=0;
+    end
+    else
+    begin
+      an_deb=extract(year from date_deb);
+      mois_deb=extract(month from date_deb);
+      jour_deb=extract(day from date_deb);
+      an_fin=extract(year from date_fin);
+      mois_fin=extract(month from date_fin);
+      jour_fin=extract(day from date_fin);
+      if (jour_fin>=jour_deb) then
+        jours=jour_fin-jour_deb;
+      else
+        jours=jour_fin+extract(day from (select date_out from f_date_mois(:mois_fin,:an_fin,0))-1)-jour_deb;
+      if (mois_fin>mois_deb or (mois_fin=mois_deb and jour_fin>=jour_deb)) then
+      begin
+        ans=an_fin-an_deb;
+        if (jour_fin>=jour_deb) then
+          mois=mois_fin-mois_deb;
+        else
+          mois=mois_fin-mois_deb-1;
+      end
+      else
+      begin
+        ans=an_fin-an_deb-1;
+        if (jour_fin>=jour_deb) then
+          mois=mois_fin-mois_deb+12;
+        else
+          mois=mois_fin-mois_deb+11;
+      end
+    end
+  end
+  else
+  begin
+    if (date_deb is not null) then
+    begin
+      mois_deb=extract(month from date_deb);
+      an_deb=extract(year from date_deb);
+      jour_deb=extract(day from date_deb);
+    end
+    if (date_fin is not null) then
+    begin
+      mois_fin=extract(month from date_fin);
+      an_fin=extract(year from date_fin);
+      jour_fin=extract(day from date_fin);
+    end
+    if (an_deb is not null and an_fin is not null) then
+    begin
+      if (tendance_deb<0) then
+        delta_jours=cast(an_deb*365.25
+                         +coalesce(mois_deb-1,0)*30.4375
+                         +coalesce(jour_deb,1) as integer);
+      else
+        if (tendance_deb>0) then
+          delta_jours=cast(an_deb*365.25
+                           +coalesce(mois_deb-1,11)*30.4375
+                           +coalesce(jour_deb,30) as integer);
+        else
+          delta_jours=cast(an_deb*365.25
+                           +coalesce(mois_deb-1,6)*30.4375
+                           +coalesce(jour_deb,15) as integer);
+      if (tendance_fin<0) then
+        delta_jours=maxvalue(0,cast(an_fin*365.25
+                               +coalesce(mois_fin-1,0)*30.4375
+                               +coalesce(jour_fin,1) as integer)-delta_jours);
+      else
+        if (tendance_fin>0) then
+          delta_jours=maxvalue(0,cast(an_fin*365.25
+                                +coalesce(mois_fin-1,11)*30.4375
+                                +coalesce(jour_fin,30) as integer)-delta_jours);
+        else
+          delta_jours=maxvalue(0,cast(an_fin*365.25
+                                +coalesce(mois_fin-1,6)*30.4375
+                                +coalesce(jour_fin,15) as integer)-delta_jours);
+      if (delta_jours=0) then
+      begin
+        ans=0;
+        mois=0;
+        jours=0;
+      end
+      else
+      begin
+        ans=floor(delta_jours/365.25);
+        mois=floor((delta_jours-ans*365.25)/30.4375);
+        jours=floor(delta_jours-ans*365.25-mois*30.4375);
+      end
+    end
+  end
+  suspend;
+end^
+
+COMMENT ON PROCEDURE PROC_DELTA_DATES IS
+'Création par André le 14/11/2007.
+Retourne le nombre de jours entre 2 dates ainsi que l''écart en années, mois et jours.
+Si la date complète existe (après JC uniquement), mois et année ne sont pas
+nécessaires.
+Mise à jour du 08/05/2008: ajout paramètres TENDANCE_DEB et TENDANCE_FIN pour
+utiliser les bornes inférieures, moyennes ou supérieures de chacune des 2 dates
+lorsque celles-ci sont imprécises. Ajout de l''écart calculé en années, mois et jours.
+Mise à jour du 01/05/2009: adaptation pour années à 2 chiffres.
+Mise à jour du 18/09/2009: correction calcul de JOURS.
+Mise à jour du 28/11/2010: utilisation F_DATE_MOIS.'^
+
+CREATE OR ALTER PROCEDURE PROC_DERNIER_METIER (
+    i_clef integer)
+returns (
+    occupation varchar(90))
+as
+begin
+  select first(1) ev_ind_description
+  from evenements_ind
+  where ev_ind_kle_fiche=:i_clef and ev_ind_type='OCCU'
+  order by ev_ind_ordre desc nulls first,
+           ev_ind_date_year desc nulls first,
+           ev_ind_date_mois desc nulls first,
+           ev_ind_date desc nulls first
+  into :occupation;
+  suspend;
+end^
+
+COMMENT ON PROCEDURE PROC_DERNIER_METIER IS
+'Procédure créée par André Langlet
+Dernière modification le 26/11/2010'^
+
+
+
+CREATE OR ALTER PROCEDURE PROC_DESCENDANCE (
+    I_CLEF INTEGER,
+    I_NIVEAU INTEGER,
+    I_DOSSIER INTEGER)
+RETURNS (
+    NIVEAU INTEGER,
+    SOSA VARCHAR(120),
+    DATE_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100),
+    OCCUPATION VARCHAR(90),
+    CLE_FICHE INTEGER,
+    CLE_IMPORTATION VARCHAR(20),
+    CLE_PARENTS INTEGER,
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    PREFIXE VARCHAR(30),
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    SURNOM VARCHAR(120),
+    SUFFIXE VARCHAR(30),
+    SEXE INTEGER,
+    I_DATE_NAISSANCE VARCHAR(100),
+    ANNEE_NAISSANCE INTEGER,
+    I_DATE_DECES VARCHAR(100),
+    ANNEE_DECES INTEGER,
+    DECEDE INTEGER,
+    AGE_AU_DECES INTEGER,
+    SOURCE BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    COMMENT BLOB SUB_TYPE 1 SEGMENT SIZE 80,
+    FILLIATION VARCHAR(30),
+    NUM_SOSA DOUBLE PRECISION,
+    ORDRE VARCHAR(255),
+    NCHI INTEGER,
+    NMR INTEGER,
+    CLE_FIXE INTEGER,
+    ASCENDANT INTEGER)
+AS
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   à : 18:13:51
+   Modifiée le : 10/02/2006 par André, remplissage table tempo par PROC_TQ_DESCENDANCE
+   Calcul dernier métier par PROC_DERNIER_METIER. 09/07/07 optimisation
+   à : :
+   par :
+   Description : Cette procedure permet de récuperer tous les descendants d'un individu
+   en se servant d'une table technique
+   Le remplissage de la table est fonction de Niveaux
+   0 - Lui Meme
+   x - les descendant par niveau
+   Usage       :
+   ---------------------------------------------------------------------------*/
+   for
+      SELECT   t.tq_niveau
+              ,t.tq_num_sosa
+              ,i.date_naissance
+              ,i.date_deces
+              ,t.tq_cle_fiche
+              ,i.CLE_IMPORTATION
+              ,i.CLE_PARENTS
+              ,t.tq_cle_pere
+              ,t.tq_cle_mere
+              ,i.PREFIXE
+              ,i.NOM
+              ,i.PRENOM
+              ,i.SURNOM
+              ,i.SUFFIXE
+              ,i.SEXE
+              ,i.DATE_NAISSANCE
+              ,i.ANNEE_NAISSANCE
+              ,i.DATE_DECES
+              ,i.ANNEE_DECES
+              ,i.DECEDE
+              ,i.AGE_AU_DECES
+              ,i.SOURCE
+              ,i."COMMENT"
+              ,i.FILLIATION
+              ,i.NUM_SOSA
+              ,t.TQ_SOSA
+              ,i.NCHI
+              ,i.NMR
+              ,i.CLE_FIXE
+              ,(SELECT OCCUPATION FROM PROC_DERNIER_METIER(t.tq_cle_fiche))
+              ,t.tq_ascendant
+          FROM PROC_TQ_DESCENDANCE(:I_CLEF,:I_NIVEAU,0,1) t
+               inner join individu i on i.cle_fiche=t.tq_cle_fiche
+         ORDER BY t.TQ_NIVEAU,
+                  t.tq_num_sosa
+         INTO  :NIVEAU
+              ,:SOSA
+              ,:DATE_NAISSANCE
+              ,:DATE_DECES
+              ,:CLE_FICHE
+              ,:CLE_IMPORTATION
+              ,:CLE_PARENTS
+              ,:CLE_PERE
+              ,:CLE_MERE
+              ,:PREFIXE
+              ,:NOM
+              ,:PRENOM
+              ,:SURNOM
+              ,:SUFFIXE
+              ,:SEXE
+              ,:I_DATE_NAISSANCE
+              ,:ANNEE_NAISSANCE
+              ,:I_DATE_DECES
+              ,:ANNEE_DECES
+              ,:DECEDE
+              ,:AGE_AU_DECES
+              ,:SOURCE
+              ,:"COMMENT"
+              ,:FILLIATION
+              ,:NUM_SOSA
+              ,:ORDRE
+              ,:nchi
+              ,:NMR
+              ,:CLE_FIXE
+              ,:OCCUPATION
+              ,:ascendant
+   do
+     suspend;
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_DOUBLONS_FIND (
+    I_DOSSIER INTEGER,
+    CLE_IND INTEGER,
+    PRENOM_VARIABLE INTEGER)
+RETURNS (
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    DATE_NAISS VARCHAR(100),
+    LIEU_NAISS VARCHAR(50),
+    DATE_DECES VARCHAR(100),
+    LIEU_DECES VARCHAR(50))
+AS
+DECLARE VARIABLE I_CLE_FICHE INTEGER;
+DECLARE VARIABLE DATE_N INTEGER;
+DECLARE VARIABLE DATE_N_FIN INTEGER;
+DECLARE VARIABLE VILLE_N VARCHAR(50);
+DECLARE VARIABLE DATE_D INTEGER;
+DECLARE VARIABLE DATE_D_FIN INTEGER;
+DECLARE VARIABLE VILLE_D VARCHAR(50);
+DECLARE VARIABLE DN_IMOIS INTEGER;
+DECLARE VARIABLE DN_IAN INTEGER;
+DECLARE VARIABLE DN_DDATE INTEGER;
+DECLARE VARIABLE DN_IMOIS_FIN INTEGER;
+DECLARE VARIABLE DN_IAN_FIN INTEGER;
+DECLARE VARIABLE DN_DDATE_FIN INTEGER;
+DECLARE VARIABLE DN_TYPE_TOKEN1 INTEGER;
+DECLARE VARIABLE DN_TYPE_TOKEN2 INTEGER;
+DECLARE VARIABLE DD_IMOIS INTEGER;
+DECLARE VARIABLE DD_IAN INTEGER;
+DECLARE VARIABLE DD_DDATE INTEGER;
+DECLARE VARIABLE DD_IMOIS_FIN INTEGER;
+DECLARE VARIABLE DD_IAN_FIN INTEGER;
+DECLARE VARIABLE DD_DDATE_FIN INTEGER;
+DECLARE VARIABLE DD_TYPE_TOKEN1 INTEGER;
+DECLARE VARIABLE DD_TYPE_TOKEN2 INTEGER;
+DECLARE VARIABLE DATE_N_W VARCHAR(100);
+DECLARE VARIABLE DATE_D_W VARCHAR(100);
+DECLARE VARIABLE S_NOM VARCHAR(40);
+DECLARE VARIABLE S_PRENOM VARCHAR(60);
+DECLARE VARIABLE I INTEGER;
+DECLARE VARIABLE CLE_FICHE2 INTEGER;
+DECLARE VARIABLE NOM2 VARCHAR(40);
+DECLARE VARIABLE PRENOM2 VARCHAR(60);
+DECLARE VARIABLE DATE_NAISS2 VARCHAR(100);
+DECLARE VARIABLE LIEU_NAISS2 VARCHAR(50);
+DECLARE VARIABLE DATE_DECES2 VARCHAR(100);
+DECLARE VARIABLE LIEU_DECES2 VARCHAR(50);
+declare variable langue varchar(3);
+BEGIN
+   /*---------------------------------------------------------------------------
+    Modifiée le :16/11/2006 par André pour élargir aux doublons "possibles"
+   avec en option l'élargissement aux indis ayant les mêmes prénoms dans un
+   ordre différent. 08/09/2008 adaptation à années avJC.
+   Description :remonte la liste des doublons contenus dans le dossier I_DOSSIER
+   Usage       :si CLE_IND=0 tout le dossier est analysé,
+   si CLE_IND>0 on recherche les doublons de l'individu.
+   PRENOM_VARIABLE=0 impose la similitude complète de la liste des prénoms
+   des individus doublons.
+   PRENOM_VARIABLE=1 demande que tous les prénoms de l'un soient contenus dans
+   les prénoms de l'autre.
+   PRENOM_VARIABLE=2 et 3 sont similaires respectivement à 0 et 1, mais la
+   recherche s'effectue sur tous les individus du même patronyme que CLE_IND.
+   ---------------------------------------------------------------------------*/
+  select ds_langue
+  from dossier
+  where cle_dossier=:i_dossier
+  into langue;
+  rdb$set_context('USER_SESSION','LANGUE',langue);
+  delete from tq_id;
+  delete from tq_rech_doublons;
+  for select i.cle_fiche
+            ,i.nom
+            ,i.prenom
+            ,i.date_naissance
+            ,i.date_deces
+            ,n.ev_ind_ville
+            ,d.ev_ind_ville
+         from individu i
+           left join evenements_ind n on n.ev_ind_kle_fiche=i.cle_fiche and n.ev_ind_type='BIRT'
+           left join evenements_ind d on d.ev_ind_kle_fiche=i.cle_fiche and d.ev_ind_type='DEAT'
+         where i.kle_dossier=:I_DOSSIER
+           and (:cle_ind=0 or i.nom=(select nom from individu where cle_fiche=:cle_ind))
+         into :i_cle_fiche
+             ,:s_nom
+             ,:s_prenom
+             ,:date_n_w
+             ,:date_d_w
+             ,:ville_n
+             ,:ville_d
+      do
+      begin
+        select imois
+              ,ian
+              ,iif(ian>0,ian-1,ian)*366+(imois-1)*31+extract(day from ddate)-1
+              ,imois_fin
+              ,ian_fin
+              ,iif(ian_fin>0,ian_fin-1,ian_fin)*366+(imois_fin-1)*31+extract(day from ddate_fin)-1
+              ,type_token1
+              ,type_token2
+          from proc_date_writen(:date_n_w)
+          into :dn_imois
+              ,:dn_ian
+              ,:dn_ddate
+              ,:dn_imois_fin
+              ,:dn_ian_fin
+              ,:dn_ddate_fin
+              ,:dn_type_token1
+              ,:dn_type_token2;
+        select imois
+              ,ian
+              ,iif(ian>0,ian-1,ian)*366+(imois-1)*31+extract(day from ddate)-1
+              ,imois_fin
+              ,ian_fin
+              ,iif(ian_fin>0,ian_fin-1,ian_fin)*366+(imois_fin-1)*31+extract(day from ddate_fin)-1
+              ,type_token1
+              ,type_token2
+          from proc_date_writen(:date_d_w)
+          into :dd_imois
+              ,:dd_ian
+              ,:dd_ddate
+              ,:dd_imois_fin
+              ,:dd_ian_fin
+              ,:dd_ddate_fin
+              ,:dd_type_token1
+              ,:dd_type_token2;
+        date_n=case
+                  when dn_type_token1=19 --calculée
+                    then coalesce(dn_ddate-31
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366+(dn_imois-1)*31-183
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366-1000)
+                  when dn_type_token1 in(20,21) --estimée, vers
+                    then coalesce(dn_ddate-31
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366+(dn_imois-1)*31-183
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366-4000)
+                  when dn_type_token1 in(13,17) --de, entre
+                    then coalesce(dn_ddate
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366+(dn_imois-1)*31
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366)
+                  when dn_type_token1=16 --après
+                    then coalesce(dn_ddate
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366+(dn_imois)*31
+                                 ,iif(dn_ian>0,dn_ian,dn_ian+1)*366)
+                  when dn_type_token1=15 --avant
+                    then coalesce(dn_ddate-10000
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366+(dn_imois-1)*31-10000
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366-10000)
+                  else coalesce(dn_ddate
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366+(dn_imois-1)*31
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366)
+               end;
+        date_n_fin=case
+                  when dn_type_token1=19 --calculée
+                    then coalesce(dn_ddate+31
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366+dn_imois*31+215
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366+1400)
+                  when dn_type_token1 in(20,21) --estimée, vers
+                    then coalesce(dn_ddate+31
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366+dn_imois*31+215
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366+4400)
+                  when dn_type_token1 in(13,17) and dn_type_token2 in(14,18) --de à, entre et
+                    then coalesce(dn_ddate_fin
+                                 ,iif(dn_ian_fin>0,dn_ian_fin-1,dn_ian_fin)*366+dn_imois_fin*31
+                                 ,iif(dn_ian_fin>0,dn_ian_fin,dn_ian_fin+1)*366)
+                  when dn_type_token1 in (13,16) --depuis, après
+                    then coalesce(dn_ddate+10000
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366+(dn_imois-1)*31+10000
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366+10000)
+                  when dn_type_token1=15 --avant
+                    then coalesce(dn_ddate
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366+(dn_imois-1)*31
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366)
+                  else coalesce(dn_ddate
+                                 ,iif(dn_ian>0,dn_ian-1,dn_ian)*366+dn_imois*31
+                                 ,iif(dn_ian>0,dn_ian,dn_ian+1)*366)
+                end;
+        date_d=case
+                  when dd_type_token1=19 --calculée
+                    then coalesce(dd_ddate-31
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366+(dd_imois-1)*31-183
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366-1000)
+                  when dd_type_token1 in(20,21) --estimée, vers
+                    then coalesce(dd_ddate-31
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366+(dd_imois-1)*31-183
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366-4000)
+                  when dd_type_token1 in(13,17) --de, entre
+                    then coalesce(dd_ddate
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366+(dd_imois-1)*31
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366)
+                  when dd_type_token1=16 --après
+                    then coalesce(dd_ddate
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366+(dd_imois)*31
+                                 ,iif(dd_ian>0,dd_ian,dd_ian+1)*366)
+                  when dd_type_token1=15 --avant
+                    then coalesce(dd_ddate-10000
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366+(dd_imois-1)*31-10000
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366-10000)
+                  else coalesce(dd_ddate
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366+(dd_imois-1)*31
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366)
+               end;
+        date_d_fin=case
+                  when dd_type_token1=19 --calculée
+                    then coalesce(dd_ddate+31
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366+dd_imois*31+215
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366+1400)
+                  when dd_type_token1 in(20,21) --estimée, vers
+                    then coalesce(dd_ddate+31
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366+dd_imois*31+215
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366+4400)
+                  when dd_type_token1 in(13,17) and dd_type_token2 in(14,18) --de à, entre et
+                    then coalesce(dd_ddate_fin
+                                 ,iif(dd_ian_fin>0,dd_ian_fin-1,dd_ian_fin)*366+dd_imois_fin*31
+                                 ,iif(dd_ian_fin>0,dd_ian_fin,dd_ian_fin+1)*366)
+                  when dd_type_token1 in (13,16) --depuis, après
+                    then coalesce(dd_ddate+10000
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366+(dd_imois-1)*31+10000
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366+10000)
+                  when dd_type_token1=15 --avant
+                    then coalesce(dd_ddate
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366+(dd_imois-1)*31
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366)
+                  else coalesce(dd_ddate
+                                 ,iif(dd_ian>0,dd_ian-1,dd_ian)*366+dd_imois*31
+                                 ,iif(dd_ian>0,dd_ian,dd_ian+1)*366)
+                end;
+
+        if (date_n_fin>date_d_fin and date_n_fin is not null)  then
+          date_n_fin=date_d_fin;
+        if (date_n>date_d and date_d is not null)  then
+          date_d=date_n;
+        begin
+          insert into tq_rech_doublons (
+                                CLE_FICHE
+                               ,DATE_NAISSANCE
+                               ,DATE_NAISSANCE_FIN
+                               ,VILLE_NAISSANCE
+                               ,DATE_DECES
+                               ,DATE_DECES_FIN
+                               ,VILLE_DECES
+                               )
+          values (
+                :i_cle_fiche
+               ,:date_n
+               ,:date_n_fin
+               ,:ville_n
+               ,:date_d
+               ,:date_d_fin
+               ,:ville_d
+                );
+          when any do
+          begin
+            cle_fiche=i_cle_fiche;
+            nom=s_nom;
+            prenom=s_prenom;
+            date_naiss='Erreur, naissance ou décès en double';
+            delete from tq_rech_doublons;
+            suspend;
+            exit;
+          end
+        end
+      end
+  if (prenom_variable in (1,3)) then
+  begin
+    delete from tq_prenoms;
+    insert into tq_prenoms (
+                            combien
+                           ,dossier
+                           ,prenom
+                           )
+                  select
+                         p.cle_fiche
+                        ,:i_dossier
+                        ,(select s_out from f_maj_sans_accent(p.prenom))
+                  from proc_liste_prenom(:I_DOSSIER) p;
+  end
+  if (CLE_IND>0) then --doublons de cle_ind
+    if (prenom_variable in (1,3)) then
+      for select distinct
+                atq.cle_fiche
+               ,btq.cle_fiche
+        from tq_rech_doublons atq,
+             tq_rech_doublons btq
+             inner join individu a on a.cle_fiche=atq.cle_fiche
+             inner join individu b on b.cle_fiche=btq.cle_fiche
+        where a.sexe=b.sexe
+          and (not exists(select * from tq_prenoms where combien=atq.cle_fiche
+                          and prenom not in (select prenom from tq_prenoms where combien=btq.cle_fiche))
+              or not exists(select * from tq_prenoms where combien=btq.cle_fiche
+                          and prenom not in (select prenom from tq_prenoms where combien=atq.cle_fiche)))
+          and atq.cle_fiche <> btq.cle_fiche
+          and ((:prenom_variable=3) or (btq.cle_fiche=:cle_ind))
+          and ((atq.date_naissance>=btq.date_naissance
+                 and atq.date_naissance<=btq.date_naissance_fin)
+               or (atq.date_naissance_fin>=btq.date_naissance
+                 and atq.date_naissance_fin<=btq.date_naissance_fin)
+               or (atq.date_naissance<=btq.date_naissance
+                 and atq.date_naissance_fin>=btq.date_naissance_fin)
+               or atq.date_naissance is  null
+               or btq.date_naissance is  null)
+          and (atq.ville_naissance=btq.ville_naissance
+               or atq.ville_naissance is  null
+               or btq.ville_naissance is  null)
+          and ((atq.date_deces>=btq.date_deces
+                 and atq.date_deces<=btq.date_deces_fin)
+               or (atq.date_deces_fin>=btq.date_deces
+                 and atq.date_deces_fin<=btq.date_deces_fin)
+               or (atq.date_deces<=btq.date_deces
+                 and atq.date_deces_fin>=btq.date_deces_fin)
+               or atq.date_deces is  null
+               or btq.date_deces is  null)
+          and (atq.ville_deces=btq.ville_deces
+               or atq.ville_deces is  null
+               or btq.ville_deces is  null)
+          and (atq.date_naissance<=btq.date_deces_fin
+               or atq.date_naissance is null
+               or btq.date_deces_fin is null)
+          and (btq.date_naissance<=atq.date_deces_fin
+               or btq.date_naissance is null
+               or atq.date_deces_fin is null)
+             INTO :CLE_FICHE,
+                  :i_cle_fiche
+      DO
+        insert into tq_id (id1,id2) values(:cle_fiche,:i_cle_fiche);
+    else  --(CLE_IND>0) et (prenom_variable=0)
+      for select distinct
+                atq.cle_fiche
+               ,btq.cle_fiche
+        from tq_rech_doublons atq,
+             tq_rech_doublons btq
+             inner join individu a on a.cle_fiche=atq.cle_fiche
+             inner join individu b on b.cle_fiche=btq.cle_fiche
+        where a.sexe=b.sexe
+          and a.prenom = b.prenom
+          and atq.cle_fiche <> btq.cle_fiche
+          and (:prenom_variable=2 or btq.cle_fiche=:cle_ind)
+          and ((atq.date_naissance>=btq.date_naissance
+                 and atq.date_naissance<=btq.date_naissance_fin)
+               or (atq.date_naissance_fin>=btq.date_naissance
+                 and atq.date_naissance_fin<=btq.date_naissance_fin)
+               or (atq.date_naissance<=btq.date_naissance
+                 and atq.date_naissance_fin>=btq.date_naissance_fin)
+               or atq.date_naissance is  null
+               or btq.date_naissance is  null)
+          and (atq.ville_naissance=btq.ville_naissance
+               or atq.ville_naissance is  null
+               or btq.ville_naissance is  null)
+          and ((atq.date_deces>=btq.date_deces
+                 and atq.date_deces<=btq.date_deces_fin)
+               or (atq.date_deces_fin>=btq.date_deces
+                 and atq.date_deces_fin<=btq.date_deces_fin)
+               or (atq.date_deces<=btq.date_deces
+                 and atq.date_deces_fin>=btq.date_deces_fin)
+               or atq.date_deces is  null
+               or btq.date_deces is  null)
+          and (atq.ville_deces=btq.ville_deces
+               or atq.ville_deces is  null
+               or btq.ville_deces is  null)
+          and (atq.date_naissance<=btq.date_deces_fin
+               or atq.date_naissance is null
+               or btq.date_deces_fin is null)
+          and (btq.date_naissance<=atq.date_deces_fin
+               or btq.date_naissance is null
+               or atq.date_deces_fin is null)
+             INTO :CLE_FICHE,
+                  :i_cle_fiche
+      DO
+        insert into tq_id (id1,id2) values(:cle_fiche,:i_cle_fiche);
+  else --(CLE_IND=0) => tous les doublons
+    if (prenom_variable=1) then
+      for select distinct
+                atq.cle_fiche
+               ,btq.cle_fiche
+        from tq_rech_doublons atq,
+             tq_rech_doublons btq
+             inner join individu a on a.cle_fiche=atq.cle_fiche
+             inner join individu b on b.cle_fiche=btq.cle_fiche
+        where a.sexe=b.sexe
+          and a.nom = b.nom
+          and (not exists(select * from tq_prenoms where combien=atq.cle_fiche
+                          and prenom not in (select prenom from tq_prenoms where combien=btq.cle_fiche))
+              or not exists(select * from tq_prenoms where combien=btq.cle_fiche
+                          and prenom not in (select prenom from tq_prenoms where combien=atq.cle_fiche)))
+          and atq.cle_fiche <> btq.cle_fiche
+          and ((atq.date_naissance>=btq.date_naissance
+                 and atq.date_naissance<=btq.date_naissance_fin)
+               or (atq.date_naissance_fin>=btq.date_naissance
+                 and atq.date_naissance_fin<=btq.date_naissance_fin)
+               or (atq.date_naissance<=btq.date_naissance
+                 and atq.date_naissance_fin>=btq.date_naissance_fin)
+               or atq.date_naissance is  null
+               or btq.date_naissance is  null)
+          and (atq.ville_naissance=btq.ville_naissance
+               or atq.ville_naissance is  null
+               or btq.ville_naissance is  null)
+          and ((atq.date_deces>=btq.date_deces
+                 and atq.date_deces<=btq.date_deces_fin)
+               or (atq.date_deces_fin>=btq.date_deces
+                 and atq.date_deces_fin<=btq.date_deces_fin)
+               or (atq.date_deces<=btq.date_deces
+                 and atq.date_deces_fin>=btq.date_deces_fin)
+               or atq.date_deces is  null
+               or btq.date_deces is  null)
+          and (atq.ville_deces=btq.ville_deces
+               or atq.ville_deces is  null
+               or btq.ville_deces is  null)
+          and (atq.date_naissance<=btq.date_deces_fin
+               or atq.date_naissance is null
+               or btq.date_deces_fin is null)
+          and (btq.date_naissance<=atq.date_deces_fin
+               or btq.date_naissance is null
+               or atq.date_deces_fin is null)
+             INTO :CLE_FICHE,
+                  :i_cle_fiche
+      DO
+        insert into tq_id (id1,id2) values(:cle_fiche,:i_cle_fiche);
+    else --(CLE_IND=0) et (prenom_variable=0)
+      for select distinct
+                atq.cle_fiche
+               ,btq.cle_fiche
+        from tq_rech_doublons atq,
+             tq_rech_doublons btq
+             inner join individu a on a.cle_fiche=atq.cle_fiche
+             inner join individu b on b.cle_fiche=btq.cle_fiche
+        where a.sexe=b.sexe
+          and a.nom = b.nom
+          and a.prenom = b.prenom
+          and atq.cle_fiche <> btq.cle_fiche
+          and ((atq.date_naissance>=btq.date_naissance
+                 and atq.date_naissance<=btq.date_naissance_fin)
+               or (atq.date_naissance_fin>=btq.date_naissance
+                 and atq.date_naissance_fin<=btq.date_naissance_fin)
+               or (atq.date_naissance<=btq.date_naissance
+                 and atq.date_naissance_fin>=btq.date_naissance_fin)
+               or atq.date_naissance is  null
+               or btq.date_naissance is  null)
+          and (atq.ville_naissance=btq.ville_naissance
+               or atq.ville_naissance is  null
+               or btq.ville_naissance is  null)
+          and ((atq.date_deces>=btq.date_deces
+                 and atq.date_deces<=btq.date_deces_fin)
+               or (atq.date_deces_fin>=btq.date_deces
+                 and atq.date_deces_fin<=btq.date_deces_fin)
+               or (atq.date_deces<=btq.date_deces
+                 and atq.date_deces_fin>=btq.date_deces_fin)
+               or atq.date_deces is  null
+               or btq.date_deces is  null)
+          and (atq.ville_deces=btq.ville_deces
+               or atq.ville_deces is  null
+               or btq.ville_deces is  null)
+          and (atq.date_naissance<=btq.date_deces_fin
+               or atq.date_naissance is null
+               or btq.date_deces_fin is null)
+          and (btq.date_naissance<=atq.date_deces_fin
+               or btq.date_naissance is null
+               or atq.date_deces_fin is null)
+             INTO :CLE_FICHE,
+                  :i_cle_fiche
+      DO
+        insert into tq_id (id1,id2) values(:cle_fiche,:i_cle_fiche);
+  delete from tq_prenoms;
+  delete from tq_id t  --élimination si parents différents
+    where ((select cle_pere from individu where cle_fiche=t.id1) is not null
+            and (select cle_pere from individu where cle_fiche=t.id2) is not null
+            and not exists(select *
+                     from individu i1
+                         ,individu i2
+                         ,tq_id tqp
+                     where i1.cle_fiche=t.id1
+                       and i2.cle_fiche=t.id2
+                       and tqp.id1=i1.cle_pere and tqp.id2=i2.cle_pere))
+           or ((select cle_mere from individu where cle_fiche=t.id1) is not null
+                 and (select cle_mere from individu where cle_fiche=t.id2) is not null
+                 and not exists(select *
+                     from individu i1
+                         ,individu i2
+                         ,tq_id tqm
+                     where i1.cle_fiche=t.id1
+                       and i2.cle_fiche=t.id2
+                       and tqm.id1=i1.cle_mere and tqm.id2=i2.cle_mere));
+  if (prenom_variable in (1,3)) then
+  begin
+    delete from tq_id t
+      where (select oui from proc_test_parente(t.id1,t.id2,5))=1;
+    delete from tq_consang;
+  end
+  delete from tq_id t  --ne garder qu'une ligne par paire de doublons
+    where exists(select * from tq_id tq where tq.id1=t.id2 and tq.id2=t.id1);
+  i=0;
+  for select   --émission des résultats
+             t.id1
+             ,i1.nom
+             ,i1.prenom
+             ,i1.date_naissance
+             ,tq1.ville_naissance
+             ,i1.date_deces
+             ,tq1.ville_deces
+             ,t.id2
+             ,i2.nom
+             ,i2.prenom
+             ,i2.date_naissance
+             ,tq2.ville_naissance
+             ,i2.date_deces
+             ,tq2.ville_deces
+             ,:i+1
+      from tq_id t
+        inner join individu i1 on i1.cle_fiche=t.id1
+        inner join tq_rech_doublons tq1 on tq1.cle_fiche=t.id1
+        inner join individu i2 on i2.cle_fiche=t.id2
+        inner join tq_rech_doublons tq2 on tq2.cle_fiche=t.id2
+      order by i1.nom,i1.prenom,tq1.date_naissance nulls first
+             INTO
+                  :CLE_FICHE
+                 ,:NOM
+                 ,:PRENOM
+                 ,:DATE_NAISS
+                 ,:LIEU_NAISS
+                 ,:DATE_DECES
+                 ,:LIEU_DECES
+                 ,:CLE_FICHE2
+                 ,:NOM2
+                 ,:PRENOM2
+                 ,:DATE_NAISS2
+                 ,:LIEU_NAISS2
+                 ,:DATE_DECES2
+                 ,:LIEU_DECES2
+                 ,:i
+      do
+      begin
+        PRENOM=substring(cast(i as varchar(6))||'-'||PRENOM from 1 for 60);
+        suspend;
+        CLE_FICHE=CLE_FICHE2;
+        NOM=NOM2;
+        PRENOM=substring(cast(i as varchar(6))||'-'||PRENOM2 from 1 for 60);
+        DATE_NAISS=DATE_NAISS2;
+        LIEU_NAISS=LIEU_NAISS2;
+        DATE_DECES=DATE_DECES2;
+        LIEU_DECES=LIEU_DECES2;
+        suspend;
+      end
+  delete from tq_rech_doublons;
+  delete from tq_id;
+END
+^
+
+CREATE OR ALTER PROCEDURE PROC_ECLATE_DESCRIPTION (
+    description varchar(255),
+    separateur char(1))
+returns (
+    s_description varchar(255))
+as
+declare variable i integer;
+declare variable d integer;
+begin
+  description=trim(description);
+  d=0;
+  i=position(separateur in description);
+  while (i>0) do
+  begin
+    s_description=trim(substring(description from d+1 for i-d-1));
+    if (s_description>'') then suspend;
+    d=i;
+    i=position(separateur,description,d+1);
+  end
+  s_description=trim(substring(description from d+1));
+  if (s_description>'') then suspend;
+end^
+
+COMMENT ON PROCEDURE PROC_ECLATE_DESCRIPTION IS
+'Procédure créée par André le 22/05/2007, dernière modification 5/10/2010
+Découpe la description contenant le séparateur en descriptions élémentaires'^
+
+CREATE OR ALTER PROCEDURE PROC_ECLATE_PRENOM (
+    S_PRENOM VARCHAR(255))
+RETURNS (
+    PRENOM VARCHAR(255))
+AS
+DECLARE VARIABLE I INTEGER;
+DECLARE VARIABLE I_LEN INTEGER;
+DECLARE VARIABLE D INTEGER;
+begin
+   /*Créée par André le 24/10/2006, dernière modification 24/09/2007*/
+  I_LEN=char_length(S_PRENOM);
+  I=1;
+  D=I;
+  while (I<=I_LEN) do
+  begin
+    if (SUBSTRING(S_PRENOM from I for 1) in (' ',',','(',')','?')) then
+    begin
+      PRENOM=trim(SUBSTRING(S_PRENOM from D for I-D));
+      if (PRENOM<>'') then SUSPEND;
+      I=I+1;
+      D=I;
+    end
+    else
+      I=I+1;
+  end
+  PRENOM=trim(SUBSTRING(S_PRENOM from D));
+  if (char_length(PRENOM)>0) then SUSPEND;
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_AGE_PREM_UNION (
+    a_cle_dossier integer,
+    limit_on_date integer,
+    limit_on_sosa integer,
+    year_from integer,
+    year_to integer,
+    interval integer)
+returns (
+    annee_debut integer,
+    annee_fin integer,
+    femmes integer,
+    age_femmes decimal(15,2),
+    hommes integer,
+    age_hommes decimal(15,2))
+as
+declare variable annee integer;
+declare variable age_mari integer;
+declare variable age_femme integer;
+declare variable cumul_age_maris integer;
+declare variable cumul_age_femmes integer;
+begin
+  annee_debut=-10000;
+  femmes=0;
+  hommes=0;
+  cumul_age_femmes=0;
+  cumul_age_maris=0;
+  for select annee
+    ,age_femme
+    ,age_mari
+  from (select min(ef.ev_fam_date_year)as annee
+            ,min(ef.ev_fam_date_year)-m.ev_ind_date_year as age_femme
+            ,min(ef.ev_fam_date_year)-p.ev_ind_date_year as age_mari
+    from t_union u
+      inner join individu fi on fi.cle_fiche=u.union_femme
+      inner join individu mi on mi.cle_fiche=u.union_mari
+      inner join evenements_fam ef on ef.ev_fam_kle_famille=u.union_clef
+      left join evenements_ind m on m.ev_ind_kle_fiche=u.union_femme
+                                and m.ev_ind_type='BIRT'
+      left join evenements_ind p on p.ev_ind_kle_fiche=u.union_mari
+                                and p.ev_ind_type='BIRT'
+    where u.kle_dossier=:a_cle_dossier
+      and ef.ev_fam_date_year is not null
+      and (:limit_on_sosa=0 or(fi.num_sosa>0 and mi.num_sosa>0))
+    group by u.union_clef,m.ev_ind_date_year,p.ev_ind_date_year)
+    where :limit_on_date=0
+       or annee between :year_from and :year_to
+    order by annee
+  into :annee,
+       :age_femme,
+       :age_mari
+  do
+  begin
+    if (annee_debut=-10000) then
+    begin
+      annee_debut=annee-mod(annee,interval);
+      annee_fin=annee_debut+interval-1;
+    end
+    else
+      if (annee>annee_fin) then
+      begin
+        while (annee>annee_fin) do
+        begin
+          if (femmes>0) then
+            age_femmes=cast(cumul_age_femmes as double precision)/femmes;
+          else
+            age_femmes=null;
+          cumul_age_femmes=0;
+          if (hommes>0) then
+            age_hommes=cast(cumul_age_maris as double precision)/hommes;
+          else
+            age_hommes=null;
+          cumul_age_maris=0;
+          suspend;
+          femmes=0;
+          hommes=0;
+          annee_debut=annee_debut+interval;
+          annee_fin=annee_debut+interval-1;
+        end
+      end
+    if (age_femme is not null) then
+    begin
+      cumul_age_femmes=cumul_age_femmes+age_femme;
+      femmes=femmes+1;
+    end
+    if (age_mari is not null) then
+    begin
+      cumul_age_maris=cumul_age_maris+age_mari;
+      hommes=hommes+1;
+    end
+  end
+  if (femmes>0 or hommes>0) then
+  begin
+    if (femmes>0) then
+      age_femmes=cast(cumul_age_femmes as double precision)/femmes;
+    else
+      age_femmes=null;
+    if (hommes>0) then
+      age_hommes=cast(cumul_age_maris as double precision)/hommes;
+    else
+      age_hommes=null;
+    suspend;
+  end
+end^
+COMMENT ON PROCEDURE PROC_ETAT_AGE_PREM_UNION IS
+'Procédure entièrement refaite par André Langlet le 11/08/2009
+pour pouvoir définir les périodes et intervals de calcul'^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_ANNIV_ORDER (
+    A_MOIS INTEGER,
+    I_DOSSIER INTEGER,
+    GET_BIRT INTEGER,
+    GET_DEAT INTEGER,
+    GET_MARR INTEGER)
+RETURNS (
+    NOM VARCHAR(100),
+    PRENOM VARCHAR(100),
+    ADATE VARCHAR(100),
+    ANNEE INTEGER,
+    EV_TYPE VARCHAR(7),
+    SEXE INTEGER)
+AS
+DECLARE VARIABLE CLEF INTEGER;
+DECLARE VARIABLE DATE_MIN DATE;
+DECLARE VARIABLE AN_MIN INTEGER;
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   à : 19:05:19
+   Refonte complète par André le 25/11/2007: correction erreur ordre sur
+   date writen. Suppression requêtes intermédiaires.
+   par :
+   Description : 
+   Usage       :
+   ---------------------------------------------------------------------------*/
+  if (get_birt=1) then
+    for select i.nom
+              ,i.prenom
+              ,n.ev_ind_date_writen
+              ,n.ev_ind_date_year
+              ,'BIRT'
+              ,i.sexe
+        from evenements_ind n
+        inner join individu i on i.cle_fiche=n.ev_ind_kle_fiche
+        where n.ev_ind_date_mois=:a_mois
+          and n.ev_ind_type='BIRT'
+          and i.kle_dossier=:i_dossier
+        order by n.ev_ind_date_year,n.ev_ind_date nulls last
+        into :nom
+            ,:prenom
+            ,:adate
+            ,:annee
+            ,:ev_type
+            ,:sexe
+    do
+      suspend;
+  if (get_marr=1) then
+    for select t.union_clef
+              ,m.nom || ' ' || m.prenom
+              ,f.nom || ' ' || f.prenom
+              ,'MARR'
+              ,1
+              ,min(e.ev_fam_date_year)
+              ,min(e.ev_fam_date)
+        from evenements_fam e
+        inner join t_union t on t.union_clef=e.ev_fam_kle_famille
+        inner join individu m on m.cle_fiche=t.union_mari
+        inner join individu f on f.cle_fiche=t.union_femme
+        where e.ev_fam_date_mois=:a_mois
+          and e.ev_fam_type='MARR'
+          and m.kle_dossier=:i_dossier
+        group by 1,2,3,4,5
+        order by 6,7 nulls last
+        into :clef
+            ,:nom
+            ,:prenom
+            ,:ev_type
+            ,:sexe
+            ,:an_min
+            ,:date_min
+    do
+    begin
+      adate=null;
+      annee=null;
+      select first (1)
+             ev_fam_date_writen
+            ,ev_fam_date_year
+      from evenements_fam
+      where ev_fam_kle_famille=:clef
+        and ev_fam_date_mois=:a_mois
+        and ev_fam_type='MARR'
+      order by ev_fam_date_year,ev_fam_date nulls last
+      into :adate
+          ,:annee;
+      suspend;
+    end
+  if (get_deat=1) then
+    for select i.cle_fiche
+              ,i.nom
+              ,i.prenom
+              ,'DEAT'
+              ,i.sexe
+              ,min(d.ev_ind_date_year)
+              ,min(d.ev_ind_date)
+        from evenements_ind d
+        inner join individu i on i.cle_fiche=d.ev_ind_kle_fiche
+        where d.ev_ind_date_mois=:a_mois
+          and d.ev_ind_type in ('DEAT','BURI','CREM')
+          and i.kle_dossier=:i_dossier
+        group by 1,2,3,4,5
+        order by 6,7 nulls last
+        into :clef
+            ,:nom
+            ,:prenom
+            ,:ev_type
+            ,:sexe
+            ,:an_min
+            ,:date_min
+    do
+    begin
+      adate=null;
+      annee=null;
+      select first (1)
+             ev_ind_date_writen
+            ,ev_ind_date_year
+      from evenements_ind
+      where ev_ind_kle_fiche=:clef
+        and ev_ind_date_mois=:a_mois
+        and ev_ind_type in ('DEAT','BURI','CREM')
+      order by ev_ind_date_year,ev_ind_date nulls last
+      into :adate
+          ,:annee;
+      suspend;
+    end
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_ASCENDANCE (
+    I_CLEF INTEGER,
+    I_GENERATION INTEGER,
+    I_DOSSIER INTEGER,
+    I_PARQUI INTEGER)
+RETURNS (
+    GENERATTION INTEGER,
+    SOSA DOUBLE PRECISION,
+    NOM VARCHAR(101),
+    DATE_NAISSANCE VARCHAR(100),
+    CP_NAISSANCE VARCHAR(10),
+    VILLE_NAISSANCE VARCHAR(50),
+    LIEU_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100),
+    CP_DECES VARCHAR(10),
+    VILLE_DECES VARCHAR(50),
+    LIEU_DECES VARCHAR(100),
+    SEXE INTEGER,
+    AGE INTEGER,
+    CLE_FICHE INTEGER,
+    IMPLEXE DOUBLE PRECISION,
+    DATE_MARIAGE VARCHAR(100),
+    CP_MARIAGE VARCHAR(10),
+    VILLE_MARIAGE VARCHAR(50),
+    NUM_SOSA DOUBLE PRECISION)
+AS
+DECLARE VARIABLE CLEF_UNION INTEGER;
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   à : 19:05:30
+   Modifiée le :11/01/2006 par André, ajout du champ implexe
+   le 27/09/2006 pour concat avec prenom NULL et subd, 19/10/2006 ajout mariage
+   par :
+   Description : Cette procedure permet de préparer l'état complet d'ascendance pour un
+   individu, et sur un nombre de générations donné
+   Usage       :
+   ---------------------------------------------------------------------------*/
+   for select t.tq_niveau + 1
+             ,t.tq_sosa
+             ,i.nom||coalesce(' '||i.prenom,'')
+             ,n.ev_ind_date_writen
+             ,n.ev_ind_cp
+             ,n.ev_ind_ville
+             ,n.ev_ind_ville||coalesce(', '||n.ev_ind_subd,'')
+             ,d.ev_ind_date_writen
+             ,d.ev_ind_cp
+             ,d.ev_ind_ville
+             ,d.ev_ind_ville||coalesce(', '||d.ev_ind_subd,'')
+             ,i.sexe
+             ,(d.ev_ind_date_year -  n.ev_ind_date_year)
+             ,t.tq_cle_fiche
+             ,t.implexe
+             ,u.union_clef
+             ,i.num_sosa
+       from proc_tq_ascendance(:i_clef,:i_generation,:i_parqui,1) t
+       inner join individu i on i.cle_fiche=t.tq_cle_fiche
+       left  join evenements_ind n
+                on (n.ev_ind_kle_fiche=t.tq_cle_fiche and
+                    n.ev_ind_type = 'BIRT')
+       left  join evenements_ind d
+                on (d.ev_ind_kle_fiche=t.tq_cle_fiche and
+                    d.ev_ind_type = 'DEAT')
+       left  join t_union u
+                on (i.sexe=1 and u.union_mari=t.tq_cle_fiche and u.union_femme=t.tq_dossier)
+                or (i.sexe=2 and u.union_femme=t.tq_cle_fiche and u.union_mari=t.tq_dossier)
+       order by 1
+               ,2
+       into :generattion
+           ,:sosa
+           ,:nom
+           ,:date_naissance
+           ,:cp_naissance
+           ,:ville_naissance
+           ,:lieu_naissance
+           ,:date_deces
+           ,:cp_deces
+           ,:ville_deces
+           ,:lieu_deces
+           ,:sexe
+           ,:age
+           ,:cle_fiche
+           ,:implexe
+           ,:clef_union
+           ,:num_sosa
+   do
+   begin
+     date_mariage=null;
+     cp_mariage=null;
+     ville_mariage=null;
+     select first (1)
+            ev_fam_date_writen
+           ,ev_fam_cp
+           ,ev_fam_ville
+     from evenements_fam
+     where ev_fam_type='MARR'
+       and ev_fam_kle_famille=:clef_union
+     order by ev_fam_date_year
+             ,ev_fam_date_mois
+             ,ev_fam_date
+     into :date_mariage
+         ,:cp_mariage
+         ,:ville_mariage;
+     suspend;
+   end
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_DENOMB_ASCEND (
+    a_cle_fiche integer)
+returns (
+    niveau integer,
+    total_indi integer,
+    total_indi_distinct integer,
+    total_indi_theorique double precision,
+    cumul_indi integer,
+    cumul_indi_distinct integer,
+    cumul_indi_theorique double precision,
+    pourcent_implexe double precision)
+as
+begin
+  delete from tq_ascendance;
+  insert into tq_ascendance (tq_niveau,tq_cle_fiche)
+           values (1,:a_cle_fiche);
+  niveau=1;
+  total_indi=1;
+  total_indi_theorique=1;
+  cumul_indi_theorique=0;
+  delete from tq_consang;
+  select 100*consanguinite
+    from proc_consang(:a_cle_fiche,0,10)
+    into :pourcent_implexe;
+  delete from tq_consang;
+  while (total_indi>0) do
+  begin
+    insert into tq_ascendance (tq_niveau,tq_cle_fiche)
+      select :niveau+1,i.cle_pere
+      from tq_ascendance t
+      inner join individu i on i.cle_fiche=t.tq_cle_fiche
+      where t.tq_niveau=:niveau;
+    insert into tq_ascendance (tq_niveau,tq_cle_fiche)
+      select :niveau+1,i.cle_mere
+      from tq_ascendance t
+      inner join individu i on i.cle_fiche=t.tq_cle_fiche
+      where t.tq_niveau=:niveau;
+    select count(tq_cle_fiche),count(distinct tq_cle_fiche)
+    from tq_ascendance where tq_niveau=:niveau+1
+    into :total_indi,:total_indi_distinct;
+    if (total_indi>0) then
+    begin
+      select count(tq_cle_fiche)-1,count(distinct tq_cle_fiche)-1
+      from tq_ascendance
+      into :cumul_indi,:cumul_indi_distinct;
+      total_indi_theorique=total_indi_theorique*2;
+      cumul_indi_theorique=cumul_indi_theorique+total_indi_theorique;
+      if (niveau>1) then
+        pourcent_implexe=100*cast(cumul_indi-cumul_indi_distinct as double precision)/cumul_indi;
+      niveau=niveau+1;
+      suspend;
+      if (niveau>100) then total_indi=0;
+    end
+  end
+  delete from tq_ascendance;
+end^
+COMMENT ON PROCEDURE PROC_ETAT_DENOMB_ASCEND IS
+'Créé le : 31/07/2001 par Philippe Cazaux-Moutou
+Modifiée le : 19/12/2005 par André pour fonctionnement état et calcul consanguinité
+Pour des raisons de compatibilité avec l''état de dénombrement d''ascendance,
+100*CONSANGUINITE est retourné dans la variable POURCENT_IMPLEXE
+Réécriture et suppression paramètre Dossier: André Langlet décembre 2009
+Dernière modification 13/04/2011.'^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_DENOMB_DESCEND (
+    a_cle_fiche integer)
+returns (
+    niveau integer,
+    total_indi integer,
+    total_indi_distinct integer,
+    cumul_indi integer,
+    cumul_indi_distinct integer,
+    pourcent_implexe double precision)
+as
+begin
+  delete from tq_ascendance;
+  insert into tq_ascendance (tq_niveau,tq_cle_fiche)
+         values (1,:a_cle_fiche);
+  niveau=1;
+  total_indi=1;
+  while (total_indi>0) do
+  begin
+    insert into tq_ascendance (tq_niveau,tq_cle_fiche)
+      select :niveau+1, i.cle_fiche
+      from tq_ascendance t
+      inner join individu i on i.cle_pere=t.tq_cle_fiche or i.cle_mere=t.tq_cle_fiche
+      where t.tq_niveau=:niveau;
+    select count(tq_cle_fiche),count(distinct tq_cle_fiche)
+    from tq_ascendance where tq_niveau=:niveau+1
+    into :total_indi,:total_indi_distinct;
+    if (total_indi>0) then
+    begin
+      select count(tq_cle_fiche)-1,count(distinct tq_cle_fiche)-1
+      from tq_ascendance
+      into :cumul_indi,:cumul_indi_distinct;
+      pourcent_implexe=100*cast(cumul_indi-cumul_indi_distinct as double precision)/cumul_indi;
+      niveau=niveau+1;
+      suspend;
+      if (niveau>100) then total_indi=0;
+    end
+  end
+  delete from tq_ascendance;
+end^
+COMMENT ON PROCEDURE PROC_ETAT_DENOMB_DESCEND IS
+'Créé le : 31/07/2001 par Philippe Cazaux-Moutou.
+Modifiée le : 19/12/2005 par André le calcul utilisant PROC_DESCENDANCE ne
+comptant que les individus distincts, et les individus étant comptés deux
+fois dans les cumuls.
+Réécriture complète par André Langlet: décembre 2009, suppression paramètre Dossier'^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_DESCENDANCE (
+    i_clef integer,
+    i_niveau integer,
+    i_dossier integer)
+returns (
+    niveau integer,
+    sosa varchar(120),
+    cle_fiche integer,
+    nom varchar(40),
+    prenom varchar(60),
+    date_naissance varchar(100),
+    date_deces varchar(100),
+    sexe integer,
+    cle_pere integer,
+    cle_mere integer,
+    age integer,
+    ordre varchar(255),
+    cle_naissance integer,
+    ville_naissance varchar(50),
+    cp_naissance varchar(10),
+    dept_naissance varchar(30),
+    pays_naissance varchar(30),
+    code_dept_naissance varchar(2),
+    cle_deces integer,
+    ville_deces varchar(50),
+    cp_deces varchar(10),
+    dept_deces varchar(30),
+    pays_deces varchar(30),
+    code_dept_deces varchar(2),
+    occupation varchar(90),
+    cle_conjoint integer,
+    nom_conjoint varchar(40),
+    prenom_conjoint varchar(60),
+    cle_naissance_conjoint integer,
+    date_naissance_conjoint varchar(100),
+    ville_naissance_conjoint varchar(50),
+    cp_naissance_conjoint varchar(10),
+    dept_naissance_conjoint varchar(30),
+    pays_naissance_conjoint varchar(30),
+    code_dept_naissance_conjoint varchar(2),
+    cle_deces_conjoint integer,
+    date_deces_conjoint varchar(100),
+    ville_deces_conjoint varchar(50),
+    cp_deces_conjoint varchar(10),
+    dept_deces_conjoint varchar(30),
+    pays_deces_conjoint varchar(30),
+    code_dept_deces_conjoint varchar(2),
+    occupation_conjoint varchar(90),
+    cle_mariage integer,
+    date_mariage varchar(100),
+    ville_mariage varchar(100),
+    cp_mariage varchar(10),
+    dept_mariage varchar(30),
+    pays_mariage varchar(30),
+    code_dept_mariage varchar(2),
+    cle_union integer,
+    ordre_union integer,
+    issu_union integer)
+as
+begin
+   FOR SELECT
+     t.tq_niveau
+    ,t.tq_num_sosa
+    ,t.tq_cle_fiche
+    ,i.NOM
+    ,i.prenom
+    ,i.DATE_NAISSANCE
+    ,i.DATE_DECES
+    ,i.SEXE
+    ,i.CLE_PERE
+    ,i.CLE_MERE
+    ,i.AGE_AU_DECES
+    ,t.TQ_SOSA
+    ,n.ev_ind_clef
+    ,n.EV_IND_VILLE
+    ,n.EV_IND_CP
+    ,n.ev_ind_dept
+    ,n.ev_ind_pays
+    ,nd.rdp_code_deux
+    ,d.ev_ind_clef
+    ,d.EV_IND_VILLE
+    ,d.EV_IND_CP
+    ,d.ev_ind_dept
+    ,d.ev_ind_pays
+    ,dd.rdp_code_deux
+    ,(SELECT OCCUPATION FROM PROC_DERNIER_METIER(t.tq_cle_fiche))
+    ,p.conjoint
+    ,c.NOM
+    ,c.prenom
+    ,nc.ev_ind_clef
+    ,c.date_naissance
+    ,nc.EV_IND_VILLE
+    ,nc.EV_IND_CP
+    ,nc.ev_ind_dept
+    ,nc.ev_ind_pays
+    ,ncd.rdp_code_deux
+    ,dc.ev_ind_clef
+    ,c.date_deces
+    ,dc.EV_IND_VILLE
+    ,dc.EV_IND_CP
+    ,dc.ev_ind_dept
+    ,dc.ev_ind_pays
+    ,dcd.rdp_code_deux
+    ,(SELECT OCCUPATION FROM PROC_DERNIER_METIER(p.conjoint))
+    ,p.clef_marr
+    ,m.ev_fam_date_writen
+    ,m.EV_fam_VILLE
+    ,m.EV_fam_CP
+    ,m.ev_fam_dept
+    ,m.ev_fam_pays
+    ,md.rdp_code_deux
+    ,p.clef_union
+    ,p.ordre
+    ,(select first(1) ordre
+      from proc_conjoints_ordonnes(t.tq_ascendant,0)
+      where conjoint in (i.cle_pere,i.cle_mere))
+    FROM PROC_TQ_DESCENDANCE(:I_CLEF,:I_NIVEAU,0,1) t
+    inner join individu i on i.cle_fiche=t.tq_cle_fiche
+    left join EVENEMENTS_IND n on n.EV_IND_KLE_FICHE=i.cle_fiche
+                               and n.EV_IND_TYPE='BIRT'
+    left join ref_pays np on np.rpa_libelle=n.ev_ind_pays
+    left join ref_departements nd on nd.rdp_libelle=n.ev_ind_dept
+                                  and nd.rdp_pays=np.rpa_code
+    left join EVENEMENTS_IND d on d.EV_IND_KLE_FICHE=i.cle_fiche
+                               and d.EV_IND_TYPE='DEAT'
+    left join ref_pays dp on dp.rpa_libelle=d.ev_ind_pays
+    left join ref_departements dd on dd.rdp_libelle=d.ev_ind_dept
+                                  and dd.rdp_pays=dp.rpa_code
+    left join proc_conjoints_ordonnes(i.cle_fiche,0) p ON 1=1
+    left join individu c on c.cle_fiche=p.conjoint
+    left join EVENEMENTS_IND nc on nc.EV_IND_KLE_FICHE=p.conjoint
+                               and nc.EV_IND_TYPE='BIRT'
+    left join ref_pays ncp on ncp.rpa_libelle=nc.ev_ind_pays
+    left join ref_departements ncd on ncd.rdp_libelle=nc.ev_ind_dept
+                                  and ncd.rdp_pays=ncp.rpa_code
+    left join EVENEMENTS_IND dc on dc.EV_IND_KLE_FICHE=p.conjoint
+                               and dc.EV_IND_TYPE='DEAT'
+    left join ref_pays dcp on dcp.rpa_libelle=dc.ev_ind_pays
+    left join ref_departements dcd on dcd.rdp_libelle=dc.ev_ind_dept
+                                  and dcd.rdp_pays=dcp.rpa_code
+    left join EVENEMENTS_FAM m on m.ev_fam_clef=p.clef_marr
+    left join ref_pays mp on mp.rpa_libelle=m.ev_fam_pays
+    left join ref_departements md on md.rdp_libelle=m.ev_fam_dept
+                                  and md.rdp_pays=mp.rpa_code
+    ORDER BY t.tq_niveau
+            ,t.tq_num_sosa
+            ,p.ordre
+    INTO :NIVEAU
+         ,:SOSA
+         ,:CLE_FICHE
+         ,:NOM
+         ,:prenom
+         ,:DATE_NAISSANCE
+         ,:DATE_DECES
+         ,:SEXE
+         ,:CLE_PERE
+         ,:CLE_MERE
+         ,:AGE
+         ,:ORDRE
+         ,:cle_naissance
+         ,:ville_naissance
+         ,:cp_naissance
+         ,:dept_naissance
+         ,:pays_naissance
+         ,:code_dept_naissance
+         ,:cle_deces
+         ,:ville_deces
+         ,:cp_deces
+         ,:dept_deces
+         ,:pays_deces
+         ,:code_dept_deces
+         ,:occupation
+         ,:cle_conjoint
+         ,:nom_conjoint
+         ,:prenom_conjoint
+         ,:cle_naissance_conjoint
+         ,:date_naissance_conjoint
+         ,:ville_naissance_conjoint
+         ,:cp_naissance_conjoint
+         ,:dept_naissance_conjoint
+         ,:pays_naissance_conjoint
+         ,:code_dept_naissance_conjoint
+         ,:cle_deces_conjoint
+         ,:date_deces_conjoint
+         ,:ville_deces_conjoint
+         ,:cp_deces_conjoint
+         ,:dept_deces_conjoint
+         ,:pays_deces_conjoint
+         ,:code_dept_deces_conjoint
+         ,:occupation_conjoint
+         ,:cle_mariage
+         ,:date_mariage
+         ,:ville_mariage
+         ,:cp_mariage
+         ,:dept_mariage
+         ,:pays_mariage
+         ,:code_dept_mariage
+         ,:cle_union
+         ,:ordre_union
+         ,:issu_union
+   do
+   suspend;
+end^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_ECLAIR (
+    I_DOSSIER INTEGER,
+    I_SOSA INTEGER,
+    A_VILLE VARCHAR(50))
+RETURNS (
+    NOM VARCHAR(40),
+    CP VARCHAR(10),
+    VILLE VARCHAR(50),
+    PAYS VARCHAR(30),
+    DATE_DEBUT INTEGER,
+    DATE_FIN INTEGER,
+    NAISSANCE INTEGER,
+    BAPTEME INTEGER,
+    MARIAGE INTEGER,
+    DECES INTEGER,
+    SEP INTEGER,
+    INSEE VARCHAR(6),
+    DEPT VARCHAR(30),
+    REGION VARCHAR(50))
+AS
+DECLARE VARIABLE I INTEGER;
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   à : 19:07:00
+   Modifiée le :23/12/2006 par André
+   Refonte complète le 26/10/2006 par André (avec TQ_ECLAIR et état) pour calculer
+   les nombres de naissances, baptêmes, mariages, décès et sépultures, ajouter le champ INSEE
+   Description : Pour l'état de la liste eclair
+   Usage       :
+   Parametres  : I_DOSSIER : N° de dossier
+                 I_SOSA : si 1 on ne sort que les ind avec N° sosa
+                 S_VILLE : si une ville alors on ne remonte que pour cette ville
+   ---------------------------------------------------------------------------*/
+    select s_out from f_maj_sans_accent(:a_ville) into :a_ville;
+    if (A_VILLE='') then
+      a_ville='%';
+    if (I_SOSA is null) then I_SOSA = 0;
+    DELETE FROM TQ_ECLAIR;
+    I=gen_id(GEN_TQ_ECLAIR,-gen_id(GEN_TQ_ECLAIR,0));
+    INSERT INTO TQ_ECLAIR(TQ_NOM
+                         ,TQ_CP
+                         ,TQ_VILLE
+                         ,TQ_PAYS
+                         ,TQ_INSEE
+                         ,TQ_DEPT
+                         ,TQ_REGION
+                         ,TQ_DATE
+                         ,TQ_NAISSANCE)
+                   select i.NOM
+                         ,e.EV_IND_CP
+                         ,e.EV_IND_VILLE
+                         ,e.EV_IND_PAYS
+                         ,e.EV_IND_INSEE
+                         ,e.EV_IND_DEPT
+                         ,e.EV_IND_REGION
+                         ,e.EV_IND_DATE_YEAR
+                         ,1
+                   from EVENEMENTS_IND e
+                        inner join INDIVIDU i on i.CLE_FICHE=e.EV_IND_KLE_FICHE
+                   where e.EV_IND_TYPE='BIRT'
+                     and e.EV_IND_DATE_YEAR is not null
+                     and e.EV_IND_VILLE is not null
+                     and (:A_VILLE='%' or
+                         (select s_out from f_maj_sans_accent(e.EV_IND_VILLE)) like :A_VILLE)
+                     and i.KLE_DOSSIER=:I_DOSSIER
+                     and (:I_SOSA=0 or (:I_SOSA=1 and i.NUM_SOSA>0));
+    INSERT INTO TQ_ECLAIR(TQ_NOM
+                         ,TQ_CP
+                         ,TQ_VILLE
+                         ,TQ_PAYS
+                         ,TQ_INSEE
+                         ,TQ_DEPT
+                         ,TQ_REGION
+                         ,TQ_DATE
+                         ,TQ_BAPTEME)
+                   select i.NOM
+                         ,e.EV_IND_CP
+                         ,e.EV_IND_VILLE
+                         ,e.EV_IND_PAYS
+                         ,e.EV_IND_INSEE
+                         ,e.EV_IND_DEPT
+                         ,e.EV_IND_REGION
+                         ,e.EV_IND_DATE_YEAR
+                         ,1
+                   from EVENEMENTS_IND e
+                        inner join INDIVIDU i on i.CLE_FICHE=e.EV_IND_KLE_FICHE
+                   where e.EV_IND_TYPE in ('CHR','BAPM')
+                     and e.EV_IND_DATE_YEAR is not null
+                     and e.EV_IND_VILLE is not null
+                     and (:A_VILLE='%' or
+                         (select s_out from f_maj_sans_accent(e.EV_IND_VILLE)) like :A_VILLE)
+                     and i.KLE_DOSSIER=:I_DOSSIER
+                     and (:I_SOSA=0 or (:I_SOSA=1 and i.NUM_SOSA>0));
+    INSERT INTO TQ_ECLAIR(TQ_NOM
+                         ,TQ_CP
+                         ,TQ_VILLE
+                         ,TQ_PAYS
+                         ,TQ_INSEE
+                         ,TQ_DEPT
+                         ,TQ_REGION
+                         ,TQ_DATE
+                         ,TQ_DECES)
+                   select i.NOM
+                         ,e.EV_IND_CP
+                         ,e.EV_IND_VILLE
+                         ,e.EV_IND_PAYS
+                         ,e.EV_IND_INSEE
+                         ,e.EV_IND_DEPT
+                         ,e.EV_IND_REGION
+                         ,e.EV_IND_DATE_YEAR
+                         ,1
+                   from EVENEMENTS_IND e
+                        inner join INDIVIDU i on i.CLE_FICHE=e.EV_IND_KLE_FICHE
+                   where e.EV_IND_TYPE='DEAT'
+                     and e.EV_IND_DATE_YEAR is not null
+                     and e.EV_IND_VILLE is not null
+                     and (:A_VILLE='%' or
+                         (select s_out from f_maj_sans_accent(e.EV_IND_VILLE)) like :A_VILLE)
+                     and i.KLE_DOSSIER=:I_DOSSIER
+                     and (:I_SOSA=0 or (:I_SOSA=1 and i.NUM_SOSA>0));
+    INSERT INTO TQ_ECLAIR(TQ_NOM
+                         ,TQ_CP
+                         ,TQ_VILLE
+                         ,TQ_PAYS
+                         ,TQ_INSEE
+                         ,TQ_DEPT
+                         ,TQ_REGION
+                         ,TQ_DATE
+                         ,TQ_SEPULTURE)
+                   select i.NOM
+                         ,e.EV_IND_CP
+                         ,e.EV_IND_VILLE
+                         ,e.EV_IND_PAYS
+                         ,e.EV_IND_INSEE
+                         ,e.EV_IND_DEPT
+                         ,e.EV_IND_REGION
+                         ,e.EV_IND_DATE_YEAR
+                         ,1
+                   from EVENEMENTS_IND e
+                        inner join INDIVIDU i on i.CLE_FICHE=e.EV_IND_KLE_FICHE
+                   where e.EV_IND_TYPE='BURI'
+                     and e.EV_IND_DATE_YEAR is not null
+                     and e.EV_IND_VILLE is not null
+                     and (:A_VILLE='%' or
+                         (select s_out from f_maj_sans_accent(e.EV_IND_VILLE)) like :A_VILLE)
+                     and i.KLE_DOSSIER=:I_DOSSIER
+                     and (:I_SOSA=0 or (:I_SOSA=1 and i.NUM_SOSA>0));
+    INSERT INTO TQ_ECLAIR(TQ_NOM
+                         ,TQ_CP
+                         ,TQ_VILLE
+                         ,TQ_PAYS
+                         ,TQ_INSEE
+                         ,TQ_DEPT
+                         ,TQ_REGION
+                         ,TQ_DATE
+                         ,TQ_MARIAGE)
+                   select i.NOM
+                         ,e.EV_FAM_CP
+                         ,e.EV_FAM_VILLE
+                         ,e.EV_FAM_PAYS
+                         ,e.EV_FAM_INSEE
+                         ,e.EV_FAM_DEPT
+                         ,e.EV_FAM_REGION
+                         ,e.EV_FAM_DATE_YEAR
+                         ,1
+                   from T_UNION u
+                        inner join EVENEMENTS_FAM e on e.EV_FAM_KLE_FAMILLE=u.UNION_CLEF
+                        inner join INDIVIDU i on i.CLE_FICHE=u.UNION_MARI
+                   where e.EV_FAM_TYPE='MARR'
+                     and e.EV_FAM_DATE_YEAR is not null
+                     and e.EV_FAM_VILLE is not null
+                     and (:A_VILLE='%' or
+                         (select s_out from f_maj_sans_accent(e.EV_FAM_VILLE)) like :A_VILLE)
+                     and i.KLE_DOSSIER=:I_DOSSIER
+                     and (:I_SOSA=0 or (:I_SOSA=1 and i.NUM_SOSA>0));
+   INSERT INTO TQ_ECLAIR(TQ_NOM
+                         ,TQ_CP
+                         ,TQ_VILLE
+                         ,TQ_PAYS
+                         ,TQ_INSEE
+                         ,TQ_DEPT
+                         ,TQ_REGION
+                         ,TQ_DATE
+                         ,TQ_MARIAGE)
+                   select i.NOM
+                         ,e.EV_FAM_CP
+                         ,e.EV_FAM_VILLE
+                         ,e.EV_FAM_PAYS
+                         ,e.EV_FAM_INSEE
+                         ,e.EV_FAM_DEPT
+                         ,e.EV_FAM_REGION
+                         ,e.EV_FAM_DATE_YEAR
+                         ,1
+                   from T_UNION u
+                        inner join EVENEMENTS_FAM e  on e.EV_FAM_KLE_FAMILLE=u.UNION_CLEF
+                        inner join INDIVIDU i on i.CLE_FICHE=u.UNION_FEMME
+                   where e.EV_FAM_TYPE='MARR'
+                     and e.EV_FAM_DATE_YEAR is not null
+                     and e.EV_FAM_VILLE is not null
+                     and (:A_VILLE='%' or
+                         (select s_out from f_maj_sans_accent(e.EV_FAM_VILLE)) like :A_VILLE)
+                     and i.KLE_DOSSIER=:I_DOSSIER
+                     and (:I_SOSA=0 or (:I_SOSA=1 and i.NUM_SOSA>0));
+    for select TQ_NOM
+              ,TQ_CP
+              ,TQ_VILLE
+              ,TQ_PAYS
+              ,TQ_INSEE
+              ,TQ_DEPT
+              ,TQ_REGION
+              ,min(TQ_DATE)
+              ,max(TQ_DATE)
+              ,sum(TQ_NAISSANCE)
+              ,sum(TQ_BAPTEME)
+              ,sum(TQ_MARIAGE)
+              ,sum(TQ_DECES)
+              ,sum(TQ_SEPULTURE)
+        from TQ_ECLAIR
+        group by TQ_NOM
+              ,TQ_CP
+              ,TQ_VILLE
+              ,TQ_PAYS
+              ,TQ_INSEE
+              ,TQ_DEPT
+              ,TQ_REGION
+        INTO :NOM
+            ,:CP
+            ,:VILLE
+            ,:PAYS
+            ,:INSEE
+            ,:DEPT
+            ,:REGION
+            ,:DATE_DEBUT
+            ,:DATE_FIN
+            ,:NAISSANCE
+            ,:BAPTEME
+            ,:MARIAGE
+            ,:DECES
+            ,:SEP
+        DO
+          SUSPEND;
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_FICHE (
+    i_clef integer)
+returns (
+    cle_fiche integer,
+    nom varchar(40),
+    prenom varchar(60),
+    date_naissance varchar(100),
+    lieu_naissance varchar(210),
+    date_deces varchar(100),
+    lieu_deces varchar(210),
+    sexe integer,
+    filliation varchar(30),
+    comment blob sub_type 1 segment size 80,
+    pere_nom varchar(120),
+    pere_naissance varchar(100),
+    pere_lieu_naissance varchar(210),
+    pere_deces varchar(100),
+    pere_lieu_deces varchar(210),
+    mere_nom varchar(120),
+    mere_naissance varchar(100),
+    mere_lieu_naissance varchar(210),
+    mere_deces varchar(100),
+    mere_lieu_deces varchar(210),
+    photo blob sub_type 0 segment size 80,
+    prefixe varchar(30),
+    suffixe varchar(30),
+    surnom varchar(120),
+    num_sosa double precision,
+    sosa1_nomprenom varchar(105),
+    sosas varchar(30),
+    sosas_pere varchar(30),
+    sosas_mere varchar(30),
+    age_deces varchar(60),
+    age_deces_pere varchar(60),
+    age_deces_mere varchar(60))
+as
+declare variable langue varchar(3);
+begin
+  select ds.ds_langue
+  from individu i
+  inner join dossier ds on ds.cle_dossier=i.kle_dossier
+  where i.cle_fiche=:i_clef
+  into langue;
+  rdb$set_context('USER_SESSION','LANGUE',langue);
+   select  i.cle_fiche
+          ,i.nom
+          ,i.prenom
+          ,n.ev_ind_date_writen
+          ,coalesce(n.ev_ind_ville,'')||coalesce(', '||n.ev_ind_subd,'')
+                     ||coalesce(', '||n.ev_ind_dept,'')||coalesce(', '||n.ev_ind_pays,'')
+          ,d.ev_ind_date_writen
+          ,coalesce(d.ev_ind_ville,'')||coalesce(', '||d.ev_ind_subd,'')
+                     ||coalesce(', '||d.ev_ind_dept,'')||coalesce(', '||d.ev_ind_pays,'')
+          ,i.sexe
+          ,i.filliation
+          ,i.comment
+          ,i.prefixe
+          ,i.suffixe
+          ,i.surnom
+          ,i.num_sosa
+          ,mu.multi_reduite
+          ,p.nom||coalesce(', '||p.prenom,'')
+          ,np.ev_ind_date_writen
+          ,coalesce(np.ev_ind_ville,'')||coalesce(', '||np.ev_ind_subd,'')
+                     ||coalesce(', '||np.ev_ind_dept,'')||coalesce(', '||np.ev_ind_pays,'')
+          ,dp.ev_ind_date_writen
+          ,coalesce(dp.ev_ind_ville,'')||coalesce(', '||dp.ev_ind_subd,'')
+                     ||coalesce(', '||dp.ev_ind_dept,'')||coalesce(', '||dp.ev_ind_pays,'')
+          ,m.nom||coalesce(', '||m.prenom,'')
+          ,nm.ev_ind_date_writen
+          ,coalesce(nm.ev_ind_ville,'')||coalesce(', '||nm.ev_ind_subd,'')
+                     ||coalesce(', '||nm.ev_ind_dept,'')||coalesce(', '||nm.ev_ind_pays,'')
+          ,dm.ev_ind_date_writen
+          ,coalesce(dm.ev_ind_ville,'')||coalesce(', '||dm.ev_ind_subd,'')
+                     ||coalesce(', '||dm.ev_ind_dept,'')||coalesce(', '||dm.ev_ind_pays,'')
+          ,s.nom||coalesce(', '||s.prenom,'')
+          ,(select sosas from proc_sosas(i.cle_fiche))
+          ,(select sosas from proc_sosas(p.cle_fiche))
+          ,(select sosas from proc_sosas(m.cle_fiche))
+          ,(select age_texte from proc_age_texte(i.date_naissance,i.date_deces))
+          ,(select age_texte from proc_age_texte(p.date_naissance,p.date_deces))
+          ,(select age_texte from proc_age_texte(m.date_naissance,m.date_deces))
+        from  individu i
+              left join evenements_ind n on i.cle_fiche=n.ev_ind_kle_fiche
+                                        and n.ev_ind_type='BIRT'
+              left join evenements_ind d on i.cle_fiche=d.ev_ind_kle_fiche
+                                        and d.ev_ind_type='DEAT'
+              left join media_pointeurs mp on mp.mp_cle_individu=i.cle_fiche
+                                           and mp.mp_identite=1
+              left join multimedia mu on mu.multi_clef=mp.mp_media
+              left join individu p on p.cle_fiche=i.cle_pere
+              left join evenements_ind np on np.ev_ind_kle_fiche=p.cle_fiche
+                                         and np.ev_ind_type='BIRT'
+              left join evenements_ind dp on dp.ev_ind_kle_fiche=p.cle_fiche
+                                         and dp.ev_ind_type='DEAT'
+              left join individu m on m.cle_fiche=i.cle_mere
+              left join evenements_ind nm on nm.ev_ind_kle_fiche=m.cle_fiche
+                                         and nm.ev_ind_type='BIRT'
+              left join evenements_ind dm on dm.ev_ind_kle_fiche=m.cle_fiche
+                                         and dm.ev_ind_type='DEAT'
+              left join individu s on s.kle_dossier=i.kle_dossier
+                                   and s.num_sosa=1
+          where i.cle_fiche = :i_clef
+         into :cle_fiche
+             ,:nom
+             ,:prenom
+             ,:date_naissance
+             ,:lieu_naissance
+             ,:date_deces
+             ,:lieu_deces
+             ,:sexe
+             ,:filliation
+             ,:comment
+             ,:prefixe
+             ,:suffixe
+             ,:surnom
+             ,:num_sosa
+             ,:photo
+             ,:pere_nom
+             ,:pere_naissance
+             ,:pere_lieu_naissance
+             ,:pere_deces
+             ,:pere_lieu_deces
+             ,:mere_nom
+             ,:mere_naissance
+             ,:mere_lieu_naissance
+             ,:mere_deces
+             ,:mere_lieu_deces
+             ,:sosa1_nomprenom
+             ,:sosas
+             ,:sosas_pere
+             ,:sosas_mere
+             ,:age_deces
+             ,:age_deces_pere
+             ,:age_deces_mere;
+  suspend;
+end^
+COMMENT ON PROCEDURE PROC_ETAT_FICHE IS
+'Procédure entièrement refaite par André Langlet le 13/06/2009'^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_FICHE_FAMILIALE (
+    acle_union integer)
+returns (
+    a_epoux_cle integer,
+    a_epoux_nomprenom varchar(105),
+    a_epoux_naissance varchar(100),
+    a_epoux_lieu_naissance varchar(166),
+    a_epoux_deces varchar(100),
+    a_epoux_lieu_deces varchar(166),
+    a_epouse_cle integer,
+    a_epouse_nomprenom varchar(105),
+    a_epouse_naissance varchar(100),
+    a_epouse_lieu_naissance varchar(166),
+    a_epouse_deces varchar(100),
+    a_epouse_lieu_deces varchar(166),
+    a_epoux_photo blob sub_type 0 segment size 80,
+    a_epouse_photo blob sub_type 0 segment size 80,
+    a_epoux_pere_nom varchar(40),
+    a_epoux_pere_prenom varchar(60),
+    a_epoux_mere_nom varchar(40),
+    a_epoux_mere_prenom varchar(60),
+    a_epouse_pere_nom varchar(40),
+    a_epouse_pere_prenom varchar(60),
+    a_epouse_mere_nom varchar(40),
+    a_epouse_mere_prenom varchar(60),
+    a_epoux_annee integer,
+    a_epouse_annee integer,
+    a_epoux_age_deces integer,
+    a_epouse_age_deces integer,
+    a_epoux_sosa double precision,
+    a_epouse_sosa double precision,
+    a_sosa1_nomprenom varchar(105),
+    a_epoux_nom varchar(40),
+    a_epouse_nom varchar(40),
+    sosas_epoux varchar(30),
+    sosas_epouse varchar(30),
+    a_epoux_age varchar(60),
+    a_epouse_age varchar(60))
+as
+declare variable mari integer;
+declare variable femme integer;
+declare variable langue varchar(3);
+begin
+     select union_mari,
+            union_femme
+     from t_union
+     where union_clef=:acle_union
+     into :mari
+         ,:femme;
+
+     select first(1) ds.ds_langue
+     from individu i
+     inner join dossier ds on ds.cle_dossier=i.kle_dossier
+     where (:mari>0 and i.cle_fiche=:mari)or(:femme>0 and i.cle_fiche=:femme)
+     into langue;
+     rdb$set_context('USER_SESSION','LANGUE',langue);
+
+        /*l epoux*/
+     if (mari>0) then
+       select
+            i.cle_fiche
+           ,i.nom
+           ,coalesce(i.nom||', ','')||coalesce(i.prenom,'')
+           ,n.ev_ind_date_writen
+           ,coalesce(n.ev_ind_ville,'')||coalesce(', '||n.ev_ind_subd,'')
+                     ||coalesce(', '||n.ev_ind_dept,'')||coalesce(', '||n.ev_ind_pays,'')
+           ,d.ev_ind_date_writen
+           ,coalesce(d.ev_ind_ville,'')||coalesce(', '||d.ev_ind_subd,'')
+                     ||coalesce(', '||d.ev_ind_dept,'')||coalesce(', '||d.ev_ind_pays,'')
+           ,i.annee_naissance
+           ,i.age_au_deces
+           ,i.num_sosa
+           ,p.nom
+           ,p.prenom
+           ,m.nom
+           ,m.prenom
+           ,mu.multi_reduite
+           ,(select sosas from proc_sosas(i.cle_fiche))
+           ,(select age_texte from proc_age_texte(i.date_naissance,i.date_deces))
+       from individu i
+         left join evenements_ind n on i.cle_fiche=n.ev_ind_kle_fiche
+                                   and n.ev_ind_type='BIRT'
+         left join evenements_ind d on i.cle_fiche=d.ev_ind_kle_fiche
+                                   and d.ev_ind_type='DEAT'
+         left join individu p on p.cle_fiche=i.cle_pere
+         left join individu m on m.cle_fiche=i.cle_mere
+         left join media_pointeurs mp on mp.mp_cle_individu=i.cle_fiche
+                                     and mp.mp_identite=1
+         left join multimedia mu on mu.multi_clef=mp.mp_media
+       where i.cle_fiche =:mari
+       into   :a_epoux_cle
+             ,:a_epoux_nom
+             ,:a_epoux_nomprenom
+             ,:a_epoux_naissance
+             ,:a_epoux_lieu_naissance
+             ,:a_epoux_deces
+             ,:a_epoux_lieu_deces
+             ,:a_epoux_annee
+             ,:a_epoux_age_deces
+             ,:a_epoux_sosa
+             ,:a_epoux_pere_nom
+             ,:a_epoux_pere_prenom
+             ,:a_epoux_mere_nom
+             ,:a_epoux_mere_prenom
+             ,:a_epoux_photo
+             ,:sosas_epoux
+             ,:a_epoux_age;
+        /*l epouse*/
+     if (femme>0) then
+       select
+            i.cle_fiche,
+            i.nom, 
+            coalesce(i.nom||', ','')||coalesce(i.prenom,''),
+            n.ev_ind_date_writen,
+            coalesce(n.ev_ind_ville,'')||coalesce(', '||n.ev_ind_subd,'')
+                     ||coalesce(', '||n.ev_ind_dept,'')||coalesce(', '||n.ev_ind_pays,''),
+            d.ev_ind_date_writen,
+            coalesce(d.ev_ind_ville,'')||coalesce(', '||d.ev_ind_subd,'')
+                     ||coalesce(', '||d.ev_ind_dept,'')||coalesce(', '||d.ev_ind_pays,''),
+            i.annee_naissance,
+            i.age_au_deces,
+            i.num_sosa,
+            p.nom,
+            p.prenom,
+            m.nom,
+            m.prenom,
+            mu.multi_reduite
+           ,(select sosas from proc_sosas(i.cle_fiche))
+           ,(select age_texte from proc_age_texte(i.date_naissance,i.date_deces))
+       from individu i
+         left join evenements_ind n on i.cle_fiche=n.ev_ind_kle_fiche
+                                   and n.ev_ind_type='BIRT'
+         left join evenements_ind d on i.cle_fiche=d.ev_ind_kle_fiche
+                                   and d.ev_ind_type='DEAT'
+         left join individu p on p.cle_fiche=i.cle_pere
+         left join individu m on m.cle_fiche=i.cle_mere
+         left join media_pointeurs mp on mp.mp_cle_individu=i.cle_fiche
+                                     and mp.mp_identite=1
+         left join multimedia mu on mu.multi_clef=mp.mp_media
+       where i.cle_fiche =:femme
+       into   :a_epouse_cle
+             ,:a_epouse_nom
+             ,:a_epouse_nomprenom
+             ,:a_epouse_naissance
+             ,:a_epouse_lieu_naissance
+             ,:a_epouse_deces
+             ,:a_epouse_lieu_deces
+             ,:a_epouse_annee
+             ,:a_epouse_age_deces
+             ,:a_epouse_sosa
+             ,:a_epouse_pere_nom
+             ,:a_epouse_pere_prenom
+             ,:a_epouse_mere_nom
+             ,:a_epouse_mere_prenom
+             ,:a_epouse_photo
+             ,:sosas_epouse
+             ,:a_epouse_age;
+     select nom||coalesce(', '||prenom,'') from individu where num_sosa=1
+          and kle_dossier=(select first (1) kle_dossier from individu
+                           where (:a_epoux_cle>0 and cle_fiche=:a_epoux_cle)
+                             or (:a_epouse_cle>0 and cle_fiche=:a_epouse_cle))
+     into :a_sosa1_nomprenom;
+     suspend;
+end^
+COMMENT ON PROCEDURE PROC_ETAT_FICHE_FAMILIALE IS
+'Dernière modification le 5/02/2010 par André Langlet, remplacement multi_media
+par multi_reduite'^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_LONGEVITE (
+    a_cle_dossier integer,
+    limit_on_date integer,
+    limit_on_sosa integer,
+    year_from integer,
+    year_to integer,
+    interval integer)
+returns (
+    interval_start integer,
+    interval_end integer,
+    nb_homme integer,
+    cumul_age_homme integer,
+    nb_femme integer,
+    cumul_age_femme integer)
+as
+declare variable ok_suspend integer;
+declare variable annee_naissance integer;
+declare variable annee_deces integer;
+declare variable sexe integer;
+begin
+    ok_suspend=0;
+    for
+      select annee_naissance
+            ,annee_deces
+            ,sexe
+        from individu
+        where kle_dossier=:a_cle_dossier
+          and sexe>0
+          and annee_deces is not null
+          and annee_naissance is not null
+          and (:limit_on_sosa=0 or num_sosa>0)
+          and (:limit_on_date=0 or annee_deces between :year_from and :year_to)
+        order by annee_deces
+      into :annee_naissance
+          ,:annee_deces
+          ,:sexe
+    do
+    begin
+      if (ok_suspend=0) then --c'est le premier enregistrement
+      begin
+        --initialisation des intervals et autorisation dernier suspend
+        interval_start=annee_deces-mod(annee_deces,interval);
+        interval_end=interval_start+interval-1;
+        nb_homme=0;
+        cumul_age_homme=0;
+        nb_femme=0;
+        cumul_age_femme=0;
+        ok_suspend=1;
+      end
+      else
+        if (annee_deces>interval_end) then --l'année est dans un interval suivant
+        begin
+          --on expédie le record
+          suspend;
+          --changement d'interval
+          while (annee_deces>interval_end) do
+          begin
+            --initialisation du suspend
+            interval_start=interval_start+interval;
+            interval_end=interval_start+interval-1;
+            nb_homme=0;
+            cumul_age_homme=0;
+            nb_femme=0;
+            cumul_age_femme=0;
+            --si l'année est encore après, on édite
+            if (annee_deces>interval_end) then
+              suspend;
+          end
+        end
+        if (sexe=1) then
+        begin
+          nb_homme=nb_homme+1;
+          cumul_age_homme=cumul_age_homme+annee_deces-annee_naissance;
+        end
+        else
+        begin
+          nb_femme=nb_femme+1;
+          cumul_age_femme=cumul_age_femme+annee_deces-annee_naissance;
+        end
+    end
+    if (ok_suspend=1) then
+        suspend;
+end^
+COMMENT ON PROCEDURE PROC_ETAT_LONGEVITE IS
+'Procédure refaite par André Langlet le 02/08/2009
+pour correction erreurs et optimisation'^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_NB_ENFANT_UNION (
+    a_cle_dossier integer,
+    limit_on_date integer,
+    limit_on_sosa integer,
+    year_from integer,
+    year_to integer,
+    interval integer)
+returns (
+    interval_start integer,
+    interval_end integer,
+    nb_union integer,
+    nb_enfants integer)
+as
+declare variable ok_suspend integer;
+declare variable nombre_enfants integer;
+declare variable annee_union integer;
+begin
+  ok_suspend=0;
+  for
+    select nombre_enfants
+    ,annee_union
+    from (select nombre_enfants
+          ,iif(prem_enf is null,prem_eve,iif(prem_eve is null,prem_enf,minvalue(prem_enf,prem_eve)))as annee_union
+          from (select q.nombre_enfants
+                ,(select min(annee_naissance)
+                  from individu 
+                  where cle_pere is not distinct from q.union_mari
+                    and cle_mere is not distinct from q.union_femme)as prem_enf
+                ,(select min(ev_fam_date_year)
+                  from evenements_fam
+                  where ev_fam_kle_famille=q.union_clef)as prem_eve
+                from (select count(*) as nombre_enfants
+                      ,u.union_clef
+                      ,u.union_mari
+                      ,u.union_femme
+                      from individu i
+                      inner join t_union u on u.union_mari is not distinct from i.cle_pere
+                        and u.union_femme is not distinct from i.cle_mere
+                      where i.kle_dossier=:a_cle_dossier
+                        and (:limit_on_sosa=0 or i.num_sosa>0)
+                      group by u.union_clef,u.union_mari, u.union_femme) as q))
+    where annee_union is not null
+    and (:limit_on_date=0 or annee_union between :year_from and :year_to)
+    order by annee_union
+  into :nombre_enfants
+      ,:annee_union
+  do
+  begin
+    if (ok_suspend=0) then --c'est le premier enregistrement
+    begin
+      --initialisation des intervals et autorisation dernier suspend
+      interval_start=annee_union-mod(annee_union,interval);
+      interval_end=interval_start+interval-1;
+      nb_union=1;
+      nb_enfants=nombre_enfants;
+      ok_suspend=1;
+    end
+    else
+      if (annee_union>interval_end) then --l'année est dans un interval suivant
+      begin
+        --on expédie le record
+        suspend;
+        --changement d'interval
+        while (annee_union>interval_end) do
+        begin
+          --initialisation du suspend
+          interval_start=interval_start+interval;
+          interval_end=interval_start+interval-1;
+          nb_union=0;
+          nb_enfants=0;
+          --si l'année est encore après, on édite
+          if (annee_union>interval_end) then
+            suspend;
+        end
+        nb_union=1;
+        nb_enfants=nombre_enfants;
+      end
+      else
+      begin
+        nb_union=nb_union+1;
+        nb_enfants=nb_enfants+nombre_enfants;
+      end
+  end
+  if (ok_suspend=1) then
+    suspend;
+end^
+COMMENT ON PROCEDURE PROC_ETAT_NB_ENFANT_UNION IS
+'Procédure refaite par André Langlet le 08/08/2009
+pour correction erreurs et optimisation'^
+
+CREATE OR ALTER PROCEDURE PROC_ETAT_RECENSEMENT (
+    a_cle_dossier integer,
+    limit_on_date integer,
+    limit_on_sosa integer,
+    year_from integer,
+    year_to integer,
+    interval integer,
+    longevite_h integer,
+    longevite_f integer)
+returns (
+    annee integer,
+    nombre_individus integer)
+as
+declare variable prem_date integer;
+declare variable dern_date integer;
+declare variable i integer;
+declare variable an_actuel integer;
+declare variable reste integer;
+begin
+  delete from tq_id;
+  if (not interval>0) then
+    interval=1;
+  an_actuel=extract(year from cast('now' as date));
+  for select prem_date
+            ,iif(decede=1 or prem_date<:an_actuel-iif(sexe=1,:longevite_h,iif(sexe=2,:longevite_f,0))
+                ,dern_date,:an_actuel)
+    from(select decede
+        ,sexe
+        ,minvalue(ev_ind_min,ev_fam_min,enf_min) as prem_date
+        ,maxvalue(ev_ind_max,ev_fam_max,enf_max) as dern_date
+        from (select i.decede
+              ,i.sexe
+              ,coalesce(min(e.ev_ind_date_year),9000) as ev_ind_min
+              ,coalesce(max(e.ev_ind_date_year),-9000) as ev_ind_max
+              ,coalesce(min(f.ev_fam_date_year),9000) as ev_fam_min
+              ,coalesce(max(f.ev_fam_date_year),-9000) as ev_fam_max
+              ,coalesce(min(p.annee_naissance),9000) as enf_min
+              ,coalesce(max(p.annee_naissance),-9000) as enf_max
+              from individu i
+              left join evenements_ind e on e.ev_ind_kle_fiche=i.cle_fiche
+                                and e.ev_ind_date_year is not null
+              left join t_union u on i.cle_fiche in (u.union_mari,u.union_femme)
+              left join evenements_fam f on f.ev_fam_kle_famille=u.union_clef
+                                and f.ev_fam_date_year is not null
+              left join individu p on i.cle_fiche in (p.cle_pere,p.cle_mere)
+              where i.kle_dossier=:a_cle_dossier
+                and (:limit_on_sosa=0 or i.num_sosa>0)
+              group by i.cle_fiche,i.decede,i.sexe))
+    where prem_date<>9000
+    and (:limit_on_date=0 or (dern_date>:year_from and prem_date<:year_to))
+  into :prem_date
+      ,:dern_date
+  do
+  begin
+    if (limit_on_date=1) then
+    begin
+      if (prem_date<year_from) then
+        prem_date=year_from;
+      if (dern_date>year_to) then
+        dern_date=year_to;
+    end
+    i=prem_date;
+    reste=mod(i,interval);
+    if (reste>0) then
+      i=i-reste+interval;
+    while (i<=dern_date) do
+    begin
+      update tq_id
+        set id2=id2+1
+        where id1=:i;
+      if (row_count=0) then
+        insert into tq_id (id1,id2)
+          values(:i,1);
+      i=i+interval;
+    end
+  end
+  for select id1,id2
+    from tq_id
+    order by id1
+  into :annee
+      ,:nombre_individus
+  do
+    suspend;
+end^
+COMMENT ON PROCEDURE PROC_ETAT_RECENSEMENT IS
+'Procédure refaite par André Langlet le 10/08/2009
+Précédente version incohérente!'^
+
+CREATE OR ALTER PROCEDURE PROC_EVE_IND (
+    i_cle integer)
+returns (
+    ev_ind_clef integer,
+    ev_ind_kle_fiche integer,
+    ev_ind_kle_dossier integer,
+    ev_ind_type varchar(7),
+    ev_ind_date_writen varchar(100),
+    ev_ind_date_year integer,
+    ev_ind_date date,
+    ev_ind_adresse varchar(50),
+    ev_ind_cp varchar(10),
+    ev_ind_ville varchar(50),
+    ev_ind_dept varchar(30),
+    ev_ind_pays varchar(30),
+    ev_ind_cause varchar(90),
+    ev_ind_source blob sub_type 1 segment size 80,
+    ev_ind_comment blob sub_type 1 segment size 80,
+    ev_ind_typeannee integer,
+    ev_ind_description varchar(90),
+    ev_ind_region varchar(50),
+    ev_ind_subd varchar(50),
+    ev_libelle varchar(30),
+    ev_ind_acte integer,
+    ev_ind_insee varchar(6),
+    ev_ind_heure time,
+    ev_ind_ordre integer,
+    ev_ind_titre_event varchar(40),
+    ev_ind_latitude decimal(15,8),
+    ev_ind_longitude numeric(15,8),
+    ev_ind_media integer,
+    ev_ind_age integer,
+    ev_ind_details integer)
+as
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   à : 19:10:10
+   Modifications par André, ajout eve.EV_IND_DATE, eve.EV_IND_TYPE dans order by
+   et EV_LIBELLE dépendant du type EVEN. Ajout MOIS,latitude, longitude, TITRE='Divers'
+   EV_IND_MEDIA, EV_IND_AGE, EV_IND_DETAILS
+   Dernière modification: 09/06/2009
+   Usage       :
+   ---------------------------------------------------------------------------*/
+  for
+    select e.ev_ind_clef
+          ,e.ev_ind_kle_fiche
+          ,e.ev_ind_kle_dossier
+          ,e.ev_ind_type
+          ,e.ev_ind_date_writen
+          ,e.ev_ind_date_year
+          ,e.ev_ind_date
+          ,e.ev_ind_adresse
+          ,e.ev_ind_cp
+          ,e.ev_ind_ville
+          ,e.ev_ind_dept
+          ,e.ev_ind_pays
+          ,e.ev_ind_cause
+          ,e.ev_ind_source
+          ,e.ev_ind_comment
+          ,e.ev_ind_typeannee
+          ,e.ev_ind_description
+          ,e.ev_ind_region
+          ,e.ev_ind_subd
+          ,case e.ev_ind_type
+                when 'EVEN' then coalesce(e.ev_ind_titre_event,r.ref_eve_lib_long)
+                else r.ref_eve_lib_long
+                end
+          ,e.ev_ind_acte
+          ,e.ev_ind_insee
+          ,e.ev_ind_heure
+          ,e.ev_ind_ordre
+          ,case e.ev_ind_type
+                when 'EVEN' then coalesce(e.ev_ind_titre_event,r.ref_eve_lib_long)
+                else e.ev_ind_titre_event
+                end
+          ,e.ev_ind_latitude
+          ,e.ev_ind_longitude
+          ,(select first(1) p.mp_media from media_pointeurs p
+            where p.mp_pointe_sur=e.ev_ind_clef
+            and p.mp_table='I'
+            and p.mp_type_image='A')
+          ,case e.ev_ind_type
+                when 'BIRT' then 0
+                else (select coalesce(age,0)
+                      from proc_age_a_date( e.ev_ind_kle_fiche
+                                           ,e.ev_ind_date
+                                           ,e.ev_ind_date_mois
+                                           ,e.ev_ind_date_year))
+                end
+          ,(select 1 from rdb$database
+            where exists (select *
+                          from sources_record s
+                          left join media_pointeurs p on p.mp_table='F'
+                                                     and p.mp_type_image='F'
+                                                     and p.mp_pointe_sur=s.id
+                          where s.type_table='I'
+                            and s.data_id=e.ev_ind_clef
+                            and (char_length(s.auth)>0
+                                 or char_length(s.titl)>0
+                                 or char_length(s.abr)>0
+                                 or char_length(s.publ)>0
+                                 or char_length(s.texte)>0
+                                 or p.mp_media is not null)))
+       from individu i
+       inner join dossier ds on ds.cle_dossier=i.kle_dossier
+       inner join evenements_ind e on e.ev_ind_kle_fiche=i.cle_fiche
+       inner join ref_evenements r on r.ref_eve_lib_court = e.ev_ind_type
+        and r.ref_eve_langue=ds.ds_langue
+       where  i.cle_fiche = :i_cle
+       order by e.ev_ind_ordre nulls last
+               ,e.ev_ind_date_year nulls last
+               ,e.ev_ind_date_mois nulls last
+               ,e.ev_ind_date nulls last
+               ,e.ev_ind_type
+    into :ev_ind_clef
+        ,:ev_ind_kle_fiche
+        ,:ev_ind_kle_dossier
+        ,:ev_ind_type
+        ,:ev_ind_date_writen
+        ,:ev_ind_date_year
+        ,:ev_ind_date
+        ,:ev_ind_adresse
+        ,:ev_ind_cp
+        ,:ev_ind_ville
+        ,:ev_ind_dept
+        ,:ev_ind_pays
+        ,:ev_ind_cause
+        ,:ev_ind_source
+        ,:ev_ind_comment
+        ,:ev_ind_typeannee
+        ,:ev_ind_description
+        ,:ev_ind_region
+        ,:ev_ind_subd
+        ,:ev_libelle
+        ,:ev_ind_acte
+        ,:ev_ind_insee
+        ,:ev_ind_heure
+        ,:ev_ind_ordre
+        ,:ev_ind_titre_event
+        ,:ev_ind_latitude
+        ,:ev_ind_longitude
+        ,:ev_ind_media
+        ,:ev_ind_age
+        ,:ev_ind_details
+  do
+    suspend;
+end^
+
+CREATE OR ALTER PROCEDURE PROC_EXPORT_IMAGES (
+    I_DOSSIER INTEGER)
+RETURNS (
+    MULTI_CLEF INTEGER,
+    NOM VARCHAR(105),
+    MULTI_MEDIA BLOB SUB_TYPE 0 SEGMENT SIZE 80,
+    FORMAT VARCHAR(4),
+    MULTI_PATH VARCHAR(255))
+AS
+DECLARE VARIABLE I INTEGER;
+DECLARE VARIABLE J INTEGER;
+DECLARE VARIABLE NOM_TEMP VARCHAR(110) CHARACTER SET ISO8859_1;
+DECLARE VARIABLE CARACT CHAR(1);
+BEGIN
+  I = 1;
+  for select m.multi_clef
+           , m.multi_media
+           , coalesce((select first (1)
+              trim(substring(coalesce(lower((select s_out from f_maj_sans_accent(i.nom))),'sans nom')||
+              coalesce(' '||lower((select s_out from f_maj_sans_accent(i.prenom))),'') from 1 for
+              30-char_length(coalesce(' '||i.annee_naissance,''))))
+              ||coalesce(' '||i.annee_naissance,'')
+              from media_pointeurs mp
+                  inner join individu i on i.cle_fiche=mp.mp_cle_individu
+              where mp.mp_media=m.multi_clef)
+             ,'non affecte')
+              ||' '||:i
+           ,case m.multi_image_rtf when 0 then 'jpg'
+                                   when 2 then 'wav'
+                                   when 3 then 'avi'
+            end
+           ,m.multi_path
+      from multimedia m
+      where m.multi_dossier=:i_dossier
+      into :multi_clef
+          ,:multi_media
+          ,:nom_temp
+          ,:format
+          ,:multi_path
+  do
+  begin
+    nom='';
+    j=1;
+    while (j<=char_length(nom_temp)) do
+    begin
+      caract=substring(nom_temp from j for 1);
+      if ((caract>='a' and caract<='z') or (caract>='0' and caract<='9')) then
+        nom=nom||caract;
+      else
+        if (caract in ('-',' ',' ','''','"','\','/','#','~')) then
+          nom=nom||'_';
+      j=j+1;
+    end
+    I=I+1;
+    suspend;
+  end
+END
+^
+
+CREATE OR ALTER PROCEDURE PROC_GESTION_DLL
+RETURNS (
+    DOSSIER INTEGER,
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    OPEN_BASE INTEGER)
+AS
+BEGIN
+  FOR
+      SELECT indi.CLE_FICHE,
+             indi.NOM,
+             indi.PRENOM,
+             dll.DLL_DOSSIER ,
+             dll.dll_open_base
+      FROM individu indi,
+           gestion_dll dll
+      WHERE indi.cle_fiche = dll.dll_indi 
+    INTO
+      :CLE_FICHE,
+      :NOM,
+      :PRENOM,
+      :DOSSIER,
+      :OPEN_BASE
+  DO
+  BEGIN
+    SUSPEND;
+  END
+END
+^
+
+CREATE OR ALTER PROCEDURE PROC_GET_CLEF_UNIQUE (
+    a_table varchar(30))
+returns (
+    cle_unique integer)
+as
+begin
+cle_unique=case upper(a_table)
+           when 'DOSSIER' then gen_id(gen_dossier,1)
+           when 'EVENEMENTS_FAM' then gen_id(gen_ev_fam_clef,1)
+           when 'EVENEMENTS_IND' then gen_id(gen_ev_ind_clef,1)
+           when 'INDIVIDU' then gen_id(gen_individu,1)
+           when 'MULTIMEDIA' then gen_id(gen_multimedia,1)
+           when 'REF_CP_VILLE' then gen_id(gen_ref_cp_ville,1)
+           when 'REF_DEPARTEMENTS' then gen_id(gen_ref_departements,1)
+           when 'REF_EVENEMENTS' then gen_id(gen_ref_evenements,1)
+           when 'REF_PREFIXES' then gen_id(gen_ref_prefixes,1)
+           when 'REF_PARTICULES' then gen_id(gen_ref_particules,1)
+           when 'REF_RACCOURCIS' then gen_id(gen_ref_raccourcis,1)
+           when 'REF_RELA_TEMOINS' then gen_id(gen_ref_rela_clef,1)
+           when 'REF_PAYS' then gen_id(gen_ref_pays,1)
+           when 'REF_REGION' then gen_id(gen_ref_region,1)
+           when 'T_UNION' then gen_id(gen_t_union,1)
+           when 'T_ASSOCIATIONS' then gen_id(gen_assoc_clef,1)
+           when 'FAVORIS' then gen_id(gen_favoris,1)
+           when 'TOKEN_DATE' then gen_id(gen_token_date,1)
+           when 'MEMO_INFOS' then gen_id(gen_memo_infos,1)
+           when 'SOURCES_RECORD' then gen_id(sources_record_id_gen,1)
+           when 'MEDIA_POINTEURS' then gen_id(biblio_pointeurs_id_gen,1)
+           when 'T_IMPORT_GEDCOM' then gen_id(t_import_gedcom_ig_id_gen,1)
+           else -1
+  end;
+suspend;
+end^
+COMMENT ON PROCEDURE PROC_GET_CLEF_UNIQUE IS
+'Refonte par André Langlet, utilisation CASE, ajout T_IMPORT_GEDCOM
+suppression PATRONYMES, HISTORIQUE et tables supprimées
+Dernière modification: 13/04/2011
+Description : Donne une clef unique'^
+
+CREATE or alter  PROCEDURE PROC_GROUPE (
+    I_GROUPE INTEGER,
+    I_INDIVIDU INTEGER,
+    MODE VARCHAR(1),
+    STRICTE VARCHAR(1),
+    TEMOINS VARCHAR(1),
+    INITIALISATION VARCHAR(1),
+    EFFET VARCHAR(1),
+    VERBOSE VARCHAR(1))
+RETURNS (
+    INFO VARCHAR(50))
+AS
+DECLARE VARIABLE I_DOSSIER INTEGER; /* nécessaire à suppression ou élagage */
+DECLARE VARIABLE I_COUNT INTEGER; /* comptage du niveau */
+DECLARE VARIABLE I INTEGER; /* niveau pour calcul */
+DECLARE VARIABLE I_SEXE INTEGER; /* Sexe individu de départ */
+DECLARE VARIABLE I_SX INTEGER; /* Sexe individu sélectionné */
+DECLARE VARIABLE I_IND INTEGER; /* nouvel individu */
+DECLARE VARIABLE I_INDIV INTEGER; /* individu sélectionné */
+DECLARE VARIABLE I_S INTEGER; /* sexe nouvel individu */
+BEGIN
+/*Procédure créée par André le 15/02/2006. Dernière maj 28/10/2008
+Syntaxe: SELECT * FROM PROC_GROUPE(I_GROUPE,I_INDIVIDU,MODE,STRICTE,TEMOINS,INITIALISATION,EFFET,VERBOSE);
+Cette procédure permet de remplir la table temporaire TA_GROUPES avec des
+groupes I_GROUPE d'individus liés avec l'individu I_INDIVIDU.
+MODE = 'A' permet de sélectionner les Ascendants de I_INDIVIDU,
+       'D' permet de sélectionner les Descendants de I_INDIVIDU,
+       'B' permet de sélectionner l'ensemble de la Branche, I_INDIVIDU compris.
+STRICTE = 'Y' ou 'N' (oui ou non)
+STRICTE='Y' s'utilise avec MODE 'A' ou 'D' pour exclure de la liste l'individu et son
+conjoint ainsi que, les ascendants et leurs conjoints si MODE='D', ou les
+descendants et leurs conjoints si MODE='A'.
+STRICTE='N' n'empêche pas le sélection, mais les individus qui auraient été éliminés
+de la sélection avec STRICTE =Y' sont listés en fin de procédure.
+TEMOINS= 'Y' sélectionne également les témoins (option très dangereuse),
+        'N' ne les sélectionne pas.
+INITIALISATION = 'Y' vide complètement la table TA_GROUPES avant de commencer,
+                 'N' n'en supprime aucun enregistrement,
+                 'P' en supprime les enregistrement du même groupe.
+EFFET = 'A' Aucun individu n'est supprimé de la base
+        'E' Elagage: les individus qui ne font pas partie du groupe sélectionné
+        sont supprimés.
+        'S' Suppression des individus du groupe sélectionné
+Si I_INDIVIDU=0 seule l'action prévue par EFFET est exécutée.
+VERBOSE = 'Y' Tous les messages sont émis
+          'N' Seul le dernier message est émis.
+ATTENTION : Quand un individu est sélectionné dans cette liste, ses parents
+            (sauf l'individu de départ et son conjoint si MODE='A'), ses enfants
+            (sauf l'individu de départ et son conjoint si MODE='D'), ses conjoints
+            et témoins (si TEMOINS='Y') le sont également.
+Dans la table TA_GROUPES:
+    le NIP des individus sélectionnés figure dans TA_CLE_FICHE,
+    le N° de groupe est dans TA_GROUPE,
+    le sexe de l'individu est dans TA_SEXE,
+    TA_NIVEAU n'est utilisé que pour des raisons techniques.*/
+  EFFET=UPPER(EFFET);
+  IF (EFFET NOT IN ('A','E','S')) THEN
+    BEGIN
+      INFO='EFFET '||EFFET||' inconnu';
+      SUSPEND;
+      EXIT;
+    END
+  VERBOSE=UPPER(VERBOSE);
+  IF (VERBOSE <>'N') THEN
+    VERBOSE='Y';
+  IF (I_INDIVIDU>0) THEN /*faire analyse*/
+  BEGIN
+   MODE=UPPER(MODE);
+   IF (MODE NOT IN('A','D','B')) THEN
+    BEGIN
+      INFO='MODE '||MODE||' inconnu';
+      SUSPEND;
+      EXIT;
+    END
+   TEMOINS=UPPER(TEMOINS);
+   IF (TEMOINS NOT IN('N','Y')) THEN
+    BEGIN
+      INFO='TEMOINS '||TEMOINS||' inconnu';
+      SUSPEND;
+      EXIT;
+    END
+   INITIALISATION=UPPER(INITIALISATION);
+   IF (INITIALISATION NOT IN('N','P','Y')) THEN
+    BEGIN
+      INFO='INITIALISATION '||INITIALISATION||' inconnu';
+      SUSPEND;
+      EXIT;
+    END
+   FOR SELECT 'I_INDIVIDU '||CAST(:I_INDIVIDU AS VARCHAR(20))||' inconnu' FROM INDIVIDU
+        WHERE :I_INDIVIDU NOT IN (SELECT CLE_FICHE FROM INDIVIDU)
+        INTO :INFO
+    DO
+      BEGIN
+        SUSPEND;
+        EXIT;
+      END
+   IF (TEMOINS='Y') THEN
+    BEGIN
+      DELETE FROM TQ_ID;
+      FOR SELECT a.ASSOC_KLE_IND,a.ASSOC_KLE_ASSOCIE FROM T_ASSOCIATIONS a
+          WHERE a.ASSOC_TABLE='I'
+            AND a.ASSOC_KLE_IND>0
+            AND a.ASSOC_KLE_ASSOCIE>0
+            AND NOT exists (SELECT * FROM TQ_ID WHERE "ID1"=a.ASSOC_KLE_IND and "ID2"=a.ASSOC_KLE_ASSOCIE)
+          INTO :I_IND,:I_INDIV
+        DO
+        BEGIN
+          INSERT INTO tq_id ("ID1","ID2") VALUES(:I_IND,:I_INDIV);
+          IF (I_IND<>I_INDIV) THEN
+            INSERT INTO tq_id ("ID1","ID2") VALUES(:I_INDIV,:I_IND);
+        END
+      FOR SELECT a.ASSOC_KLE_ASSOCIE,u.UNION_MARI FROM T_ASSOCIATIONS a
+               INNER JOIN evenements_fam e ON e.ev_fam_clef=a.ASSOC_EVENEMENT
+               INNER JOIN T_UNION u ON u.UNION_CLEF=e.ev_fam_kle_famille
+               WHERE a.assoc_table='U'
+                 AND u.UNION_MARI>0
+                 AND a.ASSOC_KLE_ASSOCIE>0
+                 AND NOT exists (SELECT * FROM tq_id WHERE "ID1"=u.UNION_MARI and "ID2"=a.ASSOC_KLE_ASSOCIE)
+               INTO :i_ind,:i_indiv
+        DO
+        BEGIN
+          INSERT INTO tq_id ("ID1","ID2") VALUES(:I_IND,:I_INDIV);
+          IF (I_IND<>I_INDIV) THEN
+            INSERT INTO tq_id ("ID1","ID2") VALUES(:I_INDIV,:I_IND);
+        END
+      FOR SELECT a.ASSOC_KLE_ASSOCIE,u.UNION_FEMME FROM T_ASSOCIATIONS a
+               INNER JOIN evenements_fam e ON e.ev_fam_clef=a.ASSOC_EVENEMENT
+               INNER JOIN T_UNION u ON u.UNION_CLEF=e.ev_fam_kle_famille
+               WHERE a.assoc_table='U'
+                 AND u.UNION_FEMME>0
+                 AND a.ASSOC_KLE_ASSOCIE>0
+                 AND NOT exists (SELECT * FROM tq_id WHERE "ID1"=u.UNION_FEMME and "ID2"=a.ASSOC_KLE_ASSOCIE)
+               INTO :i_ind,:i_indiv
+        DO
+        BEGIN
+          INSERT INTO tq_id ("ID1","ID2") VALUES(:I_IND,:I_INDIV);
+          IF (I_IND<>I_INDIV) THEN
+            INSERT INTO tq_id ("ID1","ID2") VALUES(:I_INDIV,:I_IND);
+        END
+     END
+   SELECT SEXE FROM INDIVIDU WHERE CLE_FICHE=:I_INDIVIDU INTO :I_SEXE;
+   DELETE FROM T_DOUBLONS;   /*contiendra la liste des exclusions*/
+   IF (MODE='A' OR MODE='D') THEN
+    BEGIN
+      STRICTE=UPPER(STRICTE);
+      IF (STRICTE NOT IN('Y','N')) THEN
+        BEGIN
+          INFO='STRICTE '||STRICTE||' inconnu';
+          SUSPEND;
+          EXIT;
+        END
+      IF (STRICTE='Y') THEN  /* remplir la liste des exclus*/
+        BEGIN
+          IF (MODE='A') THEN  /*descendants de l'individu et de ses conjoints*/
+            BEGIN
+              FOR SELECT TQ_CLE_FICHE FROM PROC_TQ_DESCENDANCE(:I_INDIVIDU,0,0,0) INTO :I_INDIV
+                DO INSERT INTO T_DOUBLONS (CLE_FICHE)  VALUES(:I_INDIV);
+              FOR SELECT UNION_MARI FROM T_UNION WHERE :I_SEXE=2 AND UNION_FEMME=:I_INDIVIDU
+                                                      AND UNION_MARI>0
+                  UNION
+                  SELECT UNION_FEMME FROM T_UNION WHERE :I_SEXE=1 AND UNION_MARI=:I_INDIVIDU
+                                                      AND UNION_FEMME>0
+                INTO :I_INDIV
+                DO
+                  BEGIN
+                    FOR SELECT  p.TQ_CLE_FICHE FROM PROC_TQ_DESCENDANCE(:I_INDIV,0,0,0) p
+                        WHERE NOT exists (SELECT * FROM T_DOUBLONS where CLE_FICHE=p.TQ_CLE_FICHE)
+                        INTO :I_IND
+                      DO INSERT INTO T_DOUBLONS (CLE_FICHE)  VALUES(:I_IND);
+                  END
+            END
+          IF (MODE='D') THEN  /*ascendants de l'individu et de ses conjoints*/
+            BEGIN
+              FOR SELECT TQ_CLE_FICHE FROM PROC_TQ_ASCENDANCE(:I_INDIVIDU,0,0,0) INTO :I_INDIV
+                DO INSERT INTO T_DOUBLONS (CLE_FICHE)  VALUES(:I_INDIV);
+              FOR SELECT UNION_MARI FROM T_UNION WHERE :I_SEXE=2 AND UNION_FEMME=:I_INDIVIDU
+                                                      AND UNION_MARI>0
+                  UNION
+                  SELECT UNION_FEMME FROM T_UNION WHERE :I_SEXE=1 AND UNION_MARI=:I_INDIVIDU
+                                                      AND UNION_FEMME>0
+                INTO :I_INDIV
+                DO
+                  BEGIN
+                    FOR SELECT  p.TQ_CLE_FICHE FROM PROC_TQ_ASCENDANCE(:I_INDIV,0,0,0) p
+                        WHERE NOT exists (SELECT * FROM T_DOUBLONS where CLE_FICHE=p.TQ_CLE_FICHE)
+                        INTO :I_IND
+                      DO INSERT INTO T_DOUBLONS (CLE_FICHE)  VALUES(:I_IND);
+                  END
+            END
+          /* ajout des conjoints à la liste*/
+          FOR SELECT u.UNION_MARI FROM T_UNION u
+              inner join T_DOUBLONS t on t.CLE_FICHE=u.UNION_FEMME
+                         WHERE u.UNION_MARI>0
+                           AND NOT exists (SELECT * FROM T_DOUBLONS where CLE_FICHE=u.UNION_MARI)
+              UNION
+              SELECT u.UNION_FEMME FROM T_UNION u
+              inner join T_DOUBLONS t on t.CLE_FICHE=u.UNION_MARI
+                         WHERE u.UNION_FEMME>0
+                           AND NOT exists (SELECT * FROM T_DOUBLONS where CLE_FICHE=u.UNION_FEMME)
+              INTO :I_INDIV
+              DO INSERT INTO T_DOUBLONS (CLE_FICHE)  VALUES(:I_IND);
+        END
+    END
+   IF (INITIALISATION='P') THEN DELETE FROM TA_GROUPES WHERE TA_GROUPE=:I_GROUPE;
+    ELSE IF (INITIALISATION='Y') THEN DELETE FROM TA_GROUPES;
+   UPDATE TA_GROUPES SET TA_NIVEAU=NULL;
+   IF (MODE='B') THEN   /*mise de l'individu en tête de la sélection*/
+    BEGIN
+      I=0;
+      INSERT INTO TA_GROUPES (TA_NIVEAU,TA_CLE_FICHE,TA_GROUPE,TA_SEXE)
+             VALUES(:I,:I_INDIVIDU,:I_GROUPE,:I_SEXE);
+    END
+   IF (MODE='D') THEN   /*mise des enfants de l'individu en tête de la sélection*/
+    BEGIN
+      I=0;
+      FOR SELECT CLE_FICHE,SEXE FROM INDIVIDU
+                WHERE (:I_SEXE=1 AND CLE_PERE=:I_INDIVIDU)
+                   OR (:I_SEXE=2 AND CLE_MERE=:I_INDIVIDU)
+                INTO :I_IND,:I_S
+        DO INSERT INTO TA_GROUPES (TA_NIVEAU,TA_CLE_FICHE,TA_GROUPE,TA_SEXE)
+                          VALUES(:I,:I_IND,:I_GROUPE,:I_S);
+    END
+   IF (MODE='A') THEN   /*mise des parents de l'individu en tête de la sélection*/
+    BEGIN
+      I=0;
+      FOR SELECT CLE_PERE,1 FROM INDIVIDU
+           WHERE CLE_FICHE=:I_INDIVIDU AND CLE_PERE IS NOT NULL
+          UNION
+          SELECT CLE_MERE,2 FROM INDIVIDU
+           WHERE CLE_FICHE=:I_INDIVIDU AND CLE_MERE IS NOT NULL
+           INTO :I_IND,:I_S
+        DO INSERT INTO TA_GROUPES (TA_NIVEAU,TA_CLE_FICHE,TA_GROUPE,TA_SEXE)
+                          VALUES(:I,:I_IND,:I_GROUPE,:I_S);
+    END
+   SELECT COUNT(*) FROM TA_GROUPES WHERE TA_NIVEAU=:I INTO :I_COUNT;
+   WHILE (I_COUNT>0) DO
+    BEGIN  /*pour chaque niveau I*/
+      /*pour chaque individu de la sélection*/
+      FOR SELECT TA_CLE_FICHE,TA_SEXE FROM TA_GROUPES
+          WHERE TA_NIVEAU=:I
+          INTO :I_INDIV,:I_SX
+        DO BEGIN
+          IF (MODE<>'A' OR I>0) THEN
+            /*ajout des enfants au niveau I+1*/
+            IF (:I_SX=1) THEN
+              FOR SELECT i.CLE_FICHE,i.SEXE FROM INDIVIDU i
+                 WHERE i.CLE_PERE=:I_INDIV
+                 AND NOT exists (SELECT * FROM TA_GROUPES
+                                 WHERE TA_NIVEAU IS NOT NULL and ta_cle_fiche=i.CLE_FICHE)
+                 AND NOT exists (SELECT * FROM T_DOUBLONS where CLE_FICHE=i.CLE_FICHE)
+                 INTO :I_IND,:I_S
+              DO INSERT INTO TA_GROUPES (TA_NIVEAU,TA_CLE_FICHE,TA_GROUPE,TA_SEXE)
+                          VALUES(:I+1,:I_IND,:I_GROUPE,:I_S);
+            ELSE
+              FOR SELECT i.CLE_FICHE,i.SEXE FROM INDIVIDU i
+                 WHERE i.CLE_MERE=:I_INDIV
+                 AND NOT exists (SELECT * FROM TA_GROUPES
+                                 WHERE TA_NIVEAU IS NOT NULL and ta_cle_fiche=i.CLE_FICHE)
+                 AND NOT exists (SELECT * FROM T_DOUBLONS where CLE_FICHE=i.CLE_FICHE)
+                 INTO :I_IND,:I_S
+              DO INSERT INTO TA_GROUPES (TA_NIVEAU,TA_CLE_FICHE,TA_GROUPE,TA_SEXE)
+                          VALUES(:I+1,:I_IND,:I_GROUPE,:I_S);
+          IF (MODE<>'D' OR I>0) THEN
+            BEGIN /*ajout des parents au niveau I+1*/
+              FOR SELECT i.CLE_PERE,1 FROM INDIVIDU i
+                WHERE i.CLE_FICHE=:I_INDIV AND i.CLE_PERE >0
+                 AND NOT exists (SELECT * FROM TA_GROUPES
+                                 WHERE TA_NIVEAU IS NOT NULL and ta_cle_fiche=i.CLE_PERE)
+                 AND NOT exists (SELECT * FROM T_DOUBLONS where CLE_FICHE=i.CLE_PERE)
+                UNION
+                SELECT i.CLE_MERE,2 FROM INDIVIDU i
+                WHERE i.CLE_FICHE=:I_INDIV AND i.CLE_MERE >0
+                 AND NOT exists (SELECT * FROM TA_GROUPES
+                                 WHERE TA_NIVEAU IS NOT NULL and ta_cle_fiche=i.CLE_MERE)
+                 AND NOT exists (SELECT * FROM T_DOUBLONS where CLE_FICHE=i.CLE_MERE)
+                INTO :I_IND,:I_S
+              DO INSERT INTO TA_GROUPES (TA_NIVEAU,TA_CLE_FICHE,TA_GROUPE,TA_SEXE)
+                          VALUES(:I+1,:I_IND,:I_GROUPE,:I_S);
+            END
+          IF (TEMOINS='Y') THEN  /*ajout des témoins au niveau I+1*/
+              FOR SELECT a."ID2",i.SEXE FROM TQ_ID a
+                        INNER JOIN INDIVIDU i ON i.CLE_FICHE=a."ID2"
+                  WHERE a."ID1"=:I_INDIV
+                       AND NOT exists (SELECT * FROM TA_GROUPES
+                                             WHERE TA_NIVEAU IS NOT NULL and ta_cle_fiche=a."ID2")
+                       AND NOT exists (SELECT * FROM T_DOUBLONS where cle_fiche=a."ID2")
+                 INTO :I_IND,:I_S
+                 DO INSERT INTO TA_GROUPES (TA_NIVEAU,TA_CLE_FICHE,TA_GROUPE,TA_SEXE)
+                          VALUES(:I+1,:I_IND,:I_GROUPE,:I_S);
+          IF (I_SX=1) THEN /*ajout des conjoints*/
+            FOR SELECT UNION_FEMME,2 FROM T_UNION u
+            WHERE u.UNION_MARI=:I_INDIV AND u.UNION_FEMME>0
+              AND NOT exists (SELECT * FROM TA_GROUPES
+                                             WHERE TA_NIVEAU IS NOT NULL and ta_cle_fiche=u.UNION_FEMME)
+              AND NOT exists (SELECT * FROM T_DOUBLONS where cle_fiche=u.UNION_FEMME)
+                INTO :I_IND,:I_S
+              DO INSERT INTO TA_GROUPES (TA_NIVEAU,TA_CLE_FICHE,TA_GROUPE,TA_SEXE)
+                          VALUES(:I+1,:I_IND,:I_GROUPE,:I_S);
+          ELSE
+            FOR SELECT u.UNION_MARI,1 FROM T_UNION u
+            WHERE u.UNION_FEMME=:I_INDIV AND u.UNION_MARI>0
+              AND NOT exists (SELECT * FROM TA_GROUPES
+                                             WHERE TA_NIVEAU IS NOT NULL and ta_cle_fiche=u.UNION_MARI)
+              AND NOT exists (SELECT * FROM T_DOUBLONS where cle_fiche=u.UNION_MARI)
+                INTO :I_IND,:I_S
+              DO INSERT INTO TA_GROUPES (TA_NIVEAU,TA_CLE_FICHE,TA_GROUPE,TA_SEXE)
+                          VALUES(:I+1,:I_IND,:I_GROUPE,:I_S);
+        END
+      I=I+1;
+      SELECT COUNT(*) FROM TA_GROUPES WHERE TA_NIVEAU=:I INTO :I_COUNT;
+    END
+   DELETE FROM TQ_ID;
+   DELETE FROM T_DOUBLONS;
+   SELECT CAST(COUNT(*) AS VARCHAR(20))||' individus selectionnes' FROM TA_GROUPES
+      WHERE TA_NIVEAU IS NOT NULL
+      INTO :INFO;
+   IF (VERBOSE='Y') THEN SUSPEND;
+   SELECT CAST(COUNT(DISTINCT TA_CLE_FICHE) AS VARCHAR(20))||' individus dans le groupe' FROM TA_GROUPES
+      WHERE TA_GROUPE=:I_GROUPE
+      INTO :INFO;
+   IF (VERBOSE='Y') THEN SUSPEND;
+   IF (MODE='D' AND STRICTE='N') THEN
+    BEGIN
+      FOR SELECT 'erreur '||CAST(t.TA_CLE_FICHE AS VARCHAR(20))||' dans l''ascendance'
+          FROM PROC_TQ_ASCENDANCE(:I_INDIVIDU,0,0,0) a
+               INNER JOIN TA_GROUPES t ON t.TA_CLE_FICHE=a.TQ_CLE_FICHE
+                INTO :INFO
+        DO IF (VERBOSE='Y') THEN SUSPEND;
+      FOR SELECT UNION_MARI FROM T_UNION WHERE :I_SEXE=2 AND UNION_FEMME=:I_INDIVIDU
+                                                      AND UNION_MARI>0
+          UNION
+          SELECT UNION_FEMME FROM T_UNION WHERE :I_SEXE=1 AND UNION_MARI=:I_INDIVIDU
+                                                      AND UNION_FEMME>0
+          INTO :I_INDIV
+        DO
+        BEGIN
+          FOR SELECT 'erreur '||CAST(t.TA_CLE_FICHE AS VARCHAR(20))||' dans l''ascendance'
+              FROM PROC_TQ_ASCENDANCE(:I_INDIV,0,0,0) a
+                   INNER JOIN TA_GROUPES t ON t.TA_CLE_FICHE=a.TQ_CLE_FICHE
+                INTO :INFO
+          DO IF (VERBOSE='Y') THEN SUSPEND;
+        END
+    END
+   IF (MODE='A' AND STRICTE='N') THEN
+    BEGIN
+      FOR SELECT 'erreur '||CAST(t.TA_CLE_FICHE AS VARCHAR(20))||' dans la descendance'
+          FROM PROC_TQ_DESCENDANCE(:I_INDIVIDU,0,0,0) a
+               INNER JOIN TA_GROUPES t ON t.TA_CLE_FICHE=a.TQ_CLE_FICHE
+                INTO :INFO
+        DO IF (VERBOSE='Y') THEN SUSPEND;
+      FOR SELECT UNION_MARI FROM T_UNION WHERE :I_SEXE=2 AND UNION_FEMME=:I_INDIVIDU
+                                                      AND UNION_MARI>0
+          UNION
+          SELECT UNION_FEMME FROM T_UNION WHERE :I_SEXE=1 AND UNION_MARI=:I_INDIVIDU
+                                                      AND UNION_FEMME>0
+          INTO :I_INDIV
+        DO
+        BEGIN
+          FOR SELECT 'erreur '||CAST(t.TA_CLE_FICHE AS VARCHAR(20))||' dans la descendance'
+              FROM PROC_TQ_DESCENDANCE(:I_INDIV,0,0,0) a
+                  INNER JOIN TA_GROUPES t ON t.TA_CLE_FICHE=a.TQ_CLE_FICHE
+                INTO :INFO
+          DO IF (VERBOSE='Y') THEN SUSPEND;
+        END
+    END
+  END /*Fin de I_INDIVIDU>0, action faite */
+  IF (EFFET='A') THEN
+    BEGIN
+      DELETE FROM T_DOUBLONS;
+      IF (I_INDIVIDU=0) THEN
+        BEGIN
+          INFO='Rien à faire';
+          SUSPEND;
+        END
+      ELSE IF (VERBOSE='N') THEN SUSPEND;
+      EXIT;
+    END
+  SELECT COUNT(DISTINCT i.KLE_DOSSIER) FROM TA_GROUPES t
+         INNER JOIN INDIVIDU i ON i.CLE_FICHE=t.TA_CLE_FICHE
+         WHERE t.TA_GROUPE=:I_GROUPE
+         INTO :I_COUNT;
+  IF (I_COUNT>1) THEN
+    BEGIN
+      INFO='Plusieurs dossiers dans le groupe';
+      SUSPEND;
+      EXIT;
+    END
+  SELECT COUNT(TA_CLE_FICHE) FROM TA_GROUPES
+         WHERE TA_GROUPE=:I_GROUPE
+         INTO :I_COUNT;
+  IF (I_COUNT=0) THEN
+    BEGIN
+      INFO='Pas d''individu dans la sélection';
+      SUSPEND;
+      EXIT;
+    END
+  SELECT DISTINCT i.KLE_DOSSIER FROM TA_GROUPES t
+         INNER JOIN INDIVIDU i ON i.CLE_FICHE=t.TA_CLE_FICHE
+         WHERE t.TA_GROUPE=:I_GROUPE
+         INTO :I_DOSSIER;
+  DELETE FROM T_DOUBLONS;
+  IF (EFFET='S') THEN
+    FOR SELECT DISTINCT TA_CLE_FICHE FROM TA_GROUPES
+          WHERE TA_GROUPE=:I_GROUPE
+        INTO :I_IND
+        DO INSERT INTO T_DOUBLONS (CLE_FICHE)  VALUES(:I_IND);
+  ELSE /* EFFET='E' */
+    FOR SELECT CLE_FICHE FROM INDIVIDU
+        WHERE KLE_DOSSIER=:I_DOSSIER
+          AND CLE_FICHE NOT IN (SELECT TA_CLE_FICHE FROM TA_GROUPES
+          WHERE TA_GROUPE=:I_GROUPE)
+        INTO :I_IND
+        DO INSERT INTO T_DOUBLONS (CLE_FICHE)  VALUES(:I_IND);
+  SELECT CAST(COUNT(CLE_FICHE) AS VARCHAR(20))||' individus supprimés' FROM T_DOUBLONS
+      INTO :INFO;
+  DELETE FROM INDIVIDU WHERE CLE_FICHE IN (SELECT CLE_FICHE FROM T_DOUBLONS);
+  DELETE FROM T_UNION WHERE UNION_MARI IS NULL AND UNION_FEMME IS NULL;
+  DELETE FROM T_UNION t WHERE (t.UNION_MARI IS NULL AND NOT EXISTS (SELECT * FROM INDIVIDU
+                               WHERE CLE_MERE=t.UNION_FEMME))
+                           OR (t.UNION_FEMME IS NULL AND NOT EXISTS (SELECT * FROM INDIVIDU
+                               WHERE CLE_PERE=t.UNION_MARI));
+  DELETE FROM EVENEMENTS_FAM WHERE EV_FAM_KLE_FAMILLE IN
+        (SELECT UNION_CLEF FROM T_UNION
+               WHERE UNION_MARI IS NULL OR UNION_FEMME IS NULL);
+  DELETE FROM MEDIA_POINTEURS WHERE MP_CLE_INDIVIDU NOT IN (SELECT CLE_FICHE FROM INDIVIDU);
+  DELETE FROM T_DOUBLONS;
+  SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_INCOHERENCES (
+    i_kle_dossier integer,
+    i_mode integer)
+returns (
+    o_table varchar(30),
+    o_cle_table integer,
+    o_cle_fiche integer,
+    o_libelle varchar(160))
+as
+declare variable conjoint integer;
+declare variable i_count integer;
+declare variable pere integer;
+declare variable mere integer;
+declare variable sexe integer;
+declare variable dossier integer;
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Laurent Robbe. Tout droits réservés.
+   Créé le : 31/05/2003
+   à : 11:54:11
+   Modifiée le :12/01/2007 par André: ajout test sur évènement individuel dans T_ASSOCIATIONS
+   et EVENEMENT_FAM sans UNION, correction T_UNION avec un conjoint=0 ou null
+   ajout I_MODE=2 pour exécution sans messages.
+   13/01/08 ajout tests sur SOURCES_RECORD, événements sans type et conjoints identiques.
+   25/10/2010 suppression références à ADRESSES_IND
+   Description : Renvoie les individus de nom passé en paramètre
+   Usage       : I_MODE = 0 : Consultation
+                 I_MODE = 1 : Mise à jour
+                 I_MODE=2 : Mise à jour sans messages
+   ---------------------------------------------------------------------------*/
+  o_libelle='Evénement individuel pointant sur un individu inexistant ou sans type';
+  o_table='EVENEMENT_IND';
+  for select a.ev_ind_clef,a.ev_ind_kle_fiche from evenements_ind a
+  where not exists (select * from individu b
+                    where b.kle_dossier=a.ev_ind_kle_dossier
+                      and b.cle_fiche=a.ev_ind_kle_fiche)
+     or not exists (select * from ref_evenements
+                    where ref_eve_lib_court=a.ev_ind_type)
+  into :o_cle_table,:o_cle_fiche
+  do begin
+    if (i_mode<2) then suspend;
+    if (i_mode>0) then begin
+      delete from evenements_ind
+      where ev_ind_clef=:o_cle_table;
+    end
+  end
+
+  o_libelle='Unions dont mari et femme sont le même individu';
+  o_table='T_UNION';
+  for select u.union_clef
+            ,u.union_mari
+            ,i.sexe
+            ,i.kle_dossier
+  from t_union u
+  inner join individu i on i.cle_fiche=u.union_mari
+  where u.union_mari=u.union_femme
+  into :o_cle_table, :o_cle_fiche,:sexe ,:dossier
+  do
+  begin
+    if (i_mode<2) then suspend;
+    if (i_mode>0) then
+    begin
+      if (sexe=1) then
+      begin
+        update t_union u
+        set u.union_femme=null
+        where u.union_clef=:o_table;
+        update individu i
+        set i.cle_mere=null
+        where i.cle_pere=:o_cle_fiche and i.cle_mere=:o_cle_fiche;
+        select count(*) from t_union
+        where union_mari=:o_cle_fiche
+        and (union_femme = 0 or union_femme is null)
+        into :i_count;
+        if (i_count > 1) then
+        begin
+          delete from t_union e
+          where e.union_mari=:o_cle_fiche
+          and  (e.union_femme = 0 or e.union_femme is null);
+          i_count=0;
+        end
+        if (i_count < 1) then
+        begin
+          select count(*) from individu
+          where cle_pere = :o_cle_fiche
+            and (cle_mere is null or cle_mere = 0)
+            and kle_dossier=:dossier
+          into :i_count;
+          if (i_count > 0) then
+          insert into t_union (union_mari,kle_dossier,union_type)
+          values (:o_cle_fiche,:dossier, 0);
+        end
+      end
+      else
+      if (sexe=2) then
+      begin
+        update t_union u
+        set u.union_mari=null
+        where u.union_clef=:o_table;
+        update individu i
+        set i.cle_pere=null
+        where i.cle_pere=:o_cle_fiche and i.cle_mere=:o_cle_fiche;
+        select count(*) from t_union
+        where union_femme=:o_cle_fiche
+        and (union_mari = 0 or union_mari is null)
+        into :i_count;
+        if (i_count > 1) then
+        begin
+          delete from t_union e
+          where e.union_femme=:o_cle_fiche
+          and  (e.union_mari = 0 or e.union_mari is null);
+          i_count=0;
+        end
+        if (i_count < 1) then
+        begin
+          select count(*) from individu
+          where cle_mere = :o_cle_fiche
+            and (cle_pere is null or cle_pere = 0)
+            and kle_dossier=:dossier
+          into :i_count;
+          if (i_count > 0) then
+          insert into t_union (union_femme,kle_dossier,union_type)
+          values (:o_cle_fiche,:dossier, 0);
+        end
+      end
+      else --sexe inconnu
+      begin
+        delete from t_union where union_clef=:o_cle_table;
+        update individu
+        set cle_pere=null,cle_mere=null
+        where cle_pere=:o_cle_fiche and cle_mere=:o_cle_fiche;
+      end
+    end
+  end
+
+  o_libelle='Union pointant sur un mari inexistant';
+  o_table='T_UNION';
+  for select a.union_clef, a.union_mari, a.union_femme from t_union a
+  where  a.kle_dossier = :i_kle_dossier
+  and    a.union_mari is not null
+  and    not exists (
+    select * from individu b
+    where  b.kle_dossier = a.kle_dossier
+    and    b.cle_fiche = a.union_mari
+  )
+  into :o_cle_table, :o_cle_fiche, :conjoint
+  do begin
+    if (i_mode<2) then suspend;
+    if (i_mode>0) then
+    begin
+      if (conjoint is null or conjoint=0) then
+      begin
+        delete from t_union c
+        where  c.union_clef = :o_cle_table
+        and    c.kle_dossier = :i_kle_dossier;
+      end
+      update t_union set union_mari = null
+               where union_clef = :o_cle_table;
+      select count(*) from t_union
+        where union_femme=:conjoint
+        and  (union_mari is null or union_mari = 0)
+        into :i_count;
+      if (i_count > 1) then
+        begin
+          delete from t_union
+          where union_femme=:conjoint
+          and  (union_mari = 0 or union_mari is null);
+          i_count=0;
+        end
+      if (i_count < 1) then
+        begin
+          select count(*) from individu
+                where cle_mere = :conjoint and (cle_pere is null or cle_pere = 0)
+                into :i_count;
+          if (i_count > 0) then
+          insert into t_union (union_femme,kle_dossier,union_type)
+          values (:conjoint, :i_kle_dossier, 0);
+        end
+    end
+  end
+
+  o_libelle='Union pointant sur une épouse inexistante';
+  o_table='T_UNION';
+  for select a.union_clef, a.union_mari, a.union_femme from t_union a
+    where  a.kle_dossier = :i_kle_dossier
+  and    a.union_femme is not null
+  and    not exists (
+    select * from individu b
+    where  b.kle_dossier = :i_kle_dossier
+    and    b.cle_fiche = a.union_femme
+  )
+  into :o_cle_table, :conjoint, :o_cle_fiche
+  do begin
+    if (i_mode<2) then suspend;
+    if (i_mode>0) then
+      begin
+      if (conjoint is null or conjoint=0) then
+      begin
+        delete from t_union c
+        where  c.union_clef = :o_cle_table
+        and    c.kle_dossier = :i_kle_dossier;
+      end
+      update t_union set union_femme = null
+               where union_clef = :o_cle_table;
+      select count(*) from t_union
+        where union_mari=:conjoint
+        and  (union_femme = 0 or union_femme is null)
+        into :i_count;
+        if (i_count > 1) then
+        begin
+          delete from t_union e
+          where e.union_mari=:conjoint
+          and  (e.union_femme = 0 or e.union_femme is null);
+          i_count=0;
+        end
+        if (i_count < 1) then
+        begin
+          select count(*) from individu
+                where cle_pere = :conjoint and (cle_mere is null or cle_mere = 0)
+                into :i_count;
+          if (i_count > 0) then
+          insert into t_union (union_mari,kle_dossier,union_type)
+          values (:conjoint,:i_kle_dossier, 0);
+        end
+      end
+  end
+
+  o_libelle='Média Pointeurs pointant sur un individu inexistant';
+  o_table='MEDIA_POINTEURS';
+  for select a.mp_clef,a.mp_cle_individu from media_pointeurs a
+  where not exists (select * from individu b
+                    where b.kle_dossier=a.mp_kle_dossier
+                      and b.cle_fiche=a.mp_cle_individu)
+  into :o_cle_table, :o_cle_fiche
+  do begin
+    if (i_mode<2) then suspend;
+    if (i_mode>0) then begin
+      delete from media_pointeurs
+      where mp_clef=:o_cle_table;
+    end
+  end
+
+  o_libelle='Association pointant sur un individu inexistant';
+  o_table='T_ASSOCIATIONS';
+  for select assoc_clef, assoc_kle_ind from t_associations a
+  where  assoc_kle_dossier = :i_kle_dossier
+  and    assoc_table = 'I'
+  and   not exists (
+    select * from individu b
+    where  b.kle_dossier = :i_kle_dossier
+    and    b.cle_fiche = a.assoc_kle_ind
+  )
+  into :o_cle_table, :o_cle_fiche
+  do begin
+    if (i_mode<2) then suspend;
+    if (i_mode>0) then begin
+      delete from t_associations z
+      where z.assoc_kle_dossier=:i_kle_dossier
+      and   z.assoc_clef=:o_cle_table;
+    end
+  end
+
+  o_libelle='Associé d''une association pointant sur un individu inexistant';
+  o_table='T_ASSOCIATIONS';
+  for select assoc_clef, assoc_kle_associe from t_associations a
+  where  assoc_kle_dossier = :i_kle_dossier
+  and    not exists (
+    select * from individu b
+    where  b.kle_dossier = :i_kle_dossier
+    and    b.cle_fiche = a.assoc_kle_associe
+  )
+  into :o_cle_table, :o_cle_fiche
+  do begin
+    if (i_mode<2) then suspend;
+    if (i_mode>0) then begin
+      delete from t_associations z
+      where z.assoc_kle_dossier=:i_kle_dossier
+      and   z.assoc_clef=:o_cle_table;
+    end
+  end
+
+  o_libelle='Evénement familial pointant sur une union inexistante ou sans type';
+  o_table='EVENEMENTS_FAM';
+  for select a.ev_fam_clef, a.ev_fam_kle_famille from evenements_fam a
+  where not exists (select * from t_union b
+                    where b.kle_dossier=a.ev_fam_kle_dossier
+                      and b.union_clef = a.ev_fam_kle_famille)
+     or not exists (select * from ref_evenements
+                    where ref_eve_lib_court=a.ev_fam_type)
+  into :o_cle_table, :o_cle_fiche
+  do begin
+    if (i_mode<2) then suspend;
+    if (i_mode>0) then begin
+      delete from evenements_fam z
+      where z.ev_fam_clef=:o_cle_table;
+    end
+  end
+
+  o_libelle='Association pointant sur un événement familial inexistant';
+  o_table='T_ASSOCIATIONS';
+  for select assoc_clef, assoc_kle_ind from t_associations a
+  where  assoc_kle_dossier = :i_kle_dossier
+  and    assoc_table = 'U'
+  and    not exists (
+    select * from evenements_fam b
+    where  b.ev_fam_kle_dossier = :i_kle_dossier
+    and    b.ev_fam_clef = a.assoc_kle_ind
+  )
+  into :o_cle_table, :o_cle_fiche
+  do begin
+    if (i_mode<2) then suspend;
+    if (i_mode>0) then begin
+      delete from t_associations z
+      where z.assoc_kle_dossier=:i_kle_dossier
+      and   z.assoc_clef=:o_cle_table;
+    end
+  end
+
+  o_libelle='Association pointant sur un événement individuel inexistant';
+  o_table='T_ASSOCIATIONS';
+  for select assoc_clef, assoc_evenement from t_associations a
+  where  assoc_kle_dossier = :i_kle_dossier
+  and    assoc_table = 'I'
+  and    not exists (
+    select * from evenements_ind b
+    where  b.ev_ind_kle_dossier = :i_kle_dossier
+    and    b.ev_ind_clef = a.assoc_evenement
+  )
+  into :o_cle_table, :o_cle_fiche
+  do begin
+    if (i_mode<2) then suspend;
+    if (i_mode>0) then begin
+      delete from t_associations z
+      where z.assoc_kle_dossier=:i_kle_dossier
+      and   z.assoc_clef=:o_cle_table;
+    end
+  end
+
+  o_libelle='Père présent dans la fiche individu mais inexistant';
+  o_table='INDIVIDU';
+  for select cle_fiche, cle_pere from individu a
+  where a.kle_dossier = :i_kle_dossier
+  and   a.cle_pere is not null
+    and not exists (
+    select b.cle_fiche from individu b
+    where  b.kle_dossier = :i_kle_dossier
+    and    b.cle_fiche = a.cle_pere
+  )
+  into :o_cle_table, o_cle_fiche
+  do begin
+    if (i_mode<2) then suspend;
+  end
+    if (i_mode>0) then begin
+      update individu a
+      set   a.cle_pere = null
+      where a.kle_dossier = :i_kle_dossier
+      and   a.cle_pere is not null
+      and not exists (
+      select b.cle_fiche from individu b
+      where  b.kle_dossier = :i_kle_dossier
+      and    b.cle_fiche = a.cle_pere
+    );
+  end
+
+  o_libelle='Mère présente dans la fiche individu mais inexistante';
+  o_table='INDIVIDU';
+  for select cle_fiche, cle_mere from individu a
+  where a.kle_dossier = :i_kle_dossier
+  and   a.cle_mere is not null
+    and not exists (
+    select b.cle_fiche from individu b
+    where  b.kle_dossier = :i_kle_dossier
+    and    b.cle_fiche = a.cle_mere
+  )
+  into :o_cle_table, :o_cle_fiche
+  do begin
+    if (i_mode<2) then suspend;
+  end
+  if (i_mode>0) then begin
+    update individu a
+    set   a.cle_mere = null
+    where a.kle_dossier = :i_kle_dossier
+    and   a.cle_mere is not null
+      and not exists (
+      select b.cle_fiche from individu b
+      where  b.kle_dossier = :i_kle_dossier
+      and    b.cle_fiche = a.cle_mere
+      );
+  end
+
+  o_libelle='Enfant dont les parents n''ont pas d''union dans la table T_UNION';
+  o_table='INDIVIDU';
+  for select a.cle_fiche, a.cle_pere, a.cle_mere from individu a
+  where  a.kle_dossier = :i_kle_dossier
+  and   (( a.cle_pere is not null and a.cle_pere <> 0) or
+         ( a.cle_mere is not null and a.cle_mere <> 0)   )
+  into :o_cle_fiche, :pere, :mere
+  do begin
+    if (pere is null or pere = 0) then begin
+      select count(*) from t_union b
+      where b.union_mari is null
+      and   b.union_femme=:mere
+      into :i_count;
+    end else if (mere is null or mere = 0) then begin
+      select count(*) from t_union b
+      where b.union_mari=:pere
+      and   b.union_femme is null
+      into :i_count;
+    end else begin
+      select count(*) from t_union b
+      where b.union_mari=:pere
+      and   b.union_femme=:mere
+      into :i_count;
+    end
+    if (i_count<=0) then begin
+      o_cle_table=o_cle_fiche;
+      if (i_mode<2) then suspend;
+      if (i_mode>0) then begin
+        insert into t_union (union_mari,union_femme,kle_dossier,union_type)
+        values (:pere,:mere,:i_kle_dossier,0);
+      end
+    end
+  end
+
+  o_libelle='Enregistrement sources pointant sur un événement individuel inexistant';
+  o_table='SOURCES_RECORD';
+  for select s.id,s.data_id from sources_record s
+  where s.type_table='I'
+    and not exists (select * from evenements_ind e
+                    where e.ev_ind_kle_dossier=s.kle_dossier
+                      and e.ev_ind_clef=s.data_id)
+  into :o_cle_table,:o_cle_fiche
+  do begin
+    if (i_mode<2) then suspend;
+    if (i_mode>0) then begin
+      delete from sources_record s
+      where s.id=:o_cle_table;
+    end
+  end
+
+  o_libelle='Enregistrement sources pointant sur un événement familial inexistant';
+  o_table='SOURCES_RECORD';
+  for select s.id,s.data_id from sources_record s
+  where s.type_table='F'
+    and not exists (select * from evenements_fam e
+                    where e.ev_fam_kle_dossier=s.kle_dossier
+                      and e.ev_fam_clef=s.data_id)
+  into :o_cle_table,:o_cle_fiche
+  do begin
+    if (i_mode<2) then suspend;
+    if (i_mode>0) then begin
+      delete from sources_record s
+      where s.id=:o_cle_table;
+    end
+  end
+end^
+
+CREATE OR ALTER PROCEDURE PROC_INSERT_FAVORIS (
+    I_DOSSIER INTEGER,
+    I_CLE INTEGER,
+    I_NBRE INTEGER)
+AS
+DECLARE VARIABLE I INTEGER;
+begin
+  if (not exists (select * from favoris where kle_fiche=:i_cle)) then
+    insert into favoris (id,kle_dossier,kle_fiche)
+    values (gen_id(gen_favoris,1),:i_dossier,:i_cle);
+  select first(1) skip(:i_nbre) id
+    from favoris
+    where kle_dossier=:i_dossier
+    order by id desc
+    into :i;
+  delete from favoris where id<=:i and kle_dossier=:i_dossier;
+end^
+
+CREATE OR ALTER PROCEDURE PROC_JOURS_TEXTE (
+    ANS INTEGER,
+    MOIS INTEGER,
+    JOURS INTEGER,
+    PRECIS INTEGER)
+RETURNS (
+    JOURS_TEXTE VARCHAR(25))
+AS
+begin
+  if (jours is null or jours<0 or mois is null
+      or mois<0 or ans is null or ans<0) then
+  begin
+    suspend;
+    exit;
+  end
+  if (ans=0 and mois=0 and jours<15) then
+  begin
+    if (jours<2) then
+      jours_texte=cast(jours as varchar(1))||' jour';
+    else
+      jours_texte=cast(jours as varchar(2))||' jours';
+    suspend;
+    exit;
+  end
+  if (ans=0 and mois<2) then
+  begin
+    if (mois>0) then
+    begin
+      jours_texte='1 mois';
+      if (floor(jours/7)=1) then
+        jours_texte=jours_texte||'et 1 semaine';
+      else
+        if (floor(jours/7)>1) then
+          jours_texte=jours_texte||' et '||cast(floor(jours/7) as varchar(1))||' semaines';
+    end
+    else
+      jours_texte=cast(floor(jours/7) as varchar(1))||' semaines';
+    suspend;
+    exit;
+  end
+  if (ans=0) then
+  begin
+    jours_texte=cast(mois as varchar(2))||' mois';
+    if (precis=1 and jours>14) then
+      jours_texte=jours_texte||' et demi';
+    suspend;
+    exit;
+  end
+  if (ans>0) then
+  begin
+    if (ans=1) then
+      jours_texte='1 an';
+    else
+      jours_texte=cast(ans as varchar(5))||' ans';
+    if (precis=1 and mois>0) then
+        jours_texte=jours_texte||' et '||cast(mois as varchar(2))||' mois';
+  end
+  suspend;
+end^
+
+CREATE OR ALTER PROCEDURE PROC_LISTE_PARENTE (
+    indi1 integer,
+    indi2 integer)
+returns (
+    ancetre_1 integer,
+    nom_1 varchar(130),
+    sexe_1 integer,
+    sosa_1 integer,
+    ancetre_2 integer,
+    nom_2 varchar(130),
+    sexe_2 integer,
+    sosa_2 integer)
+as
+declare variable enfant_1 integer;
+declare variable nom_enfant_1 varchar(130);
+declare variable sexe_enfant_1 integer;
+declare variable sosa_enfant_1 integer;
+declare variable enfant_2 integer;
+declare variable nom_enfant_2 varchar(130);
+declare variable sexe_enfant_2 integer;
+declare variable sosa_enfant_2 integer;
+declare variable i integer;
+declare variable i_1 integer;
+declare variable i_2 integer;
+begin
+  select first(1) p.commun
+        ,i.nom||coalesce(' '||i.prenom,'')||case 
+          when ((i.annee_naissance is null) and (i.annee_deces is null)) then ''
+          when (i.annee_naissance is null) then ' ('||cast(i.annee_deces as varchar(5))||')'
+          when (i.annee_deces is null) then ' (°'||cast(i.annee_naissance as varchar(5))||')'
+          else ' (°'||cast(i.annee_naissance as varchar(5))||' '||cast(i.annee_deces as varchar(5))||')'
+          end
+        ,i.sexe
+        ,case when i.num_sosa>0 then 1 else 0 end
+        ,p.enfant_1
+        ,e1.nom||coalesce(' '||e1.prenom,'')||case
+          when ((e1.annee_naissance is null) and (e1.annee_deces is null)) then ''
+          when (e1.annee_naissance is null) then ' ('||cast(e1.annee_deces as varchar(5))||')'
+          when (e1.annee_deces is null) then ' (°'||cast(e1.annee_naissance as varchar(5))||')'
+          else ' (°'||cast(e1.annee_naissance as varchar(5))||' '||cast(e1.annee_deces as varchar(5))||')'
+          end
+        ,e1.sexe
+        ,case when e1.num_sosa>0 then 1 else 0 end
+        ,p.enfant_2
+        ,e2.nom||coalesce(' '||e2.prenom,'')||case
+          when ((e2.annee_naissance is null) and (e2.annee_deces is null)) then ''
+          when (e2.annee_naissance is null) then ' ('||cast(e2.annee_deces as varchar(5))||')'
+          when (e2.annee_deces is null) then ' (°'||cast(e2.annee_naissance as varchar(5))||')'
+          else ' (°'||cast(e2.annee_naissance as varchar(5))||' '||cast(e2.annee_deces as varchar(5))||')'
+          end
+        ,e2.sexe
+        ,case when e2.num_sosa>0 then 1 else 0 end
+        ,p.niveau_min_1
+        ,p.niveau_min_2
+        from proc_anc_communs(:indi1,:indi2) p
+        inner join individu i on i.cle_fiche=p.commun
+        inner join individu e1 on e1.cle_fiche=p.enfant_1
+        inner join individu e2 on e2.cle_fiche=p.enfant_2
+        order by p.niveau_min_1+p.niveau_min_2
+  into :ancetre_1
+      ,:nom_1
+      ,:sexe_1
+      ,:sosa_1
+      ,:enfant_1
+      ,:nom_enfant_1
+      ,:sexe_enfant_1
+      ,:sosa_enfant_1
+      ,:enfant_2
+      ,:nom_enfant_2
+      ,:sexe_enfant_2
+      ,:sosa_enfant_2
+      ,:i_1
+      ,:i_2;
+  ancetre_2=ancetre_1;
+  nom_2=nom_1;
+  sexe_2=sexe_1;
+  sosa_2=sosa_1;
+  if (ancetre_1>0) then
+    suspend;
+  else
+    exit;
+  if (enfant_1>0 or enfant_2>0) then
+  begin
+    if (enfant_1<>ancetre_1) then
+    begin
+      ancetre_1=enfant_1;
+      nom_1=nom_enfant_1;
+      sexe_1=sexe_enfant_1;
+      sosa_1=sosa_enfant_1;
+    end
+    else
+    begin
+      ancetre_1=0;
+      nom_1=null;
+      sexe_1=0;
+      sosa_1=0;
+    end
+    if (enfant_2<>ancetre_2) then
+    begin
+      ancetre_2=enfant_2;
+      nom_2=nom_enfant_2;
+      sexe_2=sexe_enfant_2;
+      sosa_2=sosa_enfant_2;
+    end
+    else
+    begin
+      ancetre_2=0;
+      nom_2=null;
+      sexe_2=0;
+      sosa_2=0;
+    end
+    suspend;
+  end
+  else
+    exit;
+  i=1;
+  while (i<i_1 or i<i_2) do
+  begin
+    ancetre_1=0;
+    ancetre_2=0;
+    nom_1=null;
+    nom_2=null;
+    sexe_1=0;
+    sexe_2=0;
+    if (i<i_1) then
+    begin
+      select first(1) t.enfant
+        ,i.nom||coalesce(' '||i.prenom,'')||case
+          when ((i.annee_naissance is null) and (i.annee_deces is null)) then ''
+          when (i.annee_naissance is null) then ' ('||cast(i.annee_deces as varchar(5))||')'
+          when (i.annee_deces is null) then ' (°'||cast(i.annee_naissance as varchar(5))||')'
+          else ' (°'||cast(i.annee_naissance as varchar(5))||' '||cast(i.annee_deces as varchar(5))||')'
+          end
+        ,i.sexe
+        ,case when i.num_sosa>0 then 1 else 0 end
+      from tq_anc t
+      inner join individu i on i.cle_fiche=t.enfant
+      where t.decujus=:indi1 and t.indi=:enfant_1 and t.niveau=:i_1-:i
+      into :ancetre_1
+          ,:nom_1
+          ,:sexe_1
+          ,:sosa_1;
+      enfant_1=ancetre_1;
+    end
+    else
+    begin
+      ancetre_1=0;
+      nom_1=null;
+      sexe_1=0;
+      sosa_1=0;
+    end
+    if (i<i_2) then
+    begin
+      select first(1) t.enfant
+        ,i.nom||coalesce(' '||i.prenom,'')||case
+          when ((i.annee_naissance is null) and (i.annee_deces is null)) then ''
+          when (i.annee_naissance is null) then ' ('||cast(i.annee_deces as varchar(5))||')'
+          when (i.annee_deces is null) then ' (°'||cast(i.annee_naissance as varchar(5))||')'
+          else ' (°'||cast(i.annee_naissance as varchar(5))||' '||cast(i.annee_deces as varchar(5))||')'
+          end
+        ,i.sexe
+        ,case when i.num_sosa>0 then 1 else 0 end
+      from tq_anc t
+      inner join individu i on i.cle_fiche=t.enfant
+      where t.decujus=:indi2 and t.indi=:enfant_2 and t.niveau=:i_2-:i
+      into :ancetre_2
+          ,:nom_2
+          ,:sexe_2
+          ,:sosa_2;
+      enfant_2=ancetre_2;
+    end
+    else
+    begin
+      ancetre_2=0;
+      nom_2=null;
+      sexe_2=0;
+      sosa_2=0;
+    end
+    suspend;
+    i=i+1;
+  end
+end^
+
+
+CREATE OR ALTER PROCEDURE PROC_LISTE_PRENOM (
+    I_DOSSIER INTEGER)
+RETURNS (
+    PRENOM VARCHAR(60),
+    SEXE INTEGER,
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM_COMPLET VARCHAR(60),
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    DATE_NAISSANCE VARCHAR(100),
+    ANNEE_NAISSANCE INTEGER)
+AS
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   à : 19:14:10
+   Modifiée le :24/10/2006 par André, éclatement en 2 procédures
+   17/01/08 ajout date_naissance
+   Description : Cette procedure remonte la liste de tous les prenoms du
+   dossier passé en parametres, les prenoms séparés par des
+   virgules ou espaces seront décomposés.
+   ---------------------------------------------------------------------------*/
+  for  select sexe,cle_fiche,nom,prenom,
+              cle_pere,cle_mere,date_naissance,annee_naissance
+          from individu
+          where kle_dossier=:i_dossier
+          into :sexe,:cle_fiche,:nom,:prenom_complet,
+               :cle_pere,:cle_mere,:date_naissance,:annee_naissance
+  do for select prenom from proc_eclate_prenom(:prenom_complet)
+         where prenom is not null
+         into :prenom
+     do suspend;
+end^
+
+CREATE OR ALTER PROCEDURE PROC_LISTE_PROFESSION (
+    I_DOSSIER INTEGER)
+RETURNS (
+    PROFESSION VARCHAR(90),
+    CLE_FICHE INTEGER,
+    SEXE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    DATE_NAISSANCE VARCHAR(100),
+    ANNEE_NAISSANCE INTEGER,
+    DATE_DECES VARCHAR(100),
+    ANNEE_DECES INTEGER,
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    DESCRIPTION VARCHAR(90),
+    DATE_PROFESSION VARCHAR(100),
+    ANNEE_PROFESSION INTEGER,
+    VILLE_PROFESSION VARCHAR(50),
+    DEPT_PROFESSION VARCHAR(30))
+AS
+begin
+/*donne la liste des individus d'un dossier avec leurs professions séparées.
+Procédure créée par André le 22/05/2007, dernière modification 24/09/2007*/
+  for  select i.CLE_FICHE
+             ,i.sexe
+             ,i.NOM
+             ,i.PRENOM
+             ,i.date_naissance
+             ,i.annee_naissance
+             ,i.date_deces
+             ,i.annee_deces
+             ,i.CLE_PERE
+             ,i.CLE_MERE
+             ,e.ev_ind_description
+             ,e.ev_ind_date_writen
+             ,e.ev_ind_date_year
+             ,e.ev_ind_ville
+             ,e.ev_ind_dept
+          from individu i
+          inner join evenements_ind e
+                  on e.ev_ind_kle_fiche=i.cle_fiche
+                 and e.ev_ind_type='OCCU'
+          where i.KLE_DOSSIER=:I_DOSSIER
+          INTO :CLE_FICHE
+              ,:sexe
+              ,:NOM
+              ,:PRENOM
+              ,:date_naissance
+              ,:annee_naissance
+              ,:date_deces
+              ,:annee_deces
+              ,:CLE_PERE
+              ,:CLE_MERE
+              ,:description
+              ,:date_profession
+              ,:annee_profession
+              ,:ville_profession
+              ,:dept_profession
+  do for select s_description
+         from proc_eclate_description(:description,',')
+         where s_description is not null
+         into :profession
+     do suspend;
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_LISTE_UNIONS (
+    i_dossier integer)
+returns (
+    union_cle integer,
+    mari_cle integer,
+    mari_nom varchar(40),
+    mari_prenom varchar(60),
+    mari_num_sosa double precision,
+    age_mari integer,
+    femme_cle integer,
+    femme_nom varchar(40),
+    femme_prenom varchar(60),
+    femme_num_sosa double precision,
+    age_femme integer,
+    cle_marr integer,
+    date_marr varchar(100),
+    an_marr integer,
+    mois_marr integer,
+    date_union date,
+    subd varchar(50),
+    ville varchar(50),
+    dept varchar(30),
+    region varchar(50),
+    pays varchar(30))
+as
+declare variable annee_naissance_mari integer;
+declare variable annee_naissance_femme integer;
+begin
+  for select u.union_clef
+            ,m.cle_fiche
+            ,m.nom
+            ,m.prenom
+            ,m.num_sosa
+            ,m.annee_naissance
+            ,f.cle_fiche
+            ,f.nom
+            ,f.prenom
+            ,f.num_sosa
+            ,f.annee_naissance
+      from individu m
+      inner join t_union u on u.union_mari=m.cle_fiche
+      inner join individu f on f.cle_fiche=u.union_femme
+      where m.kle_dossier=:i_dossier
+      into :union_cle
+          ,:mari_cle
+          ,:mari_nom
+          ,:mari_prenom
+          ,:mari_num_sosa
+          ,:annee_naissance_mari
+          ,:femme_cle
+          ,:femme_nom
+          ,:femme_prenom
+          ,:femme_num_sosa
+          ,:annee_naissance_femme
+  do
+  begin
+    subd=null;
+    ville=null;
+    dept=null;
+    region=null;
+    pays=null;
+    an_marr=null;
+    mois_marr=null;
+    date_union=null;
+    cle_marr=null;
+    date_marr=null;
+    age_mari=null;
+    age_femme=null;
+    select first(1) ev_fam_subd
+          ,ev_fam_ville
+          ,ev_fam_dept
+          ,ev_fam_region
+          ,ev_fam_pays
+          ,ev_fam_date_year
+          ,ev_fam_date_mois
+          ,ev_fam_date
+          ,ev_fam_clef
+          ,ev_fam_date_writen
+          ,ev_fam_date_year-:annee_naissance_mari
+          ,ev_fam_date_year-:annee_naissance_femme
+    from evenements_fam
+    where ev_fam_kle_famille=:union_cle and ev_fam_type='MARR'
+    order by ev_fam_date_year,ev_fam_date_mois,ev_fam_date
+    into :subd
+        ,:ville
+        ,:dept
+        ,:region
+        ,:pays
+        ,:an_marr
+        ,:mois_marr
+        ,:date_union
+        ,:cle_marr
+        ,:date_marr
+        ,:age_mari
+        ,:age_femme;
+    suspend;
+  end
+end^
+
+COMMENT ON PROCEDURE PROC_LISTE_UNIONS IS
+'Procédure entièrement refaite par André Langlet le 25/12/2009
+pour nouvelle liste des unions.'^
+
+CREATE OR ALTER PROCEDURE PROC_MAJ_COORDONNEES (
+    i_dossier integer,
+    i_mode integer)
+as
+declare variable ville varchar(50);
+declare variable cp varchar(10);
+declare variable insee varchar(6);
+declare variable subd varchar(50);
+declare variable latitude decimal(15,8);
+declare variable longitude numeric(15,8);
+declare variable pays varchar(30);
+begin
+if (i_mode in (1,3)) then
+begin
+  update evenements_ind set
+         ev_ind_subd=ev_ind_adresse,
+         ev_ind_adresse=null
+         where ev_ind_subd is null
+           and ev_ind_kle_dossier=:i_dossier;
+  update evenements_fam set
+         ev_fam_subd=ev_fam_adresse,
+         ev_fam_adresse=null
+         where ev_fam_subd is null
+           and ev_fam_kle_dossier=:i_dossier;
+end
+for select distinct
+       ev_ind_ville
+      ,ev_ind_cp
+      ,ev_ind_insee
+      ,ev_ind_subd
+      ,ev_ind_pays
+      ,ev_ind_latitude
+      ,ev_ind_longitude
+    from proc_prep_villes_favoris(:i_dossier)
+    where ev_ind_latitude is not null
+      and ev_ind_longitude is not null
+    order by ev_ind_subd nulls last
+    into
+          :ville
+         ,:cp
+         ,:insee
+         ,:subd
+         ,:pays
+         ,:latitude
+         ,:longitude
+do
+begin
+  update evenements_ind set
+     ev_ind_latitude=:latitude,
+     ev_ind_longitude=:longitude
+     where ev_ind_ville=:ville
+       and ev_ind_pays=:pays
+       and (:i_mode in (2,3)or ev_ind_cp is not distinct from :cp)
+       and (:i_mode in (0,1)or ev_ind_insee is not distinct from :insee)
+       and (:subd is null or ev_ind_subd is not distinct from :subd)
+       and (ev_ind_latitude is null
+            or ev_ind_longitude is null)
+       and ev_ind_kle_dossier=:i_dossier;
+  update evenements_fam set
+     ev_fam_latitude=:latitude,
+     ev_fam_longitude=:longitude
+     where ev_fam_ville=:ville
+       and ev_fam_pays=:pays
+       and (:i_mode in (2,3)or ev_fam_cp is not distinct from :cp)
+       and (:i_mode in (0,1)or ev_fam_insee is not distinct from :insee)
+       and (:subd is null or ev_fam_subd is not distinct from :subd)
+       and (ev_fam_latitude is null
+            or ev_fam_longitude is null)
+       and ev_fam_kle_dossier=:i_dossier;
+end
+update evenements_ind e
+  set  e.ev_ind_latitude=(select first (1) r.cp_latitude from ref_cp_ville r
+                         where (:i_mode in (2,3)or r.cp_cp is not distinct from e.ev_ind_cp)
+                           and r.cp_ville=e.ev_ind_ville
+                           and (:i_mode in (0,1)or r.cp_insee is not distinct from e.ev_ind_insee)),
+       e.ev_ind_longitude=(select first (1) r.cp_longitude from ref_cp_ville r
+                         where (:i_mode in (2,3)or r.cp_cp is not distinct from e.ev_ind_cp)
+                           and r.cp_ville=e.ev_ind_ville
+                           and (:i_mode in (0,1)or r.cp_insee is not distinct from e.ev_ind_insee))
+  where (e.ev_ind_latitude is null
+     or e.ev_ind_longitude is null)
+    and e.ev_ind_kle_dossier=:i_dossier;
+update evenements_fam e
+  set  e.ev_fam_latitude=(select first (1) r.cp_latitude from ref_cp_ville r
+                         where (:i_mode in (2,3)or r.cp_cp is not distinct from e.ev_fam_cp)
+                           and r.cp_ville=e.ev_fam_ville
+                           and (:i_mode in (0,1)or r.cp_insee is not distinct from e.ev_fam_insee)),
+       e.ev_fam_longitude=(select first (1) r.cp_longitude from ref_cp_ville r
+                         where (:i_mode in (2,3)or r.cp_cp is not distinct from e.ev_fam_cp)
+                           and r.cp_ville=e.ev_fam_ville
+                           and (:i_mode in (0,1)or r.cp_insee is not distinct from e.ev_fam_insee))
+  where (e.ev_fam_latitude is null
+     or e.ev_fam_longitude is null)
+    and e.ev_fam_kle_dossier=:i_dossier;
+end^
+COMMENT ON PROCEDURE PROC_MAJ_COORDONNEES IS
+'Procédure créée par André pour assurer:
+a)le transfert du contenu du champ Lieu dans le champ Subdivision (à condition qu''il soit vide)
+b)le remplissage des champs Latitude et Longitude vides ou nuls.
+L''identification des lieux est faite en premier par le nom de la ville et celui du pays.
+En second elle est faite par le code postal en mode 0 ou 1, par le code INSEE en mode 2 ou 3.
+Les modes 0 ou 2 n''assurent que le remplissage des latitudes et longitudes.
+Les modes 1 ou 3 assurent en plus le transfert du champ Lieu.
+Si les coordonnées de certains lieux sont déjà documentées avant l''exécution de cette procédure,
+ces coordonnées seront appliquées aux autres lieux identiques en tenant compte de la Subdivision.
+Dernière mise à jour: 25/10/2010 par André'^
+
+CREATE OR ALTER PROCEDURE PROC_MAJ_INSEE (
+    i_dossier integer)
+as
+declare variable s_insee varchar(6);
+declare variable i_clef integer;
+begin
+  for select e.ev_ind_clef
+            ,max(v.cp_insee)
+     from evenements_ind e
+     inner join ref_pays p on p.rpa_libelle=upper(e.ev_ind_pays)
+     inner join ref_cp_ville v on v.cp_pays=p.rpa_code
+                              and v.cp_ville_maj=(select s_out from f_maj_sans_accent(e.ev_ind_ville))
+                              and (v.cp_cp=e.ev_ind_cp
+                                   or (v.cp_cp is null and e.ev_ind_cp is null))
+     where e.ev_ind_kle_dossier=:I_DOSSIER
+     group by e.ev_ind_clef
+     into :I_CLEF
+         ,:s_insee
+     do update evenements_ind e
+        set e.ev_ind_insee=:s_insee
+        where e.ev_ind_clef=:I_CLEF;
+
+  for select e.ev_fam_clef
+            ,max(v.cp_insee)
+     from evenements_fam e
+     inner join ref_pays p on p.rpa_libelle=upper(e.ev_fam_pays)
+     inner join ref_cp_ville v on v.cp_pays=p.rpa_code
+                              and v.cp_ville_maj=(select s_out from f_maj_sans_accent(e.ev_fam_ville))
+                              and (v.cp_cp=e.ev_fam_cp
+                                   or (v.cp_cp is null and e.ev_fam_cp is null))
+     where e.ev_fam_kle_dossier=:I_DOSSIER
+     group by e.ev_fam_clef
+     into :I_CLEF
+         ,:s_insee
+     do update evenements_fam e
+        set e.ev_fam_insee=:s_insee
+        where e.ev_fam_clef=:I_CLEF;
+end^
+
+COMMENT ON PROCEDURE PROC_MAJ_INSEE IS
+'Création Philippe Cazaux-Moutou le : 31/07/2001
+Modifiée par André le 04/10/2007: mise à jour possible si le code INSEE
+existe dans la table de référence. le 25/10/2010 suppression références à ADRESSES_IND
+le 29/03/2001 correction erreur caractères majuscules hors collection ISO8859_1
+Description : Met à jour le champ INSEE dans les événements'^
+
+CREATE OR ALTER PROCEDURE PROC_MAJ_LIEUX_FAVORIS (
+    i_dossier integer)
+as
+declare variable ville varchar(50);
+declare variable cp varchar(10);
+declare variable departement varchar(30);
+declare variable region varchar(50);
+declare variable latitude decimal(15,8);
+declare variable longitude numeric(15,8);
+declare variable dbkey char(8);
+begin
+for select e.RDB$DB_KEY
+          ,v.cp_ville
+          ,v.cp_cp
+          ,v.cp_latitude
+          ,v.cp_longitude
+          ,d.rdp_libelle
+          ,r.rrg_libelle
+    from evenements_ind e
+    inner join ref_cp_ville v
+            on v.cp_insee=e.ev_ind_insee
+    inner join ref_pays p
+            on p.rpa_code=v.cp_pays
+           and p.rpa_libelle=upper(e.ev_ind_pays)
+    left join ref_departements d
+           on d.rdp_code=v.cp_dept
+    left join ref_region r
+           on r.rrg_code=v.cp_region
+    where ev_ind_kle_dossier=:i_dossier
+    into :dbkey
+        ,:ville
+        ,:cp
+        ,:latitude
+        ,:longitude
+        ,:departement
+        ,:region
+  do
+  begin
+    update evenements_ind e
+      set e.ev_ind_ville=:ville
+         ,e.ev_ind_dept=:departement
+         ,e.ev_ind_region=:region
+         ,e.ev_ind_pays=upper(e.ev_ind_pays)
+      WHERE e.RDB$DB_KEY=:dbkey;
+    update evenements_ind e
+      set e.ev_ind_latitude=:latitude
+         ,e.ev_ind_longitude=:longitude
+      WHERE e.RDB$DB_KEY=:dbkey
+        and e.ev_ind_cp=:cp
+        and char_length(e.ev_ind_subd)=0;
+  end
+for select e.RDB$DB_KEY
+          ,v.cp_ville
+          ,v.cp_cp
+          ,v.cp_latitude
+          ,v.cp_longitude
+          ,d.rdp_libelle
+          ,r.rrg_libelle
+    from evenements_fam e
+    inner join ref_cp_ville v
+            on v.cp_insee=e.ev_fam_insee
+    inner join ref_pays p
+            on p.rpa_code=v.cp_pays
+           and p.rpa_libelle=upper(e.ev_fam_pays)
+    left join ref_departements d
+           on d.rdp_code=v.cp_dept
+    left join ref_region r
+           on r.rrg_code=v.cp_region
+    where ev_fam_kle_dossier=:i_dossier
+    into :dbkey
+        ,:ville
+        ,:cp
+        ,:latitude
+        ,:longitude
+        ,:departement
+        ,:region
+  do
+  begin
+    update evenements_fam e
+      set e.ev_fam_ville=:ville
+         ,e.ev_fam_dept=:departement
+         ,e.ev_fam_region=:region
+         ,e.ev_fam_pays=upper(e.ev_fam_pays)
+      WHERE e.RDB$DB_KEY=:dbkey;
+    update evenements_fam e
+      set e.ev_fam_latitude=:latitude
+         ,e.ev_fam_longitude=:longitude
+      WHERE e.RDB$DB_KEY=:dbkey
+        and e.ev_fam_cp=:cp
+        and char_length(e.ev_fam_subd)=0;
+  end
+end^
+COMMENT ON PROCEDURE PROC_MAJ_LIEUX_FAVORIS IS
+'Procédure modifiée par André Langlet
+le 20/05/2007: optimisation
+le 25/10/2010: suppression références à ADRESSES_IND
+Description : Procedure mettant à jour les tables des evenements,
+en remettant les villes, départements et régions comme dans la table de
+référence des villes, ainsi que latitude et longitude si la subdivision est vide'^
+
+CREATE OR ALTER PROCEDURE PROC_MAJ_TAGS 
+as
+declare variable code_union integer;
+declare variable compte integer;
+declare variable dossier integer;
+begin
+  for select union_clef,kle_dossier
+      from t_union
+      where union_type=1 --Mariés
+      into :code_union,:dossier
+      do
+  begin
+    compte=0;
+    select 1 from rdb$database where exists
+    (select * from evenements_fam
+    where ev_fam_type='MARR'
+      and ev_fam_kle_famille=:code_union)
+    into :compte;
+    if (compte<1) then
+      insert into evenements_fam (ev_fam_kle_famille,ev_fam_kle_dossier
+                                 ,ev_fam_type)
+      values(:code_union,:dossier,'MARR');
+  end
+
+  for select union_clef,kle_dossier
+      from t_union
+      where union_type=2 --Concubinage
+      into :code_union,:dossier
+      do
+  begin
+    compte=0;
+    select 1 from rdb$database where exists
+    (select * from evenements_fam
+    where ev_fam_type='EVEN'
+      and ev_fam_description='Concubinage'
+      and ev_fam_kle_famille=:code_union)
+    into :compte;
+    if (compte<1) then
+      insert into evenements_fam (ev_fam_kle_famille,ev_fam_kle_dossier
+                                 ,ev_fam_type,ev_fam_description)
+      values(:code_union,:dossier,'EVEN','Concubinage');
+  end
+
+  for select union_clef,kle_dossier
+      from t_union
+      where union_type=3 --Séparés
+      into :code_union,:dossier
+      do
+  begin
+    compte=0;
+    select 1 from rdb$database where exists
+    (select * from evenements_fam
+    where ev_fam_type='EVEN'
+      and ev_fam_description='Séparés'
+      and ev_fam_kle_famille=:code_union)
+    into :compte;
+    if (compte<1) then
+      insert into evenements_fam (ev_fam_kle_famille,ev_fam_kle_dossier
+                                 ,ev_fam_type,ev_fam_description)
+      values(:code_union,:dossier,'EVEN','Séparés');
+  end
+
+  for select union_clef,kle_dossier
+      from t_union
+      where union_type=4 --Union libre
+      into :code_union,:dossier
+      do
+  begin
+    compte=0;
+    select 1 from rdb$database where exists
+    (select * from evenements_fam
+    where ev_fam_type='EVEN'
+      and ev_fam_description='Union libre'
+      and ev_fam_kle_famille=:code_union)
+    into :compte;
+    if (compte<1) then
+      insert into evenements_fam (ev_fam_kle_famille,ev_fam_kle_dossier
+                                 ,ev_fam_type,ev_fam_description)
+      values(:code_union,:dossier,'EVEN','Union libre');
+  end
+
+  for select union_clef,kle_dossier
+      from t_union
+      where union_type=5 --Relations extra-conjugales
+      into :code_union,:dossier
+      do
+  begin
+    compte=0;
+    select 1 from rdb$database where exists
+    (select * from evenements_fam
+    where ev_fam_type='EVEN'
+      and ev_fam_description='Relations extra-conjugales'
+      and ev_fam_kle_famille=:code_union)
+    into :compte;
+    if (compte<1) then
+      insert into evenements_fam (ev_fam_kle_famille,ev_fam_kle_dossier
+                                 ,ev_fam_type,ev_fam_description)
+      values(:code_union,:dossier,'EVEN','Relations extra-conjugales');
+  end
+
+  for select union_clef,kle_dossier
+      from t_union
+      where union_type=6 --PACS
+      into :code_union,:dossier
+      do
+  begin
+    compte=0;
+    select 1 from rdb$database where exists
+    (select * from evenements_fam
+    where ev_fam_type='MARR'
+      and ev_fam_kle_famille=:code_union)
+    into :compte;
+    if (compte<1) then
+      insert into evenements_fam (ev_fam_kle_famille,ev_fam_kle_dossier
+                                 ,ev_fam_type,ev_fam_description)
+      values(:code_union,:dossier,'MARR','PACS');
+  end
+
+  update t_union set union_type=0 where union_type<>0;
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Circoncision'
+  where ev_ind_type='X_MU1';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Chahada'
+  where ev_ind_type='X_MU2';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='El hadj'
+  where ev_ind_type='X_MU3';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Sports'
+  where ev_ind_type='XSPO';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Loisirs'
+  where ev_ind_type='XLOI';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Henné - Fiancailles'
+  where ev_ind_type='XHENN';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Houpa - Bénéd. religieuse'
+  where ev_ind_type='XHOUP';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Service militaire'
+  where ev_ind_type='MILI';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Voyage'
+  where ev_ind_type='TRIP';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Voyage long'
+  where ev_ind_type='VOYA';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Brit Mila'
+  where ev_ind_type='BRIT';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Communion'
+  where ev_ind_type='COMU';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Décoration'
+  where ev_ind_type='DECO';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Sacre'
+  where ev_ind_type='SACR';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Acquisition'
+  where ev_ind_type='PURC';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Héritage'
+  where ev_ind_type='LEGA';
+
+  update evenements_ind
+  set ev_ind_type='EVEN'
+     ,ev_ind_titre_event='Vente'
+  where ev_ind_type='SALE';
+
+  update evenements_ind
+  set ev_ind_type='BURI'
+  where ev_ind_type='INHU';
+
+  update evenements_ind
+  set ev_ind_type='BLES'
+  where ev_ind_type='BENE';
+
+  update evenements_ind
+  set ev_ind_type='GRAD'
+  where ev_ind_type='DIPL';
+
+  update evenements_ind
+  set ev_ind_type='TITL'
+  where ev_ind_type='TITR';
+
+end^
+
+COMMENT ON PROCEDURE PROC_MAJ_TAGS IS
+'Procédure créée par André le 30/01/2008 pour transformer le champ UNION_TYPE
+en événements familiaux, et les tags spéciaux en événements divers.'^
+
+CREATE OR ALTER PROCEDURE PROC_MODIF_FILIATION (
+    i_kle_dossier integer,
+    i_individu integer,
+    i_pere integer,
+    i_mere integer)
+as
+declare variable compte integer;
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Laurent Robbe. Tout droits réservés.
+   Créé le : 12/06/2003
+   à : 11:54:11
+   Modifiée le :29/01/2008 par André, optimisation
+   à : :
+   par :
+   Description : Met à jour si besoin la table T_UNION pour un individu et son (ses)
+                 parents
+   Usage       : Si le père ou la mère n'est pas présent, le (la) renseigner à zéro
+                 Si les 2 sont absents, les mettre à zéro ou ne pas appeler la procédure
+   ---------------------------------------------------------------------------*/
+
+  /* Etape 1 : Suppression de ses liens de filiation actuels */
+  /* mode=0 Détachement père et mère */
+  execute procedure proc_suppression_filiation(:i_kle_dossier,:i_individu,0);
+
+  /* Etape 2 : Ajout des unions si nécessaire */
+  if (i_pere=0) then i_pere=null;
+  if (i_mere=0) then i_mere=null;
+
+  /* Si père et mère à null alors rien de plus à faire (effacement des liens fait
+     plus haut
+     Sinon */
+  if (i_pere is not null or i_mere is not null) then
+  begin
+    /* Vérification de l'existence préalable du lien */
+    compte=0;
+    if (i_pere is null) then
+    begin
+      select 1 from rdb$database where exists
+      (select * from t_union
+      where union_mari  is null
+        and union_femme = :i_mere)
+      into :compte;
+    end
+    else
+    if (i_mere is null) then
+    begin
+      select 1 from rdb$database where exists
+      (select * from t_union
+      where union_mari=:i_pere
+        and union_femme is null)
+      into :compte;
+    end
+    else
+    begin
+      select 1 from rdb$database where exists
+      (select * from t_union
+      where union_mari=:i_pere
+        and union_femme=:i_mere)
+      into :compte;
+    end
+    /* Si compte >= 1 : pas d'action à faire : une union (ou plus !?!) pour ces 2 individus
+       Sinon */
+    if (compte < 1) then
+    begin
+      insert into t_union (union_mari,union_femme,kle_dossier,union_type)
+      values (:i_pere,:i_mere,:i_kle_dossier,0);
+    end
+  end
+
+  /* Etape 3 : Modification de la fiche individu */
+  update individu
+  set cle_pere=:i_pere
+     ,cle_mere=:i_mere
+  where cle_fiche=:i_individu;
+end^
+
+CREATE OR ALTER PROCEDURE PROC_NAVIGATION (
+    i_clef integer,
+    i_max integer)
+returns (
+    niveau integer,
+    cle_fiche integer,
+    nom varchar(60),
+    prenom varchar(100),
+    date_naissance varchar(100),
+    date_deces varchar(100),
+    sexe integer,
+    cle_pere integer,
+    cle_mere integer,
+    sosa double precision,
+    decede integer,
+    ville_naissance varchar(50),
+    ville_deces varchar(50),
+    age_en_jours integer,
+    profession varchar(90),
+    date_union varchar(90),
+    ville_union varchar(50),
+    photo blob sub_type 0 segment size 80,
+    enfants integer,
+    num_sosa double precision,
+    periode_vie varchar(15),
+    age_union_jours integer,
+    age_union_ind_jours integer)
+as
+declare variable i_sexe integer;
+declare variable i_cle_pere integer;
+declare variable i_cle_mere integer;
+declare variable i_cle_pere_pere integer;
+declare variable i_cle_pere_mere integer;
+declare variable i_cle_mere_pere integer;
+declare variable i_cle_mere_mere integer;
+declare variable date_nais date;
+declare variable mois_nais integer;
+declare variable an_nais integer;
+declare variable date_eve date;
+declare variable mois_eve integer;
+declare variable an_eve integer;
+declare variable date_nais_ind date;
+declare variable date_nais_pere date;
+declare variable date_nais_mere date;
+declare variable date_mariage date;
+declare variable i integer;
+begin
+   SELECT  SEXE,cle_pere,cle_mere
+      FROM INDIVIDU
+      WHERE CLE_FICHE = :I_CLEF
+      INTO :I_SEXE,:i_cle_pere,:i_cle_mere;
+   I=0;
+   for
+   SELECT  0,      --l'individu
+           cle_fiche,
+           nom,
+           prenom,
+           Date_Naissance,
+           Date_deces,
+           Sexe,
+           Cle_Pere,
+           Cle_Mere,
+           1
+           ,decede
+           ,Num_sosa
+           ,iif(annee_naissance is null and annee_deces is null,null,
+            '('||coalesce('°'||cast(annee_naissance as varchar(5)),'')||
+            iif(annee_naissance is null or annee_deces is null,'',' ')||
+            coalesce(''||cast(annee_deces as varchar(5)),'')||')')
+         FROM individu
+              Where cle_fiche  = :i_clef
+    UNION
+    SELECT 1,    --son père
+           cle_fiche,
+           nom,
+           prenom,
+           Date_Naissance,
+           Date_deces,
+           Sexe,
+           Cle_Pere,
+           Cle_Mere,
+           2
+           ,decede
+           ,Num_sosa
+           ,iif(annee_naissance is null and annee_deces is null,null,
+            '('||coalesce('°'||cast(annee_naissance as varchar(5)),'')||
+            iif(annee_naissance is null or annee_deces is null,'',' ')||
+            coalesce(''||cast(annee_deces as varchar(5)),'')||')')
+         FROM individu
+              Where cle_fiche=(SELECT CLE_PERE FROM individu
+                                 WHERE CLE_FICHE=:I_CLEF)
+    UNION
+    SELECT 1,   --sa mère
+           cle_fiche,
+           nom,
+           prenom,
+           Date_Naissance,
+           Date_deces,
+           Sexe,
+           Cle_Pere,
+           Cle_Mere,
+           3
+           ,decede
+           ,Num_sosa
+           ,iif(annee_naissance is null and annee_deces is null,null,
+            '('||coalesce('°'||cast(annee_naissance as varchar(5)),'')||
+            iif(annee_naissance is null or annee_deces is null,'',' ')||
+            coalesce(''||cast(annee_deces as varchar(5)),'')||')')
+         FROM individu
+              Where cle_fiche=(SELECT CLE_MERE FROM individu
+                                 WHERE CLE_FICHE=:I_CLEF)
+    UNION
+    SELECT 2,   --ses grands parents
+           cle_fiche,
+           nom,
+           prenom,
+           Date_Naissance,
+           Date_deces,
+           Sexe,
+           Cle_Pere,
+           Cle_Mere,
+           SOSA
+           ,decede
+           ,Num_sosa
+           ,iif(annee_naissance is null and annee_deces is null,null,
+            '('||coalesce('°'||cast(annee_naissance as varchar(5)),'')||
+            iif(annee_naissance is null or annee_deces is null,'',' ')||
+            coalesce(''||cast(annee_deces as varchar(5)),'')||')')
+           FROM PROC_TROUVE_GRANDS_PARENT(:I_CLEF)
+   UNION
+    SELECT 4,  --ses frères et soeurs
+           CLE_FICHE,
+           NOM,
+           PRENOM,
+           DATE_NAISSANCE,
+           DATE_DECES,
+           SEXE,
+           Cle_Pere,
+           Cle_Mere
+           ,F_1
+           ,decede
+           ,Num_sosa
+           ,iif(annee_naissance is null and annee_deces is null,null,
+            '('||coalesce('°'||cast(annee_naissance as varchar(5)),'')||
+            iif(annee_naissance is null or annee_deces is null,'',' ')||
+            coalesce(''||cast(annee_deces as varchar(5)),'')||')')
+           FROM PROC_TROUVE_FRERES_SOEURS(:I_CLEF)
+    UNION
+    SELECT 3,
+           CLE_FICHE,
+           NOM,
+           PRENOM,
+           DATE_NAISSANCE,
+           DATE_DECES,
+           SEXE,
+           Cle_Pere,
+           Cle_Mere
+           ,SOSA
+           ,decede
+           ,Num_sosa
+           ,iif(annee_naissance is null and annee_deces is null,null,
+            '('||coalesce('°'||cast(annee_naissance as varchar(5)),'')||
+            iif(annee_naissance is null or annee_deces is null,'',' ')||
+            coalesce(''||cast(annee_deces as varchar(5)),'')||')')
+           FROM PROC_TROUVE_ONCLES_TANTES(:I_CLEF)
+    UNION
+    SELECT 5,   -- ses enfants
+           CLE_FICHE,
+           NOM,
+           PRENOM,
+           DATE_NAISSANCE,
+           DATE_DECES,
+           SEXE,
+           Cle_Pere,
+           Cle_Mere
+           ,annee_naissance
+           ,decede
+           ,Num_sosa
+           ,iif(annee_naissance is null and annee_deces is null,null,
+            '('||coalesce('°'||cast(annee_naissance as varchar(5)),'')||
+            iif(annee_naissance is null or annee_deces is null,'',' ')||
+            coalesce(''||cast(annee_deces as varchar(5)),'')||')')
+      FROM INDIVIDU
+      WHERE (:i_sexe=1 and CLE_PERE=:i_clef)
+         OR (:i_sexe=2 and CLE_MERE=:i_clef)
+    UNION
+    SELECT 7,  --ses conjoints
+            p.conjoint
+           ,c.NOM
+           ,c.PRENOM
+           ,c.DATE_NAISSANCE
+           ,c.DATE_DECES
+           ,c.SEXE
+           ,c.CLE_PERE
+           ,c.CLE_MERE
+           ,p.ordre
+           ,c.decede
+           ,c.NUM_SOSA
+           ,iif(c.annee_naissance is null and c.annee_deces is null,null,
+            '('||coalesce('°'||cast(c.annee_naissance as varchar(5)),'')||
+            iif(c.annee_naissance is null or c.annee_deces is null,'',' ')||
+            coalesce(''||cast(c.annee_deces as varchar(5)),'')||')')
+      from proc_conjoints_ordonnes(:i_clef,0) p
+        left join individu c on c.cle_fiche=p.conjoint
+    UNION
+    SELECT 6,  --ses cousins et cousines
+           i.CLE_FICHE,
+           i.NOM,
+           i.PRENOM,
+           i.DATE_NAISSANCE,
+           i.DATE_DECES,
+           i.SEXE,
+           i.Cle_Pere,
+           i.Cle_Mere
+           ,p.SOSA*10000+coalesce(i.annee_naissance,0)
+           ,i.decede
+           ,i.Num_sosa
+           ,iif(i.annee_naissance is null and i.annee_deces is null,null,
+            '('||coalesce('°'||cast(i.annee_naissance as varchar(5)),'')||
+            iif(i.annee_naissance is null or i.annee_deces is null,'',' ')||
+            coalesce(''||cast(i.annee_deces as varchar(5)),'')||')')
+           FROM proc_trouve_oncles_tantes (:I_CLEF) p,
+                INDIVIDU i
+           WHERE (p.sexe=1 and i.cle_pere=p.cle_fiche)
+              or (p.sexe=2 and i.cle_mere=p.cle_fiche)
+    UNION
+    SELECT 8,  --ses petits enfants
+           i.CLE_FICHE,
+           i.NOM,
+           i.PRENOM,
+           i.DATE_NAISSANCE,
+           i.DATE_DECES,
+           i.SEXE,
+           i.Cle_Pere,
+           i.Cle_Mere
+           ,coalesce(p.annee_naissance,0)*10000+coalesce(i.annee_naissance,0)
+           ,i.decede
+           ,i.Num_sosa
+           ,iif(i.annee_naissance is null and i.annee_deces is null,null,
+            '('||coalesce('°'||cast(i.annee_naissance as varchar(5)),'')||
+            iif(i.annee_naissance is null or i.annee_deces is null,'',' ')||
+            coalesce(''||cast(i.annee_deces as varchar(5)),'')||')')
+           FROM (SELECT CLE_FICHE,SEXE,annee_naissance
+                 FROM INDIVIDU
+                 WHERE (:i_sexe=1 and CLE_PERE=:i_clef)
+                    OR (:i_sexe=2 and CLE_MERE=:i_clef)) as p,
+                individu i
+           where (p.sexe=1 and i.cle_pere=p.cle_fiche)
+              or (p.sexe=2 and i.cle_mere=p.cle_fiche)
+    UNION
+    SELECT 9,   --ses neveux et nièces
+           i.CLE_FICHE,
+           i.NOM,
+           i.PRENOM,
+           i.DATE_NAISSANCE,
+           i.DATE_DECES,
+           i.SEXE,
+           i.Cle_Pere,
+           i.Cle_Mere
+           ,p.F_1*10000+coalesce(i.annee_naissance,0)
+           ,i.decede
+           ,i.Num_sosa
+           ,iif(i.annee_naissance is null and i.annee_deces is null,null,
+            '('||coalesce('°'||cast(i.annee_naissance as varchar(5)),'')||
+            iif(i.annee_naissance is null or i.annee_deces is null,'',' ')||
+            coalesce(''||cast(i.annee_deces as varchar(5)),'')||')')
+           FROM proc_trouve_freres_soeurs (:I_CLEF) p,
+                INDIVIDU i
+           WHERE (p.sexe=1 and i.cle_pere=p.cle_fiche)
+              or (p.sexe=2 and i.cle_mere=p.cle_fiche)
+    order by 1,10
+    INTO :NIVEAU,
+         :CLE_FICHE,
+         :NOM,
+         :PRENOM,
+         :DATE_NAISSANCE,
+         :DATE_DECES,
+         :SEXE,
+         :CLE_PERE,
+         :CLE_MERE,
+         :SOSA,
+         :DECEDE,
+         :num_sosa,
+         :periode_vie
+   do
+   begin
+     if (i_max in(1,2,3)) then
+     begin
+       ville_naissance=null;
+       ville_deces=null;
+       age_en_jours=null;
+       profession=null;
+       photo=null;
+       enfants=null;
+       age_union_jours=null;
+       age_union_ind_jours=null;
+       if (not(niveau=1 and sosa=3)) then
+       begin
+         date_union=null;
+         ville_union=null;
+         date_mariage=null;
+       end
+       if (niveau in (0,1,2,5,7)) then
+       begin
+         date_nais=null;
+         mois_nais=null;
+         an_nais=null;
+         date_eve=null;
+         mois_eve=null;
+         an_eve=null;
+         select first(1) ev_ind_ville
+                        ,ev_ind_date
+                        ,ev_ind_date_mois
+                        ,ev_ind_date_year
+         from evenements_ind  --les villes de naissances
+         where ev_ind_kle_fiche=:cle_fiche and ev_ind_type='BIRT'
+         into :ville_naissance
+             ,:date_nais
+             ,:mois_nais
+             ,:an_nais;
+         if (AN_NAIS is not null and DATE_NAIS is null) then
+           DATE_NAIS=cast(coalesce(MOIS_NAIS,1)||'/1/'||AN_NAIS as date);
+         select first(1) ev_ind_ville
+                        ,ev_ind_date
+                        ,ev_ind_date_mois
+                        ,ev_ind_date_year
+         from evenements_ind  --les villes de décès
+         where ev_ind_kle_fiche=:cle_fiche and ev_ind_type='DEAT'
+         into :ville_deces
+             ,:date_eve
+             ,:mois_eve
+             ,:an_eve;
+         if (DATE_NAIS is not null) then
+         begin
+           if (decede is null) then
+             date_eve=current_date;
+           else
+             if (DATE_EVE is null and an_eve is not null) then
+               DATE_EVE=cast(coalesce(MOIS_EVE,1)||'/1/'||AN_EVE as date);
+           if (DATE_EVE is not null) then
+             AGE_EN_JOURS=DATE_EVE-DATE_NAIS;
+         end
+         if (i_max=1) then
+           select count(*)  --le petit média et le nombre d'enfants
+                 ,coalesce((select multi_reduite from multimedia
+                         where multi_clef=(select first(1)mp_media from media_pointeurs
+                                           where mp_cle_individu=:cle_fiche
+                                             and mp_identite=1))
+                        ,(select multi_reduite from multimedia
+                          where multi_clef=(select first(1)mp_media from media_pointeurs
+                                           where mp_cle_individu=:cle_fiche
+                                             order by mp_clef desc)))
+           from individu
+           where (:sexe=1 and cle_pere=:cle_fiche)
+              or (:sexe=2 and cle_mere=:cle_fiche)
+           into :ENFANTS
+               ,:photo;
+         else
+         if (i_max=2) then
+           select count(*)  --le grand média et le nombre d'enfants
+                 ,coalesce((select multi_media from multimedia
+                         where multi_clef=(select first(1)mp_media from media_pointeurs
+                                           where mp_cle_individu=:cle_fiche
+                                             and mp_identite=1))
+                        ,(select multi_media from multimedia
+                          where multi_clef=(select first(1)mp_media from media_pointeurs
+                                           where mp_cle_individu=:cle_fiche
+                                             order by mp_clef desc)))
+           from individu
+           where (:sexe=1 and cle_pere=:cle_fiche)
+              or (:sexe=2 and cle_mere=:cle_fiche)
+           into :ENFANTS
+               ,:photo;
+           else  --i_max=3
+           select count(*)  --le nombre d'enfants
+           from individu
+           where (:sexe=1 and cle_pere=:cle_fiche)
+              or (:sexe=2 and cle_mere=:cle_fiche)
+           into :ENFANTS;
+         select first(1) ev_ind_description from evenements_ind
+         where ev_ind_kle_fiche=:cle_fiche and ev_ind_type='OCCU'
+         order by ev_ind_ordre DESC, ev_ind_date_year desc, ev_ind_date desc
+         into :profession;
+         date_eve=null;
+         mois_eve=null;
+         an_eve=null;
+
+         if (niveau=0) then  --individu central
+           date_nais_ind=date_nais;
+
+         if (niveau=1) then  --ses parents
+         begin
+           if (sosa=2) then  --le père
+           begin
+             if (i_cle_mere is not null) then
+               select first(1) e.ev_fam_date_writen  --l'union des parents
+                              ,e.ev_fam_ville
+                              ,ev_fam_date
+                              ,ev_fam_date_mois
+                              ,ev_fam_date_year
+               from t_union u
+               inner join evenements_fam e on ev_fam_kle_famille=u.union_clef and ev_fam_type='MARR'
+               where u.union_mari=:i_cle_pere and u.union_femme=:i_cle_mere
+               order by ev_fam_date_year,ev_fam_date_mois,ev_fam_date
+               into :date_union
+                   ,:ville_union
+                   ,:date_eve
+                   ,:mois_eve
+                   ,:an_eve;
+             if (AN_EVE is null) then
+               date_mariage=null;
+             else
+               if (DATE_EVE is null) then
+                 date_mariage=cast(coalesce(MOIS_EVE,1)||'/1/'||AN_EVE as date);
+               else
+                 date_mariage=date_eve;
+             date_nais_pere=date_nais;
+             i_cle_pere_pere=cle_pere;  --parents du père
+             i_cle_mere_pere=cle_mere;
+           end
+           else     --la mère
+           begin
+             date_nais_mere=date_nais;
+             i_cle_pere_mere=cle_pere;  --parents de la mère
+             i_cle_mere_mere=cle_mere;
+           end
+           if (DATE_NAIS is not null and date_mariage is not null) then
+             AGE_UNION_JOURS=date_mariage-DATE_NAIS;
+           if (DATE_NAIS is not null and DATE_NAIS_IND is not null) then
+             AGE_UNION_IND_JOURS=DATE_NAIS_IND-DATE_NAIS; --âge des parents à la naissance
+         end  --de niveau=1
+
+         if (niveau=2) then --les grands parents
+         begin
+           if (sosa in(4,5)) then --parents du père
+           begin
+             if (i_cle_pere_pere is not null and i_cle_mere_pere is not null) then
+             begin
+              select first(1) e.ev_fam_date_writen   --l'union des parents du père
+                              ,e.ev_fam_ville
+                              ,ev_fam_date
+                              ,ev_fam_date_mois
+                              ,ev_fam_date_year
+               from t_union u
+               inner join evenements_fam e on ev_fam_kle_famille=u.union_clef and ev_fam_type='MARR'
+               where u.union_mari=:i_cle_pere_pere and u.union_femme=:i_cle_mere_pere
+               order by ev_fam_date_year,ev_fam_date_mois,ev_fam_date
+               into :date_union
+                   ,:ville_union
+                   ,:date_eve
+                   ,:mois_eve
+                   ,:an_eve;
+               if (AN_EVE is null) then
+                 date_mariage=null;
+               else
+               if (DATE_EVE is null) then
+                 date_mariage=cast(coalesce(MOIS_EVE,1)||'/1/'||AN_EVE as date);
+               else
+                 date_mariage=date_eve;
+             end  --de l'union des parents du père
+             if (DATE_NAIS is not null and date_mariage is not null) then
+               AGE_UNION_JOURS=date_mariage-DATE_NAIS;
+             if (DATE_NAIS is not null and DATE_NAIS_PERE is not null) then
+               AGE_UNION_IND_JOURS=DATE_NAIS_PERE-DATE_NAIS; --âge GP à la naissance du père
+           end  --des parents du père
+           else --parents de la mère
+           begin
+             if (i_cle_pere_mere is not null and i_cle_mere_mere is not null) then
+             begin
+               date_mariage=null;
+               select first(1) e.ev_fam_date_writen   --l'union des parents de la mère
+                              ,e.ev_fam_ville
+                              ,ev_fam_date
+                              ,ev_fam_date_mois
+                              ,ev_fam_date_year
+               from t_union u
+               inner join evenements_fam e on ev_fam_kle_famille=u.union_clef and ev_fam_type='MARR'
+               where u.union_mari=:i_cle_pere_mere and u.union_femme=:i_cle_mere_mere
+               order by ev_fam_date_year,ev_fam_date_mois,ev_fam_date
+               into :date_union
+                   ,:ville_union
+                   ,:date_eve
+                   ,:mois_eve
+                   ,:an_eve;
+               if (AN_EVE is null) then
+                 date_mariage=null;
+               else
+               if (DATE_EVE is null) then
+                 date_mariage=cast(coalesce(MOIS_EVE,1)||'/1/'||AN_EVE as date);
+               else
+                 date_mariage=date_eve;
+             end  --de l'union des parents de la mère
+             if (DATE_NAIS is not null and date_mariage is not null) then
+               AGE_UNION_JOURS=date_mariage-DATE_NAIS;
+             if (DATE_NAIS is not null and DATE_NAIS_MERE is not null) then
+               AGE_UNION_IND_JOURS=DATE_NAIS_MERE-DATE_NAIS; --âge GP à la naissance de la mère
+           end  --des parents de la mère
+         end  --des grands-parents
+
+         if (niveau=5) then  --les enfants
+         begin
+           if (DATE_NAIS is not null and DATE_NAIS_IND is not null) then
+             AGE_UNION_IND_JOURS=DATE_NAIS-DATE_NAIS_IND; --âge indi à la naissance de l'enfant
+           if (DATE_NAIS is not null
+             and((i_sexe=1 and cle_mere is not null)
+                 or(i_sexe=2 and cle_pere is not null))) then
+           begin
+             select first(1) ev_ind_date
+                        ,ev_ind_date_mois
+                        ,ev_ind_date_year
+             from evenements_ind  --la naissance du conjoint père ou mère de l'enfant
+             where ((:i_sexe=2 and ev_ind_kle_fiche=:cle_pere)
+                    or (:i_sexe=1 and ev_ind_kle_fiche=:cle_mere))
+               and ev_ind_type='BIRT'
+             into :date_eve
+                 ,:mois_eve
+                 ,:an_eve;
+             if (an_eve is not null) then
+             begin
+               if (DATE_EVE is null) then
+                   DATE_EVE=cast(coalesce(MOIS_EVE,1)||'/1/'||AN_EVE as date);
+               AGE_UNION_JOURS=DATE_NAIS-DATE_EVE;
+             end
+           end
+         end
+         if (niveau=7) then  --les conjoints
+         begin
+           select first(1) e.ev_fam_date_writen
+                          ,e.ev_fam_ville
+                          ,ev_fam_date
+                          ,ev_fam_date_mois
+                          ,ev_fam_date_year
+           from t_union u
+           inner join evenements_fam e on ev_fam_kle_famille=u.union_clef and ev_fam_type='MARR'
+           where (:i_sexe=1 and u.union_mari=:i_clef and u.union_femme=:cle_fiche)
+              or (:i_sexe=2 and u.union_mari=:cle_fiche and u.union_femme=:i_clef)
+           order by ev_fam_date_year,ev_fam_date_mois,ev_fam_date
+           into :date_union
+               ,:ville_union
+               ,:date_eve
+               ,:mois_eve
+               ,:an_eve;
+           if (AN_EVE is not null) then
+           begin
+             if (DATE_EVE is null) then
+               date_eve=cast(coalesce(MOIS_EVE,1)||'/1/'||AN_EVE as date);
+             if (DATE_NAIS is not null and DATE_EVE is not null) then
+               AGE_UNION_JOURS=DATE_EVE-DATE_NAIS;  --âge conjoint au mariage
+             if (DATE_NAIS_IND is not null and DATE_EVE is not null) then
+               AGE_UNION_IND_JOURS=DATE_EVE-DATE_NAIS_IND; --âge indi au mariage
+           end
+         end -- de conjoints
+
+       end -- de (niveau in (0,1,2,5,7))
+     end --de I_MAX in(1,2,3)
+     suspend;
+   end
+end^
+
+COMMENT ON PROCEDURE PROC_NAVIGATION IS
+'Procédure créée par Philippe Cazaux-Moutou le : 31/07/2001
+Entièrement refaite en 2007 par André Langlet pour grande fenêtre de navigation.
+Dernières modifications par André le 14/3/2008 pour dates avec° et 
+le 07/04/2009 suppression utilisation proc_trouve_unions
+le 28/12/2009 correction suite à suppression des paramètres inutiles de
+PROC_TROUVE_ONCLES_TANTES et de I_DOSSIER.
+le 27/03/2011 suppression des témoins
+I_MAX est utilisé pour définir le mode de fonctionnement
+   0: peu d''informations pour petite fenêtre de navigation
+   1:: informations complètes pour grande fenêtre de navigation
+   2: idem 1 avec grandes photos
+   3: idem sans photos
+Description :    Cette procedure permet de récuperer la famille d''un individu
+   Le Niveau est le suivant:
+   0 - Lui Meme
+   1 - Parents
+   2 - Grands Parents
+   3 - Oncles et tantes
+   4 - Freres et soeurs
+   5 - Enfants
+   6 - Cousins et cousines
+   7 - Conjoints
+   8 - Petits-enfants
+   9 - Neveux et nièces'^
+
+CREATE OR ALTER PROCEDURE PROC_NEW_PRENOMS (
+    i_dossier integer)
+as
+declare variable prenom varchar(60) character set iso8859_1;
+declare variable sexe integer;
+declare variable courant varchar(60) character set iso8859_1;
+declare variable m integer;
+declare variable f integer;
+begin
+  delete from prenoms;
+  courant='';
+  M=0;
+  F=0;
+  for select all prenom,sexe from proc_prep_prenoms(:I_DOSSIER)
+      where prenom is not null and prenom<>'' and sexe>0
+      order by prenom
+      into :prenom,:sexe
+  do
+  begin
+    if (prenom<>courant) then
+    begin
+      if (char_length(courant)>0) then
+        insert into prenoms (prenom,M,F)
+        values(:courant,:M,:F);
+      M=0;
+      F=0;
+      courant=prenom;
+    end
+    if (sexe>1) then
+      F=F+1;
+    else
+      M=M+1;
+  end
+  if (char_length(courant)>0) then
+    insert into prenoms (prenom,M,F)
+    values(:courant,:M,:F);
+end^
+
+CREATE OR ALTER PROCEDURE PROC_PREP_PRENOMS (
+    I_DOSSIER INTEGER)
+RETURNS (
+    PRENOM VARCHAR(60),
+    SEXE INTEGER)
+AS
+DECLARE VARIABLE PRENOM_COMPLET VARCHAR(60);
+begin
+   /*---------------------------------------------------------------------------
+   Version allégée de proc_liste_prenom utilisée par proc_new_prenoms
+   créée par André le 23/12/2006
+   ---------------------------------------------------------------------------*/
+  for  select distinct PRENOM,sexe
+          from individu
+          where KLE_DOSSIER=:I_DOSSIER
+          INTO :PRENOM_COMPLET,:SEXE
+  do for select prenom from proc_eclate_prenom(:PRENOM_COMPLET)
+         into :prenom
+     do suspend;
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_PREP_PROFESSIONS (
+    I_DOSSIER INTEGER)
+RETURNS (
+    PROFESSION VARCHAR(90))
+AS
+DECLARE VARIABLE S_PROFESSION VARCHAR(90) CHARACTER SET ISO8859_1;
+begin
+/*donne la liste de toutes les professions d'un dossier.
+Procédure créée par André le 22/05/2007, dernière modification 24/09/2007*/
+  for select e.ev_ind_description
+      from evenements_ind e
+      where e.ev_ind_kle_dossier=:i_dossier
+        and e.ev_ind_type='OCCU'
+      into :s_profession
+  do
+    for select s_description from proc_eclate_description(:s_profession,',')
+        where s_description is not null
+        into :profession
+        do
+  suspend;
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_PREP_VILLES_FAVORIS (
+    i_dossier integer)
+returns (
+    ev_ind_ville varchar(50),
+    ev_ind_cp varchar(10),
+    ev_ind_dept varchar(30),
+    ev_ind_region varchar(50),
+    ev_ind_pays varchar(30),
+    ev_ind_insee varchar(6),
+    ev_ind_subd varchar(50),
+    ev_ind_latitude decimal(15,8),
+    ev_ind_longitude numeric(15,8))
+as
+BEGIN
+FOR SELECT DISTINCT EV_IND_VILLE
+                   ,EV_IND_CP
+                   ,EV_IND_DEPT
+                   ,EV_IND_REGION
+                   ,EV_IND_PAYS
+                   ,EV_IND_INSEE
+                   ,EV_IND_SUBD
+                   ,EV_IND_LATITUDE
+                   ,EV_IND_LONGITUDE
+       FROM evenements_ind
+       WHERE EV_IND_KLE_DOSSIER = :I_DOSSIER AND
+             EV_IND_VILLE IS NOT NULL
+  UNION SELECT DISTINCT EV_FAM_VILLE
+                   ,EV_FAM_CP
+                   ,EV_FAM_DEPT
+                   ,EV_FAM_REGION
+                   ,EV_FAM_PAYS
+                   ,EV_FAM_INSEE
+                   ,EV_FAM_SUBD
+                   ,EV_FAM_LATITUDE
+                   ,EV_FAM_LONGITUDE
+       FROM evenements_fam
+       WHERE EV_FAM_KLE_DOSSIER = :I_DOSSIER AND
+             EV_FAM_VILLE IS NOT NULL
+    INTO :EV_IND_VILLE,
+         :EV_IND_CP,
+         :EV_IND_DEPT,
+         :EV_IND_REGION,
+         :EV_IND_PAYS,
+         :EV_IND_INSEE,
+         :EV_IND_SUBD,
+         :EV_IND_LATITUDE,
+         :EV_IND_LONGITUDE
+  DO
+    SUSPEND;
+END^
+COMMENT ON PROCEDURE PROC_PREP_VILLES_FAVORIS IS
+'Procédure créée par André Langlet le 05/09/2006
+Dernières modifications le 25/03/2011'^
+
+CREATE OR ALTER PROCEDURE PROC_PREP_VILLES_RAYON (
+    limite double precision,
+    latitudea double precision,
+    longitudea double precision,
+    i_dossier integer)
+returns (
+    cp_code integer,
+    cp_cp varchar(8),
+    cp_prefixe varchar(4),
+    cp_ville varchar(103),
+    cp_indic_tel varchar(2),
+    cp_dept integer,
+    cp_region integer,
+    cp_pays integer,
+    cp_insee varchar(6),
+    cp_habitants double precision,
+    cp_densite double precision,
+    cp_divers varchar(90),
+    cp_latitude double precision,
+    cp_longitude double precision,
+    cp_maj_insee integer,
+    cp_ville_maj varchar(50),
+    distance double precision,
+    departement varchar(30) collate fr_fr,
+    region varchar(50) collate fr_fr,
+    pays varchar(30) collate fr_fr)
+as
+declare variable degrad double precision;
+declare variable sinlat double precision;
+declare variable coslat double precision;
+declare variable deltalat double precision;
+declare variable deltalong double precision;
+declare variable latmax double precision;
+declare variable latmin double precision;
+declare variable longmax double precision;
+declare variable longmin double precision;
+declare variable ok integer;
+begin
+degrad=pi()/180;
+sinlat=sin(latitudea*degrad);
+coslat=cos(latitudea*degrad);
+deltalat=limite/6367;
+latmax=latitudea+deltalat/degrad;
+latmin=latitudea-deltalat/degrad;
+if (latmax>90 or latmin<-90) then
+begin
+   longmax=180;
+   longmin=-180;
+end
+else
+begin
+   deltalong=asin(deltalat/coslat)/degrad;
+   longmax=longitudea+deltalong;
+   longmin=longitudea-deltalong;
+end
+if (i_dossier>0) then
+  for
+  select distinct
+         ev_ind_cp,
+         coalesce(ev_ind_ville,'')||coalesce(' - '||ev_ind_subd,''),
+         ev_ind_insee,
+         ev_ind_latitude,
+         ev_ind_longitude,
+         ev_ind_dept,
+         ev_ind_region,
+         ev_ind_pays
+  from proc_prep_villes_favoris(:i_dossier)
+  where ev_ind_latitude between :latmin and :latmax
+    and (ev_ind_longitude between :longmin and :longmax
+         or ev_ind_longitude between :longmin+360 and 180
+         or ev_ind_longitude between -180 and :longmax-360)
+  into
+        :cp_cp,
+        :cp_ville,
+        :cp_insee,
+        :cp_latitude,
+        :cp_longitude,
+        :departement,
+        :region,
+        :pays
+  do
+  begin
+    if (cp_latitude=latitudea and cp_longitude=longitudea) then
+    begin
+       distance=0;
+       suspend;
+    end
+    else
+    begin
+       distance=6367*acos(sinlat*sin(cp_latitude*degrad)+coslat*cos(cp_latitude*degrad)*cos((longitudea-cp_longitude)*degrad));
+       if (distance<=limite) then
+          suspend;
+    end
+  end
+else
+  for
+  select
+         cp_code,
+         cp_cp,
+         cp_prefixe,
+         cp_ville,
+         cp_indic_tel,
+         cp_dept,
+         cp_region,
+         cp_pays,
+         cp_insee,
+         cp_habitants,
+         cp_densite,
+         cp_divers,
+         cp_latitude,
+         cp_longitude,
+         cp_maj_insee,
+         cp_ville_maj
+  from ref_cp_ville
+  where cp_latitude between cast(:latmin as decimal(15,8)) and cast(:latmax as decimal(15,8))
+    and (cp_longitude between cast(:longmin as decimal(15,8)) and cast(:longmax as decimal(15,8))
+         or cp_longitude between cast(:longmin+360 as decimal(15,8)) and cast(180 as decimal(15,8))
+         or cp_longitude between cast(-180 as decimal(15,8)) and cast(:longmax-360 as decimal(15,8)))
+  into
+        :cp_code,
+        :cp_cp,
+        :cp_prefixe,
+        :cp_ville,
+        :cp_indic_tel,
+        :cp_dept,
+        :cp_region,
+        :cp_pays,
+        :cp_insee,
+        :cp_habitants,
+        :cp_densite,
+        :cp_divers,
+        :cp_latitude,
+        :cp_longitude,
+        :cp_maj_insee,
+        :cp_ville_maj
+  do
+  begin
+    ok=0;
+    if (cp_latitude=latitudea and cp_longitude=longitudea) then
+    begin
+       distance=0;
+       ok=1;
+    end
+    else
+    begin
+       distance=6367*acos(sinlat*sin(cp_latitude*degrad)+coslat*cos(cp_latitude*degrad)*cos((longitudea-cp_longitude)*degrad));
+       if (distance<=limite) then
+          ok=1;
+    end
+    if (ok=1) then
+    begin
+      select first(1) rdp_libelle from ref_departements where rdp_code=:cp_dept
+      into :departement;
+      select first(1) rrg_libelle from ref_region where rrg_code=:cp_region
+      into :region;
+      select first(1) rpa_libelle from ref_pays where rpa_code=:cp_pays
+      into :pays;
+      suspend;
+    end
+  end
+end^
+
+CREATE OR ALTER PROCEDURE PROC_PURGE_IMPORT_GEDCOM (
+    i_clef integer,
+    i_mode integer)
+returns (
+    info varchar(50))
+as
+declare variable i_indiv integer;
+declare variable i_ind integer;
+declare variable i_count integer;
+declare variable i_dossier integer;
+declare variable i integer;
+begin
+  if (i_mode=3) then
+  begin
+    update individu set id_import_gedcom=null where id_import_gedcom=:i_clef;
+    update evenements_fam set id_import_gedcom=null where id_import_gedcom=:i_clef;
+    update multimedia set id_import_gedcom=null where id_import_gedcom=:i_clef;
+    delete from t_import_gedcom where ig_id=:i_clef;
+    info='Traces de l''importation supprimées';
+    suspend;
+    exit;
+  end
+  select count(distinct kle_dossier) from individu
+         where id_import_gedcom=:i_clef
+         into :i_count;
+  if (i_count>1) then
+    begin
+      info='Plusieurs dossiers dans le groupe';
+      suspend;
+      exit;
+    end
+  delete from tq_id; --création d'une table temporaire des associations dans les 2 sens
+  for select a.assoc_kle_ind,a.assoc_kle_associe from t_associations a
+          where a.assoc_table='I'
+            and a.assoc_kle_ind>0
+            and a.assoc_kle_associe>0
+            and a.assoc_kle_associe not in (select "ID2" from tq_id where "ID1"=a.assoc_kle_ind)
+          into :i_ind,:i_indiv
+        do
+        begin
+          insert into tq_id ("ID1","ID2") values(:i_ind,:i_indiv);
+          if (i_ind<>i_indiv) then
+            insert into tq_id ("ID1","ID2") values(:i_indiv , :i_ind);
+        end
+  for select a.assoc_kle_associe,u.union_mari from t_associations a
+               inner join evenements_fam e on e.ev_fam_clef=a.assoc_evenement
+               inner join t_union u on u.union_clef=e.ev_fam_kle_famille
+               where a.assoc_table='U'
+                 and u.union_mari>0
+                 and a.assoc_kle_associe>0
+                 and a.assoc_kle_associe not in (select "ID2" from tq_id where "ID1"=u.union_mari)
+               into :i_ind,:i_indiv
+        do
+        begin
+          insert into tq_id ("ID1","ID2") values(:i_ind,:i_indiv);
+          if (i_ind<>i_indiv) then
+            insert into tq_id ("ID1","ID2") values(:i_indiv,:i_ind);
+        end
+  for select a.assoc_kle_associe,u.union_femme from t_associations a
+               inner join evenements_fam e on e.ev_fam_clef=a.assoc_evenement
+               inner join t_union u on u.union_clef=e.ev_fam_kle_famille
+               where a.assoc_table='U'
+                 and u.union_femme>0
+                 and a.assoc_kle_associe>0
+                 and a.assoc_kle_associe not in (select "ID2" from tq_id where "ID1"=u.union_femme)
+               into :i_ind,:i_indiv
+        do
+        begin
+          insert into tq_id ("ID1","ID2") values(:i_ind,:i_indiv);
+          if (i_ind<>i_indiv) then
+            insert into tq_id ("ID1","ID2") values(:i_indiv,:i_ind);
+        end
+  delete from tq_ascendance;
+  if (i_mode=1) then  --suppression des enregistrements
+    begin
+      insert into tq_ascendance (tq_cle_fiche,tq_niveau)
+        select cle_fiche,0 from individu where id_import_gedcom=:i_clef;
+      select count(*) from tq_ascendance into :i;
+      i_count=i+1;
+      while (i<i_count) do
+      begin
+        i_count=i;
+        update tq_ascendance tq set tq_niveau=1
+        where tq_niveau=0
+        --ne pas supprimer s'il est père ou mère d'un individu hors importation
+        and exists (select * from individu i
+                     where (i.cle_pere=tq.tq_cle_fiche or i.cle_mere=tq.tq_cle_fiche)
+                       and (i.id_import_gedcom<>:i_clef or i.id_import_gedcom is null
+                            or exists (select * from tq_ascendance where tq_niveau=1
+                                                          and tq_cle_fiche=i.cle_fiche)));
+        update tq_ascendance tq set tq_niveau=1
+        where tq_niveau=0
+         --ne pas supprimer s'il est marié à une femme hors importation
+         and exists (select * from individu i,
+                                  t_union u
+                    where u.union_mari=tq.tq_cle_fiche
+                      and i.cle_fiche=u.union_femme
+                      and (i.id_import_gedcom<>:i_clef or i.id_import_gedcom is null
+                            or exists (select * from tq_ascendance where tq_niveau=1
+                                                          and tq_cle_fiche=i.cle_fiche)));
+        update tq_ascendance tq set tq_niveau=1
+        where tq_niveau=0
+         --ne pas supprimer s'il est marié à un mari hors importation
+         and exists (select * from individu i,
+                                  t_union u
+                    where u.union_femme=tq.tq_cle_fiche
+                      and i.cle_fiche=u.union_mari
+                      and (i.id_import_gedcom<>:i_clef or i.id_import_gedcom is null
+                            or exists (select * from tq_ascendance where tq_niveau=1
+                                                          and tq_cle_fiche=i.cle_fiche)));
+        update tq_ascendance tq set tq_niveau=1
+        where tq_niveau=0
+         --ne pas supprimer son père est un individu hors importation
+         and exists (select * from individu i,
+                                  individu e
+                     where e.cle_fiche=tq.tq_cle_fiche
+                       and i.cle_fiche=e.cle_pere
+                       and (i.id_import_gedcom<>:i_clef or i.id_import_gedcom is null
+                            or exists (select * from tq_ascendance where tq_niveau=1
+                                                          and tq_cle_fiche=i.cle_fiche)));
+        update tq_ascendance tq set tq_niveau=1
+        where tq_niveau=0
+         --ne pas supprimer sa mère est un individu hors importation
+         and exists (select * from individu i,
+                                  individu e
+                     where e.cle_fiche=tq.tq_cle_fiche
+                       and i.cle_fiche=e.cle_mere
+                       and (i.id_import_gedcom<>:i_clef or i.id_import_gedcom is null
+                            or exists (select * from tq_ascendance where tq_niveau=1
+                                                          and tq_cle_fiche=i.cle_fiche)));
+        update tq_ascendance tq set tq_niveau=1
+        where tq_niveau=0
+         --ne pas supprimer s'il est associé à un individu hors importation
+         and exists (select * from individu i
+                    inner join tq_id t on t.id2=i.cle_fiche
+                    where t.id1=tq.tq_cle_fiche
+                      and (i.id_import_gedcom<>:i_clef or i.id_import_gedcom is null
+                            or exists (select * from tq_ascendance where tq_niveau=1
+                                                          and tq_cle_fiche=i.cle_fiche)));
+        select count(*) from tq_ascendance where tq_niveau=0 into :i;
+      end
+      delete from tq_ascendance where tq_niveau=1;
+    end
+  else  --I_MODE=2 élagage
+    begin
+      select distinct kle_dossier from individu
+         where id_import_gedcom=:i_clef
+         into :i_dossier;
+      insert into tq_ascendance (tq_cle_fiche,tq_niveau)
+      select cle_fiche,0 from individu
+       where kle_dossier=:i_dossier
+         and (id_import_gedcom<>:i_clef or id_import_gedcom is null);
+      select count(*) from tq_ascendance into :i;
+      i_count=i+1;
+      while (i<i_count) do
+      begin
+        i_count=i;
+        update tq_ascendance tq set tq_niveau=1
+        where tq_niveau=0
+        --ne pas supprimer s'il est père ou mère d'un individu de l'importation
+        and exists (select * from individu i
+                     where (i.cle_pere=tq.tq_cle_fiche or i.cle_mere=tq.tq_cle_fiche)
+                       and (i.id_import_gedcom=:i_clef
+                            or exists (select * from tq_ascendance where tq_niveau=1
+                                                          and tq_cle_fiche=i.cle_fiche)));
+        update tq_ascendance tq set tq_niveau=1
+        where tq_niveau=0
+         --ne pas supprimer sa femme est un individu de l'importation
+         and exists (select * from t_union u,
+                                  individu i
+                    where u.union_mari=tq.tq_cle_fiche
+                      and i.cle_fiche=u.union_femme
+                      and (i.id_import_gedcom=:i_clef
+                            or exists (select * from tq_ascendance where tq_niveau=1
+                                                          and tq_cle_fiche=i.cle_fiche)));
+        update tq_ascendance tq set tq_niveau=1
+        where tq_niveau=0
+         --ne pas supprimer son mari est un individu de l'importation
+         and exists (select * from t_union u,
+                                  individu i
+                    where u.union_femme=tq.tq_cle_fiche
+                      and i.cle_fiche=u.union_mari
+                      and (i.id_import_gedcom=:i_clef
+                            or exists (select * from tq_ascendance where tq_niveau=1
+                                                          and tq_cle_fiche=i.cle_fiche)));
+        update tq_ascendance tq set tq_niveau=1
+        where tq_niveau=0
+         --ne pas supprimer son père est un individu de l'importation
+         and exists (select * from individu i,
+                                  individu e
+                     where e.cle_fiche=tq.tq_cle_fiche
+                       and i.cle_fiche=e.cle_pere
+                       and (i.id_import_gedcom=:i_clef
+                            or exists (select * from tq_ascendance where tq_niveau=1
+                                                          and tq_cle_fiche=i.cle_fiche)));
+        update tq_ascendance tq set tq_niveau=1
+        where tq_niveau=0
+         --ne pas supprimer sa mère est un individu de l'importation
+         and exists (select * from individu i,
+                                  individu e
+                     where e.cle_fiche=tq.tq_cle_fiche
+                       and i.cle_fiche=e.cle_mere
+                       and (i.id_import_gedcom=:i_clef
+                            or exists (select * from tq_ascendance where tq_niveau=1
+                                                          and tq_cle_fiche=i.cle_fiche)));
+        update tq_ascendance tq set tq_niveau=1
+        where tq_niveau=0
+         --ne pas supprimer s'il est associé à un individu de l'importation
+         and exists (select * from individu i
+                    inner join tq_id t on t.id2=i.cle_fiche
+                    where t.id1=tq.tq_cle_fiche
+                      and (i.id_import_gedcom=:i_clef
+                            or exists (select * from tq_ascendance where tq_niveau=1
+                                                          and tq_cle_fiche=i.cle_fiche)));
+        select count(*) from tq_ascendance where tq_niveau=0 into :i;
+      end
+      delete from tq_ascendance where tq_niveau=1;
+    end
+  delete from tq_id;
+  select cast(count(tq_cle_fiche) as varchar(20))||' individus supprimés' from tq_ascendance
+      into :info;
+  delete from individu i where exists (select * from tq_ascendance
+                                    where tq_cle_fiche=i.cle_fiche);
+  update individu i set i.cle_pere=null where exists (select * from tq_ascendance
+                                                      where tq_cle_fiche=i.cle_pere);
+  update individu i set i.cle_mere=null where exists (select * from tq_ascendance
+                                                      where tq_cle_fiche=i.cle_mere);
+  delete from evenements_ind e where exists (select * from tq_ascendance
+                                             where tq_cle_fiche=e.ev_ind_kle_fiche);
+  update t_union u set u.union_mari=null where exists (select * from tq_ascendance
+                                                       where tq_cle_fiche=u.union_mari);
+  update t_union u set u.union_femme=null where exists (select * from tq_ascendance
+                                                       where tq_cle_fiche=u.union_femme);
+  delete from t_union where union_mari is null and union_femme is null;
+  delete from t_union t where (t.union_mari is null and not exists (select * from individu
+                               where cle_mere=t.union_femme))
+                           or (t.union_femme is null and not exists (select * from individu
+                               where cle_pere=t.union_mari));
+  delete from evenements_fam e where exists (select * from t_union
+                                             where union_clef=e.ev_fam_kle_famille
+                                               and (union_mari is null
+                                                or union_femme is null));
+  delete from media_pointeurs mp where not exists (select * from individu
+                                                where cle_fiche=mp.mp_cle_individu);
+  delete from tq_ascendance;
+  if (i_mode=1) then  --suppression des enregistrements multimédia
+    delete from multimedia m where m.id_import_gedcom=:i_clef
+                             and not exists (select * from media_pointeurs
+                                             where mp_media=m.multi_clef);
+  else  --I_MODE=2
+    delete from multimedia m where multi_dossier=:i_dossier
+                               and (m.id_import_gedcom<>:i_clef or m.id_import_gedcom is null)
+                               and not exists (select * from media_pointeurs
+                                             where mp_media=m.multi_clef);
+  suspend;
+end^
+COMMENT ON PROCEDURE PROC_PURGE_IMPORT_GEDCOM IS
+'Procédure créée le :05/03/2006 par André Langlet.
+le 28/07/2006 ajout mode 3
+le 17/01/2007 liaison des "importés" étendue au delà des liens directs
+le 25/10/2010 suppression références à ADRESSES_IND
+Description : permet de purger la base d''un import gedcom selectionné
+Usage       :I_MODE=1 pour supprimer les éléments de l''importation I_CLEF
+                    2 pour ne garder dans le dossier que ces éléments
+                    3 pour effacer les traces de l''import'^
+
+CREATE OR ALTER PROCEDURE PROC_RENUM_SOSA (
+    I_CLEF INTEGER,
+    I_NIVEAU INTEGER,
+    I_DOSSIER INTEGER)
+AS
+DECLARE VARIABLE I_INDI INTEGER;
+DECLARE VARIABLE D_SOSA DOUBLE PRECISION;
+DECLARE VARIABLE TESTS INTEGER;
+DECLARE VARIABLE TESTD INTEGER;
+begin
+  select kle_dossier from individu where cle_fiche=:i_clef
+  into :i_dossier;
+  select rdb$set_context('USER_TRANSACTION','ACTIVE_MAJ_SOSA',null)
+    from rdb$database into :tests;
+  select rdb$set_context('USER_TRANSACTION','INACTIVE_MAJ_DATE','1')
+    from rdb$database into :testd;
+  update INDIVIDU
+    SET  NUM_SOSA=null,type_lien_gene=0
+    WHERE KLE_DOSSIER=:i_dossier;
+  for SELECT tq_cle_fiche,TQ_SOSA
+      FROM proc_tq_ascendance(:i_clef,:i_niveau,0,0)
+      into :i_indi,:d_sosa
+  do
+    update INDIVIDU
+    SET NUM_SOSA=:d_sosa
+    WHERE cle_fiche=:i_indi;
+  if (testd=0) then
+    rdb$set_context('USER_TRANSACTION','INACTIVE_MAJ_DATE',null);
+  if (tests=1) then
+    rdb$set_context('USER_TRANSACTION','ACTIVE_MAJ_SOSA','1');
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_SEPARATION_PRENOMS (
+    I_DOSSIER INTEGER,
+    I_VIRGULE INTEGER)
+AS
+DECLARE VARIABLE NOUVEAU_NOM VARCHAR(60) CHARACTER SET ISO8859_1;
+DECLARE VARIABLE SEPARATION INTEGER;
+DECLARE VARIABLE I INTEGER;
+DECLARE VARIABLE I_LEN INTEGER;
+DECLARE VARIABLE CHAINE VARCHAR(60) CHARACTER SET ISO8859_1;
+DECLARE VARIABLE CAR VARCHAR(1) CHARACTER SET ISO8859_1;
+DECLARE VARIABLE CLEF INTEGER;
+begin
+   /*---------------------------------------------------------------------------
+   Créée le : 26/08/2006 par André
+   Description : Cette procédure modifie le séparateur dans les prénoms
+   Usage       : I_VIRGULE=0 : met un seul espace de séparation
+                      I_VIRGULE=1 : met une virgule et un espace de séparation
+   ---------------------------------------------------------------------------*/
+  for select cle_fiche,TRIM(prenom)
+          from individu
+          where KLE_DOSSIER=:I_DOSSIER
+          into :clef,
+               :CHAINE
+  do
+  begin
+    while (char_length(CHAINE)>0
+       and substring(CHAINE from 1 for 1) in(' ',',')) do
+      CHAINE=substring(CHAINE from 2);
+    while (char_length(CHAINE)>0
+       and substring(CHAINE from char_length(CHAINE)) in(' ',',')) do
+      CHAINE=substring(CHAINE from 1 for char_length(CHAINE)-1);
+    I_LEN=char_length(chaine);
+    NOUVEAU_NOM='';
+    SEPARATION=0;
+    I=1;
+    while (I<=I_LEN) do
+    begin
+      CAR=substring(chaine from i for 1);
+      if (CAR in (' ',',')) then
+        SEPARATION=1;
+      else
+      begin
+        if (SEPARATION=1) then
+        begin
+          if (I_VIRGULE=1) then
+            NOUVEAU_NOM=NOUVEAU_NOM||', ';
+          else
+            NOUVEAU_NOM=NOUVEAU_NOM||' ';
+          SEPARATION=0;
+        end
+        NOUVEAU_NOM=NOUVEAU_NOM||CAR;
+      end
+      I=I+1;
+    end
+    update individu
+    set prenom=:NOUVEAU_NOM
+    where CLE_FICHE=:CLEF;
+  end
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_SOSAS (
+    I_CLEF INTEGER)
+RETURNS (
+    SOSAS VARCHAR(30))
+AS
+DECLARE VARIABLE I SMALLINT;
+DECLARE VARIABLE D_SOSA DOUBLE PRECISION;
+DECLARE VARIABLE S_SOSA VARCHAR(15);
+DECLARE VARIABLE C INTEGER;
+DECLARE VARIABLE P INTEGER;
+begin
+   /*---------------------------------------------------------------------------
+   Procédure créée par André le 18/10/2007.
+   Retourne dans une chaîne de caractères la génération d'un individu,
+   son premier numéro sosa s'il fait moins de 10 chiffres, suivi si
+   nécessaire du nombre de fois qu'il est implexe.
+   ---------------------------------------------------------------------------*/
+  select num_sosa
+  from individu
+  where cle_fiche=:i_clef
+  into :d_sosa;
+  if (d_sosa=1.0) then
+    sosas='G:1 S:1';
+  else
+  begin
+    i=0;
+    for select case :i_clef
+               when i.cle_pere then i.num_sosa*2
+               else i.num_sosa*2+1
+               end
+              ,:i+1
+        from individu i
+        where :i_clef in (i.cle_pere,i.cle_mere)
+          and i.num_sosa is not null
+        order by i.num_sosa
+        into :d_sosa
+            ,:i
+        do
+        begin
+          if (i=1) then
+            if (d_sosa<1e+10) then
+            begin
+              s_sosa=cast(cast(d_sosa as bigint)as varchar(15));
+              p=char_length(s_sosa);
+              c=0;
+              sosas='';
+              while (p>0) do
+              begin
+                if (c=3) then
+                begin
+                  sosas=' '||sosas;
+                  c=0;
+                end
+                sosas=substring(s_sosa from p for 1)||sosas;
+                p=p-1;
+                c=c+1;
+              end
+              sosas='G:'||cast(cast(floor(ln(d_sosa)/ln(2)+1) as smallint)
+                               as varchar(3))||' S:'||sosas;
+            end
+            else
+              sosas='G:'||cast(cast(floor(ln(d_sosa)/ln(2)+1) as smallint)
+                                           as varchar(3));
+        end
+    if (i>1) then
+      sosas=sosas||' +I:'||(i-1);
+  end
+  suspend;
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_STATISTIQUES (
+    I_DOSSIER INTEGER,
+    I_QUI INTEGER,
+    I_QUOI INTEGER)
+RETURNS (
+    COMBIEN INTEGER,
+    DEPT VARCHAR(30),
+    CODE VARCHAR(30))
+AS
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tous droits réservés.
+   Créé le : 31/07/2001
+   à : 19:31:40
+   Modifiée le : 24/01/2006 corrections fonctionnelles par André
+   à : :
+   par :
+   Description : Remonte les statistiques
+   Naissance par dept
+   Mort part dept
+   Usage       :
+   ---------------------------------------------------------------------------*/
+   if (:I_QUOI = 0) then /* sélection sur département*/
+     for
+      SELECT  Count(0),
+              COALESCE(TRIM(EVE.EV_IND_DEPT),'')
+         FROM EVENEMENTS_IND EVE
+           LEFT JOIN  REF_DEPARTEMENTS DEPT
+             ON DEPT.RDP_LIBELLE=EVE.EV_IND_DEPT
+           where EVE.EV_IND_KLE_DOSSIER = :I_DOSSIER AND
+               ((EVE.EV_IND_TYPE = 'BIRT' and :I_QUI = 1) OR
+               (EVE.EV_IND_TYPE = 'DEAT' and :I_QUI = 0))
+         GROUP BY DEPT.RDP_PAYS,2
+         ORDER BY DEPT.RDP_PAYS,2
+         INTO :COMBIEN,
+              :DEPT
+     do
+       begin
+         if (DEPT='') then DEPT='Département inconnu';
+         suspend;
+       end
+   else
+   if (:I_QUOI = 1) then  /* sélection sur pays*/
+     for
+        SELECT  Count(0),
+                COALESCE(TRIM(upper(EVE.EV_IND_PAYS)),'')
+        FROM EVENEMENTS_IND EVE
+        where EVE.EV_IND_KLE_DOSSIER = :I_DOSSIER AND
+              ((EVE.EV_IND_TYPE = 'BIRT' and :I_QUI = 1) OR
+              (EVE.EV_IND_TYPE = 'DEAT' and :I_QUI = 0))
+              GROUP BY 2
+              ORDER BY 2
+        INTO :COMBIEN,
+             :DEPT
+     do
+       begin
+         if (DEPT='') then DEPT='Pays inconnu';
+         DEPT=upper(dept);
+         suspend;
+       end
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_SUIVANT (
+    IND_ORIGINE INTEGER,
+    DELTA INTEGER)
+RETURNS (
+    CLE_FICHE INTEGER)
+AS
+DECLARE VARIABLE DOSSIER INTEGER;
+DECLARE VARIABLE NOM VARCHAR(40);
+DECLARE VARIABLE PRENOM VARCHAR(60);
+begin
+/*Procédure créée par André*/
+  select kle_dossier,nom,prenom from individu
+  where cle_fiche=:ind_origine
+  into :dossier,:nom,:prenom;
+  if (delta>0) then
+    for select first (1) skip(:delta-1) cle_fiche
+        from individu
+        where kle_dossier=:dossier
+          and ((nom>:nom)
+               or (nom=:nom and prenom>:prenom)
+               or (nom=:nom and prenom=:prenom and cle_fiche>:ind_origine))
+        order by nom
+                ,prenom
+                ,cle_fiche
+        into :cle_fiche
+    do
+      suspend;
+  if (delta<0) then
+    for select first (1) skip(-:delta-1) cle_fiche
+        from individu
+        where kle_dossier=:dossier
+          and ((nom<:nom)
+               or (nom=:nom and prenom<:prenom)
+               or (nom=:nom and prenom=:prenom and cle_fiche<:ind_origine))
+        order by nom desc
+                ,prenom desc
+                ,cle_fiche desc
+        into :cle_fiche
+    do
+      suspend;
+  if (cle_fiche is null) then
+  begin
+    if (delta<0) then
+      select first (1) cle_fiche
+      from individu
+      where kle_dossier=:dossier
+      order by nom
+              ,prenom
+              ,cle_fiche
+      into :cle_fiche;
+    else
+      if (delta>0) then
+        select first (1) cle_fiche
+        from individu
+        where kle_dossier=:dossier
+        order by nom desc
+                ,prenom desc
+                ,cle_fiche desc
+        into :cle_fiche;
+      else
+        cle_fiche=ind_origine;
+    suspend;
+  end
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_SUPPRESSION_FILIATION (
+    i_kle_dossier integer,
+    i_individu integer,
+    i_mode integer)
+as
+declare variable pere integer;
+declare variable mere integer;
+declare variable compte integer;
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Laurent Robbe. Tout droits réservés.
+   Créé le : 31/05/2003
+   à : 11:54:11
+   Modifiée le : 26/01/2008 par André optimisation
+   à : :
+   par :
+   Description : Supprime le lien d'un individu avec son père et/ou sa mère
+                 et si seul un des 2 parents était connu et que ce parent seul n'avait 
+                    pas d'autre enfant de conjoint non identifié : suppression de l'union
+                    du parent seul
+   Usage       : I_MODE = 0 : détacher le père et la mère
+                 I_MODE = 1 : détacher le père
+                 I_MODE = 2 : détacher la mère
+   ---------------------------------------------------------------------------*/
+  select a.cle_pere, a.cle_mere from individu a
+  where  a.kle_dossier = :i_kle_dossier
+  and    a.cle_fiche   = :i_individu
+  into   :pere, :mere;
+
+  /* Etape 1 : Mise à jour de la fiche individu */
+    if (i_mode = 0) then
+      update individu a
+      set cle_pere = null,cle_mere=null
+      where  a.kle_dossier = :i_kle_dossier
+      and    a.cle_fiche   = :i_individu;
+    else
+    if (i_mode = 1) then
+      update individu a
+      set cle_pere = null
+      where  a.kle_dossier = :i_kle_dossier
+      and    a.cle_fiche   = :i_individu;
+    else
+    if (i_mode = 2) then
+      update individu a
+      set cle_mere = null
+      where  a.kle_dossier = :i_kle_dossier
+      and    a.cle_fiche   = :i_individu;
+
+  /* Etape 2 : suppression des unions fictives si besoin.
+     Pour les pères (resp. mères) seuls (resp. seules) (i.e. dont le conjoint n'est
+     pas créé dans la base), une union fictive est créée dans la table T_UNION 
+     avec cle_pere (resp. cle_mere) renseigné et cle_mere (resp. cle_pere) à NULL.
+     Si un parent seul a plusieurs enfants, cette union fictive ne doit être créée 
+     qu'une seule fois.
+     En conséquence, si l'on supprime le lien de filiation entre un parent seul et 
+     son dernier enfant, il faut supprimer aussi l'union fictive. S'il reste des
+     enfants, il ne faut pas la supprimer.
+  */
+  
+    /* Cas détachement du père */
+    if ((i_mode=0 or i_mode=1) and (pere is not null) and (mere is null)) then
+    begin
+        /* existe-t-il d'autres individus avec ce père seul ? */
+        compte=0;
+        select 1 from rdb$database where exists
+        (select * from individu b
+        where  b.kle_dossier = :i_kle_dossier
+        and    b.cle_pere    = :pere
+        and    b.cle_mere    is null)
+        into :compte;
+        if (compte<1) then
+          /* suppression de l'union (un parent unique ==> pas d'événement union réel
+             mais juste un enregistrement pour faire le lien avec l'enfant */
+          delete from t_union c
+            where c.union_mari  = :pere
+            and   c.union_femme is null;
+    end
+    /* Cas détachement de la mère */
+    if ((i_mode=0 or i_mode=2) and (mere is not null) and (pere is null)) then
+    begin
+        /* existe-t-il d'autres individus avec cette mère seule ? */
+        compte=0;
+        select 1 from rdb$database where exists
+        (select * from individu b
+        where  b.kle_dossier = :i_kle_dossier
+        and    b.cle_mere    = :mere
+        and    b.cle_pere    is null)
+        into :compte;
+        if (compte<1) then
+          /* suppression de l'union (un parent unique ==> pas d'événement union réel
+             mais juste un enregistrement pour faire le lien avec l'enfant */
+          delete from t_union c
+            where c.union_femme = :mere
+            and   c.union_mari  is null;
+    end
+
+  /* Etape 3 : Création d'une union fictive si besoin */
+  /* Si père et mère présents et détachement d'un seul, création d'une union fictive si besoin */
+    if ((pere is not null) and (mere is not null)) then
+    begin
+      if (i_mode = 1) then
+      begin
+        compte=0;
+        select 1 from rdb$database where exists
+        (select * from t_union
+        where  union_mari  is null
+        and    union_femme = :mere)
+        into :compte;
+        if (compte<1) then
+          insert into t_union (union_femme,kle_dossier,union_type)
+          values (:mere, :i_kle_dossier, 0);
+      end
+      else
+      if (i_mode = 2) then
+      begin
+        compte=0;
+        select 1 from rdb$database where exists
+        (select * from t_union
+        where  union_mari  = :pere
+        and    union_femme is null)
+        into :compte;
+        if (compte<1) then
+          insert into t_union  (union_mari,kle_dossier,union_type)
+          values ( :pere, :i_kle_dossier, 0);
+      end
+    end    
+end^
+
+CREATE OR ALTER PROCEDURE PROC_TEST_ASC (
+    indi1 integer,
+    indi2 integer,
+    ignorenfant integer = 0)
+returns (
+    niveau integer)
+as
+declare variable present integer;
+declare variable pere integer;
+declare variable mere integer;
+declare variable id integer;
+begin
+  niveau=0;
+  if (indi1=indi2) then
+  begin
+    suspend;
+    exit;
+  end
+  id=gen_id(gen_tq_id,1);
+  insert into tq_ascendance (tq_dossier,tq_cle_fiche,tq_niveau) values(:id,:indi1,:niveau);
+  present=1;
+  while (present=1) do
+  begin
+    present=0;
+    for select i.cle_pere,i.cle_mere from tq_ascendance t
+    inner join individu i on i.cle_fiche=t.tq_cle_fiche
+    where t.tq_dossier=:id and t.tq_niveau=:niveau
+    into :pere,:mere
+    do
+    begin
+      if (((pere=indi2)or(mere=indi2))and((ignorenfant=0)or(niveau>0))) then
+      begin
+        present=0;
+        niveau=niveau+1;
+        suspend;
+        leave;
+      end
+      else
+      begin
+        insert into tq_ascendance (tq_dossier,tq_cle_fiche,tq_niveau)
+        select :id,:pere,:niveau+1 from rdb$database
+        where :pere is not null and not exists (select * from tq_ascendance where tq_dossier=:id and tq_cle_fiche=:pere);
+        if (row_count>0) then
+          present=1;
+        insert into tq_ascendance (tq_dossier,tq_cle_fiche,tq_niveau)
+        select :id,:mere,:niveau+1 from rdb$database
+        where :mere is not null and not exists (select * from tq_ascendance where tq_dossier=:id and tq_cle_fiche=:mere);
+        if (row_count>0) then
+          present=1;
+      end
+    end
+    niveau=niveau+1;
+  end
+end^
+
+COMMENT ON PROCEDURE PROC_TEST_ASC IS
+'Procédure créée le 13/04/2011 par André Langlet.
+Permet de vérifier si INDI2 est dans l''ascendance de INDI1.'^
+
+CREATE OR ALTER PROCEDURE PROC_TEST_DESC (
+    indi1 integer,
+    indi2 integer,
+    ignorenfant integer = 0)
+returns (
+    niveau integer)
+as
+declare variable present integer;
+declare variable enfant integer;
+declare variable id integer;
+begin
+  niveau=0;
+  if (indi1=indi2) then
+  begin
+    suspend;
+    exit;
+  end
+  id=gen_id(gen_tq_id,1);
+  insert into tq_ascendance (tq_dossier,tq_cle_fiche,tq_niveau) values(:id,:indi1,:niveau);
+  present=1;
+  while (present=1) do
+  begin
+    present=0;
+    for select i.cle_fiche from tq_ascendance t
+    inner join individu i on i.cle_pere=t.tq_cle_fiche or i.cle_mere=t.tq_cle_fiche
+    where t.tq_dossier=:id and t.tq_niveau=:niveau
+    into :enfant
+    do
+    begin
+      if ((enfant=indi2)and((ignorenfant=0)or(niveau>0))) then
+      begin
+        present=0;
+        niveau=niveau+1;
+        suspend;
+        leave;
+      end
+      else
+      begin
+        insert into tq_ascendance (tq_dossier,tq_cle_fiche,tq_niveau)
+        select :id,:enfant,:niveau+1 from rdb$database
+        where :enfant is not null and not exists (select * from tq_ascendance where tq_dossier=:id and tq_cle_fiche=:enfant);
+        if (row_count>0) then
+          present=1;
+      end
+    end
+    niveau=niveau+1;
+  end
+end^
+
+COMMENT ON PROCEDURE PROC_TEST_DESC IS
+'Procédure créée le 14/04/2011 par André Langlet.
+Permet de vérifier si INDI2 est dans la descendance de INDI1.'^
+
+CREATE OR ALTER PROCEDURE PROC_TEST_PARENTE (
+    INDI1 INTEGER,
+    INDI2 INTEGER,
+    NIVEAU_MAX INTEGER)
+RETURNS (
+    OUI INTEGER)
+AS
+DECLARE VARIABLE I INTEGER;
+DECLARE VARIABLE IDXD INTEGER;
+DECLARE VARIABLE IDXF INTEGER;
+DECLARE VARIABLE IDT INTEGER;
+DECLARE VARIABLE IPERE INTEGER;
+DECLARE VARIABLE IMERE INTEGER;
+DECLARE VARIABLE IMEMO INTEGER;
+DECLARE VARIABLE NIVEAU INTEGER;
+begin
+  delete from tq_consang;
+  if (niveau_max=0) then niveau_max=10;
+  insert into tq_consang (id,indi) values (1,:indi1);
+  i=1;
+  idxd=0;
+  idxf=i;
+  niveau=0;
+  while (idxf>idxd and niveau<niveau_max) do
+  begin
+    for select indi from tq_consang where id>:idxd and id<=:idxf
+      into :idt
+      do
+      begin
+        select cle_pere,cle_mere from individu
+        where cle_fiche=:idt
+        into :ipere,:imere;
+        if (ipere>0) then
+        begin
+          i=i+1;
+          insert into tq_consang (id,indi) values (:i,:ipere);
+        end
+        if (imere>0) then
+        begin
+          i=i+1;
+          insert into tq_consang (id,indi) values (:i,:imere);
+        end
+      end
+    idxd=idxf;
+    idxf=i;
+    niveau=niveau+1;
+  end
+  imemo=i;
+  i=i+1;
+  insert into tq_consang (id,indi) values (:i,:indi2);
+  idxf=i;
+  niveau=0;
+  while (idxf>idxd and niveau<niveau_max) do
+  begin
+    for select indi from tq_consang where id>:idxd and id<=:idxf
+      into :idt
+      do
+      begin
+        select cle_pere,cle_mere from individu
+        where cle_fiche=:idt
+        into :ipere,:imere;
+        if (ipere>0) then
+        begin
+          i=i+1;
+          insert into tq_consang (id,indi) values (:i,:ipere);
+        end
+        if (imere>0) then
+        begin
+          i=i+1;
+          insert into tq_consang (id,indi) values (:i,:imere);
+        end
+      end
+    idxd=idxf;
+    idxf=i;
+    niveau=niveau+1;
+  end
+  select 1 from rdb$database where exists(
+  select * from tq_consang i1,tq_consang i2
+  where i1.id>0 and i1.id<=:imemo
+    and i2.id>:imemo
+    and i1.indi=i2.indi)
+  into oui;
+  suspend;
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_TQ_ASCENDANCE (
+    I_CLEF INTEGER,
+    I_NIVEAU INTEGER,
+    I_PARQUI INTEGER,
+    I_MODE INTEGER)
+RETURNS (
+    TQ_NIVEAU INTEGER,
+    TQ_CLE_FICHE INTEGER,
+    TQ_SOSA DOUBLE PRECISION,
+    TQ_DOSSIER INTEGER,
+    IMPLEXE DOUBLE PRECISION,
+    TQ_DESCENDANT INTEGER)
+AS
+DECLARE VARIABLE I_COUNT INTEGER;
+DECLARE VARIABLE I INTEGER;
+DECLARE VARIABLE SOSA DOUBLE PRECISION;
+begin
+  /*---------------------------------------------------------------------------
+  Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+  Créé le : 31/07/2001
+  à : 18:10:14
+  Procédure séparée le :12/02/2006 par André, 19/10/2006 ajout conjoint de
+  l'ascendant dans tq_dossier.
+  par :
+  Description : Cette procedure permet de récuperer la fam d'un individu
+  dans la table temporaire TQ_ARBREREDUIT
+  Le remplissage de la table est fonction de Niveaux
+  0 - Lui Meme
+  1 - Parents
+  x - les autres
+  I_PARQUI : 1 par les hommes
+             2 par les femmes
+             0 tous
+  I_MODE : 0 pas d'implexes
+           1 les implexes en plus
+           2 tous les ascendants
+  ---------------------------------------------------------------------------*/
+  i = 0;
+  /* purge de la table pour le meme proprio de la table ---------------------*/
+  delete from TQ_ARBREREDUIT;
+  /*lui meme-----------------------------------------------------------------*/
+  insert into TQ_ARBREREDUIT (tq_niveau,tq_cle_fiche,tq_sosa)
+         values (0,:i_clef,1);
+  I_COUNT=1;
+  /*Tous les ancetres -------------------------------------------------------*/
+  IF (I_MODE=1) THEN
+    while (:i_count>0) do
+    begin
+         FOR SELECT tq_cle_fiche,TQ_SOSA FROM tq_arbrereduit
+           WHERE tq_niveau =:i and IMPLEXE IS NULL
+           ORDER BY TQ_SOSA
+           INTO :I_CLEF,:SOSA
+           DO
+           BEGIN /*Par les hommes */
+             if (I_PARQUI=1 or I_PARQUI=0) then
+               insert into TQ_ARBREREDUIT
+                      (tq_niveau,tq_cle_fiche,tq_dossier,tq_sosa,IMPLEXE,tq_descendant)
+               select :i+1,i.cle_pere,i.cle_mere,:SOSA*2,
+                      (SELECT TQ_SOSA FROM TQ_ARBREREDUIT
+                      WHERE tq_cle_fiche=i.cle_pere AND IMPLEXE IS NULL),:i_clef
+                  from individu i
+                  WHERE i.cle_fiche =:I_CLEF
+                    AND i.CLE_PERE IS NOT NULL;
+             /*Par les femmes */
+             if (I_PARQUI =2 or I_PARQUI =0) then
+               insert into TQ_ARBREREDUIT
+                      (tq_niveau,tq_cle_fiche,tq_dossier,tq_sosa,IMPLEXE,tq_descendant)
+               select :i+1,i.cle_mere,i.cle_pere,:SOSA*2+1,
+                      (SELECT TQ_SOSA FROM TQ_ARBREREDUIT
+                      WHERE tq_cle_fiche=i.cle_mere AND IMPLEXE IS NULL),:i_clef
+                  from individu i
+                  WHERE i.cle_fiche =:I_CLEF
+                    AND i.CLE_MERE IS NOT NULL;
+           END
+           i=i+1;
+           Select Count(0) from tq_arbrereduit where tq_niveau=:i into :i_Count;
+           if (I_NIVEAU>0) then if (i = I_NIVEAU) then I_COUNT=0;
+    end
+  ELSE IF (I_MODE=2) THEN
+    while (:i_count>0) do
+    begin
+         FOR SELECT tq_cle_fiche,TQ_SOSA FROM tq_arbrereduit
+           WHERE tq_niveau =:i
+           ORDER BY TQ_SOSA
+           INTO :I_CLEF,:SOSA
+           DO
+           BEGIN /*Par les hommes */
+             if (I_PARQUI=1 or I_PARQUI=0) then
+               insert into TQ_ARBREREDUIT
+                      (tq_niveau,tq_cle_fiche,tq_dossier,tq_sosa,IMPLEXE,tq_descendant)
+               select :i+1,i.cle_pere,i.cle_mere,:SOSA*2,
+                      (SELECT TQ_SOSA FROM TQ_ARBREREDUIT
+                      WHERE tq_cle_fiche=i.cle_pere AND IMPLEXE IS NULL),:i_clef
+                  from individu i
+                  WHERE i.cle_fiche =:I_CLEF
+                    AND i.CLE_PERE IS NOT NULL;
+             /*Par les femmes */
+             if (I_PARQUI =2 or I_PARQUI =0) then
+               insert into TQ_ARBREREDUIT
+                      (tq_niveau,tq_cle_fiche,tq_dossier,tq_sosa,IMPLEXE,tq_descendant)
+               select :i+1,i.cle_mere,i.cle_pere,:SOSA*2+1,
+                      (SELECT TQ_SOSA FROM TQ_ARBREREDUIT
+                      WHERE tq_cle_fiche=i.cle_mere AND IMPLEXE IS NULL),:i_clef
+                  from individu i
+                  WHERE i.cle_fiche =:I_CLEF
+                    AND i.CLE_MERE IS NOT NULL;
+           END
+           i=i+1;
+           Select Count(0) from tq_arbrereduit where tq_niveau=:i into :i_Count;
+           if (I_NIVEAU>0) then if (i = I_NIVEAU) then I_COUNT=0;
+    end
+  ELSE
+    while (:i_count>0) do
+    begin
+         FOR SELECT tq_cle_fiche,TQ_SOSA FROM tq_arbrereduit
+           WHERE tq_niveau =:i
+           ORDER BY TQ_SOSA
+           INTO :I_CLEF,:SOSA
+           DO
+           BEGIN /*Par les hommes */
+             if (I_PARQUI=1 or I_PARQUI=0) then
+               insert into TQ_ARBREREDUIT
+                      (tq_niveau,tq_cle_fiche,tq_dossier,tq_sosa,tq_descendant)
+               select :i+1,i.cle_pere,i.cle_mere,:SOSA*2,:i_clef
+                  from individu i
+                  WHERE i.cle_fiche =:I_CLEF
+                    AND i.CLE_PERE IS NOT NULL
+                    AND NOT exists (select * FROM TQ_ARBREREDUIT
+                                           where tq_cle_fiche=i.CLE_PERE);
+             /*Par les femmes */
+             if (I_PARQUI =2 or I_PARQUI =0) then
+               insert into TQ_ARBREREDUIT
+                      (tq_niveau,tq_cle_fiche,tq_dossier,tq_sosa,tq_descendant)
+               select :i+1,i.cle_mere,i.cle_pere,:SOSA*2+1,:i_clef
+                  from individu i
+                  WHERE i.cle_fiche =:I_CLEF
+                    AND i.CLE_MERE IS NOT NULL
+                    AND NOT exists (select * FROM TQ_ARBREREDUIT
+                                           where tq_cle_fiche=i.CLE_MERE);
+           END
+           i=i+1;
+           Select Count(0) from tq_arbrereduit where tq_niveau=:i into :i_Count;
+           if (I_NIVEAU>0) then if (i = I_NIVEAU) then I_COUNT=0;
+    end
+  for select tq_niveau
+            ,tq_cle_fiche
+            ,tq_sosa
+            ,tq_dossier
+            ,implexe
+            ,tq_descendant
+      from tq_arbrereduit
+      into :tq_niveau
+          ,:tq_cle_fiche
+          ,:tq_sosa
+          ,:tq_dossier
+          ,:implexe
+          ,:tq_descendant
+      do suspend;
+  delete from TQ_ARBREREDUIT;
+end
+^
+
+CREATE OR ALTER PROCEDURE PROC_TQ_DESCENDANCE (
+    i_clef integer,
+    i_niveau integer,
+    i_parqui integer,
+    i_mode integer)
+returns (
+    tq_niveau integer,
+    tq_cle_fiche integer,
+    tq_sosa varchar(120),
+    tq_cle_pere integer,
+    tq_cle_mere integer,
+    tq_num_sosa varchar(120),
+    tq_ascendant integer)
+as
+declare variable i_count integer;
+declare variable i integer;
+declare variable j integer;
+declare variable i_num_sosa varchar(120);
+declare variable i_fiche integer;
+declare variable i_pere integer;
+declare variable i_mere integer;
+declare variable sj char(1);
+begin
+  i = 1;
+  delete from tq_arbredescendant;
+  insert into tq_arbredescendant
+          (tq_niveau,tq_cle_fiche,tq_num_sosa,tq_cle_pere,tq_cle_mere)
+          select 1,:i_clef,'1',cle_pere,cle_mere
+          from individu
+          where cle_fiche=:i_clef;
+  select count(0)
+  from tq_arbredescendant
+  where tq_niveau=:i into :i_count;
+  if (i_niveau=1) then
+    i_count=0;
+  if (i_mode=1) then
+  begin
+    while (i_count>0) do
+    begin
+      i_count=0;
+      for select tq_cle_fiche,tq_num_sosa from tq_arbredescendant
+          where tq_niveau=:i and tq_sosa is null and tq_cle_fiche is not null
+          order by tq_num_sosa
+          into :i_clef,
+               :i_num_sosa
+      do
+      begin
+        j=0;
+        for select i.cle_fiche,i.cle_pere,i.cle_mere
+            from individu i
+            left join evenements_ind ev on ev.ev_ind_kle_fiche=i.cle_fiche
+            where (i.cle_pere=:i_clef or i.cle_mere=:i_clef)
+            group by i.cle_fiche,i.cle_pere,i.cle_mere
+            order by min(ev.ev_ind_date_year*12+coalesce(ev.ev_ind_date_mois,6)),min(ev.ev_ind_date)
+        into :i_fiche,
+             :i_pere,
+             :i_mere
+        do
+        begin
+          j=j+1;
+          if (j<10) then sj=cast(j as char(1));
+          else sj=ascii_char(j+55);
+          insert into tq_arbredescendant
+                (tq_niveau,tq_cle_fiche,tq_num_sosa,
+                 tq_cle_pere,tq_cle_mere,tq_sosa,tq_ascendant)
+          values (:i+1,:i_fiche,:i_num_sosa||:sj,:i_pere,:i_mere,
+                 (select tq_num_sosa from tq_arbredescendant
+                  where tq_cle_fiche=:i_fiche and tq_sosa is null),:i_clef);
+          i_count=1;
+        end
+      end
+      i=i+1;
+      if (i_niveau>1 and i=i_niveau) then
+        i_count=0;
+    end
+  end
+  else
+  if (i_mode=2) then
+  begin
+    while (i_count>0) do
+    begin
+      i_count=0;
+      for select tq_cle_fiche,tq_num_sosa from tq_arbredescendant
+          where tq_niveau=:i
+          order by tq_num_sosa
+          into :i_clef,
+               :i_num_sosa
+      do
+      begin
+        j=0;
+        for select i.cle_fiche,i.cle_pere,i.cle_mere
+            from individu i
+            left join evenements_ind ev on ev.ev_ind_kle_fiche=i.cle_fiche
+            where (i.cle_pere=:i_clef or i.cle_mere=:i_clef)
+            group by i.cle_fiche,i.cle_pere,i.cle_mere
+            order by min(ev.ev_ind_date_year*12+coalesce(ev.ev_ind_date_mois,6)),min(ev.ev_ind_date)
+            into :i_fiche,
+                 :i_pere,
+                 :i_mere
+        do
+        begin
+          j=j+1;
+          if (j<10) then sj=cast(j as char(1));
+          else sj=ascii_char(j+55);
+          insert into tq_arbredescendant
+                (tq_niveau,tq_cle_fiche,tq_num_sosa,
+                 tq_cle_pere,tq_cle_mere,tq_sosa,tq_ascendant)
+          values (:i+1,:i_fiche,:i_num_sosa||:sj,:i_pere,:i_mere,
+           (select tq_num_sosa from tq_arbredescendant
+            where tq_cle_fiche=:i_fiche and tq_sosa is null),:i_clef);
+          i_count=1;
+        end
+      end
+      i=i+1;
+      if (i_niveau>1 and i=i_niveau) then
+        i_count=0;
+    end
+  end
+  else --i_mode=0
+  begin
+    while (i_count>0) do
+    begin
+      i_count=0;
+      for select tq_cle_fiche,tq_num_sosa from tq_arbredescendant
+          where tq_niveau=:i
+          order by tq_num_sosa
+          into :i_clef,
+               :i_num_sosa
+      do
+      begin
+        j=0;
+        for select i.cle_fiche,i.cle_pere,i.cle_mere
+            from individu i
+            left join evenements_ind ev on ev.ev_ind_kle_fiche=i.cle_fiche
+            where (i.cle_pere=:i_clef or i.cle_mere=:i_clef)
+            and  not exists (select * from tq_arbredescendant
+                              where tq_cle_fiche=i.cle_fiche)
+            group by i.cle_fiche,i.cle_pere,i.cle_mere
+            order by min(ev.ev_ind_date_year*12+coalesce(ev.ev_ind_date_mois,6)),min(ev.ev_ind_date)
+            into :i_fiche,
+                 :i_pere,
+                 :i_mere
+        do
+        begin
+          j=j+1;
+          if (j<10) then sj=cast(j as char(1));
+          else sj=ascii_char(j+55);
+          insert into tq_arbredescendant
+            (tq_niveau,tq_cle_fiche,tq_num_sosa,tq_cle_pere,tq_cle_mere,tq_ascendant)
+          values (:i+1,:i_fiche,:i_num_sosa||:sj,:i_pere,:i_mere,:i_clef);
+          i_count=1;
+        end
+      end
+      i=i+1;
+      if (i_niveau>1 and i=i_niveau) then
+        i_count=0;
+    end
+  end
+  if (i_parqui=1) then
+    for select t.tq_niveau
+              ,t.tq_cle_fiche
+              ,t.tq_sosa
+              ,t.tq_cle_pere
+              ,t.tq_cle_mere
+              ,t.tq_num_sosa
+              ,t.tq_ascendant
+        from tq_arbredescendant t
+        inner join individu i on i.cle_fiche=t.tq_cle_fiche
+        where t.tq_niveau=1
+           or (t.tq_niveau=2 and i.sexe=1)
+           or (t.tq_ascendant=t.tq_cle_pere and i.sexe=1)
+        into :tq_niveau
+            ,:tq_cle_fiche
+            ,:tq_sosa
+            ,:tq_cle_pere
+            ,:tq_cle_mere
+            ,:tq_num_sosa
+            ,:tq_ascendant
+    do suspend;
+  else
+  if (i_parqui=2) then
+    for select t.tq_niveau
+              ,t.tq_cle_fiche
+              ,t.tq_sosa
+              ,t.tq_cle_pere
+              ,t.tq_cle_mere
+              ,t.tq_num_sosa
+              ,t.tq_ascendant
+        from tq_arbredescendant t
+        inner join individu i on i.cle_fiche=t.tq_cle_fiche
+        where t.tq_niveau=1
+           or (t.tq_niveau=2 and i.sexe=2)
+           or (t.tq_ascendant=t.tq_cle_mere and i.sexe=2)
+        into :tq_niveau
+            ,:tq_cle_fiche
+            ,:tq_sosa
+            ,:tq_cle_pere
+            ,:tq_cle_mere
+            ,:tq_num_sosa
+            ,:tq_ascendant
+    do suspend;
+  else
+    for select tq_niveau
+              ,tq_cle_fiche
+              ,tq_sosa
+              ,tq_cle_pere
+              ,tq_cle_mere
+              ,tq_num_sosa
+              ,tq_ascendant
+        from tq_arbredescendant
+        into :tq_niveau
+            ,:tq_cle_fiche
+            ,:tq_sosa
+            ,:tq_cle_pere
+            ,:tq_cle_mere
+            ,:tq_num_sosa
+            ,:tq_ascendant
+    do suspend;
+  delete from tq_arbredescendant;
+end^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_CONJOINTS (
+    i_dossier integer,
+    i_clef integer)
+returns (
+    cle_fiche integer,
+    nom varchar(60),
+    prenom varchar(100),
+    date_naissance varchar(100),
+    annee_naissance integer,
+    date_deces varchar(100),
+    annee_deces integer,
+    sexe integer,
+    type_union integer,
+    union_clef integer,
+    sosa double precision,
+    date_mariage varchar(100),
+    annee_mariage integer,
+    cle_mariage integer,
+    ordre_union integer)
+as
+begin
+  for SELECT p.conjoint
+            ,c.NOM
+            ,c.PRENOM
+            ,c.SEXE
+            ,c.NUM_SOSA
+            ,c.date_naissance
+            ,c.annee_naissance
+            ,c.date_deces
+            ,c.annee_deces
+            ,0
+            ,p.clef_union
+            ,m.ev_fam_date_writen
+            ,m.ev_fam_date_year
+            ,p.clef_marr
+            ,p.ordre
+      from proc_conjoints_ordonnes(:i_clef,0) p
+        left join evenements_fam m on m.ev_fam_clef=p.clef_marr
+        left join individu c on c.cle_fiche=p.conjoint
+        INTO :CLE_FICHE
+            ,:NOM
+            ,:PRENOM
+            ,:SEXE
+            ,:SOSA
+            ,:DATE_NAISSANCE
+            ,:ANNEE_NAISSANCE
+            ,:DATE_DECES
+            ,:ANNEE_DECES
+            ,:TYPE_UNION
+            ,:UNION_CLEF
+            ,:DATE_MARIAGE
+            ,:ANNEE_MARIAGE
+            ,:cle_mariage
+            ,:ordre_union
+     do
+     suspend;
+end^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_COUSINS_COUSINES (
+    i_clef integer,
+    i_dossier integer,
+    i_max integer)
+returns (
+    cle_fiche integer,
+    nom varchar(40),
+    prenom varchar(60),
+    sexe integer,
+    date_naissance varchar(100),
+    date_deces varchar(100),
+    cle_pere integer,
+    cle_mere integer,
+    sosa double precision)
+as
+begin
+for select distinct i.cle_fiche,
+           i.nom,
+           i.prenom,
+           i.sexe,
+           i.date_naissance,
+           i.date_deces,
+           i.cle_pere,
+           i.cle_mere,
+           i.num_sosa
+           from proc_trouve_oncles_tantes (:i_clef) p
+           inner join individu i on p.cle_fiche in(i.cle_pere,i.cle_mere)
+         order by i.nom,i.prenom
+         into :cle_fiche,
+              :nom,
+              :prenom,
+              :sexe,
+              :date_naissance,
+              :date_deces,
+              :cle_pere,
+              :cle_mere,
+              :sosa
+    do suspend;
+end^
+COMMENT ON PROCEDURE PROC_TROUVE_COUSINS_COUSINES IS
+'Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+Créé le : 31/07/2001
+Modifiée le :18/01/2007 I_MAX, I_DOSSIER plus utilisés
+utilisation proc_trouve_oncles_tantes
+par :André
+Dernière modification par André Langlet le 25/07/2009.
+Procédure inutile conservée uniquement parce qu''utilisée par LesArbres.dll.'^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_DOSSIER (
+    i_cle integer,
+    i_nom varchar(30),
+    i_infos varchar(254),
+    i_langue varchar(3))
+returns (
+    cle_dossier integer,
+    nom_dossier varchar(30),
+    dernier integer,
+    langue varchar(3),
+    path_images varchar(254),
+    fic_notes varchar(254),
+    indicateurs integer)
+as
+begin
+   if (i_cle>0) then  --ouverture d'un dossier
+     select  cle_dossier,
+             nom_dossier,
+             coalesce(ds_last,-1),
+             ds_langue,
+             ds_base_path,
+             ds_fic_notes,
+             ds_indicateurs
+        from dossier
+        where cle_dossier=:i_cle
+        into :cle_dossier,
+             :nom_dossier,
+             :dernier,
+             :langue,
+             :path_images,
+             :fic_notes,
+             :indicateurs;
+   else  --ouverture de la base
+     select  first(1) cle_dossier,
+             nom_dossier,
+             coalesce(ds_last,-1),
+             ds_langue,
+             ds_base_path,
+             ds_fic_notes,
+             ds_indicateurs
+        from dossier
+        where ds_fermeture=(select max(ds_fermeture) from dossier)
+        into :cle_dossier,
+             :nom_dossier,
+             :dernier,
+             :langue,
+             :path_images,
+             :fic_notes,
+             :indicateurs;
+   if (cle_dossier is null) then
+   begin
+     select cle_dossier,
+            nom_dossier,
+            coalesce(ds_last,-1),
+            ds_langue,
+            ds_base_path,
+            ds_fic_notes,
+            ds_indicateurs
+       from dossier
+       where cle_dossier=(select max(cle_dossier) from dossier)
+       into :cle_dossier,
+            :nom_dossier,
+            :dernier,
+            :langue,
+            :path_images,
+            :fic_notes,
+            :indicateurs;
+     if (cle_dossier is null) then
+     begin
+       if (char_length(trim(i_nom))=0) then
+         i_nom='Mon premier dossier';
+       nom_dossier=:i_nom;
+       if (char_length(trim(i_infos))=0) then
+         i_infos='Ce dossier, est le dossier créé par défaut, '
+               ||'vous pouvez changer son nom et ses informations';
+       if (char_length(i_langue)=0) then
+         i_langue='FRA';
+       cle_dossier=gen_id(gen_dossier,-gen_id(gen_dossier,0)+1); --=1
+       insert into dossier (cle_dossier,nom_dossier,ds_verrou,ds_infos,ds_langue)
+                    values (:cle_dossier,:nom_dossier,0,:i_infos,:i_langue);
+       dernier=-1;
+     end
+   end
+   update dossier
+     set ds_ouverture='NOW',ds_verrou=1
+     where cle_dossier=:cle_dossier;
+   update gestion_dll set dll_indi=:dernier,dll_dossier=:cle_dossier;
+   if (row_count=0) then
+     insert into gestion_dll (dll_indi,dll_dossier)
+                      values (:dernier,:cle_dossier);
+   suspend;
+end^
+COMMENT ON PROCEDURE PROC_TROUVE_DOSSIER IS
+'Créée le : 31/07/2001 par Philippe Cazaux-Moutou.
+Modifications par André Langlet:
+le 21/05/2007: si I_CLE=0 retourne le dernier dossier ouvert.
+le 08/02/2010: ajout des champs LANGUE, FIC_NOTES, INDICATEURS, DERNIER, PATH_IMAGES.
+décembre 2010: ajout du champ I_LANGUE en entrée pour toujour définir la langue en sortie.
+Description : Retourne un dossier valide, en créant un si nécessaire.'^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_ENFANTS (
+    a_cle_pere integer,
+    a_cle_mere integer,
+    i_dossier integer)
+returns (
+    cle_fiche integer,
+    nom varchar(40),
+    prenom varchar(60),
+    sexe integer,
+    date_naissance varchar(100),
+    date_deces varchar(100),
+    kle_dossier integer,
+    sosa double precision,
+    photo blob sub_type 0 segment size 80,
+    ville_naiss varchar(166),
+    ville_deces varchar(166),
+    annee integer,
+    annee_deces integer,
+    age_deces integer,
+    cle_pere integer,
+    cle_mere integer,
+    sosas varchar(30),
+    age_pere varchar(60),
+    age_mere varchar(60),
+    age_deces_texte varchar(60))
+as
+declare variable langue varchar(3);
+begin
+   /*---------------------------------------------------------------------------
+   Créée par Philippe Cazaux-Moutou le : 31/07/2001
+   Modifications par André le 11/05/2008, ajout âges au format texte
+   le 13/06/2009 positionnement de la langue dans le contexte,
+   5/2/2010 utilisation de MULTI_REDUITE au lieu de MULTI_MEDIA
+   Description : Permet de trouver les enfants d'un individu ou d'un couple
+   ---------------------------------------------------------------------------*/
+  if (a_cle_pere is null) then a_cle_pere=0;
+  if (a_cle_mere is null) then a_cle_mere=0;
+  if (a_cle_mere=0 and a_cle_pere=0) then exit;
+  select first(1) ds.ds_langue
+  from individu i
+  inner join dossier ds on ds.cle_dossier=i.kle_dossier
+  where (:a_cle_pere>0 and i.cle_fiche=:a_cle_pere)or(:a_cle_mere>0 and i.cle_fiche=:a_cle_mere)
+  into langue;
+  rdb$set_context('USER_SESSION','LANGUE',langue);
+
+  for select i.cle_fiche
+            ,i.nom
+            ,i.prenom
+            ,i.sexe
+            ,i.date_naissance
+            ,i.date_deces
+            ,i.num_sosa
+            ,m.multi_reduite
+            ,coalesce(n.ev_ind_ville,'')||coalesce(', '||n.ev_ind_subd,'')
+                     ||coalesce(', '||n.ev_ind_dept,'')||coalesce(', '||n.ev_ind_pays,'')
+            ,coalesce(d.ev_ind_ville,'')||coalesce(', '||d.ev_ind_subd,'')
+                     ||coalesce(', '||d.ev_ind_dept,'')||coalesce(', '||d.ev_ind_pays,'')
+            ,i.annee_naissance
+            ,i.annee_deces
+            ,i.age_au_deces
+            ,i.cle_pere
+            ,i.cle_mere
+            ,(select sosas from proc_sosas(i.cle_fiche))
+            ,(select age_texte from proc_age_texte(pe.date_naissance,i.date_naissance))
+            ,(select age_texte from proc_age_texte(me.date_naissance,i.date_naissance))
+            ,(select age_texte from proc_age_texte(i.date_naissance,i.date_deces))
+      from individu i
+         left join media_pointeurs mp on mp.mp_cle_individu=i.cle_fiche
+                                     and mp.mp_identite=1
+         left join multimedia m on m.multi_clef=mp.mp_media
+         left join evenements_ind n on n.ev_ind_kle_fiche=i.cle_fiche
+                                   and n.ev_ind_type = 'BIRT'
+         left join evenements_ind d on d.ev_ind_kle_fiche=i.cle_fiche
+                                   and d.ev_ind_type = 'DEAT'
+         left join individu pe on pe.cle_fiche=i.cle_pere
+         left join individu me on me.cle_fiche=i.cle_mere
+      where (:a_cle_mere=0 and i.cle_pere=:a_cle_pere)
+            or (:a_cle_pere=0 and i.cle_mere=:a_cle_mere)
+            or (i.cle_pere=:a_cle_pere and i.cle_mere=:a_cle_mere)
+      order by i.annee_naissance,n.ev_ind_date_mois,n.ev_ind_date
+      into :cle_fiche
+          ,:nom
+          ,:prenom
+          ,:sexe
+          ,:date_naissance
+          ,:date_deces
+          ,:sosa
+          ,:photo
+          ,:ville_naiss
+          ,:ville_deces
+          ,:annee
+          ,:annee_deces
+          ,:age_deces
+          ,:cle_pere
+          ,:cle_mere
+          ,:sosas
+          ,:age_pere
+          ,:age_mere
+          ,:age_deces_texte
+  do
+    suspend;
+end^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_FRERES_SOEURS (
+    I_CLEF INTEGER)
+RETURNS (
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    DATE_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100),
+    SEXE INTEGER,
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    F_1 INTEGER,
+    DECEDE INTEGER,
+    NUM_SOSA DOUBLE PRECISION,
+    ANNEE_NAISSANCE INTEGER,
+    ANNEE_DECES INTEGER)
+AS
+BEGIN
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   Modifiée le : 08/01/2007 par André: optimisation
+   ---------------------------------------------------------------------------*/
+  FOR
+    SELECT  f.cle_fiche
+           ,f.nom
+           ,f.prenom
+           ,f.Date_Naissance
+           ,f.Date_deces
+           ,f.Sexe
+           ,f.Cle_Pere
+           ,f.Cle_Mere
+           ,coalesce(f.ANNEE_NAISSANCE,0)
+           ,f.decede
+           ,f.num_sosa
+           ,f.annee_naissance
+           ,f.annee_deces
+           FROM INDIVIDU i
+           inner join individu f on (f.cle_pere=i.cle_pere
+                                  or f.cle_mere=i.cle_mere)
+                                and f.cle_fiche<>i.cle_fiche
+           WHERE i.CLE_FICHE=:I_CLEF
+           ORDER BY f.ANNEE_NAISSANCE
+    INTO  :CLE_FICHE
+         ,:NOM
+         ,:PRENOM
+         ,:DATE_NAISSANCE
+         ,:DATE_DECES
+         ,:SEXE
+         ,:CLE_PERE
+         ,:CLE_MERE
+         ,:F_1
+         ,:decede
+         ,:num_sosa
+         ,:annee_naissance
+         ,:annee_deces
+  DO
+    SUSPEND;
+END
+^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_GRANDS_PARENT (
+    I_CLEF INTEGER)
+RETURNS (
+    CLE_FICHE INTEGER,
+    NOM VARCHAR(40),
+    PRENOM VARCHAR(60),
+    DATE_NAISSANCE VARCHAR(100),
+    DATE_DECES VARCHAR(100),
+    SEXE INTEGER,
+    CLE_PERE INTEGER,
+    CLE_MERE INTEGER,
+    SOSA INTEGER,
+    DECEDE INTEGER,
+    NUM_SOSA DOUBLE PRECISION,
+    ANNEE_NAISSANCE INTEGER,
+    ANNEE_DECES INTEGER)
+AS
+DECLARE VARIABLE I_PERE INTEGER;
+DECLARE VARIABLE I_MERE INTEGER;
+DECLARE VARIABLE I_PERE_PERE INTEGER;
+DECLARE VARIABLE I_MERE_PERE INTEGER;
+DECLARE VARIABLE I_PERE_MERE INTEGER;
+DECLARE VARIABLE I_MERE_MERE INTEGER;
+BEGIN
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   Modifiée le : 08/01/2007 par André pour la rapidité et ajout decede
+   ---------------------------------------------------------------------------*/
+   SELECT CLE_PERE, CLE_MERE FROM INDIVIDU WHERE CLE_FICHE = :I_CLEF
+     INTO :I_PERE,
+          :I_MERE;
+   SELECT CLE_PERE, CLE_MERE FROM INDIVIDU WHERE CLE_FICHE = :I_PERE
+     INTO :I_PERE_PERE,
+          :I_MERE_PERE;
+   SELECT CLE_PERE, CLE_MERE FROM INDIVIDU WHERE CLE_FICHE = :I_MERE
+     INTO :I_PERE_MERE,
+          :I_MERE_MERE;
+   FOR
+    SELECT  cle_fiche,
+                nom,
+                prenom,
+                Date_Naissance,
+                Date_deces,
+                Sexe,
+                Cle_Pere,
+                Cle_Mere,
+                4
+               ,decede
+               ,num_sosa
+               ,annee_naissance
+               ,annee_deces
+           FROM INDIVIDU
+           WHERE CLE_FICHE =:I_PERE_PERE
+    UNION
+    SELECT  cle_fiche,
+                nom,
+                prenom,
+                Date_Naissance,
+                Date_deces,
+                Sexe,
+                Cle_Pere,
+                Cle_Mere,
+                5
+               ,decede
+               ,num_sosa
+               ,annee_naissance
+               ,annee_deces
+           FROM INDIVIDU
+           WHERE CLE_FICHE =:I_MERE_PERE
+    UNION
+    SELECT  cle_fiche,
+                nom,
+                prenom,
+                Date_Naissance,
+                Date_deces,
+                Sexe,
+                Cle_Pere,
+                Cle_Mere,
+                6
+               ,decede
+               ,num_sosa
+               ,annee_naissance
+               ,annee_deces
+           FROM INDIVIDU
+           WHERE CLE_FICHE =:I_PERE_MERE
+    UNION
+    SELECT  cle_fiche,
+                nom,
+                prenom,
+                Date_Naissance,
+                Date_deces,
+                Sexe,
+                Cle_Pere,
+                Cle_Mere,
+                7
+               ,decede
+               ,num_sosa
+               ,annee_naissance
+               ,annee_deces
+           FROM INDIVIDU
+           WHERE CLE_FICHE =:I_MERE_MERE
+    INTO :CLE_FICHE,
+         :NOM,
+         :PRENOM,
+         :DATE_NAISSANCE,
+         :DATE_DECES,
+         :SEXE,
+         :CLE_PERE,
+         :CLE_MERE,
+         :SOSA,
+         :DECEDE,
+         :num_sosa,
+         :annee_naissance,
+         :annee_deces
+  DO
+    SUSPEND;
+END
+^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_IND_PAR_LETTRE (
+    A_LETTRE VARCHAR(1),
+    I_DOSSIER INTEGER)
+RETURNS (
+    NOM VARCHAR(40))
+AS
+BEGIN
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   à : 19:47:54
+   Modifiée le :
+   à : :
+   par :
+   Description : 
+   Usage       :
+   ---------------------------------------------------------------------------*/
+  select s_out from f_maj_sans_accent(:a_lettre) into :a_lettre;
+  FOR
+    SELECT DISTINCT NOM
+       FROM INDIVIDU
+       WHERE indi_trie_nom starting WITH :A_LETTRE AND
+             KLE_DOSSIER = :I_DOSSIER
+       ORDER BY NOM
+    INTO :NOM
+  DO
+    SUSPEND;
+END
+^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_MERE (
+    i_clef integer)
+returns (
+    cle_fiche integer,
+    nom varchar(40),
+    prenom varchar(60),
+    date_naissance varchar(100),
+    date_deces varchar(100),
+    sexe integer,
+    cle_pere integer,
+    cle_mere integer,
+    sosa integer)
+as
+BEGIN
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   à : 19:48:03
+   Modifiée le :
+   à : :
+   par :
+   Description : 
+   Usage       :
+   ---------------------------------------------------------------------------*/
+  FOR
+    SELECT cle_fiche,
+                nom,
+                prenom,
+                Date_Naissance,
+                Date_deces,
+                Sexe,
+                Cle_Pere,
+                Cle_Mere,
+                3
+             FROM  individu
+                   Where cle_fiche  = (SELECT mere.CLE_MERE
+                                               FROM individu mere
+                                               WHERE mere.CLE_FICHE = :I_CLEF)
+    INTO :CLE_FICHE,
+         :NOM,
+         :PRENOM,
+         :DATE_NAISSANCE,
+         :DATE_DECES,
+         :SEXE,
+         :CLE_PERE,
+         :CLE_MERE,
+         :SOSA
+  DO
+  BEGIN
+    SUSPEND;
+  END
+END^
+
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_PARENTS (
+    i_clef integer,
+    i_dossier integer)
+returns (
+    cle_fiche integer,
+    nom_pere varchar(40),
+    prenom_pere varchar(60),
+    pere_cle_fiche integer,
+    pere_naissance varchar(100),
+    pere_deces varchar(100),
+    pere_sosa double precision,
+    nom_mere varchar(40),
+    prenom_mere varchar(60),
+    mere_cle_fiche integer,
+    mere_naissance varchar(100),
+    mere_deces varchar(100),
+    mere_sosa double precision,
+    pere_annee integer,
+    mere_annee integer)
+as
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   à : 19:48:38
+   Modifiée le :
+   à : :
+   par :
+   Description : Trouve les parents d'un individu
+   Usage       :
+   ---------------------------------------------------------------------------*/
+   for
+      SELECT  Enfant.cle_fiche,
+              Pere.nom,
+              Pere.prenom,
+              Pere.cle_fiche,
+              Pere.Date_Naissance,
+              Pere.Date_deces,
+              Pere.num_sosa,
+              Mere.nom,
+              Mere.prenom,
+              Mere.cle_fiche,
+              Mere.Date_Naissance,
+              Mere.Date_deces,
+              Mere.Num_Sosa,
+              Pere.annee_naissance,
+              Mere.annee_naissance
+         FROM  individu Enfant
+         LEFT JOIN individu pere
+                       on Enfant.cle_pere = pere.cle_fiche
+         LEFT JOIN individu mere
+                       on Enfant.cle_mere = mere.cle_fiche
+         WHERE Enfant.kle_dossier = :I_DOSSIER AND Enfant.Cle_Fiche = :I_CLEF
+         ORDER BY Enfant.prenom
+         INTO :CLE_FICHE,
+              :NOM_PERE,
+              :PRENOM_PERE,
+              :PERE_CLE_FICHE,
+              :PERE_NAISSANCE,
+              :PERE_DECES,
+              :PERE_SOSA,
+              :NOM_MERE,
+              :PRENOM_MERE,
+              :MERE_CLE_FICHE,
+              :MERE_NAISSANCE,
+              :MERE_DECES,
+              :MERE_SOSA,
+              :PERE_ANNEE,
+              :MERE_ANNEE
+   do
+   suspend;
+end^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_PERE (
+    i_clef integer)
+returns (
+    cle_fiche integer,
+    nom varchar(40),
+    prenom varchar(60),
+    date_naissance varchar(100),
+    date_deces varchar(100),
+    sexe integer,
+    cle_pere integer,
+    cle_mere integer,
+    sosa integer)
+as
+BEGIN
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   à : 19:48:58
+   Modifiée le :
+   à : :
+   par :
+   Description : 
+   Usage       :
+   ---------------------------------------------------------------------------*/
+  FOR
+    SELECT cle_fiche,
+                nom,
+                prenom,
+                Date_Naissance,
+                Date_deces,
+                Sexe,
+                Cle_Pere,
+                Cle_Mere,
+                2
+             FROM  individu
+                   Where cle_fiche  = (SELECT pere.CLE_PERE
+                                               FROM individu Pere
+                                               WHERE pere.CLE_FICHE = :I_CLEF)
+    INTO :CLE_FICHE,
+         :NOM,
+         :PRENOM,
+         :DATE_NAISSANCE,
+         :DATE_DECES,
+         :SEXE,
+         :CLE_PERE,
+         :CLE_MERE,
+         :SOSA
+  DO
+  BEGIN
+    SUSPEND;
+  END
+END^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_ONCLES_TANTES (
+    i_clef integer)
+returns (
+    cle_fiche integer,
+    nom varchar(40),
+    prenom varchar(60),
+    sexe integer,
+    date_naissance varchar(100),
+    date_deces varchar(100),
+    cle_pere integer,
+    cle_mere integer,
+    sosa double precision,
+    decede integer,
+    num_sosa double precision,
+    annee_naissance integer,
+    annee_deces integer)
+as
+declare variable a_clef_pere integer;
+declare variable a_clef_mere integer;
+declare variable i integer;
+declare variable s integer;
+BEGIN
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   Modifiée le 23/07/2007 par André optimisation, I_MAX et I_DOSSIER plus utilisés
+   le 28/12/2009 suppression de I_MAX et I_DOSSIER
+   ---------------------------------------------------------------------------*/
+  s=0;
+  SELECT CLE_PERE,
+         CLE_MERE
+     FROM INDIVIDU
+     WHERE CLE_FICHE = :I_CLEF
+     INTO :a_clef_pere,
+          :a_clef_mere;
+  FOR SELECT distinct  i.cle_fiche
+                      ,i.NOM
+                      ,i.PRENOM
+                      ,i.SEXE
+                      ,i.DATE_NAISSANCE
+                      ,i.DATE_DECES
+                      ,i.CLE_PERE
+                      ,i.CLE_MERE
+                      ,case when p.sosa<6 then 100
+                            else 200
+                            end
+                      ,i.decede
+                      ,i.num_sosa
+                      ,i.annee_naissance
+                      ,i.annee_deces
+  FROM PROC_TROUVE_GRANDS_PARENT (:I_CLEF) p
+      inner join INDIVIDU i on (i.cle_fiche<>:a_clef_pere
+                                and((p.sosa=4 and i.CLE_PERE=p.cle_fiche)
+                                    OR (p.sosa=5 and i.CLE_MERE=p.cle_fiche)))
+                            or (i.cle_fiche<>:a_clef_mere
+                                and((p.sosa=6 and i.CLE_PERE=p.cle_fiche)
+                                    OR (p.sosa=7 and i.CLE_MERE=p.cle_fiche)))
+      left join evenements_ind e on e.ev_ind_kle_fiche=i.cle_fiche
+                                    and e.ev_ind_type='BIRT'
+  order by p.sosa,i.annee_naissance,e.ev_ind_date_mois,e.ev_ind_date
+  INTO :CLE_FICHE
+      ,:NOM
+      ,:PRENOM
+      ,:SEXE
+      ,:DATE_NAISSANCE
+      ,:DATE_DECES
+      ,:CLE_PERE
+      ,:CLE_MERE
+      ,:SOSA
+      ,:DECEDE
+      ,:num_sosa
+      ,:annee_naissance
+      ,:annee_deces
+  do
+  begin
+    if (s<>sosa) then
+    begin
+      i=0;
+      s=sosa;
+    end
+    i=i+1;
+    sosa=sosa+i;
+    suspend;
+  end
+END^
+
+CREATE OR ALTER PROCEDURE PROC_TROUVE_UNIONS (
+    i_dossier integer,
+    i_clef integer)
+returns (
+    cle_fiche integer,
+    nom varchar(40),
+    prenom varchar(60),
+    date_naissance varchar(100),
+    annee_naissance integer,
+    date_deces varchar(100),
+    annee_deces integer,
+    sexe integer,
+    cle_pere integer,
+    cle_mere integer,
+    num_sosa double precision,
+    type_union integer,
+    union_clef integer,
+    annee_mariage integer,
+    decede integer)
+as
+BEGIN
+      FOR SELECT
+            p.conjoint
+           ,c.NOM
+           ,c.PRENOM
+           ,c.DATE_NAISSANCE
+           ,c.ANNEE_NAISSANCE
+           ,c.DATE_DECES
+           ,c.ANNEE_DECES
+           ,c.SEXE
+           ,c.CLE_PERE
+           ,c.CLE_MERE
+           ,c.NUM_SOSA
+           ,0
+           ,p.clef_union
+           ,p.ordre
+           ,c.decede
+      from proc_conjoints_ordonnes(:i_clef,0) p
+        left join individu c on c.cle_fiche=p.conjoint
+      INTO
+            :CLE_FICHE,
+            :NOM,
+            :PRENOM,
+            :DATE_NAISSANCE,
+            :ANNEE_NAISSANCE,
+            :DATE_DECES,
+            :ANNEE_DECES,
+            :SEXE,
+            :CLE_PERE,
+            :CLE_MERE,
+            :NUM_SOSA,
+            :TYPE_UNION,
+            :UNION_CLEF,
+            :ANNEE_MARIAGE,
+            :DECEDE
+      DO
+        SUSPEND;
+END^
+
+CREATE OR ALTER PROCEDURE PROC_VIDE_BASE (
+    i_clef integer)
+as
+declare variable i integer;
+begin
+      delete from prenoms;
+      delete from t_associations;
+      delete from memo_infos;
+      delete from media_pointeurs;
+      delete from sources_record;
+      delete from evenements_fam;
+      delete from evenements_ind;
+      delete from favoris;
+      delete from t_union ;
+      delete from multimedia;
+      delete from individu;
+      delete from t_import_gedcom;
+      delete from nom_attachement;
+      delete from tq_ascend_descend;
+      delete from tq_consang;
+      delete from tq_id;
+      delete from tq_transit;
+      delete from tq_arbredescendant ;
+      delete from tq_arbrereduit;
+      delete from tq_ascendance;
+      delete from tq_eclair;
+      delete from tq_prenoms;
+      delete from tq_rech_doublons;
+      delete from t_doublons;
+      delete from gestion_dll;
+      delete from dossier;
+      delete from t_journal;
+      i = gen_id(gen_ev_ind_clef,-gen_id(gen_ev_ind_clef, 0));
+      i = gen_id(gen_ev_fam_clef,-gen_id(gen_ev_fam_clef, 0));
+      i = gen_id(gen_individu,-gen_id(gen_individu, 0));
+      i = gen_id(gen_multimedia,-gen_id(gen_multimedia, 0));
+      i = gen_id(t_import_gedcom_ig_id_gen,-gen_id(t_import_gedcom_ig_id_gen, 0));
+      i = gen_id(nom_attachement_id_gen,-gen_id(nom_attachement_id_gen, 0));
+      i = gen_id(gen_assoc_clef,-gen_id(gen_assoc_clef, 0));
+      i = gen_id(gen_t_union,-gen_id(gen_t_union, 0));
+      i = gen_id(gen_dossier,-gen_id(gen_dossier, 0));
+      i = gen_id(gen_favoris,-gen_id(gen_favoris, 0));
+      i = gen_id(gen_memo_infos,-gen_id(gen_memo_infos, 0));
+      i = gen_id(sources_record_id_gen,-gen_id(sources_record_id_gen, 0));
+      i = gen_id(biblio_pointeurs_id_gen,-gen_id(biblio_pointeurs_id_gen, 0));
+      i = gen_id(gen_tq_eclair,-gen_id(gen_tq_eclair, 0));
+      i = gen_id(gen_tq_id,-gen_id(gen_tq_id, 0));
+      i = gen_id(gen_consang,-gen_id(gen_consang, 0));
+      i = gen_id(gen_tq_media,-gen_id(gen_tq_media, 0));
+      execute procedure proc_vide_tables_ref(i_clef);
+end^
+
+COMMENT ON PROCEDURE PROC_VIDE_BASE IS
+'Procédure refaite par André Langlet pour respecter l''ordre des dépendances
+lors de la suppression des enregistrements, vidage T_IMPORT_GEDCOM.
+Remplacement PATRONYMES par NOM_ATTACHEMENT. 01/06/2007
+Suppression ADRESSES_IND le 25/10/2010
+Ajout des générateurs de tables temporaires le 13/04/2011'^
+
+CREATE OR ALTER PROCEDURE PROC_VIDE_DOSSIER (
+    i_clef integer)
+as
+begin
+      DELETE FROM PRENOMS;
+      DELETE FROM MEDIA_POINTEURS WHERE MP_KLE_DOSSIER = :I_CLEF;
+      DELETE FROM MEMO_INFOS WHERE M_DOSSIER = :I_CLEF;
+      DELETE FROM SOURCES_RECORD WHERE KLE_DOSSIER = :I_CLEF;
+      DELETE FROM T_ASSOCIATIONS WHERE ASSOC_KLE_DOSSIER = :I_CLEF;
+      DELETE FROM evenements_fam WHERE EV_FAM_KLE_DOSSIER = :I_CLEF;
+      DELETE FROM evenements_ind WHERE EV_IND_KLE_DOSSIER = :I_CLEF;
+      DELETE FROM MULTIMEDIA  WHERE MULTI_DOSSIER = :I_CLEF;
+      DELETE FROM NOM_ATTACHEMENT WHERE KLE_DOSSIER = :I_CLEF;
+      DELETE FROM TQ_ASCEND_DESCEND;
+      DELETE FROM TQ_CONSANG;
+      DELETE FROM TQ_ID;
+      DELETE FROM TQ_ARBREDESCENDANT ;
+      DELETE FROM tq_arbrereduit;
+      DELETE FROM tq_ascendance;
+      DELETE FROM TQ_ECLAIR;
+      DELETE FROM TQ_PRENOMS;
+      DELETE FROM T_DOUBLONS;
+      DELETE FROM TQ_RECH_DOUBLONS;
+      DELETE FROM TQ_TRANSIT;
+      DELETE FROM T_UNION WHERE KLE_DOSSIER = :I_CLEF;
+      DELETE FROM T_IMPORT_GEDCOM WHERE IG_ID IN (select ID_IMPORT_GEDCOM
+             FROM INDIVIDU WHERE KLE_DOSSIER=:I_CLEF and ID_IMPORT_GEDCOM is not null);
+      DELETE FROM INDIVIDU WHERE KLE_DOSSIER = :I_CLEF;
+      DELETE FROM FAVORIS WHERE KLE_DOSSIER = :I_CLEF;
+      DELETE FROM ref_histoire WHERE hi_dossier=:I_CLEF;
+      DELETE FROM t_journal WHERE kle_dossier=:I_CLEF;
+end^
+COMMENT ON PROCEDURE PROC_VIDE_DOSSIER IS
+'Procédure refaite par André Langlet pour respecter l''ordre des dépendances
+lors de la suppression des enregistrements et suppresion des références au dossier
+pour les tables temporaires, vidage T_IMPORT_GEDCOM, REF_HISTOIRE, remplacement
+PATRONYMES par NOM_ATTACHEMENT 01/06/2007
+suppression références à ADRESSES_IND 25/10/2010'^
+
+CREATE OR ALTER PROCEDURE PROC_VIDE_TABLES_REF (
+    i_clef integer)
+as
+declare variable i integer;
+begin
+  if ( i_clef = 1 ) then
+  begin
+      delete from ref_pays;
+      delete from ref_region;
+      delete from ref_departements;
+      delete from ref_cp_ville;
+      delete from ref_evenements;
+      delete from ref_filiation;
+      delete from ref_particules;
+      delete from ref_prefixes;
+      delete from ref_raccourcis;
+      delete from ref_rela_temoins;
+      delete from ref_token_date;
+      delete from ref_histoire;
+      delete from ref_divers_ind;
+      delete from ref_divers_fam;
+      delete from ref_marr;
+      i = gen_id(gen_ref_pays,         -gen_id(gen_ref_pays, 0));
+      i = gen_id(gen_ref_region,       -gen_id(gen_ref_region, 0));
+      i = gen_id(gen_ref_departements, -gen_id(gen_ref_departements, 0));
+      i = gen_id(gen_ref_cp_ville,     -gen_id(gen_ref_cp_ville, 0));
+      i = gen_id(gen_ref_evenements, -gen_id(gen_ref_evenements, 0));
+      i = gen_id(gen_ref_particules, -gen_id(gen_ref_particules, 0));
+      i = gen_id(gen_ref_prefixes,   -gen_id(gen_ref_prefixes, 0));
+      i = gen_id(gen_ref_raccourcis, -gen_id(gen_ref_raccourcis, 0));
+      i = gen_id(gen_ref_rela_clef,  -gen_id(gen_ref_rela_clef, 0));
+      i = gen_id(gen_token_date,     -gen_id(gen_token_date, 0));
+      i = gen_id(gen_ref_histoire,    -gen_id(gen_ref_histoire, 0));
+  end
+end^
+
+COMMENT ON PROCEDURE PROC_VIDE_TABLES_REF IS
+'Vidage des tables de référence si clef=1
+Dernières modifications par André Langlet décembre 2010,
+ajout des nouvelles tables de référence.'^
+
+CREATE OR ALTER PROCEDURE PROC_VIDE_VILLES (
+    I_CLEF INTEGER)
+AS
+DECLARE VARIABLE I INTEGER;
+begin
+   /*---------------------------------------------------------------------------
+   Copyright Philippe Cazaux-Moutou. Tout droits réservés.
+   Créé le : 31/07/2001
+   à : 21:29:49
+   Modifiée le :
+   à : :
+   par :
+   Description : 
+   Usage       :
+   ---------------------------------------------------------------------------*/
+  if ( I_CLEF = 1 ) then begin
+      DELETE FROM REF_PAYS;
+      DELETE FROM REF_REGION;
+      DELETE FROM REF_DEPARTEMENTS;
+      DELETE FROM REF_CP_VILLE;
+      i = gen_id(GEN_REF_PAYS, -gen_id(GEN_REF_PAYS, 0));
+      i = gen_id(GEN_REF_REGION, -gen_id(GEN_REF_REGION, 0));
+      i = gen_id(GEN_REF_DEPARTEMENTS, -gen_id(GEN_REF_DEPARTEMENTS, 0));
+      i = gen_id(GEN_REF_CP_VILLE, -gen_id(GEN_REF_CP_VILLE, 0));
+   end
+   suspend;
+end
+^
+
+commit^
+
+execute block
+as
+declare variable id integer;
+begin
+select first(1) id from ref_token_date
+where langue='FRA' and type_token=14 and token='jusqu''au'
+into :id;
+if (id is null) then
+    insert into ref_token_date (langue,type_token,token,sous_type) values('FRA',14,'jusqu''au','D1');
+
+select first(1) id from ref_token_date
+where langue='FRA' and type_token=14 and token='jusqu''en'
+into :id;
+if (id is null) then
+    insert into ref_token_date (langue,type_token,token,sous_type) values('FRA',14,'jusqu''en','Y1');
+
+select first(1) id from ref_token_date
+where langue='FRA' and type_token=14 and token='jusque'
+into :id;
+if (id is null) then
+    insert into ref_token_date (langue,type_token,token) values('FRA',14,'jusque');
+
+end^
+commit^
+
+
+SET TERM ; ^
+
+/******************************************************************************/
+/****                             Descriptions                             ****/
+/******************************************************************************/
+
+COMMENT ON PROCEDURE PROC_AGE_A_DATE IS 
+'Création par André Langlet le 14/11/2007.
+Retourne l''âge d''un individu à une date.
+Si la date complète existe (après JC uniquement), mois et année ne sont pas
+imposés.
+08/05/2008 ajout des paramètres TENDANCE de PROC_DELTA_DATES.';
+
+COMMENT ON PROCEDURE PROC_JOURS_TEXTE IS
+'Procédure créée par André le 11/05/2008 pour transformer une différence entre
+2 dates exprimée en années, mois, jours, en format textuel.
+PRECIS=1 permet d''exprimer cette date avec plus de précision.';
+
+COMMENT ON PROCEDURE PROC_AGE_TEXTE IS
+'Procédure créée par André le 11/05/2008:
+Elle permet d''exprimer un âge sous forme de texte.
+Les dates de naissance et de décès doivent être au format standard de saisie des dates.';
+
+
+COMMENT ON TRIGGER TAD_EVENEMENTS_IND IS 
+'Création par André le 25/03/2006 modifié le 14/11/2007: ajout CREM.';
+
+COMMENT ON TRIGGER T_AI_INDIVIDU IS 
+'Création par André le 28/07/2008';
+
+COMMENT ON TRIGGER T_AU_INDIVIDU IS 
+'Création par André le 28/07/2008
+Modification le 13/11/2008 pour maj auto de num_sosa';
+
+COMMENT ON PROCEDURE PROC_INSERT_FAVORIS IS
+'Procédure entièrement refaite par André le 01/11/2008.
+Insère un individu dans la liste des favoris de son dossier s''il n''y existe pas
+et supprime les favoris en excédent.';
+
+COMMENT ON TRIGGER T_BU_INDIVIDU IS 
+'Modifications par André
+10/06/2006 suppressions corrections dues à valeurs non mises à jour par fiche individu
+01/11/2008 utilisation variable contextuelle pour empêcher la maj de la date de modification';
+
+COMMENT ON PROCEDURE PROC_LISTE_PARENTE IS
+'Procédure créée par André pour lister les ascendants de deux individus ayant
+un ancêtre commun';
+
+COMMENT ON TRIGGER T_AD_INDIVIDU IS
+'créé par André le 13/11/2008 pour maj auto des sosas';
+
+COMMENT ON PROCEDURE PROC_RENUM_SOSA IS
+'Cette procedure permet de faire une renumérotation SOSA de tous les
+individus.
+Modifiée le : 01/10/2007 par André: utilisation de proc_tq_ascendance
+le 26/10/2008 ajout type_lien_gene
+le 13/11/2008 mise à jour des variables du context';
+
+COMMENT ON TABLE TT_ASCENDANCE IS 
+'Création André le 14/12/2008 pour automatiser le calcul de l''ascendance.';
+
+COMMENT ON TRIGGER TT_ASCENDANCE_AI0 IS 
+'Création André le 14/12/2008 pour automatiser le calcul de l''ascendance.';
+
+COMMENT ON TRIGGER TT_ASCENDANCE_BI0 IS 
+'Création André le 14/12/2008 pour automatiser le calcul de l''ascendance.';
+
+COMMENT ON PROCEDURE PROC_TROUVE_PARENTS IS
+'Procédure honteuse recréée uniquement pour rester compatible avec la dll Arbres.dll.
+A supprimer dès que possible';
+
+COMMENT ON PROCEDURE PROC_TROUVE_PERE IS
+'Procédure honteuse recréée uniquement pour rester compatible avec la dll Arbres.dll.
+A supprimer dès que possible';
+
+COMMENT ON PROCEDURE PROC_TROUVE_MERE IS
+'Procédure honteuse recréée uniquement pour rester compatible avec la dll Arbres.dll.
+A supprimer dès que possible';
+
+COMMENT ON PROCEDURE PROC_EVE_IND IS
+'Procédure recréée uniquement pour rester compatible avec la dll Arbres.dll.
+A supprimer dès que possible';
+
+COMMENT ON PROCEDURE PROC_TQ_DESCENDANCE IS
+'Procédure créée le 10/02/2006 par André Langlet pour servir de référence à
+toutes les procédures et requêtes utilisant les calculs de descendance.
+2009 ajustement pour éditer plus rapidement les enfants dans l''ordre chronologique
+de naissance.
+Dernière mise à jour: 02/12/2009 par André Langlet.
+Codification d''Aboville alphanumérique dans champ TQ_NUM_SOSA
+Implexe dans champ TQ_SOSA.
+Création I_MODE: 0=sans implexe, 1=un niveau d''implexes, 2=tous les implexes.
+Description : Cette procedure permet de récuperer tous les descendants d''un individu.
+I_NIVEAU défini le nombre de générations à éditer.
+si I_NIVEAU=0 alors toute la descendance de l''individu I_CLEF est éditée.
+i_parqui=1 descendance par les hommes, 2 par les femmes, 0 tous.';
+
+COMMENT ON PROCEDURE PROC_TROUVE_CONJOINTS IS
+'Procédure créée par Philippe Cazaux-Moutou le : 31/07/2001 à : 19:32:22 .
+Améliorée depuis 2006 et entièrement refaite par André Langlet le 07/04/2009.
+Conservée uniquement pour compatibilité avec dllArbres.';
+
+COMMENT ON PROCEDURE PROC_ETAT_DESCENDANCE IS
+'Procédure créée par Philippe Cazaux-Moutou le : 31/07/2001 à : 19:06:20
+Modifiée le : 12/01/2006 par André Langlet pour erreur concaténation si prénom NULL
+09/07/07 ajout conjoints, mariages et précisions du lieu
+Entièrement refaite le 07/04/2009: utilisation de PROC_CONJOINTS_ORDONNES
+Description : Cette procedure permet de récuperer tous les descendant d''un individu';
+
+COMMENT ON PROCEDURE PROC_CONJOINTS_ORDONNES IS
+'Procédure créée par André Langlet le 07/04/2009 servant de base à toutes les requêtes
+demandant les conjoints dans l''ordre chronologique.';
+
+COMMENT ON PROCEDURE PROC_TROUVE_UNIONS IS
+'Procédure créée par Philippe Cazaux-Moutou le : 31/07/2001 à : 19:49:06
+Modifiée le : 10/01/2007 par André Langlet pour ordre chronologique des conjoints
+ajout du mois dans l''ordre de tri, requête indépendante du sexe ,ajout decede
+Entièrement refaite le 07/04/2009 en utilisant PROC_CONJOINTS_ORDONNES.
+Procédure plus utilisée par Ancestromania, mais conservée uniquement
+pour compatibilité avec dllArbres.';
+
+COMMENT ON TRIGGER T_BI_INDIVIDU IS 
+'Trigger modifié par André
+Dernière modification 16/04/2009';
+
+COMMENT ON TABLE REF_DIVERS_FAM IS 
+'Création André Langlet 2009';
+
+COMMENT ON TABLE REF_DIVERS_IND IS 
+'Création André Langlet 2009';
+
+COMMENT ON TABLE REF_MARR IS 
+'Création par André Langlet décembre 2010.';
+
+COMMENT ON PROCEDURE PROC_PREP_VILLES_RAYON IS
+'création par André 2006
+Dernière modification le 27/08/2010
+Utilisations:Villes voisines Ancestromania et Cassinivision';
+
+COMMENT ON COLUMN INDIVIDU.TYPE_LIEN_GENE IS 
+'Liens avec le decujus.
+bit 0 (masque 1): 1=lien avec le decujus (peut-être témoin)
+bit 1 (masque 2): 1=lien avec le decujus (sauf témoin)
+bit 2 (masque 4): 1=descendant du decujus
+bits 8 à 15: si descendant du decujus, nombre de générations entre le decujus et l''individu, 0 autrement
+bits 18 à 23: nombre de générations entre l''individu et le premier ancêtre commun
+bits 24 à 32: nombre de générations entre le decujus et le premier ancêtre commun';
+
+COMMENT ON COLUMN INDIVIDU.IND_CONFIDENTIEL IS 
+'bit 0=Individu confidentiel (masque=1)
+bit 1=Sans contrôle des dates (masque=2)
+bit 2=Identité incertaine (masque=4)
+bit 3=Continuer recherches (masque=8)';
+
+commit;
+
+--B5.126 Changement  ref_eve_type de T en I 
+update or insert into ref_evenements
+(ref_eve_lib_court,ref_eve_lib_long,ref_eve_obligatoire,ref_eve_type,ref_eve_cat,ref_eve_visible,ref_eve_a_traiter,ref_eve_ecran,ref_eve_langue,ref_eve_une_fois)
+values
+('IDSPE','Père introuvable',0,'I',10,0,0,0,'FR',0)
+matching (ref_eve_lib_court);
+update or insert into ref_evenements
+(ref_eve_lib_court,ref_eve_lib_long,ref_eve_obligatoire,ref_eve_type,ref_eve_cat,ref_eve_visible,ref_eve_a_traiter,ref_eve_ecran,ref_eve_langue,ref_eve_une_fois)
+values
+('IDSME','Mère introuvable',0,'I',10,0,0,0,'FR',0)
+matching (ref_eve_lib_court);
+update or insert into ref_evenements
+(ref_eve_lib_court,ref_eve_lib_long,ref_eve_obligatoire,ref_eve_type,ref_eve_cat,ref_eve_visible,ref_eve_a_traiter,ref_eve_ecran,ref_eve_langue,ref_eve_une_fois)
+values
+('IDSPA','Parents introuvables',0,'I',10,0,0,0,'FR',0)
+matching (ref_eve_lib_court);
+commit;
+
+--suite à création du champ nom_lettre
+update nom_attachement
+set nom_lettre=substring((select s_out from f_maj_sans_accent(nom)) from 1 for 1);
+commit;
+
+--Correction pour l'Algérie
+update ref_departements
+set rrg_code=352001
+where rdp_pays=99352 and rrg_code=3521;
+commit;
+
+--Correction de le table de référence des événements
+update ref_evenements
+set ref_eve_lib_court='CITY'
+where ref_eve_lib_court='CTY';
+commit;
+
+update ref_evenements
+set ref_eve_type=null
+where ref_eve_lib_court='CALN';
+commit;
+
+update ref_evenements
+set ref_eve_type=null, ref_eve_visible=0
+where ref_eve_lib_court='ORDI';
+commit;
+
+update ref_evenements
+set ref_eve_type=null
+where ref_eve_lib_court='PEDI';
+commit;
+
+update ref_evenements
+set ref_eve_type='U',ref_eve_lib_long='Mariage Mormon'
+where ref_eve_lib_court='SLGS';
+commit;
+
+update ref_evenements
+set ref_eve_langue='FRA'
+where ref_eve_langue='FR';
+commit;
+
+update dossier set ds_langue='FRA' where ds_langue is null;
+commit;
+
+update ref_evenements
+set ref_eve_type=null
+where ref_eve_lib_court in ('BENE','DIPL','INHU','NCHI',',NMR','RESI','TITR');
+commit;
+
+update evenements_ind
+set ev_ind_ordre=0
+where ev_ind_type='BIRT' and ev_ind_ordre is null;
+commit;
+
+ALTER TABLE REF_EVENEMENTS ADD IBE$$TEMP_COLUMN INTEGER DEFAULT 0;
+UPDATE RDB$RELATION_FIELDS F1
+SET
+F1.RDB$DEFAULT_VALUE  = (SELECT F2.RDB$DEFAULT_VALUE
+                         FROM RDB$RELATION_FIELDS F2
+                         WHERE (F2.RDB$RELATION_NAME = 'REF_EVENEMENTS') AND
+                               (F2.RDB$FIELD_NAME = 'IBE$$TEMP_COLUMN')),
+F1.RDB$DEFAULT_SOURCE = (SELECT F3.RDB$DEFAULT_SOURCE FROM RDB$RELATION_FIELDS F3
+                         WHERE (F3.RDB$RELATION_NAME = 'REF_EVENEMENTS') AND
+                               (F3.RDB$FIELD_NAME = 'IBE$$TEMP_COLUMN'))
+WHERE (F1.RDB$RELATION_NAME = 'REF_EVENEMENTS') AND
+      (F1.RDB$FIELD_NAME = 'REF_EVE_ECRAN');
+ALTER TABLE REF_EVENEMENTS DROP IBE$$TEMP_COLUMN;
+commit;
+update ref_evenements
+set ref_eve_type='I' where ref_eve_lib_court starting with 'IDS';
+update ref_evenements
+set ref_eve_ecran=0;
+update ref_evenements
+set ref_eve_ecran=-5
+where ref_eve_lib_court='BIRT';
+update ref_evenements
+set ref_eve_ecran=3
+where ref_eve_lib_court='DEAT';
+update ref_evenements
+set ref_eve_ecran=4
+where ref_eve_lib_court='CREM';
+update ref_evenements
+set ref_eve_ecran=5
+where ref_eve_lib_court='BURI';
+commit;
+
+
+UPDATE T_VERSION_BASE SET VER_VERSION='5.151';
+COMMIT ;
+
+SET ECHO ON;
+
+/*Passage en version 5.151
+L'utilisation de la base modifiée avec une version du logiciel inférieure à V2011.2 peut entraîner des disfonctonnements.*/
+SET ECHO OFF;
+SET AUTODDL ON;
+OUTPUT;
+exit;

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="4">
+    <Name Value="typhonancestrounits"/>
+    <AddToProjectUsesSection Value="True"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <SearchPaths>
+        <OtherUnitFiles Value="functions;objects;forms"/>
+        <UnitOutputDirectory Value="typhon/$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+    </CompilerOptions>
+    <Files Count="29">
+      <Item1>
+        <Filename Value="objects/u_objet_TBigIniFile.pas"/>
+        <UnitName Value="u_objet_TBigIniFile"/>
+      </Item1>
+      <Item2>
+        <Filename Value="objects/u_objet_TBitmapList.pas"/>
+        <UnitName Value="u_objet_TBitmapList"/>
+      </Item2>
+      <Item3>
+        <Filename Value="objects/u_objet_TBooleanList.pas"/>
+        <UnitName Value="u_objet_TBooleanList"/>
+      </Item3>
+      <Item4>
+        <Filename Value="objects/u_objet_TCircleElement.pas"/>
+        <UnitName Value="u_objet_TCircleElement"/>
+      </Item4>
+      <Item5>
+        <Filename Value="objects/u_objet_TCut.pas"/>
+        <UnitName Value="u_objet_TCut"/>
+      </Item5>
+      <Item6>
+        <Filename Value="objects/u_objet_TEllipseElement.pas"/>
+        <UnitName Value="u_objet_TEllipseElement"/>
+      </Item6>
+      <Item7>
+        <Filename Value="objects/u_objet_TGraphicElement.pas"/>
+        <UnitName Value="u_objet_TGraphicElement"/>
+      </Item7>
+      <Item8>
+        <Filename Value="objects/u_objet_TGraphicElementList.pas"/>
+        <UnitName Value="u_objet_TGraphicElementList"/>
+      </Item8>
+      <Item9>
+        <Filename Value="objects/u_objet_TIntegerList.pas"/>
+        <UnitName Value="u_objet_TIntegerList"/>
+      </Item9>
+      <Item10>
+        <Filename Value="objects/u_objet_TLineElement.pas"/>
+        <UnitName Value="u_objet_TLineElement"/>
+      </Item10>
+      <Item11>
+        <Filename Value="objects/u_objet_TRectangleElement.pas"/>
+        <UnitName Value="u_objet_TRectangleElement"/>
+      </Item11>
+      <Item12>
+        <Filename Value="objects/u_objet_TSingleList.pas"/>
+        <UnitName Value="u_objet_TSingleList"/>
+      </Item12>
+      <Item13>
+        <Filename Value="objects/u_objet_TTextElement.pas"/>
+        <UnitName Value="u_objet_TTextElement"/>
+      </Item13>
+      <Item14>
+        <Filename Value="functions/u_common_resources.pas"/>
+        <UnitName Value="u_common_resources"/>
+      </Item14>
+      <Item15>
+        <Filename Value="functions/u_common_const.pas"/>
+        <UnitName Value="u_common_const"/>
+      </Item15>
+      <Item16>
+        <Filename Value="functions/u_common_graph_func.pas"/>
+        <UnitName Value="u_common_graph_func"/>
+      </Item16>
+      <Item17>
+        <Filename Value="functions/u_common_graph_const.pas"/>
+        <UnitName Value="u_common_graph_const"/>
+      </Item17>
+      <Item18>
+        <Filename Value="objects/u_common_graph_objects.pas"/>
+        <UnitName Value="u_common_graph_objects"/>
+      </Item18>
+      <Item19>
+        <Filename Value="objects/u_common_graph_type.pas"/>
+        <UnitName Value="u_common_graph_type"/>
+      </Item19>
+      <Item20>
+        <Filename Value="objects/u_objet_graph_TPlot.pas"/>
+        <UnitName Value="u_objet_graph_TPlot"/>
+      </Item20>
+      <Item21>
+        <Filename Value="objects/u_objet_graph_TPlotList.pas"/>
+        <UnitName Value="u_objet_graph_TPlotList"/>
+      </Item21>
+      <Item22>
+        <Filename Value="objects/u_objet_TIniMem.pas"/>
+        <UnitName Value="u_objet_TIniMem"/>
+      </Item22>
+      <Item23>
+        <Filename Value="objects/u_objet_TState.pas"/>
+        <UnitName Value="u_objet_TState"/>
+      </Item23>
+      <Item24>
+        <Filename Value="objects/u_objet_tgedcomdate.pas"/>
+        <UnitName Value="u_objet_TGedcomDate"/>
+      </Item24>
+      <Item25>
+        <Filename Value="functions/u_gedcom_func.pas"/>
+        <UnitName Value="u_gedcom_func"/>
+      </Item25>
+      <Item26>
+        <Filename Value="functions/u_gedcom_type.pas"/>
+        <UnitName Value="u_gedcom_type"/>
+      </Item26>
+      <Item27>
+        <Filename Value="functions/u_ancestro_strings.pas"/>
+        <UnitName Value="u_ancestro_strings"/>
+      </Item27>
+      <Item28>
+        <Filename Value="objects/u_objet_TMotsClesDate.pas"/>
+        <UnitName Value="u_objet_TMotsClesDate"/>
+      </Item28>
+      <Item29>
+        <Filename Value="functions/u_genealogy_context.pas"/>
+        <UnitName Value="u_genealogy_context"/>
+      </Item29>
+    </Files>
+    <RequiredPkgs Count="7">
+      <Item1>
+        <PackageName Value="typhonextnet"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="typhonextcopy"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="typhonextreports"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="CompoPersoTyphon"/>
+      </Item4>
+      <Item5>
+        <PackageName Value="typhonextcomponents"/>
+      </Item5>
+      <Item6>
+        <PackageName Value="LCL"/>
+      </Item6>
+      <Item7>
+        <PackageName Value="FCL"/>
+        <MinVersion Major="1" Valid="True"/>
+      </Item7>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+    <CustomOptions Items="ExternHelp" Version="2">
+      <_ExternHelp Items="Count"/>
+    </CustomOptions>
+  </Package>
+</CONFIG>

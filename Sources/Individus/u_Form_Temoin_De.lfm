@@ -1,0 +1,295 @@
+inherited FTemoinDe: TFTemoinDe
+  Left = 421
+  Height = 430
+  Top = 74
+  Width = 575
+  BorderWidth = 1
+  ClientHeight = 430
+  ClientWidth = 575
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 428
+    Top = 1
+    Width = 573
+    Align = alClient
+    BevelOuter = bvNone
+    BorderWidth = 2
+    ClientHeight = 428
+    ClientWidth = 573
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 2
+      Height = 424
+      Top = 2
+      Width = 569
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 424
+      ClientWidth = 569
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 0
+        Height = 424
+        Top = 0
+        Width = 569
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 424
+        ClientWidth = 569
+        TabOrder = 0
+        object fpBoutons: TPanel
+          Left = 3
+          Height = 32
+          Top = 389
+          Width = 563
+          Align = alBottom
+          ClientHeight = 32
+          ClientWidth = 563
+          TabOrder = 0
+          object btnPrint: TFWPrint
+            Cursor = crHandPoint
+            Left = 367
+            Height = 27
+            Top = 2
+            Width = 94
+            Caption = 'Imprimer'
+            TabOrder = 0
+            Cancel = True
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            OnClick = btnPrintClick
+          end
+          object rbDate: TRadioButton
+            Left = 10
+            Height = 21
+            Top = 6
+            Width = 141
+            Caption = 'Classement par date'
+            Checked = True
+            OnClick = rbNomClick
+            TabOrder = 2
+            TabStop = True
+          end
+          object rbNom: TRadioButton
+            Left = 146
+            Height = 21
+            Top = 8
+            Width = 190
+            Caption = 'Classement par Nom/Prénom'
+            OnClick = rbNomClick
+            TabOrder = 1
+          end
+        end
+        object pBottom: TPanel
+          Left = 3
+          Height = 3
+          Top = 386
+          Width = 563
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 1
+        end
+        object Panel3: TPanel
+          Left = 3
+          Height = 55
+          Top = 3
+          Width = 563
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 55
+          ClientWidth = 563
+          TabOrder = 2
+          object Image1: TIATitle
+            Left = 1
+            Top = 1
+            AutoSize = True
+            ImageOn = iaWho
+          end
+          object Label1: TLabel
+            Left = 29
+            Height = 25
+            Top = 11
+            Width = 533
+            Alignment = taRightJustify
+            Anchors = [akTop, akRight]
+            Caption = 'Cet individu est cité lors des événements de...'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowFrame
+            Font.Height = -20
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object Panel2: TPanel
+          Left = 3
+          Height = 5
+          Top = 58
+          Width = 563
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 3
+        end
+        object tv: TVirtualStringTree
+          Left = 3
+          Height = 323
+          Hint = 'Cliquez sur le lien pour afficher l''individu, ou cliquez sur l''icône des enfants pour voir les enfants associés.'
+          Top = 63
+          Width = 563
+          Align = alClient
+          Header.AutoSizeIndex = 0
+          Header.Columns = <>
+          Header.DefaultHeight = 17
+          Header.MainColumn = -1
+          Images = dm.ImgCat
+          PopupMenu = pmTV
+          TabOrder = 4
+          TreeOptions.MiscOptions = [toCheckSupport, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning, toEditOnClick]
+          TreeOptions.PaintOptions = [toShowu_buttons_flat, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowTreeLines, toShowVertGridLines, toThemeAware, toUseBlendedImages]
+          OnBeforeCellPaint = tvBeforeCellPaint
+          OnDblClick = mFicheClick
+          OnMouseMove = tvMouseMove
+        end
+      end
+    end
+  end
+  object pmTV: TPopupMenu[1]
+    Images = dm.ImageListMenu
+    left = 30
+    top = 151
+    object mFiche: TMenuItem
+      Caption = 'Ouvrir la fiche ...'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000FF0000
+        00FF008484FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF000000FF00000000000000000000000000000000000000FF00FF
+        FFFF000000FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF000000FF000000000000000000000000000000FFFFFF
+        FFFF00FFFFFF000000FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF008484FF000000FF0000000000000000000000FF00FF
+        FFFFFFFFFFFF00FFFFFF000000FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF008484FF008484FF000000FF00000000000000FFFFFF
+        FFFF00FFFFFFFFFFFFFF00FFFFFF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF00FF
+        FFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FF
+        FFFF000000FF0000000000000000000000000000000000000000000000FFFFFF
+        FFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFF
+        FFFF000000FF0000000000000000000000000000000000000000000000FF00FF
+        FFFFFFFFFFFF00FFFFFF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000000000
+        00FF000000FF000000FF00000000000000000000000000000000000000000000
+        00000000000000000000000000FF000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00000000000000000000000000FF00000000000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00FF000000FF000000FF00000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 5
+      OnClick = mFicheClick
+    end
+  end
+  object Language: TYLanguage[2]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+  end
+  object dxComponentPrinter1: TPrinterSetupDialog[3]
+    Title = 'Ecran d''aperçu'
+    left = 344
+    top = 64
+  end
+  object QTemoins: TIBQuery[4]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    Params = <>
+    left = 104
+    top = 208
+  end
+  object IBDetail: TIBSQL[5]
+    Database = dm.ibd_BASE
+    ParamCheck = True
+    SQL.Strings = (
+      'select'
+      'ref_eve_lib_long'
+      ',ev_fam_date_writen'
+      ',cp'
+      ',ville'
+      ',image'
+      ',description'
+      ',quoi'
+      ',ref_eve_ecran'
+      'from'
+      '(select all case f.ev_fam_type'
+      'when ''EVEN'' then coalesce(f.ev_fam_titre_event,rf.ref_eve_lib_long)'
+      'else rf.ref_eve_lib_long'
+      'end as ref_eve_lib_long'
+      ',f.ev_fam_date_writen'
+      ',f.ev_fam_cp cp'
+      ',f.ev_fam_ville as ville'
+      ',rf.ref_eve_cat as image'
+      ',f.ev_fam_description as  description'
+      ',a.assoc_libelle quoi'
+      ',rf.ref_eve_ecran'
+      ',f.ev_fam_datecode as annee'
+      'from individu i'
+      'inner join dossier ds on ds.cle_dossier=i.kle_dossier'
+      'inner join t_union u on u.union_mari=i.cle_fiche or u.union_femme=i.cle_fiche'
+      'inner join evenements_fam f on f.ev_fam_kle_famille=u.union_clef'
+      'inner join ref_evenements rf on rf.ref_eve_lib_court=f.ev_fam_type and rf.ref_eve_langue=ds.ds_langue'
+      'inner join t_associations a on a.assoc_evenement=f.ev_fam_clef and a.assoc_table=''U'' and a.assoc_kle_associe=:qui'
+      'where i.cle_fiche=:indi'
+      'union '
+      'select all case e.ev_ind_type'
+      'when ''EVEN'' then coalesce(e.ev_ind_titre_event,re.ref_eve_lib_long)'
+      'else re.ref_eve_lib_long'
+      'end'
+      ',e.ev_ind_date_writen'
+      ',e.ev_ind_cp'
+      ',e.ev_ind_ville'
+      ',re.ref_eve_cat'
+      ',ev_ind_description'
+      ',a.assoc_libelle'
+      ',re.ref_eve_ecran'
+      ',e.ev_ind_datecode'
+      'from individu i'
+      'inner join dossier ds on ds.cle_dossier=i.kle_dossier'
+      'inner join evenements_ind e on e.ev_ind_kle_fiche=i.cle_fiche'
+      'inner join ref_evenements re on re.ref_eve_lib_court=e.ev_ind_type and re.ref_eve_langue=ds.ds_langue'
+      'inner join t_associations a on a.assoc_evenement=e.ev_ind_clef and a.assoc_table=''I'' and a.assoc_kle_associe=:qui'
+      'where i.cle_fiche=:indi)'
+      'order by ref_eve_ecran,annee nulls last'
+    )
+    Transaction = dm.IBT_BASE
+    left = 74
+    top = 114
+  end
+end

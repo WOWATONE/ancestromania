@@ -1,0 +1,96 @@
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+// Les fichiers de traduction
+//
+// Il est tres facile de traduire l application Ancestrologie
+// Il vous suffit de recopier ce fichier, en le nommant par exemple : Italian.traduc
+// et dans ce nouveu fichier il suffit de traduire tous les textes qui se trouvent apres le signe =
+// il faut garder la ponctuation et faire attention que le texte traduit ne soit pas trop long pour ne pa deborder sur les champs
+//
+// Vous pouvez aussi rajouter des Hints a tous les items qui n en n'ont pas
+// Par exemple : Dossiers1 n a pas de hint , il suffit juste d'ecrire la ligne comme suit
+// Dossiers1.Hint=Gestion des dossiers
+//
+// Attention
+// Si apres le signe = nous ne mettez rien, il n apparitra rien a l ecran
+// Si vous supprimez carrement une ligne, le texte par defaut sera le francais
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[FLanguage]
+lbFacture.Caption=Lengua
+Label1.Caption=Ancestrology es utilizable en varias lenguas Escogen allí su en esta lista : 
+Label2.Caption=Los textos han sido traducidos de la versión francesa, gracias al motor de traducción automática de la empresa SYSTRAN. Procuramos mejorar la calidad del resultado, para permitir al número más gran para usar Ancestrologie. 
+// ------------ Fenetre principale de l'application -----------------------------------------------------------------------------------------------
+[FMain]
+lExit.Caption=¿Confirme para salir? 
+lDossier.Caption=Carpetas
+lIndividus.Caption=Individuos
+lRepertoire.Caption=Directorio
+lFiche.Caption=Detalle
+lLiensFamilliaux.Caption=Familiy eslabones
+lArbre.Caption=Árbol
+lAnniversaire.Caption=Cumpleaños
+lListePrenom.Caption=Lista de nombre de pila
+lImpressions.Caption=Impresión
+lImpArbre.Caption=Árbol
+lImpRoue.Caption=Rueda de familia
+lImpAsc.Caption=Documentos
+lDivers.Caption=Rasgos
+lVilles.Caption=Lista de ciudades
+lPref.Caption=Personalisation
+URLBlockNotes.Caption=Poste ello
+bfsbQuitter.Hint=Salida Ancestrologie
+Fichier1.Caption=Mis genealogías
+Dossiers1.Caption=Carpetas...
+Informations1.Caption=Informaciones...
+Blocnotes2.Caption=Poste ello...
+Quitter1.Caption=Salida...
+menu_Individu.Caption=Individuos
+Rpertoire1.Caption=Di&rectorio
+Listeparprnom1.Caption=Firstname lista
+FicheIndividu1.Caption=Detalle
+mSaisierapide.Caption=Rápidamente
+Rechercher2.Caption=Búsqueda...
+Recherchededoublons.Caption=Búsqueda de doublons...
+mNouveaux.Caption=News indis list...
+mListeUnions.Caption=Lista de matrimonio...
+mCousinage.Caption=Los primos ponen en una lista...
+Arbre2.Caption=Tree
+Anniversaires1.Caption=Cumpleaños...
+option_RenumerotationSOSA.Caption=Renumerotation SOSA...
+Connector1.Caption=Eslabones de familia 
+menu_Favoris.Caption=Favoritos 
+MenuFavoris_Add.Caption=Añada a Favoritos ...
+dxbDelFavoris.Caption=Suprima a Favoritos ...
+menu_ImportExport.Caption= Importación / Exportación 
+ImporterauformatGEDCOM1.Caption=Importe un archivo de formato de &GEDCOM
+ExporterauformatGEDCOM1.Caption=E&xporte un formato de GEDCOM
+ExporterauformatGeneaNet1.Caption=Exporte un formato de GeneaNet
+ExportImages.Caption=Exporte todos los cuadros...
+menu_Impressions.Caption=Impresión
+Arbredascendance1.Caption=Ascensión de árbol
+Rouedascendance1.Caption=Ascensión de rueda
+Documents1.Caption=Documentos
+mAddon.Caption=Plugins
+menu_Configuration.Caption=Configuración 
+Prfrences2.Caption=Parámetros &Generales...
+Langage1.Caption=Lengua 
+Raccourissaisie1.Caption=Accesos rápidos
+Prfixes1.Caption=Cortesía
+Religions1.Caption=Religiones
+Particules1.Caption=Particules
+Motsclefsutilissdanslesdates1.Caption=Palabras clave de fechas
+VillesCodes1.Caption=Lista de ciudades...
+dxBBLieuxFavoris.Caption=Lista de ciudades de favoritos...
+Emplacementdelabasededonne1.Caption=Datas lugar 
+mOptimise.Caption=Datas optimizan...
+Aide1.Caption=&Ayuda 
+Commentamarche1.Caption=¿Cómo lo hacen?
+Documentation1.Caption=Documentación
+Partenaires.Caption=Ayuda de genealogía
+dxBarButton1.Caption=Sobre ...
+mOpenSource.Caption=Sobre Fuente Abierta ...
+// ------------ Fenetre sortie de l'application ----------------------------------------------------------------------------------------------------
+[FMsg]
+lYes.Caption=Si
+lNo.Caption=No
+lCancel.Caption=Annular

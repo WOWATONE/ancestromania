@@ -1,0 +1,564 @@
+inherited FVillesVoisines: TFVillesVoisines
+  Left = 305
+  Height = 488
+  Top = 155
+  Width = 747
+  BorderWidth = 4
+  ClientHeight = 488
+  ClientWidth = 747
+  Color = clWindow
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  Position = poOwnerFormCenter
+  object Panel3: TPanel[0]
+    Left = 4
+    Height = 61
+    Top = 4
+    Width = 739
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 61
+    ClientWidth = 739
+    TabOrder = 0
+    object Image1: TIATitle
+      Left = 1
+      Top = 4
+      AutoSize = True
+      ImageOn = iaGlobe
+    end
+    object Label1: TLabel
+      Left = 139
+      Height = 61
+      Top = 0
+      Width = 593
+      Alignment = taRightJustify
+      Anchors = [akTop, akRight]
+      AutoSize = False
+      Caption = 'Villes voisines'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowFrame
+      Font.Height = -24
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      Layout = tlCenter
+      ParentColor = False
+      ParentFont = False
+      WordWrap = True
+    end
+  end
+  object dxDBGrid1: TExtDBGrid[1]
+    Left = 4
+    Height = 392
+    Top = 65
+    Width = 739
+    TitleButtons = False
+    AutoSort = False
+    Columns = <    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'Ville'
+        Title.Orientation = toHorizontal
+        Width = 283
+        FieldName = 'CP_VILLE'
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        EditButtons = <>
+        FieldTag = 0
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'Distance'
+        Title.Orientation = toHorizontal
+        Width = 78
+        FieldName = 'DISTANCE'
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        EditButtons = <>
+        FieldTag = 0
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'CP'
+        Title.Orientation = toHorizontal
+        Width = 38
+        FieldName = 'CP_CP'
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        EditButtons = <>
+        FieldTag = 0
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'INSEE'
+        Title.Orientation = toHorizontal
+        Width = 0
+        Visible = False
+        FieldName = 'CP_INSEE'
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        EditButtons = <>
+        FieldTag = 0
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'Latitude'
+        Title.Orientation = toHorizontal
+        Width = 78
+        FieldName = 'CP_LATITUDE'
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        EditButtons = <>
+        FieldTag = 0
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'Longitude'
+        Title.Orientation = toHorizontal
+        Width = 78
+        FieldName = 'CP_LONGITUDE'
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        EditButtons = <>
+        FieldTag = 0
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'Département'
+        Title.Orientation = toHorizontal
+        Width = 138
+        FieldName = 'DEPARTEMENT'
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        EditButtons = <>
+        FieldTag = 0
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'Région'
+        Title.Orientation = toHorizontal
+        Width = 0
+        Visible = False
+        FieldName = 'REGION'
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        EditButtons = <>
+        FieldTag = 0
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'Pays'
+        Title.Orientation = toHorizontal
+        Width = 0
+        Visible = False
+        FieldName = 'PAYS'
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        EditButtons = <>
+        FieldTag = 0
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'Dir.'
+        Title.Orientation = toHorizontal
+        Width = 30
+        FieldName = 'DIRECTION'
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Empty)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        EditButtons = <>
+        FieldTag = 0
+      end>
+    KeyStrokes = <    
+      item
+        Command = rxgcShowFindDlg
+        ShortCut = 16454
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowColumnsDlg
+        ShortCut = 16471
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowFilterDlg
+        ShortCut = 16468
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowSortDlg
+        ShortCut = 16467
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowQuickFilter
+        ShortCut = 16465
+        Enabled = True
+      end    
+      item
+        Command = rxgcHideQuickFilter
+        ShortCut = 16456
+        Enabled = True
+      end    
+      item
+        Command = rxgcSelectAll
+        ShortCut = 16449
+        Enabled = True
+      end    
+      item
+        Command = rxgcDeSelectAll
+        ShortCut = 16429
+        Enabled = True
+      end    
+      item
+        Command = rxgcInvertSelection
+        ShortCut = 16426
+        Enabled = True
+      end    
+      item
+        Command = rxgcOptimizeColumnsWidth
+        ShortCut = 16427
+        Enabled = True
+      end>
+    OptionsRx = []
+    Align = alClient
+    Color = clWindow
+    DrawFullLine = False
+    FocusColor = clRed
+    SelectedColor = clHighlight
+    GridLineStyle = psSolid
+    DataSource = DSVillesVoisines
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+    ParentColor = False
+    PopupMenu = pmGrille
+    Scrollbars = ssAutoBoth
+    TabOrder = 1
+    TitleFont.CharSet = ANSI_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+  end
+  object fpBoutons: TPanel[2]
+    Left = 4
+    Height = 27
+    Top = 457
+    Width = 739
+    Align = alBottom
+    ClientHeight = 27
+    ClientWidth = 739
+    TabOrder = 2
+    object Distance: TLabel
+      Left = 1
+      Height = 25
+      Top = 1
+      Width = 65
+      Align = alLeft
+      Caption = 'Distance :'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      ParentColor = False
+      ParentFont = False
+    end
+    object Autour: TLabel
+      Left = 138
+      Height = 25
+      Top = 1
+      Width = 93
+      Align = alLeft
+      Caption = 'km autour de '
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      ParentColor = False
+      ParentFont = False
+    end
+    object lVille: TLabel
+      Left = 231
+      Height = 25
+      Top = 1
+      Width = 413
+      Align = alClient
+      AutoSize = False
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object bt_Close: TFWClose
+      Cursor = crHandPoint
+      Left = 644
+      Height = 25
+      Top = 1
+      Width = 94
+      Caption = 'Fermer'
+      TabOrder = 0
+      Cancel = True
+      Align = alRight
+      Anchors = [akTop, akRight]
+      ParentFont = False
+      OnClick = sbCloseClick
+    end
+    object cxSEDistance: TFWSpinEdit
+      Left = 66
+      Height = 25
+      Top = 1
+      Width = 47
+      Align = alLeft
+      Font.Height = -11
+      ParentFont = False
+      TabOrder = 1
+      Value = 1
+    end
+    object btnVillesVoisines: TXAWorld
+      Cursor = crHandPoint
+      Left = 113
+      Height = 25
+      Hint = 'Actualiser'
+      Top = 1
+      Width = 25
+      TabStop = False
+      TabOrder = 2
+      Default = True
+      Spacing = 2
+      Align = alLeft
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnVillesVoisinesClick
+    end
+  end
+  object IBQVillesVoisines: TIBQuery[3]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    OnCalcFields = IBQVillesVoisinesCalcFields
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'RAYON'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LATITUDE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LONGITUDE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    left = 30
+    top = 79
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'RAYON'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LATITUDE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LONGITUDE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    object IBQVillesVoisinesCP_CP: TIBStringField
+      DisplayWidth = 8
+      FieldKind = fkData
+      FieldName = 'CP_CP'
+      Index = 0
+      LookupCache = False
+      Origin = '"PROC_VILLES_RAYON"."CP_CP"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 8
+    end
+    object IBQVillesVoisinesCP_VILLE: TIBStringField
+      DisplayWidth = 103
+      FieldKind = fkData
+      FieldName = 'CP_VILLE'
+      Index = 1
+      LookupCache = False
+      Origin = '"PROC_VILLES_RAYON"."CP_VILLE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 103
+    end
+    object IBQVillesVoisinesCP_INSEE: TIBStringField
+      DisplayWidth = 6
+      FieldKind = fkData
+      FieldName = 'CP_INSEE'
+      Index = 2
+      LookupCache = False
+      Origin = '"PROC_VILLES_RAYON"."CP_INSEE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object IBQVillesVoisinesDISTANCE: TFloatField
+      Alignment = taLeftJustify
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'DISTANCE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.##'' km'''
+      MaxValue = 0
+      MinValue = 0
+    end
+    object IBQVillesVoisinesCP_LONGITUDE: TFloatField
+      Alignment = taLeftJustify
+      DisplayWidth = 15
+      FieldKind = fkData
+      FieldName = 'CP_LONGITUDE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.########''°E'';0.########''°W'''
+      MaxValue = 0
+      MinValue = 0
+    end
+    object IBQVillesVoisinesCP_LATITUDE: TFloatField
+      Alignment = taLeftJustify
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CP_LATITUDE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.########''°N'';0.########''°S'''
+      MaxValue = 0
+      MinValue = 0
+    end
+    object IBQVillesVoisinesDEPARTEMENT: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'DEPARTEMENT'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQVillesVoisinesREGION: TStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'REGION'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQVillesVoisinesPAYS: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'PAYS'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQVillesVoisinesDIRECTION: TStringField
+      Alignment = taCenter
+      DisplayWidth = 2
+      FieldKind = fkCalculated
+      FieldName = 'DIRECTION'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+  end
+  object DSVillesVoisines: TDatasource[4]
+    DataSet = IBQVillesVoisines
+    left = 30
+    top = 47
+  end
+  object pmGrille: TPopupMenu[5]
+    Images = dm.ImageSexe
+    OnPopup = pmGrillePopup
+    left = 30
+    top = 151
+    object ExporterenHTML1: TMenuItem
+      Caption = 'Exporter en HTML'
+      Enabled = False
+      OnClick = ExporterenHTML1Click
+    end
+  end
+  object SaveDialog: TSaveDialog[6]
+    DefaultExt = '.htm'
+    Filter = '*.htm|*.htm'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    left = 120
+    top = 160
+  end
+  object Language: TYLanguage[7]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'MS Sans Serif'
+    Method = mRead
+  end
+end

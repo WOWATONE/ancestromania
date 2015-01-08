@@ -1,0 +1,408 @@
+inherited FActesListe: TFActesListe
+  Left = 788
+  Height = 448
+  Top = 149
+  Width = 613
+  Anchors = [akTop]
+  Caption = 'Liste des actes de cet individu...'
+  ClientHeight = 448
+  ClientWidth = 613
+  Color = clWindow
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnCreate = SuperFormCreate
+  Position = poScreenCenter
+  object Panel3: TPanel[0]
+    Left = 0
+    Height = 20
+    Top = 0
+    Width = 613
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 20
+    ClientWidth = 613
+    TabOrder = 0
+    object lNom: TLabel
+      Left = 65
+      Height = 20
+      Top = 0
+      Width = 372
+      Align = alLeft
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      Caption = 'lNom'
+      Color = clWindow
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+    end
+    object Label8: TLabel
+      Cursor = crArrow
+      Left = 0
+      Height = 20
+      Top = 0
+      Width = 65
+      Align = alLeft
+      AutoSize = False
+      Caption = 'Actes de :'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = 12673280
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+  end
+  object Panel1: TPanel[1]
+    Left = 0
+    Height = 24
+    Top = 424
+    Width = 613
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 24
+    ClientWidth = 613
+    TabOrder = 1
+    object btnPrint: TFWPrintVTree
+      Cursor = crHandPoint
+      Left = 0
+      Height = 24
+      Hint = 'Imprime la liste ci dessus....'
+      Top = 0
+      Width = 132
+      Caption = 'Imprimer...'
+      TabOrder = 0
+      Default = True
+      Spacing = 8
+      Align = alLeft
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnPrintClick
+      Tree = tvActe
+    end
+    object BtnFermer: TFWClose
+      Cursor = crHandPoint
+      Left = 512
+      Height = 25
+      Hint = 'Imprime la liste ci dessus....'
+      Top = 0
+      Width = 97
+      Caption = 'Fermer'
+      TabOrder = 1
+      Spacing = 8
+      Anchors = [akTop, akRight]
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = BtnFermerClick
+    end
+    object cb_PaperSize: TComboBox
+      Left = 301
+      Height = 24
+      Top = 0
+      Width = 48
+      Align = alLeft
+      ItemHeight = 0
+      ItemIndex = 0
+      Items.Strings = (
+        'A4'
+        'A3'
+        'A2'
+        'A1'
+        'A0'
+      )
+      TabOrder = 2
+      Text = 'A4'
+    end
+    object ch_portrait: TJvXPCheckbox
+      Left = 220
+      Height = 24
+      Top = 0
+      Width = 81
+      Caption = 'Portrait'
+      TabOrder = 3
+      Checked = True
+      State = cbChecked
+      UseDockManager = False
+      Align = alLeft
+    end
+    object sp_Fonte: TFWSpinEdit
+      Left = 171
+      Height = 24
+      Top = 0
+      Width = 49
+      Align = alLeft
+      MinValue = 5
+      ParentFont = False
+      TabOrder = 4
+      Value = 5
+    end
+    object Label3: TLabel
+      Left = 132
+      Height = 24
+      Top = 0
+      Width = 39
+      Align = alLeft
+      Caption = 'Fonte :'
+      Color = clWindow
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+    end
+    object ch_pdf: TJvXPCheckbox
+      Left = 349
+      Height = 24
+      Top = 0
+      Width = 81
+      Caption = 'PDF'
+      TabOrder = 5
+      Checked = True
+      State = cbChecked
+      UseDockManager = False
+      Align = alLeft
+    end
+  end
+  object tvActe: TVirtualStringTree[2]
+    Left = 0
+    Height = 404
+    Top = 20
+    Width = 613
+    Align = alClient
+    Color = clWindow
+    DragMode = dmAutomatic
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clWindowText
+    Header.AutoSizeIndex = 0
+    Header.Columns = <    
+      item
+        Position = 0
+        Width = 611
+      end>
+    Header.DefaultHeight = 17
+    Header.Options = [hoAutoResize, hoDrag, hoShowSortGlyphs]
+    Header.SortColumn = 0
+    Images = dm.ImgCat
+    ParentFont = False
+    ParentShowHint = False
+    PopupMenu = pmActes
+    ShowHint = True
+    TabOrder = 2
+    TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScrollOnExpand, toAutoSort, toAutoTristateTracking, toAutoDeleteMovedNodes]
+    TreeOptions.MiscOptions = [toFullRepaintOnResize, toInitOnSave, toToggleOnDblClick, toWheelPanning, toEditOnClick]
+    OnBeforeCellPaint = tvActeBeforeCellPaint
+    OnDragOver = tvActeDragOver
+    OnDragDrop = tvActeDragDrop
+    OnGetText = tvActeGetText
+    OnGetImageIndex = tvActeGetImageIndex
+    OnInitNode = tvActeInitNode
+    OnMouseDown = tvActeMouseDown
+    OnMouseMove = tvActeMouseMove
+  end
+  object dxComponentPrinter1: TPrinterSetupDialog[3]
+    left = 448
+    top = 3
+  end
+  object pmActes: TPopupMenu[4]
+    Images = dm.ImageListMenu
+    OnPopup = pmActesPopup
+    left = 412
+    top = 3
+    object mOuvreDocument: TMenuItem
+      Caption = 'Imprimer l''acte associé...'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000000000000000000000000000000000
+        00FFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBD
+        BDFFBDBDBDFF000000FFBDBDBDFF000000FF0000000000000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FFBDBDBDFF000000FF00000000000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFF00FFFFFF00FFFFFF00FF
+        FFFFBDBDBDFFBDBDBDFF000000FF000000FF000000FF00000000000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFF7B7B7BFF7B7B7BFF7B7B
+        7BFFBDBDBDFFBDBDBDFF000000FFBDBDBDFF000000FF00000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FFBDBDBDFFBDBDBDFF000000FF000000FFBDBD
+        BDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBDBDFFBDBD
+        BDFFBDBDBDFF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000000000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000FF000000000000
+        0000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFF000000FFBDBDBDFF000000FFBDBDBDFF000000FF000000000000
+        000000000000000000FFFFFFFFFF000000FF000000FF000000FF000000FF0000
+        00FFFFFFFFFF000000FF000000FF000000FF000000FF00000000000000000000
+        000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFF000000FF000000000000000000000000000000000000
+        00000000000000000000000000FFFFFFFFFF000000FF000000FF000000FF0000
+        00FF000000FFFFFFFFFF000000FF000000000000000000000000000000000000
+        00000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF0000000000000000000000000000
+        0000000000000000000000000000000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF0000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 6
+      OnClick = mOuvreDocumentClick
+    end
+    object Visualiser1: TMenuItem
+      Caption = 'Visualiser l''acte associé...'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000848484FF000000FF000000FF8484
+        84FF000000000000000000000000000000000000000000000000000000008484
+        84FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF848484FF00000000000000000000
+        00FF848484FF848484FF000000FF000000FF848484FF848484FF848484FF8484
+        84FF000000FF000000FF848484FF848484FF000000FF00000000000000000000
+        00FF848484FF848484FF000000FF848484FF848484FF848484FF848484FF8484
+        84FF848484FF000000FF848484FF848484FF000000FF00000000000000000000
+        00FF848484FF848484FF000000FF848484FFC6C6C6FF848484FF848484FF8484
+        84FF848484FF000000FF848484FF848484FF000000FF00000000000000000000
+        00FF848484FF848484FF000000FF848484FFFFFF00FFC6C6C6FF848484FF8484
+        84FF848484FF000000FF848484FF848484FF000000FF00000000000000000000
+        00FFFFFFFFFFFFFFFFFF000000FF000000FF848484FF848484FF848484FF8484
+        84FF000000FF000000FFFFFFFFFFFFFFFFFF000000FF00000000000000000000
+        00FFFFFFFFFFFFFFFFFFFFFFFFFF000000FF000000FF000000FF000000FF0000
+        00FF000000FFFFFFFFFFFFFFFFFFFFFFFFFF000000FF00000000000000000000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF00000000000000000000
+        0000000000FF000000FF00000000848484FF000000FFFFFFFFFFFFFFFFFF0000
+        00FF848484FF00000000000000FF000000FF0000000000000000000000000000
+        000000000000000000000000000000000000848484FF000000FF000000FF8484
+        84FF000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 34
+      OnClick = Visualiser1Click
+    end
+  end
+  object ibActes: TIBSQL[5]
+    Database = dm.ibd_BASE
+    GenerateParamNames = False
+    UniqueParamNames = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select  case e.ev_fam_type'
+      'when ''EVEN'' then e.ev_fam_titre_event'
+      'else r.ref_eve_lib_long'
+      'end as titre_event'
+      ',e.ev_fam_date_writen as date_writen_event'
+      ',e.ev_fam_cp as cp_event'
+      ',e.ev_fam_ville as ville_event'
+      ',e.ev_fam_acte as acte_event'
+      ',r.ref_eve_cat as cat_event'
+      ',(select first(1) m.mp_media from media_pointeurs m where m.mp_pointe_sur=e.ev_fam_clef and m.mp_table=''F'' and m.mp_type_image=''A'' order by m.mp_clef) as media_event'
+      ',e.EV_Fam_DATEcode'
+      ',e.ev_fam_description as description_event'
+      ',i.nom as nom_conjoint'
+      ',i.prenom as prenom_conjoint'
+      ',i.sexe as sexe_conjoint '
+      ',i.date_naissance as naissance_conjoint'
+      ',i.date_deces as deces_conjoint'
+      ',e.ev_fam_clef as clef_event'
+      ',''F'' as type_table'
+      'FROM    T_UNION u'
+      'inner join individu i on i.cle_fiche=u.union_femme'
+      'inner join dossier d on d.cle_dossier=i.kle_dossier'
+      'inner join evenements_fam e'
+      '   on e.EV_FAM_KLE_FAMILLE=u.UNION_CLEF'
+      'inner join ref_evenements r'
+      '    on r.ref_eve_lib_court=e.ev_fam_type'
+      '  and r.ref_eve_visible=1'
+      '  and r.ref_eve_langue=d.ds_langue'
+      'WHERE u.UNION_MARI=:I_INDI'
+      'union'
+      'select  case e.ev_fam_type'
+      'when ''EVEN'' then e.ev_fam_titre_event'
+      'else r.ref_eve_lib_long'
+      'end'
+      ',e.ev_fam_date_writen'
+      ',e.ev_fam_cp'
+      ',e.ev_fam_ville'
+      ',e.ev_fam_acte'
+      ',r.ref_eve_cat'
+      ',(select first(1) m.mp_media from media_pointeurs m where m.mp_pointe_sur=e.ev_fam_clef and m.mp_table=''F'' and m.mp_type_image=''A'' order by m.mp_clef)'
+      ',e.EV_Fam_DATEcode'
+      ',e.ev_fam_description'
+      ',i.nom'
+      ',i.prenom'
+      ',i.sexe '
+      ',i.date_naissance'
+      ',i.date_deces'
+      ',e.ev_fam_clef '
+      ',''F'' '
+      'FROM    T_UNION u'
+      'inner join individu i on i.cle_fiche=u.union_mari'
+      'inner join dossier d on d.cle_dossier=i.kle_dossier'
+      'inner join evenements_fam e'
+      '    on e.EV_FAM_KLE_FAMILLE=u.UNION_CLEF'
+      'inner join ref_evenements r'
+      '    on r.ref_eve_lib_court=e.ev_fam_type'
+      '  and r.ref_eve_visible=1'
+      '  and r.ref_eve_langue=d.ds_langue'
+      'WHERE u.UNION_FEMME=:I_INDI'
+      'union'
+      'select  case e.ev_ind_type'
+      'when ''EVEN'' then e.ev_ind_titre_event'
+      'else r.ref_eve_lib_long'
+      'end'
+      ',e.ev_ind_date_writen'
+      ',e.ev_ind_cp'
+      ',e.ev_ind_ville'
+      ',e.ev_ind_acte'
+      ',r.ref_eve_cat'
+      ',(select first(1) m.mp_media from media_pointeurs m where m.mp_pointe_sur=e.ev_ind_clef and m.mp_table=''I'' and m.mp_type_image=''A'' order by m.mp_clef)'
+      ',e.EV_ind_DATEcode'
+      ',e.ev_ind_description'
+      ',null'
+      ',null'
+      ',null'
+      ',null'
+      ',null'
+      ',e.ev_IND_clef '
+      ',''I'' '
+      'FROM    evenements_ind e'
+      'inner join individu i on i.cle_fiche=e.ev_ind_kle_fiche'
+      'inner join dossier d on d.cle_dossier=i.kle_dossier'
+      'inner join ref_evenements r'
+      '    on r.ref_eve_lib_court=e.ev_ind_type'
+      '  and r.ref_eve_visible=1'
+      '  and r.ref_eve_langue=d.ds_langue'
+      'WHERE e.ev_ind_kle_fiche = :I_INDI'
+      'ORDER BY 8 NULLS LAST,1'
+    )
+    Transaction = dm.IBT_BASE
+    left = 192
+    top = 56
+  end
+  object OnFormInfoIni1: TOnFormInfoIni[6]
+    SaveEdits = [feTCheck, feTComboValue, feTSpinEdit]
+    left = 218
+    top = 157
+  end
+end

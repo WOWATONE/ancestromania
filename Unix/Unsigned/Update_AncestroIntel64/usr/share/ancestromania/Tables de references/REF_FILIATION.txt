@@ -1,0 +1,45 @@
+Enfant adopté	FRA
+Enfant adultérin	FRA
+Enfant légitime	FRA
+Enfant légitimé	FRA
+Enfant mort-né	FRA
+Enfant naturel	FRA
+Enfant reconnu	FRA
+Enfant trouvé	FRA
+Filiation inconnue	FRA
+Adopted child	ENG
+Adulterine child	ENG
+Legitimate child	ENG
+Legitimized child	ENG
+Stillborn child	ENG
+Natural child	ENG
+Recognized child	ENG
+Foundling	ENG
+Unknown filiation	ENG
+Angenommenes kind 	DEU
+Uneheliches kind 	DEU
+Gesetzmäßiges kind 	DEU
+Legitimiertes kind 	DEU
+Kind Totgeburt 	DEU
+Natürliches kind 	DEU
+Anerkanntes kind	DEU
+Findelkind 	DEU
+Unbekannte verbindung	DEU
+Bambino adottato 	ITA
+Bambino adultérin 	ITA
+Bambino legittimo 	ITA
+Bambino legittimato 	ITA
+Bambino nato morto 	ITA
+Bambino naturale 	ITA
+Bambino riconosciuto	ITA
+Bambino trovato	ITA
+Filiazione sconosciuta	ITA
+Niño prohijado	SPA
+Niño adulterino	SPA
+Niño legítimo	SPA
+Niño legitimado	SPA
+Niño mortinato	SPA
+Niño natural 	SPA
+Niño reconocido	SPA
+Niño encontrado	SPA
+Filiación desconocida	SPA

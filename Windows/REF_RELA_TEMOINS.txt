@@ -1,0 +1,240 @@
+1	(inconnu)	FRA	Other
+2	parrain	FRA	Godfather
+3	marraine	FRA	Godmother
+4	officier d'état civil	FRA	Registry officer
+5	officier religieux	FRA	Officiating priest
+6	gendarme	FRA	Gendarme
+7	médecin	FRA	Doctor
+8	membre de la famille	FRA	Family's member
+9	ami de la famille	FRA	Family's friend
+10	militaire	FRA	Soldier
+11	cousin	FRA	Cousin
+12	cousine	FRA	Cousin (f)
+13	grand-père	FRA	Grandfather
+14	grand-mère	FRA	Grandmother
+15	mère	FRA	Mother
+16	père	FRA	Father
+17	frère	FRA	Brother
+18	sœur	FRA	Sister
+19	témoin	FRA	Witness
+20	déclarant	FRA	Declarant
+21	présent	FRA	Person present
+22	époux	FRA	Husband
+23	épouse	FRA	Wife
+24	fils	FRA	Son
+25	fille	FRA	Daughter
+26	gendre	FRA	Son-in-law
+27	bru	FRA	Daughter-in-law
+28	petit-fils	FRA	Grandson
+29	petite-fille	FRA	Granddaugther
+30	beau-frère	FRA	Brother-in-law
+31	belle-sœur	FRA	Sister-in-law
+32	oncle	FRA	Uncle
+33	tante	FRA	Aunt
+34	aïeul	FRA	Ancestor
+35	belle-fille (fille conjoint)	FRA	Stepdaughter
+36	père adoptif	FRA	Adoptive father
+37	mère adoptive	FRA	Adoptive mother
+38	père nourricier	FRA	Foster father
+39	mère nourricière	FRA	Foster mother
+40	neveu	FRA	Nephew
+41	nièce	FRA	Niece
+42	beau-fils (fils du conjoint)	FRA	Stepson
+43	beau-père (père du conjoint)	FRA	Father-in-law
+44	beau-père (époux de la mère)	FRA	Stepfather
+45	belle-mère (mère du conjoint)	FRA	Mother-in-law
+46	belle-mère (épouse du père)	FRA	Stepmother
+47	demi-frère	FRA	Half-brother
+48	demi-sœur	FRA	Half-sister
+49	(unknown)	ENG	Other
+50	godfather	ENG	Godfather
+51	godmother	ENG	Godmother
+52	registry officer	ENG	Registry officer
+53	officiating priest	ENG	Officiating priest
+54	gendarme	ENG	Gendarme
+55	doctor	ENG	Doctor
+56	family's member	ENG	Family's member
+57	family's friend	ENG	Family's friend
+58	soldier	ENG	Soldier
+59	cousin	ENG	Cousin
+60	cousin (f)	ENG	Cousin (f)
+61	grandfather	ENG	Grandfather
+62	grandmother	ENG	Grandmother
+63	mother	ENG	Mother
+64	father	ENG	Father
+65	brother	ENG	Brother
+66	sister	ENG	Sister
+67	witness	ENG	Witness
+68	declarant	ENG	Declarant
+69	person present	ENG	Person present
+70	husband	ENG	Husband
+71	wife	ENG	Wife
+72	son	ENG	Son
+73	daughter	ENG	Daughter
+74	son-in-law	ENG	Son-in-law
+75	daughter-in-law	ENG	Daughter-in-law
+76	grandson	ENG	Grandson
+77	granddaugther	ENG	Granddaugther
+78	brother-in-law	ENG	Brother-in-law
+79	sister-in-law	ENG	Sister-in-law
+80	uncle	ENG	Uncle
+81	aunt	ENG	Aunt
+82	ancestor	ENG	Ancestor
+83	stepdaughter	ENG	Stepdaughter
+84	adoptive father	ENG	Adoptive father
+85	adoptive mother	ENG	Adoptive mother
+86	foster father	ENG	Foster father
+87	foster mother	ENG	Foster mother
+88	nephew	ENG	Nephew
+89	niece	ENG	Niece
+90	stepson	ENG	Stepson
+91	father-in-law	ENG	Father-in-law
+92	stepfather	ENG	Stepfather
+93	mother-in-law	ENG	Mother-in-law
+94	stepmother	ENG	Stepmother
+95	half-brother	ENG	Half-brother
+96	half-sister	ENG	Half-sister
+97	(ander)	DEU	Other
+98	pate	DEU	Godfather
+99	patin	DEU	Godmother
+100	standesbeamter	DEU	Registry officer
+101	gottesdienst	DEU	Officiating priest
+102	gendarm	DEU	Gendarme
+103	doktor	DEU	Doctor
+104	mitglied der familie	DEU	Family's member
+105	freund der familie	DEU	Family's friend
+106	militarïsch	DEU	Soldier
+107	vetter	DEU	Cousin
+108	kusine	DEU	Cousin (f)
+109	großvater	DEU	Grandfather
+110	großmutter	DEU	Grandmother
+111	mutter	DEU	Mother
+112	vater	DEU	Father
+113	bruder	DEU	Brother
+114	schwester	DEU	Sister
+115	zeuge	DEU	Witness
+116	anmeldend	DEU	Declarant
+117	anwesende person	DEU	Person present
+118	gemahl	DEU	Husband
+119	gemahlin	DEU	Wife
+120	sohn	DEU	Son
+121	tochter	DEU	Daughter
+122	schwiegersohn	DEU	Son-in-law
+123	schwiegertochter	DEU	Daughter-in-law
+124	enkel	DEU	Grandson
+125	enkelin	DEU	Granddaugther
+126	schwäger	DEU	Brother-in-law
+127	schwägerin	DEU	Sister-in-law
+128	onkel	DEU	Uncle
+129	tante	DEU	Aunt
+130	vorfahr	DEU	Ancestor
+131	stieftochter	DEU	Stepdaughter
+132	adoptivvater	DEU	Adoptive father
+133	adoptivmutter	DEU	Adoptive mother
+134	pflegevater	DEU	Foster father
+135	pflegemutter	DEU	Foster mother
+136	neffe	DEU	Nephew
+137	nichte	DEU	Niece
+138	stiefsohn	DEU	Stepson
+139	schwiegervater	DEU	Father-in-law
+140	stiefvater	DEU	Stepfather
+141	schwiegermutter	DEU	Mother-in-law
+142	stiefmutter	DEU	Stepmother
+143	halbbruder	DEU	Half-brother
+144	halbschwester	DEU	Half-sister
+145	(altro)	ITA	Other
+146	padrino	ITA	Godfather
+147	madrina	ITA	Godmother
+148	ufficiale dello stato civile	ITA	Registry officer
+149	ufficiale religioso	ITA	Officiating priest
+150	carabiniere	ITA	Gendarme
+151	medico	ITA	Doctor
+152	membro del famiglia	ITA	Family's member
+153	amico della famiglia	ITA	Family's friend
+154	militare	ITA	Soldier
+155	cugino	ITA	Cousin
+156	cugina	ITA	Cousin (f)
+157	nonno	ITA	Grandfather
+158	nonna	ITA	Grandmother
+159	madre	ITA	Mother
+160	padre	ITA	Father
+161	fratello	ITA	Brother
+162	sorella	ITA	Sister
+163	testimone	ITA	Witness
+164	dichiarante	ITA	Declarant
+165	persona presenta	ITA	Person present
+166	sposo	ITA	Husband
+167	sposa	ITA	Wife
+168	figlio	ITA	Son
+169	figlia	ITA	Daughter
+170	genero	ITA	Son-in-law
+171	nuora	ITA	Daughter-in-law
+172	nipotini	ITA	Grandson
+173	nipotino	ITA	Granddaugther
+174	cognato	ITA	Brother-in-law
+175	cognata	ITA	Sister-in-law
+176	zio	ITA	Uncle
+177	zia	ITA	Aunt
+178	antenato	ITA	Ancestor
+179	figliastra	ITA	Stepdaughter
+180	padre adottiva	ITA	Adoptive father
+181	madre adottiva	ITA	Adoptive mother
+182	padre adottivo	ITA	Foster father
+183	madre adottivo	ITA	Foster mother
+184	nipote	ITA	Nephew
+185	nipote	ITA	Niece
+186	figliastro	ITA	Stepson
+187	suocero	ITA	Father-in-law
+188	patrigno	ITA	Stepfather
+189	suocera	ITA	Mother-in-law
+190	matrigna	ITA	Stepmother
+191	fratellastro	ITA	Half-brother
+192	sorellastra	ITA	Half-sister
+193	(otro)	SPA	Other
+194	padrino	SPA	Godfather
+195	madrina	SPA	Godmother
+196	oficial de estado civil	SPA	Registry officer
+197	oficial religioso	SPA	Officiating priest
+198	guardia civil	SPA	Gendarme
+199	médico	SPA	Doctor
+200	miembro de la familia	SPA	Family's member
+201	amigo de la familia	SPA	Family's friend
+202	militar	SPA	Soldier
+203	primo	SPA	Cousin
+204	prima	SPA	Cousin (f)
+205	abuelo	SPA	Grandfather
+206	abuela	SPA	Grandmother
+207	madre	SPA	Mother
+208	padre	SPA	Father
+209	hermano	SPA	Brother
+210	hermana	SPA	Sister
+211	testigo	SPA	Witness
+212	declarante	SPA	Declarant
+213	persona presente	SPA	Person present
+214	esposo	SPA	Husband
+215	esposa	SPA	Wife
+216	hijo	SPA	Son
+217	hija	SPA	Daughter
+218	hijo político	SPA	Son-in-law
+219	hija política	SPA	Daughter-in-law
+220	nieto	SPA	Grandson
+221	nieta	SPA	Granddaugther
+222	cuñado	SPA	Brother-in-law
+223	cuñada	SPA	Sister-in-law
+224	tío	SPA	Uncle
+225	tía	SPA	Aunt
+226	abuelo	SPA	Ancestor
+227	hijastra	SPA	Stepdaughter
+228	padre adoptivo	SPA	Adoptive father
+229	madre adoptiva	SPA	Adoptive mother
+230	putativo	SPA	Foster father
+231	putativa	SPA	Foster mother
+232	sobrino	SPA	Nephew
+233	sobrina	SPA	Niece
+234	hijastro	SPA	Stepson
+235	padre político	SPA	Father-in-law
+236	padrasto	SPA	Stepfather
+237	madre política	SPA	Mother-in-law
+238	madrastra	SPA	Stepmother
+239	hermanastro	SPA	Half-brother
+240	hermanastra	SPA	Half-sister

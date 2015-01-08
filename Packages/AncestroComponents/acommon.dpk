@@ -1,0 +1,55 @@
+package acommon;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  dbrtl,
+  bdertl;
+
+contains
+  cDateTime in 'cDateTime.pas',
+  cMaths in 'cMaths.pas',
+  cmplx in 'cmplx.pas',
+  cStream in 'cStream.pas',
+  cStrings in 'cStrings.pas',
+  u_objet_TBigIniFile in 'u_objet_TBigIniFile.pas',
+  u_objet_TBitmapList in 'u_objet_TBitmapList.pas',
+  u_objet_TBooleanList in 'u_objet_TBooleanList.pas',
+  u_objet_TCircleElement in 'u_objet_TCircleElement.pas',
+  u_objet_TCut in 'u_objet_TCut.pas',
+  u_objet_TEllipseElement in 'u_objet_TEllipseElement.pas',
+  u_objet_TGraphicElement in 'u_objet_TGraphicElement.pas',
+  u_objet_TGraphicElementList in 'u_objet_TGraphicElementList.pas',
+  u_objet_TIniMem in 'u_objet_TIniMem.pas',
+  u_objet_TIntegerList in 'u_objet_TIntegerList.pas',
+  u_objet_TLineElement in 'u_objet_TLineElement.pas',
+  u_objet_TRectangleElement in 'u_objet_TRectangleElement.pas',
+  u_objet_TSingleList in 'u_objet_TSingleList.pas',
+  u_objet_TStringListList in 'u_objet_TStringListList.pas',
+  cFiles in 'cFiles.pas';
+
+end.

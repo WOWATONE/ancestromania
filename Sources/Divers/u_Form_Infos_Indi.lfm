@@ -1,0 +1,380 @@
+object FInfosIndi: TFInfosIndi
+  Left = 1111
+  Height = 360
+  Top = 236
+  Width = 188
+  Anchors = [akTop]
+  BorderIcons = []
+  BorderStyle = bsDialog
+  Caption = 'Informations'
+  ClientHeight = 360
+  ClientWidth = 188
+  Color = clWindow
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnCreate = FormCreate
+  Position = poMainFormCenter
+  LCLVersion = '1.2.0.3'
+  object l11: TLabel
+    Left = 0
+    Height = 29
+    Top = 47
+    Width = 188
+    Align = alTop
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'A cet individu sont attachés les éléments suivants'
+    Font.Color = clCaptionText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    WordWrap = True
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 47
+    Top = 0
+    Width = 188
+    Align = alTop
+    BevelOuter = bvNone
+    BorderWidth = 3
+    ClientHeight = 47
+    ClientWidth = 188
+    TabOrder = 0
+    object Panel3: TPanel
+      Left = 3
+      Height = 41
+      Top = 3
+      Width = 182
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 41
+      ClientWidth = 182
+      TabOrder = 0
+      object Image1: TIATitle
+        Left = -3
+        Top = -8
+        AutoSize = True
+        ImageOn = iaWho
+      end
+    end
+  end
+  object cxGroupBox1: TGroupBox
+    Left = 0
+    Height = 256
+    Top = 76
+    Width = 188
+    Align = alClient
+    ClientHeight = 234
+    ClientWidth = 184
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 1
+    object l2: TLabel
+      Left = 62
+      Height = 17
+      Top = 12
+      Width = 58
+      Caption = 'Conjoints'
+      ParentColor = False
+    end
+    object l3: TLabel
+      Left = 62
+      Height = 17
+      Top = 31
+      Width = 48
+      Caption = 'Enfants'
+      ParentColor = False
+    end
+    object l4: TLabel
+      Left = 62
+      Height = 17
+      Top = 71
+      Width = 101
+      Caption = 'Frères et sœurs'
+      ParentColor = False
+    end
+    object l5: TLabel
+      Left = 62
+      Height = 17
+      Top = 110
+      Width = 103
+      Caption = 'Oncles et tantes'
+      ParentColor = False
+    end
+    object l6: TLabel
+      Left = 62
+      Height = 17
+      Top = 130
+      Width = 126
+      Caption = 'Cousins et cousines'
+      ParentColor = False
+    end
+    object l8: TLabel
+      Left = 62
+      Height = 17
+      Top = 149
+      Width = 78
+      Caption = 'Evénements'
+      ParentColor = False
+    end
+    object l9: TLabel
+      Left = 62
+      Height = 17
+      Top = 169
+      Width = 45
+      Caption = 'Médias'
+      ParentColor = False
+    end
+    object l10: TLabel
+      Left = 62
+      Height = 17
+      Top = 189
+      Width = 60
+      Caption = 'Domiciles'
+      ParentColor = False
+    end
+    object lConjoints: TLabel
+      Left = 5
+      Height = 15
+      Top = 12
+      Width = 42
+      Alignment = taRightJustify
+      AutoSize = False
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lEnfants: TLabel
+      Left = 5
+      Height = 15
+      Top = 31
+      Width = 42
+      Alignment = taRightJustify
+      AutoSize = False
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lfreres: TLabel
+      Left = 5
+      Height = 15
+      Top = 71
+      Width = 42
+      Alignment = taRightJustify
+      AutoSize = False
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lOncles: TLabel
+      Left = 5
+      Height = 15
+      Top = 110
+      Width = 42
+      Alignment = taRightJustify
+      AutoSize = False
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lCousins: TLabel
+      Left = 5
+      Height = 15
+      Top = 130
+      Width = 42
+      Alignment = taRightJustify
+      AutoSize = False
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lEvenements: TLabel
+      Left = 5
+      Height = 15
+      Top = 149
+      Width = 42
+      Alignment = taRightJustify
+      AutoSize = False
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lMedias: TLabel
+      Left = 5
+      Height = 15
+      Top = 169
+      Width = 42
+      Alignment = taRightJustify
+      AutoSize = False
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lAdresses: TLabel
+      Left = 5
+      Height = 15
+      Top = 189
+      Width = 42
+      Alignment = taRightJustify
+      AutoSize = False
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lPtEnfants: TLabel
+      Left = 5
+      Height = 15
+      Top = 51
+      Width = 42
+      Alignment = taRightJustify
+      AutoSize = False
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 62
+      Height = 17
+      Top = 51
+      Width = 86
+      Caption = 'Petits enfants'
+      ParentColor = False
+    end
+    object lNeveux: TLabel
+      Left = 5
+      Height = 15
+      Top = 90
+      Width = 42
+      Alignment = taRightJustify
+      AutoSize = False
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 62
+      Height = 17
+      Top = 90
+      Width = 108
+      Caption = 'Neveux et nièces'
+      ParentColor = False
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 28
+    Top = 332
+    Width = 188
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 28
+    ClientWidth = 188
+    TabOrder = 2
+    object btnClose: TFWClose
+      Cursor = crHandPoint
+      Left = 94
+      Height = 28
+      Top = 0
+      Width = 94
+      Caption = 'Fermer'
+      TabOrder = 0
+      ModalResult = 1
+      Spacing = 8
+      Align = alRight
+      ParentFont = False
+    end
+  end
+  object IBQComptage: TIBSQL
+    Database = dm.ibd_BASE
+    ParamCheck = True
+    SQL.Strings = (
+      'select count(*) as combien'
+      ',''UNION'' as titre'
+      'from t_union'
+      'where (union_mari=:iclef and union_femme>0) or (union_femme=:iclef and union_mari>0)'
+      'union'
+      'select count(distinct m.multi_clef)'
+      ',''MEDIA'''
+      'from media_pointeurs mp'
+      'inner join multimedia m on m.multi_clef=mp.mp_media'
+      'where mp.mp_cle_individu=:iclef'
+      'union'
+      'select count(*)'
+      ',''ADRES'''
+      'from evenements_ind'
+      'where ev_ind_kle_fiche=:iclef'
+      'and ev_ind_type=''RESI'''
+      'union'
+      'select count(*)'
+      ',''EVENT'''
+      'from evenements_ind'
+      'where ev_ind_kle_fiche=:iclef'
+      'and ev_ind_type<>''RESI'''
+      'union'
+      'select count(*)'
+      ',''ENFAN'''
+      'from individu'
+      'where cle_pere=:iclef or cle_mere=:iclef'
+      'union'
+      'select count(*)'
+      ',''FRERE'''
+      'from proc_trouve_freres_soeurs(:iclef)'
+      'union'
+      'select count(*)'
+      ',''ONCLE'''
+      'from proc_trouve_oncles_tantes (:iclef)'
+      'union'
+      'select count(*)'
+      ',''COUSI'''
+      'from proc_trouve_oncles_tantes(:iclef) p'
+      'inner join individu i on i.cle_pere=p.cle_fiche or i.cle_mere=p.cle_fiche'
+      'union'
+      'select count(*)'
+      ',''PTENF'''
+      'from (select cle_fiche from individu where cle_pere=:iclef or cle_mere=:iclef) as p'
+      'inner join individu i on i.cle_pere=p.cle_fiche or i.cle_mere=p.cle_fiche'
+      'union'
+      'select count(*)'
+      ',''NEVEU'''
+      'from proc_trouve_freres_soeurs (:iclef) p'
+      'inner join individu i on i.cle_pere=p.cle_fiche or i.cle_mere=p.cle_fiche'
+    )
+    Transaction = dm.IBT_BASE
+    left = 99
+    top = 11
+  end
+end

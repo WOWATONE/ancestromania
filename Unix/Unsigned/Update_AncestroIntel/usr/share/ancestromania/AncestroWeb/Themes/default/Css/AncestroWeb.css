@@ -1,0 +1,92 @@
+/* CSS definition file containing sitestyle stylesheets */
+
+BODY { font-family: Arial, Helvetica, Univers, 'Zurich BT', sans-serif; color: #002233; background-image:url('../Images/bk_ora2.gif');background-color: lightgreen;width:100%;height:100%}
+
+ A { font-weight:bold;}
+ A:active { text-decoration: none;color: #444499}
+ A:link { text-decoration: none;color: #555599}
+ A:hover { text-decoration:underline;color: #666699}
+ A:visited { text-decoration: none;color: #222299}
+
+ table#image { font-family: Verdana,Tahoma,Arial,Helvetica,sans-serif; font-size: 10pt; color: #003333; background-color: #448899;}
+ table.file, table.man, table.woman,table#jobs, table#ages, table#names  {border-style:solid;border-width:1;padding:0}
+ table#ages,table#jobs  {text-align:center}
+ #names td, #jobs td, #jobs th, #ages td, #ages th {border-bottom:1px solid green;padding:0}
+ td { font-family: Verdana,Tahoma,Arial,Helvetica,sans-serif; font-size: 10pt; color: #003333}
+ #center, #ages td, #ages th {text-align:center}
+ #ages th {width:170px}
+ div,layer { width:100%; font-family: Verdana,Tahoma,Arial,Helvetica,sans-serif; font-size: 10pt;}
+ DIV.title{position:relative;display:block;background-color: #FFEEDD;text-align:center}
+ #counting td {text-align:center;vertical-align:top}
+ .TextObject { font-family: Arial, Helvetica, Univers, 'Zurich BT', sans-serif; color: #002222;}
+
+ H1 { font-family: Verdana,Tahoma,Arial,Helvetica,sans-serif;font-size: 20pt;}
+ H2 { font-family: Verdana,Tahoma,Arial,Helvetica,sans-serif;font-size: 17pt;}
+ H3 { font-family: Verdana,Tahoma,Arial,Helvetica,sans-serif;font-size: 13pt;margin:0;padding:0;display: inline;}
+
+ P { font-family: Arial, Helvetica, Univers, 'Zurich BT', sans-serif; font-size: 12pt; color: #002222; text-align: justify;}
+ P#head,P#bottom { text-align: center;}
+ P#gedcom { text-align: center;font-weight:bold;}
+
+ FONT { font-family: Verdana,Tahoma,Arial,Helvetica,sans-serif; font-size: 10pt; color: #002222;}
+
+div#subsheets {
+display:table;
+}
+ul#subsheets,ul#tabsheets{list-style-type:none;margin:0;padding-left:0;padding-bottom:24px;border-bottom:1px solid #999;}
+ul#subsheets li,ul#tabsheets li{float:left;background-color:#AAFFAA;color:#000;margin:2px 5px 0 0;border:1px solid #999;padding:3px 10px 0 10px;height:23px;height:18px;}
+ul#subsheets li.tab_top_right,ul#tabsheets li.tab_top_right{float:right;height:16px;background-color:transparent;color:#999;margin:2px 0 0 0;border:0;padding:5px 0 0 0;}
+ul#subsheets a:link,ul#subsheets a:visited,ul#tabsheets a:link,ul#tabsheets a:visited{color:#369;font-weight:bold;background-color:transparent;white-space:nowrap;}
+li.tab_left,li.tab_mi22le,li.tab_right{border-bottom:1px solid #4444EB;color:#000;background-color:transparent;padding:3px 10px 0 10px;}
+.tab_top_right_links{color:#000;font-weight:normal;}
+
+ul.unions, li.Jobs {
+	padding:0px 0px 10px 25px;
+	margin:0px;
+}
+li.union,li.Job{
+	padding:0px 0px 0px 25px;
+	margin:0px;
+	line-height:18px;
+}
+li.union{
+	list-style:none;
+	background:url(../Images/married.gif) top left no-repeat;
+}
+li.Job{
+	list-style:none;
+	background:url(../Images/job.gif) top left no-repeat;
+}
+#list #title td { text-align: center }
+
+.button {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+   padding: 5px 10px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 14px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }

@@ -1,0 +1,5 @@
+Lorsque la mise à jour de la base nécessite une modification d'une table de référence, l'ancien fichier d'extension .txt est renommé avec l'extension .anc avant que la nouvelle table soit copiée dans le répertoire des tables de référence. Ceci permet aux utilisateurs qui auraient modifiées leurs tables de référence de ne pas perdre leurs modifications.
+Pour que les nouvelles tables puissent être utilisées lors d'un rechargement des données de référence, il faut y avoir éventuellement reporté les modifications faites par l'utilisateur.
+Les modifications ne doivent changer ni le type ni le nombre de champs de chaque ligne.
+
+André.

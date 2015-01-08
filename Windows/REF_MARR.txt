@@ -1,0 +1,4 @@
+FRA	Mariage civil
+FRA	Mariage religieux
+FRA	PACS
+FRA	Union libre

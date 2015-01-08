@@ -1,0 +1,66 @@
+object Form1: TForm1
+  Left = 333
+  Height = 240
+  Top = 259
+  Width = 320
+  Caption = 'Form1'
+  ClientHeight = 240
+  ClientWidth = 320
+  LCLVersion = '0.9.31'
+  object JvXpChecks1: TJvXpCheckBox
+    Left = 88
+    Height = 17
+    Top = 72
+    Width = 121
+    Caption = 'JvXpChecks1'
+    TabOrder = 0
+    TabStop = True
+  end
+  object FlatMemo1: TFlatMemo
+    Left = 88
+    Height = 89
+    Top = 128
+    Width = 185
+    ColorFlat = clDefault
+    ParentColor = True
+    TabOrder = 1
+    Lines.Strings = (
+      'FlatMemo1'
+    )
+  end
+  object FlatGauge1: TFlatGauge
+    Left = 102
+    Height = 25
+    Top = 27
+    Width = 145
+    AdvColorBorder = 0
+    ColorBorder = 8623776
+  end
+  object FlatPanel1: TFlatPanel
+    Left = 0
+    Height = 96
+    Top = 144
+    Width = 320
+    Caption = 'FlatPanel1'
+    Align = alBottom
+    TabOrder = 2
+    UseDockManager = True
+    object JvXpChecks2: TJvXpCheckBox
+      Left = 85
+      Height = 17
+      Top = 37
+      Width = 121
+      Caption = 'JvXpChecks2'
+      TabOrder = 0
+      TabStop = True
+    end
+    object FlatRadioButton1: TRadioButton
+      Left = 119
+      Height = 17
+      Top = 16
+      Width = 121
+      Caption = 'FlatRadioButton1'
+      TabOrder = 1
+    end
+  end
+end

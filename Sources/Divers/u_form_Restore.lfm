@@ -1,0 +1,216 @@
+inherited FRestore: TFRestore
+  Left = 350
+  Height = 529
+  Top = 223
+  Width = 580
+  ActiveControl = GoodBtn1
+  Caption = 'Optimisation de la base de données'
+  ClientHeight = 529
+  ClientWidth = 580
+  Color = clWindow
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnCreate = SuperFormCreate
+  object Panel3: TPanel[0]
+    Left = 0
+    Height = 529
+    Top = 0
+    Width = 580
+    Align = alClient
+    BevelOuter = bvNone
+    BorderWidth = 1
+    Caption = 'Panel3'
+    ClientHeight = 529
+    ClientWidth = 580
+    TabOrder = 0
+    object Panel4: TPanel
+      Left = 1
+      Height = 466
+      Top = 62
+      Width = 578
+      Align = alClient
+      ClientHeight = 466
+      ClientWidth = 578
+      TabOrder = 0
+      object Notebook: TNotebook
+        Left = 1
+        Height = 464
+        Top = 1
+        Width = 576
+        PageIndex = 0
+        Align = alClient
+        TabOrder = 0
+        TabStop = True
+        object page1: TPage
+          object uPath: TLabel
+            Left = 14
+            Height = 1
+            Top = 456
+            Width = 1
+            Anchors = [akLeft, akBottom]
+            Color = clBackground
+            Font.Color = clBlue
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold, fsUnderline]
+            ParentColor = False
+            ParentFont = False
+            Transparent = False
+          end
+          object GoodBtn1: TFWOK
+            Cursor = crHandPoint
+            Left = 470
+            Height = 30
+            Top = 427
+            Width = 86
+            Caption = 'Optimiser'
+            TabOrder = 0
+            Spacing = 2
+            Anchors = [akRight, akBottom]
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = GoodBtn1Click
+            ColorFrameFocus = clWhite
+          end
+          object Memo1: TMemo
+            Left = 6
+            Height = 424
+            Top = 1
+            Width = 568
+            Lines.Strings = (
+              'OPTIMISATION: Pourquoi optimiser la base de données ?'
+              'Si l''ordinateur n''existait pas, c''est sur une série de fiches cartonnées que vous écririez votre généalogie. Il vous '
+              'faudrait alors sans cesse utiliser une gomme et un crayon. Et à chaque rature, votre fiche garderait une trace. De '
+              'même, après avoir gommé une phrase ou un paragraphe, cela laisserait des espaces vides.'
+              'Le même souci subsiste dans votre base de données, à la différence que ce ne sont plus vos fiches qui sont '
+              'raturées, mais des enregistrements dans les tables de la base.'
+              'L''optimisation a pour but de rendre "propres" vos données, et de les organiser afin d''en rendre l''accès plus rapide, '
+              'et aussi vous faire gagner un peu de place sur votre disque dur. Elle consiste à sauvegarder vos données dans un '
+              'fichier dit de "backup" (extension .fbk), puis à reconstruire proprement votre base à partir de ce fichier. Pensez à '
+              'optimiser votre base si vous constatez un ralentissement du logiciel, en particulier après une opération longue '
+              'comme une importation ou un calcul de consanguinité.'
+              ''
+              'SAUVEGARDE: Ancestromania utilise Firebird, un moteur de base de données sécurisé.'
+              'Cependant, vos données ne sont jamais à l''abri d''une défaillance matérielle. Si ce jour doit arriver, vous serez très '
+              'heureux de pouvoir ressortir une clef USB, ou un cd-rom sur lequel vous aurez réalisé une sauvegarde de votre '
+              'base de données.'
+              'C''est pourquoi après chaque optimisation, votre base de données est sauvegardée automatiquement dans le '
+              'répertoire de sauvegarde. Si un jour un problème se présente, il vous suffira alors, avec l''utilitaire RestaureBases '
+              'que nous vous avons fourni avec Ancestromania, de restaurer votre dernière sauvegarde.'
+              ''
+              'IMPORTANT: Il est possible de demander à Ancestromania d''effectuer une sauvegarde à chaque ouverture du '
+              'programme. Pour cela, rendez-vous dans l''option "Préférences générales" du menu "Configuration" '
+              'd''Ancestromania. Dans l''onglet "Divers", cochez l''option "Sauvegarde automatique de la base de données".'
+              'Le nom de chaque fichier de sauvegarde étant modifié pour contenir la date et l''heure de la sauvegarde, ces '
+              'fichiers peuvent encombrer votre disque dur. Pensez de temps en temps à visiter le répertoire de sauvegarde pour '
+              'en supprimer les fichiers devenus inutiles.'
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+              ''
+            )
+            TabOrder = 1
+          end
+        end
+      end
+    end
+    object Panel1: TPanel
+      Left = 1
+      Height = 61
+      Top = 1
+      Width = 578
+      Align = alTop
+      ClientHeight = 61
+      ClientWidth = 578
+      TabOrder = 1
+      object IAMouse1: TIAMouse
+        Left = 535
+        Height = 49
+        Top = 6
+        Width = 33
+      end
+      object IATitle1: TIATitle
+        Left = 6
+        Top = 5
+        ImageOn = iaDatabase
+      end
+      object Label7: TLabel
+        Left = 135
+        Height = 23
+        Top = 6
+        Width = 341
+        Caption = 'Optimisation de la base de données'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clGray
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+  end
+  object Language: TYLanguage[1]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 272
+    top = 184
+  end
+end

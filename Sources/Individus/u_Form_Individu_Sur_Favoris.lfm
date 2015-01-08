@@ -1,0 +1,653 @@
+inherited FIndividusSurFavoris: TFIndividusSurFavoris
+  Left = 631
+  Height = 533
+  Top = 79
+  Width = 756
+  BorderWidth = 1
+  Caption = 'Individus ayant eu un événement dans ce lieu.'
+  ClientHeight = 533
+  ClientWidth = 756
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  Position = poOwnerFormCenter
+  object pGeneral: TPanel[0]
+    Left = 1
+    Height = 531
+    Top = 1
+    Width = 754
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 531
+    ClientWidth = 754
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object pGlobal: TPanel
+      Left = 0
+      Height = 531
+      Top = 0
+      Width = 754
+      Align = alClient
+      BevelOuter = bvNone
+      BorderWidth = 3
+      ClientHeight = 531
+      ClientWidth = 754
+      TabOrder = 0
+      object fpBoutons: TPanel
+        Left = 3
+        Height = 29
+        Top = 499
+        Width = 748
+        Align = alBottom
+        ClientHeight = 29
+        ClientWidth = 748
+        TabOrder = 0
+        object btnFiche: Tfwsearch
+          Cursor = crHandPoint
+          Left = 1
+          Height = 27
+          Top = 1
+          Width = 227
+          Caption = 'Consulter la fiche individu'
+          TabOrder = 1
+          Cancel = True
+          Align = alLeft
+          Anchors = [akLeft, akBottom]
+          ParentFont = False
+          OnClick = btnFicheClick
+        end
+        object btnPrint: TFWPrint
+          Cursor = crHandPoint
+          Left = 653
+          Height = 27
+          Hint = 'Imprime la liste ci dessus....'
+          Top = 1
+          Width = 94
+          Caption = 'Imprimer'
+          TabOrder = 0
+          Cancel = True
+          Align = alRight
+          Anchors = [akRight, akBottom]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnPrintClick
+        end
+      end
+      object pBottom: TPanel
+        Left = 3
+        Height = 3
+        Top = 496
+        Width = 748
+        Align = alBottom
+        BevelOuter = bvNone
+        TabOrder = 1
+      end
+      object Panel3: TPanel
+        Left = 3
+        Height = 55
+        Top = 3
+        Width = 748
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 55
+        ClientWidth = 748
+        TabOrder = 2
+        object Image1: TIATitle
+          Left = 1
+          Top = 1
+          AutoSize = True
+          ImageOn = iaPeople
+        end
+        object Label1: TLabel
+          Left = 259
+          Height = 12
+          Top = 8
+          Width = 475
+          Alignment = taRightJustify
+          Anchors = [akTop, akRight]
+          AutoSize = False
+          Caption = 'Les individus listés ci-dessous, ont vécu un ou plusieurs événements se passant à'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clNavy
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+          WordWrap = True
+        end
+        object lVille: TLabel
+          Left = 278
+          Height = 1
+          Top = 32
+          Width = 1
+          Anchors = [akTop, akRight]
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clRed
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+      object Panel2: TPanel
+        Left = 3
+        Height = 5
+        Top = 58
+        Width = 748
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 3
+      end
+      object cxGrid1: TExtDBGrid
+        Left = 3
+        Height = 433
+        Top = 63
+        Width = 748
+        TitleButtons = False
+        AutoSort = False
+        Columns = <        
+          item
+            ReadOnly = True
+            Title.Alignment = taCenter
+            Title.Caption = ' '
+            Title.Orientation = toHorizontal
+            Width = 22
+            FieldName = 'SEXE'
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            EditButtons = <>
+            FieldTag = 0
+          end        
+          item
+            ReadOnly = True
+            Title.Alignment = taCenter
+            Title.Caption = 'Événement'
+            Title.Orientation = toHorizontal
+            Width = 115
+            FieldName = 'EVENEMENT'
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            EditButtons = <>
+            FieldTag = 0
+          end        
+          item
+            Alignment = taCenter
+            Title.Alignment = taCenter
+            Title.Caption = 'Année'
+            Title.Orientation = toHorizontal
+            Width = 55
+            FieldName = 'ANNEE_EVENEMENT'
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            EditButtons = <>
+            FieldTag = 0
+          end        
+          item
+            Title.Alignment = taCenter
+            Title.Caption = 'Date'
+            Title.Orientation = toHorizontal
+            Width = 101
+            FieldName = 'DATE_EVENEMENT'
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            EditButtons = <>
+            FieldTag = 0
+          end        
+          item
+            ReadOnly = True
+            Title.Alignment = taCenter
+            Title.Caption = 'Nom'
+            Title.Orientation = toHorizontal
+            Width = 138
+            FieldName = 'NOM'
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            EditButtons = <>
+            FieldTag = 0
+          end        
+          item
+            ReadOnly = True
+            Title.Alignment = taCenter
+            Title.Caption = 'Prénom'
+            Title.Orientation = toHorizontal
+            Width = 176
+            FieldName = 'PRENOM'
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            EditButtons = <>
+            FieldTag = 0
+          end        
+          item
+            ReadOnly = True
+            Title.Alignment = taCenter
+            Title.Caption = 'Né(e)'
+            Title.Orientation = toHorizontal
+            Width = 102
+            FieldName = 'DATE_NAISSANCE'
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            EditButtons = <>
+            FieldTag = 0
+          end        
+          item
+            ReadOnly = True
+            Title.Alignment = taCenter
+            Title.Caption = 'à'
+            Title.Orientation = toHorizontal
+            Width = 0
+            Visible = False
+            FieldName = 'SUBDIVISION'
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            EditButtons = <>
+            FieldTag = 0
+          end        
+          item
+            Title.Alignment = taCenter
+            Title.Caption = 'NUM_SOSA'
+            Title.Orientation = toHorizontal
+            Visible = False
+            FieldName = 'NUM_SOSA'
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            EditButtons = <>
+            FieldTag = 0
+          end>
+        KeyStrokes = <        
+          item
+            Command = rxgcShowFindDlg
+            ShortCut = 16454
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowColumnsDlg
+            ShortCut = 16471
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowFilterDlg
+            ShortCut = 16468
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowSortDlg
+            ShortCut = 16467
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowQuickFilter
+            ShortCut = 16465
+            Enabled = True
+          end        
+          item
+            Command = rxgcHideQuickFilter
+            ShortCut = 16456
+            Enabled = True
+          end        
+          item
+            Command = rxgcSelectAll
+            ShortCut = 16449
+            Enabled = True
+          end        
+          item
+            Command = rxgcDeSelectAll
+            ShortCut = 16429
+            Enabled = True
+          end        
+          item
+            Command = rxgcInvertSelection
+            ShortCut = 16426
+            Enabled = True
+          end        
+          item
+            Command = rxgcOptimizeColumnsWidth
+            ShortCut = 16427
+            Enabled = True
+          end>
+        OptionsRx = []
+        Align = alClient
+        Color = clWindow
+        DrawFullLine = False
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        GridLineStyle = psSolid
+        DataSource = DSIndiSurVille
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+        ParentColor = False
+        PopupMenu = pmGrille
+        Scrollbars = ssAutoBoth
+        TabOrder = 4
+        TitleFont.CharSet = ANSI_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        OnDblClick = cxGrid1DBTableView1DblClick
+      end
+    end
+  end
+  object IBQIndiSurVille: TIBQuery[1]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from PROC_TROUVE_INDI_SUR_FAVORIS(:dossier,:ville,:cp,:insee)'
+      'WHERE coalesce(VILLE_NAISS,'''')=:subd'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'VILLE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CP'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'INSEE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'subd'
+        ParamType = ptUnknown
+      end>
+    left = 134
+    top = 7
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'VILLE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CP'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'INSEE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'subd'
+        ParamType = ptUnknown
+      end>
+    object IBQIndiSurVilleCLE_FICHE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_FICHE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQIndiSurVilleNOM: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object IBQIndiSurVillePRENOM: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'PRENOM'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object IBQIndiSurVilleSEXE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SEXE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQIndiSurVilleDATE_NAISSANCE: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'DATE_NAISSANCE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object IBQIndiSurVilleCP: TIBStringField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CP'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object IBQIndiSurVilleVILLE: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'VILLE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQIndiSurVillePAYS: TIBStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'PAYS'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQIndiSurVilleSUBDIVISION: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'SUBDIVISION'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQIndiSurVilleDATE_EVENEMENT: TIBStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'DATE_EVENEMENT'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object IBQIndiSurVilleANNEE_EVENEMENT: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ANNEE_EVENEMENT'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQIndiSurVilleEVENEMENT: TIBStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'EVENEMENT'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQIndiSurVilleCLE_EV: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_EV'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQIndiSurVilleNUM_SOSA: TFloatField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'NUM_SOSA'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      MaxValue = 0
+      MinValue = 0
+    end
+  end
+  object DSIndiSurVille: TDatasource[2]
+    DataSet = IBQIndiSurVille
+    left = 158
+    top = 7
+  end
+  object pmGrille: TPopupMenu[3]
+    Images = dm.ImageListMenu
+    OnPopup = pmGrillePopup
+    left = 30
+    top = 151
+    object mFiche: TMenuItem
+      Caption = 'Consulter la fiche...'
+      Default = True
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000FF0000
+        00FF008484FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF000000FF00000000000000000000000000000000000000FF00FF
+        FFFF000000FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF000000FF000000000000000000000000000000FFFFFF
+        FFFF00FFFFFF000000FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF008484FF000000FF0000000000000000000000FF00FF
+        FFFFFFFFFFFF00FFFFFF000000FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF008484FF008484FF000000FF00000000000000FFFFFF
+        FFFF00FFFFFFFFFFFFFF00FFFFFF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF00FF
+        FFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FF
+        FFFF000000FF0000000000000000000000000000000000000000000000FFFFFF
+        FFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFF
+        FFFF000000FF0000000000000000000000000000000000000000000000FF00FF
+        FFFFFFFFFFFF00FFFFFF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000000000
+        00FF000000FF000000FF00000000000000000000000000000000000000000000
+        00000000000000000000000000FF000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00000000000000000000000000FF00000000000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00FF000000FF000000FF00000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 5
+      OnClick = mFicheClick
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object ExporterenHTML1: TMenuItem
+      Caption = 'Exporter en HTML'
+      OnClick = ExporterenHTML1Click
+    end
+  end
+  object SaveDialog: TSaveDialog[4]
+    DefaultExt = '.htm'
+    Filter = '*.htm|*.htm'
+    left = 65
+    top = 145
+  end
+  object Language: TYLanguage[5]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+  end
+  object dxComponentPrinter1: TPrinterSetupDialog[6]
+    left = 104
+    top = 8
+  end
+  object OnFormInfoIni1: TOnFormInfoIni[7]
+    SaveForm = [sfSavePos,sfSaveSize]
+    left = 214
+    top = 244
+  end
+end

@@ -1,0 +1,562 @@
+inherited FBiblio_Sources: TFBiblio_Sources
+  Left = 239
+  Height = 500
+  Top = 212
+  Width = 600
+  Caption = 'Sources liées'
+  ClientHeight = 500
+  ClientWidth = 600
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnCreate = SuperFormCreate
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 0
+    Height = 500
+    Top = 0
+    Width = 600
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 500
+    ClientWidth = 600
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 3
+      Height = 494
+      Top = 3
+      Width = 594
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 494
+      ClientWidth = 594
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 1
+        Height = 492
+        Top = 1
+        Width = 592
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 2
+        ClientHeight = 492
+        ClientWidth = 592
+        TabOrder = 0
+        object panDock: TPanel
+          Left = 2
+          Height = 458
+          Top = 2
+          Width = 588
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 458
+          ClientWidth = 588
+          TabOrder = 0
+          object TabControlBiblio: TTabControl
+            Left = 0
+            Height = 458
+            Top = 0
+            Width = 588
+            TabStop = False
+            HotTrack = True
+            Images = dm.ImageListMenu
+            OnChange = onTabControlBiblioChange
+            TabIndex = 0
+            Tabs.Strings = (
+              'Sources'
+              'Médias'
+            )
+            Align = alClient
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clBlue
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 0
+            object pSource: TPanel
+              Left = 2
+              Height = 435
+              Top = 21
+              Width = 176
+              Align = alLeft
+              ClientHeight = 435
+              ClientWidth = 176
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentFont = False
+              TabOrder = 0
+              object Panel1: TPanel
+                Left = 1
+                Height = 433
+                Top = 1
+                Width = 74
+                Align = alLeft
+                BevelOuter = bvNone
+                ClientHeight = 433
+                ClientWidth = 74
+                TabOrder = 0
+                object Label1: TLabel
+                  Left = 6
+                  Height = 13
+                  Top = 7
+                  Width = 36
+                  Caption = 'Auteur '
+                  Font.CharSet = ANSI_CHARSET
+                  Font.Color = clWindowFrame
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  ParentColor = False
+                  ParentFont = False
+                end
+                object Label2: TLabel
+                  Left = 6
+                  Height = 13
+                  Top = 56
+                  Width = 22
+                  Caption = 'Titre'
+                  ParentColor = False
+                end
+                object Label3: TLabel
+                  Left = 6
+                  Height = 13
+                  Top = 96
+                  Width = 55
+                  Caption = 'Abréviation'
+                  ParentColor = False
+                end
+                object Label9: TLabel
+                  Left = 6
+                  Height = 13
+                  Top = 128
+                  Width = 20
+                  Caption = 'Publ'
+                  ParentColor = False
+                end
+                object Label10: TLabel
+                  Left = 6
+                  Height = 13
+                  Top = 176
+                  Width = 28
+                  Caption = 'Texte'
+                  ParentColor = False
+                end
+              end
+              object Panel2: TPanel
+                Left = 75
+                Height = 433
+                Top = 1
+                Width = 100
+                Align = alClient
+                BevelOuter = bvNone
+                ClientHeight = 433
+                ClientWidth = 100
+                TabOrder = 1
+                object dxDBMemo2: TFWDBMemo
+                  Left = 0
+                  Height = 47
+                  Top = 0
+                  Width = 100
+                  Align = alTop
+                  DataField = 'AUTH'
+                  DataSource = DataSource1
+                  OnKeyDown = dxDBMemo2KeyDown
+                  OnKeyPress = dxDBMemo2KeyPress
+                  ParentFont = False
+                  TabOrder = 0
+                end
+                object dxDBMemo3: TFWDBMemo
+                  Left = 0
+                  Height = 47
+                  Top = 47
+                  Width = 100
+                  Align = alTop
+                  DataField = 'TITL'
+                  DataSource = DataSource1
+                  OnKeyDown = dxDBMemo3KeyDown
+                  OnKeyPress = dxDBMemo2KeyPress
+                  ParentFont = False
+                  TabOrder = 1
+                end
+                object dxDBEdit3: TFWDBEdit
+                  Left = 0
+                  Height = 25
+                  Top = 94
+                  Width = 100
+                  DataField = 'ABR'
+                  DataSource = DataSource1
+                  CharCase = ecNormal
+                  MaxLength = 0
+                  ParentFont = False
+                  TabOrder = 2
+                  Align = alTop
+                end
+                object dxDBMemo4: TFWDBMemo
+                  Left = 0
+                  Height = 47
+                  Top = 119
+                  Width = 100
+                  Align = alTop
+                  DataField = 'PUBL'
+                  DataSource = DataSource1
+                  OnKeyDown = dxDBMemo4KeyDown
+                  OnKeyPress = dxDBMemo2KeyPress
+                  ParentFont = False
+                  TabOrder = 3
+                end
+                object dxDBMemo5: TFWDBMemo
+                  Left = 0
+                  Height = 267
+                  Top = 166
+                  Width = 100
+                  Align = alClient
+                  DataField = 'TEXTE'
+                  DataSource = DataSource1
+                  OnKeyDown = dxDBMemo5KeyDown
+                  OnKeyPress = dxDBMemo2KeyPress
+                  ParentFont = False
+                  TabOrder = 4
+                end
+              end
+            end
+            object pMedia: TPanel
+              Left = 178
+              Height = 435
+              Top = 21
+              Width = 408
+              Align = alClient
+              ClientHeight = 435
+              ClientWidth = 408
+              Color = 13887731
+              ParentColor = False
+              TabOrder = 1
+              Visible = False
+              object dxDBGrid: TExtDBGrid
+                Left = 1
+                Height = 433
+                Hint = 'Double-cliquer sur l''image pour la visualiser.'
+                Top = 1
+                Width = 406
+                TitleButtons = False
+                AutoSort = False
+                Columns = <                
+                  item
+                    ReadOnly = True
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Informations'
+                    Title.Orientation = toHorizontal
+                    Width = 271
+                    FieldName = 'MULTI_PATH'
+                    Filter.DropDownRows = 0
+                    Filter.EmptyValue = '(Empty)'
+                    Filter.EmptyFont.Style = [fsItalic]
+                    Filter.ItemIndex = -1
+                    EditButtons = <>
+                    FieldTag = 0
+                  end                
+                  item
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Mémo'
+                    Title.Orientation = toHorizontal
+                    Width = 271
+                    FieldName = 'MULTI_MEMO'
+                    Filter.DropDownRows = 0
+                    Filter.EmptyValue = '(Empty)'
+                    Filter.EmptyFont.Style = [fsItalic]
+                    Filter.ItemIndex = -1
+                    EditButtons = <>
+                    FieldTag = 0
+                  end                
+                  item
+                    ReadOnly = True
+                    Title.Alignment = taCenter
+                    Title.Caption = 'MULTI_REDUITE'
+                    Title.Orientation = toHorizontal
+                    Width = 65
+                    FieldName = 'MULTI_REDUITE'
+                    Filter.DropDownRows = 0
+                    Filter.EmptyValue = '(Empty)'
+                    Filter.EmptyFont.Style = [fsItalic]
+                    Filter.ItemIndex = -1
+                    EditButtons = <>
+                    FieldTag = 0
+                  end>
+                KeyStrokes = <                
+                  item
+                    Command = rxgcShowFindDlg
+                    ShortCut = 16454
+                    Enabled = True
+                  end                
+                  item
+                    Command = rxgcShowColumnsDlg
+                    ShortCut = 16471
+                    Enabled = True
+                  end                
+                  item
+                    Command = rxgcShowFilterDlg
+                    ShortCut = 16468
+                    Enabled = True
+                  end                
+                  item
+                    Command = rxgcShowSortDlg
+                    ShortCut = 16467
+                    Enabled = True
+                  end                
+                  item
+                    Command = rxgcShowQuickFilter
+                    ShortCut = 16465
+                    Enabled = True
+                  end                
+                  item
+                    Command = rxgcHideQuickFilter
+                    ShortCut = 16456
+                    Enabled = True
+                  end                
+                  item
+                    Command = rxgcSelectAll
+                    ShortCut = 16449
+                    Enabled = True
+                  end                
+                  item
+                    Command = rxgcDeSelectAll
+                    ShortCut = 16429
+                    Enabled = True
+                  end                
+                  item
+                    Command = rxgcInvertSelection
+                    ShortCut = 16426
+                    Enabled = True
+                  end                
+                  item
+                    Command = rxgcOptimizeColumnsWidth
+                    ShortCut = 16427
+                    Enabled = True
+                  end                
+                  item
+                    Command = rxgcCopyCellValue
+                    ShortCut = 16451
+                    Enabled = True
+                  end>
+                OptionsRx = []
+                Align = alClient
+                Anchors = []
+                Color = clWindow
+                DrawFullLine = False
+                FocusColor = clRed
+                SelectedColor = clHighlight
+                GridLineStyle = psSolid
+                DataSource = DSMultimedia
+                Font.CharSet = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+                ParentColor = False
+                ParentFont = False
+                Scrollbars = ssAutoBoth
+                TabOrder = 0
+                TitleFont.CharSet = ANSI_CHARSET
+                TitleFont.Color = clBlack
+                TitleFont.Height = -11
+                TitleFont.Name = 'Tahoma'
+                OnDblClick = dxDBGridDblClick
+                OptionsExt = [eoPaintEdits, eoPaintBlobs]
+              end
+            end
+          end
+        end
+        object fpBoutons: TPanel
+          Left = 2
+          Height = 30
+          Top = 460
+          Width = 588
+          Align = alBottom
+          BevelOuter = bvNone
+          ClientHeight = 30
+          ClientWidth = 588
+          TabOrder = 1
+          object pBoutons: TPanel
+            Left = 0
+            Height = 30
+            Top = 0
+            Width = 171
+            Align = alLeft
+            BevelOuter = bvNone
+            ClientHeight = 30
+            ClientWidth = 171
+            TabOrder = 2
+            Visible = False
+            object btnDel: TFWDelete
+              Cursor = crHandPoint
+              Left = 82
+              Height = 30
+              Top = 0
+              Width = 89
+              Caption = 'Supprimer'
+              Enabled = False
+              TabOrder = 1
+              Spacing = 2
+              Align = alClient
+              Anchors = []
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = btnDelClick
+            end
+            object btnAjout: TFWAdd
+              Cursor = crHandPoint
+              Left = 0
+              Height = 30
+              Top = 0
+              Width = 82
+              Caption = 'Ajouter'
+              TabOrder = 0
+              Spacing = 2
+              Align = alLeft
+              Anchors = []
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = btnAjoutClick
+            end
+          end
+          object btnFermer: TFWClose
+            Cursor = crHandPoint
+            Left = 494
+            Height = 30
+            Top = 0
+            Width = 94
+            TabStop = False
+            Caption = 'Annuler'
+            TabOrder = 0
+            Cancel = True
+            ModalResult = 2
+            Spacing = 8
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+          end
+          object btnAppliquer: TFWOK
+            Cursor = crHandPoint
+            Left = 391
+            Height = 30
+            Top = 0
+            Width = 103
+            TabStop = False
+            Caption = 'Appliquer'
+            Enabled = False
+            TabOrder = 1
+            Cancel = True
+            Spacing = 8
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = btnAppliquerClick
+          end
+        end
+      end
+    end
+  end
+  object Language: TYLanguage[1]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 600
+    top = 8
+  end
+  object DataSource1: TDatasource[2]
+    DataSet = dm.IBQSources_Record
+    OnStateChange = DataSource1StateChange
+    left = 24
+    top = 336
+  end
+  object DSMultimedia: TDatasource[3]
+    DataSet = IBMultimedia
+    OnStateChange = DSMultimediaStateChange
+    left = 232
+    top = 248
+  end
+  object IBMultimedia: TIBQuery[4]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select m.multi_clef'
+      ',m.multi_path'
+      ',m.multi_memo'
+      ',m.multi_reduite'
+      ',mp.MP_CLEF'
+      'FROM MEDIA_POINTEURS mp'
+      'inner join MULTIMEDIA m on m.multi_clef=mp.mp_media'
+      'WHERE '
+      'mp.MP_CLE_INDIVIDU  =  :CLE_FICHE AND'
+      'mp.MP_POINTE_SUR = :ID AND'
+      'mp.MP_TABLE =  :TABLE  AND'
+      'mp.MP_TYPE_IMAGE = ''F'''
+      'ORDER BY mp.MP_CLEF'
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_FICHE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ID'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'TABLE'
+        ParamType = ptUnknown
+      end>
+    UpdateObject = IBUMultimedia
+    left = 232
+    top = 277
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'CLE_FICHE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ID'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'TABLE'
+        ParamType = ptUnknown
+      end>
+  end
+  object IBUMultimedia: TIBUpdateSQL[5]
+    ModifySQL.Strings = (
+      'update MULTIMEDIA'
+      'set'
+      '  MULTI_MEMO = :MULTI_MEMO'
+      'where'
+      '  MULTI_CLEF = :MULTI_CLEF'
+    )
+    DeleteSQL.Strings = (
+      'delete from media_pointeurs'
+      'where mp_clef=:mp_clef'
+    )
+    left = 230
+    top = 309
+  end
+end

@@ -1,0 +1,112 @@
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+// Les fichiers de traduction
+//
+// Il est tres facile de traduire l application Ancestrologie
+// Il vous suffit de recopier ce fichier, en le nommant par exemple : Italian.traduc
+// et dans ce nouveu fichier il suffit de traduire tous les textes qui se trouvent apres le signe =
+// il faut garder la ponctuation et faire attention que le texte traduit ne soit pas trop long pour ne pa deborder sur les champs
+//
+// Vous pouvez aussi rajouter des Hints a tous les items qui n en n'ont pas
+// Par exemple : Dossiers1 n a pas de hint , il suffit juste d'ecrire la ligne comme suit
+// Dossiers1.Hint=Gestion des dossiers
+//
+// Attention
+// Si apres le signe = nous ne mettez rien, il n apparitra rien a l ecran
+// Si vous supprimez carrement une ligne, le texte par defaut sera le francais
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[FLanguage]
+lbFacture.Caption=Langage
+Label1.Caption=Ancestrologie est utilisable en plusieurs langues. Choisissez la votre dans cette liste :
+Label2.Caption=Les textes ont été traduits depuis la version française, grâce au moteur de traduction automatique de la société SYSTRAN. Nous nous efforçons à améliorer la qualité du résultat, afin de permettre au plus grand nombre d'utiliser Ancestrologie.
+// ------------ Fenetre principale de l'application -----------------------------------------------------------------------------------------------
+[FMain]
+lExit.Caption=Vous confirmez vouloir quitter Ancestrologie ?
+lDossier.Caption=Dossiers
+lIndividus.Caption=Individus
+lRepertoire.Caption=Répertoire
+lFiche.Caption=Fiche
+lLiensFamilliaux.Caption=Liens familiaux
+lArbre.Caption=Arbre
+lAnniversaire.Caption=Anniversaires
+lListePrenom.Caption=Liste par prénoms
+lImpressions.Caption=Impressions
+lImpArbre.Caption=Arbre
+lImpRoue.Caption=Roue familiale
+lImpAsc.Caption=Documents
+lDivers.Caption=Divers
+lVilles.Caption=Liste des lieux
+lPref.Caption=Préférences
+URLBlockNotes.Caption=Bloc notes
+bfsbQuitter.Hint=Quitter Ancestrologie
+Fichier1.Caption=Mes généalogies
+Dossiers1.Caption=Dossiers...
+Informations1.Caption=Informations...
+Blocnotes2.Caption=Bloc notest...
+Quitter1.Caption=Quitter...
+menu_Individu.Caption=Individus
+Rpertoire1.Caption=&Répertoire
+Listeparprnom1.Caption=Liste par prénoms
+FicheIndividu1.Caption=Fiche individu
+mSaisierapide.Caption=Saisie rap&ide
+Rechercher2.Caption=Recherche...
+Recherchededoublons.Caption=Recherche de doublons...
+mNouveaux.Caption=Liste des individus saisis récemment...
+mListeUnions.Caption=Liste des unions...
+mCousinage.Caption=Liste de cousinage...
+Arbre2.Caption=Arbre
+Anniversaires1.Caption=Anniversaires...
+option_RenumerotationSOSA.Caption=Renumérotation SOSA...
+Connector1.Caption=Liens familiaux
+menu_Favoris.Caption=Favoris
+MenuFavoris_Add.Caption=Ajouter aux Fa&voris ...
+dxbDelFavoris.Caption=Supprimer les Favoris ...
+menu_ImportExport.Caption=Import / Export 
+ImporterauformatGEDCOM1.Caption=Importer un fichier au format &GEDCOM
+ExporterauformatGEDCOM1.Caption=E&xporter au format GEDCOM
+ExporterauformatGeneaNet1.Caption=Exporter au format GeneaNet
+ExportImages.Caption=Exporter toutes les images...
+menu_Impressions.Caption=Impressions
+Arbredascendance1.Caption=Arbre d'ascendance
+Rouedascendance1.Caption=Roue d'ascendance
+Documents1.Caption=Documents
+mAddon.Caption=Add'ons
+menu_Configuration.Caption=Configuration 
+Prfrences2.Caption=&Préférences générales...
+Langage1.Caption=Langage
+Raccourissaisie1.Caption=Raccourcis de saisie
+Prfixes1.Caption=Civilité
+Religions1.Caption=Religions
+Particules1.Caption=Particules
+Motsclefsutilissdanslesdates1.Caption=Mots clefs utilisés dans les dates
+VillesCodes1.Caption=Liste des lieux...
+dxBBLieuxFavoris.Caption=Liste des lieux favoris
+Emplacementdelabasededonne1.Caption=Emplacement de la base de données
+mOptimise.Caption=Optimisation de la base de données...
+Aide1.Caption=&Aide 
+Commentamarche1.Caption=Comment ça marche ?
+Documentation1.Caption=Documentation
+Partenaires.Caption=Aides à la généalogie
+dxBarButton1.Caption=A propos de ...
+mOpenSource.Caption=A propos du logiciel libre ...
+// ------------ Fenetre sortie de l'application ----------------------------------------------------------------------------------------------------
+[FMsg]
+lYes.Caption=Oui
+lNo.Caption=Non
+lCancel.Caption=Annuler
+// ------------ Fenetre des dossiers ---------------------------------------------------------------------------------------------------------------
+[FEditDossier]
+lTitre.Caption=Dossier
+Label2.Caption=Nom du dossier
+Label3.Caption=Description du dossier
+Label1.Caption=Derniere consultation
+bsfbSelection.Caption=OK
+btnFermer.Caption=Annuler
+// ------------ Fenetre choix des dossiers ---------------------------------------------------------------------------------------------------------
+[FSelectDossier]
+lTitre.Caption=Dossier
+fsbSelection.Caption=Selection
+bFermer.Caption=Fermer
+bfsbDelete.Caption=Supprimer
+btnEdit.Caption=Editer
+bfsbAjout.Caption=Ajouter

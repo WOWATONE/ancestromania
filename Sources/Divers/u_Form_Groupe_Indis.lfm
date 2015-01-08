@@ -1,0 +1,483 @@
+inherited FGroupeIndis: TFGroupeIndis
+  Left = 560
+  Height = 580
+  Top = 250
+  Width = 800
+  BorderWidth = 1
+  Caption = 'Liste des individus avec ou sans liens avec l''individu central'
+  ClientHeight = 580
+  ClientWidth = 800
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  Position = poScreenCenter
+  Visible = True
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 578
+    Top = 1
+    Width = 798
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 578
+    ClientWidth = 798
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 3
+      Height = 572
+      Top = 3
+      Width = 792
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 572
+      ClientWidth = 792
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 1
+        Height = 570
+        Top = 1
+        Width = 790
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 570
+        ClientWidth = 790
+        TabOrder = 0
+        object pBottom: TPanel
+          Left = 3
+          Height = 3
+          Top = 531
+          Width = 784
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 1
+        end
+        object dxDBGrid1: TExtDBGrid
+          Cursor = crHandPoint
+          Left = 3
+          Height = 469
+          Top = 62
+          Width = 784
+          TitleButtons = False
+          AutoSort = False
+          Columns = <          
+            item
+              Alignment = taCenter
+              Title.Alignment = taCenter
+              Title.Caption = 'Sexe'
+              Title.Orientation = toHorizontal
+              Width = 22
+              FieldName = 'SEXE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              Images = dm.ImageSexe
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'CLE_FICHE'
+              Title.Orientation = toHorizontal
+              Visible = False
+              FieldName = 'CLE_FICHE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Nom'
+              Title.Orientation = toHorizontal
+              Width = 300
+              FieldName = 'NOM'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Naissance'
+              Title.Orientation = toHorizontal
+              Width = 210
+              FieldName = 'NAISSANCE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Décès'
+              Title.Orientation = toHorizontal
+              Width = 210
+              FieldName = 'DECES'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end>
+          KeyStrokes = <          
+            item
+              Command = rxgcShowFindDlg
+              ShortCut = 16454
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowColumnsDlg
+              ShortCut = 16471
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowFilterDlg
+              ShortCut = 16468
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowSortDlg
+              ShortCut = 16467
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowQuickFilter
+              ShortCut = 16465
+              Enabled = True
+            end          
+            item
+              Command = rxgcHideQuickFilter
+              ShortCut = 16456
+              Enabled = True
+            end          
+            item
+              Command = rxgcSelectAll
+              ShortCut = 16449
+              Enabled = True
+            end          
+            item
+              Command = rxgcDeSelectAll
+              ShortCut = 16429
+              Enabled = True
+            end          
+            item
+              Command = rxgcInvertSelection
+              ShortCut = 16426
+              Enabled = True
+            end          
+            item
+              Command = rxgcOptimizeColumnsWidth
+              ShortCut = 16427
+              Enabled = True
+            end>
+          OptionsRx = []
+          Align = alClient
+          Color = clWindow
+          DrawFullLine = False
+          FocusColor = clRed
+          SelectedColor = clHighlight
+          GridLineStyle = psSolid
+          DataSource = DSIndis
+          FixedCols = 0
+          Options = [dgEditing, dgTitles, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+          OptionsExtra = [dgeCheckboxColumn]
+          ParentColor = False
+          PopupMenu = pmExporter
+          ReadOnly = True
+          Scrollbars = ssAutoBoth
+          TabOrder = 2
+          TitleFont.CharSet = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+          OnDblClick = dxDBGrid1DBTableView1CellDblClick
+        end
+        object Panel3: TPanel
+          Left = 3
+          Height = 54
+          Top = 3
+          Width = 784
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 54
+          ClientWidth = 784
+          TabOrder = 3
+          object Image1: TIATitle
+            Left = 1
+            Hint = 'Cliquer pour supprimer le tri.'
+            Top = 1
+            AutoSize = True
+            OnClick = Image1Click
+            ParentShowHint = False
+            ShowHint = True
+            ImageOn = iaPeople
+          end
+          object Label1: TLabel
+            Left = 655
+            Height = 54
+            Top = 0
+            Width = 129
+            Align = alRight
+            Alignment = taRightJustify
+            Anchors = [akTop, akRight]
+            Caption = 'Individu central'
+            Color = clWindow
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowFrame
+            Font.Height = -16
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            Transparent = False
+          end
+        end
+        object Panel2: TPanel
+          Left = 3
+          Height = 5
+          Top = 57
+          Width = 784
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 4
+        end
+        object fpBoutons: TPanel
+          Left = 3
+          Height = 33
+          Top = 534
+          Width = 784
+          Align = alBottom
+          BevelInner = bvLowered
+          ClientHeight = 33
+          ClientWidth = 784
+          TabOrder = 0
+          object lNomIndi: TLabel
+            Left = 197
+            Height = 29
+            Top = 2
+            Width = 42
+            Align = alLeft
+            Caption = 'lNomIndi'
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object GoodBtn7: TFWClose
+            Cursor = crHandPoint
+            Left = 688
+            Height = 29
+            Top = 2
+            Width = 94
+            Caption = 'Fermer'
+            TabOrder = 0
+            Cancel = True
+            Default = True
+            Align = alRight
+            Anchors = [akTop, akRight]
+            OnClick = sbCloseClick
+          end
+          object btnPrint: TFWPrintGrid
+            Cursor = crHandPoint
+            Left = 594
+            Height = 29
+            Hint = 'Imprime la liste ci dessus....'
+            Top = 2
+            Width = 94
+            Caption = 'Imprimer...'
+            TabOrder = 1
+            Cancel = True
+            Default = True
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = btnPrintClick
+            DBGrid = dxDBGrid1
+          end
+          object TypeGroupe: TRadioGroup
+            Left = 2
+            Height = 29
+            Top = 2
+            Width = 195
+            Align = alLeft
+            AutoFill = True
+            Caption = 'Individus à lister'
+            ChildSizing.LeftRightSpacing = 6
+            ChildSizing.TopBottomSpacing = 6
+            ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+            ChildSizing.EnlargeVertical = crsHomogenousChildResize
+            ChildSizing.ShrinkHorizontal = crsScaleChilds
+            ChildSizing.ShrinkVertical = crsScaleChilds
+            ChildSizing.Layout = cclLeftToRightThenTopToBottom
+            ChildSizing.ControlsPerLine = 2
+            ClientHeight = 7
+            ClientWidth = 191
+            Columns = 2
+            ItemIndex = 0
+            Items.Strings = (
+              'Avec liens'
+              'Sans lien'
+            )
+            OnClick = TypeGroupePropertiesChange
+            ParentFont = False
+            ParentColor = False
+            TabOrder = 2
+          end
+        end
+      end
+    end
+  end
+  object DSIndis: TDatasource[1]
+    DataSet = IBQIndis
+    left = 150
+    top = 15
+  end
+  object pmExporter: TPopupMenu[2]
+    OnPopup = pmExporterPopup
+    left = 310
+    top = 15
+    object Ouvrirlafiche: TMenuItem
+      Caption = 'Ouvrir la fiche (ou double clic)'
+      Enabled = False
+      ShortCut = 16454
+      OnClick = OuvrirlaficheClick
+    end
+    object mImprimer: TMenuItem
+      Caption = 'Imprimer'
+      Enabled = False
+      OnClick = mImprimerClick
+    end
+    object ExporterenHTML1: TMenuItem
+      Caption = 'Exporter en HTML'
+      Enabled = False
+      OnClick = ExporterenHTML1Click
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object Supprimerlestris1: TMenuItem
+      Caption = 'Supprimer les tris'
+      OnClick = Supprimerlestris1Click
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
+    object Supprimerlafiche: TMenuItem
+      Caption = 'Supprimer la fiche'
+      OnClick = SupprimerlaficheClick
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object NombreIndividus: TMenuItem
+      Visible = False
+    end
+  end
+  object SaveDialog: TSaveDialog[3]
+    DefaultExt = '.htm'
+    Filter = '*.htm|*.htm'
+    left = 353
+    top = 17
+  end
+  object dxComponentPrinter1: TPrinterSetupDialog[4]
+    Title = 'Ecran d''aperçu'
+    left = 392
+    top = 16
+  end
+  object IBQIndis: TIBQuery[5]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    Params = <>
+    left = 191
+    top = 15
+    object IBQIndisCLE_FICHE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_FICHE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQIndisNOM: TStringField
+      DisplayWidth = 102
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 102
+    end
+    object IBQIndisNAISSANCE: TStringField
+      DisplayWidth = 153
+      FieldKind = fkData
+      FieldName = 'NAISSANCE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 153
+    end
+    object IBQIndisDECES: TStringField
+      DisplayWidth = 153
+      FieldKind = fkData
+      FieldName = 'DECES'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 153
+    end
+    object IBQIndisSEXE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SEXE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object req: TIBSQL[6]
+    Database = dm.ibd_BASE
+    ParamCheck = True
+    SQL.Strings = (
+      'SELECT * FROM PROC_GROUPE(1,:indi,''B'',''N'',''Y'',''Y'',''Y'',''A'',''N'')'
+    )
+    Transaction = dm.IBT_BASE
+    left = 231
+    top = 15
+  end
+  object OnFormInfoIni: TOnFormInfoIni[7]
+    SaveEdits = [feTGrid, feTRadioGroup]
+    SaveForm = [sfSavePos, sfSaveSize]
+    left = 163
+    top = 206
+  end
+end

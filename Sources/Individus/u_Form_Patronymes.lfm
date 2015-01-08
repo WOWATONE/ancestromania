@@ -1,0 +1,554 @@
+inherited FPatronymes: TFPatronymes
+  Left = 453
+  Height = 373
+  Top = 386
+  Width = 366
+  ActiveControl = dxDBGrid1
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Association de patronymes'
+  ClientHeight = 373
+  ClientWidth = 366
+  Color = clWhite
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 0
+    Height = 373
+    Top = 0
+    Width = 366
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 373
+    ClientWidth = 366
+    Color = clWindow
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    object Panel7: TPanel
+      Left = 3
+      Height = 367
+      Top = 3
+      Width = 360
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 367
+      ClientWidth = 360
+      TabOrder = 0
+      object Panel5: TPanel
+        Left = 1
+        Height = 76
+        Top = 290
+        Width = 358
+        Align = alBottom
+        ClientHeight = 76
+        ClientWidth = 358
+        TabOrder = 0
+        object Panel2: TPanel
+          Left = 1
+          Height = 21
+          Top = 1
+          Width = 356
+          Align = alTop
+          ClientHeight = 21
+          ClientWidth = 356
+          Color = clSilver
+          ParentColor = False
+          TabOrder = 0
+          object lbTitle: TLabel
+            Left = 1
+            Height = 14
+            Top = 1
+            Width = 354
+            Align = alTop
+            Caption = 'Liste des patronymes associés à : '
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object Panel3: TPanel
+          Left = 1
+          Height = 27
+          Top = 48
+          Width = 356
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 27
+          ClientWidth = 356
+          TabOrder = 1
+          object btnFermer: TFWClose
+            Cursor = crHandPoint
+            Left = 179
+            Height = 27
+            Hint = 'Quitter en acceptant les éventuelles modifications effectuées.'
+            Top = 0
+            Width = 86
+            Caption = 'Fermer'
+            TabOrder = 0
+            Cancel = True
+            Default = True
+            ModalResult = 1
+            Align = alRight
+            Anchors = [akLeft, akBottom]
+            ParentFont = False
+            ParentShowHint = False
+          end
+          object btnAnnuler: TFWCancel
+            Cursor = crHandPoint
+            Left = 265
+            Height = 27
+            Hint = 'Quitter en supprimant les modifications effectuées.'
+            Top = 0
+            Width = 91
+            Caption = 'Annuler'
+            Enabled = False
+            TabOrder = 1
+            Cancel = True
+            ModalResult = 2
+            Align = alRight
+            Anchors = [akRight, akBottom]
+            ParentShowHint = False
+            ShowHint = True
+          end
+          object btnDel: TFWDelete
+            Cursor = crHandPoint
+            Left = 27
+            Height = 27
+            Hint = 'Supprimer'
+            Top = 0
+            Width = 27
+            TabOrder = 2
+            Layout = blGlyphTop
+            Spacing = 240
+            Align = alLeft
+            Anchors = [akLeft, akBottom]
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = btnDelClick
+            ColorFrameFocus = clWhite
+            GlyphSize = 16
+          end
+          object btnAdd: TFWAdd
+            Cursor = crHandPoint
+            Left = 0
+            Height = 27
+            Top = 0
+            Width = 27
+            TabOrder = 3
+            Layout = blGlyphTop
+            Spacing = 240
+            Align = alLeft
+            Anchors = [akLeft, akBottom]
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            OnClick = btnAddClick
+            ColorFrameFocus = clWhite
+            GlyphSize = 16
+          end
+        end
+        object Panel4: TPanel
+          Left = 1
+          Height = 26
+          Top = 22
+          Width = 356
+          Align = alTop
+          ClientHeight = 26
+          ClientWidth = 356
+          TabOrder = 2
+          object RadioButton2: TRadioButton
+            Left = 99
+            Height = 24
+            Top = 1
+            Width = 250
+            Align = alLeft
+            Anchors = [akLeft, akBottom]
+            Caption = 'à d''autres individus de même nom'
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentFont = False
+            TabOrder = 0
+          end
+          object RadioButton1: TRadioButton
+            Left = 1
+            Height = 24
+            Top = 1
+            Width = 98
+            Align = alLeft
+            Anchors = [akLeft, akBottom]
+            Caption = 'à lui-même'
+            Checked = True
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            OnClick = RadioButton1Click
+            ParentFont = False
+            TabOrder = 1
+            TabStop = True
+          end
+        end
+      end
+      object Panel6: TPanel
+        Left = 1
+        Height = 289
+        Top = 1
+        Width = 358
+        Align = alClient
+        BorderWidth = 5
+        ClientHeight = 289
+        ClientWidth = 358
+        TabOrder = 1
+        object Panel1: TPanel
+          Left = 6
+          Height = 277
+          Top = 6
+          Width = 346
+          Align = alClient
+          BevelOuter = bvLowered
+          ClientHeight = 277
+          ClientWidth = 346
+          TabOrder = 0
+          object dxDBGrid1: TExtDBGrid
+            Left = 1
+            Height = 275
+            Top = 1
+            Width = 344
+            TitleButtons = False
+            AutoSort = False
+            Columns = <            
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'Patronymes associés'
+                Title.Orientation = toHorizontal
+                Width = 254
+                FieldName = 'NOM'
+                Filter.DropDownRows = 0
+                Filter.EmptyValue = '(Empty)'
+                Filter.EmptyFont.Style = [fsItalic]
+                Filter.ItemIndex = -1
+                EditButtons = <>
+                SomeEdit = cb_patronymes
+                FieldTag = 0
+              end            
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'à tous'
+                Title.Orientation = toHorizontal
+                Width = 62
+                FieldName = 'ETENDU'
+                Filter.DropDownRows = 0
+                Filter.EmptyValue = '(Empty)'
+                Filter.EmptyFont.Style = [fsItalic]
+                Filter.ItemIndex = -1
+                EditButtons = <>
+                FieldTag = 0
+              end>
+            KeyStrokes = <            
+              item
+                Command = rxgcShowFindDlg
+                ShortCut = 16454
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowColumnsDlg
+                ShortCut = 16471
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowFilterDlg
+                ShortCut = 16468
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowSortDlg
+                ShortCut = 16467
+                Enabled = True
+              end            
+              item
+                Command = rxgcShowQuickFilter
+                ShortCut = 16465
+                Enabled = True
+              end            
+              item
+                Command = rxgcHideQuickFilter
+                ShortCut = 16456
+                Enabled = True
+              end            
+              item
+                Command = rxgcSelectAll
+                ShortCut = 16449
+                Enabled = True
+              end            
+              item
+                Command = rxgcDeSelectAll
+                ShortCut = 16429
+                Enabled = True
+              end            
+              item
+                Command = rxgcInvertSelection
+                ShortCut = 16426
+                Enabled = True
+              end            
+              item
+                Command = rxgcOptimizeColumnsWidth
+                ShortCut = 16427
+                Enabled = True
+              end>
+            OptionsRx = []
+            Align = alClient
+            Color = clWindow
+            DrawFullLine = False
+            FocusColor = clRed
+            SelectedColor = clHighlight
+            GridLineStyle = psSolid
+            DataSource = DataSource1
+            Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+            ParentColor = False
+            PopupMenu = pmValiderTelQuel
+            ReadOnly = True
+            Scrollbars = ssAutoBoth
+            TabOrder = 0
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+            OnColExit = dxDBGrid1ColExit
+          end
+          object cb_patronymes: TFWDBLookupCombo
+            Left = 189
+            Height = 26
+            Top = 86
+            Width = 100
+            AutoSize = True
+            ButtonOnlyWhenFocused = False
+            ButtonWidth = 15
+            DataSource = DataSource1
+            PopUpFormOptions.Columns = <>
+            Flat = False
+            Glyph.Data = {
+              72000000424D7200000000000000360000002800000005000000030000000100
+              2000000000003C00000064000000640000000000000000000000000000000000
+              0000000000FF000000000000000000000000000000FF000000FF000000FF0000
+              0000000000FF000000FF000000FF000000FF000000FF
+            }
+            NumGlyphs = 1
+            ParentColor = False
+            ReadOnly = False
+            TabOrder = 1
+            TabStop = True
+            Visible = False
+            LookupDisplay = 'NOM'
+            LookupField = 'NOM'
+            LookupSource = DataSource2
+          end
+        end
+      end
+    end
+  end
+  object Language: TYLanguage[1]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 232
+    top = 48
+  end
+  object DataSource1: TDatasource[2]
+    DataSet = Query
+    left = 87
+    top = 136
+  end
+  object IBUpdateSQL: TIBUpdateSQL[3]
+    RefreshSQL.Strings = (
+      'Select '
+      '  ID,'
+      '  ID_INDI,'
+      '  NOM,'
+      '  NOM_INDI,'
+      '  KLE_DOSSIER'
+      'from NOM_ATTACHEMENT '
+      'where'
+      '  ID = :ID'
+    )
+    ModifySQL.Strings = (
+      'update NOM_ATTACHEMENT'
+      'set'
+      '  NOM_INDI = :NOM_INDI'
+      'where'
+      '  ID = :ID'
+    )
+    InsertSQL.Strings = (
+      'insert into NOM_ATTACHEMENT'
+      '  (ID, ID_INDI, NOM, NOM_INDI, KLE_DOSSIER)'
+      'values'
+      '  (:ID, :ID_INDI, :NOM, :NOM_INDI, :KLE_DOSSIER)'
+    )
+    DeleteSQL.Strings = (
+      'delete from NOM_ATTACHEMENT'
+      'where'
+      '  ID = :ID'
+    )
+    left = 56
+    top = 135
+  end
+  object Query: TIBQuery[4]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBTrans_Secondaire
+    AfterDelete = QueryAfterDelete
+    AfterInsert = QueryAfterInsert
+    AfterPost = QueryAfterPost
+    BeforeDelete = QueryBeforeDelete
+    BeforeInsert = QueryBeforeInsert
+    BeforePost = QueryBeforePost
+    OnCalcFields = QueryCalcFields
+    OnNewRecord = QueryNewRecord
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.Generator = 'NOM_ATTACHEMENT_ID_GEN'
+    GeneratorField.Field = 'ID'
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    ParamCheck = False
+    SQL.Strings = (
+      ''
+    )
+    Params = <>
+    UpdateObject = IBUpdateSQL
+    left = 23
+    top = 136
+    object QueryID: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ID'
+      Index = 0
+      LookupCache = False
+      Origin = '"NOM_ATTACHEMENT"."ID"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = True
+    end
+    object QueryID_INDI: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ID_INDI'
+      Index = 1
+      LookupCache = False
+      Origin = '"NOM_ATTACHEMENT"."ID_INDI"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object QueryNOM: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 2
+      LookupCache = False
+      Origin = '"NOM_ATTACHEMENT"."NOM"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object QueryNOM_INDI: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NOM_INDI'
+      Index = 3
+      LookupCache = False
+      Origin = '"NOM_ATTACHEMENT"."NOM_INDI"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object QueryKLE_DOSSIER: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'KLE_DOSSIER'
+      Index = 4
+      LookupCache = False
+      Origin = '"NOM_ATTACHEMENT"."KLE_DOSSIER"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object QueryETENDU: TBooleanField
+      DisplayWidth = 3
+      FieldKind = fkCalculated
+      FieldName = 'ETENDU'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'Oui;Non'
+    end
+  end
+  object pmValiderTelQuel: TPopupMenu[5]
+    left = 80
+    top = 49
+    object mTelQuel: TMenuItem
+      Caption = 'Ne pas tenir compte des paramètres pour valider le nom.'
+      OnClick = mTelQuelClick
+    end
+  end
+  object ReqDir: TIBSQL[6]
+    Database = dm.ibd_BASE
+    ParamCheck = True
+    Transaction = dm.IBTrans_Secondaire
+    left = 264
+    top = 192
+  end
+  object ReqNames: TIBQuery[7]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBTrans_Secondaire
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select distinct a.NOM from individu i'
+      ' inner join individu p on p.kle_dossier=i.kle_dossier and p.nom=i.nom'
+      ' inner join nom_attachement a on a.id_indi=p.cle_fiche'
+      ' where i.cle_fiche=:I_CLE_FICHE'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'I_CLE_FICHE'
+        ParamType = ptInput
+      end>
+    left = 144
+    top = 200
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'I_CLE_FICHE'
+        ParamType = ptInput
+      end>
+  end
+  object DataSource2: TDatasource[8]
+    DataSet = ReqNames
+    left = 56
+    top = 200
+  end
+end

@@ -1,0 +1,769 @@
+11	Île-de-France	1
+21	Champagne-Ardenne	1
+22	Picardie	1
+23	Haute-Normandie	1
+24	Centre	1
+25	Basse-Normandie	1
+26	Bourgogne	1
+31	Nord-Pas-de-Calais	1
+41	Lorraine	1
+42	Alsace	1
+43	Franche-Comté	1
+52	Pays de la Loire	1
+53	Bretagne	1
+54	Poitou-Charentes	1
+72	Aquitaine	1
+73	Midi-Pyrénées	1
+74	Limousin	1
+82	Rhône-Alpes	1
+83	Auvergne	1
+91	Languedoc-Roussillon	1
+93	Provence-Alpes-Côte d'Azur	1
+94	Corse	1
+1	Guadeloupe	97000
+2	Martinique	97000
+3	Guyane	97000
+4	Réunion	97000
+975	Saint Pierre et Miquelon	98000
+984	Afrique et terres australes	98000
+985	Mayotte	98000
+986	Wallis et Futuna	98000
+987	Polynésie Française	98000
+988	Nouvelle Calédonie	98000
+101001	Arhus	99101
+101002	Bornholm	99101
+101003	Frederiksborg	99101
+101004	Fyn	99101
+101005	Kobenhavn	99101
+101006	Nordjylland	99101
+101007	Ribe	99101
+101008	Ringkobing	99101
+101009	Roskilde	99101
+101010	Sonderjylland	99101
+101011	Storstrom	99101
+101012	Vejle	99101
+101013	Vestsjaelland	99101
+101014	Viborg	99101
+101015	Îles Féroé	99101
+103001	Aust Agder	99103
+103002	Akeshus	99103
+103003	Buskerud	99103
+103004	Finnmark	99103
+103005	Hedmark	99103
+103006	Hordaland	99103
+103007	More Og Romsdal	99103
+103008	Nordland	99103
+103009	Nord Trondelag	99103
+103010	Oppland	99103
+103011	Ostfold	99103
+103012	Rogaland	99103
+103013	Sogn og Fjordane	99103
+103014	Sor Trondelag	99103
+103015	Telemark	99103
+103016	Troms	99103
+103017	Vest Agder	99103
+103018	Vestfold	99103
+103020	Île Bouvet	99103
+103021	Svalbard	99103
+103022	Île Jan Mayen	99103
+104001	Alvsborg	99104
+104002	Blekinge	99104
+104003	Dalarna	99104
+104004	Gavleborg	99104
+104005	Goteborg Bohus	99104
+104006	Gotland	99104
+104007	Halland	99104
+104008	Jamtland	99104
+104009	Jonkoping	99104
+104010	Kalmar	99104
+104011	Kristianstad	99104
+104012	Kronoberg	99104
+104013	Malmohus	99104
+104014	Norrbotten	99104
+104015	Orebro	99104
+104016	Ostergotland	99104
+104017	Skaraborg	99104
+104018	Sodermanland	99104
+104019	Stockholm	99104
+104020	Uppsala	99104
+104021	Varmland	99104
+104022	Vasterbotten	99104
+104023	Vastmanland	99104
+104024	Vasternorrland	99104
+105001	Åland	99105
+105002	Ahvenanmaa	99105
+105003	Häme	99105
+105004	Keski Suomi	99105
+105005	Kuopio	99105
+105006	Kymi	99105
+105007	Lappi	99105
+105008	Mikkeli	99105
+105009	Oulu	99105
+105010	Pohjois Karjala	99105
+105011	Turku ja Pori	99105
+105012	Uusimaa	99105
+105013	Vaasa	99105
+109001	Baden-Württemberg	99109
+109002	Bayern	99109
+109003	Berlin	99109
+109004	Brandenburg	99109
+109005	Bremen	99109
+109006	Hamburg	99109
+109007	Hessen	99109
+109008	Mecklenburg-Vorpommern	99109
+109009	Niedersachsen	99109
+109010	Nordrhein-Westfalen	99109
+109011	Rheinland-Pfalz	99109
+109012	Saarland	99109
+109013	Sachsen	99109
+109014	Sachsen-Anhalt	99109
+109015	Schleswig-Holstein	99109
+109016	Thüringen	99109
+110010	Burgenland	99110
+110020	Kärnten	99110
+110030	Niederösterreich	99110
+110040	Oberösterreich	99110
+110050	Salzburg	99110
+110060	Steiermark	99110
+110070	Tirol	99110
+110080	Voralberg	99110
+110090	Wien	99110
+112001	Baranya	99112
+112002	Borsod Abauj Zemplen	99112
+112003	Bekes	99112
+112004	Bacs Kiskun	99112
+112005	Csongrad	99112
+112006	Debrecen	99112
+112007	Fejer	99112
+112008	Gyor Moson Sopron	99112
+112009	Hajdu Bihar	99112
+112010	Heves	99112
+112011	Jasz Nagykun Szolnok	99112
+112012	Komarom Esztergom	99112
+112013	Nograd	99112
+112014	Pest	99112
+112015	Somogy	99112
+112016	Szabolcs Szatmar Bereg	99112
+112017	Tolna	99112
+112018	Vas	99112
+112019	Veszprem	99112
+112020	Zala	99112
+114001	Alba	99114
+114002	Arad	99114
+114003	Arges	99114
+114004	Bacau	99114
+114005	Bihor	99114
+114006	Bistrita Nasaud	99114
+114007	Botosani	99114
+114008	Brasov	99114
+114009	Bucuresti	99114
+114010	Buzau	99114
+114011	Calarasi	99114
+114012	Cluj	99114
+114013	Constanta	99114
+114014	Covasna	99114
+114015	Caras Severin	99114
+114016	Dimbovita	99114
+114017	Dolj	99114
+114018	Galati	99114
+114019	Giurgiu	99114
+114020	Gorj	99114
+114021	Harghita	99114
+114022	Hunedoara	99114
+114023	Ialomita	99114
+114024	Iasi	99114
+114025	Maramures	99114
+114026	Mehedinti	99114
+114027	Mures	99114
+114028	Neamt	99114
+114029	Olt	99114
+114030	Prahova	99114
+114031	Salaj	99114
+114032	Sibiu	99114
+114033	Satu Mare	99114
+114034	Suceava	99114
+114035	Teleorman	99114
+114036	Timis	99114
+114037	Tulcea	99114
+114038	Vaslui	99114
+114039	Vilcea	99114
+114040	Vrancea	99114
+116001	Jihocesky	99116
+116002	Jihomoravsky	99116
+116003	Praha	99116
+116004	Stredocesky	99116
+116005	Severocesky	99116
+116006	Severomoravsky	99116
+116007	Vychodocesky	99116
+116008	Zapadocesky	99116
+117001	Bratislava	99117
+117002	Stredoslovensky	99117
+117003	Vychodoslovensky	99117
+117004	Zapadoslovensky	99117
+122001	Dolnoslaskie	99122
+122002	Kujawsko Pomorskie	99122
+122003	Lubelskie	99122
+122004	Lubuskie	99122
+122005	Lodzkie	99122
+122006	Malopolskie	99122
+122007	Mazowieckie	99122
+122008	Opolskie	99122
+122009	Podkarpackie	99122
+122010	Podlaskie	99122
+122011	Pomorskie	99122
+122012	Slaskie	99122
+122013	Swietokrzyskie	99122
+122014	Wielkopolski	99122
+122015	Warminsko Mazurskie	99122
+122016	Zachodnio Pomorskie	99122
+126001	Attiki	99126
+126002	Sterea Ellada	99126
+126003	Dytiki Ellada	99126
+126004	Peloponissos	99126
+126005	Thessalia	99126
+126006	Kentriki Makedonia	99126
+126007	Dytiki Makedonia	99126
+126008	Anatoliki Makedonia & Thraki	99126
+126009	Ipiros	99126
+126010	Notio Egeo	99126
+126011	Vorio Egeo	99126
+126012	Ionia Nissia	99126
+126013	Kriti	99126
+126014	Mont Athos	99126
+127001	Piemonte	99127
+127002	Valle d'Aosta	99127
+127003	Lombardia	99127
+127004	Trentino-Alto Adige	99127
+127005	Veneto	99127
+127006	Friuli-Venezia Giulia	99127
+127007	Liguria	99127
+127008	Emilia-Romagna	99127
+127009	Toscana	99127
+127010	Umbria	99127
+127011	Marche	99127
+127012	Lazio	99127
+127013	Abruzzo	99127
+127014	Molise	99127
+127015	Campania	99127
+127016	Puglia	99127
+127017	Basilicata	99127
+127018	Calabria	99127
+127019	Sicilia	99127
+127020	Sardegna	99127
+2000	Flandre	99131
+3000	Wallonie	99131
+4000	Bruxelles-Capitale	99131
+132001	Channel Islands	99132
+132002	England	99132
+132003	Isle of Man	99132
+132004	Scotland	99132
+132005	Ulster, Northen Ireland	99132
+132006	Wales	99132
+134001	Andalucía	99134
+134002	Aragón	99134
+134003	Asturias	99134
+134004	Baleares	99134
+134005	Cataluña	99134
+134006	Castilla La Mancha	99134
+134007	Canarias	99134
+134008	Cantabria	99134
+134009	Castilla y León	99134
+134010	Extremadura	99134
+134011	Galicia	99134
+134012	La Rioja	99134
+134013	Madrid	99134
+134014	Murcia	99134
+134015	Navarra	99134
+134016	País Vasco	99134
+134017	Valencia	99134
+134018	Ceuta y Melilla	99134
+135001	Drenthe	99135
+135002	Flevoland	99135
+135003	Friesland	99135
+135004	Gelderland	99135
+135005	Groningen	99135
+135006	Limburg	99135
+135007	Noordbrabant	99135
+135008	Noordholland	99135
+135009	Overijssell	99135
+135010	Utrecht	99135
+135011	Zeeland	99135
+135012	Zuidholland	99135
+136001	Connaught	99136
+136002	Leinster	99136
+136003	Munster	99136
+136004	Ulster	99136
+137001	Diekirch	99137
+137002	Grevenmacher	99137
+137003	Luxembourg	99137
+139001	Azores	99139
+139002	Aveiro	99139
+139003	Beja	99139
+139004	Braganca	99139
+139005	Braga	99139
+139006	Castelo Branco	99139
+139007	Coimbra	99139
+139008	Evora	99139
+139009	Faro	99139
+139010	Guarda	99139
+139011	Leiria	99139
+139012	Lisboa	99139
+139013	Madeira	99139
+139014	Portalegre	99139
+139015	Porto	99139
+139016	Santarem	99139
+139017	Setubal	99139
+139018	Viana Do Castelo	99139
+139019	Viseu	99139
+139020	Vila Real	99139
+1401	Suisse Italienne	99140
+1402	Suisse Allemande	99140
+1403	Suisse Française	99140
+1404	Suisse Romanche	99140
+147001	Aconcagua	99417
+147002	Aisen del General C.	99417
+147003	Antofagasta	99417
+147004	Araucania	99417
+147005	Atacama	99417
+147006	Biobio	99417
+147007	Coquimbo	99417
+147008	Libertador General B.	99417
+147009	Los Lagos	99417
+147010	Magallanes	99417
+147011	Maule	99417
+147012	Metropolitana	99417
+147013	Tara Paca	99417
+155001	Cherkaska	99155
+155002	Chernihivska	99155
+155003	Dnipropetrovska	99155
+155004	Donetska	99155
+155005	Ivano Frankivska	99155
+155006	Kharkivska	99155
+155007	Khersonska	99155
+155008	Khmelnytska	99155
+155009	Kirovohradska	99155
+155010	Respublika Krym	99155
+155011	Kyyivska	99155
+155012	Luhanska	99155
+155013	Lvivska	99155
+155014	Mykolayivska	99155
+155015	Odeska	99155
+155016	Poltavska	99155
+155017	Rivnenska	99155
+155018	Sumska	99155
+155019	Ternopilska	99155
+155020	Vinnytska	99155
+155021	Volynska	99155
+155022	Zakarpatska	99155
+155023	Zaporizka	99155
+155024	Zhytomyrska	99155
+217001	Chugoku	99217
+217002	Chubu	99217
+217003	Hokkaido	99217
+217004	Kansai	99217
+217005	Kanto	99217
+217006	Kyushu	99217
+217007	Shikoku	99217
+217008	Tohoku	99217
+223001	Andaman and Nicobar	99223
+223002	Andhra Pradesh	99223
+223003	Arunachal Pradesh	99223
+223004	Assam	99223
+223005	Bihar	99223
+223006	Chandigarh	99223
+223007	Daman & Diu	99223
+223008	Delhi	99223
+223009	Dadra & Nagar	99223
+223010	Goa	99223
+223011	Gujarat	99223
+223012	Haryana	99223
+223013	Himachal Pradesh	99223
+223014	Jammu & Kashmir	99223
+223015	Karnataka	99223
+223016	Kerala	99223
+223017	Lakshadweep	99223
+223018	Maharashtra	99223
+223019	Manipur	99223
+223020	Meghalaya	99223
+223021	Mizoram	99223
+223022	Madhya Pradesh	99223
+223023	Nagaland	99223
+223024	Orissa	99223
+223025	Pondicherry	99223
+223026	Punjab	99223
+223027	Rajasthan	99223
+223028	Sikkim	99223
+223029	Tamil Nadu	99223
+223030	Tripura	99223
+223031	Uttar Pradesh	99223
+223032	West Bengal	99223
+223050	Goa	99223
+227001	Johor	99227
+227002	Kedah	99227
+227003	Kelantan	99227
+227004	Kuala Lumpur	99227
+227005	Melaka	99227
+227006	Negeri Sembilan	99227
+227007	Pahang	99227
+227008	Perak	99227
+227009	Penang	99227
+227010	Perlis	99227
+227011	Sabah	99227
+227012	Sarawak	99227
+227013	Selangor	99227
+231001	Indonésie	99231
+231002	Timor Oriental	99231
+313001	Canaries (Îles)	99313
+313002	Presides	99313
+313003	Prov. Espagnoles d'Afrique	99313
+327001	Bénin	99327
+351001	Ariana	99351
+351002	Ben Arous	99351
+351003	Beja	99351
+351004	Binzert	99351
+351005	El Kef	99351
+351006	Gabes	99351
+351007	Gafsa	99351
+351008	Jendouba	99351
+351009	Kairouan	99351
+351010	Kasserine	99351
+351011	Kebili	99351
+351012	Mahdia	99351
+351013	Medenine	99351
+351014	Monastir	99351
+351015	Nabeul	99351
+351016	Sidi Bouzid	99351
+351017	Sfax	99351
+351018	Siliana	99351
+351019	Sousse	99351
+351020	Tataouine	99351
+351021	Tozeur	99351
+351022	Tunis	99351
+351023	Zaghouan	99351
+352001	Wilayas	99352
+401001	Alberta	99401
+401002	British Columbia	99401
+401003	Manitoba	99401
+401004	New Brunswick	99401
+401005	Newfoundland & Labrador	99401
+401006	Nova Scotia	99401
+401007	North West Territories	99401
+401008	Ontario	99401
+401009	Prince Edward Island	99401
+401010	Québec	99401
+401011	Saskatchewan	99401
+401012	Yukon	99401
+404001	Alabama	99404
+404002	Arizona	99404
+404003	Arkansas	99404
+404004	Alaska	99404
+404005	California	99404
+404006	Colorado	99404
+404007	Connecticut	99404
+404008	Delaware	99404
+404009	Florida	99404
+404010	Georgia	99404
+404011	Hawaii	99404
+404012	Idaho	99404
+404013	Illinois	99404
+404014	Indiana	99404
+404015	Iowa	99404
+404016	Kansas	99404
+404017	Kentucky	99404
+404018	Louisiana	99404
+404019	Maine	99404
+404020	Maryland	99404
+404021	Massachusetts	99404
+404022	Michigan	99404
+404023	Minnesota	99404
+404024	Montana	99404
+404025	Mississippi	99404
+404026	Missouri	99404
+404027	North Carolina	99404
+404028	North Dakota	99404
+404029	Nebraska	99404
+404030	Nevada	99404
+404031	New Hampshire	99404
+404032	New Jersey	99404
+404033	New Mexico	99404
+404034	New York	99404
+404035	Ohio	99404
+404036	Oklahoma	99404
+404037	Oregon	99404
+404038	Pennsylvania	99404
+404039	Rhode Island	99404
+404040	South Carolina	99404
+404041	South Dakota	99404
+404042	Tennessee	99404
+404043	Texas	99404
+404044	Utah	99404
+404045	Vermont	99404
+404046	Virginia	99404
+404047	Washington	99404
+404048	Wisconsin	99404
+404049	West Virginia	99404
+404050	Wyoming	99404
+405001	Aguascalientes	99405
+405002	Baja California Norte	99405
+405003	Baja California Sur	99405
+405004	Campeche	99405
+405005	Chihuahua	99405
+405006	Chiapas	99405
+405007	Coahuila	99405
+405008	Colima	99405
+405009	Distrito Federal	99405
+405010	Durango	99405
+405011	Guanajuato	99405
+405012	Guerrero	99405
+405013	Hidalgo	99405
+405014	Jalisco	99405
+405015	Mexico	99405
+405016	Michoacan	99405
+405017	Morelos	99405
+405018	Nayarit	99405
+405019	Nuevo Leon	99405
+405020	Oaxaca	99405
+405021	Puebla	99405
+405022	Quintana Roo	99405
+405023	Queretaro	99405
+405024	Sinaloa	99405
+405025	San Luis Potosi	99405
+405026	Sonora	99405
+405027	Tabasco	99405
+405028	Tamaulipas	99405
+405029	Tlaxcala	99405
+405030	Vera Cruz	99405
+405031	Yucatan	99405
+405032	Zacatecas	99405
+407001	Camaguey	99407
+407002	Ciego de Avila	99407
+407003	Cienfuegos	99407
+407004	Granma	99407
+407005	Guantanamo	99407
+407006	Holguin	99407
+407007	Isla de la Juventud	99407
+407008	La Habana	99407
+407009	Las Tunas	99407
+407010	Matanzas	99407
+407011	Pinar del Rio	99407
+407012	Santiago de Cuba	99407
+407013	Sancti Spiritus	99407
+407014	Villa Clara	99407
+415001	Buenos Aires	99415
+415002	Catamarca	99415
+415003	Chaco	99415
+415004	Chubut	99415
+415005	Corrientes	99415
+415006	Entre Rios	99415
+415007	Formosa	99415
+415008	Jujuy	99415
+415009	La Pampa	99415
+415010	La Rioja	99415
+415011	Mendoza	99415
+415012	Neuquen	99415
+415013	Rio Negro	99415
+415014	Salta	99415
+415015	Santo Cruz	99415
+415016	Santiago del Estero	99415
+415017	Santa Fe	99415
+415018	San Juan	99415
+415019	San Luis	99415
+415020	Tierra del Fuego	99415
+416001	Acre	99416
+416002	Alagoas	99416
+416003	Amapa	99416
+416004	Amazonas	99416
+416005	Bahia	99416
+416006	Ceara	99416
+416007	Distrito Federal	99416
+416008	Espirito Santu	99416
+416009	Goias	99416
+416010	Maranhao	99416
+416011	Minas Gerais	99416
+416012	Mato Grosso	99416
+416013	Mato Grosso do Sul	99416
+416014	Paraiba	99416
+416015	Pernambuco	99416
+416016	Piaui	99416
+416017	Parana	99416
+416018	Para	99416
+416019	Rio de Janeiro	99416
+416020	Rio Grande do Norte	99416
+416021	Rio Grande do Sul	99416
+416022	Rondonia	99416
+416023	Roraima	99416
+416024	Santa Catarina	99416
+416025	Sergipe	99416
+416026	Sau Paulo	99416
+416027	Tocantins	99416
+418001	Beni	99418
+418002	Chuquisaca	99418
+418003	Cochabamba	99418
+418004	La Paz	99418
+418005	Orduro	99418
+418006	Pando	99418
+418007	Potosi	99418
+418008	Santa Cruz	99418
+418009	Tarija	99418
+419001	Amazonas	99419
+419002	Antioqua	99419
+419003	Arauca	99419
+419004	Bolivar	99419
+419005	Boyaca	99419
+419006	Caldas	99419
+419007	Casanare	99419
+419008	Cauca	99419
+419009	Cezar	99419
+419010	Choco	99419
+419011	Cordoga	99419
+419012	Cundinamarca	99419
+419013	Guajira	99419
+419014	Guaviare	99419
+419015	Huila	99419
+419016	Magdalena	99419
+419017	Meta	99419
+419018	Narino	99419
+419019	Norte de Santander	99419
+419020	Putumayo	99419
+419021	Ris	99419
+419022	Santander	99419
+419023	Sucre	99419
+419024	Tolima	99419
+419025	Vaupes	99419
+419026	Valle del Cauca	99419
+419027	Vichada Guainia	99419
+420001	Azuay	99420
+420002	Bolivar	99420
+420003	Canar	99420
+420004	Carchi	99420
+420005	Chimborazo	99420
+420006	Cotopaxi	99420
+420007	El Oro	99420
+420008	Esmeraldas	99420
+420009	Guayas	99420
+420010	Imbabura	99420
+420011	Loja	99420
+420012	Los Rios	99420
+420013	Manabi	99420
+420014	Morona Santiago	99420
+420015	Napo	99420
+420016	Pastaza	99420
+420017	Pichincha	99420
+420018	Tungurahua	99420
+420019	Zamora Chinchipe	99420
+421001	Amambay	99421
+421002	Alto Parana	99421
+421003	Alto Paraguay	99421
+421004	Boqueron	99421
+421005	Central	99421
+421006	Chaco	99421
+421007	Concepcion	99421
+421008	Cordillera	99421
+421009	Caazapa	99421
+421010	Caaguazu	99421
+421011	Guaira	99421
+421012	Itapua	99421
+421013	Misiones	99421
+421014	Nueva Asuncion	99421
+421015	Neembucu	99421
+421016	Paraguari	99421
+421017	Presidente Hayes	99421
+421018	San Pedro	99421
+422001	Amazonas	99422
+422002	Ancash	99422
+422003	Apurimac	99422
+422004	Arequipa	99422
+422005	Ayacucho	99422
+422006	Cajamarca	99422
+422007	Cambayeque	99422
+422008	Cuzco	99422
+422009	Huacavelica	99422
+422010	Huanuco	99422
+422011	Ica	99422
+422012	Junin	99422
+422013	Libertad	99422
+422014	Lima	99422
+422015	Loreto	99422
+422016	Moquegua	99422
+422017	Pasco	99422
+422018	Piura	99422
+422019	Puno	99422
+422020	San Martin	99422
+422021	Tacna	99422
+422022	Tumbes	99422
+424001	Amazonas	99424
+424002	Anzoategui	99424
+424003	Apure	99424
+424004	Aragua	99424
+424005	Barinas	99424
+424006	Cojedes	99424
+424007	Carabobo	99424
+424008	Caracas	99424
+424009	Delta Amacuro	99424
+424010	Falcon	99424
+424011	Guarico	99424
+424012	Lara	99424
+424013	Merida	99424
+424014	Miranda	99424
+424015	Monagas	99424
+424016	Portuguesa	99424
+424017	Sucre	99424
+424018	Tachira	99424
+424019	Trujllo	99424
+424020	Yaracuy	99424
+424021	Zulia	99424
+425001	Anguilla	99425
+425002	Bermudes	99425
+425003	Caimanes (Îles)	99425
+425004	Montserrat	99425
+425005	Terr. RU aux Antilles	99425
+425006	Turks et Caiques (Îles)	99425
+425007	Vierges Britanniques (Îles)	99425
+427001	Malouines ou Falkland (Îles)	99427
+427002	Terr. RU dans Atlantique Sud	99427
+427003	Georgie Sud & île Sandwich Sud	99427
+431001	Antilles néerlandaises	99431
+431002	Aruba	99431
+431003	Territoire des Pays-Bas	99431
+432001	Territoires USA en Amérique	99432
+432002	Vierges des USA (Îles)	99432
+437001	Brokopondo	99437
+437002	Commewijne	99437
+437003	Coronie	99437
+437004	Marowijne	99437
+437005	Nickerie	99437
+437006	Para	99437
+437007	Saramacca	99437
+437008	Suriname	99437
+501001	New South Wales	99501
+501002	Northern Territory	99501
+501003	Queensland	99501
+501004	South Australia	99501
+501005	Tasmania	99501
+501006	Victoria	99501
+501007	Western Australia	99501
+501010	Chrismas (Île)	99501
+501011	Cocos ou Keeling (Île)	99501
+501012	Heard et Macdonald (Île)	99501
+501013	Norfolk (Île)	99501
+502001	Auckland	99502
+502002	Bay of Plenty	99502
+502003	Canterbury	99502
+502004	Gisborne	99502
+502005	Hawkes Bay	99502
+502006	Manawatu Wanganui	99502
+502007	Nelson Malborough	99502
+502008	Northland	99502
+502009	Otago	99502
+502010	Southland	99502
+502011	Taranaki	99502
+502012	Waikato	99502
+502013	West Coast	99502
+502014	Wellington	99502
+502020	Cook (Île)	99502
+502021	Niue	99502
+502022	Tokelau	99502
+505001	Guam	99505
+505002	Mariannes du nord (Îles)	99505
+505003	Samoa Américaines	99505
+505004	Territoires USA en Océanie	99505

@@ -1,0 +1,913 @@
+inherited FGraphConfigHierarchie: TFGraphConfigHierarchie
+  Left = 468
+  Height = 357
+  Top = 210
+  Width = 359
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'FGraphConfigHierarchie'
+  ClientHeight = 357
+  ClientWidth = 359
+  Color = clWindow
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  FormStyle = fsStayOnTop
+  KeyPreview = True
+  OnDestroy = SuperFormDestroy
+  OnKeyDown = SuperFormKeyDown
+  PopupMode = pmAuto
+  object pBorder: TPanel[0]
+    Left = 0
+    Height = 357
+    Top = 0
+    Width = 359
+    Align = alClient
+    BevelOuter = bvNone
+    BorderWidth = 1
+    ClientHeight = 357
+    ClientWidth = 359
+    TabOrder = 0
+    object Panel11: TPanel
+      Left = 1
+      Height = 355
+      Top = 1
+      Width = 357
+      Align = alClient
+      ClientHeight = 355
+      ClientWidth = 357
+      TabOrder = 0
+      object Panel14: TPanel
+        Left = 1
+        Height = 352
+        Top = 2
+        Width = 1
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 0
+      end
+      object Panel13: TPanel
+        Left = 1
+        Height = 1
+        Top = 1
+        Width = 355
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 1
+      end
+      object Panel6: TPanel
+        Left = 2
+        Height = 352
+        Top = 2
+        Width = 354
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 4
+        ClientHeight = 352
+        ClientWidth = 354
+        TabOrder = 2
+        object Notebook: TPageControl
+          Left = 4
+          Height = 309
+          Top = 4
+          Width = 346
+          ActivePage = page1
+          Align = alClient
+          TabIndex = 0
+          TabOrder = 0
+          object page1: TTabSheet
+            Caption = 'Dimensions'
+            ClientHeight = 283
+            ClientWidth = 338
+            object Label6: TLabel
+              Left = 12
+              Height = 13
+              Top = 19
+              Width = 134
+              Caption = 'Décalage à gauche ..........'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label7: TLabel
+              Left = 12
+              Height = 13
+              Top = 47
+              Width = 135
+              Caption = 'Décalage en haut ............'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label8: TLabel
+              Left = 200
+              Height = 13
+              Top = 19
+              Width = 16
+              Caption = 'mm'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label9: TLabel
+              Left = 200
+              Height = 13
+              Top = 47
+              Width = 16
+              Caption = 'mm'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label1: TLabel
+              Left = 12
+              Height = 13
+              Top = 76
+              Width = 135
+              Caption = 'Largeur boîte .................'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label3: TLabel
+              Left = 12
+              Height = 13
+              Top = 105
+              Width = 133
+              Caption = 'Hauteur boîte ................'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label4: TLabel
+              Left = 200
+              Height = 13
+              Top = 76
+              Width = 16
+              Caption = 'mm'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label5: TLabel
+              Left = 200
+              Height = 13
+              Top = 105
+              Width = 16
+              Caption = 'mm'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label15: TLabel
+              Left = 12
+              Height = 13
+              Top = 133
+              Width = 139
+              Caption = 'Espace entre 2 générations .'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label16: TLabel
+              Left = 12
+              Height = 13
+              Top = 162
+              Width = 135
+              Caption = 'Espace entre 2 individus ....'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label17: TLabel
+              Left = 200
+              Height = 13
+              Top = 134
+              Width = 16
+              Caption = 'mm'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label18: TLabel
+              Left = 200
+              Height = 13
+              Top = 163
+              Width = 16
+              Caption = 'mm'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label27: TLabel
+              Left = 8
+              Height = 38
+              Top = 235
+              Width = 209
+              AutoSize = False
+              Caption = 'Il est préférable de désactiver l''optimisation de la largeur de l''arbre lors du réglage des paramètres autres que les couleurs.'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clRed
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+              WordWrap = True
+            end
+            object Label28: TLabel
+              Left = 12
+              Height = 13
+              Top = 191
+              Width = 138
+              Caption = 'Recouvrement d''impression .'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label29: TLabel
+              Left = 200
+              Height = 13
+              Top = 192
+              Width = 16
+              Caption = 'mm'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object edMargeLeft: TFWSpinEdit
+              Cursor = crHandPoint
+              Left = 154
+              Height = 25
+              Top = 16
+              Width = 41
+              OnChange = ApplyChanges
+              ParentFont = False
+              TabOrder = 0
+              Value = 1
+            end
+            object edMargeTop: TFWSpinEdit
+              Cursor = crHandPoint
+              Left = 154
+              Height = 25
+              Top = 44
+              Width = 41
+              OnChange = ApplyChanges
+              ParentFont = False
+              TabOrder = 1
+              Value = 1
+            end
+            object edWidthIndi: TFWSpinEdit
+              Cursor = crHandPoint
+              Left = 154
+              Height = 25
+              Top = 73
+              Width = 41
+              OnChange = ApplyChanges
+              ParentFont = False
+              TabOrder = 2
+              Value = 1
+            end
+            object edHeightIndi: TFWSpinEdit
+              Cursor = crHandPoint
+              Left = 154
+              Height = 25
+              Top = 102
+              Width = 41
+              OnChange = ApplyChanges
+              ParentFont = False
+              TabOrder = 3
+              Value = 1
+            end
+            object edEspaceEntreGenerations: TFWSpinEdit
+              Cursor = crHandPoint
+              Left = 154
+              Height = 25
+              Top = 131
+              Width = 41
+              OnChange = ApplyChanges
+              ParentFont = False
+              TabOrder = 4
+              Value = 1
+            end
+            object edEspaceEntreIndis: TFWSpinEdit
+              Cursor = crHandPoint
+              Left = 154
+              Height = 25
+              Top = 160
+              Width = 41
+              OnChange = ApplyChanges
+              ParentFont = False
+              TabOrder = 5
+              Value = 1
+            end
+            object cOptimiseLargeur: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 10
+              Height = 17
+              Top = 214
+              Width = 307
+              Caption = 'Optimiser la largeur de l''arbre.'
+              TabOrder = 6
+              UseDockManager = False
+              ParentFont = False
+            end
+            object edRecouvrementImpression: TFWSpinEdit
+              Cursor = crHandPoint
+              Left = 154
+              Height = 25
+              Top = 189
+              Width = 41
+              OnChange = ApplyChanges
+              ParentFont = False
+              TabOrder = 7
+              Value = 1
+            end
+          end
+          object page2: TTabSheet
+            Caption = 'Textes'
+            ClientHeight = 283
+            ClientWidth = 338
+            object Label2: TLabel
+              Left = 8
+              Height = 13
+              Top = 13
+              Width = 33
+              Caption = 'Textes'
+              ParentColor = False
+            end
+            object Label19: TLabel
+              Left = 95
+              Height = 28
+              Top = 13
+              Width = 189
+              AutoSize = False
+              Caption = 'Hauteur de ligne :'
+              ParentColor = False
+              WordWrap = True
+            end
+            object Label13: TLabel
+              Left = 249
+              Height = 13
+              Top = 12
+              Width = 16
+              Caption = 'mm'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object btnFont: TJvXPButton
+              Cursor = crHandPoint
+              Left = 7
+              Height = 22
+              Top = 246
+              Width = 92
+              Caption = 'Police utilisée'
+              TabOrder = 11
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+              ParentShowHint = False
+              OnClick = btnFontClick
+            end
+            object lCompositionLieu: TLabel
+              Left = 32
+              Height = 13
+              Top = 168
+              Width = 123
+              Caption = 'Composition des lieux'
+              Color = clYellow
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clGreen
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentColor = False
+              ParentFont = False
+              ParentShowHint = False
+              PopupMenu = mLieu
+              Transparent = False
+              OnClick = lCompositionLieuClick
+              OnMouseEnter = lCompositionLieuMouseEnter
+              OnMouseLeave = lCompositionLieuMouseLeave
+            end
+            object cNom: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 8
+              Height = 17
+              Top = 34
+              Width = 181
+              Caption = 'Nom'
+              TabOrder = 0
+              UseDockManager = False
+              ParentFont = False
+            end
+            object cPrenom: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 8
+              Height = 17
+              Top = 57
+              Width = 181
+              Caption = 'Prénom'
+              TabOrder = 2
+              UseDockManager = False
+              ParentFont = False
+            end
+            object cProf: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 9
+              Height = 17
+              Top = 81
+              Width = 181
+              Caption = 'Dernier métier'
+              TabOrder = 3
+              UseDockManager = False
+              ParentFont = False
+            end
+            object cNaissance: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 8
+              Height = 17
+              Top = 104
+              Width = 180
+              Caption = 'Date de naissance'
+              TabOrder = 4
+              UseDockManager = False
+              ParentFont = False
+            end
+            object cDeces: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 8
+              Height = 17
+              Top = 126
+              Width = 180
+              Caption = 'Date du décès'
+              TabOrder = 5
+              UseDockManager = False
+              ParentFont = False
+            end
+            object edLineHeight: TFWSpinEdit
+              Cursor = crHandPoint
+              Left = 206
+              Height = 25
+              Top = 9
+              Width = 41
+              OnChange = ApplyChanges
+              ParentFont = False
+              TabOrder = 1
+              Value = 1
+            end
+            object panExempleFont: TPanel
+              Left = 104
+              Height = 22
+              Top = 246
+              Width = 117
+              BevelOuter = bvLowered
+              Caption = 'Exemple police'
+              Color = 9422552
+              ParentColor = False
+              TabOrder = 6
+            end
+            object cAvecLieu: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 9
+              Height = 17
+              Top = 149
+              Width = 179
+              Caption = 'Dates avec lieux'
+              TabOrder = 7
+              UseDockManager = False
+              ParentFont = False
+              OnClick = cAvecLieuClick
+            end
+            object cMariage: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 9
+              Height = 17
+              Top = 183
+              Width = 308
+              Caption = 'Avec les mariages.'
+              TabOrder = 8
+              UseDockManager = False
+              ParentFont = False
+              OnClick = cMariageClick
+            end
+            object cAvecActe: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 9
+              Height = 17
+              Hint = 'Souligne la date et le lieu si l''acte n''est pas trouvé.'
+              Top = 203
+              Width = 324
+              Caption = 'Avec indication de l''état de l''acte.'
+              TabOrder = 9
+              UseDockManager = False
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = ApplyChanges
+              OnMouseEnter = cAvecActeMouseEnter
+              OnMouseLeave = cAvecActeMouseLeave
+            end
+            object cPosterite: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 9
+              Height = 17
+              Top = 222
+              Width = 332
+              Caption = 'Indicateur "Sans Postérité" (desc.)'
+              TabOrder = 10
+              UseDockManager = False
+              ParentFont = False
+              OnClick = ApplyChanges
+            end
+          end
+          object page3: TTabSheet
+            Caption = 'Couleurs'
+            ClientHeight = 279
+            ClientWidth = 342
+            object edCouleurRectHomme: TExtColorCombo
+              Cursor = crHandPoint
+              Left = 207
+              Height = 26
+              Top = 88
+              Width = 53
+              HTMLcolor = '#FFFFFF'
+              Color = 11184810
+              ItemHeight = 20
+              TabOrder = 3
+              OnChange = ApplyChanges
+            end
+            object Label20: TLabel
+              Left = 22
+              Height = 13
+              Top = 96
+              Width = 181
+              AutoSize = False
+              Caption = 'Couleur du rectangle .............'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object edCouleurFondRectHomme: TExtColorCombo
+              Cursor = crHandPoint
+              Left = 207
+              Height = 26
+              Top = 112
+              Width = 53
+              HTMLcolor = '#FFFFFF'
+              Color = 11184810
+              ItemHeight = 20
+              TabOrder = 4
+              OnChange = ApplyChanges
+            end
+            object edCouleurRectFemme: TExtColorCombo
+              Cursor = crHandPoint
+              Left = 207
+              Height = 26
+              Top = 184
+              Width = 53
+              HTMLcolor = '#FFFFFF'
+              Color = 11184810
+              ItemHeight = 20
+              TabOrder = 5
+              OnChange = ApplyChanges
+            end
+            object Label22: TLabel
+              Left = 22
+              Height = 13
+              Top = 192
+              Width = 171
+              AutoSize = False
+              Caption = 'Couleur du rectangle ................'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object edCouleurFondFemme: TExtColorCombo
+              Cursor = crHandPoint
+              Left = 207
+              Height = 26
+              Top = 208
+              Width = 53
+              HTMLcolor = '#FFFFFF'
+              Color = 11184810
+              ItemHeight = 20
+              TabOrder = 6
+              OnChange = ApplyChanges
+            end
+            object Label24: TLabel
+              Left = 8
+              Height = 14
+              Top = 65
+              Width = 85
+              Caption = 'Les hommes :'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label25: TLabel
+              Left = 8
+              Height = 14
+              Top = 161
+              Width = 81
+              Caption = 'Les femmes :'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label26: TLabel
+              Left = 8
+              Height = 14
+              Top = 17
+              Width = 181
+              Caption = 'Liens entre les boîtes ..............'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object edCouleurLiens: TExtColorCombo
+              Cursor = crHandPoint
+              Left = 176
+              Height = 26
+              Top = 12
+              Width = 53
+              HTMLcolor = '#FFFFFF'
+              Color = 11184810
+              ItemHeight = 20
+              TabOrder = 7
+              OnChange = ApplyChanges
+            end
+            object Label21: TLabel
+              Left = 10
+              Height = 14
+              Top = 140
+              Width = 192
+              Caption = 'Couleur texte, pour les hommes :'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object edColorTexteHomme: TExtColorCombo
+              Cursor = crHandPoint
+              Left = 207
+              Height = 26
+              Top = 137
+              Width = 53
+              HTMLcolor = '#FFFFFF'
+              Color = 11184810
+              ItemHeight = 20
+              TabOrder = 8
+              OnChange = ApplyChanges
+            end
+            object Label23: TLabel
+              Left = 10
+              Height = 14
+              Top = 235
+              Width = 189
+              Caption = 'Couleur texte, pour les femmes :'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              ParentColor = False
+              ParentFont = False
+            end
+            object edColorTexteFemme: TExtColorCombo
+              Cursor = crHandPoint
+              Left = 207
+              Height = 26
+              Top = 232
+              Width = 53
+              HTMLcolor = '#FFFFFF'
+              Color = 11184810
+              ItemHeight = 20
+              TabOrder = 9
+              OnChange = ApplyChanges
+            end
+            object cPaintFondRecHomme: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 16
+              Height = 17
+              Top = 114
+              Width = 183
+              Caption = 'Peindre le fond du rectangle'
+              TabOrder = 0
+              UseDockManager = False
+              Font.Height = -9
+              ParentFont = False
+            end
+            object cPaintFondRecFemme: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 16
+              Height = 17
+              Top = 208
+              Width = 177
+              Caption = 'Peindre le fond du rectangle'
+              TabOrder = 1
+              UseDockManager = False
+              Font.Height = -9
+              ParentFont = False
+            end
+            object cbShowSosas: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 6
+              Height = 17
+              Top = 37
+              Width = 321
+              Caption = 'Identifier les Sosas à l''impression:'
+              TabOrder = 2
+              UseDockManager = False
+              ParentFont = False
+              OnClick = cbShowSosasClick
+            end
+          end
+        end
+        object Panel1: TPanel
+          Left = 4
+          Height = 35
+          Top = 313
+          Width = 346
+          Align = alBottom
+          Caption = 'Panel1'
+          ClientHeight = 35
+          ClientWidth = 346
+          TabOrder = 1
+          object btnExport: TFBExport
+            Cursor = crHandPoint
+            Left = 217
+            Height = 33
+            Top = 1
+            Width = 128
+            Align = alRight
+            Caption = 'Sauver config.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            Margin = 0
+            OnClick = btnExportClick
+            ParentFont = False
+            ParentShowHint = False
+          end
+          object btnImport: TFBImport
+            Cursor = crHandPoint
+            Left = 96
+            Height = 33
+            Top = 1
+            Width = 121
+            Align = alRight
+            Caption = 'Charger config.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            Margin = 0
+            OnClick = btnImportClick
+            ParentFont = False
+            ParentShowHint = False
+          end
+        end
+      end
+    end
+  end
+  object FontDialog: TFontDialog[1]
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    MinFontSize = 0
+    MaxFontSize = 0
+    left = 152
+    top = 184
+  end
+  object Language: TYLanguage[2]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 160
+    top = 24
+  end
+  object mLieu: TPopupMenu[3]
+    left = 105
+    top = 155
+    object mAvecSubd: TMenuItem
+      Caption = 'Subdivision'
+      OnClick = menuChange
+    end
+    object mAvecVille: TMenuItem
+      Caption = 'Ville'
+      Checked = True
+      OnClick = menuChange
+    end
+    object mAvecDept: TMenuItem
+      Caption = 'Département'
+      object mAvecCodeDept: TMenuItem
+        Caption = 'Code'
+        OnClick = menuChange
+      end
+      object mAvecNomDept: TMenuItem
+        Caption = 'Nom'
+        OnClick = menuChange
+      end
+    end
+    object mAvecRegion: TMenuItem
+      Caption = 'Région'
+      OnClick = menuChange
+    end
+    object mAvecPays: TMenuItem
+      Caption = 'Pays'
+      OnClick = menuChange
+    end
+  end
+  object OpenDialog: TOpenDialog[4]
+    Title = 'Importer la configuration de l''arbre depuis un fichier.'
+    DefaultExt = '.ini'
+    Filter = 'Fichier d''initialisation (*.ini)|*.ini;*.INI|Tous (*.*)|*.*'
+    FilterIndex = 0
+    Options = [ofHideReadOnly, ofPathMustExist, ofFileMustExist, ofEnableSizing]
+    left = 48
+    top = 83
+  end
+  object SaveDialog: TSaveDialog[5]
+    Title = 'Exporter la configuration de l''arbre dans un fichier.'
+    DefaultExt = '.ini'
+    Filter = 'Fichier d''initialisation (*.ini)|*.ini|Tous (*.*)|*.*'
+    FilterIndex = 0
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofNoReadOnlyReturn, ofEnableSizing]
+    left = 256
+    top = 56
+  end
+end

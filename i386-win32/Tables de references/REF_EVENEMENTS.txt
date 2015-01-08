@@ -1,0 +1,760 @@
+1	ABBR	Abréviation	11	0	1	1	1	FRA	 	0
+2	ADDR	Adresse	11	0	1	1	1	FRA	 	0
+3	ADOP	Adoption	8	1	1	1	1	FRA	E	0
+4	ADR1	Ligne adresse 1	11	0	1	1	1	FRA	 	0
+5	ADR2	Ligne adresse 2	11	0	1	1	1	FRA	 	0
+6	AFN	N° Unique	11	0	1	1	1	FRA	 	0
+7	AGE	Age de l'individu	11	0	1	1	1	FRA	 	0
+8	AGNC	Institution	11	1	1	1	1	FRA	 	0
+9	ALIA	Alias	11	0	1	1	1	FRA	 	0
+10	ANCE	Ancêtre	11	0	1	1	1	FRA	 	0
+11	ANCI	Ascendance à étudier	11	0	1	1	1	FRA	 	0
+12	ANUL	Annulation d'une union	2	1	1	1	1	FRA	U	0
+13	ASSO	Lien d'associés à un individu	11	0	1	1	1	FRA	 	0
+14	AUTH	Auteur	11	0	1	1	1	FRA	 	0
+15	BAPL	Baptême Mormons	1	1	1	1	1	FRA	E	0
+16	BAPM	Baptême non chrétien	1	1	1	1	1	FRA	E	0
+17	BARM	Bar Mitzvah	3	1	1	1	1	FRA	E	1
+18	BASM	Bat Mitzvah	3	1	1	1	1	FRA	E	1
+19	BENE	Utiliser Bénédiction	1	0	1	1	1	FRA	 	0
+20	BIRT	Naissance	0	1	1	1	1	FRA	E	1
+21	BLES	Bénédiction	1	1	1	1	1	FRA	E	0
+22	BLOB	Objet binaire	11	0	1	1	1	FRA	 	0
+23	BURI	Inhumation/Sépulture	0	1	1	1	1	FRA	E	0
+24	CALN	Cote ou n° de classement pièce	10	0	1	1	1	FRA	 	0
+25	CAST	Caste	10	1	1	1	1	FRA	A	0
+26	CAUS	Cause de l'évènement	11	0	1	1	1	FRA	 	0
+27	CENS	Recensement	10	1	1	1	1	FRA	D	0
+28	CHAN	Date de modification	11	0	1	1	1	FRA	 	0
+29	CHAR	Jeu de caractère du fichier	11	0	1	1	1	FRA	 	0
+30	CHIL	Enfant naturel	11	0	1	1	1	FRA	 	0
+31	CHR	Baptême	1	1	1	1	1	FRA	E	0
+32	CHRA	Baptême adulte	1	1	1	1	1	FRA	E	0
+33	COMU	Communion	1	0	1	1	1	FRA	T	0
+34	CONC	Concaténation	11	0	1	1	1	FRA	 	0
+35	CONF	Confirmation	1	1	1	1	1	FRA	E	0
+36	CONL	Conversion Mormons	1	1	1	1	1	FRA	E	0
+37	CONT	Continuer	11	0	1	1	1	FRA	 	0
+38	COPR	Copyright	11	0	1	1	1	FRA	 	0
+39	CORP	Nom d'une entreprise	11	0	1	1	1	FRA	 	0
+40	CREM	Crémation	0	1	1	1	1	FRA	E	1
+41	CTRY	Pays	11	0	1	1	1	FRA	 	0
+42	CITY	Ville	11	0	1	1	1	FRA	 	0
+43	DATA	Données	11	0	1	1	1	FRA	 	0
+44	DATE	Date de l'évènement	11	0	1	1	1	FRA	 	0
+45	DEAT	Décès	0	1	1	1	1	FRA	E	1
+46	DECO	Décoration	6	0	1	1	1	FRA	T	0
+47	DESC	Descendance	11	0	1	1	1	FRA	 	0
+48	DESI	Descendance à étudier	11	0	1	1	1	FRA	 	0
+49	DEST	Destinataire	11	0	1	1	1	FRA	 	0
+50	DIPL	Utiliser Diplôme	5	0	1	1	1	FRA	 	0
+51	DIV	Rupture de l'union (divorce)	2	1	1	1	1	FRA	U	0
+52	DIVF	Demande de rupture (divorce)	2	1	1	1	1	FRA	U	0
+53	DSCR	Description physique	6	1	1	1	1	FRA	A	0
+54	EDUC	Niveau d'instruction	5	1	1	1	1	FRA	A	0
+55	EMIG	Émigration	8	1	1	1	1	FRA	E	0
+56	ENDL	Cérémonie Mormons ENDL	1	1	1	1	1	FRA	E	0
+57	ENGA	Fiançailles	2	1	1	1	1	FRA	U	0
+58	EVEN	Divers	9	1	1	1	1	FRA	D	0
+59	FAM	Famille	11	0	1	1	1	FRA	 	0
+60	FAMC	Famille d'un enfant	11	0	1	1	1	FRA	 	0
+61	FAMF	Fichier famille des mormons	11	0	1	1	1	FRA	 	0
+62	FAMS	Famille d'un individu	11	0	1	1	1	FRA	 	0
+63	FCOM	Première communion	1	1	1	1	1	FRA	E	0
+64	FILE	Fichier	11	0	1	1	1	FRA	 	0
+65	FORM	Format de fichier	11	0	1	1	1	FRA	 	0
+66	GEDC	Format GEDCOM	11	0	1	1	1	FRA	 	0
+67	GIVN	Prénom	11	0	1	1	1	FRA	 	0
+68	GRAD	Diplôme	5	1	1	1	1	FRA	E	0
+69	HEAD	En-tête GEDCOM	11	0	1	1	1	FRA	 	0
+70	HUSB	Mari ou père	11	0	1	1	1	FRA	 	0
+71	IDNO	Identifiant d'une personne	10	1	1	1	1	FRA	A	0
+72	IMMI	Immigration	8	1	1	1	1	FRA	E	0
+73	INDI	Une personne	11	0	1	1	1	FRA	 	0
+74	INHU	Utiliser Inhumation/Sépulture	0	0	1	1	1	FRA	 	1
+75	LANG	Langue utilisée	11	0	1	1	1	FRA	 	0
+76	LEGA	Légataire	10	0	1	1	1	FRA	T	0
+77	MARB	Publication des bans	2	1	1	1	1	FRA	U	0
+78	MARC	Contrat régissant l'union	2	1	1	1	1	FRA	U	0
+79	MARL	Autorisation légale d'union	2	1	1	1	1	FRA	U	0
+80	MARS	Contrat avant union	2	1	1	1	1	FRA	U	0
+81	MEDI	Information du support	11	0	1	1	1	FRA	 	0
+82	NAME	Nom d'un individu	11	0	1	1	1	FRA	 	0
+83	NATI	Nationalité, Peuple ou Tribu	8	1	1	1	1	FRA	A	0
+84	NATU	Naturalisation	8	1	1	1	1	FRA	E	0
+85	NCHI	Nombre d'enfant	11	0	0	1	0	FRA	 	0
+86	NICK	Surnom	11	0	1	1	1	FRA	 	0
+87	NMR	Nombre de mariage	11	0	0	1	0	FRA	 	0
+88	NOTE	Notes	11	0	1	1	1	FRA	 	0
+89	NPFX	Préfixe	11	0	1	1	1	FRA	 	0
+90	NSFX	Suffixe	11	0	1	1	1	FRA	 	0
+91	OBJE	Description	11	0	1	1	1	FRA	 	0
+92	OCCU	Profession	7	1	1	1	1	FRA	A	0
+93	ORDI	Ordination Mormons	1	0	1	1	1	FRA	 	0
+94	ORDN	Ordination	1	1	1	1	1	FRA	E	0
+95	PAGE	N° de page	11	0	1	1	1	FRA	 	0
+96	PEDI	Pedigree	7	0	1	1	1	FRA	 	0
+97	PHON	Téléphone	11	0	1	1	1	FRA	 	0
+98	PLAC	Lieu de l'événement	11	0	1	1	1	FRA	 	0
+99	POST	Code postal de l'évènement	11	0	1	1	1	FRA	 	0
+100	PROB	Validation d'un testament	4	1	1	1	1	FRA	E	0
+101	PROP	Biens et possessions	10	1	1	1	1	FRA	A	0
+102	PUBL	Publication d'un ouvrage	11	1	1	1	1	FRA	 	0
+103	QUAY	Degré de confiance	11	0	1	1	1	FRA	 	0
+104	REFN	N° du fichier	11	0	1	1	1	FRA	 	0
+105	RELA	Valeur lien	11	0	1	1	1	FRA	 	0
+106	RELI	Religion	1	1	1	1	1	FRA	A	0
+107	REPO	Dépositaire de l'info	11	0	1	1	1	FRA	 	0
+108	RESI	Domicile	11	0	1	1	1	FRA	 	0
+109	RESN	Restriction	11	0	1	1	1	FRA	 	0
+110	RETI	Retraite	4	1	1	1	1	FRA	E	0
+111	RFN	N° permanent	11	0	1	1	1	FRA	 	0
+112	RIN	N° automatique	11	0	1	1	1	FRA	 	0
+113	ROLE	Rôle joué par l'individu	11	0	1	1	1	FRA	 	0
+114	SACR	Sacre	6	0	1	1	1	FRA	T	0
+115	SEX	Sexe	11	0	1	1	1	FRA	 	0
+116	SLGC	Cérémonie Mormons SLGC	1	1	1	1	1	FRA	E	0
+117	SLGS	Mariage Mormon	1	1	1	1	1	FRA	U	0
+118	SOUR	Sources	11	0	1	1	1	FRA	 	0
+119	SPFX	Partie pas indexée	11	0	1	1	1	FRA	 	0
+120	SSN	N° de SS (USA seulement)	10	1	1	1	1	FRA	A	0
+121	STAE	Etat	11	0	1	1	1	FRA	 	0
+122	STAT	Statut	11	0	1	1	1	FRA	 	0
+123	SUBM	Origine des données	11	0	1	1	1	FRA	 	0
+124	SURN	Surnom de famille	11	0	1	1	1	FRA	 	0
+125	TEMP	Nom/n° code temple Mormon	11	0	1	1	1	FRA	 	0
+126	TIME	Heure	11	0	1	1	1	FRA	 	0
+127	TITL	Titre	6	1	1	1	1	FRA	A	0
+128	TITR	Utiliser Titre	10	0	1	1	1	FRA	 	0
+129	TRLR	Fin de fichier GEDCOM	11	0	1	1	1	FRA	 	0
+130	TYPE	Définition complémentaire	11	0	1	1	1	FRA	 	0
+131	VERS	Version du produit	11	0	1	1	1	FRA	 	0
+132	VOYA	Voyage	9	0	1	1	1	FRA	T	0
+133	WIFE	Epouse	11	0	1	1	1	FRA	 	0
+134	WILL	Testament (rédaction)	4	1	1	1	1	FRA	E	0
+135	MARR	Union (Mariage)	2	1	1	1	1	FRA	U	0
+136	PURC	Acquisition	10	0	1	1	1	FRA	T	0
+137	ALIV	Vivant	11	0	1	1	1	FRA	 	0
+138	MILI	Service militaire	6	0	1	1	1	FRA	T	0
+139	SALE	Vente	10	0	1	1	1	FRA	T	0
+140	TRIP	Voyage long	9	0	1	1	1	FRA	T	0
+141	BRIT	Brit Mila	3	0	1	1	1	FRA	T	0
+142	LIEU	Lieu dit	11	0	1	1	1	FRA	 	0
+143	X_MU1	Circoncision	12	0	1	1	1	FRA	T	0
+144	X_MU2	Chahada	12	0	1	1	1	FRA	T	0
+145	X_MU3	El hadj	12	0	1	1	1	FRA	T	0
+146	XSPO	Sports	13	0	1	1	1	FRA	T	0
+147	XLOI	Loisirs	14	0	1	1	1	FRA	T	0
+148	XHENN	Henné – Fiançailles	3	0	1	1	1	FRA	T	0
+149	XHOUP	Houpa - Bénéd. religieuse	3	0	1	1	1	FRA	T	0
+150	IDSPE	Père introuvable	10	0	0	0	0	FRA	I	0
+151	IDSME	Mère introuvable	10	0	0	0	0	FRA	I	0
+152	IDSPA	Parents introuvables	10	0	0	0	0	FRA	I	0
+153	ABBR	Abreviation	11	0	1	1	1	ENG	 	0
+154	ADDR	Address	11	0	1	1	1	ENG	 	0
+155	ADOP	Adoption	8	1	1	1	1	ENG	E	0
+156	ADR1	Address1	11	0	1	1	1	ENG	 	0
+157	ADR2	Address2	11	0	1	1	1	ENG	 	0
+158	AFN	AFN	11	0	1	1	1	ENG	 	0
+159	AGE	Age	11	0	1	1	1	ENG	 	0
+160	AGNC	Agency	11	1	1	1	1	ENG	 	0
+161	ALIA	Alias	11	0	1	1	1	ENG	 	0
+162	ANCE	Ancestors	11	0	1	1	1	ENG	 	0
+163	ANCI	Ancestor interest	11	0	1	1	1	ENG	 	0
+164	ANUL	Annulment	2	1	1	1	1	ENG	U	0
+165	ASSO	Associates	11	0	1	1	1	ENG	 	0
+166	AUTH	Author	11	0	1	1	1	ENG	 	0
+167	BAPL	Baptism (LDS)	1	1	1	1	1	ENG	E	0
+168	BAPM	Baptism (not LDS)	1	1	1	1	1	ENG	E	0
+169	BARM	Bar Mitzvah	3	1	1	1	1	ENG	E	1
+170	BASM	Bat Mitzvah	3	1	1	1	1	ENG	E	1
+171	BENE	Blessing	1	0	1	1	1	ENG	E	0
+172	BIRT	Birth	0	1	1	1	1	ENG	E	1
+173	BLES	Blessing	1	1	1	1	1	ENG	E	0
+174	BLOB	Binary object	11	0	1	1	1	ENG	 	0
+175	BURI	Burial	0	1	1	1	1	ENG	E	0
+176	CALN	Call number	10	0	1	1	1	ENG	 	0
+177	CAST	Caste	10	1	1	1	1	ENG	A	0
+178	CAUS	Cause	11	0	1	1	1	ENG	 	0
+179	CENS	Census	10	1	1	1	1	ENG	D	0
+180	CHAN	Change	11	0	1	1	1	ENG	 	0
+181	CHAR	Character	11	0	1	1	1	ENG	 	0
+182	CHIL	Child	11	0	1	1	1	ENG	 	0
+183	CHR	Christening	1	1	1	1	1	ENG	E	0
+184	CHRA	Adult Christening	1	1	1	1	1	ENG	E	0
+185	COMU	Communion	1	0	1	1	1	ENG	T	0
+186	CONC	Concatenation	11	0	1	1	1	ENG	 	0
+187	CONF	Confirmation	1	1	1	1	1	ENG	E	0
+188	CONL	Confirmation (LDS)	1	1	1	1	1	ENG	E	0
+189	CONT	Continued	11	0	1	1	1	ENG	 	0
+190	COPR	Copyright	11	0	1	1	1	ENG	 	0
+191	CORP	Corporate	11	0	1	1	1	ENG	 	0
+192	CREM	Cremation	0	1	1	1	1	ENG	E	1
+193	CTRY	Country	11	0	1	1	1	ENG	 	0
+194	CITY	City	11	0	1	1	1	ENG	 	0
+195	DATA	Data	11	0	1	1	1	ENG	 	0
+196	DATE	Date	11	0	1	1	1	ENG	 	0
+197	DEAT	Death	0	1	1	1	1	ENG	E	1
+198	DECO	Decoration	6	0	1	1	1	ENG	T	0
+199	DESC	Descendants	11	0	1	1	1	ENG	 	0
+200	DESI	Descendant interest	11	0	1	1	1	ENG	 	0
+201	DEST	Destination	11	0	1	1	1	ENG	 	0
+202	DIPL	Graduation	5	0	1	1	1	ENG	A	0
+203	DIV	Divorce	2	1	1	1	1	ENG	U	0
+204	DIVF	Divorce filed	2	1	1	1	1	ENG	U	0
+205	DSCR	Physical description	6	1	1	1	1	ENG	A	0
+206	EDUC	Education	5	1	1	1	1	ENG	A	0
+207	EMIG	Emigration	8	1	1	1	1	ENG	E	0
+208	ENDL	Endowment (LDS)	1	1	1	1	1	ENG	E	0
+209	ENGA	Engagement	2	1	1	1	1	ENG	U	0
+210	EVEN	Event	9	1	1	1	1	ENG	D	0
+211	FAM	Family	11	0	1	1	1	ENG	 	0
+212	FAMC	Family child	11	0	1	1	1	ENG	 	0
+213	FAMF	Family file (LDS)	11	0	1	1	1	ENG	 	0
+214	FAMS	Family spouse	11	0	1	1	1	ENG	 	0
+215	FCOM	First communion	1	1	1	1	1	ENG	E	0
+216	FILE	File	11	0	1	1	1	ENG	 	0
+217	FORM	Format	11	0	1	1	1	ENG	 	0
+218	GEDC	Gedcom	11	0	1	1	1	ENG	 	0
+219	GIVN	Given name	11	0	1	1	1	ENG	 	0
+220	GRAD	Graduation	5	1	1	1	1	ENG	E	0
+221	HEAD	Header	11	0	1	1	1	ENG	 	0
+222	HUSB	Husband	11	0	1	1	1	ENG	 	0
+223	IDNO	Identification number	10	1	1	1	1	ENG	A	0
+224	IMMI	Immigration	8	1	1	1	1	ENG	E	0
+225	INDI	Individual	11	0	1	1	1	ENG	 	0
+226	INHU	Burial	0	0	1	1	1	ENG	E	1
+227	LANG	Language	11	0	1	1	1	ENG	 	0
+228	LEGA	Legatee	10	0	1	1	1	ENG	T	0
+229	MARB	Marriage bann	2	1	1	1	1	ENG	U	0
+230	MARC	Marriage contract	2	1	1	1	1	ENG	U	0
+231	MARL	Marriage license	2	1	1	1	1	ENG	U	0
+232	MARS	Marriage settlement	2	1	1	1	1	ENG	U	0
+233	MEDI	Media	11	0	1	1	1	ENG	 	0
+234	NAME	Name	11	0	1	1	1	ENG	 	0
+235	NATI	Nationality	8	1	1	1	1	ENG	A	0
+236	NATU	Naturalization	8	1	1	1	1	ENG	E	0
+237	NCHI	Children count	11	0	0	1	0	ENG	A	0
+238	NICK	Nickname	11	0	1	1	1	ENG	 	0
+239	NMR	Marriage count	11	0	0	1	0	ENG	A	0
+240	NOTE	Note	11	0	1	1	1	ENG	 	0
+241	NPFX	Name prefix	11	0	1	1	1	ENG	 	0
+242	NSFX	Name suffix	11	0	1	1	1	ENG	 	0
+243	OBJE	Object	11	0	1	1	1	ENG	 	0
+244	OCCU	Occupation	7	1	1	1	1	ENG	A	0
+245	ORDI	Ordinance (LDS)	1	0	1	1	1	ENG	 	0
+246	ORDN	Ordination	1	1	1	1	1	ENG	E	0
+247	PAGE	Page	11	0	1	1	1	ENG	 	0
+248	PEDI	Pedigree	7	0	1	1	1	ENG	 	0
+249	PHON	Phone	11	0	1	1	1	ENG	 	0
+250	PLAC	Place	11	0	1	1	1	ENG	 	0
+251	POST	Postal code	11	0	1	1	1	ENG	 	0
+252	PROB	Probate	4	1	1	1	1	ENG	E	0
+253	PROP	Property	10	1	1	1	1	ENG	A	0
+254	PUBL	Publication	11	1	1	1	1	ENG	 	0
+255	QUAY	Quality of data	11	0	1	1	1	ENG	 	0
+256	REFN	Reference	11	0	1	1	1	ENG	 	0
+257	RELA	Relationship	11	0	1	1	1	ENG	 	0
+258	RELI	Religion	1	1	1	1	1	ENG	A	0
+259	REPO	Repository	11	0	1	1	1	ENG	 	0
+260	RESI	Residence	11	0	1	1	1	ENG	E	0
+261	RESN	Restriction	11	0	1	1	1	ENG	 	0
+262	RETI	Retirement	4	1	1	1	1	ENG	E	0
+263	RFN	Record file number	11	0	1	1	1	ENG	 	0
+264	RIN	Record identifier number	11	0	1	1	1	ENG	 	0
+265	ROLE	Role	11	0	1	1	1	ENG	 	0
+266	SACR	Consecration	6	0	1	1	1	ENG	T	0
+267	SEX	Sex	11	0	1	1	1	ENG	 	0
+268	SLGC	Sealing child (LDS)	1	1	1	1	1	ENG	E	0
+269	SLGS	Sealing spouse (LDS)	1	1	1	1	1	ENG	U	0
+270	SOUR	Source	11	0	1	1	1	ENG	 	0
+271	SPFX	Surname prefix	11	0	1	1	1	ENG	 	0
+272	SSN	Social security number	10	1	1	1	1	ENG	A	0
+273	STAE	State	11	0	1	1	1	ENG	 	0
+274	STAT	Status	11	0	1	1	1	ENG	 	0
+275	SUBM	Submitter	11	0	1	1	1	ENG	 	0
+276	SURN	Surname	11	0	1	1	1	ENG	 	0
+277	TEMP	Temple (LDS)	11	0	1	1	1	ENG	 	0
+278	TIME	Time	11	0	1	1	1	ENG	 	0
+279	TITL	Title	6	1	1	1	1	ENG	A	0
+280	TITR	Title	10	0	1	1	1	ENG	A	0
+281	TRLR	Trailer	11	0	1	1	1	ENG	 	0
+282	TYPE	Type	11	0	1	1	1	ENG	 	0
+283	VERS	Version	11	0	1	1	1	ENG	 	0
+284	VOYA	Trip	9	0	1	1	1	ENG	T	0
+285	WIFE	Wife	11	0	1	1	1	ENG	 	0
+286	WILL	Will	4	1	1	1	1	ENG	E	0
+287	MARR	Marriage	2	1	1	1	1	ENG	U	0
+288	PURC	Purchase	10	0	1	1	1	ENG	T	0
+289	ALIV	Alive	11	0	1	1	1	ENG	 	0
+290	MILI	Military time	6	0	1	1	1	ENG	T	0
+291	SALE	Sale	10	0	1	1	1	ENG	T	0
+292	TRIP	Long haul trip	9	0	1	1	1	ENG	T	0
+293	BRIT	Brit Mila	3	0	1	1	1	ENG	T	0
+294	LIEU		11	0	1	1	1	ENG	 	0
+295	X_MU1	Circumcision	12	0	1	1	1	ENG	T	0
+296	X_MU2	Chahada	12	0	1	1	1	ENG	T	0
+297	X_MU3	El hadj	12	0	1	1	1	ENG	T	0
+298	XSPO	Sport activities	13	0	1	1	1	ENG	T	0
+299	XLOI	Leisure activities	14	0	1	1	1	ENG	T	0
+300	XHENN	Henné - Engagement	3	0	1	1	1	ENG	T	0
+301	XHOUP	Houpa - Blessing	3	0	1	1	1	ENG	T	0
+302	IDSPE	Undiscoverable father	10	0	0	0	0	ENG	I	0
+303	IDSME	Undiscoverable mother	10	0	0	0	0	ENG	I	0
+304	IDSPA	Undiscoverable parents	10	0	0	0	0	ENG	I	0
+305	ABBR		11	0	1	1	1	DEU	 	0
+306	ADDR		11	0	1	1	1	DEU	 	0
+307	ADOP	Annahme	8	1	1	1	1	DEU	E	0
+308	ADR1		11	0	1	1	1	DEU	 	0
+309	ADR2		11	0	1	1	1	DEU	 	0
+310	AFN		11	0	1	1	1	DEU	 	0
+311	AGE		11	0	1	1	1	DEU	 	0
+312	AGNC		11	1	1	1	1	DEU	 	0
+313	ALIA		11	0	1	1	1	DEU	 	0
+314	ANCE		11	0	1	1	1	DEU	 	0
+315	ANCI		11	0	1	1	1	DEU	 	0
+316	ANUL	Annullierung einer Heirat	2	1	1	1	1	DEU	U	0
+317	ASSO		11	0	1	1	1	DEU	 	0
+318	AUTH		11	0	1	1	1	DEU	 	0
+319	BAPL	Taufe (LDS)	1	1	1	1	1	DEU	E	0
+320	BAPM	Taufe (nicht LDS)	1	1	1	1	1	DEU	E	0
+321	BARM	Bar Mitzvah	3	1	1	1	1	DEU	E	1
+322	BASM	Bat Mitzvah	3	1	1	1	1	DEU	E	1
+323	BENE		1	0	1	1	1	DEU	E	0
+324	BIRT	Geburt	0	1	1	1	1	DEU	E	1
+325	BLES	Segnung	1	1	1	1	1	DEU	E	0
+326	BLOB		11	0	1	1	1	DEU	 	0
+327	BURI	Beerdigung	0	1	1	1	1	DEU	E	0
+328	CALN		10	0	1	1	1	DEU	 	0
+329	CAST	Kaste	10	1	1	1	1	DEU	A	0
+330	CAUS		11	0	1	1	1	DEU	 	0
+331	CENS	Volkszählung	10	1	1	1	1	DEU	D	0
+332	CHAN		11	0	1	1	1	DEU	 	0
+333	CHAR		11	0	1	1	1	DEU	 	0
+334	CHIL		11	0	1	1	1	DEU	 	0
+335	CHR	Taufe	1	1	1	1	1	DEU	E	0
+336	CHRA	Ausgewachsene Taufe	1	1	1	1	1	DEU	E	0
+337	COMU	Kommunion	1	0	1	1	1	DEU	T	0
+338	CONC		11	0	1	1	1	DEU	 	0
+339	CONF	Konfirmation	1	1	1	1	1	DEU	E	0
+340	CONL	Konfirmation (LDS)	1	1	1	1	1	DEU	E	0
+341	CONT		11	0	1	1	1	DEU	 	0
+342	COPR		11	0	1	1	1	DEU	 	0
+343	CORP		11	0	1	1	1	DEU	 	0
+344	CREM	Einäscherung	0	1	1	1	1	DEU	E	1
+345	CTRY		11	0	1	1	1	DEU	 	0
+346	CITY		11	0	1	1	1	DEU	 	0
+347	DATA		11	0	1	1	1	DEU	 	0
+348	DATE		11	0	1	1	1	DEU	 	0
+349	DEAT	Todesfall	0	1	1	1	1	DEU	E	1
+350	DECO	Auszeichnung	6	0	1	1	1	DEU	T	0
+351	DESC		11	0	1	1	1	DEU	 	0
+352	DESI		11	0	1	1	1	DEU	 	0
+353	DEST		11	0	1	1	1	DEU	 	0
+354	DIPL		5	0	1	1	1	DEU	A	0
+355	DIV	Eheischeidung	2	1	1	1	1	DEU	U	0
+356	DIVF	Die scheidung einreichen	2	1	1	1	1	DEU	U	0
+357	DSCR	Beschreibung	6	1	1	1	1	DEU	A	0
+358	EDUC	Ausbildung	5	1	1	1	1	DEU	A	0
+359	EMIG	Auswanderung	8	1	1	1	1	DEU	E	0
+360	ENDL	Endowment (LDS)	1	1	1	1	1	DEU	E	0
+361	ENGA	Verlobung	2	1	1	1	1	DEU	U	0
+362	EVEN	Ereignis	9	1	1	1	1	DEU	D	0
+363	FAM		11	0	1	1	1	DEU	 	0
+364	FAMC		11	0	1	1	1	DEU	 	0
+365	FAMF		11	0	1	1	1	DEU	 	0
+366	FAMS		11	0	1	1	1	DEU	 	0
+367	FCOM	Erstkommunion	1	1	1	1	1	DEU	E	0
+368	FILE		11	0	1	1	1	DEU	 	0
+369	FORM		11	0	1	1	1	DEU	 	0
+370	GEDC	Gedcom	11	0	1	1	1	DEU	 	0
+371	GIVN		11	0	1	1	1	DEU	 	0
+372	GRAD	Diplom	5	1	1	1	1	DEU	E	0
+373	HEAD		11	0	1	1	1	DEU	 	0
+374	HUSB		11	0	1	1	1	DEU	 	0
+375	IDNO	Ident-Code	10	1	1	1	1	DEU	A	0
+376	IMMI	Einwanderung	8	1	1	1	1	DEU	E	0
+377	INDI		11	0	1	1	1	DEU	 	0
+378	INHU		0	0	1	1	1	DEU	E	1
+379	LANG		11	0	1	1	1	DEU	 	0
+380	LEGA	Vermâchtnisnehmer	10	0	1	1	1	DEU	T	0
+381	MARB	Aufgebot	2	1	1	1	1	DEU	U	0
+382	MARC	Ehevertrag	2	1	1	1	1	DEU	U	0
+383	MARL	Gesetzliche Hochzeitsgenehmig,	2	1	1	1	1	DEU	U	0
+384	MARS	Vertrag vor Heirat	2	1	1	1	1	DEU	U	0
+385	MEDI		11	0	1	1	1	DEU	 	0
+386	NAME		11	0	1	1	1	DEU	 	0
+387	NATI	Staatsangehörigkeit	8	1	1	1	1	DEU	A	0
+388	NATU	Einbürgerung	8	1	1	1	1	DEU	E	0
+389	NCHI		11	0	0	1	0	DEU	A	0
+390	NICK		11	0	1	1	1	DEU	 	0
+391	NMR		11	0	0	1	0	DEU	A	0
+392	NOTE		11	0	1	1	1	DEU	 	0
+393	NPFX		11	0	1	1	1	DEU	 	0
+394	NSFX		11	0	1	1	1	DEU	 	0
+395	OBJE		11	0	1	1	1	DEU	 	0
+396	OCCU	Beruf	7	1	1	1	1	DEU	A	0
+397	ORDI		1	0	1	1	1	DEU	 	0
+398	ORDN	Priesterweihe	1	1	1	1	1	DEU	E	0
+399	PAGE		11	0	1	1	1	DEU	 	0
+400	PEDI		7	0	1	1	1	DEU	 	0
+401	PHON		11	0	1	1	1	DEU	 	0
+402	PLAC		11	0	1	1	1	DEU	 	0
+403	POST		11	0	1	1	1	DEU	 	0
+404	PROB	Bestätigung des Testamentes	4	1	1	1	1	DEU	E	0
+405	PROP	Besitz	10	1	1	1	1	DEU	A	0
+406	PUBL		11	1	1	1	1	DEU	 	0
+407	QUAY		11	0	1	1	1	DEU	 	0
+408	REFN		11	0	1	1	1	DEU	 	0
+409	RELA		11	0	1	1	1	DEU	 	0
+410	RELI	Religion	1	1	1	1	1	DEU	A	0
+411	REPO		11	0	1	1	1	DEU	 	0
+412	RESI		11	0	1	1	1	DEU	E	0
+413	RESN		11	0	1	1	1	DEU	 	0
+414	RETI	Ruhestand	4	1	1	1	1	DEU	E	0
+415	RFN		11	0	1	1	1	DEU	 	0
+416	RIN		11	0	1	1	1	DEU	 	0
+417	ROLE		11	0	1	1	1	DEU	 	0
+418	SACR	Weihe	6	0	1	1	1	DEU	T	0
+419	SEX		11	0	1	1	1	DEU	 	0
+420	SLGC	Sealing child (LDS)	1	1	1	1	1	DEU	E	0
+421	SLGS	Sealing spouse (LDS)	1	1	1	1	1	DEU	U	0
+422	SOUR		11	0	1	1	1	DEU	 	0
+423	SPFX		11	0	1	1	1	DEU	 	0
+424	SSN	Sozialversicherungnummer	10	1	1	1	1	DEU	A	0
+425	STAE		11	0	1	1	1	DEU	 	0
+426	STAT		11	0	1	1	1	DEU	 	0
+427	SUBM		11	0	1	1	1	DEU	 	0
+428	SURN		11	0	1	1	1	DEU	 	0
+429	TEMP		11	0	1	1	1	DEU	 	0
+430	TIME		11	0	1	1	1	DEU	 	0
+431	TITL	Titel	6	1	1	1	1	DEU	A	0
+432	TITR		10	0	1	1	1	DEU	A	0
+433	TRLR		11	0	1	1	1	DEU	 	0
+434	TYPE		11	0	1	1	1	DEU	 	0
+435	VERS		11	0	1	1	1	DEU	 	0
+436	VOYA	Reise	9	0	1	1	1	DEU	T	0
+437	WIFE		11	0	1	1	1	DEU	 	0
+438	WILL	Testament	4	1	1	1	1	DEU	E	0
+439	MARR	Trauung	2	1	1	1	1	DEU	U	0
+440	PURC	Erwerb	10	0	1	1	1	DEU	T	0
+441	ALIV		11	0	1	1	1	DEU	 	0
+442	MILI	Militärdienst	6	0	1	1	1	DEU	T	0
+443	SALE	Verkauf	10	0	1	1	1	DEU	T	0
+444	TRIP	Große Reise	9	0	1	1	1	DEU	T	0
+445	BRIT	Brit Mila	3	0	1	1	1	DEU	T	0
+446	LIEU		11	0	1	1	1	DEU	 	0
+447	X_MU1	Beschneidung	12	0	1	1	1	DEU	T	0
+448	X_MU2	Chahada	12	0	1	1	1	DEU	T	0
+449	X_MU3	El hadj	12	0	1	1	1	DEU	T	0
+450	XSPO	Sport	13	0	1	1	1	DEU	T	0
+451	XLOI	Freizeit	14	0	1	1	1	DEU	T	0
+452	XHENN	Henné - Verlobung	3	0	1	1	1	DEU	T	0
+453	XHOUP	Houpa - Segnung	3	0	1	1	1	DEU	T	0
+454	IDSPE	Unauffindbarer Vater	10	0	0	0	0	DEU	I	0
+455	IDSME	Unauffindbare Mutter	10	0	0	0	0	DEU	I	0
+456	IDSPA	Unauffindbare Eltern	10	0	0	0	0	DEU	I	0
+457	ABBR		11	0	1	1	1	ITA	 	0
+458	ADDR		11	0	1	1	1	ITA	 	0
+459	ADOP	Adozione	8	1	1	1	1	ITA	E	0
+460	ADR1		11	0	1	1	1	ITA	 	0
+461	ADR2		11	0	1	1	1	ITA	 	0
+462	AFN		11	0	1	1	1	ITA	 	0
+463	AGE		11	0	1	1	1	ITA	 	0
+464	AGNC		11	1	1	1	1	ITA	 	0
+465	ALIA		11	0	1	1	1	ITA	 	0
+466	ANCE		11	0	1	1	1	ITA	 	0
+467	ANCI		11	0	1	1	1	ITA	 	0
+468	ANUL	Annullamento di un matrimonio	2	1	1	1	1	ITA	U	0
+469	ASSO		11	0	1	1	1	ITA	 	0
+470	AUTH		11	0	1	1	1	ITA	 	0
+471	BAPL	Battesimo (LDS)	1	1	1	1	1	ITA	E	0
+472	BAPM	Battesimo (non LDS)	1	1	1	1	1	ITA	E	0
+473	BARM	Bar Mitzvah	3	1	1	1	1	ITA	E	1
+474	BASM	Bat Mitzvah	3	1	1	1	1	ITA	E	1
+475	BENE		1	0	1	1	1	ITA	E	0
+476	BIRT	Nascita	0	1	1	1	1	ITA	E	1
+477	BLES	Benedizione	1	1	1	1	1	ITA	E	0
+478	BLOB		11	0	1	1	1	ITA	 	0
+479	BURI	Inumazione	0	1	1	1	1	ITA	E	0
+480	CALN		10	0	1	1	1	ITA	 	0
+481	CAST	Casta	10	1	1	1	1	ITA	A	0
+482	CAUS		11	0	1	1	1	ITA	 	0
+483	CENS	Censimento	10	1	1	1	1	ITA	D	0
+484	CHAN		11	0	1	1	1	ITA	 	0
+485	CHAR		11	0	1	1	1	ITA	 	0
+486	CHIL		11	0	1	1	1	ITA	 	0
+487	CHR	Battesimo	1	1	1	1	1	ITA	E	0
+488	CHRA	Battesimo adulto	1	1	1	1	1	ITA	E	0
+489	COMU	Comunione	1	0	1	1	1	ITA	T	0
+490	CONC		11	0	1	1	1	ITA	 	0
+491	CONF	Cresima	1	1	1	1	1	ITA	E	0
+492	CONL	Cresima (LDS)	1	1	1	1	1	ITA	E	0
+493	CONT		11	0	1	1	1	ITA	 	0
+494	COPR		11	0	1	1	1	ITA	 	0
+495	CORP		11	0	1	1	1	ITA	 	0
+496	CREM	Cremazione	0	1	1	1	1	ITA	E	1
+497	CTRY		11	0	1	1	1	ITA	 	0
+498	CITY		11	0	1	1	1	ITA	 	0
+499	DATA		11	0	1	1	1	ITA	 	0
+500	DATE		11	0	1	1	1	ITA	 	0
+501	DEAT	Decesso	0	1	1	1	1	ITA	E	1
+502	DECO	Decorazione	6	0	1	1	1	ITA	T	0
+503	DESC		11	0	1	1	1	ITA	 	0
+504	DESI		11	0	1	1	1	ITA	 	0
+505	DEST		11	0	1	1	1	ITA	 	0
+506	DIPL		5	0	1	1	1	ITA	A	0
+507	DIV	Divorzio	2	1	1	1	1	ITA	U	0
+508	DIVF	Domanda di divorzio	2	1	1	1	1	ITA	U	0
+509	DSCR	Descrizione	6	1	1	1	1	ITA	A	0
+510	EDUC	Istruzione	5	1	1	1	1	ITA	A	0
+511	EMIG	Emigrazione	8	1	1	1	1	ITA	E	0
+512	ENDL	Endowment (LDS)	1	1	1	1	1	ITA	E	0
+513	ENGA	Fidanzamento	2	1	1	1	1	ITA	U	0
+514	EVEN	Avvenimento	9	1	1	1	1	ITA	D	0
+515	FAM		11	0	1	1	1	ITA	 	0
+516	FAMC		11	0	1	1	1	ITA	 	0
+517	FAMF		11	0	1	1	1	ITA	 	0
+518	FAMS		11	0	1	1	1	ITA	 	0
+519	FCOM	Prima Comunione	1	1	1	1	1	ITA	E	0
+520	FILE		11	0	1	1	1	ITA	 	0
+521	FORM		11	0	1	1	1	ITA	 	0
+522	GEDC	Gedcom	11	0	1	1	1	ITA	 	0
+523	GIVN		11	0	1	1	1	ITA	 	0
+524	GRAD	Diploma	5	1	1	1	1	ITA	E	0
+525	HEAD		11	0	1	1	1	ITA	 	0
+526	HUSB		11	0	1	1	1	ITA	 	0
+527	IDNO	Cod. Ident.	10	1	1	1	1	ITA	A	0
+528	IMMI	Immigrazione	8	1	1	1	1	ITA	E	0
+529	INDI		11	0	1	1	1	ITA	 	0
+530	INHU		0	0	1	1	1	ITA	E	1
+531	LANG		11	0	1	1	1	ITA	 	0
+532	LEGA	Legatario	10	0	1	1	1	ITA	T	0
+533	MARB	Bandi di matrimonio	2	1	1	1	1	ITA	U	0
+534	MARC	Contratto di matrimonio	2	1	1	1	1	ITA	U	0
+535	MARL	Autorizzazione di matrimonio	2	1	1	1	1	ITA	U	0
+536	MARS	Contratto anteriore matrimonio	2	1	1	1	1	ITA	U	0
+537	MEDI		11	0	1	1	1	ITA	 	0
+538	NAME		11	0	1	1	1	ITA	 	0
+539	NATI	Nazionalità	8	1	1	1	1	ITA	A	0
+540	NATU	Naturalizzazione	8	1	1	1	1	ITA	E	0
+541	NCHI		11	0	0	1	0	ITA	A	0
+542	NICK		11	0	1	1	1	ITA	 	0
+543	NMR		11	0	0	1	0	ITA	A	0
+544	NOTE		11	0	1	1	1	ITA	 	0
+545	NPFX		11	0	1	1	1	ITA	 	0
+546	NSFX		11	0	1	1	1	ITA	 	0
+547	OBJE		11	0	1	1	1	ITA	 	0
+548	OCCU	Professione	7	1	1	1	1	ITA	A	0
+549	ORDI		1	0	1	1	1	ITA	 	0
+550	ORDN	Ordinamento	1	1	1	1	1	ITA	E	0
+551	PAGE		11	0	1	1	1	ITA	 	0
+552	PEDI		7	0	1	1	1	ITA	 	0
+553	PHON		11	0	1	1	1	ITA	 	0
+554	PLAC		11	0	1	1	1	ITA	 	0
+555	POST		11	0	1	1	1	ITA	 	0
+556	PROB	Convalida di un testamento	4	1	1	1	1	ITA	E	0
+557	PROP	Possession	10	1	1	1	1	ITA	A	0
+558	PUBL		11	1	1	1	1	ITA	 	0
+559	QUAY		11	0	1	1	1	ITA	 	0
+560	REFN		11	0	1	1	1	ITA	 	0
+561	RELA		11	0	1	1	1	ITA	 	0
+562	RELI	Religione	1	1	1	1	1	ITA	A	0
+563	REPO		11	0	1	1	1	ITA	 	0
+564	RESI		11	0	1	1	1	ITA	E	0
+565	RESN		11	0	1	1	1	ITA	 	0
+566	RETI	Pensione	4	1	1	1	1	ITA	E	0
+567	RFN		11	0	1	1	1	ITA	 	0
+568	RIN		11	0	1	1	1	ITA	 	0
+569	ROLE		11	0	1	1	1	ITA	 	0
+570	SACR	Consagracione	6	0	1	1	1	ITA	T	0
+571	SEX		11	0	1	1	1	ITA	 	0
+572	SLGC	Sealing child (LDS)	1	1	1	1	1	ITA	E	0
+573	SLGS	Sealing spouse (LDS)	1	1	1	1	1	ITA	U	0
+574	SOUR		11	0	1	1	1	ITA	 	0
+575	SPFX		11	0	1	1	1	ITA	 	0
+576	SSN	Nr. Previdenza sociale	10	1	1	1	1	ITA	A	0
+577	STAE		11	0	1	1	1	ITA	 	0
+578	STAT		11	0	1	1	1	ITA	 	0
+579	SUBM		11	0	1	1	1	ITA	 	0
+580	SURN		11	0	1	1	1	ITA	 	0
+581	TEMP		11	0	1	1	1	ITA	 	0
+582	TIME		11	0	1	1	1	ITA	 	0
+583	TITL	Títolo	6	1	1	1	1	ITA	A	0
+584	TITR		10	0	1	1	1	ITA	A	0
+585	TRLR		11	0	1	1	1	ITA	 	0
+586	TYPE		11	0	1	1	1	ITA	 	0
+587	VERS		11	0	1	1	1	ITA	 	0
+588	VOYA	Viaggio	9	0	1	1	1	ITA	T	0
+589	WIFE		11	0	1	1	1	ITA	 	0
+590	WILL	Testamento	4	1	1	1	1	ITA	E	0
+591	MARR	Matrimonio	2	1	1	1	1	ITA	U	0
+592	PURC	Acquisto	10	0	1	1	1	ITA	T	0
+593	ALIV		11	0	1	1	1	ITA	 	0
+594	MILI	Servizio militare	6	0	1	1	1	ITA	T	0
+595	SALE	Vendita	10	0	1	1	1	ITA	T	0
+596	TRIP	Grande viaggio	9	0	1	1	1	ITA	T	0
+597	BRIT	Brit Mila	3	0	1	1	1	ITA	T	0
+598	LIEU		11	0	1	1	1	ITA	 	0
+599	X_MU1	Circoncisione	12	0	1	1	1	ITA	T	0
+600	X_MU2	Chahada	12	0	1	1	1	ITA	T	0
+601	X_MU3	El hadj	12	0	1	1	1	ITA	T	0
+602	XSPO	Attività sportive	13	0	1	1	1	ITA	T	0
+603	XLOI	Distrazioni	14	0	1	1	1	ITA	T	0
+604	XHENN	Henné - Fidanzamento	3	0	1	1	1	ITA	T	0
+605	XHOUP	Houpa - Benedizione	3	0	1	1	1	ITA	I	0
+606	IDSPE	Padre introvabile	10	0	0	0	0	ITA	I	0
+607	IDSME	Madre introvabili	10	0	0	0	0	ITA	I	0
+608	IDSPA	Genitori introvabili	10	0	0	0	0	ITA	T	0
+609	ABBR	Abreviatura	11	0	1	1	1	SPA	 	0
+610	ADDR	Señas	11	0	1	1	1	SPA	 	0
+611	ADOP	Adopción	8	1	1	1	1	SPA	E	0
+612	ADR1		11	0	1	1	1	SPA	 	0
+613	ADR2		11	0	1	1	1	SPA	 	0
+614	AFN		11	0	1	1	1	SPA	 	0
+615	AGE	Edad	11	0	1	1	1	SPA	 	0
+616	AGNC		11	1	1	1	1	SPA	 	0
+617	ALIA	Alias	11	0	1	1	1	SPA	 	0
+618	ANCE	Antepasado	11	0	1	1	1	SPA	 	0
+619	ANCI		11	0	1	1	1	SPA	 	0
+620	ANUL	Anulación de un matrimonio	2	1	1	1	1	SPA	U	0
+621	ASSO		11	0	1	1	1	SPA	 	0
+622	AUTH	Autor	11	0	1	1	1	SPA	 	0
+623	BAPL	Bautismo (LDS)	1	1	1	1	1	SPA	E	0
+624	BAPM	Bautismo (no LDS)	1	1	1	1	1	SPA	E	0
+625	BARM	Bar Mitzvah	3	1	1	1	1	SPA	E	1
+626	BASM	Bat Mitzvah	3	1	1	1	1	SPA	E	1
+627	BENE		1	0	1	1	1	SPA	E	0
+628	BIRT	Nacimiento	0	1	1	1	1	SPA	E	1
+629	BLES	Bendición	1	1	1	1	1	SPA	E	0
+630	BLOB		11	0	1	1	1	SPA	 	0
+631	BURI	Inhumación	0	1	1	1	1	SPA	E	0
+632	CALN		10	0	1	1	1	SPA	 	0
+633	CAST	Casta	10	1	1	1	1	SPA	A	0
+634	CAUS		11	0	1	1	1	SPA	 	0
+635	CENS	Censo	10	1	1	1	1	SPA	D	0
+636	CHAN		11	0	1	1	1	SPA	 	0
+637	CHAR		11	0	1	1	1	SPA	 	0
+638	CHIL		11	0	1	1	1	SPA	 	0
+639	CHR	Bautismo	1	1	1	1	1	SPA	E	0
+640	CHRA	Bautismo adulto	1	1	1	1	1	SPA	E	0
+641	COMU	Comunión	1	0	1	1	1	SPA	T	0
+642	CONC		11	0	1	1	1	SPA	 	0
+643	CONF	Confirmación	1	1	1	1	1	SPA	E	0
+644	CONL	Confirmación (LDS)	1	1	1	1	1	SPA	E	0
+645	CONT		11	0	1	1	1	SPA	 	0
+646	COPR		11	0	1	1	1	SPA	 	0
+647	CORP		11	0	1	1	1	SPA	 	0
+648	CREM	Cremación	0	1	1	1	1	SPA	E	1
+649	CTRY		11	0	1	1	1	SPA	 	0
+650	CITY		11	0	1	1	1	SPA	 	0
+651	DATA		11	0	1	1	1	SPA	 	0
+652	DATE		11	0	1	1	1	SPA	 	0
+653	DEAT	Defunción	0	1	1	1	1	SPA	E	1
+654	DECO	Condecoración	6	0	1	1	1	SPA	T	0
+655	DESC		11	0	1	1	1	SPA	 	0
+656	DESI		11	0	1	1	1	SPA	 	0
+657	DEST		11	0	1	1	1	SPA	 	0
+658	DIPL		5	0	1	1	1	SPA	A	0
+659	DIV	Divorcio	2	1	1	1	1	SPA	U	0
+660	DIVF	Demanda de divorcio	2	1	1	1	1	SPA	U	0
+661	DSCR	Descripción	6	1	1	1	1	SPA	A	0
+662	EDUC	Enseñanza	5	1	1	1	1	SPA	A	0
+663	EMIG	Emigración	8	1	1	1	1	SPA	E	0
+664	ENDL	Endowment (LDS)	1	1	1	1	1	SPA	E	0
+665	ENGA	Esponsales	2	1	1	1	1	SPA	U	0
+666	EVEN	Acontecimiento	9	1	1	1	1	SPA	D	0
+667	FAM	Familia	11	0	1	1	1	SPA	 	0
+668	FAMC		11	0	1	1	1	SPA	 	0
+669	FAMF		11	0	1	1	1	SPA	 	0
+670	FAMS		11	0	1	1	1	SPA	 	0
+671	FCOM	Primera comunión	1	1	1	1	1	SPA	E	0
+672	FILE		11	0	1	1	1	SPA	 	0
+673	FORM		11	0	1	1	1	SPA	 	0
+674	GEDC	Gedcom	11	0	1	1	1	SPA	 	0
+675	GIVN		11	0	1	1	1	SPA	 	0
+676	GRAD	Diploma	5	1	1	1	1	SPA	E	0
+677	HEAD	Membrete	11	0	1	1	1	SPA	 	0
+678	HUSB		11	0	1	1	1	SPA	 	0
+679	IDNO	Número de Identificación	10	1	1	1	1	SPA	A	0
+680	IMMI	Immigración	8	1	1	1	1	SPA	E	0
+681	INDI		11	0	1	1	1	SPA	 	0
+682	INHU		0	0	1	1	1	SPA	E	1
+683	LANG		11	0	1	1	1	SPA	 	0
+684	LEGA	Legatario	10	0	1	1	1	SPA	T	0
+685	MARB	Bandos de matrimonio	2	1	1	1	1	SPA	U	0
+686	MARC	Capitulaciones	2	1	1	1	1	SPA	U	0
+687	MARL	Autorización legal matrimonio	2	1	1	1	1	SPA	U	0
+688	MARS	Contrato antes de matrimonio	2	1	1	1	1	SPA	U	0
+689	MEDI		11	0	1	1	1	SPA	 	0
+690	NAME		11	0	1	1	1	SPA	 	0
+691	NATI	Nacionalidad	8	1	1	1	1	SPA	A	0
+692	NATU	Naturalización	8	1	1	1	1	SPA	E	0
+693	NCHI		11	0	0	1	0	SPA	A	0
+694	NICK		11	0	1	1	1	SPA	 	0
+695	NMR		11	0	0	1	0	SPA	A	0
+696	NOTE		11	0	1	1	1	SPA	 	0
+697	NPFX		11	0	1	1	1	SPA	 	0
+698	NSFX		11	0	1	1	1	SPA	 	0
+699	OBJE		11	0	1	1	1	SPA	 	0
+700	OCCU	Profesión	7	1	1	1	1	SPA	A	0
+701	ORDI		1	0	1	1	1	SPA	 	0
+702	ORDN	Ordenación	1	1	1	1	1	SPA	E	0
+703	PAGE		11	0	1	1	1	SPA	 	0
+704	PEDI		7	0	1	1	1	SPA	 	0
+705	PHON		11	0	1	1	1	SPA	 	0
+706	PLAC		11	0	1	1	1	SPA	 	0
+707	POST		11	0	1	1	1	SPA	 	0
+708	PROB	Validación de un testamento	4	1	1	1	1	SPA	E	0
+709	PROP	Posesiones	10	1	1	1	1	SPA	A	0
+710	PUBL		11	1	1	1	1	SPA	 	0
+711	QUAY		11	0	1	1	1	SPA	 	0
+712	REFN		11	0	1	1	1	SPA	 	0
+713	RELA		11	0	1	1	1	SPA	 	0
+714	RELI	Religión	1	1	1	1	1	SPA	A	0
+715	REPO		11	0	1	1	1	SPA	 	0
+716	RESI		11	0	1	1	1	SPA	E	0
+717	RESN		11	0	1	1	1	SPA	 	0
+718	RETI	Retirar	4	1	1	1	1	SPA	E	0
+719	RFN		11	0	1	1	1	SPA	 	0
+720	RIN		11	0	1	1	1	SPA	 	0
+721	ROLE		11	0	1	1	1	SPA	 	0
+722	SACR	Consagración	6	0	1	1	1	SPA	T	0
+723	SEX		11	0	1	1	1	SPA	 	0
+724	SLGC	Sealing child (LDS)	1	1	1	1	1	SPA	E	0
+725	SLGS	Sealing spouse (LDS)	1	1	1	1	1	SPA	U	0
+726	SOUR		11	0	1	1	1	SPA	 	0
+727	SPFX		11	0	1	1	1	SPA	 	0
+728	SSN	No. de Seguridad social	10	1	1	1	1	SPA	A	0
+729	STAE		11	0	1	1	1	SPA	 	0
+730	STAT		11	0	1	1	1	SPA	 	0
+731	SUBM		11	0	1	1	1	SPA	 	0
+732	SURN		11	0	1	1	1	SPA	 	0
+733	TEMP		11	0	1	1	1	SPA	 	0
+734	TIME		11	0	1	1	1	SPA	 	0
+735	TITL	Título	6	1	1	1	1	SPA	A	0
+736	TITR		10	0	1	1	1	SPA	A	0
+737	TRLR		11	0	1	1	1	SPA	 	0
+738	TYPE		11	0	1	1	1	SPA	 	0
+739	VERS		11	0	1	1	1	SPA	 	0
+740	VOYA	Viaje	9	0	1	1	1	SPA	T	0
+741	WIFE	Esposa	11	0	1	1	1	SPA	 	0
+742	WILL	Testamento	4	1	1	1	1	SPA	E	0
+743	MARR	Matrimonio	2	1	1	1	1	SPA	U	0
+744	PURC	Adquisición	10	0	1	1	1	SPA	T	0
+745	ALIV		11	0	1	1	1	SPA	 	0
+746	MILI	Servicio militar	6	0	1	1	1	SPA	T	0
+747	SALE	Venta	10	0	1	1	1	SPA	T	0
+748	TRIP	Gran viaje	9	0	1	1	1	SPA	T	0
+749	BRIT	Brit Mila	3	0	1	1	1	SPA	T	0
+750	LIEU		11	0	1	1	1	SPA	 	0
+751	X_MU1	Circonsición	12	0	1	1	1	SPA	T	0
+752	X_MU2	Chahada	12	0	1	1	1	SPA	T	0
+753	X_MU3	El hadj	12	0	1	1	1	SPA	T	0
+754	XSPO	Actividades deportivas	13	0	1	1	1	SPA	T	0
+755	XLOI	Distracciónes	14	0	1	1	1	SPA	T	0
+756	XHENN	Henné - Esponsales	3	0	1	1	1	SPA	T	0
+757	XHOUP	Houpa - Bendición	3	0	1	1	1	SPA	T	0
+758	IDSPE	Padre imposible de encontrar	10	0	0	0	0	SPA	I	0
+759	IDSME	Madre imposible de encontrar	10	0	0	0	0	SPA	I	0
+760	IDSPA	Parientes imposibles encontrar	10	0	0	0	0	SPA	I	0

@@ -1,0 +1,616 @@
+object FMutationBase: TFMutationBase
+  Left = 303
+  Height = 514
+  Top = 269
+  Width = 642
+  ActiveControl = cbBaseOrigine
+  BorderStyle = bsDialog
+  Caption = 'Importation d''un dossier'
+  ClientHeight = 514
+  ClientWidth = 642
+  Color = clWindow
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = FormClose
+  OnCreate = FormCreate
+  Position = poMainFormCenter
+  LCLVersion = '1.2.0.3'
+  object Panel3: TPanel
+    Left = 0
+    Height = 55
+    Top = 0
+    Width = 642
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 55
+    ClientWidth = 642
+    TabOrder = 0
+    object Image1: TIATitle
+      Left = 1
+      Height = 67
+      Top = -1
+      Width = 152
+      Proportional = True
+      Stretch = True
+      ImageOn = iaDatabase
+    end
+    object Label1: TLabel
+      Left = 284
+      Height = 33
+      Top = 8
+      Width = 337
+      Alignment = taRightJustify
+      Anchors = [akTop, akRight]
+      Caption = 'Importation d''un dossier'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowFrame
+      Font.Height = -27
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+  end
+  object gbDestination: TGroupBox
+    Left = 5
+    Height = 204
+    Top = 274
+    Width = 632
+    Anchors = [akTop, akLeft, akRight]
+    Caption = ' Destination '
+    ClientHeight = 182
+    ClientWidth = 628
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 1
+    object cbDossierDestination: TFWDBLookupCombo
+      Left = 474
+      Height = 29
+      Top = 15
+      Width = 145
+      AutoSize = True
+      Anchors = [akTop, akRight]
+      ButtonOnlyWhenFocused = False
+      ButtonWidth = 15
+      PopUpFormOptions.Columns = <>
+      Flat = False
+      Glyph.Data = {
+        72000000424D7200000000000000360000002800000005000000030000000100
+        2000000000003C00000064000000640000000000000000000000000000000000
+        0000000000FF000000000000000000000000000000FF000000FF000000FF0000
+        0000000000FF000000FF000000FF000000FF000000FF
+      }
+      NumGlyphs = 1
+      ParentColor = False
+      ParentFont = False
+      ReadOnly = False
+      TabOrder = 0
+      TabStop = True
+    end
+    object pAnime: TPanel
+      Left = 180
+      Height = 67
+      Top = 97
+      Width = 278
+      BevelInner = bvRaised
+      BorderStyle = bsSingle
+      ClientHeight = 63
+      ClientWidth = 274
+      Color = clInactiveCaptionText
+      ParentColor = False
+      TabOrder = 1
+      Visible = False
+      object Animate: TBGRASpriteAnimation
+        Left = 0
+        Height = 60
+        Top = 1
+        Width = 272
+        AnimInvert = False
+        AnimPosition = 1
+        AnimRepeat = 0
+        AnimRepeatLap = 0
+        AnimSpeed = 1000
+        AnimStatic = False
+        AutoSize = False
+        Center = True
+        Proportional = True
+        SpriteCount = 1
+        SpriteFillOpacity = 255
+        SpriteFlipMode = flNone
+        SpriteKeyColor = clNone
+        SpriteResampleFilter = rfLinear
+        SpriteResampleMode = rmSimpleStretch
+        SpriteRotation = rtNone
+        Stretch = True
+        Tile = False
+        Visible = False
+      end
+    end
+  end
+  object gbOrigine: TGroupBox
+    Left = 5
+    Height = 204
+    Top = 68
+    Width = 632
+    Anchors = [akTop, akLeft, akRight]
+    Caption = ' Origine '
+    ClientHeight = 182
+    ClientWidth = 628
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 2
+    object cbDossierOrigine: TFWDBLookupCombo
+      Left = 474
+      Height = 29
+      Top = 15
+      Width = 145
+      AutoSize = True
+      Anchors = [akTop, akRight]
+      ButtonOnlyWhenFocused = False
+      ButtonWidth = 15
+      Enabled = False
+      PopUpFormOptions.Columns = <>
+      Flat = False
+      Glyph.Data = {
+        72000000424D7200000000000000360000002800000005000000030000000100
+        2000000000003C00000064000000640000000000000000000000000000000000
+        0000000000FF000000000000000000000000000000FF000000FF000000FF0000
+        0000000000FF000000FF000000FF000000FF000000FF
+      }
+      NumGlyphs = 1
+      ParentColor = False
+      ParentFont = False
+      ReadOnly = False
+      TabOrder = 2
+      TabStop = True
+    end
+    object btnConnectOrigine: TJvXPButton
+      Left = 389
+      Height = 23
+      Top = 14
+      Width = 82
+      Caption = 'Connecter'
+      Enabled = False
+      TabOrder = 1
+      Spacing = 8
+      Anchors = [akTop, akRight]
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnConnectOrigineClick
+    end
+    object cbBaseOrigine: TFWEdit
+      Left = 7
+      Height = 21
+      Top = 15
+      Width = 376
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      CharCase = ecNormal
+      MaxLength = 0
+      ParentFont = False
+      TabOrder = 0
+      OnChange = cbBaseOriginePropertiesChange
+      SpaceChar = '_'
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 31
+    Top = 483
+    Width = 642
+    Align = alBottom
+    ClientHeight = 31
+    ClientWidth = 642
+    TabOrder = 3
+    object lImport: TLabel
+      Left = 93
+      Height = 13
+      Top = 9
+      Width = 457
+      Anchors = [akTop, akLeft, akBottom]
+      AutoSize = False
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object btnImport: TFWImport
+      Left = 1
+      Height = 29
+      Top = 1
+      Width = 99
+      Caption = 'Importer'
+      Enabled = False
+      TabOrder = 0
+      Spacing = 8
+      Align = alLeft
+      Anchors = [akLeft, akBottom]
+      ParentFont = False
+      OnClick = btnImportClick
+    end
+    object btnClose: TFWClose
+      Left = 548
+      Height = 29
+      Top = 1
+      Width = 93
+      TabStop = False
+      Caption = 'Fermer'
+      TabOrder = 1
+      Spacing = 8
+      Align = alRight
+      Anchors = [akRight, akBottom]
+      ParentFont = False
+      OnClick = btnCloseClick
+    end
+  end
+  object dsDossierOrigine: TDatasource
+    AutoEdit = False
+    DataSet = tDossierOrigine
+    left = 478
+    top = 62
+  end
+  object dsIndiOrigine: TDatasource
+    DataSet = qIndiOrigine
+    left = 30
+    top = 126
+  end
+  object qIndiOrigine: TIBQuery
+    Database = IBBaseOrigine
+    Transaction = IBTrans_Origine
+    AutoCalcFields = False
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT first(100) cle_fiche,nom,prenom'
+      'FROM INDIVIDU WHERE KLE_DOSSIER = :DOSSIER'
+      'ORDER BY NOM, PRENOM'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    left = 59
+    top = 126
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    object qIndiOrigineCLE_FICHE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_FICHE'
+      Index = 0
+      LookupCache = False
+      Origin = '"INDIVIDU"."CLE_FICHE"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = True
+    end
+    object qIndiOrigineNOM: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 1
+      LookupCache = False
+      Origin = '"INDIVIDU"."NOM"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object qIndiOriginePRENOM: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'PRENOM'
+      Index = 2
+      LookupCache = False
+      Origin = '"INDIVIDU"."PRENOM"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+  end
+  object IBBaseOrigine: TIBDatabase
+    Connected = False
+    LoginPrompt = False
+    AllowStreamedConnected = False
+    DefaultTransaction = IBTrans_Origine
+    IdleTimer = 0
+    TraceFlags = []
+    left = 32
+    top = 208
+  end
+  object IBTrans_Origine: TIBTransaction
+    Active = False
+    DefaultDatabase = IBBaseOrigine
+    DefaultAction = TACommitRetaining
+    Params.Strings = (
+      'read_committed'
+      'rec_version'
+      'nowait'
+    )
+    left = 60
+    top = 208
+  end
+  object dsIndiDestination: TDatasource
+    DataSet = qIndiDestination
+    left = 25
+    top = 353
+  end
+  object qIndiDestination: TIBQuery
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT first (100) cle_fiche,nom,prenom'
+      'FROM INDIVIDU WHERE KLE_DOSSIER = :DOSSIER'
+      'ORDER BY NOM, PRENOM'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    left = 104
+    top = 352
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    object qIndiDestinationCLE_FICHE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_FICHE'
+      Index = 0
+      LookupCache = False
+      Origin = '"INDIVIDU"."CLE_FICHE"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = True
+    end
+    object qIndiDestinationNOM: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 1
+      LookupCache = False
+      Origin = '"INDIVIDU"."NOM"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object qIndiDestinationPRENOM: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'PRENOM'
+      Index = 2
+      LookupCache = False
+      Origin = '"INDIVIDU"."PRENOM"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+  end
+  object dsDossierDestination: TDatasource
+    AutoEdit = False
+    DataSet = TDossierDestination
+    left = 489
+    top = 273
+  end
+  object SelectFichier: TOpenDialog
+    left = 296
+    top = 184
+  end
+  object QTestTableChamp: TIBSQL
+    Database = IBBaseOrigine
+    ParamCheck = True
+    SQL.Strings = (
+      'select 1 from rdb$relation_fields'
+      'where rdb$relation_name=:table'
+      'and rdb$field_name=:champ'
+    )
+    Transaction = IBTrans_Origine
+    left = 29
+    top = 164
+  end
+  object qPhoto: TIBSQL
+    Database = dm.ibd_BASE
+    ParamCheck = True
+    Transaction = dm.IBT_BASE
+    left = 184
+    top = 168
+  end
+  object QmajMedia: TIBSQL
+    Database = dm.ibd_BASE
+    ParamCheck = True
+    SQL.Strings = (
+      'update multimedia'
+      'set multi_image_rtf=:multi_image_rtf'
+      ',multi_media=:multi_media'
+      ',multi_reduite=:multi_reduite'
+      'where multi_clef=:multi_clef'
+    )
+    Transaction = dm.IBT_BASE
+    left = 149
+    top = 228
+  end
+  object TDossierDestination: TIBQuery
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select CLE_DOSSIER,NOM_DOSSIER'
+      'FROM DOSSIER '
+      'ORDER BY CLE_DOSSIER'
+    )
+    Params = <>
+    left = 517
+    top = 273
+    object TDossierDestinationCLE_DOSSIER: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_DOSSIER'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object TDossierDestinationNOM_DOSSIER: TIBStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'NOM_DOSSIER'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+  end
+  object tDossierOrigine: TIBQuery
+    Database = IBBaseOrigine
+    Transaction = IBTrans_Origine
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select CLE_DOSSIER,NOM_DOSSIER'
+      'FROM DOSSIER '
+      'ORDER BY CLE_DOSSIER'
+    )
+    Params = <>
+    left = 505
+    top = 62
+    object tDossierOrigineCLE_DOSSIER: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_DOSSIER'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object tDossierOrigineNOM_DOSSIER: TIBStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'NOM_DOSSIER'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+  end
+  object qTestLangue: TIBSQL
+    Database = IBBaseOrigine
+    ParamCheck = True
+    SQL.Strings = (
+      'select ds_langue'
+      'from dossier'
+      'where cle_dossier=:dossier'
+    )
+    Transaction = IBTrans_Origine
+    left = 109
+    top = 164
+  end
+  object QueryToClone: TIBQuery
+    Database = IBBaseOrigine
+    Transaction = IBTrans_Origine
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT first (100) cle_fiche,nom,prenom'
+      'FROM INDIVIDU WHERE KLE_DOSSIER = :DOSSIER'
+      'ORDER BY NOM, PRENOM'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    left = 132
+    top = 380
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    object qIndiDestinationCLE_FICHE1: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_FICHE'
+      Index = 0
+      LookupCache = False
+      Origin = '"INDIVIDU"."CLE_FICHE"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = True
+    end
+    object qIndiDestinationNOM1: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 1
+      LookupCache = False
+      Origin = '"INDIVIDU"."NOM"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object qIndiDestinationPRENOM1: TIBStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'PRENOM'
+      Index = 2
+      LookupCache = False
+      Origin = '"INDIVIDU"."PRENOM"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+  end
+end

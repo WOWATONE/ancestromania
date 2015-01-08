@@ -1,0 +1,375 @@
+inherited FAskNameFilesToExportReport: TFAskNameFilesToExportReport
+  Left = 488
+  Height = 272
+  Top = 188
+  Width = 453
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'FAskNameFilesToExportReport'
+  ClientHeight = 272
+  ClientWidth = 453
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 0
+    Height = 272
+    Top = 0
+    Width = 453
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 272
+    ClientWidth = 453
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object Panel2: TPanel
+      Left = 3
+      Height = 266
+      Top = 3
+      Width = 447
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 266
+      ClientWidth = 447
+      TabOrder = 0
+      object Panel8: TPanel
+        Left = 1
+        Height = 30
+        Top = 235
+        Width = 445
+        Align = alBottom
+        ClientHeight = 30
+        ClientWidth = 445
+        TabOrder = 0
+        object btnOk: TFWOK
+          Cursor = crHandPoint
+          Left = 350
+          Height = 28
+          Top = 1
+          Width = 94
+          Caption = 'Ok'
+          TabOrder = 0
+          Default = True
+          ModalResult = 1
+          Spacing = 8
+          Align = alRight
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+        end
+        object btnCancel: TFWCancel
+          Cursor = crHandPoint
+          Left = 256
+          Height = 28
+          Top = 1
+          Width = 94
+          Caption = 'Annuler'
+          TabOrder = 1
+          Cancel = True
+          ModalResult = 2
+          Align = alRight
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+        end
+      end
+      object Panel3: TPanel
+        Left = 1
+        Height = 234
+        Top = 1
+        Width = 445
+        Align = alClient
+        ClientHeight = 234
+        ClientWidth = 445
+        TabOrder = 1
+        object lbFile1: TLabel
+          Left = 1
+          Height = 14
+          Top = 113
+          Width = 443
+          Align = alBottom
+          Caption = 'Nom du fichier :'
+          ParentColor = False
+        end
+        object lbFile2: TLabel
+          Left = 1
+          Height = 14
+          Top = 153
+          Width = 443
+          Align = alBottom
+          Caption = 'Nom du fichier :'
+          ParentColor = False
+        end
+        object lbFile3: TLabel
+          Left = 1
+          Height = 14
+          Top = 193
+          Width = 443
+          Align = alBottom
+          Caption = 'Nom du fichier :'
+          ParentColor = False
+        end
+        object FlatGroupBox1: TGroupBox
+          Left = 1
+          Height = 112
+          Top = 1
+          Width = 145
+          Align = alLeft
+          Caption = 'Séparateur de champ :'
+          ClientHeight = 96
+          ClientWidth = 141
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          ParentFont = False
+          TabOrder = 0
+          object Panel6: TPanel
+            Left = 0
+            Height = 96
+            Top = 0
+            Width = 141
+            Align = alClient
+            BevelOuter = bvNone
+            ClientHeight = 96
+            ClientWidth = 141
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentFont = False
+            TabOrder = 0
+            object rbPV: TRadioButton
+              Cursor = crHandPoint
+              Left = 0
+              Height = 24
+              Top = 48
+              Width = 141
+              Align = alTop
+              Caption = 'Point-virgule (;)'
+              TabOrder = 0
+            end
+            object rbV: TRadioButton
+              Cursor = crHandPoint
+              Left = 0
+              Height = 24
+              Top = 24
+              Width = 141
+              Align = alTop
+              Caption = 'Virgule (,)'
+              TabOrder = 1
+            end
+            object rbTab: TRadioButton
+              Cursor = crHandPoint
+              Left = 0
+              Height = 24
+              Top = 0
+              Width = 141
+              Align = alTop
+              Caption = 'Tabulation'
+              Checked = True
+              TabOrder = 2
+              TabStop = True
+            end
+            object Panel7: TPanel
+              Left = 0
+              Height = 24
+              Top = 72
+              Width = 141
+              Align = alClient
+              BevelOuter = bvNone
+              ClientHeight = 24
+              ClientWidth = 141
+              TabOrder = 3
+              object rbAutre: TRadioButton
+                Cursor = crHandPoint
+                Left = 0
+                Height = 24
+                Top = 0
+                Width = 67
+                Align = alLeft
+                Caption = 'Autre :'
+                Checked = True
+                TabOrder = 0
+              end
+              object edAutreSep: TMaskEdit
+                Cursor = crHandPoint
+                Left = 67
+                Height = 24
+                Top = 0
+                Width = 74
+                Align = alClient
+                AutoSize = False
+                CharCase = ecNormal
+                MaxLength = 0
+                ParentFont = False
+                TabOrder = 1
+                SpaceChar = '_'
+              end
+            end
+          end
+        end
+        object FlatGroupBox2: TGroupBox
+          Left = 146
+          Height = 112
+          Top = 1
+          Width = 298
+          Align = alClient
+          Caption = 'Divers :'
+          ClientHeight = 96
+          ClientWidth = 294
+          TabOrder = 1
+          object cbIncludeEntete: TCheckBox
+            Cursor = crHandPoint
+            Left = 0
+            Height = 24
+            Top = 30
+            Width = 275
+            Caption = 'Entêtes des colonnes présentes (1ère ligne)'
+            Checked = True
+            State = cbChecked
+            TabOrder = 0
+          end
+        end
+        object Panel1: TPanel
+          Left = 1
+          Height = 26
+          Top = 207
+          Width = 443
+          Align = alBottom
+          BevelOuter = bvNone
+          ClientHeight = 26
+          ClientWidth = 443
+          TabOrder = 2
+          object edNameFile3: TMaskEdit
+            Left = 0
+            Height = 26
+            Top = 0
+            Width = 420
+            Align = alClient
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 0
+            SpaceChar = '_'
+          end
+          object btn3: TCSpeedButton
+            Left = 420
+            Height = 26
+            Top = 0
+            Width = 23
+            Align = alRight
+            Caption = '...'
+            OnClick = btn3Click
+          end
+        end
+        object Panel4: TPanel
+          Left = 1
+          Height = 26
+          Top = 167
+          Width = 443
+          Align = alBottom
+          BevelOuter = bvNone
+          ClientHeight = 26
+          ClientWidth = 443
+          TabOrder = 3
+          object btn2: TCSpeedButton
+            Left = 420
+            Height = 26
+            Top = 0
+            Width = 23
+            Align = alRight
+            Caption = '...'
+            OnClick = btn2Click
+          end
+          object edNameFile2: TMaskEdit
+            Left = 0
+            Height = 26
+            Top = 0
+            Width = 420
+            Align = alClient
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 0
+            SpaceChar = '_'
+          end
+        end
+        object Panel5: TPanel
+          Left = 1
+          Height = 26
+          Top = 127
+          Width = 443
+          Align = alBottom
+          BevelOuter = bvNone
+          ClientHeight = 26
+          ClientWidth = 443
+          TabOrder = 4
+          object edNameFile1: TMaskEdit
+            Left = 0
+            Height = 26
+            Top = 0
+            Width = 420
+            Align = alClient
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 0
+            SpaceChar = '_'
+          end
+          object btn1: TCSpeedButton
+            Left = 420
+            Height = 26
+            Top = 0
+            Width = 23
+            Align = alRight
+            Caption = '...'
+            OnClick = btn1Click
+          end
+        end
+      end
+    end
+  end
+  object SaveDialog1: TSaveDialog[1]
+    DefaultExt = '.csv'
+    Filter = 'Texte formaté (*.csv, *.txt)|*.csv;*.txt|Texte (*.txt)|*.txt|CSV (*.csv)|*.csv'
+    left = 312
+    top = 48
+  end
+  object SaveDialog2: TSaveDialog[2]
+    DefaultExt = '.csv'
+    Filter = 'Texte formaté (*.csv, *.txt)|*.csv;*.txt|Texte (*.txt)|*.txt|CSV (*.csv)|*.csv'
+    left = 312
+    top = 96
+  end
+  object SaveDialog3: TSaveDialog[3]
+    DefaultExt = '.csv'
+    Filter = 'Texte formaté (*.csv, *.txt)|*.csv;*.txt|Texte (*.txt)|*.txt|CSV (*.csv)|*.csv'
+    left = 312
+    top = 136
+  end
+  object Language: TYLanguage[4]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 224
+    top = 152
+  end
+  object OnFormInfoIni: TOnFormInfoIni[5]
+    SaveEdits = [feTRadio]
+    SaveForm = [sfSavePos, sfSaveSize, sfSameMonitor]
+    Options = [loAutoUpdate, loAutoLoad]
+    left = 140
+    top = 205
+  end
+end

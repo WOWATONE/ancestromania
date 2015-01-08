@@ -1,0 +1,564 @@
+inherited FListeVillesDoublons: TFListeVillesDoublons
+  Left = 486
+  Height = 388
+  Top = 418
+  Width = 781
+  BorderWidth = 1
+  Caption = 'Liste des villes en double'
+  ClientHeight = 388
+  ClientWidth = 781
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 386
+    Top = 1
+    Width = 779
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 386
+    ClientWidth = 779
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 3
+      Height = 380
+      Top = 3
+      Width = 773
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 380
+      ClientWidth = 773
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 1
+        Height = 378
+        Top = 1
+        Width = 771
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 378
+        ClientWidth = 771
+        TabOrder = 0
+        object fpBoutons: TPanel
+          Left = 3
+          Height = 29
+          Top = 346
+          Width = 765
+          Align = alBottom
+          ClientHeight = 29
+          ClientWidth = 765
+          TabOrder = 0
+          object btnFermer: TFWClose
+            Cursor = crHandPoint
+            Left = 667
+            Height = 25
+            Top = 2
+            Width = 94
+            Caption = 'Fermer'
+            TabOrder = 0
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            OnClick = sbCloseClick
+          end
+          object GoodBtn1: TFWDelete
+            Cursor = crHandPoint
+            Left = 1
+            Height = 27
+            Top = 1
+            Width = 102
+            Caption = 'Supprimer'
+            TabOrder = 1
+            Align = alLeft
+            ParentFont = False
+            OnClick = Supprimerlafiche1Click
+          end
+        end
+        object pBottom: TPanel
+          Left = 3
+          Height = 3
+          Top = 343
+          Width = 765
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 1
+        end
+        object dxDBGrid1: TExtDBGrid
+          Left = 3
+          Height = 280
+          Top = 63
+          Width = 765
+          TitleButtons = False
+          AutoSort = False
+          Columns = <          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'CP'
+              Title.Orientation = toHorizontal
+              Width = 51
+              FieldName = 'rcv_poste'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'INSEE'
+              Title.Orientation = toHorizontal
+              Width = 62
+              FieldName = 'rcv_INSEE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Ville'
+              Title.Orientation = toHorizontal
+              Width = 221
+              FieldName = 'rcv_VILLE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Pays'
+              Title.Orientation = toHorizontal
+              Width = 133
+              FieldName = 'RPA_LIBELLE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Longitude'
+              Title.Orientation = toHorizontal
+              Width = 78
+              FieldName = 'rcv_LONGITUDE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Latitude'
+              Title.Orientation = toHorizontal
+              Width = 88
+              FieldName = 'rcv_LATITUDE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'CP_Code'
+              Title.Orientation = toHorizontal
+              Width = 68
+              FieldName = 'rcv_CODE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end>
+          KeyStrokes = <          
+            item
+              Command = rxgcShowFindDlg
+              ShortCut = 16454
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowColumnsDlg
+              ShortCut = 16471
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowFilterDlg
+              ShortCut = 16468
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowSortDlg
+              ShortCut = 16467
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowQuickFilter
+              ShortCut = 16465
+              Enabled = True
+            end          
+            item
+              Command = rxgcHideQuickFilter
+              ShortCut = 16456
+              Enabled = True
+            end          
+            item
+              Command = rxgcSelectAll
+              ShortCut = 16449
+              Enabled = True
+            end          
+            item
+              Command = rxgcDeSelectAll
+              ShortCut = 16429
+              Enabled = True
+            end          
+            item
+              Command = rxgcInvertSelection
+              ShortCut = 16426
+              Enabled = True
+            end          
+            item
+              Command = rxgcOptimizeColumnsWidth
+              ShortCut = 16427
+              Enabled = True
+            end>
+          OptionsRx = []
+          Align = alClient
+          Color = clWindow
+          DrawFullLine = False
+          FocusColor = clRed
+          SelectedColor = clHighlight
+          GridLineStyle = psSolid
+          DataSource = DSDoublons
+          Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+          ParentColor = False
+          PopupMenu = pmGrid
+          Scrollbars = ssAutoBoth
+          TabOrder = 2
+          TitleFont.CharSet = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+        end
+        object Panel3: TPanel
+          Left = 3
+          Height = 55
+          Top = 3
+          Width = 765
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 55
+          ClientWidth = 765
+          TabOrder = 3
+          object Image1: TIATitle
+            Left = 0
+            Top = 0
+            Align = alLeft
+            AutoSize = True
+            ImageOn = iaGlobe
+          end
+          object Panel1: TPanel
+            Left = 123
+            Height = 55
+            Top = 0
+            Width = 642
+            Align = alClient
+            BevelOuter = bvNone
+            ClientHeight = 55
+            ClientWidth = 642
+            TabOrder = 0
+            object Label2: TLabel
+              Left = 0
+              Height = 14
+              Top = 23
+              Width = 642
+              Align = alTop
+              Alignment = taRightJustify
+              Anchors = [akTop, akRight]
+              Caption = 'La recherche de doublons se fait : sur le code Insee, le code postal et le pays'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentColor = False
+              ParentFont = False
+            end
+            object Label3: TLabel
+              Left = 0
+              Height = 23
+              Top = 0
+              Width = 642
+              Align = alTop
+              Alignment = taRightJustify
+              Anchors = [akTop, akRight]
+              Caption = 'Villes en double dans la table de référence des villes'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -19
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentColor = False
+              ParentFont = False
+            end
+          end
+        end
+        object Panel2: TPanel
+          Left = 3
+          Height = 5
+          Top = 58
+          Width = 765
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 4
+        end
+        object pBravo: TPanel
+          Left = 19
+          Height = 175
+          Top = 115
+          Width = 707
+          BevelInner = bvSpace
+          BevelOuter = bvSpace
+          BorderStyle = bsSingle
+          ClientHeight = 173
+          ClientWidth = 705
+          TabOrder = 5
+          Visible = False
+          object Image2: TIASearch
+            Left = 8
+            Top = 8
+            AutoSize = True
+          end
+          object Label1: TLabel
+            Left = 136
+            Height = 38
+            Top = 14
+            Width = 556
+            Alignment = taCenter
+            Caption = 'Bravo, il n''y a pas de doublons'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -32
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            WordWrap = True
+          end
+        end
+      end
+    end
+  end
+  object IBQDoublons: TIBQuery[1]
+    Database = dm.IBBaseParam
+    Transaction = dm.IBTransParam
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select '
+      '    x.rcv_CODE,'
+      '    x.rcv_poste,'
+      '    x.rcv_VILLE,'
+      '    x.rcv_INSEE,'
+      '    x.rcv_LONGITUDE,'
+      '    x.rcv_LATITUDE,'
+      '    x.rcv_PAYS,'
+      '    P.RPA_LIBELLE'
+      'from'
+      '(SELECT DISTINCT'
+      '    A.rcv_CODE,'
+      '    A.rcv_poste,'
+      '    A.rcv_VILLE,'
+      '    A.rcv_INSEE,'
+      '    A.rcv_LONGITUDE,'
+      '    A.rcv_LATITUDE,'
+      '    A.rcv_PAYS'
+      'FROM'
+      '    REF_CP_VILLES A,'
+      '    REF_CP_VILLES B'
+      'WHERE'
+      '    (A.rcv_INSEE IS NOT NULL) AND'
+      '    (A.rcv_INSEE <>'''') AND'
+      '    (A.rcv_INSEE = B.rcv_INSEE) AND'
+      '    (a.rcv_poste is not distinct from b.rcv_poste) and'
+      '    (A.rcv_CODE <> B.rcv_CODE) AND'
+      '    (B.rcv_PAYS = A.rcv_PAYS) ) X'
+      'inner join REF_PAYS P on P.RPA_CODE = x.rcv_PAYS'
+      'ORDER BY'
+      '    x.rcv_PAYS, x.rcv_INSEE, x.rcv_VILLE, x.rcv_poste'
+    )
+    Params = <>
+    left = 62
+    top = 47
+    object IBQDoublonsCP_CODE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'rcv_CODE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object IBQDoublonsCP_VILLE: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'rcv_VILLE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQDoublonsCP_INSEE: TIBStringField
+      DisplayWidth = 6
+      FieldKind = fkData
+      FieldName = 'RCV_INSEE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object IBQDoublonsCP_CP: TIBStringField
+      DisplayWidth = 8
+      FieldKind = fkData
+      FieldName = 'RCV_CP'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 8
+    end
+    object IBQDoublonsCP_LONGITUDE: TFloatField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RCV_LONGITUDE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object IBQDoublonsCP_LATITUDE: TFloatField
+      DisplayWidth = 19
+      FieldKind = fkData
+      FieldName = 'RCV_LATITUDE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      MaxValue = 0
+      MinValue = 0
+      Precision = 18
+    end
+    object IBQDoublonsRPA_LIBELLE: TIBStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'RPA_LIBELLE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 30
+    end
+  end
+  object DSDoublons: TDatasource[2]
+    DataSet = IBQDoublons
+    left = 30
+    top = 47
+  end
+  object Language: TYLanguage[3]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+  end
+  object pmGrid: TPopupMenu[4]
+    Images = dm.ImageListMenu
+    OnPopup = pmGridPopup
+    left = 232
+    top = 39
+    object Supprimerlafiche1: TMenuItem
+      Caption = 'Supprimer la ville...'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000737B73FF737B73FF00000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        FFFF0000BDFF0000BDFF737B73FF000000000000000000000000000000000000
+        00000000FFFF737B73FF00000000000000000000000000000000000000000000
+        FFFF0000BDFF0000BDFF0000BDFF737B73FF0000000000000000000000000000
+        FFFF0000BDFF0000BDFF737B73FF000000000000000000000000000000000000
+        FFFF0000BDFF0000BDFF0000BDFF0000BDFF737B73FF000000000000FFFF0000
+        BDFF0000BDFF0000BDFF0000BDFF737B73FF0000000000000000000000000000
+        00000000FFFF0000BDFF0000BDFF0000BDFF0000BDFF737B73FF0000BDFF0000
+        BDFF0000BDFF0000BDFF0000BDFF737B73FF0000000000000000000000000000
+        0000000000000000FFFF0000BDFF0000BDFF0000BDFF0000BDFF0000BDFF0000
+        BDFF0000BDFF0000BDFF737B73FF000000000000000000000000000000000000
+        000000000000000000000000FFFF0000BDFF0000BDFF0000BDFF0000BDFF0000
+        BDFF0000BDFF737B73FF00000000000000000000000000000000000000000000
+        00000000000000000000000000000000BDFF0000BDFF0000BDFF0000BDFF0000
+        BDFF737B73FF0000000000000000000000000000000000000000000000000000
+        00000000000000000000000000000000FFFF0000BDFF0000BDFF0000BDFF0000
+        BDFF737B73FF0000000000000000000000000000000000000000000000000000
+        000000000000000000000000FFFF0000BDFF0000BDFF0000BDFF0000BDFF0000
+        BDFF737B73FF0000000000000000000000000000000000000000000000000000
+        0000000000000000FFFF0000BDFF0000BDFF0000BDFF737B73FF0000BDFF0000
+        BDFF0000BDFF737B73FF00000000000000000000000000000000000000000000
+        00000000FFFF0000BDFF0000BDFF0000BDFF737B73FF000000000000FFFF0000
+        BDFF0000BDFF0000BDFF737B73FF000000000000000000000000000000000000
+        00000000FFFF0000BDFF0000BDFF737B73FF0000000000000000000000000000
+        FFFF0000BDFF0000BDFF0000BDFF737B73FF0000000000000000000000000000
+        0000000000000000FFFF0000BDFF000000000000000000000000000000000000
+        00000000FFFF0000BDFF0000BDFF0000BDFF0000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000FFFF0000BDFF0000FFFF0000000000000000
+      }
+      ImageIndex = 4
+      OnClick = Supprimerlafiche1Click
+    end
+  end
+  object IBQDelVille: TIBSQL[5]
+    Database = dm.ibd_BASE
+    ParamCheck = True
+    SQL.Strings = (
+      'delete from ref_cp_villes where rcv_CODE=:code'
+    )
+    Transaction = dm.IBTrans_Secondaire
+    left = 143
+    top = 39
+  end
+end

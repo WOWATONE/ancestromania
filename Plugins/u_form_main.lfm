@@ -1,0 +1,8 @@
+object F_PluginAncestro: TF_PluginAncestro
+  Left = 651
+  Height = 240
+  Top = 367
+  Width = 320
+  Caption = 'Plugin-Ancestro'
+  LCLVersion = '1.2.1.0'
+end

@@ -1,0 +1,184 @@
+inherited FConfirmAddToFavoris: TFConfirmAddToFavoris
+  Left = 920
+  Height = 298
+  Top = 74
+  Width = 454
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Ajout aux Favoris'
+  ClientHeight = 298
+  ClientWidth = 454
+  Color = clWindow
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  OnShow = SuperFormShow
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 0
+    Height = 298
+    Top = 0
+    Width = 454
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 298
+    ClientWidth = 454
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clWindow
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    ParentFont = False
+    TabOrder = 0
+    object Panel2: TPanel
+      Left = 3
+      Height = 233
+      Top = 62
+      Width = 448
+      Align = alClient
+      BevelOuter = bvLowered
+      BorderWidth = 3
+      ClientHeight = 233
+      ClientWidth = 448
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowFrame
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      ParentFont = False
+      TabOrder = 0
+      object lAction: TLabel
+        Left = 4
+        Height = 33
+        Top = 4
+        Width = 440
+        Align = alTop
+        AutoSize = False
+        Caption = 'Ancestromania va ajouter cet individu  ainsi que le SOSA actuellement le plus ancien, à vos Favoris.'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWindowFrame
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        WordWrap = True
+      end
+      object Label2: TLabel
+        Left = 4
+        Height = 48
+        Top = 37
+        Width = 440
+        Align = alTop
+        AutoSize = False
+        Caption = 'Par le menu "Favoris" vous aurez alors un accès immédiat à cette personne dans la fiche principale et lors de l''exportation au format GEDCOM d''une branche de votre généalogie.'
+        ParentColor = False
+        WordWrap = True
+      end
+      object lTitre: TLabel
+        Cursor = crArrow
+        Left = 4
+        Height = 14
+        Top = 85
+        Width = 440
+        Align = alTop
+        AutoSize = False
+        Caption = 'lTitre'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+      end
+      object fpBoutons: TPanel
+        Left = 4
+        Height = 30
+        Top = 199
+        Width = 440
+        Align = alBottom
+        ClientHeight = 30
+        ClientWidth = 440
+        TabOrder = 0
+        object btnFermer: TFWClose
+          Cursor = crHandPoint
+          Left = 345
+          Height = 28
+          Hint = 'Ferme cette fenêtre.'
+          Top = 1
+          Width = 94
+          Caption = 'Fermer'
+          TabOrder = 0
+          Cancel = True
+          ModalResult = 2
+          Align = alRight
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+        end
+        object btnAjouter: TFWAdd
+          Cursor = crHandPoint
+          Left = 251
+          Height = 28
+          Hint = 'Ajouter aux favoris'
+          Top = 1
+          Width = 94
+          Caption = 'Ajouter'
+          TabOrder = 1
+          Default = True
+          ModalResult = 1
+          Align = alRight
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          GlyphSize = 16
+        end
+      end
+    end
+    object Panel9: TPanel
+      Left = 3
+      Height = 59
+      Top = 3
+      Width = 448
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 59
+      ClientWidth = 448
+      TabOrder = 1
+      object Image1: TIATitle
+        Left = 0
+        Height = 60
+        Top = 0
+        Width = 131
+        Proportional = True
+        Stretch = True
+        ImageOn = iaFavorite
+      end
+      object Label3: TLabel
+        Left = 330
+        Height = 59
+        Top = 0
+        Width = 118
+        Align = alRight
+        Alignment = taRightJustify
+        Anchors = [akTop, akRight]
+        Caption = 'Favoris'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBtnText
+        Font.Height = -29
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+  end
+end

@@ -1,0 +1,494 @@
+inherited FListeNouveauxIndi: TFListeNouveauxIndi
+  Left = 624
+  Height = 399
+  Top = 258
+  Width = 639
+  ActiveControl = dxDBGrid1
+  BorderWidth = 1
+  Caption = 'Fiches saisies récemment'
+  ClientHeight = 399
+  ClientWidth = 639
+  Color = clWindow
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  OnShow = FormShow
+  Position = poScreenCenter
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 397
+    Top = 1
+    Width = 637
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 397
+    ClientWidth = 637
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 3
+      Height = 391
+      Top = 3
+      Width = 631
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 391
+      ClientWidth = 631
+      Color = clWindow
+      ParentColor = False
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 1
+        Height = 389
+        Top = 1
+        Width = 629
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 389
+        ClientWidth = 629
+        TabOrder = 0
+        object fpBoutons: TPanel
+          Left = 3
+          Height = 31
+          Top = 355
+          Width = 623
+          Align = alBottom
+          ClientHeight = 31
+          ClientWidth = 623
+          TabOrder = 0
+          object rbNew: TRadioButton
+            Left = 1
+            Height = 29
+            Top = 1
+            Width = 83
+            Align = alLeft
+            Caption = 'Nouveaux'
+            OnClick = rbNewClick
+            TabOrder = 0
+          end
+          object rbModify: TRadioButton
+            Left = 84
+            Height = 29
+            Top = 1
+            Width = 135
+            Align = alLeft
+            Caption = 'Modifiés depuis le :'
+            Checked = True
+            OnClick = rbModifyClick
+            TabOrder = 1
+            TabStop = True
+          end
+          object cbNew: TJvXPCheckbox
+            Left = 306
+            Height = 29
+            Top = 1
+            Width = 268
+            Caption = 'Ouvrir cette fenêtre au démarrage'
+            TabOrder = 3
+            ParentColor = False
+            UseDockManager = False
+            Align = alLeft
+            ParentFont = False
+            OnClick = cbNewClick
+          end
+          object DateTimePicker: TZVDateTimePicker
+            Left = 219
+            Height = 29
+            Top = 1
+            Width = 87
+            CenturyFrom = 1941
+            MaxDate = 2958465
+            MinDate = -53780
+            TabOrder = 2
+            TrailingSeparator = False
+            TextForNullDate = 'NULL'
+            LeadingZeros = True
+            Align = alLeft
+            Kind = dtkDate
+            TimeFormat = tf24
+            TimeDisplay = tdHMS
+            DateMode = dmComboBox
+            Date = 37096
+            Time = 0.345349166702363
+            UseDefaultSeparators = True
+            HideDateTimeParts = []
+            MonthNames = 'Long'
+            OnCloseUp = DateTimePickerCloseUp
+          end
+          object Fermer: TFWClose
+            Left = 542
+            Height = 29
+            Top = 1
+            Caption = '&Fermer'
+            TabOrder = 4
+            Align = alRight
+          end
+        end
+        object pBottom: TPanel
+          Left = 3
+          Height = 3
+          Top = 352
+          Width = 623
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 1
+        end
+        object dxDBGrid1: TExtDBGrid
+          Left = 3
+          Height = 289
+          Top = 63
+          Width = 623
+          TitleButtons = False
+          AutoSort = False
+          Columns = <          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'SEXE'
+              Title.Orientation = toHorizontal
+              Width = 20
+              FieldName = 'SEXE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              Images = dm.ImageSexe
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Nom'
+              Title.Orientation = toHorizontal
+              Width = 118
+              FieldName = 'NOM'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Prénom'
+              Title.Orientation = toHorizontal
+              Width = 190
+              FieldName = 'PRENOM'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Alignment = taCenter
+              Title.Alignment = taCenter
+              Title.Caption = 'Naiss.'
+              Title.Orientation = toHorizontal
+              Width = 54
+              FieldName = 'ANNEE_NAISSANCE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Alignment = taCenter
+              Title.Alignment = taCenter
+              Title.Caption = 'Décès'
+              Title.Orientation = toHorizontal
+              Width = 54
+              FieldName = 'annee_deces'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Alignment = taCenter
+              Title.Alignment = taCenter
+              Title.Caption = 'NIP'
+              Title.Orientation = toHorizontal
+              Width = 46
+              FieldName = 'cle_fiche'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Modifiée par'
+              Title.Orientation = toHorizontal
+              Width = 117
+              FieldName = 'modif_par_qui'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end>
+          KeyStrokes = <          
+            item
+              Command = rxgcShowFindDlg
+              ShortCut = 16454
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowColumnsDlg
+              ShortCut = 16471
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowFilterDlg
+              ShortCut = 16468
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowSortDlg
+              ShortCut = 16467
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowQuickFilter
+              ShortCut = 16465
+              Enabled = True
+            end          
+            item
+              Command = rxgcHideQuickFilter
+              ShortCut = 16456
+              Enabled = True
+            end          
+            item
+              Command = rxgcSelectAll
+              ShortCut = 16449
+              Enabled = True
+            end          
+            item
+              Command = rxgcDeSelectAll
+              ShortCut = 16429
+              Enabled = True
+            end          
+            item
+              Command = rxgcInvertSelection
+              ShortCut = 16426
+              Enabled = True
+            end          
+            item
+              Command = rxgcOptimizeColumnsWidth
+              ShortCut = 16427
+              Enabled = True
+            end>
+          OptionsRx = []
+          Align = alClient
+          Color = clWindow
+          DrawFullLine = False
+          FocusColor = clRed
+          SelectedColor = clHighlight
+          GridLineStyle = psSolid
+          DataSource = DSNouveaux
+          FixedCols = 0
+          Options = [dgTitles, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+          ParentColor = False
+          PopupMenu = pmNouveaux
+          Scrollbars = ssAutoBoth
+          TabOrder = 2
+          TitleFont.CharSet = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+          OnDblClick = dxDBGrid1DBTableView1CellDblClick
+        end
+        object Panel3: TPanel
+          Left = 3
+          Height = 55
+          Top = 3
+          Width = 623
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 55
+          ClientWidth = 623
+          TabOrder = 3
+          object Image1: TIATitle
+            Left = 1
+            Top = 1
+            AutoSize = True
+            ImageOn = iaNotes
+          end
+          object Label1: TLabel
+            Left = 236
+            Height = 55
+            Top = 0
+            Width = 387
+            Align = alRight
+            Alignment = taRightJustify
+            Anchors = [akTop, akRight]
+            Caption = 'Fiches saisies récemment'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clNavy
+            Font.Height = -27
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object Panel2: TPanel
+          Left = 3
+          Height = 5
+          Top = 58
+          Width = 623
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 4
+        end
+      end
+    end
+  end
+  object IBQNouveaux: TIBQuery[1]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select cle_fiche'
+      ',nom'
+      ',prenom'
+      ',sexe'
+      ',modif_par_qui'
+      ',annee_naissance'
+      ',annee_deces'
+      'from individu'
+      'where kle_dossier=:i_dossier'
+      '  and ((1=:mode and date_creation>=:d_date) or (1<>:mode and date_modif>=:d_date))'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_dossier'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MODE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'd_date'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'mode'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'd_date'
+        ParamType = ptUnknown
+      end>
+    UpdateObject = IBUNouveaux
+    left = 336
+    top = 192
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_dossier'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MODE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'd_date'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'mode'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'd_date'
+        ParamType = ptUnknown
+      end>
+  end
+  object DSNouveaux: TDatasource[2]
+    DataSet = IBQNouveaux
+    left = 336
+    top = 136
+  end
+  object pmNouveaux: TPopupMenu[3]
+    OnPopup = pmNouveauxPopup
+    left = 30
+    top = 151
+    object mOuvreFiche: TMenuItem
+      Caption = 'Ouvrir la fiche (ou dbl-click)'
+      Enabled = False
+      OnClick = mOuvreFicheClick
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object ExporterenHTML1: TMenuItem
+      Caption = 'Exporter en HTML'
+      Enabled = False
+      OnClick = ExporterenHTML1Click
+    end
+  end
+  object SaveDialog: TSaveDialog[4]
+    DefaultExt = '.htm'
+    Filter = '*.htm|*.htm'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    left = 65
+    top = 153
+  end
+  object Language: TYLanguage[5]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 104
+    top = 152
+  end
+  object IBUNouveaux: TIBUpdateSQL[6]
+    RefreshSQL.Strings = (
+      'select cle_fiche'
+      ',nom'
+      ',prenom'
+      ',sexe'
+      ',modif_par_qui'
+      ',annee_naissance'
+      ',annee_deces'
+      'from individu'
+      'where cle_fiche=:cle_fiche'
+    )
+    left = 480
+    top = 208
+  end
+  object OnFormInfoIni: TOnFormInfoIni[7]
+    SaveForm = [sfSavePos]
+    left = 197
+    top = 173
+  end
+end

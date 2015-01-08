@@ -1,0 +1,568 @@
+object FormHistoireDetail: TFormHistoireDetail
+  Left = 538
+  Height = 499
+  Top = 221
+  Width = 455
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Détail historique'
+  ClientHeight = 499
+  ClientWidth = 455
+  Color = clWindow
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  Position = poMainFormCenter
+  LCLVersion = '1.2.1.0'
+  object Panel1: TPanel
+    Left = 0
+    Height = 473
+    Top = 0
+    Width = 455
+    Align = alClient
+    ClientHeight = 473
+    ClientWidth = 455
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object cxGroupBox1: TGroupBox
+      Left = 1
+      Height = 219
+      Top = 1
+      Width = 453
+      Align = alTop
+      Caption = ' Détail '
+      ClientHeight = 203
+      ClientWidth = 451
+      ParentFont = False
+      TabOrder = 0
+      object Panel3: TPanel
+        Left = 0
+        Height = 203
+        Top = 0
+        Width = 72
+        Align = alLeft
+        BevelOuter = bvNone
+        ClientHeight = 203
+        ClientWidth = 72
+        TabOrder = 0
+        object Label1: TLabel
+          Left = 5
+          Height = 15
+          Top = 9
+          Width = 44
+          Caption = 'Période'
+          ParentColor = False
+        end
+        object Label2: TLabel
+          Left = 5
+          Height = 15
+          Top = 28
+          Width = 27
+          Caption = 'Titre'
+          ParentColor = False
+        end
+        object Label5: TLabel
+          Left = 5
+          Height = 15
+          Top = 52
+          Width = 57
+          Caption = 'Catégorie'
+          ParentColor = False
+        end
+        object Label6: TLabel
+          Left = 5
+          Height = 14
+          Top = 78
+          Width = 67
+          Caption = 'Dictionnaire'
+          Font.Height = -11
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label3: TLabel
+          Left = 5
+          Height = 15
+          Top = 98
+          Width = 45
+          Caption = 'Histoire'
+          ParentColor = False
+        end
+      end
+      object Panel4: TPanel
+        Left = 72
+        Height = 203
+        Top = 0
+        Width = 379
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 203
+        ClientWidth = 379
+        TabOrder = 1
+        object edDateTexte: TFWDBEdit
+          Left = 0
+          Height = 25
+          Top = 0
+          Width = 379
+          DataField = 'hi_date_texte'
+          DataSource = dsHistoire
+          CharCase = ecNormal
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 0
+          OnChange = edDateTextePropertiesChange
+          Align = alTop
+        end
+        object cxDBTextEdit2: TFWDBEdit
+          Left = 0
+          Height = 25
+          Top = 25
+          Width = 379
+          DataField = 'hi_titre'
+          DataSource = dsHistoire
+          CharCase = ecNormal
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 1
+          Align = alTop
+        end
+        object cbCategories: TFWDBComboBox
+          Left = 0
+          Height = 27
+          Top = 50
+          Width = 379
+          DataField = 'hi_cat'
+          DropDownCount = 9
+          Font.Height = -11
+          ItemHeight = 0
+          MaxLength = 0
+          OnChange = cbCategoriesPropertiesChange
+          ParentFont = False
+          TabOrder = 2
+          Align = alTop
+        end
+        object Panel5: TPanel
+          Left = 0
+          Height = 24
+          Top = 77
+          Width = 379
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 24
+          ClientWidth = 379
+          TabOrder = 3
+          object cxDBCheckBox1: TDBCheckBox
+            Left = 164
+            Height = 24
+            Top = 0
+            Width = 215
+            Align = alRight
+            Caption = 'Dictionnaire général'
+            DataField = 'HI_DOSSIER'
+            DataSource = dsHistoire
+            TabOrder = 0
+            ValueChecked = '0'
+            ValueUnchecked = '1'
+          end
+          object cxDBTextEdit3: TFWDBLookupCombo
+            Left = 0
+            Height = 24
+            Top = 0
+            Width = 164
+            AutoSize = True
+            Align = alClient
+            ButtonOnlyWhenFocused = False
+            ButtonWidth = 15
+            DataField = 'hi_dicorigine'
+            DataSource = dsHistoire
+            PopUpFormOptions.Columns = <>
+            Flat = False
+            Font.Height = -11
+            Glyph.Data = {
+              72000000424D7200000000000000360000002800000005000000030000000100
+              2000000000003C00000064000000640000000000000000000000000000000000
+              0000000000FF000000000000000000000000000000FF000000FF000000FF0000
+              0000000000FF000000FF000000FF000000FF000000FF
+            }
+            NumGlyphs = 1
+            ParentColor = False
+            ParentFont = False
+            ReadOnly = False
+            TabOrder = 1
+            TabStop = True
+            LookupDisplay = 'hi_dicorigine'
+            LookupField = 'hi_dicorigine'
+            LookupSource = dsListeOrigine
+          end
+        end
+        object DBTextMemo: TFWDBMemo
+          Left = 0
+          Height = 102
+          Top = 101
+          Width = 379
+          Align = alClient
+          DataField = 'hi_texte'
+          DataSource = dsHistoire
+          Font.Height = -11
+          ParentFont = False
+          TabOrder = 4
+        end
+      end
+    end
+    object cxGroupBox2: TGroupBox
+      Left = 1
+      Height = 252
+      Top = 220
+      Width = 453
+      Align = alClient
+      Caption = ' Image '
+      ClientHeight = 236
+      ClientWidth = 451
+      ParentFont = False
+      TabOrder = 1
+      object Label4: TLabel
+        Left = 0
+        Height = 236
+        Top = 0
+        Width = 153
+        Align = alLeft
+        AutoSize = False
+        Caption = 'Pour insérer une image ou autre dessin, servez vous du bouton droit de la souris. Les formats d''images BMP, JPG, PNG, et TIFF sont acceptés et convertis en format Jpeg dans la base. '
+        ParentColor = False
+        WordWrap = True
+      end
+      object cxDBImage1: TExtDBImage
+        Left = 153
+        Height = 236
+        Top = 0
+        Width = 298
+        Align = alClient
+        Datafield = 'hi_image'
+        Datasource = dsHistoire
+      end
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 26
+    Top = 473
+    Width = 455
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 26
+    ClientWidth = 455
+    TabOrder = 1
+    object btnFermer: TFWClose
+      Cursor = crHandPoint
+      Left = 361
+      Hint = 'Ferme cette fenêtre.'
+      Top = 0
+      Width = 94
+      TabStop = False
+      Caption = 'Fermer'
+      TabOrder = 0
+      Cancel = True
+      ModalResult = 2
+      Align = alRight
+      Anchors = [akRight, akBottom]
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object btnValider: TFWOK
+      Cursor = crHandPoint
+      Left = 259
+      Top = 0
+      Width = 102
+      TabStop = False
+      Caption = 'Valider'
+      Enabled = False
+      TabOrder = 1
+      Default = True
+      Align = alRight
+      Anchors = [akRight, akBottom]
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnValiderClick
+    end
+    object btnNouveau: TFWAdd
+      Cursor = crHandPoint
+      Left = 0
+      Top = 0
+      Width = 104
+      TabStop = False
+      Caption = 'Nouveau'
+      TabOrder = 2
+      Default = True
+      Align = alLeft
+      Anchors = [akRight, akBottom]
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnNouveauClick
+      GlyphSize = 16
+    end
+  end
+  object dsHistoire: TDatasource
+    DataSet = qHistoire
+    OnStateChange = dsHistoireStateChange
+    left = 216
+    top = 352
+  end
+  object qHistoire: TIBQuery
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.Generator = 'GEN_REF_HISTOIRE'
+    GeneratorField.Field = 'HI_ID'
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT hi_id'
+      ',hi_dossier'
+      ',hi_dicorigine'
+      ',hi_date_texte'
+      ',hi_cat'
+      ',hi_titre'
+      ',hi_texte'
+      ',hi_image'
+      'FROM REF_HISTOIRE '
+      'WHERE HI_ID=:ID'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ID'
+        ParamType = ptUnknown
+      end>
+    UpdateObject = uHistoire
+    left = 144
+    top = 464
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'ID'
+        ParamType = ptUnknown
+      end>
+    object qHistoireHI_ID: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'HI_ID'
+      Index = 0
+      LookupCache = False
+      Origin = '"REF_HISTOIRE"."HI_ID"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = True
+    end
+    object qHistoireHI_DOSSIER: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'HI_DOSSIER'
+      Index = 1
+      LookupCache = False
+      Origin = '"REF_HISTOIRE"."HI_DOSSIER"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qHistoireHI_DICORIGINE: TIBStringField
+      DisplayWidth = 8
+      FieldKind = fkData
+      FieldName = 'HI_DICORIGINE'
+      Index = 2
+      LookupCache = False
+      Origin = '"REF_HISTOIRE"."HI_DICORIGINE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 8
+    end
+    object qHistoireHI_DATE_TEXTE: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'HI_DATE_TEXTE'
+      Index = 3
+      LookupCache = False
+      Origin = '"REF_HISTOIRE"."HI_DATE_TEXTE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 50
+    end
+    object qHistoireHI_CAT: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'HI_CAT'
+      Index = 4
+      LookupCache = False
+      Origin = '"REF_HISTOIRE"."HI_CAT"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qHistoireHI_TITRE: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'HI_TITRE'
+      Index = 5
+      LookupCache = False
+      Origin = '"REF_HISTOIRE"."HI_TITRE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object qHistoireHI_TEXTE: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'HI_TEXTE'
+      Index = 6
+      LookupCache = False
+      Origin = '"REF_HISTOIRE"."HI_TEXTE"'
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Size = 8
+      Transliterate = False
+    end
+    object qHistoireHI_IMAGE: TBlobField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'HI_IMAGE'
+      Index = 7
+      LookupCache = False
+      Origin = '"REF_HISTOIRE"."HI_IMAGE"'
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = False
+      Required = False
+      BlobType = ftBlob
+      Size = 8
+    end
+  end
+  object uHistoire: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select '
+      '  HI_ID,'
+      '  HI_DOSSIER,'
+      '  HI_DICORIGINE,'
+      '  HI_DATE_TEXTE,'
+      '  HI_CAT,'
+      '  HI_TITRE,'
+      '  HI_TEXTE,'
+      '  HI_IMAGE'
+      'from REF_HISTOIRE '
+      'where'
+      '  HI_ID = :HI_ID'
+    )
+    ModifySQL.Strings = (
+      'update REF_HISTOIRE'
+      'set'
+      '  HI_DOSSIER = :HI_DOSSIER,'
+      '  HI_DICORIGINE = :HI_DICORIGINE,'
+      '  HI_DATE_TEXTE = :HI_DATE_TEXTE,'
+      '  HI_CAT = :HI_CAT,'
+      '  HI_TITRE = :HI_TITRE,'
+      '  HI_TEXTE = :HI_TEXTE,'
+      '  HI_IMAGE = :HI_IMAGE'
+      'where'
+      '  HI_ID = :HI_ID'
+    )
+    InsertSQL.Strings = (
+      'insert into REF_HISTOIRE'
+      '  (HI_DOSSIER, HI_DICORIGINE, HI_DATE_TEXTE, HI_CAT, HI_TITRE, HI_TEXTE, '
+      '   HI_IMAGE, HI_ID)'
+      'values'
+      '  (:HI_DOSSIER, :HI_DICORIGINE, :HI_DATE_TEXTE, :HI_CAT, :HI_TITRE, :HI_TEXTE, '
+      '   :HI_IMAGE, :HI_ID)'
+    )
+    DeleteSQL.Strings = (
+      'delete from REF_HISTOIRE'
+      'where'
+      '  HI_ID = :OLD_HI_ID'
+    )
+    left = 312
+    top = 344
+  end
+  object pmFamille: TPopupMenu
+    left = 760
+    top = 160
+    object GrandsParents1: TMenuItem
+      Caption = 'Grands-Parents'
+    end
+    object Parents1: TMenuItem
+      Caption = 'Parents'
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object Onclesettantes1: TMenuItem
+      Caption = 'Oncles et tantes'
+    end
+    object Cousines1: TMenuItem
+      Caption = 'Cousin(e)s'
+    end
+    object Frresetsoeurs1: TMenuItem
+      Caption = 'Frères et soeurs'
+    end
+    object Neveuxetnices1: TMenuItem
+      Caption = 'Neveux et nièces'
+    end
+    object Conjoints1: TMenuItem
+      Caption = 'Conjoints'
+    end
+    object Enfants1: TMenuItem
+      Caption = 'Enfants'
+    end
+    object Petitsenfants1: TMenuItem
+      Caption = 'Petits enfants'
+    end
+  end
+  object qListeOrigine: TIBQuery
+    Database = dm.IBBaseParam
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select distinct hi_dicorigine from ref_histoire'
+      'where hi_dossier in(0,:DossierCourant)'
+      'order by hi_dicorigine'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'DossierCourant'
+        ParamType = ptUnknown
+      end>
+    left = 24
+    top = 208
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DossierCourant'
+        ParamType = ptUnknown
+      end>
+    object qListeOrigineHI_DICORIGINE: TIBStringField
+      DisplayWidth = 8
+      FieldKind = fkData
+      FieldName = 'HI_DICORIGINE'
+      Index = 0
+      LookupCache = False
+      Origin = '"REF_HISTOIRE"."HI_DICORIGINE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 8
+    end
+  end
+  object dsListeOrigine: TDatasource
+    DataSet = qListeOrigine
+    left = 24
+    top = 144
+  end
+end

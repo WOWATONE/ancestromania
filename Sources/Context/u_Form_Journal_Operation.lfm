@@ -1,0 +1,337 @@
+inherited FJournalOperations: TFJournalOperations
+  Left = 510
+  Height = 395
+  Top = 444
+  Width = 630
+  ActiveControl = dxDBGrid1
+  BorderWidth = 1
+  Caption = 'Journal des opérations'
+  ClientHeight = 395
+  ClientWidth = 630
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnShow = SuperFormShow
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 393
+    Top = 1
+    Width = 628
+    Align = alClient
+    BevelOuter = bvNone
+    BorderWidth = 2
+    ClientHeight = 393
+    ClientWidth = 628
+    Color = 8623776
+    ParentColor = False
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 2
+      Height = 389
+      Top = 2
+      Width = 624
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 389
+      ClientWidth = 624
+      Color = clWindow
+      ParentColor = False
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 0
+        Height = 389
+        Top = 0
+        Width = 624
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 389
+        ClientWidth = 624
+        TabOrder = 0
+        object pBottom: TPanel
+          Left = 3
+          Height = 3
+          Top = 354
+          Width = 618
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 1
+        end
+        object dxDBGrid1: TExtDBGrid
+          Left = 3
+          Height = 291
+          Top = 63
+          Width = 618
+          TitleButtons = False
+          AutoSort = False
+          Columns = <          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Qui'
+              Title.Orientation = toHorizontal
+              Width = 123
+              FieldName = 'Qui'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Le'
+              Title.Orientation = toHorizontal
+              Width = 118
+              FieldName = 'Le'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Libellé'
+              Title.Orientation = toHorizontal
+              Width = 365
+              FieldName = 'Texte'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end>
+          KeyStrokes = <          
+            item
+              Command = rxgcShowFindDlg
+              ShortCut = 16454
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowColumnsDlg
+              ShortCut = 16471
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowFilterDlg
+              ShortCut = 16468
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowSortDlg
+              ShortCut = 16467
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowQuickFilter
+              ShortCut = 16465
+              Enabled = True
+            end          
+            item
+              Command = rxgcHideQuickFilter
+              ShortCut = 16456
+              Enabled = True
+            end          
+            item
+              Command = rxgcSelectAll
+              ShortCut = 16449
+              Enabled = True
+            end          
+            item
+              Command = rxgcDeSelectAll
+              ShortCut = 16429
+              Enabled = True
+            end          
+            item
+              Command = rxgcInvertSelection
+              ShortCut = 16426
+              Enabled = True
+            end          
+            item
+              Command = rxgcOptimizeColumnsWidth
+              ShortCut = 16427
+              Enabled = True
+            end>
+          OptionsRx = []
+          Align = alClient
+          Color = clWindow
+          DrawFullLine = False
+          FocusColor = clRed
+          SelectedColor = clHighlight
+          GridLineStyle = psSolid
+          DataSource = DSJournal
+          FixedColor = 5614250
+          FixedCols = 0
+          Options = [dgEditing, dgTitles, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+          ParentColor = False
+          ReadOnly = True
+          Scrollbars = ssAutoBoth
+          TabOrder = 0
+          TitleFont.CharSet = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+        end
+        object Panel3: TPanel
+          Left = 3
+          Height = 55
+          Top = 3
+          Width = 618
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 55
+          ClientWidth = 618
+          TabOrder = 3
+          object Image1: TIATitle
+            Left = 1
+            Top = 1
+            AutoSize = True
+            ImageOn = iaInfo
+          end
+          object Label1: TLabel
+            Left = 302
+            Height = 33
+            Top = 8
+            Width = 309
+            Alignment = taRightJustify
+            Anchors = [akTop, akRight]
+            Caption = 'Journal des opérations'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowFrame
+            Font.Height = -27
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object Panel2: TPanel
+          Left = 3
+          Height = 5
+          Top = 58
+          Width = 618
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 4
+        end
+        object fpBoutons: TPanel
+          Left = 3
+          Height = 29
+          Top = 357
+          Width = 618
+          Align = alBottom
+          BevelInner = bvLowered
+          ClientHeight = 29
+          ClientWidth = 618
+          TabOrder = 2
+          object GoodBtn7: TFWClose
+            Cursor = crHandPoint
+            Left = 520
+            Height = 25
+            Top = 2
+            Width = 94
+            Caption = 'Fermer'
+            TabOrder = 0
+            Cancel = True
+            Default = True
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            OnClick = sbCloseClick
+          end
+          object btnPurge: TFWInit
+            Cursor = crHandPoint
+            Left = 7
+            Height = 25
+            Top = 2
+            Width = 94
+            Caption = 'Purger'
+            TabOrder = 1
+            Cancel = True
+            ParentFont = False
+            OnClick = btnPurgeClick
+          end
+        end
+      end
+    end
+  end
+  object IBQJournal: TIBQuery[1]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBTrans_Secondaire
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM T_JOURNAL WHERE KLE_DOSSIER = :DOSSIER  ORDER BY LE DESC'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    left = 56
+    top = 184
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end>
+    object IBQJournalQUI: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'QUI'
+      Index = 0
+      LookupCache = False
+      Origin = '"T_JOURNAL"."QUI"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object IBQJournalLE: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'LE'
+      Index = 1
+      LookupCache = False
+      Origin = '"T_JOURNAL"."LE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQJournalTEXTE: TIBStringField
+      DisplayWidth = 300
+      FieldKind = fkData
+      FieldName = 'TEXTE'
+      Index = 2
+      LookupCache = False
+      Origin = '"T_JOURNAL"."TEXTE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 300
+    end
+  end
+  object DSJournal: TDatasource[2]
+    DataSet = IBQJournal
+    left = 56
+    top = 112
+  end
+  object Language: TYLanguage[3]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+  end
+end

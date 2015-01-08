@@ -1,0 +1,337 @@
+inherited FTAGGedcom: TFTAGGedcom
+  Left = 882
+  Height = 246
+  Top = 298
+  ActiveControl = dxDBGrid1
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Libellés des événements standards'
+  ClientHeight = 246
+  Color = clWhite
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 0
+    Height = 246
+    Top = 0
+    Width = 320
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 246
+    ClientWidth = 320
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object Panel7: TPanel
+      Left = 3
+      Height = 240
+      Top = 3
+      Width = 314
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 240
+      ClientWidth = 314
+      TabOrder = 0
+      object Panel4: TPanel
+        Left = 1
+        Height = 53
+        Top = 1
+        Width = 312
+        Align = alTop
+        ClientHeight = 53
+        ClientWidth = 312
+        TabOrder = 0
+        object lbTitle: TLabel
+          Left = 3
+          Height = 16
+          Top = 4
+          Width = 910
+          Caption = 'Libellés affichés dans les événements, visibilité dans les listes de choix et transfert par fichiers Gedcom (exportation et importation).'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = 10841658
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+          WordWrap = True
+        end
+      end
+      object Panel5: TPanel
+        Left = 1
+        Height = 29
+        Top = 210
+        Width = 312
+        Align = alBottom
+        BevelInner = bvLowered
+        ClientHeight = 29
+        ClientWidth = 312
+        TabOrder = 1
+        object btnFermer: TFWClose
+          Cursor = crHandPoint
+          Left = 214
+          Hint = 'Ferme cette fenêtre.'
+          Top = 2
+          Width = 94
+          Caption = 'Fermer'
+          TabOrder = 0
+          Cancel = True
+          ModalResult = 1
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnFermerClick
+        end
+        object btnImport: TFWImport
+          Cursor = crHandPoint
+          Left = 4
+          Top = 2
+          Width = 94
+          Caption = 'Importer'
+          TabOrder = 1
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnImportClick
+        end
+        object btnExport: TFWExport
+          Cursor = crHandPoint
+          Left = 99
+          Top = 2
+          Width = 94
+          Caption = 'Exporter'
+          TabOrder = 2
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnExportClick
+        end
+      end
+      object Panel6: TPanel
+        Left = 1
+        Height = 156
+        Top = 54
+        Width = 312
+        Align = alClient
+        BorderWidth = 5
+        ClientHeight = 156
+        ClientWidth = 312
+        TabOrder = 2
+        object Panel1: TPanel
+          Left = 6
+          Height = 144
+          Top = 6
+          Width = 300
+          Align = alClient
+          BevelOuter = bvLowered
+          ClientHeight = 144
+          ClientWidth = 300
+          TabOrder = 0
+          object dxDBGrid1: TExtDBGrid
+            Left = 1
+            Height = 142
+            Top = 1
+            Width = 298
+            TitleButtons = False
+            AutoSort = False
+            Columns = <            
+              item
+                ReadOnly = True
+                Title.Alignment = taCenter
+                Title.Caption = 'Code'
+                Title.Orientation = toHorizontal
+                Width = 56
+                FieldName = 'REF_EVE_LIB_COURT'
+                Filter.DropDownRows = 0
+                Filter.ItemIndex = -1
+                FieldTag = 0
+              end            
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'Libellé'
+                Title.Orientation = toHorizontal
+                Width = 224
+                FieldName = 'REF_EVE_LIB_LONG'
+                Filter.DropDownRows = 0
+                Filter.ItemIndex = -1
+                FieldTag = 0
+              end            
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'Visible'
+                Title.Orientation = toHorizontal
+                Width = 55
+                FieldName = 'REF_EVE_VISIBLE'
+                Filter.DropDownRows = 0
+                Filter.ItemIndex = -1
+                FieldTag = 0
+              end            
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'Export'
+                Title.Orientation = toHorizontal
+                Width = 55
+                FieldName = 'REF_EVE_OBLIGATOIRE'
+                Filter.DropDownRows = 0
+                Filter.ItemIndex = -1
+                FieldTag = 0
+              end            
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'Import'
+                Title.Orientation = toHorizontal
+                Width = 60
+                FieldName = 'REF_EVE_A_TRAITER'
+                Filter.DropDownRows = 0
+                Filter.ItemIndex = -1
+                FieldTag = 0
+              end>
+            OptionsRx = []
+            Align = alClient
+            Color = clWindow
+            FocusColor = clRed
+            SelectedColor = clHighlight
+            GridLineStyle = psSolid
+            DataSource = DataSource
+            FixedColor = 5614250
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+            ParentColor = False
+            ParentFont = False
+            Scrollbars = ssAutoVertical
+            TabOrder = 0
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+          end
+        end
+      end
+    end
+  end
+  object Query: TIBQuery[1]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBTrans_Secondaire
+    BeforePost = QueryBeforePost
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT REF_EVE_LIB_COURT'
+      ',REF_EVE_LIB_LONG'
+      ',ref_eve_visible'
+      ',ref_eve_a_traiter'
+      ',ref_eve_obligatoire'
+      ',ref_eve_langue'
+      'FROM REF_EVENEMENTS'
+      'where ref_eve_langue=:langue'
+      'and (ref_eve_type in(''A'',''D'',''E'',''U'') or ref_eve_lib_court=''RESI'')'
+      'ORDER BY REF_EVE_LIB_COURT'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'langue'
+        ParamType = ptUnknown
+      end>
+    UpdateObject = IBUpdateSQL1
+    left = 23
+    top = 119
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'langue'
+        ParamType = ptUnknown
+      end>
+    object QueryREF_EVE_LIB_COURT: TStringField
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'REF_EVE_LIB_COURT'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 5
+    end
+    object QueryREF_EVE_LIB_LONG: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'REF_EVE_LIB_LONG'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 30
+    end
+    object QueryREF_EVE_VISIBLE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'REF_EVE_VISIBLE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object QueryREF_EVE_A_TRAITER: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'REF_EVE_A_TRAITER'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object QueryREF_EVE_OBLIGATOIRE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'REF_EVE_OBLIGATOIRE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object QueryREF_EVE_LANGUE: TStringField
+      DisplayWidth = 3
+      FieldKind = fkData
+      FieldName = 'REF_EVE_LANGUE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 3
+    end
+  end
+  object DataSource: TDatasource[2]
+    DataSet = Query
+    OnDataChange = DataSourceDataChange
+    left = 23
+    top = 87
+  end
+  object IBUpdateSQL1: TIBUpdateSQL[3]
+    ModifySQL.Strings = (
+      'update ref_evenements'
+      'set ref_eve_lib_long=:ref_eve_lib_long'
+      ',ref_eve_visible=:ref_eve_visible'
+      ',ref_eve_a_traiter=:ref_eve_a_traiter'
+      ',ref_eve_obligatoire=:ref_eve_obligatoire'
+      'where ref_eve_lib_court=:ref_eve_lib_court'
+      'and ref_eve_langue=:ref_eve_langue'
+    )
+    left = 58
+    top = 122
+  end
+end

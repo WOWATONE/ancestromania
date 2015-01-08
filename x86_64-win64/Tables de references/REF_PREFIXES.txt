@@ -1,0 +1,6 @@
+1	Monsieur
+2	Madame
+3	Mademoiselle
+4	Sire
+5	Monseigneur
+6	Maître

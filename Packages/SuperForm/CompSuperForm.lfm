@@ -1,0 +1,8 @@
+object SuperForm: TSuperForm
+  Left = 0
+  Height = 240
+  Top = 336
+  Width = 320
+  Caption = 'SuperForm'
+  LCLVersion = '1.0.10.0'
+end

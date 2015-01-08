@@ -1,0 +1,574 @@
+inherited FIndiDateIncoherente: TFIndiDateIncoherente
+  Left = 266
+  Height = 580
+  Top = 143
+  Width = 749
+  BorderWidth = 1
+  Caption = 'Incohérences sur les dates...'
+  ClientHeight = 580
+  ClientWidth = 749
+  Color = clWindow
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  Position = poScreenCenter
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 578
+    Top = 1
+    Width = 747
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 578
+    ClientWidth = 747
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 3
+      Height = 572
+      Top = 3
+      Width = 741
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 572
+      ClientWidth = 741
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 1
+        Height = 570
+        Top = 1
+        Width = 739
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 570
+        ClientWidth = 739
+        TabOrder = 0
+        object pBottom: TPanel
+          Left = 3
+          Height = 3
+          Top = 564
+          Width = 733
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 0
+        end
+        object Panel3: TPanel
+          Left = 3
+          Height = 55
+          Top = 3
+          Width = 733
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 55
+          ClientWidth = 733
+          TabOrder = 1
+          object Image1: TIATitle
+            Left = 1
+            Top = 1
+            AutoSize = True
+            ImageOn = iaPeople
+          end
+          object Label1: TLabel
+            Left = 370
+            Height = 55
+            Top = 0
+            Width = 363
+            Align = alRight
+            Alignment = taRightJustify
+            Anchors = [akTop, akRight]
+            Caption = 'Incohérences sur les dates'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clBtnText
+            Font.Height = -27
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object Panel2: TPanel
+          Left = 3
+          Height = 5
+          Top = 58
+          Width = 733
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 2
+        end
+        object dxDBGrid1: TExtDBGrid
+          Left = 3
+          Height = 472
+          Top = 63
+          Width = 733
+          TitleButtons = False
+          AutoSort = False
+          Columns = <          
+            item
+              Alignment = taCenter
+              ReadOnly = True
+              Title.Alignment = taCenter
+              Title.Caption = 'Vue'
+              Title.Orientation = toHorizontal
+              Width = 28
+              FieldName = 'SANSALARME'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Alignment = taCenter
+              Title.Alignment = taCenter
+              Title.Caption = 'SEXE'
+              Title.Orientation = toHorizontal
+              Width = 20
+              FieldName = 'SEXE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Titre'
+              Title.Orientation = toHorizontal
+              Visible = False
+              FieldName = 'TITRE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Observations'
+              Title.Orientation = toHorizontal
+              Width = 580
+              FieldName = 'LIBELLE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Alignment = taCenter
+              Title.Alignment = taCenter
+              Title.Caption = 'Age ou écart'
+              Title.Orientation = toHorizontal
+              Width = 89
+              FieldName = 'AGE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'CLEF_IND'
+              Title.Orientation = toHorizontal
+              Visible = False
+              FieldName = 'CLEF_IND'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'SEXE'
+              Title.Orientation = toHorizontal
+              Visible = False
+              FieldName = 'SEXE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end>
+          KeyStrokes = <          
+            item
+              Command = rxgcShowFindDlg
+              ShortCut = 16454
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowColumnsDlg
+              ShortCut = 16471
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowFilterDlg
+              ShortCut = 16468
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowSortDlg
+              ShortCut = 16467
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowQuickFilter
+              ShortCut = 16465
+              Enabled = True
+            end          
+            item
+              Command = rxgcHideQuickFilter
+              ShortCut = 16456
+              Enabled = True
+            end          
+            item
+              Command = rxgcSelectAll
+              ShortCut = 16449
+              Enabled = True
+            end          
+            item
+              Command = rxgcDeSelectAll
+              ShortCut = 16429
+              Enabled = True
+            end          
+            item
+              Command = rxgcInvertSelection
+              ShortCut = 16426
+              Enabled = True
+            end          
+            item
+              Command = rxgcOptimizeColumnsWidth
+              ShortCut = 16427
+              Enabled = True
+            end          
+            item
+              Command = rxgcCopyCellValue
+              ShortCut = 16451
+              Enabled = True
+            end>
+          OptionsRx = []
+          Align = alClient
+          Color = clWindow
+          DrawFullLine = False
+          FocusColor = clRed
+          SelectedColor = clHighlight
+          GridLineStyle = psSolid
+          DataSource = DSIncoherenreces
+          Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+          ParentColor = False
+          PopupMenu = pmUnions
+          Scrollbars = ssAutoBoth
+          TabOrder = 3
+          TitleFont.CharSet = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+          OnDblClick = dxDBGrid1DBTableView1CellDblClick
+        end
+        object fpBoutons: TPanel
+          Left = 3
+          Height = 29
+          Top = 535
+          Width = 733
+          Align = alBottom
+          BevelInner = bvLowered
+          ClientHeight = 29
+          ClientWidth = 733
+          TabOrder = 4
+          object GoodBtn7: TFWClose
+            Cursor = crHandPoint
+            Left = 626
+            Height = 25
+            Top = 2
+            Width = 105
+            Caption = 'Fermer'
+            TabOrder = 0
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+          end
+          object btnPrint: TFWPrint
+            Cursor = crHandPoint
+            Left = 520
+            Height = 25
+            Hint = 'Imprime la liste ci dessus....'
+            Top = 2
+            Width = 106
+            Caption = 'Imprimer...'
+            TabOrder = 1
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = btnPrintClick
+          end
+          object rbFormat: TRadioButton
+            Left = 2
+            Height = 25
+            Top = 2
+            Width = 163
+            Align = alLeft
+            Caption = 'Erreurs de format des dates.'
+            Checked = True
+            OnClick = rbFormatClick
+            TabOrder = 2
+            TabStop = True
+          end
+          object rbValeur: TRadioButton
+            Left = 165
+            Height = 25
+            Top = 2
+            Width = 196
+            Align = alLeft
+            Caption = 'Incohérences de valeurs des dates.'
+            OnClick = rbFormatClick
+            TabOrder = 3
+          end
+        end
+      end
+    end
+  end
+  object IBIncoherenreces: TIBQuery[1]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select p.clef_ind'
+      ',p.sexe'
+      ',p.age'
+      ',p.titre'
+      ',case when p.clef_ind is null then p.libelle'
+      ' else ''    ''||p.libelle'
+      ' end as libelle'
+      ',case when (select bin_and(ind_confidentiel,2)'
+      ' from individu where cle_fiche=p.clef_ind)=2 then ''X'' else null '
+      'end as sansalarme'
+      'from proc_dates_incoherentes('
+      ':I_DOSSIER '
+      ',:MIN_MAR_HOM '
+      ',:MIN_MAR_FEM '
+      ',:MAX_MAR_HOM '
+      ',:MAX_MAR_FEM '
+      ',:MIN_ENF_HOM '
+      ',:MIN_ENF_FEM '
+      ',:MAX_ENF_HOM '
+      ',:MAX_ENF_FEM '
+      ',:MAX_VIE_HOM '
+      ',:MAX_VIE_FEM '
+      ',:MAX_ECART_EPOUX '
+      ',:MIN_ENTRE_ENF'
+      ',:MAX_ENTRE_JUMEAUX'
+      ',:mode '
+      ') as p'
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'I_DOSSIER'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MIN_MAR_HOM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MIN_MAR_FEM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_MAR_HOM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_MAR_FEM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MIN_ENF_HOM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MIN_ENF_FEM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_ENF_HOM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_ENF_FEM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_VIE_HOM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_VIE_FEM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_ECART_EPOUX'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MIN_ENTRE_ENF'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_ENTRE_JUMEAUX'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'mode'
+        ParamType = ptInput
+      end>
+    left = 334
+    top = 248
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'I_DOSSIER'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MIN_MAR_HOM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MIN_MAR_FEM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_MAR_HOM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_MAR_FEM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MIN_ENF_HOM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MIN_ENF_FEM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_ENF_HOM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_ENF_FEM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_VIE_HOM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_VIE_FEM'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_ECART_EPOUX'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MIN_ENTRE_ENF'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MAX_ENTRE_JUMEAUX'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'mode'
+        ParamType = ptInput
+      end>
+  end
+  object DSIncoherenreces: TDatasource[2]
+    DataSet = IBIncoherenreces
+    left = 334
+    top = 159
+  end
+  object pmUnions: TPopupMenu[3]
+    Images = dm.ImageSexe
+    OnPopup = pmUnionsPopup
+    left = 30
+    top = 151
+    object mOuvreFiche: TMenuItem
+      Caption = 'Ouvrir la fiche (ou double clic)'
+      ShortCut = 16454
+      OnClick = mOuvreFicheClick
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object ExporterenHTML1: TMenuItem
+      Caption = 'Exporter en HTML'
+      Enabled = False
+      OnClick = ExporterenHTML1Click
+    end
+    object mImprime: TMenuItem
+      Caption = 'Imprimer...'
+      OnClick = mImprimeClick
+    end
+  end
+  object SaveDialog: TSaveDialog[4]
+    DefaultExt = '.htm'
+    Filter = '*.htm|*.htm'
+    left = 65
+    top = 153
+  end
+  object dxComponentPrinter1: TPrinterSetupDialog[5]
+    Title = 'Ecran d''aperçu'
+    left = 32
+    top = 256
+  end
+end

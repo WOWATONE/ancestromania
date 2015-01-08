@@ -1,0 +1,270 @@
+object FCompteVilles: TFCompteVilles
+  Left = 938
+  Height = 447
+  Top = 232
+  Width = 390
+  ActiveControl = cxGrid1
+  AutoSize = True
+  BorderStyle = bsDialog
+  Caption = 'Nombre de villes par pays'
+  ClientHeight = 447
+  ClientWidth = 390
+  Color = clWhite
+  Font.Color = clWhite
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = FormClose
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  OnShow = FormShow
+  Position = poMainFormCenter
+  LCLVersion = '1.2.0.3'
+  object Panel7: TPanel
+    Left = 0
+    Height = 447
+    Top = 0
+    Width = 390
+    Align = alClient
+    BevelOuter = bvLowered
+    ClientHeight = 447
+    ClientWidth = 390
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object Panel5: TPanel
+      Left = 1
+      Height = 30
+      Top = 416
+      Width = 388
+      Align = alBottom
+      ClientHeight = 30
+      ClientWidth = 388
+      TabOrder = 0
+      object btnFermer: TFWClose
+        Cursor = crHandPoint
+        Left = 293
+        Height = 28
+        Hint = 'Ferme cette fenêtre.'
+        Top = 1
+        Width = 94
+        Caption = 'Fermer'
+        TabOrder = 0
+        Cancel = True
+        Default = True
+        ModalResult = 1
+        Align = alRight
+        Anchors = [akTop, akRight]
+        Font.Color = clBtnText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+      end
+    end
+    object Panel6: TPanel
+      Left = 1
+      Height = 415
+      Top = 1
+      Width = 388
+      Align = alClient
+      BorderWidth = 3
+      ClientHeight = 415
+      ClientWidth = 388
+      TabOrder = 1
+      object cxGrid1: TExtDBGrid
+        Left = 4
+        Height = 407
+        Top = 4
+        Width = 380
+        TitleButtons = False
+        AutoSort = False
+        Columns = <        
+          item
+            Alignment = taRightJustify
+            ReadOnly = True
+            Title.Alignment = taCenter
+            Title.Caption = 'Nombre'
+            Title.Orientation = toHorizontal
+            Width = 90
+            FieldName = 'COMBIEN'
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            EditButtons = <>
+            FieldTag = 0
+          end        
+          item
+            ReadOnly = True
+            Title.Alignment = taCenter
+            Title.Caption = 'Pays'
+            Title.Orientation = toHorizontal
+            Width = 255
+            FieldName = 'RPA_LIBELLE'
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Empty)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            EditButtons = <>
+            FieldTag = 0
+          end>
+        KeyStrokes = <        
+          item
+            Command = rxgcShowFindDlg
+            ShortCut = 16454
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowColumnsDlg
+            ShortCut = 16471
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowFilterDlg
+            ShortCut = 16468
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowSortDlg
+            ShortCut = 16467
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowQuickFilter
+            ShortCut = 16465
+            Enabled = True
+          end        
+          item
+            Command = rxgcHideQuickFilter
+            ShortCut = 16456
+            Enabled = True
+          end        
+          item
+            Command = rxgcSelectAll
+            ShortCut = 16449
+            Enabled = True
+          end        
+          item
+            Command = rxgcDeSelectAll
+            ShortCut = 16429
+            Enabled = True
+          end        
+          item
+            Command = rxgcInvertSelection
+            ShortCut = 16426
+            Enabled = True
+          end        
+          item
+            Command = rxgcOptimizeColumnsWidth
+            ShortCut = 16427
+            Enabled = True
+          end        
+          item
+            Command = rxgcCopyCellValue
+            ShortCut = 16451
+            Enabled = True
+          end>
+        OptionsRx = []
+        Align = alClient
+        Color = clWindow
+        DrawFullLine = False
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        GridLineStyle = psSolid
+        DataSource = DataSource
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+        ParentColor = False
+        ReadOnly = True
+        Scrollbars = ssAutoBoth
+        TabOrder = 0
+        TitleFont.Color = clWhite
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+      end
+    end
+  end
+  object Query: TIBQuery
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select count(distinct ville||dept||region||pays) as combien'
+      '  ,pays as rpa_libelle'
+      '  from (select distinct ville,dept,region'
+      '   ,case pays when '''' then ''INCONNU'' else pays end as pays'
+      '  from (select coalesce(lower(trim(ev_ind_ville)),'''')as ville'
+      '              ,coalesce(lower(trim(ev_ind_dept)),'''')as dept'
+      '              ,coalesce(lower(trim(ev_ind_region)),'''')as region'
+      '              ,coalesce(upper(trim(ev_ind_pays)),'''')as pays'
+      '    from evenements_ind'
+      '    where ev_ind_kle_dossier=:dossier'
+      '    union'
+      '    select coalesce(lower(trim(ev_fam_ville)),'''')'
+      '          ,coalesce(lower(trim(ev_fam_dept)),'''')'
+      '          ,coalesce(lower(trim(ev_fam_region)),'''')'
+      '          ,coalesce(upper(trim(ev_fam_pays)),'''')'
+      '    from evenements_fam'
+      '    where ev_fam_kle_dossier=:dossier)'
+      '  where ville>'''' or dept>'''' or region>'''' or pays>'''')'
+      '  group by pays'
+      '  order by pays'
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'dossier'
+        ParamType = ptUnknown
+      end>
+    left = 23
+    top = 47
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'dossier'
+        ParamType = ptUnknown
+      end>
+    object QueryCOMBIEN: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'COMBIEN'
+      Index = 0
+      LookupCache = False
+      Origin = '"PROC_COMPTE_VILLES"."COMBIEN"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object QueryRPA_LIBELLE: TIBStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'RPA_LIBELLE'
+      Index = 1
+      LookupCache = False
+      Origin = '"PROC_COMPTE_VILLES"."RPA_LIBELLE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+  end
+  object DataSource: TDatasource
+    DataSet = Query
+    left = 23
+    top = 79
+  end
+end

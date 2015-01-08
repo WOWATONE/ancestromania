@@ -1,0 +1,233 @@
+inherited FTriEvent: TFTriEvent
+  Left = 684
+  Top = 279
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Ordre des événements'
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  FormStyle = fsStayOnTop
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 0
+    Height = 240
+    Top = 0
+    Width = 320
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 240
+    ClientWidth = 320
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 3
+      Height = 234
+      Top = 3
+      Width = 314
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 234
+      ClientWidth = 314
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 1
+        Height = 183
+        Top = 50
+        Width = 312
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 2
+        ClientHeight = 183
+        ClientWidth = 312
+        TabOrder = 0
+        object pBottom: TPanel
+          Left = 2
+          Height = 2
+          Top = 150
+          Width = 308
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 1
+        end
+        object dxDBGrid1: TExtDBGrid
+          Left = 2
+          Height = 148
+          Top = 2
+          Width = 308
+          TitleButtons = False
+          AutoSort = False
+          Columns = <          
+            item
+              ReadOnly = True
+              Title.Alignment = taCenter
+              Title.Caption = 'Événements'
+              Title.Orientation = toHorizontal
+              Width = 214
+              FieldName = 'REF_EVE_LIB_LONG'
+              Filter.DropDownRows = 0
+              Filter.ItemIndex = -1
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Ordre'
+              Title.Orientation = toHorizontal
+              Width = 41
+              FieldName = 'EV_ORDRE'
+              Filter.DropDownRows = 0
+              Filter.ItemIndex = -1
+              FieldTag = 0
+            end>
+          OptionsRx = []
+          Align = alClient
+          Color = clWindow
+          FocusColor = clRed
+          SelectedColor = clHighlight
+          GridLineStyle = psSolid
+          DataSource = dsTri
+          Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+          ParentColor = False
+          Scrollbars = ssAutoVertical
+          TabOrder = 2
+          TitleFont.CharSet = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+        end
+        object fpBoutons: TPanel
+          Left = 2
+          Height = 29
+          Top = 152
+          Width = 308
+          Align = alBottom
+          BevelInner = bvLowered
+          ClientHeight = 29
+          ClientWidth = 308
+          TabOrder = 0
+          object bsfbSelection: TFWOK
+            Cursor = crHandPoint
+            Left = 117
+            Hint = 'Ferme la fenêtre en validant la modification en cours.'
+            Top = 2
+            Width = 94
+            Caption = 'Valider'
+            Enabled = False
+            TabOrder = 0
+            Default = True
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = bsfbSelectionClick
+          end
+          object btnFermer: TFWClose
+            Cursor = crHandPoint
+            Left = 212
+            Hint = 'Ferme la fenêtre en ne validant pas la modification en cours.'
+            Top = 2
+            Width = 94
+            Caption = 'Annuler'
+            TabOrder = 1
+            Cancel = True
+            Default = True
+            ModalResult = 2
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+          end
+        end
+      end
+      object Panel1: TPanel
+        Left = 1
+        Height = 49
+        Top = 1
+        Width = 312
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 49
+        ClientWidth = 312
+        TabOrder = 1
+        object Image1: TIATitle
+          Cursor = 8
+          Left = 2
+          Top = 1
+          AutoSize = True
+          ImageOn = iaPeople
+        end
+      end
+    end
+  end
+  object Language: TYLanguage[1]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+  end
+  object qTri: TIBQuery[2]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select e.ev_ind_clef'
+      ', iif(char_length(e.ev_ind_titre_event)>0,e.ev_ind_titre_event,r.ref_eve_lib_long)||coalesce('' (''||e.EV_IND_DATE_WRITEN||'')'','''') as ref_eve_lib_long'
+      ', e.ev_ind_ordre'
+      'from  EVENEMENTS_IND e'
+      'inner join ref_evenements r on r.ref_eve_lib_court=e.EV_IND_TYPE'
+      'and r.ref_eve_langue=:langue'
+      'where  e.ev_ind_kle_fiche=:KEY         '
+      'order by e.ev_ind_ordre nulls last'
+      '               ,e.ev_ind_datecode nulls last'
+      '               ,r.ref_eve_ecran'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'langue'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'KEY'
+        ParamType = ptUnknown
+      end>
+    UpdateObject = IBUTri
+    left = 128
+    top = 120
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'langue'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'KEY'
+        ParamType = ptUnknown
+      end>
+  end
+  object IBUTri: TIBUpdateSQL[3]
+    ModifySQL.Strings = (
+      'update evenements_ind'
+      'set EV_IND_ORDRE=:EV_IND_ORDRE'
+      'where EV_IND_CLEF=:EV_IND_CLEF'
+    )
+    left = 128
+    top = 152
+  end
+  object dsTri: TDatasource[4]
+    DataSet = qTri
+    OnStateChange = dsTriStateChange
+    left = 128
+    top = 88
+  end
+end

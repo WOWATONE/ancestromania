@@ -1,0 +1,72 @@
+package DExtHTML;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  Fonctions,
+  xmlrtl,
+  Jcl,
+  JclVcl,
+  vcljpg,
+  VampyreImagingPackage,
+  ZComponent,
+  vclactnband,
+  vclx,
+  ZParseSql,
+  ZCore,
+  ZDbc,
+  ZPlain,
+  dbrtl,
+  JvSystemD10R,
+  JvCoreD10R,
+  vcldb,
+  JvStdCtrlsD10R,
+  JvXPCtrlsD10R,
+  JvXPCtrlsD10D,
+  designide,
+  JvCoreD10D,
+  dclstd,
+  VirtualTreesD10,
+  JvDBD10R,
+  JvCtrlsD10R,
+  JvDlgsD10R,
+  JvCustomD10R,
+  dbexpress,
+  bdertl,
+  VclSmp,
+  adortl,
+  vcldesigner,
+  dcldb,
+  designdgm,
+  dclado;
+
+contains
+  functions_html in 'functions\functions_html.pas',
+  functions_html_tree in 'functions\functions_html_tree.pas',
+  unite_html_resources in 'functions\unite_html_resources.pas';
+
+end.

@@ -1,0 +1,336 @@
+inherited FRequete: TFRequete
+  Left = 547
+  Height = 600
+  Top = 117
+  Width = 806
+  Caption = 'Exécution de requêtes.'
+  ClientHeight = 600
+  ClientWidth = 806
+  Color = clWindow
+  Constraints.MinHeight = 600
+  Constraints.MinWidth = 800
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnShow = SuperFormShow
+  Position = poScreenCenter
+  object PageControlRequete: TPageControl[0]
+    Left = 0
+    Height = 562
+    Top = 0
+    Width = 806
+    ActivePage = PageRequete
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 0
+    OnChange = PageControlRequeteChange
+    object PageRequete: TTabSheet
+      Caption = 'Requêtes SQL'
+      ClientHeight = 526
+      ClientWidth = 798
+      object PanReferences: TPanel
+        Left = 0
+        Height = 526
+        Top = 0
+        Width = 241
+        Align = alLeft
+        ClientHeight = 526
+        ClientWidth = 241
+        TabOrder = 0
+        OnResize = PanReferencesResize
+        object PanTables: TPanel
+          Left = 1
+          Height = 248
+          Top = 1
+          Width = 239
+          Align = alTop
+          BevelOuter = bvNone
+          BorderStyle = bsSingle
+          ClientHeight = 246
+          ClientWidth = 237
+          TabOrder = 0
+          object TVTables: TVirtualStringTree
+            Left = 0
+            Height = 246
+            Hint = 'Double-cliquer pour insérer le nom dans la requête.'
+            Top = 0
+            Width = 237
+            Align = alClient
+            Header.AutoSizeIndex = 0
+            Header.Columns = <            
+              item
+                Position = 0
+                Width = 235
+              end>
+            Header.DefaultHeight = 17
+            Header.Options = [hoAutoResize, hoDrag, hoShowSortGlyphs]
+            ParentColor = True
+            TabOrder = 0
+            TreeOptions.MiscOptions = [toCheckSupport, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning, toEditOnClick]
+            OnDblClick = TVTablesDblClick
+            OnGetText = TVTablesGetText
+            OnPaintText = TVProceduresPaintText
+          end
+        end
+        object PanProcedures: TPanel
+          Left = 1
+          Height = 271
+          Top = 254
+          Width = 239
+          Align = alClient
+          BevelOuter = bvNone
+          Caption = 'PanProcedures'
+          ClientHeight = 271
+          ClientWidth = 239
+          TabOrder = 1
+          object TVProcedures: TVirtualStringTree
+            Left = 0
+            Height = 271
+            Hint = 'Double-cliquer pour insérer le nom dans la requête.'
+            Top = 0
+            Width = 239
+            Align = alClient
+            Header.AutoSizeIndex = 0
+            Header.Columns = <            
+              item
+                Position = 0
+                Width = 237
+              end>
+            Header.DefaultHeight = 17
+            Header.Options = [hoAutoResize, hoDrag, hoShowSortGlyphs]
+            ParentColor = True
+            TabOrder = 0
+            TreeOptions.MiscOptions = [toCheckSupport, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning, toEditOnClick]
+            TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowTreeLines, toShowVertGridLines, toThemeAware, toUseBlendedImages]
+            OnDblClick = TVProceduresDblClick
+            OnGetText = TVTablesGetText
+            OnPaintText = TVProceduresPaintText
+          end
+        end
+        object cxSplitter2: TSplitter
+          Cursor = crVSplit
+          Left = 1
+          Height = 5
+          Top = 249
+          Width = 239
+          Align = alTop
+          ResizeAnchor = akTop
+        end
+      end
+      object cxSplitter1: TSplitter
+        Left = 241
+        Height = 526
+        Top = 0
+        Width = 5
+      end
+      object MemoSQL: TMemo
+        Left = 246
+        Height = 526
+        Top = 0
+        Width = 552
+        Align = alClient
+        Lines.Strings = (
+          'Select * from individu'
+          'where kle_dossier=1'
+        )
+        ParentFont = False
+        PopupMenu = PmEditSQL
+        TabOrder = 2
+      end
+    end
+    object PageResultats: TTabSheet
+      Caption = 'Résultats'
+      ClientHeight = 526
+      ClientWidth = 798
+      ImageIndex = 1
+      object GridResultats: TDBGrid
+        Left = 0
+        Height = 534
+        Top = 0
+        Width = 802
+        Align = alClient
+        Columns = <>
+        DataSource = DataSource
+        FixedCols = 0
+        Options = [dgTitles, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+        ParentColor = True
+        PopupMenu = pmResultats
+        TabOrder = 0
+        TitleFont.Color = clBlack
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        OnDrawColumnCell = GridResultatsDrawColumnCell
+      end
+    end
+  end
+  object PanelBas: TPanel[1]
+    Left = 0
+    Height = 38
+    Top = 562
+    Width = 806
+    Align = alBottom
+    ClientHeight = 38
+    ClientWidth = 806
+    TabOrder = 1
+    object BtnInformations: TIAInfo
+      Cursor = crHandPoint
+      Left = 2
+      Height = 37
+      Hint = 'Informations'
+      Top = 1
+      Width = 36
+      Anchors = [akLeft, akBottom]
+      OnClick = BtnInformationsClick
+      ParentShowHint = False
+      ShowHint = True
+      Stretch = True
+    end
+    object btnAppliquer: TFWOK
+      Cursor = crHandPoint
+      Left = 617
+      Height = 36
+      Hint = 'Enregistre toutes les modifications.'
+      Top = 1
+      Width = 94
+      Caption = 'Exécuter'
+      TabOrder = 1
+      Align = alRight
+      Anchors = [akRight, akBottom]
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnAppliquerClick
+    end
+    object btnFermer: TFWClose
+      Cursor = crHandPoint
+      Left = 711
+      Height = 36
+      Top = 1
+      Width = 94
+      Caption = 'Fermer'
+      TabOrder = 0
+      Align = alRight
+      Anchors = [akRight, akBottom]
+      ParentFont = False
+    end
+  end
+  object QResultats: TIBQuery[2]
+    Database = dm.ibd_BASE
+    Transaction = TransactionPropre
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    ParamCheck = False
+    Params = <>
+    left = 232
+    top = 532
+  end
+  object PmEditSQL: TPopupMenu[3]
+    OnPopup = PmEditSQLPopup
+    left = 472
+    top = 196
+    object mEditAnnuler: TMenuItem
+      Caption = 'Annuler'
+      ShortCut = 16474
+      OnClick = mEditAnnulerClick
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object mEditCouper: TMenuItem
+      Caption = 'Couper'
+      ShortCut = 16472
+      OnClick = mEditCouperClick
+    end
+    object mEditCopier: TMenuItem
+      Caption = 'Copier'
+      ShortCut = 16451
+      OnClick = mEditCopierClick
+    end
+    object mEditColler: TMenuItem
+      Caption = 'Coller'
+      ShortCut = 16470
+      OnClick = mEditCollerClick
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object mEditSelectionnerTout: TMenuItem
+      Caption = 'Sélectionner tout'
+      ShortCut = 16449
+      OnClick = mEditSelectionnerToutClick
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
+    object mChargerSQL: TMenuItem
+      Caption = 'Charger depuis un fichier'
+      OnClick = mChargerSQLClick
+    end
+    object mSauvegarderSQL: TMenuItem
+      Caption = 'Sauvegarder dans un fichier'
+      OnClick = mSauvegarderSQLClick
+    end
+    object N4: TMenuItem
+      Caption = '-'
+    end
+    object mExcuterScript: TMenuItem
+      Caption = 'Exécuter un script'
+      OnClick = mExcuterScriptClick
+    end
+  end
+  object OpenDialogSQL: TOpenDialog[4]
+    Title = 'Fichier SQL à charger'
+    DefaultExt = '.SQL'
+    Filter = 'Texte SQL (*.SQL;*.TXT)|*.SQL;*.TXT;*.sql;*.txt|SQL (*.SQL)|*.SQL;*.sql|Texte (*.TXT)|*.TXT;*.txt|Tous (*.*)|*.*'
+    left = 408
+    top = 88
+  end
+  object SaveDialogSQL: TSaveDialog[5]
+    Title = 'Sauvegarde de la requête SQL.'
+    DefaultExt = '.SQL'
+    Filter = 'SQL (*.SQL)|*.SQL|Texte (*.TXT)|*.TXT|Tout (*.*)|*.*|Texte SQL (*.SQL;*.TXT)|*.SQL;*.TXT'
+    FilterIndex = 4
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    left = 528
+    top = 96
+  end
+  object DataSource: TDatasource[6]
+    DataSet = QResultats
+    left = 280
+    top = 536
+  end
+  object pmResultats: TPopupMenu[7]
+    OnPopup = pmResultatsPopup
+    left = 272
+    top = 228
+    object mExportHTML: TMenuItem
+      Caption = 'Exporter au format HTML'
+      OnClick = mExportHTMLClick
+    end
+    object mExportXLS: TMenuItem
+      Caption = 'Exporter au format Excel'
+      OnClick = mExportXLSClick
+    end
+  end
+  object SaveDialogHTML: TSaveDialog[8]
+    Title = 'Sauvegarde des résultats de la requête.'
+    DefaultExt = '.html'
+    Filter = 'HTML (*.html;*.htm)|*.html;*.htm|Excel (*.xls)|*.xls'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    left = 288
+    top = 300
+  end
+  object TransactionPropre: TIBTransaction[9]
+    Active = False
+    DefaultDatabase = dm.ibd_BASE
+    left = 184
+    top = 536
+  end
+  object OnFormInfoIni: TOnFormInfoIni[10]
+    SaveForm = [sfSavePos, sfSaveSize, sfSaveSizes, sfSameMonitor]
+    left = 446
+    top = 376
+  end
+end

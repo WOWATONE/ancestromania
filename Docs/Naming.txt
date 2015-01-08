@@ -1,0 +1,4 @@
+Naming
+
+Must name for the easiest way tu use.
+Preferring that Directories and files to have a maj character at begin, with a min character after, like poetry does.

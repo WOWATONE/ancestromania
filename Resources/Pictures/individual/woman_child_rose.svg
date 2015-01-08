@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg1569"
+   viewBox="0 0 399.04 399.04"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   width="100%"
+   height="100%"
+   sodipodi:docname="woman_child_rose.svg"
+   inkscape:export-filename="C:\Matthieu\Programmation\Lazarus-Delphi\Ancestromania\Resources\individual\woman_child_rose.png"
+   inkscape:export-xdpi="3.6086607"
+   inkscape:export-ydpi="3.6086607">
+  <defs
+     id="defs21" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1400"
+     inkscape:window-height="972"
+     id="namedview19"
+     showgrid="false"
+     inkscape:zoom="0.59141941"
+     inkscape:cx="-439.73424"
+     inkscape:cy="209.66509"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1569"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <g
+     id="g1589"
+     transform="matrix(0.8,0,0,0.8,119.73507,38.21315)"
+     style="fill:#ff007d;fill-opacity:1">
+    <path
+       id="path1591"
+       d="m 91.634,64.828 c 17.906,0 32.416,-14.511 32.416,-32.414 C 124.05,14.514 109.54,0 91.634,0 73.735,0 59.221,14.514 59.221,32.414 c 0,17.903 14.514,32.414 32.413,32.414 z"
+       inkscape:connector-curvature="0"
+       style="fill:#ff007d;fill-opacity:1" />
+    <path
+       id="path1593"
+       d="M 91.634,32.414"
+       inkscape:connector-curvature="0"
+       style="fill:#ff007d;fill-opacity:1" />
+  </g>
+  <path
+     id="path1595"
+     d="m 189.20867,254.49315 0.0104,90.71199 c 0,16.32 -24.452,16.32 -24.452,0 l -0.0104,-90.71199 h -32.4032 l 34.6712,-120.272 h -5.4496 l -20.4184,68.70399 c -4.86,14.984 -25.4336,8.824 -20.7264,-7.216 l 22.6704,-74.648 c 2.4304,-8.50879 13.1952,-23.59919 31.8288,-23.59919 h 35.66961 c 18.472,0 29.288,15.21759 32.08,23.59919 l 22.68,74.576 c 4.536,16.032 -15.88,22.68 -20.736,7.04 l -20.408,-68.45599 h -5.904 l 35.04,120.272 h -32.544 v 90.82399 c 0,16.208 -24.34801,16.12 -24.34801,0 v -90.82399 h -7.2504 z"
+     inkscape:connector-curvature="0"
+     style="fill:#ff0088;fill-opacity:1" />
+  <metadata
+     id="metadata17">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title></dc:title>
+        <dc:date>2009-04-20T08:27:04</dc:date>
+        <dc:description>Set of international airport symbols.
+\n
+\nSource: http://www.aiga.org/content.cfm/symbol-signs
+\n
+\nConverted to SVG by Jean-Victor Balin.</dc:description>
+        <dc:source>http://openclipart.org/detail/25158/aiga-toilets-by-anonymous-25158</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Anonymous</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>aiga</rdf:li>
+            <rdf:li>aiga no bg</rdf:li>
+            <rdf:li>black and white</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>externalsource</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>image</rdf:li>
+            <rdf:li>man</rdf:li>
+            <rdf:li>map symbol</rdf:li>
+            <rdf:li>media</rdf:li>
+            <rdf:li>png</rdf:li>
+            <rdf:li>public domain</rdf:li>
+            <rdf:li>sign</rdf:li>
+            <rdf:li>silhouette</rdf:li>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>symbol</rdf:li>
+            <rdf:li>toilet</rdf:li>
+            <rdf:li>woman</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

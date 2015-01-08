@@ -1,0 +1,459 @@
+inherited FPosthumes: TFPosthumes
+  Left = 595
+  Height = 399
+  Top = 131
+  Width = 628
+  ActiveControl = dxDBGrid1
+  BorderWidth = 1
+  Caption = 'Individus nés après le décès de leur père'
+  ClientHeight = 399
+  ClientWidth = 628
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnShow = SuperFormShow
+  Position = poScreenCenter
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 397
+    Top = 1
+    Width = 626
+    Align = alClient
+    BevelOuter = bvNone
+    BorderWidth = 2
+    ClientHeight = 397
+    ClientWidth = 626
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 2
+      Height = 393
+      Top = 2
+      Width = 622
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 393
+      ClientWidth = 622
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 0
+        Height = 393
+        Top = 0
+        Width = 622
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 393
+        ClientWidth = 622
+        TabOrder = 0
+        object fpBoutons: TPanel
+          Left = 3
+          Height = 29
+          Top = 361
+          Width = 616
+          Align = alBottom
+          ClientHeight = 29
+          ClientWidth = 616
+          TabOrder = 0
+          object GoodBtn7: TFWClose
+            Cursor = crHandPoint
+            Left = 521
+            Height = 27
+            Top = 1
+            Width = 94
+            Caption = 'Fermer'
+            TabOrder = 0
+            Cancel = True
+            Default = True
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            OnClick = sbCloseClick
+          end
+          object btnPrint: TFWPrintGrid
+            Cursor = crHandPoint
+            Left = 416
+            Height = 27
+            Hint = 'Imprime la liste ci dessus....'
+            Top = 1
+            Width = 105
+            Caption = 'Imprimer...'
+            TabOrder = 1
+            Cancel = True
+            Default = True
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = btnPrintClick
+            DBGrid = dxDBGrid1
+          end
+        end
+        object pBottom: TPanel
+          Left = 3
+          Height = 3
+          Top = 358
+          Width = 616
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 1
+        end
+        object dxDBGrid1: TExtDBGrid
+          Left = 3
+          Height = 295
+          Top = 63
+          Width = 616
+          TitleButtons = False
+          AutoSort = False
+          Columns = <          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = ' '
+              Title.Orientation = toHorizontal
+              Width = 22
+              FieldName = 'SEXE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              Images = dm.ImageSexe
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Nom'
+              Title.Orientation = toHorizontal
+              Width = 168
+              FieldName = 'NOM'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+              Resize = True
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Naissance'
+              Title.Orientation = toHorizontal
+              Width = 200
+              FieldName = 'DATE_NAISSANCE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Décès du père'
+              Title.Orientation = toHorizontal
+              Width = 202
+              FieldName = 'DECES_PERE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end>
+          KeyStrokes = <          
+            item
+              Command = rxgcShowFindDlg
+              ShortCut = 16454
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowColumnsDlg
+              ShortCut = 16471
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowFilterDlg
+              ShortCut = 16468
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowSortDlg
+              ShortCut = 16467
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowQuickFilter
+              ShortCut = 16465
+              Enabled = True
+            end          
+            item
+              Command = rxgcHideQuickFilter
+              ShortCut = 16456
+              Enabled = True
+            end          
+            item
+              Command = rxgcSelectAll
+              ShortCut = 16449
+              Enabled = True
+            end          
+            item
+              Command = rxgcDeSelectAll
+              ShortCut = 16429
+              Enabled = True
+            end          
+            item
+              Command = rxgcInvertSelection
+              ShortCut = 16426
+              Enabled = True
+            end          
+            item
+              Command = rxgcOptimizeColumnsWidth
+              ShortCut = 16427
+              Enabled = True
+            end>
+          OptionsRx = []
+          Align = alClient
+          Color = clWindow
+          DrawFullLine = False
+          FocusColor = clRed
+          SelectedColor = clHighlight
+          GridLineStyle = psSolid
+          DataSource = DSNaissance
+          FixedColor = 5614250
+          FixedCols = 0
+          Options = [dgTitles, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+          ParentColor = False
+          PopupMenu = pmPosthumes
+          ReadOnly = True
+          Scrollbars = ssAutoBoth
+          TabOrder = 2
+          TitleFont.CharSet = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+          OnDblClick = dxDBGrid1DBTableView1CellDblClick
+        end
+        object Panel3: TPanel
+          Left = 3
+          Height = 55
+          Top = 3
+          Width = 616
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 55
+          ClientWidth = 616
+          TabOrder = 3
+          object Image1: TIATitle
+            Left = 1
+            Top = 1
+            AutoSize = True
+            ImageOn = iaPeople
+          end
+          object Label1: TLabel
+            Left = 223
+            Height = 30
+            Top = 8
+            Width = 388
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            Caption = 'Les individus listés ci-dessous, sont nés aprés le décès de leur père.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowFrame
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            WordWrap = True
+          end
+        end
+        object Panel2: TPanel
+          Left = 3
+          Height = 5
+          Top = 58
+          Width = 616
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 4
+        end
+      end
+    end
+  end
+  object IBQPosthume: TIBQuery[1]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select i.cle_fiche'
+      ',i.nom||coalesce('', ''||i.prenom,'''') as nom'
+      ',coalesce(i.date_naissance||'' '','''')||coalesce(''à ''||n.ev_ind_ville,'''') as date_naissance'
+      ',coalesce(d.ev_ind_date_writen||'' '','''')||coalesce(''à ''||d.ev_ind_ville,'''') as deces_pere'
+      ',i.sexe'
+      'from individu i'
+      'inner join evenements_ind n on n.ev_ind_kle_fiche=i.cle_fiche'
+      '  and n.ev_ind_type=''BIRT'' and n.ev_ind_date_year is not null'
+      'inner join evenements_ind d on d.ev_ind_kle_fiche=i.cle_pere'
+      '  and d.ev_ind_type=''DEAT'' and d.ev_ind_date_year is not null'
+      'where i.kle_dossier=:idossier'
+      'and d.ev_ind_datecode<n.ev_ind_datecode'
+      'order by i.nom,i.prenom'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'idossier'
+        ParamType = ptUnknown
+      end>
+    left = 86
+    top = 47
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'idossier'
+        ParamType = ptUnknown
+      end>
+    object IBQPosthumeCLE_FICHE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CLE_FICHE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQPosthumeNOM: TIBStringField
+      DisplayWidth = 102
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 102
+    end
+    object IBQPosthumeDATE_NAISSANCE: TIBStringField
+      DisplayWidth = 153
+      FieldKind = fkData
+      FieldName = 'DATE_NAISSANCE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 153
+    end
+    object IBQPosthumeDECES_PERE: TIBStringField
+      DisplayWidth = 153
+      FieldKind = fkData
+      FieldName = 'DECES_PERE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 153
+    end
+    object IBQPosthumeSEXE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SEXE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object DSNaissance: TDatasource[2]
+    DataSet = IBQPosthume
+    left = 184
+    top = 112
+  end
+  object pmPosthumes: TPopupMenu[3]
+    Images = dm.ImageListMenu
+    OnPopup = pmPosthumesPopup
+    left = 30
+    top = 151
+    object mFiche: TMenuItem
+      Caption = 'Ouvrir la fiche (ou dbl-click)'
+      Enabled = False
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000FF0000
+        00FF008484FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF000000FF00000000000000000000000000000000000000FF00FF
+        FFFF000000FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF000000FF000000000000000000000000000000FFFFFF
+        FFFF00FFFFFF000000FF008484FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF008484FF000000FF0000000000000000000000FF00FF
+        FFFFFFFFFFFF00FFFFFF000000FF008484FF008484FF008484FF008484FF0084
+        84FF008484FF008484FF008484FF008484FF000000FF00000000000000FFFFFF
+        FFFF00FFFFFFFFFFFFFF00FFFFFF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF00FF
+        FFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FF
+        FFFF000000FF0000000000000000000000000000000000000000000000FFFFFF
+        FFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFF
+        FFFF000000FF0000000000000000000000000000000000000000000000FF00FF
+        FFFFFFFFFFFF00FFFFFF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF0000000000000000000000000000000000000000000000000000
+        00FF000000FF000000FF00000000000000000000000000000000000000000000
+        00000000000000000000000000FF000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000FF000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000FF0000
+        00000000000000000000000000FF00000000000000FF00000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00FF000000FF000000FF00000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ImageIndex = 5
+      OnClick = mFicheClick
+    end
+    object mImprimer: TMenuItem
+      Caption = 'Imprimer'
+      Enabled = False
+      OnClick = mImprimerClick
+    end
+    object ExporterenHTML1: TMenuItem
+      Caption = 'Exporter en HTML'
+      Enabled = False
+      OnClick = ExporterenHTML1Click
+    end
+  end
+  object SaveDialog: TSaveDialog[4]
+    DefaultExt = '.htm'
+    Filter = '*.htm|*.htm'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    left = 65
+    top = 153
+  end
+  object dxComponentPrinter1: TPrinterSetupDialog[5]
+    Title = 'Ecran d''aperçu'
+    left = 392
+    top = 16
+  end
+  object OnFormInfoIni: TOnFormInfoIni[6]
+    SaveEdits = [feTGrid]
+    SaveForm = [sfSavePos]
+    left = 229
+    top = 188
+  end
+end

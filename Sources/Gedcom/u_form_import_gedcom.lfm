@@ -1,0 +1,1708 @@
+inherited FImportGedcom: TFImportGedcom
+  Left = 542
+  Height = 406
+  Top = 186
+  Width = 632
+  Caption = 'Importer un fichier GEDCOM'
+  ClientHeight = 406
+  ClientWidth = 632
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnCreate = SuperFormCreate
+  OnDestroy = SuperFormDestroy
+  OnHide = SuperFormHide
+  object Label7: TLabel[0]
+    Left = 24
+    Height = 14
+    Top = 93
+    Width = 351
+    Caption = 'Le format GEDCOM est "normalisé" par un groupe de travail :'
+    ParentColor = False
+  end
+  object URLLink1: TURLLink[1]
+    Cursor = crHandPoint
+    Left = 320
+    Height = 14
+    Top = 93
+    Width = 86
+    Caption = 'www.gedx.com'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    ParentColor = False
+    ParentFont = False
+    FocusFont.CharSet = ANSI_CHARSET
+    FocusFont.Color = clBlue
+    FocusFont.Height = -11
+    FocusFont.Name = 'Tahoma'
+    FocusFont.Style = [fsUnderline]
+  end
+  object Label36: TLabel[2]
+    Left = 32
+    Height = 14
+    Top = 101
+    Width = 351
+    Caption = 'Le format GEDCOM est "normalisé" par un groupe de travail :'
+    ParentColor = False
+  end
+  object URLLink3: TURLLink[3]
+    Cursor = crHandPoint
+    Left = 328
+    Height = 14
+    Top = 101
+    Width = 86
+    Caption = 'www.gedx.com'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    ParentColor = False
+    ParentFont = False
+    FocusFont.CharSet = ANSI_CHARSET
+    FocusFont.Color = clBlue
+    FocusFont.Height = -11
+    FocusFont.Name = 'Tahoma'
+    FocusFont.Style = [fsUnderline]
+  end
+  object Panel4: TPanel[4]
+    Left = 0
+    Height = 406
+    Top = 0
+    Width = 632
+    Align = alClient
+    BorderWidth = 1
+    BorderStyle = bsSingle
+    ClientHeight = 404
+    ClientWidth = 630
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object Panel1: TPanel
+      Left = 2
+      Height = 343
+      Top = 27
+      Width = 185
+      Align = alLeft
+      BorderWidth = 1
+      BorderStyle = bsSingle
+      TabOrder = 0
+    end
+    object Panel2: TPanel
+      Left = 187
+      Height = 343
+      Top = 27
+      Width = 441
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 343
+      ClientWidth = 441
+      TabOrder = 1
+      object Notebook: TNotebook
+        Left = 0
+        Height = 343
+        Top = 0
+        Width = 441
+        PageIndex = 0
+        Align = alClient
+        TabOrder = 0
+        TabStop = True
+        object page1: TPage
+          object Labelaa: TLabel
+            Left = 12
+            Height = 18
+            Top = 11
+            Width = 230
+            Caption = 'Sélectionner un fichier GED'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 12615680
+            Font.Height = -15
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold, fsUnderline]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label14: TLabel
+            Left = 24
+            Height = 14
+            Top = 48
+            Width = 392
+            Caption = 'Un fichier GEDCOM est un simple fichier texte, portant généralement'
+            ParentColor = False
+            WordWrap = True
+          end
+          object Label16: TLabel
+            Left = 24
+            Height = 14
+            Top = 128
+            Width = 398
+            Caption = 'Ancestromania respecte au mieux cette norme (GEDCOM version 5.5)'
+            ParentColor = False
+          end
+          object Label15: TLabel
+            Left = 24
+            Height = 14
+            Top = 102
+            Width = 349
+            Caption = 'Le format GEDCOM a été normalisé par un groupe de travail.'
+            ParentColor = False
+          end
+          object URLLink2: TURLLink
+            Cursor = crHandPoint
+            Left = 320
+            Height = 1
+            Top = 102
+            Width = 1
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clBlue
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsUnderline]
+            ParentColor = False
+            ParentFont = False
+            OnClick = URLLink2Click
+            FocusFont.CharSet = ANSI_CHARSET
+            FocusFont.Color = clBlue
+            FocusFont.Height = -11
+            FocusFont.Name = 'Tahoma'
+            FocusFont.Style = [fsUnderline]
+          end
+          object FlatGroupBox1: TGroupBox
+            Left = 24
+            Height = 90
+            Top = 187
+            Width = 396
+            Anchors = [akTop, akLeft, akRight]
+            Caption = 'Emplacement de votre fichier : '
+            ClientHeight = 74
+            ClientWidth = 392
+            TabOrder = 0
+            object edPathFileNameGED: TMaskEdit
+              Left = 6
+              Height = 24
+              Top = 32
+              Width = 378
+              Anchors = [akTop, akLeft, akRight]
+              CharCase = ecNormal
+              MaxLength = 0
+              ParentColor = True
+              ReadOnly = True
+              TabOrder = 0
+              TabStop = False
+              SpaceChar = '_'
+            end
+            object BFSBSelection: TFWOK
+              Cursor = crHandPoint
+              Left = 6
+              Height = 25
+              Hint = 'Choisir un fichier GEDCOM'
+              Top = 4
+              Width = 377
+              Caption = 'Sélectionnez le fichier d''importation'
+              TabOrder = 1
+              Spacing = 1
+              Anchors = [akTop, akLeft, akRight]
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = BFSBSelectionClick
+              ColorFrameFocus = clWhite
+            end
+          end
+          object Label19: TLabel
+            Left = 23
+            Height = 14
+            Top = 64
+            Width = 405
+            Caption = 'l''extension ".ged", et qui sert de passerelle entre différents logiciels de'
+            ParentColor = False
+            WordWrap = True
+          end
+          object Label20: TLabel
+            Left = 23
+            Height = 14
+            Top = 80
+            Width = 302
+            Caption = 'généalogie, afin de permettre l''échange de données.'
+            ParentColor = False
+            WordWrap = True
+          end
+        end
+        object page2: TPage
+          object Label17: TLabel
+            Left = 12
+            Height = 18
+            Top = 11
+            Width = 169
+            Caption = 'Est-ce bien ce fichier ?'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 12615680
+            Font.Height = -15
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold, fsUnderline]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label22: TLabel
+            Left = 24
+            Height = 13
+            Top = 87
+            Width = 40
+            Caption = 'Source :'
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object Label23: TLabel
+            Left = 24
+            Height = 13
+            Top = 112
+            Width = 28
+            Caption = 'Nom :'
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object Label24: TLabel
+            Left = 24
+            Height = 13
+            Top = 137
+            Width = 61
+            Caption = 'Destination :'
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object Label25: TLabel
+            Left = 24
+            Height = 13
+            Top = 162
+            Width = 44
+            Caption = 'Codage :'
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object Label26: TLabel
+            Left = 24
+            Height = 13
+            Top = 187
+            Width = 42
+            Caption = 'Langue :'
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object Label27: TLabel
+            Left = 24
+            Height = 13
+            Top = 212
+            Width = 88
+            Caption = 'Version GEDCOM :'
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object Label28: TLabel
+            Left = 24
+            Height = 13
+            Top = 237
+            Width = 60
+            Caption = 'Compagnie :'
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object lbHeaderSource: TLabel
+            Left = 134
+            Height = 13
+            Top = 87
+            Width = 290
+            AutoSize = False
+            Caption = '-------------                                                                                  '
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object Label30: TLabel
+            Left = 24
+            Height = 13
+            Top = 262
+            Width = 46
+            Caption = 'Adresse :'
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object lbHeaderNom: TLabel
+            Left = 134
+            Height = 13
+            Top = 112
+            Width = 290
+            AutoSize = False
+            Caption = '-------------                                                                                  '
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object lbHeaderDestination: TLabel
+            Left = 134
+            Height = 13
+            Top = 137
+            Width = 290
+            AutoSize = False
+            Caption = '-------------                                                                                  '
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object lbHeaderCodage: TLabel
+            Left = 134
+            Height = 13
+            Top = 162
+            Width = 290
+            AutoSize = False
+            Caption = '-------------                                                                                  '
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object lbHeaderLangue: TLabel
+            Left = 134
+            Height = 13
+            Top = 187
+            Width = 290
+            AutoSize = False
+            Caption = '-------------                                                                                  '
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object lbHeaderVersion: TLabel
+            Left = 134
+            Height = 13
+            Top = 212
+            Width = 290
+            AutoSize = False
+            Caption = '-------------                                                                                  '
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object lbHeaderCompagnie: TLabel
+            Left = 134
+            Height = 13
+            Top = 237
+            Width = 290
+            AutoSize = False
+            Caption = '-------------                                                                                  '
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object lbHeaderAdresse: TLabel
+            Left = 134
+            Height = 13
+            Top = 262
+            Width = 290
+            AutoSize = False
+            Caption = '-------------                                                                                  '
+            Color = clWindow
+            ParentColor = False
+            Transparent = False
+          end
+          object lbChemin: TLabel
+            Left = 16
+            Height = 14
+            Top = 39
+            Width = 420
+            Caption = '---'
+            Constraints.MinWidth = 420
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label34: TLabel
+            Left = 12
+            Height = 18
+            Top = 59
+            Width = 208
+            Caption = 'En-tête du fichier GEDCOM :'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 12615680
+            Font.Height = -15
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold, fsUnderline]
+            ParentColor = False
+            ParentFont = False
+          end
+          object btInfosAuteur: TXAInfo
+            Left = 12
+            Height = 25
+            Hint = 'Cliquer pour lire les notes'
+            Top = 300
+            Width = 248
+            Caption = 'Notes de l''auteur du fichier'
+            TabOrder = 0
+            OnClick = btInfosAuteurClick
+          end
+        end
+        object page3: TPage
+          object Label3: TLabel
+            Left = 12
+            Height = 18
+            Top = 11
+            Width = 141
+            Caption = 'Jeux de caractères'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 12615680
+            Font.Height = -15
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold, fsUnderline]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label10: TLabel
+            Left = 24
+            Height = 13
+            Top = 140
+            Width = 367
+            Caption = 'Exemples issus de quelques lignes récupérées depuis votre fichier GEDCOM :'
+            ParentColor = False
+          end
+          object Label11: TLabel
+            Left = 24
+            Height = 13
+            Top = 89
+            Width = 47
+            Caption = 'Format :'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            Visible = False
+          end
+          object Label13: TLabel
+            Left = 24
+            Height = 13
+            Top = 48
+            Width = 327
+            Caption = 'Selon l''origine de votre fichier GEDCOM, les caractères peuvent être'
+            ParentColor = False
+            WordWrap = True
+          end
+          object rbJeuCarWindows: TRadioButton
+            Cursor = crHandPoint
+            Left = 77
+            Height = 21
+            Top = 89
+            Width = 67
+            Caption = 'Windows'
+            Checked = True
+            OnClick = rbJeuCarWindowsClick
+            TabOrder = 0
+            TabStop = True
+            Visible = False
+          end
+          object rbJeuCarMacintosh: TRadioButton
+            Cursor = crHandPoint
+            Left = 147
+            Height = 21
+            Top = 89
+            Width = 72
+            Caption = 'Macintosh'
+            OnClick = rbJeuCarMacintoshClick
+            TabOrder = 1
+            Visible = False
+          end
+          object rbJeuCarMSDOS: TRadioButton
+            Cursor = crHandPoint
+            Left = 218
+            Height = 21
+            Top = 89
+            Width = 63
+            Caption = 'MS-DOS'
+            OnClick = rbJeuCarMSDOSClick
+            TabOrder = 2
+            Visible = False
+          end
+          object rbJeuCarAnsel: TRadioButton
+            Cursor = crHandPoint
+            Left = 288
+            Height = 21
+            Top = 89
+            Width = 50
+            Caption = 'Ansel'
+            OnClick = rbJeuCarAnselClick
+            TabOrder = 3
+            Visible = False
+          end
+          object FlatPanel1: TPanel
+            Left = 24
+            Height = 141
+            Top = 156
+            Width = 393
+            ClientHeight = 141
+            ClientWidth = 393
+            TabOrder = 4
+            object memoJeuxCaractere: TMemo
+              Left = 1
+              Height = 139
+              Top = 1
+              Width = 391
+              Align = alClient
+              BorderStyle = bsNone
+              ScrollBars = ssVertical
+              TabOrder = 0
+              WordWrap = False
+            end
+          end
+          object rbJeuCarUtf8: TRadioButton
+            Cursor = crHandPoint
+            Left = 359
+            Height = 21
+            Top = 89
+            Width = 45
+            Caption = 'Utf8'
+            OnClick = rbJeuCarUtf8Click
+            TabOrder = 5
+            Visible = False
+          end
+          object Label18: TLabel
+            Left = 24
+            Height = 13
+            Top = 64
+            Width = 214
+            Caption = 'codés de façon différente de votre machine.'
+            ParentColor = False
+            WordWrap = True
+          end
+          object cb_WinCharset: TComboBox
+            Left = 145
+            Height = 21
+            Hint = 'Si vous ne savez pas utilisez je jeu de caractères ISO 8859 1. Si l''importation échoue ouvrez le fichier avec un éditeur de texte pour connaître le jeu de caractères.'
+            Top = 108
+            Width = 132
+            ItemHeight = 13
+            OnChange = cb_WinCharsetChange
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 6
+          end
+          object LabelCharset: TLabel
+            Left = 24
+            Height = 13
+            Top = 116
+            Width = 107
+            Caption = 'Jeu de caractères :'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            Visible = False
+          end
+        end
+        object page4: TPage
+          object Label29: TLabel
+            Left = 12
+            Height = 18
+            Top = 11
+            Width = 150
+            Caption = 'Éléments à importer'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 12615680
+            Font.Height = -15
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold, fsUnderline]
+            ParentColor = False
+            ParentFont = False
+          end
+          object InfosElements: TLabel
+            Left = 24
+            Height = 69
+            Top = 48
+            Width = 405
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Caption = 'InfosElements'
+            ParentColor = False
+            WordWrap = True
+          end
+          object Label32: TLabel
+            Left = 24
+            Height = 13
+            Top = 138
+            Width = 58
+            Caption = 'Importer :'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object cbImportEvent: TJvXPCheckbox
+            Cursor = crHandPoint
+            Left = 20
+            Height = 17
+            Top = 162
+            Width = 147
+            Caption = 'les événements'
+            TabOrder = 0
+            Checked = True
+            State = cbChecked
+            UseDockManager = False
+            AutoSize = True
+            ParentFont = False
+          end
+          object cbImportNotes: TJvXPCheckbox
+            Cursor = crHandPoint
+            Left = 20
+            Height = 17
+            Top = 191
+            Width = 145
+            Caption = 'les notes'
+            TabOrder = 1
+            Checked = True
+            State = cbChecked
+            UseDockManager = False
+            AutoSize = True
+            ParentFont = False
+          end
+          object cbImportSources: TJvXPCheckbox
+            Cursor = crHandPoint
+            Left = 20
+            Height = 17
+            Top = 221
+            Width = 145
+            Caption = 'les sources'
+            TabOrder = 6
+            Checked = True
+            State = cbChecked
+            UseDockManager = False
+            AutoSize = True
+            ParentFont = False
+          end
+          object cbImportTemoins: TJvXPCheckbox
+            Cursor = crHandPoint
+            Left = 220
+            Height = 17
+            Top = 163
+            Width = 217
+            Caption = 'les témoins'
+            TabOrder = 3
+            Checked = True
+            State = cbChecked
+            UseDockManager = False
+            AutoSize = True
+            ParentFont = False
+          end
+          object cbImportPatronymes: TJvXPCheckbox
+            Cursor = crHandPoint
+            Left = 220
+            Height = 17
+            Top = 192
+            Width = 223
+            Caption = 'les patronymes associés'
+            TabOrder = 4
+            Checked = True
+            State = cbChecked
+            UseDockManager = False
+            AutoSize = True
+            ParentFont = False
+          end
+          object cbImportImages: TJvXPCheckbox
+            Cursor = crHandPoint
+            Left = 219
+            Height = 17
+            Top = 222
+            Width = 145
+            Caption = 'les médias'
+            TabOrder = 5
+            Checked = True
+            State = cbChecked
+            UseDockManager = False
+            AutoSize = True
+            ParentFont = False
+          end
+          object cbIgnoreEventIndiVide: TJvXPCheckbox
+            Cursor = crHandPoint
+            Left = 20
+            Height = 17
+            Top = 100
+            Width = 401
+            Caption = 'Ignorer les événements individuels vides'
+            TabOrder = 2
+            ParentColor = False
+            UseDockManager = False
+            ParentFont = False
+          end
+          object lImportMedias: TLabel
+            Left = 20
+            Height = 13
+            Top = 252
+            Width = 62
+            Caption = 'comme défini'
+            ParentColor = False
+          end
+        end
+        object page5: TPage
+          object Label5: TLabel
+            Left = 12
+            Height = 18
+            Top = 4
+            Width = 124
+            Caption = 'Format des lieux'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 12615680
+            Font.Height = -15
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold, fsUnderline]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label9: TLabel
+            Left = 24
+            Height = 13
+            Top = 110
+            Width = 128
+            Caption = 'Séparateur de champ :'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label2: TLabel
+            Left = 24
+            Height = 13
+            Top = 26
+            Width = 275
+            Caption = 'Les noms de lieux sont codés sur une seule ligne.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            WordWrap = True
+          end
+          object Label12: TLabel
+            Left = 24
+            Height = 13
+            Top = 132
+            Width = 114
+            Caption = 'Ordre des colonnes :'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object cbSeparateurLieux: TFWComboBox
+            Cursor = crHandPoint
+            Left = 165
+            Height = 25
+            Top = 108
+            Width = 41
+            ItemHeight = 0
+            ItemIndex = 0
+            Items.Strings = (
+              ','
+              ';'
+              '<TAB>'
+            )
+            OnChange = cbSeparateurLieuxChange
+            OnExit = cbSeparateurLieuxChange
+            ParentFont = False
+            TabOrder = 0
+            Text = ','
+          end
+          object rbFormatGedcom: TRadioGroup
+            Left = 20
+            Height = 34
+            Top = 298
+            Width = 227
+            Anchors = [akLeft, akBottom]
+            AutoFill = True
+            Caption = ' Type du code utilisé : '
+            ChildSizing.LeftRightSpacing = 6
+            ChildSizing.TopBottomSpacing = 6
+            ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+            ChildSizing.EnlargeVertical = crsHomogenousChildResize
+            ChildSizing.ShrinkHorizontal = crsScaleChilds
+            ChildSizing.ShrinkVertical = crsScaleChilds
+            ChildSizing.Layout = cclLeftToRightThenTopToBottom
+            ChildSizing.ControlsPerLine = 2
+            ClientHeight = 17
+            ClientWidth = 223
+            Columns = 2
+            ItemIndex = 0
+            Items.Strings = (
+              'Code postal'
+              'Code INSEE'
+            )
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+          end
+          object Label31: TLabel
+            Left = 24
+            Height = 13
+            Top = 44
+            Width = 324
+            Caption = 'Selon l''origine du fichier GEDCOM, le séparateur de champ'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            WordWrap = True
+          end
+          object Label38: TLabel
+            Left = 24
+            Height = 13
+            Top = 60
+            Width = 291
+            Caption = 'et l''ordre des informations peuvent être différents. '
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            WordWrap = True
+          end
+          object Label39: TLabel
+            Left = 24
+            Height = 13
+            Top = 76
+            Width = 298
+            Caption = 'Cette étape est importante pour la gestion des lieux.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            WordWrap = True
+          end
+          object Label40: TLabel
+            Left = 24
+            Height = 13
+            Top = 92
+            Width = 167
+            Caption = 'Positionnez bien les colonnes.'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            WordWrap = True
+          end
+          object Panel8: TPanel
+            Left = 24
+            Height = 126
+            Top = 164
+            Width = 414
+            Anchors = [akTop, akLeft, akBottom]
+            Caption = 'Panel8'
+            ClientHeight = 126
+            ClientWidth = 414
+            TabOrder = 2
+            object theGridLieux: TStringGrid
+              Left = 1
+              Height = 108
+              Top = 17
+              Width = 412
+              Align = alClient
+              Anchors = [akTop, akLeft, akBottom]
+              ScrollBars = ssBoth
+              TabOrder = 0
+              TitleFont.CharSet = ANSI_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -11
+              TitleFont.Name = 'Tahoma'
+            end
+            object Panel7: TPanel
+              Left = 1
+              Height = 16
+              Top = 1
+              Width = 412
+              Align = alTop
+              Caption = 'Panel7'
+              ClientHeight = 16
+              ClientWidth = 412
+              TabOrder = 1
+              object btnLieuxCol1: TBlueFlatSpeedButton
+                Tag = 1
+                Cursor = crHandPoint
+                Left = 0
+                Height = 18
+                Top = 0
+                Width = 54
+                Caption = 'Ville'
+                TabOrder = 0
+                Glyph.Data = {
+                  07544269746D617000000000
+                }
+                Font.Color = clYellow
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                ParentFont = False
+                OnClick = btnLieuxCol1Click
+                Color = clGray
+              end
+              object btnLieuxCol2: TBlueFlatSpeedButton
+                Tag = 2
+                Cursor = crHandPoint
+                Left = 54
+                Height = 18
+                Top = 0
+                Width = 54
+                Caption = 'Code'
+                TabOrder = 1
+                Glyph.Data = {
+                  07544269746D617000000000
+                }
+                Font.Color = clYellow
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                ParentFont = False
+                OnClick = btnLieuxCol1Click
+                Color = clGray
+              end
+              object btnLieuxCol3: TBlueFlatSpeedButton
+                Tag = 3
+                Cursor = crHandPoint
+                Left = 108
+                Height = 18
+                Top = 0
+                Width = 54
+                Caption = 'Dept.'
+                TabOrder = 2
+                Glyph.Data = {
+                  07544269746D617000000000
+                }
+                Font.Color = clYellow
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                ParentFont = False
+                OnClick = btnLieuxCol1Click
+                Color = clGray
+              end
+              object btnLieuxCol4: TBlueFlatSpeedButton
+                Tag = 4
+                Cursor = crHandPoint
+                Left = 162
+                Height = 18
+                Top = 0
+                Width = 54
+                Caption = 'Région'
+                TabOrder = 3
+                Glyph.Data = {
+                  07544269746D617000000000
+                }
+                Font.Color = clYellow
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                ParentFont = False
+                OnClick = btnLieuxCol1Click
+                Color = clGray
+              end
+              object btnLieuxCol5: TBlueFlatSpeedButton
+                Tag = 5
+                Cursor = crHandPoint
+                Left = 216
+                Height = 18
+                Top = 0
+                Width = 54
+                Caption = 'Pays'
+                TabOrder = 4
+                Glyph.Data = {
+                  07544269746D617000000000
+                }
+                Font.Color = clYellow
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                ParentFont = False
+                OnClick = btnLieuxCol1Click
+                Color = clGray
+              end
+              object btnLieuxCol6: TBlueFlatSpeedButton
+                Tag = 6
+                Cursor = crHandPoint
+                Left = 270
+                Height = 18
+                Top = 0
+                Width = 54
+                Caption = 'Subdiv.'
+                TabOrder = 5
+                Glyph.Data = {
+                  07544269746D617000000000
+                }
+                Font.Color = clYellow
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                ParentFont = False
+                OnClick = btnLieuxCol1Click
+                Color = clGray
+              end
+              object btnLieuxCol7: TBlueFlatSpeedButton
+                Tag = 7
+                Cursor = crHandPoint
+                Left = 320
+                Height = 18
+                Top = 0
+                Width = 64
+                Caption = 'Ignorer'
+                TabOrder = 6
+                Glyph.Data = {
+                  07544269746D617000000000
+                }
+                Font.Color = clYellow
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                ParentFont = False
+                OnClick = btnLieuxCol1Click
+                Color = clGray
+              end
+            end
+          end
+        end
+        object page6: TPage
+          object Label4: TLabel
+            Left = 12
+            Height = 18
+            Top = 11
+            Width = 126
+            Caption = 'Format des noms'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 12615680
+            Font.Height = -15
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold, fsUnderline]
+            ParentColor = False
+            ParentFont = False
+          end
+          object LabelExParticule: TLabel
+            Left = 40
+            Height = 13
+            Top = 120
+            Width = 301
+            Caption = 'exemple : Jean de La Fontaine devient : Jean La Fontaine (de)'
+            ParentColor = False
+            WordWrap = True
+          end
+          object rbDontTouchParticule: TRadioButton
+            Cursor = crHandPoint
+            Left = 24
+            Height = 21
+            Top = 56
+            Width = 194
+            Caption = 'Ne pas toucher aux noms de famille'
+            Checked = True
+            OnClick = rbDontTouchParticuleClick
+            TabOrder = 0
+            TabStop = True
+          end
+          object rbWorkWithParticule: TRadioButton
+            Cursor = crHandPoint
+            Left = 24
+            Height = 21
+            Top = 96
+            Width = 220
+            Caption = 'Placer la particule après le nom de famille'
+            OnClick = rbDontTouchParticuleClick
+            TabOrder = 1
+          end
+        end
+        object page7: TPage
+          object Label6: TLabel
+            Left = 12
+            Height = 18
+            Top = 2
+            Width = 188
+            Caption = 'Terminer l''importation'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 12615680
+            Font.Height = -15
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold, fsUnderline]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label1: TLabel
+            Left = 16
+            Height = 14
+            Top = 25
+            Width = 383
+            Caption = 'Maintenant que vous avez défini vos préférences d''importation, les'
+            ParentColor = False
+            WordWrap = True
+          end
+          object Label8: TLabel
+            Left = 24
+            Height = 14
+            Top = 281
+            Width = 87
+            Anchors = [akLeft, akBottom]
+            Caption = 'Progression    :'
+            ParentColor = False
+          end
+          object Pourcent: TLabel
+            Left = 114
+            Height = 14
+            Top = 281
+            Width = 7
+            Anchors = [akLeft, akBottom]
+            Caption = '0'
+            ParentColor = False
+          end
+          object Label33: TLabel
+            Left = 24
+            Height = 14
+            Top = 241
+            Width = 89
+            Anchors = [akLeft, akBottom]
+            Caption = 'Nb de familles :'
+            ParentColor = False
+          end
+          object lbNdFam: TLabel
+            Left = 114
+            Height = 14
+            Top = 241
+            Width = 7
+            Anchors = [akLeft, akBottom]
+            Caption = '0'
+            ParentColor = False
+          end
+          object Label35: TLabel
+            Left = 24
+            Height = 14
+            Top = 257
+            Width = 87
+            Anchors = [akLeft, akBottom]
+            Caption = 'Nb d''individus :'
+            ParentColor = False
+          end
+          object lbNbIndi: TLabel
+            Left = 114
+            Height = 14
+            Top = 257
+            Width = 7
+            Anchors = [akLeft, akBottom]
+            Caption = '0'
+            ParentColor = False
+          end
+          object LabelDossierImport: TLabel
+            Left = 29
+            Height = 1
+            Top = 187
+            Width = 1
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = 12615680
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold, fsItalic]
+            ParentColor = False
+            ParentFont = False
+          end
+          object EtiquetteDossierEnCours: TLabel
+            Left = 32
+            Height = 14
+            Top = 209
+            Width = 107
+            Anchors = [akLeft, akBottom]
+            Caption = 'Dossier en cours : '
+            ParentColor = False
+            Visible = False
+          end
+          object rbClearBdd: TRadioButton
+            Cursor = crHandPoint
+            Left = 24
+            Height = 21
+            Top = 139
+            Width = 404
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Caption = 'Écraser le contenu du dossier en cours'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            OnClick = rbClearBddClick
+            ParentFont = False
+            TabOrder = 0
+          end
+          object rbAddToBdd: TRadioButton
+            Cursor = crHandPoint
+            Left = 24
+            Height = 21
+            Top = 160
+            Width = 412
+            Anchors = [akTop, akLeft, akRight]
+            AutoSize = False
+            Caption = 'Ajouter au dossier en cours'
+            Checked = True
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            OnClick = rbAddToBddClick
+            ParentFont = False
+            TabOrder = 1
+            TabStop = True
+          end
+          object Animate: TBGRASpriteAnimation
+            Left = 152
+            Height = 80
+            Top = 222
+            Width = 272
+            AnimInvert = False
+            AnimPosition = 1
+            AnimRepeat = 0
+            AnimRepeatLap = 0
+            AnimSpeed = 1000
+            AnimStatic = False
+            AutoSize = False
+            Center = True
+            Proportional = True
+            SpriteCount = 1
+            SpriteFillOpacity = 255
+            SpriteFlipMode = flNone
+            SpriteKeyColor = clNone
+            SpriteResampleFilter = rfLinear
+            SpriteResampleMode = rmSimpleStretch
+            SpriteRotation = rtNone
+            Stretch = False
+            Tile = False
+            Anchors = [akLeft, akBottom]
+            Visible = False
+          end
+          object Panel3: TPanel
+            Left = 18
+            Height = 2
+            Top = 130
+            Width = 406
+            BevelOuter = bvNone
+            TabOrder = 2
+          end
+          object Label21: TLabel
+            Left = 16
+            Height = 14
+            Top = 37
+            Width = 361
+            Caption = 'données sont prêtes à être intégrées dans la base de données.'
+            ParentColor = False
+            WordWrap = True
+          end
+        end
+      end
+    end
+    object Panel5: TPanel
+      Left = 2
+      Height = 25
+      Top = 2
+      Width = 626
+      Align = alTop
+      ClientHeight = 25
+      ClientWidth = 626
+      TabOrder = 2
+      object Label37: TLabel
+        Left = 7
+        Height = 14
+        Top = 4
+        Width = 131
+        Caption = 'Importation GEDCOM'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold, fsUnderline]
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+    object Panel6: TPanel
+      Left = 2
+      Height = 32
+      Top = 370
+      Width = 626
+      Align = alBottom
+      ClientHeight = 32
+      ClientWidth = 626
+      TabOrder = 3
+      object btnPrevious: TFWPrior
+        Cursor = crHandPoint
+        Left = 357
+        Height = 25
+        Hint = 'Etape précédente'
+        Top = 4
+        Width = 132
+        Caption = 'Précédent'
+        TabOrder = 0
+        Cancel = True
+        Spacing = 2
+        ParentShowHint = False
+        ShowHint = True
+        OnClick = btnPreviousClick
+        ColorFrameFocus = 12970227
+      end
+      object btnNext: TFWNext
+        Cursor = crHandPoint
+        Left = 492
+        Height = 25
+        Hint = 'Etape suivante'
+        Top = 4
+        Width = 127
+        Caption = 'Suivant'
+        TabOrder = 1
+        Layout = blGlyphRight
+        Spacing = 2
+        ParentBiDiMode = False
+        ParentShowHint = False
+        ShowHint = True
+        OnClick = btnNextClick
+        ColorFrameFocus = 12970227
+      end
+    end
+  end
+  object popup_FormatLieux: TPopupMenu[5]
+    left = 74
+    top = 80
+    object popupLieuVille: TMenuItem
+      Tag = 1
+      Caption = 'Ville'
+      OnClick = popupLieuClick
+    end
+    object popup_LieuCode: TMenuItem
+      Tag = 2
+      Caption = 'Code'
+      OnClick = popupLieuClick
+    end
+    object popup_LieuDept: TMenuItem
+      Tag = 3
+      Caption = 'Dépt.'
+      OnClick = popupLieuClick
+    end
+    object popup_LieuRegion: TMenuItem
+      Tag = 4
+      Caption = 'Région'
+      OnClick = popupLieuClick
+    end
+    object popup_LieuPays: TMenuItem
+      Tag = 5
+      Caption = 'Pays'
+      OnClick = popupLieuClick
+    end
+    object popup_LieuSubdivision: TMenuItem
+      Tag = 6
+      Caption = 'Subdiv.'
+      OnClick = popupLieuClick
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object popup_LieuIgnorer: TMenuItem
+      Caption = 'Ignorer'
+      OnClick = popupLieuClick
+    end
+  end
+  object IBSQL: TIBSQL[6]
+    Database = dm.ibd_BASE
+    ParamCheck = True
+    Transaction = dm.IBT_BASE
+    left = 144
+    top = 240
+  end
+  object OpenDialog: TOpenDialog[7]
+    Title = 'Chargement d''un fichier GEDCOM'
+    Filter = 'Fichiers GEDCOM (*.ged)|*.ged;*.GED|Tous les fichiers (*.*)|*.*'
+    left = 136
+    top = 48
+  end
+  object Language: TYLanguage[8]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 32
+    top = 40
+  end
+  object IBMultimedia: TIBQuery[9]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from multimedia '
+      'where'
+      ' ID_IMPORT_GEDCOM = :NumImportation'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'NumImportation'
+        ParamType = ptUnknown
+      end>
+    UpdateObject = IBUMedia
+    left = 136
+    top = 152
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'NumImportation'
+        ParamType = ptUnknown
+      end>
+    object IBMultimediaMULTI_CLEF: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MULTI_CLEF'
+      Index = 0
+      LookupCache = False
+      Origin = '"MULTIMEDIA"."MULTI_CLEF"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object IBMultimediaMULTI_INFOS: TIBStringField
+      DisplayWidth = 53
+      FieldKind = fkData
+      FieldName = 'MULTI_INFOS'
+      Index = 1
+      LookupCache = False
+      Origin = '"MULTIMEDIA"."MULTI_INFOS"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 53
+    end
+    object IBMultimediaMULTI_MEDIA: TBlobField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MULTI_MEDIA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftBlob
+      Size = 8
+    end
+    object IBMultimediaMULTI_DOSSIER: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MULTI_DOSSIER'
+      Index = 3
+      LookupCache = False
+      Origin = '"MULTIMEDIA"."MULTI_DOSSIER"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBMultimediaMULTI_DATE_MODIF: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MULTI_DATE_MODIF'
+      Index = 4
+      LookupCache = False
+      Origin = '"MULTIMEDIA"."MULTI_DATE_MODIF"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBMultimediaMULTI_MEMO: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MULTI_MEMO'
+      Index = 5
+      LookupCache = False
+      Origin = '"MULTIMEDIA"."MULTI_MEMO"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Size = 8
+      Transliterate = False
+    end
+    object IBMultimediaMULTI_REDUITE: TBlobField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MULTI_REDUITE'
+      Index = 6
+      LookupCache = False
+      Origin = '"MULTIMEDIA"."MULTI_REDUITE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftBlob
+      Size = 8
+    end
+    object IBMultimediaMULTI_IMAGE_RTF: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MULTI_IMAGE_RTF'
+      Index = 7
+      LookupCache = False
+      Origin = '"MULTIMEDIA"."MULTI_IMAGE_RTF"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBMultimediaMULTI_PATH: TIBStringField
+      DisplayWidth = 255
+      FieldKind = fkData
+      FieldName = 'MULTI_PATH'
+      Index = 8
+      LookupCache = False
+      Origin = '"MULTIMEDIA"."MULTI_PATH"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object IBMultimediaMULTI_NOM: TIBStringField
+      DisplayWidth = 255
+      FieldKind = fkData
+      FieldName = 'MULTI_NOM'
+      Index = 9
+      LookupCache = False
+      Origin = '"MULTIMEDIA"."MULTI_NOM"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object IBMultimediaID_IMPORT_GEDCOM: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ID_IMPORT_GEDCOM'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object IBUMedia: TIBUpdateSQL[10]
+    RefreshSQL.Strings = (
+      'Select *'
+      'from multimedia '
+      'where'
+      '  MULTI_CLEF = :MULTI_CLEF'
+    )
+    ModifySQL.Strings = (
+      'update multimedia'
+      'set'
+      '  MULTI_INFOS = :MULTI_INFOS,'
+      '  MULTI_MEDIA = :MULTI_MEDIA,'
+      '  MULTI_DATE_MODIF = :MULTI_DATE_MODIF,'
+      '  MULTI_MEMO = :MULTI_MEMO,'
+      '  MULTI_REDUITE = :MULTI_REDUITE,'
+      '  MULTI_IMAGE_RTF = :MULTI_IMAGE_RTF'
+      'where'
+      '  MULTI_CLEF = :MULTI_CLEF'
+    )
+    InsertSQL.Strings = (
+      'insert into multimedia'
+      '(MULTI_CLEF'
+      ',MULTI_INFOS'
+      ',MULTI_DOSSIER'
+      ',MULTI_DATE_MODIF'
+      ',MULTI_MEMO'
+      ',MULTI_IMAGE_RTF'
+      ',MULTI_PATH'
+      ',ID_IMPORT_GEDCOM)'
+      'values'
+      '(:MULTI_CLEF'
+      ',:MULTI_INFOS'
+      ',:MULTI_DOSSIER'
+      ',:MULTI_DATE_MODIF'
+      ',:MULTI_MEMO'
+      ',:MULTI_IMAGE_RTF'
+      ',:MULTI_PATH'
+      ',:ID_IMPORT_GEDCOM)'
+    )
+    DeleteSQL.Strings = (
+      'delete from multimedia'
+      'where'
+      '  MULTI_CLEF = :OLD_MULTI_CLEF'
+    )
+    left = 144
+    top = 192
+  end
+  object IBNomAttachement: TIBSQL[11]
+    Database = dm.ibd_BASE
+    ParamCheck = True
+    SQL.Strings = (
+      'insert into nom_attachement'
+      '(id_indi,nom,kle_dossier)'
+      'values(:indi,:nom,:dossier)'
+    )
+    Transaction = dm.IBT_BASE
+    left = 74
+    top = 235
+  end
+  object OnFormInfoIni: TOnFormInfoIni[12]
+    SaveEdits = [feTEdit, feTCheck, feTComboValue, feTRadio, feTRadioGroup]
+    OnFormShow = OnFormInfoIniFormShow
+    left = 304
+    top = 104
+  end
+  object ibd_BASE: TIBDatabase[13]
+    Connected = False
+    LoginPrompt = False
+    AllowStreamedConnected = False
+    DatabaseName = 'C:\Matthieu\Genealogie\Ancestromania\database\GIROUX-RAVELEAU.FDB'
+    Params.Strings = (
+      'user_name=SYSDBA'
+      'password=masterkey'
+    )
+    DefaultTransaction = IBT_BASE
+    IdleTimer = 0
+    TraceFlags = []
+    left = 60
+    top = 124
+  end
+  object IBT_BASE: TIBTransaction[14]
+    Active = False
+    DefaultDatabase = ibd_BASE
+    DefaultAction = TACommitRetaining
+    Params.Strings = (
+      'read_committed'
+      'rec_version'
+      'nowait'
+    )
+    left = 146
+    top = 116
+  end
+end

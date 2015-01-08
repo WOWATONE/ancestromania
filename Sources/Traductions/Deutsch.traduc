@@ -1,0 +1,96 @@
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+// Les fichiers de traduction
+//
+// Il est tres facile de traduire l application Ancestrologie
+// Il vous suffit de recopier ce fichier, en le nommant par exemple : Italian.traduc
+// et dans ce nouveu fichier il suffit de traduire tous les textes qui se trouvent apres le signe =
+// il faut garder la ponctuation et faire attention que le texte traduit ne soit pas trop long pour ne pa deborder sur les champs
+//
+// Vous pouvez aussi rajouter des Hints a tous les items qui n en n'ont pas
+// Par exemple : Dossiers1 n a pas de hint , il suffit juste d'ecrire la ligne comme suit
+// Dossiers1.Hint=Gestion des dossiers
+//
+// Attention
+// Si apres le signe = nous ne mettez rien, il n apparitra rien a l ecran
+// Si vous supprimez carrement une ligne, le texte par defaut sera le francais
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[FLanguage]
+lbFacture.Caption=Langage
+Label1.Caption=Ancestrologie ist in mehreren Sprachen brauchbar. Wählen Sie ihr in dieser Liste :
+Label2.Caption=Die Texte sind seit der französischen Version übersetzt gewesen, dank Motor automatischer Übersetzung der Gesellschaft SYSTRAN. Wir bemühen uns , die Qualität des Ergebnisses zu verbessern, um in der größten Zahl zu erlauben, Ancestrologie zu benutzen.
+// ------------ Fenetre principale de l'application -----------------------------------------------------------------------------------------------
+[FMain]
+lExit.Caption=Bestätigen Sie Wille, Ancestrologie zu verlassen ?
+lDossier.Caption=Akten
+lIndividus.Caption=Individuen 
+lRepertoire.Caption=Repertoire
+lFiche.Caption=Karteikarte
+lLiensFamilliaux.Caption=Familienbande
+lArbre.Caption=Baum
+lAnniversaire.Caption=Geburtstage
+lListePrenom.Caption=Liste von Vornamen
+lImpressions.Caption=Eindrücke
+lImpArbre.Caption=Baum  
+lImpRoue.Caption=Rad die Familie betreffend
+lImpAsc.Caption= Papiere 
+lDivers.Caption=Verschiedenes
+lVilles.Caption=Listet Orte auf  
+lPref.Caption=Bevorzugungen
+URLBlockNotes.Caption=Block Noten
+bfsbQuitter.Hint=Ancestrologie verlassen
+Fichier1.Caption=Meine Genealogien 
+Dossiers1.Caption=Akten...
+Informations1.Caption=Informationen...
+Blocnotes2.Caption=Block notest...
+Quitter1.Caption=Verlassen...
+menu_Individu.Caption=Individuen
+Rpertoire1.Caption=&Repertoire
+Listeparprnom1.Caption=Liste von Vornamen
+FicheIndividu1.Caption=Individuum tut
+mSaisierapide.Caption=Schnelle Beschlagnahme
+Rechercher2.Caption=Suche...
+Recherchededoublons.Caption=Suche verdoppeln wir...
+mNouveaux.Caption=Listet vor kurzem erfasste Individuen auf ...
+mListeUnions.Caption=Listet Verbande auf...
+mCousinage.Caption=Mitfabrikationsliste...
+Arbre2.Caption=Baum
+Anniversaires1.Caption=Geburtstage...
+option_RenumerotationSOSA.Caption=Wiedernumerieren SOSA...
+Connector1.Caption=Familienbande
+menu_Favoris.Caption=Koteletten
+MenuFavoris_Add.Caption=Zu den Koteletten hinzufügen... 
+dxbDelFavoris.Caption=Die Koteletten beseitigen ...
+menu_ImportExport.Caption=Import / Exhafen 
+ImporterauformatGEDCOM1.Caption=Im Format &GEDCOM bedeuten
+ExporterauformatGEDCOM1.Caption=Im Format GEDCOM ausführen 
+ExporterauformatGeneaNet1.Caption=Im Format GeneaNet ausführen
+ExportImages.Caption=Alle Bilder ausführen...
+menu_Impressions.Caption= Eindrücke
+Arbredascendance1.Caption=Abstammungsbaum
+Rouedascendance1.Caption=Abstammungsrad
+Documents1.Caption=Papiere
+mAddon.Caption=Add'ons
+menu_Configuration.Caption=Gestalt 
+Prfrences2.Caption=&Allgemeine Bevorzugungen...
+Langage1.Caption=Sprache
+Raccourissaisie1.Caption=Kurzfassungen von Beschlagnahme
+Prfixes1.Caption=Höflichkeit
+Religions1.Caption=Religionen
+Particules1.Caption=Teilchen1
+Motsclefsutilissdanslesdates1.Caption=Motsclefsutilissdanslesdates1
+VillesCodes1.Caption=Listet Orte auf...
+dxBBLieuxFavoris.Caption=Listet Lieblingsorte auf
+Emplacementdelabasededonne1.Caption=Stelle der Datenbasis 
+mOptimise.Caption=Optimierung der Datenbasis ...
+Aide1.Caption=&Hilfe 
+Commentamarche1.Caption=Wieso , gehen ?
+Documentation1.Caption=Dokumentation 
+Partenaires.Caption=Hilfen zur Genealogie 
+dxBarButton1.Caption=Bezüglich ...
+mOpenSource.Caption=Bezüglich der freien Software ...
+// ------------ Fenetre sortie de l'application ----------------------------------------------------------------------------------------------------
+[FMsg]
+lYes.Caption=Ya
+lNo.Caption=Nein
+lCancel.Caption=Annuler

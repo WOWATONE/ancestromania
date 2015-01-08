@@ -1,0 +1,321 @@
+inherited FPostit: TFPostit
+  Left = 452
+  Top = 268
+  BorderStyle = bsNone
+  Caption = 'Post''it'
+  Color = clBtnFace
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  FormStyle = fsStayOnTop
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  Position = poMainFormCenter
+  object Panel5: TPanel[0]
+    Left = 0
+    Height = 240
+    Top = 0
+    Width = 320
+    Align = alClient
+    BorderWidth = 1
+    ClientHeight = 240
+    ClientWidth = 320
+    Color = clBlack
+    ParentColor = False
+    TabOrder = 0
+    object Panel15: TPanel
+      Cursor = crHandPoint
+      Left = 2
+      Height = 17
+      Top = 2
+      Width = 316
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 17
+      ClientWidth = 316
+      Color = 4227200
+      ParentColor = False
+      TabOrder = 0
+      object SpeedButton2: TCSpeedButton
+        Left = 526
+        Height = 15
+        Top = 1
+        Width = 14
+        Anchors = [akTop, akRight]
+        Flat = True
+        Glyph.Data = {
+          BE000000424DBE0000000000000076000000280000000A000000090000000100
+          040000000000480000000000000000000000100000001000000000000000FFFF
+          FF00C8D0D4000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000222222222200
+          0000211222211200000022112211220000002221111222000000222211222200
+          0000222111122200000022112211220000002112222112000000222222222200
+          0000
+        }
+        Margin = 1
+        NumGlyphs = 0
+      end
+      object Panel1: TPanel
+        Left = 0
+        Height = 17
+        Top = 0
+        Width = 21
+        Align = alLeft
+        BevelOuter = bvNone
+        ClientHeight = 17
+        ClientWidth = 21
+        Color = 13434879
+        ParentColor = False
+        TabOrder = 0
+        object Image1: TIAQuestion
+          Left = 3
+          Height = 16
+          Top = 0
+          Width = 16
+        end
+      end
+      object Panel2: TPanel
+        Left = 297
+        Height = 17
+        Top = 0
+        Width = 19
+        Align = alRight
+        BevelOuter = bvNone
+        ClientHeight = 17
+        ClientWidth = 19
+        Color = 13434879
+        ParentColor = False
+        TabOrder = 1
+        object GoodBtn2: TJvXPButton
+          Cursor = crHandPoint
+          Left = 3
+          Height = 13
+          Top = 2
+          Width = 14
+          Caption = 'x'
+          TabOrder = 0
+          ParentFont = False
+          OnClick = GoodBtn2Click
+        end
+      end
+      object Panel3: TPanel
+        Left = 21
+        Height = 17
+        Top = 0
+        Width = 276
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 2
+        ClientHeight = 17
+        ClientWidth = 276
+        Color = 13434879
+        ParentColor = False
+        TabOrder = 2
+        object Panel6: TPanel
+          Cursor = crHandPoint
+          Left = 2
+          Height = 13
+          Top = 2
+          Width = 272
+          Align = alClient
+          BevelOuter = bvNone
+          Caption = 'Post''it'
+          Color = 6723993
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+          TabOrder = 0
+          OnMouseDown = Panel6MouseDown
+        end
+      end
+    end
+    object Panel4: TPanel
+      Left = 2
+      Height = 219
+      Top = 19
+      Width = 316
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 219
+      ClientWidth = 316
+      Color = 13434879
+      ParentColor = False
+      TabOrder = 1
+      object fpBoutons: TPanel
+        Left = 0
+        Height = 38
+        Top = 181
+        Width = 316
+        Align = alBottom
+        ClientHeight = 38
+        ClientWidth = 316
+        TabOrder = 0
+        object Shape1: TShape
+          Left = 1
+          Height = 2
+          Top = 1
+          Width = 314
+          Align = alTop
+          Brush.Color = 6723993
+          Pen.Color = 6723993
+        end
+        object bsfbDelete: TFWErase
+          Cursor = crHandPoint
+          Left = 2
+          Height = 29
+          Top = 4
+          Width = 92
+          Caption = 'effacer'
+          TabOrder = 0
+          Default = True
+          Spacing = 6
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = bsfbDeleteClick
+        end
+        object GoodBtn3: TFWClose
+          Cursor = crHandPoint
+          Left = 230
+          Height = 29
+          Top = 4
+          Width = 83
+          Caption = 'fermer'
+          TabOrder = 1
+          Cancel = True
+          Default = True
+          ModalResult = 2
+          Spacing = 8
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+        end
+      end
+      object memo: TFWDBMemo
+        Left = 0
+        Height = 181
+        Top = 0
+        Width = 316
+        Align = alClient
+        DataSource = DataSource
+        ParentFont = False
+        TabOrder = 1
+      end
+    end
+  end
+  object query: TIBQuery[1]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBTrans_Secondaire
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from MEMO_INFOS where M_DOSSIER=:KLE_DOSSIER'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'KLE_DOSSIER'
+        ParamType = ptUnknown
+      end>
+    UpdateObject = IBUpdateSQL
+    left = 11
+    top = 28
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'KLE_DOSSIER'
+        ParamType = ptUnknown
+      end>
+    object queryM_CLEF: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'M_CLEF'
+      Index = 0
+      LookupCache = False
+      Origin = 'MEMO_INFOS.M_CLEF'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object queryM_MEMO: TBlobField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'M_MEMO'
+      Index = 1
+      LookupCache = False
+      Origin = 'MEMO_INFOS.M_MEMO'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftBlob
+      Size = 8
+    end
+    object queryM_DOSSIER: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'M_DOSSIER'
+      Index = 2
+      LookupCache = False
+      Origin = 'MEMO_INFOS.M_DOSSIER'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object IBUpdateSQL: TIBUpdateSQL[2]
+    RefreshSQL.Strings = (
+      'Select '
+      '  M_CLEF,'
+      '  M_MEMO,'
+      '  M_DOSSIER'
+      'from MEMO_INFOS '
+      'where'
+      '  M_CLEF = :M_CLEF'
+    )
+    ModifySQL.Strings = (
+      'update MEMO_INFOS'
+      'set'
+      '  M_CLEF = :M_CLEF,'
+      '  M_MEMO = :M_MEMO,'
+      '  M_DOSSIER = :M_DOSSIER'
+      'where'
+      '  M_CLEF = :OLD_M_CLEF'
+    )
+    InsertSQL.Strings = (
+      'insert into MEMO_INFOS'
+      '  (M_CLEF, M_MEMO, M_DOSSIER)'
+      'values'
+      '  (:M_CLEF, :M_MEMO, :M_DOSSIER)'
+    )
+    DeleteSQL.Strings = (
+      'delete from MEMO_INFOS'
+      'where'
+      '  M_CLEF = :OLD_M_CLEF'
+    )
+    left = 43
+    top = 28
+  end
+  object DataSource: TDatasource[3]
+    DataSet = query
+    left = 80
+    top = 28
+  end
+  object Language: TYLanguage[4]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 16
+    top = 64
+  end
+end

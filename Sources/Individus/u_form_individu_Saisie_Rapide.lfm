@@ -1,0 +1,1653 @@
+inherited FIndividuSaisieRapide: TFIndividuSaisieRapide
+  Left = 251
+  Height = 543
+  Top = 0
+  Width = 434
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  BorderWidth = 1
+  Caption = 'Saisie rapide d''un individu'
+  ClientHeight = 543
+  ClientWidth = 434
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnActivate = SuperFormActivate
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  Position = poOwnerFormCenter
+  object panDock: TPanel[0]
+    Left = 1
+    Height = 541
+    Top = 1
+    Width = 432
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 541
+    ClientWidth = 432
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object fpBoutons: TPanel
+      Left = 0
+      Height = 28
+      Top = 513
+      Width = 432
+      Align = alBottom
+      BevelOuter = bvNone
+      ClientHeight = 28
+      ClientWidth = 432
+      TabOrder = 0
+      object btnAbandonner: TFWClose
+        Cursor = crHandPoint
+        Left = 335
+        Height = 28
+        Hint = 'Ferme cette fenÃªtre.'
+        Top = 0
+        Width = 97
+        Caption = 'Fermer'
+        TabOrder = 1
+        Spacing = 10
+        Align = alRight
+        Anchors = [akRight, akBottom]
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        OnClick = sbCloseClick
+      end
+      object fsbEffacer: TFWErase
+        Cursor = crHandPoint
+        Left = 0
+        Height = 28
+        Hint = 'Efface le contenu de la saisie...'
+        Top = 0
+        Width = 108
+        Caption = 'Effacer'
+        Enabled = False
+        TabOrder = 2
+        Spacing = 10
+        Align = alClient
+        Anchors = [akLeft, akBottom]
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        OnClick = fsbEffacerClick
+      end
+      object fsbEnregistrer: TFWOK
+        Cursor = crHandPoint
+        Left = 215
+        Height = 28
+        Hint = 'Enregistre les modifications'
+        Top = 0
+        Width = 120
+        Caption = 'Enregistrer'
+        Enabled = False
+        TabOrder = 0
+        Spacing = 5
+        Align = alRight
+        Anchors = [akRight, akBottom]
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        OnClick = fsbEnregistrerClick
+        OnExit = fsbEnregistrerExit
+      end
+      object cbCacheRep: TJvXPCheckbox
+        Left = 108
+        Height = 28
+        Top = 0
+        Width = 107
+        Caption = 'Cacher répertoire'
+        TabOrder = 3
+        TabStop = False
+        ParentColor = False
+        UseDockManager = False
+        Align = alRight
+        Font.Height = -11
+        ParentFont = False
+        OnClick = cbCacheRepClick
+      end
+    end
+    object cxGroupBox1: TGroupBox
+      Left = 0
+      Height = 62
+      Top = 49
+      Width = 432
+      Align = alTop
+      ClientHeight = 58
+      ClientWidth = 428
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 1
+      OnClick = cxGroupBox1Click
+      object Panel34: TPanel
+        Left = 0
+        Height = 28
+        Top = 0
+        Width = 428
+        Align = alTop
+        BevelOuter = bvNone
+        Caption = 'Panel34'
+        ClientHeight = 28
+        ClientWidth = 428
+        TabOrder = 0
+        object Panel35: TPanel
+          Left = 0
+          Height = 28
+          Top = 0
+          Width = 79
+          Align = alLeft
+          BevelOuter = bvNone
+          ClientHeight = 28
+          ClientWidth = 79
+          TabOrder = 0
+          object LabNom: TLabel
+            Left = 9
+            Height = 15
+            Top = 4
+            Width = 36
+            Caption = 'Nom :'
+            Color = clDefault
+            ParentColor = False
+            Transparent = False
+            OnClick = cxGroupBox1Click
+          end
+        end
+        object Panel36: TPanel
+          Left = 79
+          Height = 28
+          Top = 0
+          Width = 349
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 28
+          ClientWidth = 349
+          TabOrder = 1
+          object sDBENom: TExtSearchEdit
+            Left = -1
+            Height = 23
+            Hint = 'Cliquer sur le bouton pour activer l''aide'
+            Top = 2
+            Width = 351
+            Anchors = [akTop, akLeft, akRight]
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            OnChange = sDBENomChange
+            SpaceChar = '_'
+            MyLabel = LabNom
+            ModeFormat = mftUpper
+            SearchDisplay = 'nom'
+            SearchList = 'nom'
+            SearchSource = DSPat
+            TextSeparator = '-'
+          end
+        end
+      end
+    end
+    object gbDetail: TGroupBox
+      Left = 0
+      Height = 402
+      Top = 111
+      Width = 432
+      Align = alClient
+      ClientHeight = 398
+      ClientWidth = 428
+      Enabled = False
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 2
+      OnClick = gbDetailClick
+      object gbSourcesIndi: TGroupBox
+        Left = 0
+        Height = 71
+        Top = 327
+        Width = 428
+        Align = alBottom
+        Caption = 'Sources'
+        ClientHeight = 54
+        ClientWidth = 424
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        TabOrder = 0
+        OnClick = gbSourcesIndiClick
+        object edSourcesIndi: TFWMemo
+          Left = 0
+          Height = 54
+          Top = 0
+          Width = 424
+          Align = alClient
+          Anchors = [akLeft, akBottom]
+          Color = 11184810
+          Lines.Strings = (
+            'edSourcesIndi'
+          )
+          OnKeyDown = edNotesNaissanceKeyDown
+          ParentFont = False
+          ParentShowHint = False
+          TabOrder = 0
+        end
+      end
+      object gbNotesIndi: TGroupBox
+        Left = 0
+        Height = 1
+        Top = 398
+        Width = 428
+        Align = alClient
+        Caption = 'Notes'
+        ClientHeight = 1
+        ClientWidth = 424
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        TabOrder = 2
+        OnClick = gbNotesIndiClick
+        object edNotesIndi: TFWMemo
+          Left = 0
+          Height = 38
+          Top = 0
+          Width = 424
+          Align = alClient
+          Anchors = [akLeft, akBottom]
+          Color = 11184810
+          Lines.Strings = (
+            'edNotesIndi'
+          )
+          OnKeyDown = edNotesNaissanceKeyDown
+          ParentFont = False
+          ParentShowHint = False
+          TabOrder = 0
+        end
+      end
+      object gbNaissance: TGroupBox
+        Left = 0
+        Height = 144
+        Top = 62
+        Width = 428
+        Align = alTop
+        Caption = 'Naissance'
+        ClientHeight = 127
+        ClientWidth = 424
+        ParentColor = False
+        ParentFont = False
+        TabOrder = 1
+        OnClick = gbDecesClick
+        object Panel7: TPanel
+          Left = 0
+          Height = 127
+          Top = 0
+          Width = 75
+          Align = alLeft
+          BevelOuter = bvNone
+          ClientHeight = 127
+          ClientWidth = 75
+          TabOrder = 0
+          object LabDateNaissance: TLabel
+            Left = 13
+            Height = 15
+            Top = 4
+            Width = 36
+            Caption = 'Date :'
+            ParentColor = False
+            OnClick = gbDecesClick
+          end
+          object LabLieuNaissance: TLabel
+            Left = 13
+            Height = 15
+            Top = 29
+            Width = 33
+            Caption = 'Lieu :'
+            ParentColor = False
+            OnClick = LabLieuNaissanceClick
+          end
+          object LabNotesNaissance: TLabel
+            Left = 13
+            Height = 15
+            Top = 52
+            Width = 42
+            Caption = 'Notes :'
+            ParentColor = False
+            OnClick = LabNotesNaissanceClick
+          end
+          object LabSourcesNaissance: TLabel
+            Left = 13
+            Height = 15
+            Top = 92
+            Width = 56
+            Caption = 'Sources :'
+            ParentColor = False
+            OnClick = LabSourcesNaissanceClick
+          end
+        end
+        object Panel8: TPanel
+          Left = 75
+          Height = 127
+          Top = 0
+          Width = 349
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 127
+          ClientWidth = 349
+          TabOrder = 1
+          object Panel9: TPanel
+            Left = 0
+            Height = 26
+            Top = 0
+            Width = 349
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 26
+            ClientWidth = 349
+            TabOrder = 2
+            object Panel10: TPanel
+              Left = 0
+              Height = 26
+              Top = 0
+              Width = 138
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 26
+              ClientWidth = 138
+              TabOrder = 0
+              object edDateNaiss: TExtDateEdit
+                Left = 0
+                Height = 25
+                Top = 1
+                Width = 112
+                Anchors = [akTop, akLeft, akRight]
+                AutoSize = False
+                CharCase = ecNormal
+                MaxLength = 100
+                ParentFont = False
+                TabOrder = 0
+                OnKeyDown = EditKeyDown
+                SpaceChar = '_'
+                MyLabel = LabDateNaissance
+                LabelDay = lbDayNaiss
+                FontError.Color = clRed
+                FontError.Style = [fsBold]
+              end
+            end
+            object Panel11: TPanel
+              Left = 138
+              Height = 26
+              Top = 0
+              Width = 42
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 26
+              ClientWidth = 42
+              TabOrder = 1
+              object cxLieuNaissance: TFWEdit
+                Left = 0
+                Height = 23
+                Top = 1
+                Width = 43
+                Anchors = [akTop, akLeft, akRight]
+                CharCase = ecNormal
+                MaxLength = 50
+                ParentFont = False
+                TabOrder = 0
+                TabStop = False
+                Visible = False
+                OnExit = cxLieuNaissanceExit
+                OnKeyDown = EditKeyDown
+                SpaceChar = '_'
+              end
+            end
+            object Panel12: TPanel
+              Left = 180
+              Height = 26
+              Top = 0
+              Width = 66
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 26
+              ClientWidth = 66
+              TabOrder = 3
+              object lbDayNaiss: TLabel
+                Left = 1
+                Height = 15
+                Top = 5
+                Width = 65
+                Caption = 'lbDayNaiss'
+                ParentColor = False
+                Visible = False
+                OnClick = gbDecesClick
+              end
+            end
+            object Panel13: TPanel
+              Left = 246
+              Height = 26
+              Top = 0
+              Width = 103
+              Align = alClient
+              BevelOuter = bvNone
+              ClientHeight = 26
+              ClientWidth = 103
+              TabOrder = 2
+              object cbActeNaissance: TFWComboBox
+                Left = 3
+                Height = 23
+                Top = 1
+                Width = 107
+                Anchors = [akTop, akLeft, akRight]
+                ItemHeight = 0
+                Items.Strings = (
+                  'Acte absent'
+                  'Acte à chercher'
+                  'Acte demandé'
+                  'Acte trouvé'
+                  'Acte à ignorer'
+                )
+                OnExit = cbActeNaissanceExit
+                OnKeyDown = EditKeyDown
+                ParentFont = False
+                TabOrder = 0
+              end
+            end
+          end
+          object Panel14: TPanel
+            Left = 0
+            Height = 22
+            Top = 26
+            Width = 349
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 22
+            ClientWidth = 349
+            TabOrder = 3
+            object Panel15: TPanel
+              Left = 0
+              Height = 22
+              Top = 0
+              Width = 304
+              Align = alClient
+              BevelOuter = bvNone
+              ClientHeight = 22
+              ClientWidth = 304
+              TabOrder = 1
+              object sDBELieuNaissance: TExtSearchEdit
+                Left = 0
+                Height = 25
+                Hint = 'Choix dans la liste des lieux favoris.'#13#10'Touche ''Suppr'' pour tout effacer.'#13#10'Ctrl+F ouvre la liste des villes.'
+                Top = -1
+                Width = 303
+                Anchors = [akTop, akLeft, akRight]
+                AutoSize = False
+                CharCase = ecNormal
+                MaxLength = 0
+                ParentFont = False
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 0
+                SpaceChar = '_'
+                MyLabel = LabLieuNaissance
+                SearchDisplay = 'ville'
+                SearchList = 'ville;cp;dept;pays'
+                SearchSource = DSVillesFavorites
+                OnLocate = sDBELieuNaissanceLocate
+                OnSet = sDBELieuNaissanceSet
+              end
+            end
+            object btnInfosVillesNais: TXAFavorite
+              Cursor = crHandPoint
+              Left = 304
+              Height = 22
+              Hint = 'Ouvre la fenÃªtre des villes et codes postaux'
+              Top = 0
+              Width = 23
+              TabStop = False
+              TabOrder = 2
+              Layout = blGlyphTop
+              Spacing = 240
+              Align = alRight
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = btnInfosVillesNaisClick
+              GlyphSize = 16
+            end
+            object cbNaissance: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 327
+              Height = 22
+              Hint = 'Ville non rÃ©fÃ©rencÃ©e...'
+              Top = 0
+              Width = 22
+              TabOrder = 0
+              TabStop = False
+              ParentColor = False
+              UseDockManager = False
+              Align = alRight
+              Anchors = [akTop, akRight]
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = cbNaissanceClick
+            end
+          end
+          object edNotesNaissance: TFWMemo
+            Left = 0
+            Height = 40
+            Top = 48
+            Width = 349
+            Align = alClient
+            Anchors = [akTop, akLeft, akRight]
+            Color = 11184810
+            Lines.Strings = (
+              'edNotesNaissance'
+            )
+            OnEnter = edNotesNaissanceEnter
+            OnExit = edNotesNaissanceExit
+            OnKeyDown = edNotesNaissanceKeyDown
+            ParentFont = False
+            TabOrder = 1
+            TabStop = False
+            MyLabel = LabNotesNaissance
+          end
+          object edSourcesNaissance: TFWMemo
+            Left = 0
+            Height = 39
+            Top = 88
+            Width = 349
+            Align = alBottom
+            Color = 11184810
+            Lines.Strings = (
+              'edSourcesNaissance'
+            )
+            OnEnter = edNotesNaissanceEnter
+            OnExit = edSourcesNaissanceExit
+            OnKeyDown = edNotesNaissanceKeyDown
+            ParentFont = False
+            TabOrder = 0
+            TabStop = False
+            MyLabel = LabSourcesNaissance
+          end
+        end
+      end
+      object Panel1: TPanel
+        Left = 0
+        Height = 62
+        Top = 0
+        Width = 428
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 62
+        ClientWidth = 428
+        TabOrder = 3
+        object Panel2: TPanel
+          Left = 0
+          Height = 62
+          Top = 0
+          Width = 77
+          Align = alLeft
+          BevelOuter = bvNone
+          ClientHeight = 62
+          ClientWidth = 77
+          TabOrder = 0
+          object LabPrenom: TLabel
+            Left = 9
+            Height = 15
+            Top = 10
+            Width = 54
+            Caption = 'Prénom :'
+            ParentColor = False
+            OnClick = gbDetailClick
+          end
+          object LabSexe: TLabel
+            Left = 9
+            Height = 15
+            Top = 35
+            Width = 37
+            Caption = 'Sexe :'
+            ParentColor = False
+            OnClick = LabSexeClick
+          end
+        end
+        object Panel4: TPanel
+          Left = 77
+          Height = 62
+          Top = 0
+          Width = 351
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 62
+          ClientWidth = 351
+          TabOrder = 1
+          object sdbePrenom: TExtSearchEdit
+            Left = 0
+            Height = 23
+            Hint = 'Cliquer sur le bouton pour activer l''aide'
+            Top = 3
+            Width = 352
+            Anchors = [akTop, akLeft, akRight]
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            OnChange = ComboPrenomChange
+            SpaceChar = '_'
+            MyLabel = LabPrenom
+            ModeFormat = mftFirstCharOfWordsIsMaj
+            SearchDisplay = 'prenom'
+            SearchSource = DSPrenom
+            TextSeparator = ' '
+          end
+          object Panel5: TPanel
+            Left = 0
+            Height = 27
+            Top = 35
+            Width = 351
+            Align = alBottom
+            BevelOuter = bvNone
+            ClientHeight = 27
+            ClientWidth = 351
+            TabOrder = 1
+            object BtnInfos: TXAInfo
+              Cursor = crHandPoint
+              Left = 208
+              Height = 27
+              Top = 0
+              Width = 143
+              TabStop = False
+              Caption = 'N·D·P'
+              Enabled = False
+              TabOrder = 0
+              Spacing = 10
+              Align = alClient
+              Anchors = [akLeft, akBottom]
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = BtnInfosClick
+              GlyphSize = 16
+            end
+            object Panel6: TPanel
+              Left = 0
+              Height = 27
+              Top = 0
+              Width = 208
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 27
+              ClientWidth = 208
+              TabOrder = 1
+              object cxSexe: TExtPictCombo
+                Left = 2
+                Height = 27
+                Hint = 'Cliquer sur le bouton pour activer l''aide'
+                Top = -2
+                Width = 206
+                Images = dm.ImageSexe
+                MyLabel = LabSexe
+                Anchors = [akTop, akLeft, akRight]
+                Color = 11184810
+                Items.Strings = (
+                  '?'
+                  'Masculin'
+                  'Féminin'
+                )
+                DropDownCount = 16
+                ItemHeight = 13
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 0
+                OnChange = ComboPrenomChange
+                OnKeyDown = EditKeyDown
+              end
+            end
+          end
+        end
+      end
+      object gbProfession: TGroupBox
+        Left = 0
+        Height = 144
+        Top = 350
+        Width = 428
+        Align = alTop
+        Caption = 'Profession'
+        ClientHeight = 127
+        ClientWidth = 424
+        ParentColor = False
+        ParentFont = False
+        TabOrder = 4
+        OnClick = gbDecesClick
+        object Panel16: TPanel
+          Left = 0
+          Height = 127
+          Top = 0
+          Width = 75
+          Align = alLeft
+          BevelOuter = bvNone
+          ClientHeight = 127
+          ClientWidth = 75
+          TabOrder = 0
+          object LabDateProfession: TLabel
+            Left = 13
+            Height = 15
+            Top = 4
+            Width = 36
+            Caption = 'Date :'
+            ParentColor = False
+            OnClick = gbDecesClick
+          end
+          object LabLieuProfession: TLabel
+            Left = 13
+            Height = 15
+            Top = 29
+            Width = 33
+            Caption = 'Lieu :'
+            ParentColor = False
+            OnClick = LabLieuNaissanceClick
+          end
+          object LabNotesProfession: TLabel
+            Left = 13
+            Height = 15
+            Top = 52
+            Width = 42
+            Caption = 'Notes :'
+            ParentColor = False
+            OnClick = LabNotesNaissanceClick
+          end
+          object LabSourcesProfession: TLabel
+            Left = 13
+            Height = 15
+            Top = 92
+            Width = 56
+            Caption = 'Sources :'
+            ParentColor = False
+            OnClick = LabSourcesProfessionClick
+          end
+        end
+        object Panel17: TPanel
+          Left = 75
+          Height = 127
+          Top = 0
+          Width = 349
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 127
+          ClientWidth = 349
+          TabOrder = 1
+          object Panel18: TPanel
+            Left = 0
+            Height = 26
+            Top = 0
+            Width = 349
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 26
+            ClientWidth = 349
+            TabOrder = 2
+            object Panel19: TPanel
+              Left = 0
+              Height = 26
+              Top = 0
+              Width = 138
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 26
+              ClientWidth = 138
+              TabOrder = 0
+              object edDateProfession: TExtDateEdit
+                Left = 0
+                Height = 25
+                Top = 0
+                Width = 112
+                Anchors = [akTop, akLeft, akRight]
+                AutoSize = False
+                CharCase = ecNormal
+                MaxLength = 100
+                ParentFont = False
+                TabOrder = 0
+                OnKeyDown = EditKeyDown
+                SpaceChar = '_'
+                MyLabel = LabDateProfession
+                LabelDay = lbDayProf
+                FontError.Color = clRed
+                FontError.Style = [fsBold]
+              end
+            end
+            object Panel20: TPanel
+              Left = 138
+              Height = 26
+              Top = 0
+              Width = 42
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 26
+              ClientWidth = 42
+              TabOrder = 1
+              object cxLieuProfession: TFWEdit
+                Left = -2
+                Height = 23
+                Top = 0
+                Width = 43
+                Anchors = [akTop, akLeft, akRight]
+                CharCase = ecNormal
+                MaxLength = 50
+                ParentFont = False
+                TabOrder = 0
+                TabStop = False
+                Visible = False
+                OnExit = cxLieuNaissanceExit
+                OnKeyDown = EditKeyDown
+                SpaceChar = '_'
+              end
+            end
+            object Panel21: TPanel
+              Left = 180
+              Height = 26
+              Top = 0
+              Width = 66
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 26
+              ClientWidth = 66
+              TabOrder = 3
+              object lbDayProf: TLabel
+                Left = 1
+                Height = 15
+                Top = 4
+                Width = 57
+                Caption = 'lbDayProf'
+                ParentColor = False
+                Visible = False
+                OnClick = gbDecesClick
+              end
+            end
+            object Panel22: TPanel
+              Left = 246
+              Height = 26
+              Top = 0
+              Width = 103
+              Align = alClient
+              BevelOuter = bvNone
+              ClientHeight = 26
+              ClientWidth = 103
+              TabOrder = 2
+              object cbActeProfession: TFWComboBox
+                Left = 3
+                Height = 23
+                Top = 1
+                Width = 107
+                Anchors = [akTop, akLeft, akRight]
+                ItemHeight = 0
+                Items.Strings = (
+                  'Acte absent'
+                  'Acte à chercher'
+                  'Acte demandé'
+                  'Acte trouvé'
+                  'Acte à ignorer'
+                )
+                OnExit = cbActeNaissanceExit
+                OnKeyDown = EditKeyDown
+                ParentFont = False
+                TabOrder = 0
+              end
+            end
+          end
+          object Panel23: TPanel
+            Left = 0
+            Height = 22
+            Top = 26
+            Width = 349
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 22
+            ClientWidth = 349
+            TabOrder = 3
+            object Panel24: TPanel
+              Left = 0
+              Height = 22
+              Top = 0
+              Width = 304
+              Align = alClient
+              BevelOuter = bvNone
+              ClientHeight = 22
+              ClientWidth = 304
+              TabOrder = 1
+              object sDBELieuProfession: TExtSearchEdit
+                Left = 0
+                Height = 25
+                Hint = 'Choix dans la liste des lieux favoris.'#13#10'Touche ''Suppr'' pour tout effacer.'#13#10'Ctrl+F ouvre la liste des villes.'
+                Top = -1
+                Width = 303
+                Anchors = [akTop, akLeft, akRight]
+                AutoSize = False
+                CharCase = ecNormal
+                MaxLength = 0
+                ParentFont = False
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 0
+                SpaceChar = '_'
+                MyLabel = LabLieuProfession
+                SearchDisplay = 'ville'
+                SearchList = 'ville;cp;dept;pays'
+                SearchSource = DSVillesFavorites
+                OnLocate = sDBELieuProfessionLocate
+                OnSet = sDBELieuProfessionSet
+              end
+            end
+            object btnInfosVillesProf: TXAFavorite
+              Cursor = crHandPoint
+              Left = 304
+              Height = 22
+              Hint = 'Ouvre la fenÃªtre des villes et codes postaux'
+              Top = 0
+              Width = 23
+              TabStop = False
+              TabOrder = 2
+              Layout = blGlyphTop
+              Spacing = 240
+              Align = alRight
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = btnInfosVillesProfClick
+              GlyphSize = 16
+            end
+            object cbProfession: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 327
+              Height = 22
+              Hint = 'Ville non rÃ©fÃ©rencÃ©e...'
+              Top = 0
+              Width = 22
+              TabOrder = 0
+              TabStop = False
+              ParentColor = False
+              UseDockManager = False
+              Align = alRight
+              Anchors = [akTop, akRight]
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = cbNaissanceClick
+            end
+          end
+          object edNotesProfession: TFWMemo
+            Left = 0
+            Height = 40
+            Top = 48
+            Width = 349
+            Align = alClient
+            Anchors = [akTop, akLeft, akRight]
+            Color = 11184810
+            Lines.Strings = (
+              'edNotesProfession'
+            )
+            OnEnter = edNotesNaissanceEnter
+            OnExit = edNotesProfessionExit
+            OnKeyDown = edNotesNaissanceKeyDown
+            ParentFont = False
+            TabOrder = 1
+            TabStop = False
+            MyLabel = LabNotesProfession
+          end
+          object edSourcesProfession: TFWMemo
+            Left = 0
+            Height = 39
+            Top = 88
+            Width = 349
+            Align = alBottom
+            Color = 11184810
+            Lines.Strings = (
+              'edSourcesProfession'
+            )
+            OnEnter = edNotesNaissanceEnter
+            OnExit = edSourcesProfessionExit
+            OnKeyDown = edNotesNaissanceKeyDown
+            ParentFont = False
+            TabOrder = 0
+            TabStop = False
+            MyLabel = LabSourcesProfession
+          end
+        end
+      end
+      object gbDeces: TGroupBox
+        Left = 0
+        Height = 144
+        Top = 206
+        Width = 428
+        Align = alTop
+        Caption = 'Décès'
+        ClientHeight = 127
+        ClientWidth = 424
+        ParentColor = False
+        ParentFont = False
+        TabOrder = 5
+        OnClick = gbDecesClick
+        object Panel25: TPanel
+          Left = 0
+          Height = 127
+          Top = 0
+          Width = 75
+          Align = alLeft
+          BevelOuter = bvNone
+          ClientHeight = 127
+          ClientWidth = 75
+          TabOrder = 0
+          object LabDateDeces: TLabel
+            Left = 13
+            Height = 15
+            Top = 4
+            Width = 36
+            Caption = 'Date :'
+            ParentColor = False
+            OnClick = gbDecesClick
+          end
+          object LabLieuDeces: TLabel
+            Left = 11
+            Height = 15
+            Top = 29
+            Width = 33
+            Caption = 'Lieu :'
+            ParentColor = False
+            OnClick = LabLieuNaissanceClick
+          end
+          object LabNotesDeces: TLabel
+            Left = 13
+            Height = 15
+            Top = 52
+            Width = 42
+            Caption = 'Notes :'
+            ParentColor = False
+            OnClick = LabNotesNaissanceClick
+          end
+          object LabSourcesDeces: TLabel
+            Left = 13
+            Height = 15
+            Top = 92
+            Width = 56
+            Caption = 'Sources :'
+            ParentColor = False
+            OnClick = LabSourcesNaissanceClick
+          end
+        end
+        object Panel26: TPanel
+          Left = 75
+          Height = 127
+          Top = 0
+          Width = 349
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 127
+          ClientWidth = 349
+          TabOrder = 1
+          object Panel27: TPanel
+            Left = 0
+            Height = 26
+            Top = 0
+            Width = 349
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 26
+            ClientWidth = 349
+            TabOrder = 2
+            object Panel28: TPanel
+              Left = 0
+              Height = 26
+              Top = 0
+              Width = 138
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 26
+              ClientWidth = 138
+              TabOrder = 0
+              object edDateDeces: TExtDateEdit
+                Left = 0
+                Height = 25
+                Top = 0
+                Width = 112
+                Anchors = [akTop, akLeft, akRight]
+                AutoSize = False
+                CharCase = ecNormal
+                MaxLength = 100
+                ParentFont = False
+                TabOrder = 0
+                OnKeyDown = EditKeyDown
+                SpaceChar = '_'
+                MyLabel = LabDateDeces
+                LabelDay = lbDayDeces
+                FontError.Color = clRed
+                FontError.Style = [fsBold]
+              end
+            end
+            object Panel29: TPanel
+              Left = 138
+              Height = 26
+              Top = 0
+              Width = 42
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 26
+              ClientWidth = 42
+              TabOrder = 1
+              object cxLieuDeces: TFWEdit
+                Left = -2
+                Height = 23
+                Top = 0
+                Width = 43
+                Anchors = [akTop, akLeft, akRight]
+                CharCase = ecNormal
+                MaxLength = 50
+                ParentFont = False
+                TabOrder = 0
+                TabStop = False
+                Visible = False
+                OnExit = cxLieuNaissanceExit
+                OnKeyDown = EditKeyDown
+                SpaceChar = '_'
+              end
+            end
+            object Panel30: TPanel
+              Left = 180
+              Height = 26
+              Top = 0
+              Width = 66
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 26
+              ClientWidth = 66
+              TabOrder = 3
+              object lbDayDeces: TLabel
+                Left = 1
+                Height = 15
+                Top = 4
+                Width = 70
+                Caption = 'lbDayDeces'
+                ParentColor = False
+                Visible = False
+                OnClick = gbDecesClick
+              end
+            end
+            object Panel31: TPanel
+              Left = 246
+              Height = 26
+              Top = 0
+              Width = 103
+              Align = alClient
+              BevelOuter = bvNone
+              ClientHeight = 26
+              ClientWidth = 103
+              TabOrder = 2
+              object cbActeDeces: TFWComboBox
+                Left = 3
+                Height = 23
+                Top = 1
+                Width = 107
+                Anchors = [akTop, akLeft, akRight]
+                ItemHeight = 0
+                Items.Strings = (
+                  'Acte absent'
+                  'Acte à chercher'
+                  'Acte demandé'
+                  'Acte trouvé'
+                  'Acte à ignorer'
+                )
+                OnExit = cbActeNaissanceExit
+                OnKeyDown = EditKeyDown
+                ParentFont = False
+                TabOrder = 0
+              end
+            end
+          end
+          object Panel32: TPanel
+            Left = 0
+            Height = 22
+            Top = 26
+            Width = 349
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 22
+            ClientWidth = 349
+            TabOrder = 3
+            object Panel33: TPanel
+              Left = 0
+              Height = 22
+              Top = 0
+              Width = 304
+              Align = alClient
+              BevelOuter = bvNone
+              ClientHeight = 22
+              ClientWidth = 304
+              TabOrder = 1
+              object sDBELieuDeces: TExtSearchEdit
+                Left = 0
+                Height = 25
+                Hint = 'Choix dans la liste des lieux favoris.'#13#10'Touche ''Suppr'' pour tout effacer.'#13#10'Ctrl+F ouvre la liste des villes.'
+                Top = -1
+                Width = 303
+                Anchors = [akTop, akLeft, akRight]
+                AutoSize = False
+                CharCase = ecNormal
+                MaxLength = 0
+                ParentFont = False
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 0
+                SpaceChar = '_'
+                MyLabel = LabLieuDeces
+                SearchDisplay = 'ville'
+                SearchList = 'ville;cp;dept;pays'
+                SearchSource = DSVillesFavorites
+                OnLocate = sDBELieuDecesLocate
+                OnSet = sDBELieuDecesSet
+              end
+            end
+            object btnInfosVillesDC: TXAFavorite
+              Cursor = crHandPoint
+              Left = 304
+              Height = 22
+              Hint = 'Ouvre la fenÃªtre des villes et codes postaux'
+              Top = 0
+              Width = 23
+              TabStop = False
+              TabOrder = 2
+              Layout = blGlyphTop
+              Spacing = 240
+              Align = alRight
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = btnInfosVillesDCClick
+              GlyphSize = 16
+            end
+            object cbDeces: TJvXPCheckbox
+              Cursor = crHandPoint
+              Left = 327
+              Height = 22
+              Hint = 'Ville non rÃ©fÃ©rencÃ©e...'
+              Top = 0
+              Width = 22
+              TabOrder = 0
+              TabStop = False
+              ParentColor = False
+              UseDockManager = False
+              Align = alRight
+              Anchors = [akTop, akRight]
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = cbNaissanceClick
+            end
+          end
+          object edNotesDeces: TFWMemo
+            Left = 0
+            Height = 40
+            Top = 48
+            Width = 349
+            Align = alClient
+            Anchors = [akTop, akLeft, akRight]
+            Color = 11184810
+            Lines.Strings = (
+              'edNotesDeces'
+            )
+            OnEnter = edNotesNaissanceEnter
+            OnExit = edNotesDecesExit
+            OnKeyDown = edNotesNaissanceKeyDown
+            ParentFont = False
+            TabOrder = 1
+            TabStop = False
+            MyLabel = LabNotesDeces
+          end
+          object edSourcesDeces: TFWMemo
+            Left = 0
+            Height = 39
+            Top = 88
+            Width = 349
+            Align = alBottom
+            Color = 11184810
+            Lines.Strings = (
+              'edSourcesDeces'
+            )
+            OnEnter = edNotesNaissanceEnter
+            OnExit = edSourcesDecesExit
+            OnKeyDown = edNotesNaissanceKeyDown
+            ParentFont = False
+            TabOrder = 0
+            TabStop = False
+            MyLabel = LabSourcesDeces
+          end
+        end
+      end
+    end
+    object Panel3: TPanel
+      Left = 0
+      Height = 49
+      Top = 0
+      Width = 432
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 49
+      ClientWidth = 432
+      Color = clWindow
+      ParentColor = False
+      TabOrder = 3
+      object Image1: TIATitle
+        Left = 2
+        Height = 73
+        Top = -10
+        Width = 152
+        Proportional = True
+        Stretch = True
+        ImageOn = iaPeople
+      end
+      object Label18: TIAInfo
+        Cursor = crHandPoint
+        Left = 383
+        Height = 44
+        Hint = 'Informations'
+        Top = 3
+        Width = 44
+        Anchors = [akTop, akRight]
+        AutoSize = True
+        OnClick = Label18Click
+        ParentShowHint = False
+        ShowHint = True
+      end
+      object cxLabel1: TFWLabel
+        Left = 189
+        Height = 0
+        Top = 3
+        Width = 0
+        AutoSize = False
+        Caption = 'Saisie rapide'
+        Font.Color = clWindowText
+        ParentColor = False
+        ParentFont = False
+        ColorFocus = clMaroon
+      end
+    end
+  end
+  object Language: TYLanguage[1]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 104
+    top = 136
+  end
+  object DSVillesFavorites: TDataSource[2]
+    AutoEdit = False
+    DataSet = IBQVillesFavorites
+    left = 120
+    top = 144
+  end
+  object IBQVillesFavorites: TIBQuery[3]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GenerateParamNames = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select ville'
+      ',cp'
+      ',dept'
+      ',region'
+      ',pays'
+      ',insee'
+      ',subd'
+      ',latitude'
+      ',longitude'
+      ',iif(subd is null,ville,ville||'' ''||subd) as ville_subd'
+      'from lieux_favoris'
+      'order by ville,subd nulls first'
+    )
+    Params = <>
+    left = 120
+    top = 208
+    object IBQVillesFavoritesVILLE: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'VILLE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQVillesFavoritesCP: TIBStringField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CP'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object IBQVillesFavoritesDEPT: TIBStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'DEPT'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQVillesFavoritesREGION: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'REGION'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQVillesFavoritesPAYS: TIBStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'PAYS'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQVillesFavoritesINSEE: TIBStringField
+      DisplayWidth = 6
+      FieldKind = fkData
+      FieldName = 'INSEE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object IBQVillesFavoritesSUBD: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'SUBD'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQVillesFavoritesLATITUDE: TFloatField
+      DisplayWidth = 15
+      FieldKind = fkData
+      FieldName = 'LATITUDE'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object IBQVillesFavoritesLONGITUDE: TFloatField
+      DisplayWidth = 15
+      FieldKind = fkData
+      FieldName = 'LONGITUDE'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object IBQVillesFavoritesVILLE_SUBD: TStringField
+      DisplayWidth = 101
+      FieldKind = fkData
+      FieldName = 'VILLE_SUBD'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 101
+    end
+  end
+  object dsProfession: TDataSource[4]
+    AutoEdit = False
+    DataSet = ibqProfession
+    left = 262
+    top = 6
+  end
+  object ibqProfession: TIBQuery[5]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GenerateParamNames = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select distinct profession'
+      'from proc_prep_professions(:i_dossier)'
+      'order by profession'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_dossier'
+        ParamType = ptUnknown
+      end>
+    left = 294
+    top = 6
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'i_dossier'
+        ParamType = ptUnknown
+      end>
+    object ibqProfessionPROFESSION: TIBStringField
+      DisplayWidth = 90
+      FieldKind = fkData
+      FieldName = 'PROFESSION'
+      Index = 0
+      LookupCache = False
+      Origin = '"EVENEMENTS_IND"."EV_IND_DESCRIPTION"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 90
+    end
+  end
+  object IBQPatronymes: TIBQuery[6]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GenerateParamNames = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select distinct NOM'
+      'from(select distinct NOM from individu'
+      'where kle_dossier=:dossier'
+      'union select distinct NOM from nom_attachement'
+      'where kle_dossier=:dossier)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptInput
+      end>
+    left = 376
+    top = 6
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DOSSIER'
+        ParamType = ptInput
+      end>
+  end
+  object IBQPrenoms: TIBQuery[7]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GenerateParamNames = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    ParamCheck = False
+    SQL.Strings = (
+      'select prenom,sexe from prenoms'
+      'order by prenom'
+    )
+    Params = <>
+    left = 80
+    top = 6
+  end
+  object pmClearLieuNaissance: TPopupMenu[8]
+    left = 200
+    top = 64
+    object mClearLieuNaissance: TMenuItem
+      Caption = 'Supprime ce lieu ou (Suppr)'
+      OnClick = mClearLieuNaissanceClick
+    end
+  end
+  object pmClearLieuDeces: TPopupMenu[9]
+    left = 272
+    top = 64
+    object mClearLieuDeces: TMenuItem
+      Caption = 'Supprime ce lieu ou (Suppr)'
+      OnClick = mClearLieuDecesClick
+    end
+  end
+  object pmClearLieuProfession: TPopupMenu[10]
+    left = 368
+    top = 64
+    object mClearLieuProfession: TMenuItem
+      Caption = 'Supprime ce lieu ou (Suppr)'
+      OnClick = mClearLieuProfessionClick
+    end
+  end
+  object DSPrenom: TDataSource[11]
+    AutoEdit = False
+    DataSet = IBQPrenoms
+    left = 120
+    top = 8
+  end
+  object DSPat: TDataSource[12]
+    AutoEdit = False
+    DataSet = IBQPatronymes
+    left = 336
+    top = 1
+  end
+end

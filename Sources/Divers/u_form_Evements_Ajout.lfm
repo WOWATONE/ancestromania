@@ -1,0 +1,313 @@
+inherited FEvenement_Ajout: TFEvenement_Ajout
+  Left = 539
+  Height = 304
+  Top = 204
+  Width = 355
+  ActiveControl = dxDBGrid1
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  BorderWidth = 1
+  ClientHeight = 304
+  ClientWidth = 355
+  Color = clWindow
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 302
+    Top = 1
+    Width = 353
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 302
+    ClientWidth = 353
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 3
+      Height = 296
+      Top = 3
+      Width = 347
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 296
+      ClientWidth = 347
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 1
+        Height = 245
+        Top = 50
+        Width = 345
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 2
+        ClientHeight = 245
+        ClientWidth = 345
+        TabOrder = 0
+        object pBottom: TPanel
+          Left = 2
+          Height = 2
+          Top = 210
+          Width = 341
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 1
+        end
+        object dxDBGrid1: TExtDBGrid
+          Left = 2
+          Height = 208
+          Top = 2
+          Width = 341
+          TitleButtons = False
+          AutoSort = False
+          Columns = <          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'REF_EVE_CAT'
+              Title.Orientation = toHorizontal
+              Width = 27
+              FieldName = 'REF_EVE_CAT'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              Images = dm.ImgCat
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'REF_EVE_LIB_LONG'
+              Title.Orientation = toHorizontal
+              Width = 238
+              FieldName = 'REF_EVE_LIB_LONG'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end>
+          KeyStrokes = <          
+            item
+              Command = rxgcShowFindDlg
+              ShortCut = 16454
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowColumnsDlg
+              ShortCut = 16471
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowFilterDlg
+              ShortCut = 16468
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowSortDlg
+              ShortCut = 16467
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowQuickFilter
+              ShortCut = 16465
+              Enabled = True
+            end          
+            item
+              Command = rxgcHideQuickFilter
+              ShortCut = 16456
+              Enabled = True
+            end          
+            item
+              Command = rxgcSelectAll
+              ShortCut = 16449
+              Enabled = True
+            end          
+            item
+              Command = rxgcDeSelectAll
+              ShortCut = 16429
+              Enabled = True
+            end          
+            item
+              Command = rxgcInvertSelection
+              ShortCut = 16426
+              Enabled = True
+            end          
+            item
+              Command = rxgcOptimizeColumnsWidth
+              ShortCut = 16427
+              Enabled = True
+            end          
+            item
+              Command = rxgcCopyCellValue
+              ShortCut = 16451
+              Enabled = True
+            end>
+          OptionsRx = []
+          Align = alClient
+          Color = clWindow
+          DrawFullLine = False
+          FocusColor = clRed
+          SelectedColor = clHighlight
+          GridLineStyle = psSolid
+          DataSource = DSAjoutEve
+          FixedCols = 0
+          Options = [dgEditing, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+          ParentColor = False
+          ReadOnly = True
+          Scrollbars = ssAutoBoth
+          TabOrder = 2
+          TitleFont.CharSet = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+          OnDblClick = dxDBGrid1DBTableView1CellDblClick
+        end
+        object fpBoutons: TPanel
+          Left = 2
+          Height = 31
+          Top = 212
+          Width = 341
+          Align = alBottom
+          BevelInner = bvLowered
+          ClientHeight = 31
+          ClientWidth = 341
+          TabOrder = 0
+          object bsfbSelection: TFWOK
+            Cursor = crHandPoint
+            Left = 122
+            Height = 27
+            Hint = 'Ajoute l''évènement sélectionné'
+            Top = 2
+            Width = 123
+            Caption = 'Sélectionner'
+            TabOrder = 0
+            Default = True
+            ModalResult = 1
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = btnOkClick
+          end
+          object btnFermer: TFWClose
+            Cursor = crHandPoint
+            Left = 245
+            Height = 27
+            Hint = 'Ferme cette fenêtre.'
+            Top = 2
+            Width = 94
+            Caption = 'Annuler'
+            TabOrder = 1
+            Cancel = True
+            ModalResult = 2
+            Align = alRight
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+          end
+        end
+      end
+      object Panel1: TPanel
+        Left = 1
+        Height = 49
+        Top = 1
+        Width = 345
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 49
+        ClientWidth = 345
+        TabOrder = 1
+        object Image1: TIATitle
+          Cursor = 8
+          Left = 2
+          Top = 1
+          AutoSize = True
+          ImageOn = iaInfo
+        end
+        object Label8: TLabel
+          Left = 181
+          Height = 49
+          Top = 0
+          Width = 164
+          Align = alRight
+          Anchors = [akTop, akRight]
+          Caption = 'Événements'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowFrame
+          Font.Height = -24
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+    end
+  end
+  object DSAjoutEve: TDatasource[1]
+    AutoEdit = False
+    DataSet = IBQAjoutEve
+    left = 24
+    top = 120
+  end
+  object IBQAjoutEve: TIBQuery[2]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    Params = <>
+    left = 24
+    top = 168
+    object IBQAjoutEveREF_EVE_LIB_COURT: TIBStringField
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'REF_EVE_LIB_COURT'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 5
+    end
+    object IBQAjoutEveREF_EVE_LIB_LONG: TIBStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'REF_EVE_LIB_LONG'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQAjoutEveREF_EVE_CAT: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'REF_EVE_CAT'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object Language: TYLanguage[3]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 8
+    top = 8
+  end
+end

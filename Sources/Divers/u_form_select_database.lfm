@@ -1,0 +1,288 @@
+inherited FSelectDatabase: TFSelectDatabase
+  Left = 730
+  Height = 369
+  Top = 290
+  Width = 572
+  ActiveControl = lbEmplacementbdd
+  Caption = 'FSelectDatabase'
+  ClientHeight = 369
+  ClientWidth = 572
+  Color = 12970227
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  object Panel3: TPanel[0]
+    Left = 0
+    Height = 369
+    Top = 0
+    Width = 572
+    Align = alClient
+    BevelInner = bvLowered
+    BevelOuter = bvNone
+    BorderWidth = 1
+    Caption = 'Panel3'
+    ClientHeight = 369
+    ClientWidth = 572
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object Panel4: TPanel
+      Left = 2
+      Height = 304
+      Top = 63
+      Width = 568
+      Align = alClient
+      ClientHeight = 304
+      ClientWidth = 568
+      TabOrder = 0
+      object StatusConnect: TLabel
+        Left = 54
+        Height = 51
+        Top = 22
+        Width = 506
+        Anchors = [akTop, akLeft, akRight]
+        AutoSize = False
+        Color = clWindow
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clGreen
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+      end
+      object Label3: TLabel
+        Left = 16
+        Height = 14
+        Top = 144
+        Width = 440
+        Caption = 'Votre base de données est un fichier pouvant contenir plusieurs généalogies.'
+        ParentColor = False
+        WordWrap = True
+      end
+      object Label2: TLabel
+        Left = 17
+        Height = 14
+        Top = 83
+        Width = 243
+        Caption = 'Chemin d''accès à votre base de données :'
+        ParentColor = False
+      end
+      object Label11: TLabel
+        Left = 14
+        Height = 14
+        Top = 190
+        Width = 508
+        Caption = 'Si vous travaillez avec plusieurs généalogies composées d''un grand nombre d''individus, '
+        ParentColor = False
+        WordWrap = True
+      end
+      object Image3: TImage
+        Left = 12
+        Height = 32
+        Top = 12
+        Width = 31
+        AutoSize = True
+        Picture.Data = {
+          07544269746D617036080000424D360800000000000036040000280000001F00
+          000020000000010008000000000000040000130B0000130B0000000100000000
+          0000000000003715070011330100382414000F1A2D0038032F0000283F003534
+          34005A1903007D0E0000532B0700742E07004E3A2F00673A32000E530E002D4C
+          15000A7209002F6D080018552600354D310016712A002E732A00515D06007B52
+          07004C6D0A0067701700584532006D4A2F004D6E250074692900101A6A005737
+          5E00134B5700364D4C000B754F00386B4E00164A65002F556E00036977003066
+          7900504E4E006B5554004A70500073685600465B660068506F0051686F007272
+          72008A130100A01D000094340400AC330300CF190000FE000000DA390200E33A
+          0000D33C2700944B0E00B94D090099690600BC7A05008E512D00B2572B009068
+          3000AE663500CD4F0C00E9540000CE6C0700F9670300C85B2200E25B2600C56A
+          3000F26D2E00AA3F55008D575600AC5C54008A645000B074510089576800AA5F
+          7F008F717000AC787700C35B5700EE594500CA734B00F6754B00D7796500F87B
+          6B00058905002E8B060011A71500178E2F002D912E0018B02B002CAF33006394
+          170021D22B002AA759004F8F500072964E004BAA4C0067AB5A004D9769006F8F
+          6E0053AE6E006EB16E0031C9600051C7540071C951004BD471006ECE70004DE7
+          770068EA6B00998B1300D0890B00F38B0600DDB41A00FEA71000D7872F00FC92
+          3300CFAA3300FAAB3300FEFD00008D984D00B38B560093A75500ABA45D009386
+          7300B89C7E0089AE6E00AEAE6C00D18B5100F48C5000D0AA5100F4B04F00DC87
+          6C00E2957400D6A77200E6A1790096CD6D00FCCC6B0014209C00523A91000D4E
+          92003D508D00186F940029708C001A50B2002E4DB4001274AE002A74B4005963
+          9A00031AF1001848D400284FD4001876C4002A6DD000154EEF002D55E5001967
+          FD002B6EEF005272E60097758F00C87B8200068587002989990013AC80002DBC
+          8C00138AB4002D8BB3000DAEB2002DB5AD004F84990074898C0054A88D006FB2
+          8D004D94B2006D97AC004DA9B10070AAB80035CFA3005EE592000C96CB003092
+          CC0015A7D50031ADD7001D9CE5003191F5000FB7E10035AFED004D94CC007390
+          D4004FB1D3006CB5D1004791F8006E8AEB004DB5F5006DB5EB000EEBF40053D1
+          CD0071C6D8004FE1D50075E5D40052C9F00070D3F8007AE3FC008B8A8A00AF8F
+          8E008BB09100B1A89200908EA400AC9CA80097A9AC00B1B0B000CC949100F094
+          9400D1AB9100F0B58F00CB9DA800FD9EA900CFB2AF00F5B3AE008BD08C00B3CD
+          8F008FE69400B3E4950091C8AC00BAC3BC008EEBA600B0E8B700D6C59900F8CE
+          9000D2E19100FDE49600D3C6B400F5CFB200D0EBB200FCEBB4009BB1D500F6BC
+          D3008FC9D500BBD0D6008DE5D300B0EFD1008DD1EE00AFD3ED008EF4FE00B1F3
+          FB00CDCCCC00F6DDD500D3E7D500FAE7D400CEDBE300FED2F800D9EBEE00FCFD
+          FC00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000000
+          FF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00CE2FCE2FCE2FCE2FCE2FCE2F
+          FF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00CE000000000000000000000000
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00CE0000ADFFE3CEE32FE3CEE3CEE3
+          000000000000000000000000000000000000000000CEFFE350E3CEE350E3ADE3
+          000000FF7A7A7A7A7A7A7A7A7A7A7A7A7A7A7A7A002FFFE3CEE3ADE3CEE350E3
+          000000FF7ACE2FCE7A7AAD2FCE7A7AAD2FCE7A7A00CEFFE3CEE350E3ADE3CEE3
+          000000FF7A7ACE7A7A7A7ACE7A7A7A7ACE7A7A7A00ADFFE32FE3CEE350E32FF8
+          000000FF7ACE2FCE7A00000000007ACE2FCE7A7A00CEFFE3CEE3ADE3CEE3CEE3
+          000000FF7A7ACE7A7A00000000007A7ACE7A7A7A002FFFE3CEE350E3ADE32FE3
+          000000FF7ACE2FCE7A7A7ACE7A7A7AAD2FCE7A7A00CEFFE32FE3CEE350E3CEE3
+          000000FF7A7ACE7A7A7AAD2FCE7A7A7ACE7A7A7A00ADFFE3CEE3CEE3CED5CEE3
+          000000FF7ACE2FCE7A7A7ACE7A7A7AAD2FCE7A7A00CEFFE350E3ADE32FF8CEE3
+          000000FF7A7ACE7A7A7AAD2FCE7A7A7ACE7A7A7A002FFFE3CEE350E3CEE32FE3
+          000000FF00000000007A7ACE7A7A00000000007A00CEFFE3CEE3ADE3CEE3CEE3
+          000000FF00000000007ACE2FCE7A00000000007A00CEFFE32FE350E32FF82FE3
+          000000FF7A7ACE7A7A7A7AAD7A7A7A7ACE7A7A7A002FFFE3CEE3CEE3CEE3CEE3
+          000000FF7ACE2FCE7A7AAD7FAD7A7ACE2FCE7A7A00CEFFE3CEE32FF82FE32FF8
+          000000FF7A7A7A7A7A7A7A7A7A7A7A7A7A7A7A7A00ADFFE350E3CEE32FF8CEE3
+          000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00CEFFE3CEE3ADE3CEE32FE3
+          0000000000000000000000000000000000000000CE2FFFE3CEE350E32FF8CEE3
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00E3CE2FCEFFE32FE3CEE3CEE32FE3
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00E3CE2FCEFFE3CEFFADFF2FFFCEE3
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00E3CE2FCEFFE3A22FCE50CECE2FF8
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00E3CE2FCEFFE3E3F8E3E3E3E3E3E3
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00E3CE2FCEFFE3E3E3E3E3676767E3
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00E3CE2FCEFFE3E3E3E3E3606060E3
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFCE2FCEFFE3F8E3E3F82FA22FF8
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFCE2FFFE3E3E3E3E3989898E3
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFCEFFE3E3E3E3E3E3E3E3E3
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFFFFFFFFFF
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000000000
+          0000
+        }
+        Transparent = True
+      end
+      object BtnOuvrir: TFWOK
+        Left = 470
+        Height = 27
+        Top = 73
+        Width = 94
+        Caption = 'Ouvrir'
+        TabOrder = 1
+        Spacing = 4
+        Anchors = [akTop, akRight]
+        OnClick = BtnOuvrirClick
+      end
+      object lbEmplacementbdd: TFWComboBox
+        Left = 16
+        Height = 25
+        Top = 104
+        Width = 454
+        Anchors = [akTop, akLeft, akRight]
+        AutoSize = False
+        ItemHeight = 0
+        OnChange = lbEmplacementbddPropertiesButtonClick
+        ParentFont = False
+        TabOrder = 0
+      end
+      object BtnParcourir: TFWFolder
+        Left = 470
+        Height = 25
+        Top = 105
+        Width = 93
+        Caption = 'Parcourir'
+        TabOrder = 2
+        Spacing = 4
+        Anchors = [akTop, akRight]
+        OnClick = BtnParcourirClick
+      end
+      object Label4: TLabel
+        Left = 14
+        Height = 14
+        Top = 158
+        Width = 282
+        Caption = 'Ces généalogies sont gérées au sein de dossiers.'
+        ParentColor = False
+        WordWrap = True
+      end
+      object Label12: TLabel
+        Left = 16
+        Height = 14
+        Top = 207
+        Width = 343
+        Caption = 'Il est préférable, pour des questions de rapidité et de taille, '
+        ParentColor = False
+        WordWrap = True
+      end
+      object Label13: TLabel
+        Left = 14
+        Height = 14
+        Top = 224
+        Width = 266
+        Caption = 'de travailler avec plusieurs bases de données.'
+        ParentColor = False
+        WordWrap = True
+      end
+      object BtnEffacer: TFWErase
+        Left = 470
+        Height = 42
+        Top = 137
+        Width = 93
+        Caption = 'Effacer l''historique'
+        TabOrder = 3
+        Spacing = 4
+        Anchors = [akTop, akRight]
+        OnClick = Effacerhistorique1Click
+      end
+      object Label14: TLabel
+        Left = 16
+        Height = 14
+        Top = 248
+        Width = 525
+        Caption = 'Linux permet de ne pas se soucier des virus. Mais vous avez ainsi à vérifier l''accès firebird.'
+        ParentColor = False
+        WordWrap = True
+      end
+    end
+    object Panel1: TPanel
+      Left = 2
+      Height = 61
+      Top = 2
+      Width = 568
+      Align = alTop
+      ClientHeight = 61
+      ClientWidth = 568
+      TabOrder = 1
+      object Image2: TIAMouse
+        Left = 522
+        Height = 49
+        Top = 5
+        Width = 33
+        Anchors = [akTop, akRight]
+        AutoSize = True
+      end
+      object Label7: TLabel
+        Left = 7
+        Height = 23
+        Top = 6
+        Width = 353
+        Caption = 'Sélection de la base de données'
+        Color = clWindow
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clGray
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        Transparent = False
+      end
+    end
+  end
+  object Language: TYLanguage[1]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 8
+    top = 8
+  end
+end

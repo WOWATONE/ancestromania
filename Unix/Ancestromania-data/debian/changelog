@@ -1,0 +1,17 @@
+ancestromania-data (2014.1.5.180-1) stable; urgency=low
+
+  * No history releases, testing on trusty (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Matthieu Giroux (Programmer and Writer) <magi@liberlog.fr>  Sat, 13 Sep 2014 11:18:28 +0200
+
+ancestromania-data (2014.1.5.170) stable; urgency=low
+
+  * Migrating to UTF8 (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Matthieu Giroux (Programmer and Writer) <magi@liberlog.fr>  Sat, 13 Sep 2014 11:18:28 +0200
+
+ancestromania-data (2014.1.5.160) stable; urgency=low
+
+  * Initial Linux release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Matthieu Giroux (Programmer and Writer) <magi@liberlog.fr>  Sat, 13 Sep 2014 11:18:28 +0200

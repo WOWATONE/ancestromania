@@ -1,0 +1,804 @@
+inherited FVilleAjout: TFVilleAjout
+  Left = 1074
+  Height = 382
+  Top = 79
+  Width = 490
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  BorderWidth = 1
+  Caption = 'Ajout d''une ville'
+  ClientHeight = 382
+  ClientWidth = 490
+  Color = clWhite
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  Position = poOwnerFormCenter
+  object pBorder: TPanel[0]
+    Left = 1
+    Height = 380
+    Top = 1
+    Width = 488
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 380
+    ClientWidth = 488
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object pGeneral: TPanel
+      Left = 3
+      Height = 374
+      Top = 3
+      Width = 482
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 374
+      ClientWidth = 482
+      TabOrder = 0
+      object pGlobal: TPanel
+        Left = 1
+        Height = 372
+        Top = 1
+        Width = 480
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 3
+        ClientHeight = 372
+        ClientWidth = 480
+        TabOrder = 0
+        object panDock: TPanel
+          Left = 3
+          Height = 336
+          Top = 3
+          Width = 474
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 336
+          ClientWidth = 474
+          TabOrder = 1
+          object Label2: TLabel
+            Left = 141
+            Height = 15
+            Top = 74
+            Width = 33
+            Caption = 'Ville :'
+            ParentColor = False
+          end
+          object Label3: TLabel
+            Left = 5
+            Height = 15
+            Top = 161
+            Width = 83
+            Caption = 'Département :'
+            ParentColor = False
+          end
+          object Label4: TLabel
+            Left = 5
+            Height = 15
+            Top = 131
+            Width = 48
+            Caption = 'Région :'
+            ParentColor = False
+          end
+          object Label5: TLabel
+            Left = 5
+            Height = 15
+            Top = 102
+            Width = 36
+            Caption = 'Pays :'
+            ParentColor = False
+          end
+          object Label6: TLabel
+            Left = 5
+            Height = 15
+            Top = 40
+            Width = 74
+            Caption = 'Code INSEE :'
+            ParentColor = False
+          end
+          object Label7: TLabel
+            Left = 5
+            Height = 15
+            Top = 74
+            Width = 76
+            Caption = 'Code postal :'
+            ParentColor = False
+          end
+          object Label11: TLabel
+            Left = 6
+            Height = 15
+            Top = 256
+            Width = 45
+            Caption = 'Divers :'
+            ParentColor = False
+          end
+          object Label18: TLabel
+            Left = 3
+            Height = 15
+            Top = 192
+            Width = 54
+            Caption = 'Latitude :'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label17: TLabel
+            Left = 3
+            Height = 15
+            Top = 223
+            Width = 64
+            Caption = 'Longitude :'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            ParentColor = False
+            ParentFont = False
+          end
+          object dxDBEdit1: TFWDBEdit
+            Left = 79
+            Height = 25
+            Top = 70
+            Width = 50
+            DataField = 'RCV_POSTE'
+            DataSource = DSCP
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 1
+          end
+          object edVille: TFWDBEdit
+            Left = 174
+            Height = 25
+            Top = 70
+            Width = 297
+            DataField = 'RCV_VILLE'
+            DataSource = DSCP
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 3
+          end
+          object dxDBEdit3: TFWDBEdit
+            Left = 79
+            Height = 25
+            Top = 36
+            Width = 121
+            DataField = 'RCV_INSEE'
+            DataSource = DSCP
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 0
+          end
+          object pDept: TPanel
+            Left = 351
+            Height = 83
+            Top = 94
+            Width = 114
+            BorderWidth = 2
+            ClientHeight = 83
+            ClientWidth = 114
+            TabOrder = 2
+            Visible = False
+            object Panel22: TPanel
+              Left = 3
+              Height = 20
+              Top = 3
+              Width = 108
+              Align = alTop
+              BevelOuter = bvNone
+              ClientHeight = 20
+              ClientWidth = 108
+              Color = 8244198
+              ParentColor = False
+              TabOrder = 0
+              object Label9: TLabel
+                Cursor = crArrow
+                Left = 15
+                Height = 15
+                Top = 2
+                Width = 87
+                Alignment = taRightJustify
+                Anchors = [akTop, akRight]
+                Caption = 'Départements'
+                Font.CharSet = ANSI_CHARSET
+                Font.Color = 12673280
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold, fsUnderline]
+                ParentColor = False
+                ParentFont = False
+              end
+            end
+            object dxDBPanel: TExtDBGrid
+              Cursor = crHandPoint
+              Left = 3
+              Height = 57
+              Top = 23
+              Width = 108
+              TitleButtons = False
+              AutoSort = False
+              Columns = <              
+                item
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Départements'
+                  Title.Orientation = toHorizontal
+                  Width = 172
+                  Filter.DropDownRows = 0
+                  Filter.ItemIndex = -1
+                  FieldTag = 0
+                end>
+              OptionsRx = []
+              Align = alClient
+              Color = clWindow
+              FocusColor = clRed
+              SelectedColor = clHighlight
+              GridLineStyle = psSolid
+              DataSource = DSRegion
+              Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+              ParentColor = False
+              Scrollbars = ssBoth
+              TabOrder = 1
+              TitleFont.CharSet = ANSI_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -11
+              TitleFont.Name = 'Tahoma'
+              OnDblClick = dxDBPanelDblClick
+              OnKeyDown = dxDBPanelKeyDown
+            end
+          end
+          object dxDBPERegion: TFWDBEdit
+            Left = 79
+            Height = 25
+            Top = 128
+            Width = 267
+            DataField = 'RRG_LIBELLE'
+            DataSource = DSRegion
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 5
+          end
+          object dxDBPEPays: TFWDBEdit
+            Left = 79
+            Height = 25
+            Top = 99
+            Width = 267
+            DataField = 'RPA_LIBELLE'
+            DataSource = DSPays
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 4
+          end
+          object dxDBPEDept: TFWDBEdit
+            Left = 88
+            Height = 25
+            Top = 158
+            Width = 267
+            DataField = 'RDP_LIBELLE'
+            DataSource = DSDept
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 6
+          end
+          object dxDBEdit8: TFWDBEdit
+            Left = 89
+            Height = 21
+            Top = 250
+            Width = 380
+            DataField = 'RCV_DIVERS'
+            DataSource = DSCP
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 9
+          end
+          object dbLat: TFWDBEdit
+            Left = 88
+            Height = 21
+            Top = 191
+            Width = 142
+            DataField = 'RCV_LATITUDE'
+            DataSource = DSCP
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 7
+          end
+          object dbLong: TFWDBEdit
+            Left = 88
+            Height = 21
+            Top = 221
+            Width = 142
+            DataSource = DSCP
+            AutoSize = False
+            CharCase = ecNormal
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 8
+          end
+          object IAWorld: TIAWorld
+            Left = 416
+            Top = 6
+          end
+        end
+        object fpBoutons: TPanel
+          Left = 3
+          Height = 30
+          Top = 339
+          Width = 474
+          Align = alBottom
+          BevelInner = bvLowered
+          ClientHeight = 30
+          ClientWidth = 474
+          TabOrder = 0
+          object bsfbSelection: TFWOK
+            Cursor = crHandPoint
+            Left = 284
+            Height = 25
+            Top = 1
+            Width = 94
+            Caption = 'Ok'
+            Enabled = False
+            TabOrder = 0
+            ModalResult = 1
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            OnClick = bsfbSelectionClick
+          end
+          object BtnAnnuler: TFWCancel
+            Cursor = crHandPoint
+            Left = 379
+            Height = 25
+            Top = 1
+            Width = 94
+            Caption = 'Annuler'
+            TabOrder = 1
+            ModalResult = 2
+            Anchors = [akTop, akRight]
+            ParentFont = False
+            OnClick = sbCloseClick
+          end
+        end
+      end
+    end
+  end
+  object IBQCP: TIBQuery[1]
+    Database = dm.IBBaseParam
+    Transaction = dm.IBTransParam
+    OnNewRecord = IBQCPNewRecord
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from   REF_CP_VILLES WHERE RCV_CODE = :CODE'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'CODE'
+        ParamType = ptUnknown
+      end>
+    UpdateObject = IBUCP
+    left = 224
+    top = 8
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'CODE'
+        ParamType = ptUnknown
+      end>
+    object IBQCP_DEPT: TStringField
+      DisplayWidth = 30
+      FieldKind = fkLookup
+      FieldName = '_DEPT'
+      Index = 0
+      KeyFields = 'RCV_DEPT'
+      LookupCache = False
+      LookupDataSet = IBQDept
+      LookupKeyFields = 'RDP_CODE'
+      LookupResultField = 'RDP_LIBELLE'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQCP_REGION: TStringField
+      DisplayWidth = 30
+      FieldKind = fkLookup
+      FieldName = '_REGION'
+      Index = 1
+      KeyFields = 'RCV_REGION'
+      LookupCache = False
+      LookupDataSet = IBQRegion
+      LookupKeyFields = 'RRG_CODE'
+      LookupResultField = 'RRG_LIBELLE'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQCP_PAYS: TStringField
+      DisplayWidth = 30
+      FieldKind = fkLookup
+      FieldName = '_PAYS'
+      Index = 2
+      KeyFields = 'RCV_PAYS'
+      LookupCache = False
+      LookupDataSet = IBQPays
+      LookupKeyFields = 'RPA_CODE'
+      LookupResultField = 'RPA_LIBELLE'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object IBQCPCP_CODE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RCV_CODE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQCPCP_CP: TIBStringField
+      DisplayWidth = 8
+      FieldKind = fkData
+      FieldName = 'RCV_POSTE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 8
+    end
+    object IBQCPCP_PREFIXE: TIBStringField
+      DisplayWidth = 4
+      FieldKind = fkData
+      FieldName = 'CP_PREFIXE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 4
+    end
+    object IBQCPCP_VILLE: TIBStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'RCV_VILLE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object IBQCPCP_INDIC_TEL: TIBStringField
+      DisplayWidth = 2
+      FieldKind = fkData
+      FieldName = 'CP_INDIC_TEL'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object IBQCPCP_DEPT: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RCV_DEPT'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQCPCP_REGION: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RCV_REGION'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQCPCP_PAYS: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RCV_PAYS'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQCPCP_INSEE: TIBStringField
+      DisplayWidth = 6
+      FieldKind = fkData
+      FieldName = 'RCV_INSEE'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object IBQCPCP_DIVERS: TIBStringField
+      DisplayWidth = 90
+      FieldKind = fkData
+      FieldName = 'RCV_DIVERS'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 90
+    end
+    object IBQCPCP_LATITUDE: TFloatField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RCV_LATITUDE'
+      Index = 13
+      LookupCache = False
+      Origin = '"REF_CP_VILLE"."CP_LATITUDE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object IBQCPCP_LONGITUDE: TFloatField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RCV_LONGITUDE'
+      Index = 14
+      LookupCache = False
+      Origin = '"REF_CP_VILLE"."CP_LONGITUDE"'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      MaxValue = 0
+      MinValue = 0
+    end
+  end
+  object DSCP: TDatasource[2]
+    DataSet = IBQCP
+    OnDataChange = DSCPDataChange
+    left = 272
+    top = 16
+  end
+  object IBUCP: TIBUpdateSQL[3]
+    RefreshSQL.Strings = (
+      'Select '
+      '  RCV_CODE,'
+      '  RCV_POSTE,'
+      '  RCV_VILLE,'
+      '  RCV_DEPT,'
+      '  RCV_REGION,'
+      '  RCV_PAYS,'
+      '  RCV_INSEE,'
+      '  RCV_DIVERS,'
+      '  RCV_LATITUDE,'
+      '  RCV_LONGITUDE'
+      'from REF_CP_VILLES '
+      'where'
+      '  RCV_CODE = :RCV_CODE'
+    )
+    ModifySQL.Strings = (
+      'update REF_CP_VILLE'
+      'set'
+      '  RCV_CODE = :RCV_CODE,'
+      '  RCV_POSTE = :RCV_POSTE,'
+      '  RCV_VILLE = :RCV_VILLE,'
+      '  RCV_DEPT = :RCV_DEPT,'
+      '  RCV_REGION = :RCV_REGION,'
+      '  RCV_PAYS = :RCV_PAYS,'
+      '  RCV_INSEE = :RCV_INSEE,'
+      '  RCV_DIVERS = :RCV_DIVERS,'
+      '  RCV_LATITUDE = :RCV_LATITUDE,'
+      '  RCV_LONGITUDE = :RCV_LONGITUDE'
+      'where'
+      '  RCV_CODE = :OLD_RCV_CODE'
+    )
+    InsertSQL.Strings = (
+      'insert into REF_CP_VILLES'
+      '  (RCV_CODE, RCV_POSTE, RCV_VILLE, RCV_DEPT, RCV_REGION, '
+      '   RCV_PAYS, RCV_INSEE, RCV_DIVERS, RCV_LATITUDE, '
+      '   RCV_LONGITUDE)'
+      'values'
+      '  (:RCV_CODE, :RCV_POSTE, :RCV_VILLE, :RCV_DEPT, :RCV_REGION, '
+      '   :RCV_PAYS, :RCV_INSEE, :RCV_DIVERS, :RCV_LATITUDE, '
+      '   :RCV_LONGITUDE)'
+    )
+    DeleteSQL.Strings = (
+      'delete from REF_CP_VILLES'
+      'where'
+      '  RCV_CODE = :OLD_RCV_CODE'
+    )
+    left = 326
+    top = 8
+  end
+  object DSDept: TDatasource[4]
+    AutoEdit = False
+    DataSet = IBQDept
+    left = 414
+    top = 57
+  end
+  object DSRegion: TDatasource[5]
+    AutoEdit = False
+    DataSet = IBQRegion
+    left = 326
+    top = 57
+  end
+  object DSPays: TDatasource[6]
+    AutoEdit = False
+    DataSet = IBQPays
+    left = 216
+    top = 57
+  end
+  object IBQDept: TIBQuery[7]
+    Database = dm.IBBaseParam
+    Transaction = dm.IBTransParam
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DSRegion
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from REF_DEPARTEMENTS WHERE RDP_REGION= :RRG_CODE'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'RRG_CODE'
+        ParamType = ptUnknown
+      end>
+    left = 446
+    top = 57
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'RRG_CODE'
+        ParamType = ptUnknown
+      end>
+    object IBQDeptRDP_CODE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RDP_CODE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQDeptRDP_LIBELLE: TIBStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'RDP_LIBELLE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 30
+    end
+  end
+  object IBQRegion: TIBQuery[8]
+    Database = dm.IBBaseParam
+    Transaction = dm.IBTransParam
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DSPays
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from REF_REGIONS WHERE RRG_PAYS = :RPA_CODE'
+      ' ORDER BY RRG_LIBELLE'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'RPA_CODE'
+        ParamType = ptUnknown
+      end>
+    left = 358
+    top = 57
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'RPA_CODE'
+        ParamType = ptUnknown
+      end>
+    object IBQRegionRRG_CODE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RRG_CODE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQRegionRRG_LIBELLE: TIBStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'RRG_LIBELLE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 30
+    end
+    object IBQRegionRRG_PAYS: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RRG_PAYS'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object IBQPays: TIBQuery[9]
+    Database = dm.IBBaseParam
+    Transaction = dm.IBTransParam
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from REF_PAYS ORDER BY  RPA_LIBELLE'
+    )
+    Params = <>
+    left = 262
+    top = 57
+    object IBQPaysRPA_CODE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RPA_CODE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object IBQPaysRPA_LIBELLE: TIBStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'RPA_LIBELLE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 30
+    end
+  end
+  object Language: TYLanguage[10]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 104
+    top = 24
+  end
+end

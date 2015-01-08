@@ -1,0 +1,297 @@
+inherited FEditRaccourcis: TFEditRaccourcis
+  Left = 368
+  Height = 435
+  Top = 276
+  Width = 576
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Raccourcis de saisie'
+  ClientHeight = 435
+  ClientWidth = 576
+  Color = clWindow
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnCloseQuery = SuperFormCloseQuery
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 0
+    Height = 435
+    Top = 0
+    Width = 576
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 435
+    ClientWidth = 576
+    TabOrder = 0
+    object Panel7: TPanel
+      Left = 3
+      Height = 429
+      Top = 3
+      Width = 570
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 429
+      ClientWidth = 570
+      TabOrder = 0
+      object Panel4: TPanel
+        Left = 1
+        Height = 120
+        Top = 1
+        Width = 568
+        Align = alTop
+        ClientHeight = 120
+        ClientWidth = 568
+        TabOrder = 0
+        object Label3: TLabel
+          Left = 1
+          Height = 118
+          Top = 1
+          Width = 566
+          Align = alClient
+          Caption = 'Les raccourcis vous permettent d''accélérer la saisie dans les champs de type Memo (Notes, Sources etc...) et Ville.'#13#10'Dans ces champs, vous pourrez alors ne saisir que l''abréviation, puis appuyer simultanément sur les touches Ctrl et Espace. L''abréviation sera immédiatement remplaçée par le texte correspondant.'#13#10'La suite de caractères dans le texte sera remplacée par un retour à la ligne lors de l''utilisation du raccourci.'
+          ParentColor = False
+          WordWrap = True
+        end
+      end
+      object Panel5: TPanel
+        Left = 1
+        Height = 28
+        Top = 400
+        Width = 568
+        Align = alBottom
+        ClientHeight = 28
+        ClientWidth = 568
+        TabOrder = 1
+        object btnFermer: TFWClose
+          Cursor = crHandPoint
+          Left = 473
+          Hint = 'Ferme cette fenêtre.'
+          Top = 1
+          Width = 94
+          Caption = 'Fermer'
+          TabOrder = 0
+          Default = True
+          ModalResult = 1
+          Align = alRight
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+        end
+        object btnDel: TFWDelete
+          Cursor = crHandPoint
+          Left = 38
+          Top = 1
+          Width = 38
+          TabOrder = 1
+          Layout = blGlyphTop
+          Spacing = 240
+          Align = alLeft
+          Anchors = [akTop, akRight]
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = btnDelClick
+          ColorFrameFocus = clWhite
+          GlyphSize = 16
+        end
+        object btnAdd: TFWAdd
+          Cursor = crHandPoint
+          Left = 1
+          Top = 1
+          Width = 37
+          TabOrder = 2
+          Layout = blGlyphTop
+          Spacing = 240
+          Align = alLeft
+          Anchors = [akTop, akRight]
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = btnAddClick
+          ColorFrameFocus = clWhite
+          GlyphSize = 16
+        end
+        object btnImport: TFWImport
+          Cursor = crHandPoint
+          Left = 285
+          Top = 1
+          Width = 94
+          Caption = 'Importer'
+          TabOrder = 3
+          Align = alRight
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnImportClick
+        end
+        object btnExport: TFWExport
+          Cursor = crHandPoint
+          Left = 379
+          Top = 1
+          Width = 94
+          Caption = 'Exporter'
+          TabOrder = 4
+          Align = alRight
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnExportClick
+        end
+      end
+      object Panel6: TPanel
+        Left = 1
+        Height = 279
+        Top = 121
+        Width = 568
+        Align = alClient
+        BorderWidth = 5
+        ClientHeight = 279
+        ClientWidth = 568
+        TabOrder = 2
+        object dxDBGrid1: TExtDBGrid
+          Left = 6
+          Height = 267
+          Top = 6
+          Width = 556
+          TitleButtons = False
+          AutoSort = False
+          Columns = <          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Abréviation'
+              Title.Orientation = toHorizontal
+              Width = 72
+              FieldName = 'RAC_RAC'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Texte'
+              Title.Orientation = toHorizontal
+              Width = 462
+              FieldName = 'RAC_LIBELLE'
+              Filter.DropDownRows = 0
+              Filter.EmptyValue = '(Empty)'
+              Filter.EmptyFont.Style = [fsItalic]
+              Filter.ItemIndex = -1
+              EditButtons = <>
+              FieldTag = 0
+            end>
+          KeyStrokes = <          
+            item
+              Command = rxgcShowFindDlg
+              ShortCut = 16454
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowColumnsDlg
+              ShortCut = 16471
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowFilterDlg
+              ShortCut = 16468
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowSortDlg
+              ShortCut = 16467
+              Enabled = True
+            end          
+            item
+              Command = rxgcShowQuickFilter
+              ShortCut = 16465
+              Enabled = True
+            end          
+            item
+              Command = rxgcHideQuickFilter
+              ShortCut = 16456
+              Enabled = True
+            end          
+            item
+              Command = rxgcSelectAll
+              ShortCut = 16449
+              Enabled = True
+            end          
+            item
+              Command = rxgcDeSelectAll
+              ShortCut = 16429
+              Enabled = True
+            end          
+            item
+              Command = rxgcInvertSelection
+              ShortCut = 16426
+              Enabled = True
+            end          
+            item
+              Command = rxgcOptimizeColumnsWidth
+              ShortCut = 16427
+              Enabled = True
+            end          
+            item
+              Command = rxgcCopyCellValue
+              ShortCut = 16451
+              Enabled = True
+            end>
+          OptionsRx = []
+          Align = alClient
+          Color = clWindow
+          DrawFullLine = False
+          FocusColor = clRed
+          SelectedColor = clHighlight
+          GridLineStyle = psSolid
+          DataSource = DataSource
+          Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+          ParentColor = False
+          Scrollbars = ssAutoBoth
+          TabOrder = 0
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+        end
+      end
+    end
+  end
+  object DataSource: TDatasource[1]
+    DataSet = Query
+    left = 79
+    top = 183
+  end
+  object Language: TYLanguage[2]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 200
+    top = 16
+  end
+  object Query: TIBTable[3]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBTrans_Secondaire
+    AfterDelete = QueryAfterDelete
+    AfterInsert = QueryAfterInsert
+    BeforeDelete = QueryBeforeDelete
+    BeforePost = QueryBeforePost
+    BufferChunks = 1000
+    CachedUpdates = False
+    IndexFieldNames = 'RAC_RAC'
+    TableName = 'REF_RACCOURCIS'
+    left = 66
+    top = 130
+  end
+end

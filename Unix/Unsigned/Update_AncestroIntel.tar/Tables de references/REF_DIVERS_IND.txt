@@ -1,0 +1,80 @@
+FRA	Acquisition
+FRA	Brit Mila
+FRA	Chahada
+FRA	Circoncision
+FRA	Communion
+FRA	Décoration
+FRA	El hadj
+FRA	Henné - Fiancailles
+FRA	Houpa - Bénéd. religieuse
+FRA	Loisirs
+FRA	Légataire
+FRA	Sacre
+FRA	Service militaire
+FRA	Sports
+FRA	Vente
+FRA	Voyage
+ENG	Purchase
+ENG	Brit Mila
+ENG	Chahada
+ENG	Circumcision
+ENG	Communion
+ENG	Decoration
+ENG	El hadj
+ENG	Henné - Engagement
+ENG	Houpa - Blessing
+ENG	Leisure activities
+ENG	Legatee
+ENG	Consecration
+ENG	Military time
+ENG	Sport activities
+ENG	Sale
+ENG	Trip
+DEU	Erwerb
+DEU	Brit Mila
+DEU	Chahada
+DEU	Beschneidung
+DEU	Kommunion
+DEU	Auszeichnung
+DEU	El hadj
+DEU	Henné - Verlobung
+DEU	Houpa - Segnung
+DEU	Freizeit
+DEU	Vermâchtnisnehmer
+DEU	Weihe
+DEU	Militärdienst
+DEU	Sport
+DEU	Verkauf
+DEU	Reise
+ITA	Acquisto
+ITA	Brit Mila
+ITA	Chahada
+ITA	Circoncisione
+ITA	Comunione
+ITA	Decorazione
+ITA	El hadj
+ITA	Henné - Fidanzamento
+ITA	Houpa - Benedizione
+ITA	Distrazioni
+ITA	Legatario
+ITA	Consagracione
+ITA	Servizio militare
+ITA	Attività sportive
+ITA	Vendita
+ITA	Viaggio
+SPA	Adquisición
+SPA	Brit Mila
+SPA	Chahada
+SPA	Circonsición
+SPA	Comunión
+SPA	Condecoración
+SPA	El hadj
+SPA	Henné - Esponsales
+SPA	Houpa - Bendición
+SPA	Distracciónes
+SPA	Legatario
+SPA	Consagración
+SPA	Servicio militar
+SPA	Actividades deportivas
+SPA	Venta
+SPA	Viaje

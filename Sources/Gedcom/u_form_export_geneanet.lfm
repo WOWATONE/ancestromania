@@ -1,0 +1,358 @@
+inherited FExportGeneanet: TFExportGeneanet
+  Left = 558
+  Height = 469
+  Top = 355
+  Width = 662
+  ActiveControl = Grid
+  AutoSize = True
+  Caption = 'FExportGeneanet'
+  ClientHeight = 469
+  ClientWidth = 662
+  Color = clWindow
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  OnCreate = SuperFormCreate
+  OnDestroy = FormDestroy
+  object Panel1: TPanel[0]
+    Left = 0
+    Height = 469
+    Top = 0
+    Width = 662
+    Align = alClient
+    BevelOuter = bvNone
+    BorderWidth = 2
+    BorderStyle = bsSingle
+    ClientHeight = 465
+    ClientWidth = 658
+    TabOrder = 0
+    object Panel2: TPanel
+      Left = 2
+      Height = 436
+      Top = 27
+      Width = 654
+      Align = alClient
+      ClientHeight = 436
+      ClientWidth = 654
+      TabOrder = 0
+      object Panel3: TPanel
+        Left = 1
+        Height = 101
+        Top = 1
+        Width = 652
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 101
+        ClientWidth = 652
+        TabOrder = 0
+        object Panel7: TPanel
+          Left = 548
+          Height = 44
+          Top = 23
+          Width = 93
+          Anchors = [akTop, akRight]
+          ClientHeight = 44
+          ClientWidth = 93
+          TabOrder = 0
+          object Image1: TImage
+            Cursor = crHandPoint
+            Left = 2
+            Height = 31
+            Top = 2
+            Width = 89
+            AutoSize = True
+            OnClick = Image1Click
+            Picture.Data = {
+              0A544A706567496D61676525060000FFD8FFE000104A46494600010101006000
+              600000FFDB004300080606070605080707070909080A0C140D0C0B0B0C191213
+              0F141D1A1F1E1D1A1C1C20242E2720222C231C1C2837292C30313434341F2739
+              3D38323C2E333432FFDB0043010909090C0B0C180D0D1832211C213232323232
+              3232323232323232323232323232323232323232323232323232323232323232
+              32323232323232323232323232FFC0001108001F005903012200021101031101
+              FFC4001F0000010501010101010100000000000000000102030405060708090A
+              0BFFC400B5100002010303020403050504040000017D01020300041105122131
+              410613516107227114328191A1082342B1C11552D1F02433627282090A161718
+              191A25262728292A3435363738393A434445464748494A535455565758595A63
+              6465666768696A737475767778797A838485868788898A92939495969798999A
+              A2A3A4A5A6A7A8A9AAB2B3B4B5B6B7B8B9BAC2C3C4C5C6C7C8C9CAD2D3D4D5D6
+              D7D8D9DAE1E2E3E4E5E6E7E8E9EAF1F2F3F4F5F6F7F8F9FAFFC4001F01000301
+              01010101010101010000000000000102030405060708090A0BFFC400B5110002
+              0102040403040705040400010277000102031104052131061241510761711322
+              328108144291A1B1C109233352F0156272D10A162434E125F11718191A262728
+              292A35363738393A434445464748494A535455565758595A636465666768696A
+              737475767778797A82838485868788898A92939495969798999AA2A3A4A5A6A7
+              A8A9AAB2B3B4B5B6B7B8B9BAC2C3C4C5C6C7C8C9CAD2D3D4D5D6D7D8D9DAE2E3
+              E4E5E6E7E8E9EAF2F3F4F5F6F7F8F9FAFFDA000C03010002110311003F00F48B
+              9BA82CE0335C48B1C63B9FE43D4FB5655D6BB75120920D26578CF399A411923D
+              71827F3C5635DF89615D76EA67B79AE05937956A8B1168DA4E8493D33BB8CF60
+              3F39BC5924B1E956A977E2159E491C19ED9FCB891D7AB04217701D0724F5EB5E
+              CEA9A563E4924E2DDED6FC4BDA7F8BF4FBB59127125ADCC601686419247AA91D
+              454B2789EC97EE24CFCFA01FD6BCC5258A6D6ED5AD6DEDE1196DCB03EE18C77E
+              052DDDDF9B7B745E4905BC0BB06C3C073C64E08EF9ABB45223967295969A7FC0
+              3D27FE12AB6FF9F79BF4A3FE12AB6FF9F79BF4AF3B8AEE7800B7573208E2DF24
+              8E403B8F201C9E0734B2EA374A1949456861DF29519F98F403F4A7EE11ECEB5E
+              C9AFEBFAFC4F43FF0084AADBFE7DE6FD28FF0084AADBFE7DE6FD2BCF0EA57791
+              1ED40C908794F00063D072703B52CDA8DC47102CF1AB4716E9428C9DC7A0F403
+              A7E747B81ECEBDED75FD7F5F89E85FF0955B7FCFBCDFA51FF0955B7FCFBCDFA5
+              79ADCDEDD1B9B132398D415F3761201270483F863F3A945FCDE6AAC6DFEB0199
+              D891F227F08E781C63F3A3DC29D2AD64EE8F46FF0084AADBFE7DE6FD293FE12A
+              B6FF009F79BF4AF3D5B8BBB9B9B4B73208E40A649BCBE463B7F4FCEB5F07D6A9
+              462CC2A4AA53B26CC5BBBB482F6E2DEE55E38249CCF0B2B11D4E4723B826A17D
+              51A1B877B3B8692491020470D2B1FA1278C9AE852DBED922C1E5AB97380AC060
+              D74BA7F832D6DC6E98AA93D52150A3F3EF5E66659B60F2D4BEB13B37B24AEFFA
+              F53BB0585AD8CBFB385FBBBE870FA7D9CEACF7776F9B99171D3841E955E3D15F
+              CA4865910C424F3188CE5CFA57ABC7A1E9B1631688D8FEF65BF9D4FF00D9961F
+              F3E56DFF007E97FC2BE66A71D60AF6852935E765FAB3D7A7C3F8B577ED22AFEA
+              7931D2A479251248863926F31C807240E8BF4A1B497944824994F9B30924C023
+              2A3A2FF3AF59FECCB0FF009F2B6FFBF4BFE147F66587FCF95B7FDFA5FF000A8F
+              F5EB0BFF003E65F7A2BFB0315FF3F57DC7929D22477903CA9E5C93091B00E481
+              D17E94ADA54B2BCCB24CBE5CD2EF72B9C903A2D7ACFF0066587FCF95B7FDFA5F
+              F0A3FB32C3FE7CADBFEFD2FF00851FEBD617FE7CCBEF43FEC0C57FCFD5F71E4D
+              3E90D71146AF28CF9AD24871D73D87E03149369324AF700491849D972D8F9954
+              7403F4FCABD6BFB32C3FE7CADBFEFD2FF851FD9961FF003E56DFF7E97FC28FF5
+              EB0BFF003E65F7A059062D7FCBD5F779DCF2FB6B236F7B3CE5959640028C60A8
+              1DBF97E557335E89FD9961FF003E56DFF7E97FC28FECCB0FF9F2B6FF00BF4BFE
+              154B8F70CB6A32FBD18CF866BCDDE5517DC7FFD9
+            }
+          end
+        end
+        object Memo1: TMemo
+          Left = 7
+          Height = 97
+          Top = 1
+          Width = 530
+          Anchors = [akTop, akLeft, akRight]
+          BorderStyle = bsNone
+          Lines.Strings = (
+            'Vous pouvez déposer votre généalogie sur Geneanet en transmettant cette dernière par l''intermédiaire d''un '
+            'fichier au format Gedcom.'
+            'Si vous préférez afficher votre généalogie sur un autre site, il vous est possible de déposer sur Geneanet un '
+            'fichier d''un format spécial donnant des indications sur des patronymes gérés dans votre généalogie.'
+            'Cette fonction permet de générer ce fichier, après avoir sélectionné les patronymes dont vous voulez '
+            'transmettre les informations.'
+          )
+          ParentColor = True
+          ReadOnly = True
+          TabOrder = 1
+          TabStop = False
+          WantReturns = False
+        end
+      end
+      object Panel4: TPanel
+        Left = 1
+        Height = 24
+        Top = 411
+        Width = 652
+        Align = alBottom
+        BevelOuter = bvNone
+        ClientHeight = 24
+        ClientWidth = 652
+        TabOrder = 1
+        object btnExport: TFWExport
+          Cursor = crHandPoint
+          Left = 558
+          Height = 24
+          Top = 0
+          Width = 94
+          Caption = 'Exporter'
+          Enabled = False
+          TabOrder = 0
+          ModalResult = 1
+          Align = alRight
+          Anchors = [akTop, akRight]
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnExportClick
+        end
+        object FWSee: TFWFolder
+          Left = 467
+          Height = 24
+          Top = 0
+          Width = 91
+          Caption = 'Voir'
+          TabOrder = 1
+          Align = alRight
+          OnClick = FWSeeClick
+        end
+      end
+      object Panel5: TPanel
+        Left = 1
+        Height = 309
+        Top = 102
+        Width = 652
+        Align = alClient
+        BevelOuter = bvNone
+        BorderWidth = 4
+        ClientHeight = 309
+        ClientWidth = 652
+        TabOrder = 2
+        object Grid: TDBGrid
+          Left = 4
+          Height = 301
+          Top = 4
+          Width = 644
+          Align = alClient
+          Color = clWindow
+          Columns = <          
+            item
+              Title.Alignment = taCenter
+              Title.Caption = 'Patronymes'
+              Width = 211
+              FieldName = 'NOM'
+            end>
+          DataSource = DSPatronymes
+          FixedColor = 5614250
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgMultiselect, dgPersistentMultiSelect]
+          ReadOnly = True
+          TabOrder = 0
+          TitleFont.CharSet = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+        end
+      end
+    end
+    object Panel6: TPanel
+      Left = 2
+      Height = 25
+      Top = 2
+      Width = 654
+      Align = alTop
+      ClientHeight = 25
+      ClientWidth = 654
+      TabOrder = 1
+      object Label37: TLabel
+        Left = 7
+        Height = 16
+        Top = 4
+        Width = 141
+        Caption = 'Exportation GENEANET'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBackground
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold, fsUnderline]
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+  end
+  object IBQPatronymes: TIBQuery[1]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    AfterScroll = IBQPatronymesAfterScroll
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'Select distinct NOM'
+      'FROM individu'
+      'where kle_dossier=:I_DOSSIER'
+      'order by NOM'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'I_DOSSIER'
+        ParamType = ptUnknown
+      end>
+    left = 32
+    top = 144
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'I_DOSSIER'
+        ParamType = ptUnknown
+      end>
+    object IBQPatronymesNOM: TIBStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NOM'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+  end
+  object DSPatronymes: TDatasource[2]
+    DataSet = IBQPatronymes
+    left = 32
+    top = 112
+  end
+  object QGeneanet: TIBQuery[3]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBT_BASE
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select s.COMBIEN'
+      ',s.DATE_DEBUT'
+      ',s.DATE_FIN'
+      ',s.CP'
+      ',s.VILLE'
+      ',s.PAYS'
+      ',(select first(1) rpa_abbreviation'
+      '  from ref_pays'
+      '  where rpa_libelle starting with upper(s.pays)'
+      '  and rpa_abbreviation is not null) as PAYS_CODE'
+      'from'
+      '(select count(*) as COMBIEN'
+      ',min(e.ev_ind_date_year) as DATE_DEBUT'
+      ',max(e.ev_ind_date_year) as DATE_FIN'
+      ',i.nom'
+      ',e.ev_ind_cp as CP'
+      ',e.ev_ind_ville as VILLE'
+      ',e.ev_ind_pays as PAYS'
+      'from individu i'
+      'left join evenements_ind e on e.ev_ind_kle_fiche=i.cle_fiche'
+      'and e.ev_ind_type in (''BIRT'',''DEAT'')'
+      'where i.kle_dossier=:i_dossier'
+      'and i.nom=:s_patronyme'
+      'group by 4,5,6,7) s'
+      'order by 2'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'I_DOSSIER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'S_PATRONYME'
+        ParamType = ptUnknown
+      end>
+    left = 80
+    top = 176
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'I_DOSSIER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'S_PATRONYME'
+        ParamType = ptUnknown
+      end>
+  end
+  object SaveDialog: TSaveDialog[4]
+    Title = 'Nom du fichier Geneanet'
+    DefaultExt = '.txt'
+    Filter = 'Fichier Texte|*.txt'
+    left = 72
+    top = 112
+  end
+  object Language: TYLanguage[5]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+  end
+end

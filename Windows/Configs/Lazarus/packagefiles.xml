@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <UserPkgLinks Version="2" Count="77">
+    <Item1>
+      <Name Value="BGRABitmapPack"/>
+      <Version Major="7" Minor="8"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\composants\bgrabitmap\bgrabitmappack.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item1>
+    <Item2>
+      <Name Value="bgracontrols"/>
+      <Version Major="1" Minor="4"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\composants\bgracontrols\bgracontrols.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item2>
+    <Item3>
+      <Name Value="CompoPerso"/>
+      <Version Minor="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Ancestromania\Packages\Compo_Perso\compoperso.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item3>
+    <Item4>
+      <Name Value="dclibx"/>
+      <Version Major="1" Minor="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\ibx\dclibx.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item4>
+    <Item5>
+      <Name Value="dclindycorelaz"/>
+      <Version Major="10" Minor="2"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\indy10\Builder\Package Generator\LazTemplates\dclindycorelaz.lpk"/>
+      <LastUsed Value="20111222"/>
+    </Item5>
+    <Item6>
+      <Name Value="dcl_rx_ctrl"/>
+      <Version Major="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\ccr\components\rx\dcl_rx_ctrl.lpk"/>
+      <LastUsed Value="20140306"/>
+    </Item6>
+    <Item7>
+      <Name Value="dcl_rx_ctrl"/>
+      <Version Major="2" Minor="6" Release="4" Build="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\ccr\components\rx\trunk\dcl_rx_ctrl.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item7>
+    <Item8>
+      <Name Value="ExpertSuperForm"/>
+      <Version Major="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Ancestromania\Packages\SuperForm\expertsuperform.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item8>
+    <Item9>
+      <Name Value="ExpertSuperForm"/>
+      <Version Major="1" Build="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Ancestromania\Packages\SuperForm\expertsuperform.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item9>
+    <Item10>
+      <Name Value="ExtHTML"/>
+      <Version Major="1" Minor="3" Release="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Ancestromania\Packages\ExtHTML\exthtml.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item10>
+    <Item11>
+      <Name Value="FlatStyle_Add"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Freelogy\Components\FlatStyle_addon\flatstyle_add.lpk"/>
+      <LastUsed Value="20120429"/>
+    </Item11>
+    <Item12>
+      <Name Value="fortes324forlaz"/>
+      <Version Major="3" Minor="24" Release="2"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\composants\fortesreport\fortes324forlaz.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item12>
+    <Item13>
+      <Name Value="HtmlComp"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\ccr\components\thtmlport\package\htmlcomp.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item13>
+    <Item14>
+      <Name Value="ibexpress"/>
+      <Version Major="1" Minor="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\ibx\ibexpress.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item14>
+    <Item15>
+      <Name Value="indycorelaz"/>
+      <Version Major="10" Minor="2"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\indy10\Builder\Package Generator\LazTemplates\indycorelaz.lpk"/>
+      <LastUsed Value="20111222"/>
+    </Item15>
+    <Item16>
+      <Name Value="indylaz"/>
+      <Version Major="10" Minor="2" Build="3"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\indy-10\lazarus\indylaz.lpk"/>
+      <LastUsed Value="20140306"/>
+    </Item16>
+    <Item17>
+      <Name Value="indysystemlaz"/>
+      <Version Major="10" Minor="2" Build="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\indy10\Builder\Package Generator\LazTemplates\indysystemlaz.lpk"/>
+      <LastUsed Value="20111222"/>
+    </Item17>
+    <Item18>
+      <Name Value="JvCoreLaz"/>
+      <Version Major="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\ccr\components\jvcllaz\packages\JvCoreLaz.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item18>
+    <Item19>
+      <Name Value="JvXPBarLaz"/>
+      <Version Major="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\ccr\components\jvcllaz\packages\JvXPBarLaz.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item19>
+    <Item20>
+      <Name Value="JvXPBarLaz"/>
+      <Version Major="1" Release="2" Build="3"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\ccr\components\jvcllaz\packages\JvXPBarLaz.lpk"/>
+      <LastUsed Value="20140902"/>
+    </Item20>
+    <Item21>
+      <Name Value="KControlsLaz"/>
+      <Version Major="1" Minor="2"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\composants\kcontrols\packages\kcontrols\kcontrolslaz.lpk"/>
+      <LastUsed Value="20141001"/>
+    </Item21>
+    <Item22>
+      <Name Value="laregisterancestrocomp"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\AncestroComponents\laregisterancestrocomp.lpk"/>
+      <LastUsed Value="20120426"/>
+    </Item22>
+    <Item23>
+      <Name Value="lazancestrobuttons"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Ancestromania\Packages\AncestroComponents\lazancestrobuttons.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item23>
+    <Item24>
+      <Name Value="lazancestrocomponents"/>
+      <Version Major="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Ancestromania\Packages\AncestroComponents\lazancestrocomponents.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item24>
+    <Item25>
+      <Name Value="lazancestrocomponents"/>
+      <Version Major="1" Build="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Ancestromania\Packages\AncestroComponents\lazancestrocomponents.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item25>
+    <Item26>
+      <Name Value="lazancestroibx"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Ancestromania\Packages\AncestroComponents\lazancestroibx.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item26>
+    <Item27>
+      <Name Value="lazancestroreg"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Ancestromania\Packages\AncestroComponents\lazancestroreg.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item27>
+    <Item28>
+      <Name Value="lazancestrounits"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Ancestromania\Packages\AncestroComponents\lazancestrounits.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item28>
+    <Item29>
+      <Name Value="lazextbase"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\extended\lazextbase.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item29>
+    <Item30>
+      <Name Value="lazextbase"/>
+      <Version Major="1" Minor="3" Release="3" Build="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\extended\lazextbase.lpk"/>
+      <LastUsed Value="20130815"/>
+    </Item30>
+    <Item31>
+      <Name Value="lazextbuttons"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\extended\lazextbuttons.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item31>
+    <Item32>
+      <Name Value="lazextbuttons"/>
+      <Version Minor="9" Release="5" Build="2"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\extended\lazextbuttons.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item32>
+    <Item33>
+      <Name Value="lazextcomponents"/>
+      <Version Major="1" Minor="7" Release="2" Build="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\extended\lazextcomponents.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item33>
+    <Item34>
+      <Name Value="lazextcomponentsimg"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\extended\lazextcomponentsimg.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item34>
+    <Item35>
+      <Name Value="lazextcomponentsimg"/>
+      <Version Major="1" Minor="2" Release="9"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\extended\lazextcomponentsimg.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item35>
+    <Item36>
+      <Name Value="lazextcopy"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Extended\lazextcopy.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item36>
+    <Item37>
+      <Name Value="lazextcopy"/>
+      <Version Major="1" Release="2"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Extended\lazextcopy.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item37>
+    <Item38>
+      <Name Value="lazextcore"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Extended\lazextcore.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item38>
+    <Item39>
+      <Name Value="lazextinit"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\extended\lazextinit.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item39>
+    <Item40>
+      <Name Value="lazextinit"/>
+      <Version Major="1" Minor="3" Release="3" Build="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\extended\lazextinit.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item40>
+    <Item41>
+      <Name Value="lazextnet"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Extended\lazextnet.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item41>
+    <Item42>
+      <Name Value="lazextreports"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\extended\lazextreports.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item42>
+    <Item43>
+      <Name Value="lazextreports"/>
+      <Version Major="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\extended\lazextreports.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item43>
+    <Item44>
+      <Name Value="lazflatstyle"/>
+      <Version Release="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Freelogy\Components\FlatStyle\Lazarus\lazflatstyle.lpk"/>
+      <LastUsed Value="20140126"/>
+    </Item44>
+    <Item45>
+      <Name Value="lazmanframes"/>
+      <Version Major="1" Minor="4"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\manframes\lazmanframes.lpk"/>
+      <LastUsed Value="20140612"/>
+    </Item45>
+    <Item46>
+      <Name Value="lazmansoft"/>
+      <Version Minor="9" Release="5"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\manframes\lazmansoft.lpk"/>
+      <LastUsed Value="20140612"/>
+    </Item46>
+    <Item47>
+      <Name Value="lazmansoftware"/>
+      <Version Minor="9" Release="4" Build="2"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\manframes\lazmansoftware.lpk"/>
+      <LastUsed Value="20111216"/>
+    </Item47>
+    <Item48>
+      <Name Value="lazregdbnet"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\ManFrames\lazregdbnet.lpk"/>
+      <LastUsed Value="20130808"/>
+    </Item48>
+    <Item49>
+      <Name Value="lazregdbnetserver"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\ManFrames\lazregdbnetserver.lpk"/>
+      <LastUsed Value="20130808"/>
+    </Item49>
+    <Item50>
+      <Name Value="lazregisterextbuttons"/>
+      <Version Major="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Extended\lazregisterextbuttons.lpk"/>
+      <LastUsed Value="20130802"/>
+    </Item50>
+    <Item51>
+      <Name Value="lazregisterextcomp"/>
+      <Version Major="1" Minor="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\extended\lazregisterextcomp.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item51>
+    <Item52>
+      <Name Value="lazregisteribx"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Extended\lazregisteribx.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item52>
+    <Item53>
+      <Name Value="lazregzeos"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\ManFrames\lazregzeos.lpk"/>
+      <LastUsed Value="20130808"/>
+    </Item53>
+    <Item54>
+      <Name Value="LazRichEdit"/>
+      <Version Minor="1" Release="5"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\composants\lzRichEdit\lazrichedit.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item54>
+    <Item55>
+      <Name Value="lazrichview"/>
+      <Version Minor="5" Release="2" Build="2"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\composants\lazrichview\lazrichview.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item55>
+    <Item56>
+      <Name Value="lazxmlframes"/>
+      <Version Major="1" Minor="3"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\XMLFrames\lazxmlframes.lpk"/>
+      <LastUsed Value="20140612"/>
+    </Item56>
+    <Item57>
+      <Name Value="lazxmlservice"/>
+      <Version Major="1" Minor="2"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\XMLFrames\lazxmlservice.lpk"/>
+      <LastUsed Value="20140612"/>
+    </Item57>
+    <Item58>
+      <Name Value="LCL"/>
+      <Version Major="1" Release="6"/>
+      <Filename Value="lcl\interfaces\lcl.lpk"/>
+      <LastUsed Value="20130808"/>
+    </Item58>
+    <Item59>
+      <Name Value="LCLBase"/>
+      <Version Major="1" Release="6"/>
+      <Filename Value="lcl\lclbase.lpk"/>
+      <LastUsed Value="20130808"/>
+    </Item59>
+    <Item60>
+      <Name Value="lclextensions_package"/>
+      <Version Minor="5" Release="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\composants\lclextensions\lclextensions_package.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item60>
+    <Item61>
+      <Name Value="lnetbase"/>
+      <Version Minor="6" Release="5"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\composants\lnet\lazaruspackage\lnetbase.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item61>
+    <Item62>
+      <Name Value="lnetvisual"/>
+      <Version Minor="6" Release="5"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\composants\lnet\lazaruspackage\lnetvisual.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item62>
+    <Item63>
+      <Name Value="PasLibVlcPlayer"/>
+      <Version Major="2" Minor="1" Release="5"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\PasLibVlc\FreePascal\PasLibVlcPlayer.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item63>
+    <Item64>
+      <Name Value="richmemopackage"/>
+      <Version Major="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\composants\richmemo\richmemopackage.lpk"/>
+      <LastUsed Value="20130808"/>
+    </Item64>
+    <Item65>
+      <Name Value="rxnew"/>
+      <Version Major="2" Minor="6" Release="4" Build="142"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\ccr\components\rx\trunk\rxnew.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item65>
+    <Item66>
+      <Name Value="toolbarmenupkg"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\composants\menutbar\toolbarmenupkg.lpk"/>
+      <LastUsed Value="20140126"/>
+    </Item66>
+    <Item67>
+      <Name Value="uniqueinstance_package"/>
+      <Version Major="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\composants\uniqueinstance\uniqueinstance_package.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item67>
+    <Item68>
+      <Name Value="virtualtreeview_package"/>
+      <Version Major="4" Minor="8" Release="7" Build="3"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\ccr\components\virtualtreeview-new\trunk\virtualtreeview_package.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item68>
+    <Item69>
+      <Name Value="virtualtreeview_package"/>
+      <Version Major="5" Minor="3" Release="2" Build="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\ccr\components\virtualtreeview-new\trunk\virtualtreeview_package.lpk"/>
+      <LastUsed Value="20141006"/>
+    </Item69>
+    <Item70>
+      <Name Value="xmldocument"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\Alcinoe\xmldocument.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item70>
+    <Item71>
+      <Name Value="zcomponent"/>
+      <Version Major="7" Minor="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\ZEOSDBO\packages\lazarus\zcomponent.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item71>
+    <Item72>
+      <Name Value="zcore"/>
+      <Version Major="7" Minor="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\ZEOSDBO\packages\lazarus\zcore.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item72>
+    <Item73>
+      <Name Value="zdbc"/>
+      <Version Major="7" Minor="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\ZEOSDBO\packages\lazarus\zdbc.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item73>
+    <Item74>
+      <Name Value="zparsesql"/>
+      <Version Major="7" Minor="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\ZEOSDBO\packages\lazarus\zparsesql.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item74>
+    <Item75>
+      <Name Value="zplain"/>
+      <Version Major="7" Minor="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus-Delphi\ZEOSDBO\packages\lazarus\zplain.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item75>
+    <Item76>
+      <Name Value="ZVDateTimeCtrls"/>
+      <Version Major="1" Minor="3"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\composants\ZVDateTimeCtrls\zvdatetimectrls.lpk"/>
+      <LastUsed Value="20120926"/>
+    </Item76>
+    <Item77>
+      <Name Value="ZVDateTimeCtrls"/>
+      <Version Major="1" Minor="5" Release="1"/>
+      <Filename Value="C:\Matthieu\Programmation\Lazarus\ccr\components\ZVDateTimeCtrls\trunk\zvdatetimectrls.lpk"/>
+      <LastUsed Value="20150101"/>
+    </Item77>
+  </UserPkgLinks>
+</CONFIG>

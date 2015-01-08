@@ -1,0 +1,806 @@
+inherited FEditRefTokenDate: TFEditRefTokenDate
+  Left = 543
+  Height = 557
+  Top = 219
+  Width = 582
+  BorderIcons = []
+  BorderStyle = bsDialog
+  Caption = 'Références: Mots clefs pour saisir les dates'
+  ClientHeight = 557
+  ClientWidth = 582
+  Color = clWindow
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  KeyPreview = True
+  OnClose = SuperFormClose
+  OnCreate = SuperFormCreate
+  OnKeyDown = SuperFormKeyDown
+  Position = poMainFormCenter
+  object pBorder: TPanel[0]
+    Left = 0
+    Height = 557
+    Top = 0
+    Width = 582
+    Align = alClient
+    BorderWidth = 2
+    ClientHeight = 557
+    ClientWidth = 582
+    TabOrder = 0
+    object Panel7: TPanel
+      Left = 3
+      Height = 551
+      Top = 3
+      Width = 576
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 551
+      ClientWidth = 576
+      TabOrder = 0
+      object Panel4: TPanel
+        Left = 1
+        Height = 28
+        Top = 1
+        Width = 574
+        Align = alTop
+        ClientHeight = 28
+        ClientWidth = 574
+        TabOrder = 1
+        object lbTitle: TLabel
+          Left = 1
+          Height = 26
+          Top = 1
+          Width = 255
+          Align = alLeft
+          Caption = 'Mots clefs utilisés pour la saisie des dates'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = 10841658
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object btnAdd: TFWAdd
+          Cursor = crHandPoint
+          Left = 519
+          Top = 1
+          Width = 27
+          TabOrder = 0
+          Layout = blGlyphTop
+          Spacing = 240
+          Align = alRight
+          Anchors = [akTop, akRight]
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = btnAddClick
+          ColorFrameFocus = clWhite
+          GlyphSize = 16
+        end
+        object btnDel: TFWDelete
+          Cursor = crHandPoint
+          Left = 546
+          Top = 1
+          Width = 27
+          TabOrder = 1
+          Layout = blGlyphTop
+          Spacing = 240
+          Align = alRight
+          Anchors = [akTop, akRight]
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = btnDelClick
+          ColorFrameFocus = clWhite
+          GlyphSize = 16
+        end
+      end
+      object Panel6: TPanel
+        Left = 1
+        Height = 521
+        Top = 29
+        Width = 574
+        Align = alClient
+        BorderWidth = 5
+        ClientHeight = 521
+        ClientWidth = 574
+        TabOrder = 0
+        object Panel3: TPanel
+          Left = 6
+          Height = 509
+          Top = 6
+          Width = 183
+          Align = alLeft
+          BevelOuter = bvNone
+          BorderWidth = 1
+          BorderStyle = bsSingle
+          ClientHeight = 505
+          ClientWidth = 179
+          TabOrder = 0
+          object BlueFlaTCSpeedButton1: TBlueFlatSpeedButton
+            Tag = 1
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 15
+            Width = 177
+            Caption = 'Janvier'
+            TabOrder = 0
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton2: TBlueFlatSpeedButton
+            Tag = 2
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 32
+            Width = 177
+            Caption = 'Février'
+            TabOrder = 1
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton3: TBlueFlatSpeedButton
+            Tag = 4
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 66
+            Width = 177
+            Caption = 'Avril'
+            TabOrder = 2
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton4: TBlueFlatSpeedButton
+            Tag = 3
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 49
+            Width = 177
+            Caption = 'Mars'
+            TabOrder = 3
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton5: TBlueFlatSpeedButton
+            Tag = 5
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 83
+            Width = 177
+            Caption = 'Mai'
+            TabOrder = 4
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton6: TBlueFlatSpeedButton
+            Tag = 6
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 100
+            Width = 177
+            Caption = 'Juin'
+            TabOrder = 5
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton7: TBlueFlatSpeedButton
+            Tag = 8
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 134
+            Width = 177
+            Caption = 'Août'
+            TabOrder = 6
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton8: TBlueFlatSpeedButton
+            Tag = 7
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 117
+            Width = 177
+            Caption = 'Juillet'
+            TabOrder = 7
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton9: TBlueFlatSpeedButton
+            Tag = 9
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 151
+            Width = 177
+            Caption = 'Septembre'
+            TabOrder = 8
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton10: TBlueFlatSpeedButton
+            Tag = 10
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 168
+            Width = 177
+            Caption = 'Octobre'
+            TabOrder = 9
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton11: TBlueFlatSpeedButton
+            Tag = 12
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 202
+            Width = 177
+            Caption = 'Décembre'
+            TabOrder = 10
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton12: TBlueFlatSpeedButton
+            Tag = 11
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 185
+            Width = 177
+            Caption = 'Novembre'
+            TabOrder = 11
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object Label1: TLabel
+            Left = 1
+            Height = 14
+            Top = 1
+            Width = 177
+            Align = alTop
+            Caption = 'Mois'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object BlueFlaTCSpeedButton13: TBlueFlatSpeedButton
+            Tag = 13
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 233
+            Width = 177
+            Caption = 'Du'
+            TabOrder = 12
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton14: TBlueFlatSpeedButton
+            Tag = 14
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 250
+            Width = 177
+            Caption = 'Au'
+            TabOrder = 13
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton15: TBlueFlatSpeedButton
+            Tag = 16
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 284
+            Width = 177
+            Caption = 'Après'
+            TabOrder = 14
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton16: TBlueFlatSpeedButton
+            Tag = 15
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 267
+            Width = 177
+            Caption = 'Avant'
+            TabOrder = 15
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton17: TBlueFlatSpeedButton
+            Tag = 17
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 301
+            Width = 177
+            Caption = 'Entre'
+            TabOrder = 16
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton18: TBlueFlatSpeedButton
+            Tag = 18
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 318
+            Width = 177
+            Caption = 'Et'
+            TabOrder = 17
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton19: TBlueFlatSpeedButton
+            Tag = 20
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 352
+            Width = 177
+            Caption = 'Estimé'
+            TabOrder = 18
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton20: TBlueFlatSpeedButton
+            Tag = 19
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 335
+            Width = 177
+            Caption = 'Calculé'
+            TabOrder = 19
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton21: TBlueFlatSpeedButton
+            Tag = 21
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 369
+            Width = 177
+            Caption = 'Vers'
+            TabOrder = 20
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton22: TBlueFlatSpeedButton
+            Tag = 22
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 386
+            Width = 177
+            Caption = 'Séparateur de date'
+            TabOrder = 21
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object Label2: TLabel
+            Left = 1
+            Height = 14
+            Top = 219
+            Width = 177
+            Align = alTop
+            Caption = 'Mots clef d''une date'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object BlueFlaTCSpeedButton23: TBlueFlatSpeedButton
+            Tag = 23
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Top = 403
+            Width = 177
+            Caption = 'Ordre'
+            TabOrder = 22
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+          object BlueFlaTCSpeedButton24: TBlueFlatSpeedButton
+            Tag = 24
+            Cursor = crHandPoint
+            Left = 1
+            Height = 17
+            Hint = 'Format littéraire (LIT) ou numérique (NUM) d''affichage des dates'
+            Top = 420
+            Width = 177
+            Caption = 'Forme'
+            TabOrder = 23
+            Align = alTop
+            Font.Color = clWindowText
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = BlueFlaTCSpeedButton1Click
+            Color = clWhite
+          end
+        end
+        object Panel5: TPanel
+          Left = 189
+          Height = 509
+          Top = 6
+          Width = 8
+          Align = alLeft
+          BevelOuter = bvNone
+          TabOrder = 1
+        end
+        object Panel9: TPanel
+          Left = 197
+          Height = 509
+          Top = 6
+          Width = 371
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 509
+          ClientWidth = 371
+          TabOrder = 2
+          object Panel10: TPanel
+            Left = 0
+            Height = 6
+            Top = 475
+            Width = 371
+            Align = alBottom
+            BevelOuter = bvNone
+            TabOrder = 0
+          end
+          object Panel1: TPanel
+            Left = 0
+            Height = 475
+            Top = 0
+            Width = 371
+            Align = alClient
+            BevelOuter = bvLowered
+            ClientHeight = 475
+            ClientWidth = 371
+            TabOrder = 1
+            object dxDBGrid1: TExtDBGrid
+              Left = 1
+              Height = 473
+              Top = 1
+              Width = 369
+              TitleButtons = False
+              AutoSort = False
+              Columns = <              
+                item
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Mot clef'
+                  Title.Orientation = toHorizontal
+                  Width = 231
+                  FieldName = 'TOKEN'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Utilisation'
+                  Title.Orientation = toHorizontal
+                  Width = 66
+                  FieldName = 'SOUS_TYPE'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end>
+              KeyStrokes = <              
+                item
+                  Command = rxgcShowFindDlg
+                  ShortCut = 16454
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowColumnsDlg
+                  ShortCut = 16471
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowFilterDlg
+                  ShortCut = 16468
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowSortDlg
+                  ShortCut = 16467
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowQuickFilter
+                  ShortCut = 16465
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcHideQuickFilter
+                  ShortCut = 16456
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcSelectAll
+                  ShortCut = 16449
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcDeSelectAll
+                  ShortCut = 16429
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcInvertSelection
+                  ShortCut = 16426
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcOptimizeColumnsWidth
+                  ShortCut = 16427
+                  Enabled = True
+                end>
+              OptionsRx = []
+              Align = alClient
+              Color = clWindow
+              DrawFullLine = False
+              FocusColor = clRed
+              SelectedColor = clHighlight
+              GridLineStyle = psSolid
+              DataSource = DataSource
+              FixedCols = 0
+              Options = [dgEditing, dgTitles, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete]
+              ParentColor = False
+              Scrollbars = ssAutoBoth
+              TabOrder = 0
+              TitleFont.CharSet = ANSI_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -11
+              TitleFont.Name = 'Tahoma'
+              OnExit = dxDBGrid1Column1PropertiesExit
+            end
+          end
+          object Panel8: TPanel
+            Left = 0
+            Height = 28
+            Top = 481
+            Width = 371
+            Align = alBottom
+            BevelOuter = bvLowered
+            ClientHeight = 28
+            ClientWidth = 371
+            TabOrder = 2
+            object btnImport: TFWImport
+              Cursor = crHandPoint
+              Left = 1
+              Top = 1
+              Width = 94
+              Caption = 'Importer'
+              TabOrder = 0
+              Align = alLeft
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = btnImportClick
+            end
+            object btnExport: TFWExport
+              Cursor = crHandPoint
+              Left = 95
+              Top = 1
+              Width = 105
+              Caption = 'Exporter'
+              TabOrder = 1
+              Align = alLeft
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = btnExportClick
+            end
+            object btnFermer: TFWClose
+              Cursor = crHandPoint
+              Left = 276
+              Hint = 'Ferme cette fenêtre.'
+              Top = 1
+              Width = 94
+              Caption = 'Fermer'
+              TabOrder = 2
+              ModalResult = 1
+              Align = alRight
+              Anchors = [akTop, akRight]
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+            end
+          end
+        end
+      end
+    end
+  end
+  object DataSource: TDatasource[1]
+    DataSet = Query
+    left = 279
+    top = 71
+  end
+  object Language: TYLanguage[2]
+    PathFromApplication = True
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -11
+    DefaultFont.Name = 'Tahoma'
+    Method = mRead
+    left = 256
+    top = 200
+  end
+  object Query: TIBTable[3]
+    Database = dm.ibd_BASE
+    Transaction = dm.IBTrans_Secondaire
+    AfterDelete = QueryAfterDelete
+    AfterInsert = QueryAfterInsert
+    BeforeDelete = QueryBeforeDelete
+    BeforePost = QueryBeforePost
+    BufferChunks = 1000
+    CachedUpdates = False
+    IndexFieldNames = 'ID'
+    TableName = 'REF_TOKEN_DATE'
+    left = 329
+    top = 74
+  end
+  object QueryClearErrors: TIBSQL[4]
+    Database = dm.ibd_BASE
+    ParamCheck = True
+    SQL.Strings = (
+      'delete from ref_token_date'
+      'where (langue=:langue) and (type_token<:min_type) and (type_token>:max_type)'
+    )
+    Transaction = dm.IBTrans_Secondaire
+    left = 304
+    top = 144
+  end
+end
