@@ -128,7 +128,6 @@ type
    FInifile : TIniFile;
    FLineHeight: Byte;
    FShowPrintRects:Boolean;
-   FDrawHeight,FDrawWidth:LongWord;
 
    procedure SetLoadFromIni(const AValue: Boolean);
    procedure SetSaveToIni(const AValue: Boolean);
@@ -171,7 +170,8 @@ type
     procedure AutoLoadIni; virtual;
 
     procedure Print     ( const DecalX, DecalY : Extended ); virtual; abstract;
-    procedure GetRectEncadrement(var R: TFloatRect); virtual; abstract;
+    procedure GetRectEncadrement(var R: TFloatRect); virtual; abstract; overload;
+    function  GetRectEncadrement: TRect; virtual; abstract; overload;
 
     function GetCleIndividuAtXY(const X,Y:integer;var sNom,sNaisDec:string;var iSexe,iGene,iParent:integer):integer; virtual; abstract;
     function IndiDansListe:integer; virtual; abstract;
@@ -183,8 +183,6 @@ type
     property Inifile : TIniFile read FInifile write FInifile;
     property FullRect : TFloatRect read FFullRect;
     property ReCalculate     : Boolean read FReCalculate     write FReCalculate;
-    property DrawWidth  : LongWord read FDrawWidth write FDrawWidth default 0;
-    property DrawHeight : LongWord read FDrawHeight write FDrawHeight default 0;
   published
    property ShowPrintRects: Boolean read FShowPrintRects write FShowPrintRects default True;
     property MargeLeft: single read FMargeLeft write FMargeLeft default GRAPH_DEFAULT_MARGE_LEFT;
@@ -1262,8 +1260,6 @@ begin
   FViewer    := nil;
   FInifile   := nil;
 
-  FDrawHeight:=0;
-  FDrawWidth :=0;
   Color := clWhite;
 end;
 

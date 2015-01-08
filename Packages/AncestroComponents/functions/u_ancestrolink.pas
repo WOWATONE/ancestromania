@@ -127,6 +127,7 @@ type
     procedure PaintGraph(const ACanvas : TCanvas ; const DecalX, DecalY: integer); override;
     procedure PaintGraphMiniature(const DecalX, DecalY: integer); override;
     procedure GetRectEncadrement(var R: TFloatRect); override;
+    function  GetRectEncadrement: TRect; override;
 
     procedure Print(const DecalX, DecalY: extended); override;
 
@@ -308,26 +309,62 @@ begin
   if not Assigned(Data) then
     Exit;
   //Rectangle de délimitation de tout le chantier
-  R.left := Maxint;
-  R.Top := Maxint;
-  R.Right := -Maxint;
-  R.Bottom := -Maxint;
-  with Data do
-    for n := 0 to Persons.Count - 1 do
-    begin
-      indi := TPersonLink(Persons[n]);
-      with indi do
-       Begin
-        if R.Left > A.XC then
-          R.Left := A.XC;
-        if R.Top > A.YC then
-          R.Top := A.YC;
-        if R.Right < B.XC then
-          R.Right := B.XC;
-        if R.Bottom < B.YC then
-          R.Bottom := B.YC;
-       end;
-    end;
+  with R do
+   Begin
+    left := Maxint;
+    Top := Maxint;
+    Right := -Maxint;
+    Bottom := -Maxint;
+    with Data do
+      for n := 0 to Persons.Count - 1 do
+      begin
+        indi := TPersonLink(Persons[n]);
+        with indi do
+         Begin
+          if Left > A.XC then
+            Left := A.XC;
+          if Top > A.YC then
+            Top := A.YC;
+          if Right < B.XC then
+            Right := B.XC;
+          if Bottom < B.YC then
+            Bottom := B.YC;
+         end;
+      end;
+   end;
+end;
+
+function TGraphLink.GetRectEncadrement: TRect;
+var
+  n: integer;
+  indi: TPersonLink;
+begin
+  if not Assigned(Data) then
+    Exit;
+  //Rectangle de délimitation de tout le chantier
+  with Result do
+   Begin
+    left := Maxint;
+    Top := Maxint;
+    Right := -Maxint;
+    Bottom := -Maxint;
+    with Data do
+      for n := 0 to Persons.Count - 1 do
+      begin
+        indi := TPersonLink(Persons[n]);
+        with indi do
+         Begin
+          if Left > A.XV then
+            Left := A.XV;
+          if Top > A.YV then
+            Top := A.YV;
+          if Right < B.XV then
+            Right := B.XV;
+          if Bottom < B.YV then
+            Bottom := B.YV;
+         end;
+      end;
+  End;
 end;
 
 procedure TGraphLink.PaintGraph(const ACanvas : TCanvas ; const DecalX, DecalY: integer);
@@ -366,61 +403,62 @@ begin
      Name := Font.Name;
     end;
   bIndiPresent := False;//ne sera activé que si indi en cours dans l'Liens
-  with Viewer, Data do
+  with Viewer, Data, ACanvas do
     for n := 0 to Persons.Count - 1 do
     begin
       indi := TPersonLink(Persons[n]);
-      ACanvas.Pen.Style := psSolid;
-      ACanvas.Brush.Style := bsSolid;
+      Pen.Style := psSolid;
+      Brush.Style := bsSolid;
 
       with indi do
        Begin
           //le cadre
           if Sexe = 1 then
           begin//homme
-            ACanvas.Pen.Color := FColorRectMan;
-            ACanvas.Brush.Color := FColorBackMan;
+            Pen.Color := FColorRectMan;
+            Brush.Color := FColorBackMan;
             if not FBackPaintWoman then
-              ACanvas.Brush.Style := bsClear;
+              Brush.Style := bsClear;
             CouleurFontSexe := FColorTextMan;
           end
           else
           begin//femme
-            ACanvas.Pen.Color := FColorRectWoman;
-            ACanvas.Brush.Color := FColorBackWoman;
+            Pen.Color := FColorRectWoman;
+            Brush.Color := FColorBackWoman;
             if not FBackPaintMan then
-              ACanvas.Brush.Style := bsClear;
+              Brush.Style := bsClear;
             CouleurFontSexe := FColorTextWoman;
           end;
           if FNumSosa > 0 then
           begin
-            ACanvas.Pen.Color := _COLOR_SOSA;
+            Pen.Color := _COLOR_SOSA;
           end;
           if KeyPerson = ActivePersonKey then
           begin
-            ACanvas.Pen.Width := 2;
+            Pen.Width := 2;
             bIndiPresent := True;
           end
           else
-            ACanvas.Pen.Width := 1;
-          ACanvas.Rectangle(A.XV + DecalX, A.YV + DecalY,
-            B.XV + DecalX, B.YV + DecalY);
+            Pen.Width := 1;
+
+          Rectangle(A.XV + DecalX, A.YV + DecalY,
+              B.XV + DecalX, B.YV + DecalY);
 
           //les traits
-          ACanvas.Pen.Width := 1;
-          ACanvas.Pen.Style := psSolid;
-          ACanvas.Pen.Color := FColorLinks;
+          Pen.Width := 1;
+          Pen.Style := psSolid;
+          Pen.Color := FColorLinks;
           if n < Persons.Count - 1 then
           begin
-            ACanvas.MoveTo(S.XV + DecalX, S.YV + DecalY);
-            ACanvas.LineTo(TPersonLink(Persons[n + 1]).C.XV + DecalX,
+            MoveTo(S.XV + DecalX, S.YV + DecalY);
+            LineTo(TPersonLink(Persons[n + 1]).C.XV + DecalX,
               TPersonLink(Persons[n + 1]).C.YV + DecalY);
           end;
 
           //les textes
           if ACanvas.Font.Size >= 1 then
           begin
-            ACanvas.Brush.Style := bsClear;
+            Brush.Style := bsClear;
             ACanvas.Font.Color := CouleurFontSexe;
 
             for TextPlots:=ltName to ltJob do
@@ -475,14 +513,14 @@ begin
               astring := FLettreE;
               lRect := Rect(A.XV, A.YV, B.XV, B.YV);
               FTextStyle.Alignment := taLeftJustify;
-              ACanvas.TextRect(lRect, lRect.Left, lRect.Top, astring, FTextStyle);
+              TextRect(lRect, lRect.Left, lRect.Top, astring, FTextStyle);
               l := ceil((lRect.Right - lRect.Left) / 2);
               h := ceil(-ACanvas.Font.Height / 2);
               lRect := Rect(C.XV + DecalX - l, C.YV + DecalY -
                 h, C.XV + DecalX + l, C.YV + DecalY + h);
-              ACanvas.Brush.Style := bsSolid;
+              Brush.Style := bsSolid;
               FTextStyle.Alignment := taCenter;
-              ACanvas.TextRect(lRect, lRect.Left, lRect.Top, astring, FTextStyle);
+              TextRect(lRect, lRect.Left, lRect.Top, astring, FTextStyle);
             end;
 
             if FLettreS > '' then
@@ -490,14 +528,14 @@ begin
               astring := FLettreS;
               lRect := Rect(A.XV, A.YV, B.XV, B.YV);
               FTextStyle.Alignment := taLeftJustify;
-              ACanvas.TextRect(lRect, lRect.Left, lRect.Top, astring, FTextStyle);
+              TextRect(lRect, lRect.Left, lRect.Top, astring, FTextStyle);
               l := ceil((lRect.Right - lRect.Left) / 2);
               h := ceil(-ACanvas.Font.Height / 2);
               lRect := Rect(S.XV + DecalX - l, S.YV + DecalY -
                 h, S.XV + DecalX + l, S.YV + DecalY + h);
-              ACanvas.Brush.Style := bsSolid;
+              Brush.Style := bsSolid;
               FTextStyle.Alignment := taCenter;
-              ACanvas.TextRect(lRect, lRect.Left, lRect.Top, astring, FTextStyle);
+              TextRect(lRect, lRect.Left, lRect.Top, astring, FTextStyle);
             end;
           end;
        end;

@@ -433,6 +433,7 @@ procedure TFGraphPaintBox.btnPrintPictureClick(Sender: TObject);
 var li_shiftx,li_shifty:Integer;
     lw_zoom : Word;
     lsi_Ratio : Single;
+    ARect:TRect;
 begin
   p_SetPageSetup(btnPrintPicture,cb_papersize.Text,ch_Portrait.Checked);
   with Viewer do
@@ -449,19 +450,27 @@ begin
          1:PrinterType:=pfPDF;
          2:PrinterType:=pfRTF;
        end;
-       if DrawWidth>DrawHeight
-        Then Orientation:=poLandscape
-        Else Orientation:=poPortrait;
-       ScreenRatio:=5/Data.Generations;
+       if Graph = PaintArc
+        Then ScreenRatio:=5 /Data.Generations
+        else ScreenRatio:=10/Data.Generations;
        ApplyZoomAtPoint(6,0,0);
        //create a correct resolution
-       DrawWidth :=round(DrawWidth *Zoom*ScreenRatio/lsi_Ratio/lw_zoom);
-       DrawHeight:=round(DrawHeight*Zoom*ScreenRatio/lsi_Ratio/lw_zoom);
-       Width :=DrawWidth;
-       Height:=DrawHeight;
+       ARect:=Graph.GetRectEncadrement();
+       with arect do
+        Begin
+         Left   :=round(Left  *Zoom*ScreenRatio/lsi_Ratio/lw_zoom);
+         Right  :=round(Right *Zoom*ScreenRatio/lsi_Ratio/lw_zoom);
+         Top    :=round(Top   *Zoom*ScreenRatio/lsi_Ratio/lw_zoom);
+         Bottom :=round(Bottom*Zoom*ScreenRatio/lsi_Ratio/lw_zoom);
+         Width :=Right -Left;
+         Height:=bottom-Top;
+        end;
+       if Width>Height
+        Then Orientation:=poLandscape
+        Else Orientation:=poPortrait;
        Canvas.Brush.Color:=clWhite;
        Canvas.FillRect(0,0,Width,Height);
-       PaintGraph(Canvas,ShiftX,ShiftY);
+       PaintGraph(Canvas,ARect.Left,ARect.Top);
        Modified := True ;
      finally
        //retrieve screen resolution
@@ -642,7 +651,6 @@ begin
     lNaisDec.Left:=lNaisDec.Left-deplacement;
   end;
 
-  btnPrintPicture.Visible:=fgraph=PaintArc;
   fgraph.Show;
   fMini .Show;
   Viewer.Data:=FData;
@@ -675,6 +683,7 @@ end;
 
 procedure TFGraphPaintBox.RefreshTout;
 begin
+  btnPrintPicture.Enabled:=False;
   Viewer.BeginUpdate;
   try
     Load;
@@ -697,6 +706,7 @@ begin
   Viewer.ZoomAll;
   if WindowState=wsMinimized then
     WindowState:=wsNormal;
+  btnPrintPicture.Enabled:=(Viewer.ViewYC.Count < 4) and (Viewer.ViewXC.Count < 4);
 end;
 
 procedure TFGraphPaintBox.Load;

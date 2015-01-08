@@ -156,6 +156,7 @@ type
 
     //disposition
     procedure GetRectEncadrement(var R: TFloatRect); override;
+    function GetRectEncadrement: TRect; override;
     procedure Print(const DecalX, DecalY: extended); override;
 
     function GetCleIndividuAtXY(const X, Y: integer; var sNom, sNaisDec: string;
@@ -346,19 +347,19 @@ begin
             begin
             if (Level and 1) = 1 then //impair
               begin
-              FA.YC := MargeTop + Level * (FSpaceBetween2Gen + Hboite + decalVmar / 2) - decalVmar / 2;
-              FB.YC := FA.YC + Hboite + decalVmar;
+                FA.YC := MargeTop + Level * (FSpaceBetween2Gen + Hboite + decalVmar / 2) - decalVmar / 2;
+                FB.YC := FA.YC + Hboite + decalVmar;
               end
             else
               begin
-              FA.YC := MargeTop + Level * (FSpaceBetween2Gen + Hboite + decalVmar / 2);
-              FB.YC := FA.YC + Hboite;
+                FA.YC := MargeTop + Level * (FSpaceBetween2Gen + Hboite + decalVmar / 2);
+                FB.YC := FA.YC + Hboite;
               end;
             end
           else
             begin
-            FA.YC := MargeTop + Level * (FSpaceBetween2Gen + Hboite + decalVmar);
-            FB.YC := FA.YC + Hboite;
+              FA.YC := MargeTop + Level * (FSpaceBetween2Gen + Hboite + decalVmar);
+              FB.YC := FA.YC + Hboite;
             end;
           end
         else
@@ -684,39 +685,82 @@ var
   indi: TPersonTree;
 begin
   //Rectangle de délimitation de tout le chantier, en m
-  R.left := Maxint;
-  R.Top := Maxint;
-  R.Right := -Maxint;
-  R.Bottom := -Maxint;
+  with R do
+    Begin
+      left := Maxint;
+      Top := Maxint;
+      Right := -Maxint;
+      Bottom := -Maxint;
 
-  with Data do
-    for n := 0 to Persons.Count - 1 do
-      begin
-      indi := TPersonTree(Persons[n]);
+      with Data do
+        for n := 0 to Persons.Count - 1 do
+          begin
+          indi := TPersonTree(Persons[n]);
 
-      with indi do
-        begin
-        if R.Left > FA.XC then
-          R.Left := FA.XC;
-        if R.Right < FA.XC then
-          R.Right := FA.XC;
-        if R.Top > FA.YC then
-          R.Top := FA.YC;
-        if R.Bottom < FA.YC then
-          R.Bottom := FA.YC;
+          with indi do
+            begin
+            if Left > FA.XC then
+              Left := FA.XC;
+            if Right < FA.XC then
+              Right := FA.XC;
+            if Top > FA.YC then
+              Top := FA.YC;
+            if Bottom < FA.YC then
+              Bottom := FA.YC;
 
-        if R.Left > FB.XC then
-          R.Left := FB.XC;
-        if R.Right < FB.XC then
-          R.Right := FB.XC;
-        if R.Top > FB.YC then
-          R.Top := FB.YC;
-        if R.Bottom < FB.YC then
-          R.Bottom := FB.YC;
-        end;
-      end;
-  R.Right := R.Right + MargeLeft;
-  R.Bottom := R.Bottom + MargeTop;
+            if Left > FB.XC then
+              Left := FB.XC;
+            if Right < FB.XC then
+              Right := FB.XC;
+            if Top > FB.YC then
+              Top := FB.YC;
+            if Bottom < FB.YC then
+              Bottom := FB.YC;
+            end;
+          end;
+    end;
+end;
+
+function TGraphTree.GetRectEncadrement: TRect;
+var
+  n: integer;
+  indi: TPersonTree;
+begin
+  //Rectangle de délimitation de tout le chantier, en m
+  with Result do
+    Begin
+      left := Maxint;
+      Top := Maxint;
+      Right := -Maxint;
+      Bottom := -Maxint;
+
+      with Data do
+        for n := 0 to Persons.Count - 1 do
+          begin
+          indi := TPersonTree(Persons[n]);
+
+          with indi do
+            begin
+            if Left > FA.XV then
+              Left := FA.XV;
+            if Right < FA.XV then
+              Right := FA.XV;
+            if Top > FA.YV then
+              Top := FA.YV;
+            if Bottom < FA.YV then
+              Bottom := FA.YV;
+
+            if Left > FB.XV then
+              Left := FB.XV;
+            if Right < FB.XV then
+              Right := FB.XV;
+            if Top > FB.YV then
+              Top := FB.YV;
+            if Bottom < FB.YV then
+              Bottom := FB.YV;
+            end;
+          end;
+    end;
 end;
 
 procedure TGraphTree.PaintGraph(const ACanvas : TCanvas ; const DecalX, DecalY: integer);
@@ -759,7 +803,7 @@ begin
   h1 := Abs(round(fSizeFont * 2.5));//hauteur de la boîte mariage si une ligne
   h2 := Abs(round(fSizeFont * 4));//si 2 lignes
   bIndiPresent := False;//ne sera activé que si indi en cours dans l'arbre
-  with Data do
+  with Data, ACanvas do
     for n := 0 to Persons.Count - 1 do
       begin
       indi := TPersonTree(Persons[n]);
@@ -767,59 +811,60 @@ begin
         begin
         if Implexe <> '' then
           begin
-          ACanvas.Pen.Style := psDot;
-          ACanvas.Brush.Style := bsFDiagonal;
+          Pen.Style := psDot;
+          Brush.Style := bsFDiagonal;
           end
         else
           begin
-          ACanvas.Pen.Style := psSolid;
-          ACanvas.Brush.Style := bsSolid;
+          Pen.Style := psSolid;
+          Brush.Style := bsSolid;
           end;
 
         //le cadre
         if Sexe = 1 then
           begin
           //homme
-          ACanvas.Pen.Color := FColors[teRectMan];
-          ACanvas.Brush.Color := FColors[teBackMan];
+          Pen.Color := FColors[teRectMan];
+          Brush.Color := FColors[teBackMan];
           if not (teBackMan in FShowBack) then
-            ACanvas.Brush.Style := bsClear;
+            Brush.Style := bsClear;
           CouleurFontSexe := FColors[teTextMan];
           end
         else
           begin
           //femme
-          ACanvas.Pen.Color := FColors[teRectWoman];
-          ACanvas.Brush.Color := FColors[teBackWoman];
+          Pen.Color := FColors[teRectWoman];
+          Brush.Color := FColors[teBackWoman];
           if not (teBackWoman in FShowBack) then
-            ACanvas.Brush.Style := bsClear;
+            Brush.Style := bsClear;
           CouleurFontSexe := FColors[teTextWoman];
           end;
         if NumSosa > 0 then //AL2010
           begin
-          ACanvas.Pen.Color := FColors[teSOSA];
+          Pen.Color := FColors[teSOSA];
           //CouleurFontSexe:=_COLOR_SOSA;
           end;
         if KeyPerson = KeyFirst then
           begin
-          ACanvas.Pen.Width := 2;
+          Pen.Width := 2;
           bIndiPresent := True;
           end
         else
-          ACanvas.Pen.Width := 1;
+          Pen.Width := 1;
         if (toDescent in FOptions) and (ttBirthDay in FShowTexts) and
           ((Level and 1) = 1) then
           begin
-          ACanvas.RoundRect(FA.XV + DecalX, FA.YV + DecalY, FB.XV + DecalX, FB.YV + DecalY
+          RoundRect(FA.XV + DecalX, FA.YV + DecalY, FB.XV + DecalX, FB.YV + DecalY
             , round(fSizeFont), round(fSizeFont));
           end
         else
-          ACanvas.Rectangle(FA.XV + DecalX, FA.YV + DecalY, FB.XV + DecalX, FB.YV + DecalY);
+          Rectangle(FA.XV + DecalX, FA.YV + DecalY, FB.XV + DecalX, FB.YV + DecalY);
+        // full size of graph
         //            writeln ( InttoStr ( FA.XV+DecalX ) + ' ' + InttoStr ( FA.YV +DecalX) + ' ' + InttoStr ( FB.XV+DecalX ) + ' ' + InttoStr ( FB.YV+DecalX ) + ' ' + FloattoStr ( fSizeFont) + ' ' + FloattoStr ( fSizeFont ));
         //les traits
-        ACanvas.Pen.Width := 1;
-        ACanvas.Pen.Style := psSolid;
-        ACanvas.Pen.Color := FColors[teLink];
+        Pen.Width := 1;
+        Pen.Style := psSolid;
+        Pen.Color := FColors[teLink];
         ym := 0;
         if Childs.Count > 0 then
           begin
@@ -829,19 +874,25 @@ begin
             if (FOptions * [toDescent, toInverted] = [toDescent]) or
               (FOptions * [toDescent, toInverted] = [toInverted]) then
               begin
-              ACanvas.MoveTo(FC.XV + DecalX, FB.YV + DecalY);
+              MoveTo(FC.XV + DecalX, FB.YV + DecalY);
               ym := round((FB.YV + indiChild.FA.YV) / 2 + DecalY);
-              ACanvas.LineTo(FC.XV + DecalX, ym);
-              ACanvas.LineTo(indiChild.FC.XV + DecalX, ym);
-              ACanvas.LineTo(indiChild.FC.XV + DecalX, indiChild.FA.YV + DecalY);
+              LineTo(FC.XV + DecalX, ym);
+              with indiChild do
+                Begin
+                  LineTo(indiChild.FC.XV + DecalX, ym);
+                  LineTo(FC.XV + DecalX, FA.YV + DecalY);
+                end;
               end
             else
               begin
-              ACanvas.MoveTo(FC.XV + DecalX, FA.YV + DecalY);
+              MoveTo(FC.XV + DecalX, FA.YV + DecalY);
               ym := round((FA.YV + indiChild.FB.YV) / 2 + DecalY);
-              ACanvas.LineTo(FC.XV + DecalX, ym);
-              ACanvas.LineTo(indiChild.FC.XV + DecalX, ym);
-              ACanvas.LineTo(indiChild.FC.XV + DecalX, indiChild.FB.YV + DecalY);
+              LineTo(FC.XV + DecalX, ym);
+              with indiChild do
+                Begin
+                  LineTo(FC.XV + DecalX, ym);
+                  LineTo(FC.XV + DecalX, FB.YV + DecalY);
+                end;
               end;
             end;
           end;
@@ -894,10 +945,10 @@ begin
               xb := FB.XV + DecalX;
               ya := ym - (h div 2);
               yb := ya + h;
-              ACanvas.Pen.Color := FColors[teLink];
-              ACanvas.Brush.Color := clWhite;
-              ACanvas.Brush.Style := bsSolid;
-              ACanvas.RoundRect(xa, ya, xb, yb, ACanvas.Font.Size, ACanvas.Font.Size);
+              Pen.Color := FColors[teLink];
+              Brush.Color := clWhite;
+              Brush.Style := bsSolid;
+              RoundRect(xa, ya, xb, yb, ACanvas.Font.Size, ACanvas.Font.Size);
               if ACanvas.Font.Size >= 1 then
                 begin
                 ACanvas.Font.Color := FColors[teLink];
@@ -905,7 +956,7 @@ begin
                   ACanvas.Font.Style := ACanvas.Font.Style + [fsUnderline]
                 else
                   ACanvas.Font.Style := ACanvas.Font.Style - [fsUnderline];
-                ACanvas.Brush.Style := bsClear;
+                Brush.Style := bsClear;
                 if FTexts[ttMarriage] <> '' then
                   begin
                   s := 'x ' + FTexts[ttMarriage];
@@ -925,7 +976,7 @@ begin
 
         if ACanvas.Font.Size >= 1 then
           begin
-          ACanvas.Brush.Style := bsClear;
+          Brush.Style := bsClear;
 
           ACanvas.Font.Color := CouleurFontSexe;
           ACanvas.Font.Style := ACanvas.Font.Style - [fsUnderline];
@@ -1004,7 +1055,7 @@ begin
                 s := FTexts[ttSOSA];
                 l := ACanvas.TextWidth(s);
                 lRect := Rect(FB.XV + DecalX - 2 - l, FB.YV + DecalY - ACanvas.TextHeight(s), FB.XV + DecalX, FB.YV + DecalY);
-                ACanvas.Brush.Style := bsSolid;
+                Brush.Style := bsSolid;
                 DrawText(ACanvas.handle, PChar(s), -1, lRect,
                   DT_CENTER + DT_VCENTER);
                 end;

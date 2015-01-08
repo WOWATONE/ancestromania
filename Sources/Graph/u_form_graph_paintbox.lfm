@@ -640,7 +640,6 @@ inherited FGraphPaintBox: TFGraphPaintBox
       ParentFont = False
       ParentShowHint = False
       ShowHint = True
-      Visible = False
       OnClick = btnPrintPictureClick
     end
   end

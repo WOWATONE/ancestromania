@@ -177,6 +177,7 @@ type
     procedure Print(const DecalX,DecalY:Extended); override;
 
     procedure GetRectEncadrement(var R: TFloatRect); override;
+    function  GetRectEncadrement: TRect; override;
     function GetCleIndividuAtXY(const X,Y:integer;var sNom,sNaisDec:string;var iSexe,iGene,iParent:integer):integer; override;
     procedure SetCheckShow(const AShow : TGraphArcText; const ACheck : Boolean ); virtual;
   published
@@ -394,43 +395,92 @@ var
   aCercle: TPlotList;
 begin
   //Rectangle de délimitation de tout le chantier, en m
-  R.left := Maxint;
-  R.Top := Maxint;
-  R.Right := -Maxint;
-  R.Bottom := -Maxint;
+  with R do
+    Begin
+      left := Maxint;
+      Top := Maxint;
+      Right := -Maxint;
+      Bottom := -Maxint;
 
-  //le centre
-  with ( TGraphArcData ( Data )) do
-    begin
-      if R.Left > fCentre.XC then
-        R.Left := fCentre.XC;
-      if R.Right < fCentre.XC then
-        R.Right := fCentre.XC;
-      if R.Top > fCentre.YC then
-        R.Top := fCentre.YC;
-      if R.Bottom < fCentre.YC then
-        R.Bottom := fCentre.YC;
-
-      //les cercles
-      for n := 0 to fCercleList.Count - 1 do
-      begin
-        aCercle := TPlotList(fCercleList[n]);
-        for k := 0 to aCercle.Count - 1 do
+      //le centre
+      with ( TGraphArcData ( Data )) do
         begin
-          if R.Left > aCercle[k].XC then
-            R.Left := aCercle[k].XC;
-          if R.Right < aCercle[k].XC then
-            R.Right := aCercle[k].XC;
-          if R.Top > aCercle[k].YC then
-            R.Top := aCercle[k].YC;
-          if R.Bottom < aCercle[k].YC then
-            R.Bottom := aCercle[k].YC;
-        end;
-      end;
+          if Left > fCentre.XC then
+            Left := fCentre.XC;
+          if Right < fCentre.XC then
+            Right := fCentre.XC;
+          if Top > fCentre.YC then
+            Top := fCentre.YC;
+          if Bottom < fCentre.YC then
+            Bottom := fCentre.YC;
 
+          //les cercles
+          for n := 0 to fCercleList.Count - 1 do
+          begin
+            aCercle := TPlotList(fCercleList[n]);
+            for k := 0 to aCercle.Count - 1 do
+            begin
+              if Left > aCercle[k].XC then
+                Left := aCercle[k].XC;
+              if Right < aCercle[k].XC then
+                Right := aCercle[k].XC;
+              if Top > aCercle[k].YC then
+                Top := aCercle[k].YC;
+              if Bottom < aCercle[k].YC then
+                Bottom := aCercle[k].YC;
+            end;
+          end;
+
+        end;
+      Right := Right + MargeLeft;
+      Bottom := Bottom + MargeTop;
     end;
-  R.Right := R.Right + MargeLeft;
-  R.Bottom := R.Bottom + MargeTop;
+end;
+
+function TGraphArc.GetRectEncadrement: TRect;
+var
+  n, k: integer;
+  aCercle: TPlotList;
+begin
+  //Rectangle de délimitation de tout le chantier, en m
+  with Result do
+    Begin
+      left := Maxint;
+      Top := Maxint;
+      Right := -Maxint;
+      Bottom := -Maxint;
+
+      //le centre
+      with ( TGraphArcData ( Data )) do
+        begin
+          if Left > fCentre.XV then
+            Left := fCentre.XV;
+          if Right < fCentre.XV then
+            Right := fCentre.XV;
+          if Top > fCentre.YV then
+            Top := fCentre.YV;
+          if Bottom < fCentre.YV then
+            Bottom := fCentre.YV;
+
+          //les cercles
+          for n := 0 to fCercleList.Count - 1 do
+          begin
+            aCercle := TPlotList(fCercleList[n]);
+            for k := 0 to aCercle.Count - 1 do
+            begin
+              if Left > aCercle[k].XV then
+                Left := aCercle[k].XV;
+              if Right < aCercle[k].XV then
+                Right := aCercle[k].XV;
+              if Top > aCercle[k].YV then
+                Top := aCercle[k].YV;
+              if Bottom < aCercle[k].YV then
+                Bottom := aCercle[k].YV;
+            end;
+          end;
+
+        end;
+    end;
 end;
 
 procedure TGraphArc.PaintGraph(const ACanvas : TCanvas ; const DecalX, DecalY: integer);
@@ -441,8 +491,6 @@ var
   R: TRect;
   indi: TPersonArc;
 begin
-  DrawWidth :=0;
-  DrawHeight:=0;
   //on adapte la taille en fonction du zoom
   with ACanvas,Font do
     Begin
@@ -456,8 +504,6 @@ begin
     begin
       LastCercle := TPlotList(last);
       // draw size
-      DrawWidth  := round((Count+1) * fRayonV+DecalX)*2;
-      DrawHeight := LastCercle.last.YV + 2 + (DecalY*2);
 //      writeln('right '+IntToStr(Right)+'aCercle[0].XV '+IntToStr(aCercle[0].XV)+'aCercle.last.XV '+IntToStr(aCercle.last.XV));
 //      writeln('bottom '+IntToStr(Bottom)+'aCercle[0].YV '+IntToStr(aCercle[0].YV)+'aCercle.last.YV '+IntToStr(aCercle.last.YV));
 
