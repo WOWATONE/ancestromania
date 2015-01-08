@@ -443,43 +443,13 @@ var
   aCercle: TPlotList;
 begin
   //Rectangle de délimitation de tout le chantier, en m
-  with Result do
-    Begin
-      left := Maxint;
-      Top := Maxint;
-      Right := -Maxint;
-      Bottom := -Maxint;
+  with Result, TGraphArcData ( Data ) do
+    begin
+      left   := 0;
+      Top    := 0;
+      Right  := round((Generations) * fRayonV);
+      Bottom := fCentre.YV + 2;
 
-      //le centre
-      with ( TGraphArcData ( Data )) do
-        begin
-          if Left > fCentre.XV then
-            Left := fCentre.XV;
-          if Right < fCentre.XV then
-            Right := fCentre.XV;
-          if Top > fCentre.YV then
-            Top := fCentre.YV;
-          if Bottom < fCentre.YV then
-            Bottom := fCentre.YV;
-
-          //les cercles
-          for n := 0 to fCercleList.Count - 1 do
-          begin
-            aCercle := TPlotList(fCercleList[n]);
-            for k := 0 to aCercle.Count - 1 do
-            begin
-              if Left > aCercle[k].XV then
-                Left := aCercle[k].XV;
-              if Right < aCercle[k].XV then
-                Right := aCercle[k].XV;
-              if Top > aCercle[k].YV then
-                Top := aCercle[k].YV;
-              if Bottom < aCercle[k].YV then
-                Bottom := aCercle[k].YV;
-            end;
-          end;
-
-        end;
     end;
 end;
 

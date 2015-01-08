@@ -854,8 +854,8 @@ begin
         if (toDescent in FOptions) and (ttBirthDay in FShowTexts) and
           ((Level and 1) = 1) then
           begin
-          RoundRect(FA.XV + DecalX, FA.YV + DecalY, FB.XV + DecalX, FB.YV + DecalY
-            , round(fSizeFont), round(fSizeFont));
+            RoundRect(FA.XV + DecalX, FA.YV + DecalY, FB.XV + DecalX, FB.YV + DecalY
+              , round(fSizeFont), round(fSizeFont));
           end
         else
           Rectangle(FA.XV + DecalX, FA.YV + DecalY, FB.XV + DecalX, FB.YV + DecalY);
