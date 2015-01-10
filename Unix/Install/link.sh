@@ -16,7 +16,15 @@ ln -s ../i386-win32/Scripts ./x86_64-linux/
 ln -s ../i386-win32/AncestroWeb ./x86_64-linux-k/
 ln -s ../i386-win32/Images ./x86_64-linux-k/
 ln -s ../i386-win32/Scripts ./x86_64-linux-k/
-cp ./i386-win32/Ancestromania.ini ./i386-linux/
-cp ./i386-win32/Ancestromania.ini ./i386-linux-k/
-cp ./i386-win32/Ancestromania.ini ./x86_64-linux/
-cp ./i386-win32/Ancestromania.ini ./x86_64-linux-k/
+
+ln -s ../Windows/Output/Update_AncestroIntel.exe ./Update/
+ln -s ../Windows/Output/Update_AncestroIntel64.exe ./Update/
+ln -s ../Unix/Unsigned/Update_AncestroIntel.deb ./Update/
+ln -s ../Unix/Unsigned/Update_AncestroIntel.rpm ./Update/
+ln -s ../Unix/Unsigned/Update_AncestroIntel.tar.gz ./Update/
+ln -s ../Unix/Unsigned/Update_AncestroIntel64.deb ./Update/
+ln -s ../Unix/Unsigned/Update_AncestroIntel64.rpm ./Update/
+ln -s ../Unix/Unsigned/Update_AncestroIntel64.tar.gz ./Update/
+ln -s ../Docs/Evolutions.html ./Update/
+ln -s ../Docs/Evolutions.rtf ./Update/
+ln -s ../Docs/Evolutions.txt ./Update/

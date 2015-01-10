@@ -687,8 +687,8 @@ begin
   //Rectangle de délimitation de tout le chantier, en m
   with R do
     Begin
-      left := Maxint;
-      Top := Maxint;
+      left := 0;
+      Top := 0;
       Right := -Maxint;
       Bottom := -Maxint;
 
@@ -699,21 +699,13 @@ begin
 
           with indi do
             begin
-            if Left > FA.XC then
-              Left := FA.XC;
             if Right < FA.XC then
               Right := FA.XC;
-            if Top > FA.YC then
-              Top := FA.YC;
             if Bottom < FA.YC then
               Bottom := FA.YC;
 
-            if Left > FB.XC then
-              Left := FB.XC;
             if Right < FB.XC then
               Right := FB.XC;
-            if Top > FB.YC then
-              Top := FB.YC;
             if Bottom < FB.YC then
               Bottom := FB.YC;
             end;
@@ -729,8 +721,8 @@ begin
   //Rectangle de délimitation de tout le chantier, en m
   with Result do
     Begin
-      left := Maxint;
-      Top := Maxint;
+      left := 0;
+      Top  := 0;
       Right := -Maxint;
       Bottom := -Maxint;
 
@@ -741,21 +733,13 @@ begin
 
           with indi do
             begin
-            if Left > FA.XV then
-              Left := FA.XV;
             if Right < FA.XV then
               Right := FA.XV;
-            if Top > FA.YV then
-              Top := FA.YV;
             if Bottom < FA.YV then
               Bottom := FA.YV;
 
-            if Left > FB.XV then
-              Left := FB.XV;
             if Right < FB.XV then
               Right := FB.XV;
-            if Top > FB.YV then
-              Top := FB.YV;
             if Bottom < FB.YV then
               Bottom := FB.YV;
             end;
