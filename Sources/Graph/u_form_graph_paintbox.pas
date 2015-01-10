@@ -464,13 +464,13 @@ begin
          Bottom :=round(Bottom*Zoom*ScreenRatio/lsi_Ratio/lw_zoom);
          Width :=Right -Left;
          Height:=bottom-Top;
+         if Width>Height
+          Then Orientation:=poLandscape
+          Else Orientation:=poPortrait;
+         Canvas.Brush.Color:=clWhite;
+         Canvas.FillRect(0,0,Width,Height);
+         PaintGraph(Canvas,-Left,0);
         end;
-       if Width>Height
-        Then Orientation:=poLandscape
-        Else Orientation:=poPortrait;
-       Canvas.Brush.Color:=clWhite;
-       Canvas.FillRect(0,0,Width,Height);
-       PaintGraph(Canvas,ARect.Left,ARect.Top);
        Modified := True ;
      finally
        //retrieve screen resolution

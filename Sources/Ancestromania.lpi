@@ -464,10 +464,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_graph_paintbox"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="1" Y="1"/>
+        <TopLine Value="453"/>
+        <CursorPos X="86" Y="467"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -8480,7 +8481,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="137" Y="19"/>
-        <UsageCount Value="76"/>
+        <UsageCount Value="77"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1188>
       <Unit1189>
@@ -8599,11 +8600,10 @@
       <Unit1202>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
         <UnitName Value="u_ancestroarc"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="10"/>
         <WindowIndex Value="0"/>
         <TopLine Value="438"/>
-        <CursorPos X="35" Y="450"/>
+        <CursorPos X="75" Y="450"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit1202>
@@ -8749,123 +8749,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="../Packages/AncestroComponents/functions/u_ancestrolink.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Caret Line="130" Column="33" TopLine="96"/>
       </Position1>
       <Position2>
-        <Filename Value="../Packages/AncestroComponents/functions/u_ancestrolink.pas"/>
-        <Caret Line="200" Column="85" TopLine="175"/>
+        <Filename Value="../Packages/AncestroComponents/components/u_ancestrotree.pas"/>
+        <Caret Line="720" Column="1" TopLine="709"/>
       </Position2>
       <Position3>
-        <Filename Value="../Packages/AncestroComponents/functions/u_ancestrolink.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="../Packages/AncestroComponents/components/u_ancestrotree.pas"/>
+        <Caret Line="159" Column="50" TopLine="123"/>
       </Position3>
       <Position4>
-        <Filename Value="../Packages/AncestroComponents/functions/u_ancestrolink.pas"/>
-        <Caret Line="130" Column="33" TopLine="96"/>
+        <Filename Value="../Packages/AncestroComponents/components/u_ancestrotree.pas"/>
+        <Caret Line="744" Column="26" TopLine="726"/>
       </Position4>
       <Position5>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestrotree.pas"/>
-        <Caret Line="720" Column="1" TopLine="709"/>
+        <Caret Line="1355" Column="38" TopLine="1323"/>
       </Position5>
       <Position6>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestrotree.pas"/>
-        <Caret Line="159" Column="50" TopLine="123"/>
+        <Caret Line="746" Column="1" TopLine="730"/>
       </Position6>
       <Position7>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestrotree.pas"/>
-        <Caret Line="744" Column="26" TopLine="726"/>
+        <Caret Line="1353" Column="54" TopLine="1321"/>
       </Position7>
       <Position8>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestrotree.pas"/>
-        <Caret Line="1355" Column="38" TopLine="1323"/>
+        <Caret Line="802" Column="1" TopLine="783"/>
       </Position8>
       <Position9>
-        <Filename Value="../Packages/AncestroComponents/components/u_ancestrotree.pas"/>
-        <Caret Line="746" Column="1" TopLine="730"/>
-      </Position9>
-      <Position10>
-        <Filename Value="../Packages/AncestroComponents/components/u_ancestrotree.pas"/>
-        <Caret Line="1353" Column="54" TopLine="1321"/>
-      </Position10>
-      <Position11>
-        <Filename Value="../Packages/AncestroComponents/components/u_ancestrotree.pas"/>
-        <Caret Line="802" Column="1" TopLine="783"/>
-      </Position11>
-      <Position12>
         <Filename Value="../Packages/AncestroComponents/functions/u_ancestrolink.pas"/>
         <Caret Line="352" Column="3" TopLine="337"/>
-      </Position12>
-      <Position13>
+      </Position9>
+      <Position10>
         <Filename Value="../Packages/AncestroComponents/functions/u_ancestrolink.pas"/>
         <Caret Line="398" Column="1" TopLine="379"/>
-      </Position13>
-      <Position14>
+      </Position10>
+      <Position11>
         <Filename Value="Graph/u_form_graph_paintbox.pas"/>
         <Caret Line="468" Column="25" TopLine="442"/>
+      </Position11>
+      <Position12>
+        <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
+        <Caret Line="450" Column="18" TopLine="440"/>
+      </Position12>
+      <Position13>
+        <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
+        <Caret Line="117" Column="16" TopLine="102"/>
+      </Position13>
+      <Position14>
+        <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
+        <Caret Line="69" Column="3" TopLine="56"/>
       </Position14>
       <Position15>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
-        <Caret Line="450" Column="18" TopLine="440"/>
+        <Caret Line="888" Column="40" TopLine="868"/>
       </Position15>
       <Position16>
-        <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
-        <Caret Line="117" Column="16" TopLine="102"/>
+        <Filename Value="Graph/u_form_graph_paintbox.pas"/>
+        <Caret Line="450" Column="1" TopLine="447"/>
       </Position16>
       <Position17>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
-        <Caret Line="69" Column="3" TopLine="56"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position17>
       <Position18>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
-        <Caret Line="888" Column="40" TopLine="868"/>
+        <Caret Line="851" Column="46" TopLine="831"/>
       </Position18>
       <Position19>
-        <Filename Value="Graph/u_form_graph_paintbox.pas"/>
-        <Caret Line="450" Column="1" TopLine="447"/>
+        <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
+        <Caret Line="852" Column="45" TopLine="832"/>
       </Position19>
       <Position20>
-        <Filename Value="Graph/u_form_graph_paintbox.pas"/>
-        <Caret Line="1" Column="1" TopLine="27"/>
+        <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
+        <Caret Line="864" Column="25" TopLine="844"/>
       </Position20>
       <Position21>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Caret Line="851" Column="46" TopLine="845"/>
       </Position21>
       <Position22>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
-        <Caret Line="851" Column="46" TopLine="831"/>
+        <Caret Line="444" Column="12" TopLine="431"/>
       </Position22>
       <Position23>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
-        <Caret Line="852" Column="45" TopLine="832"/>
+        <Caret Line="387" Column="1" TopLine="384"/>
       </Position23>
       <Position24>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
-        <Caret Line="864" Column="25" TopLine="844"/>
+        <Caret Line="450" Column="48" TopLine="437"/>
       </Position24>
       <Position25>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
-        <Caret Line="851" Column="46" TopLine="845"/>
+        <Caret Line="451" Column="28" TopLine="438"/>
       </Position25>
       <Position26>
         <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
-        <Caret Line="444" Column="12" TopLine="431"/>
+        <Caret Line="128" Column="3" TopLine="103"/>
       </Position26>
       <Position27>
-        <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
-        <Caret Line="387" Column="1" TopLine="384"/>
+        <Filename Value="Graph/u_form_graph_paintbox.pas"/>
+        <Caret Line="9" Column="59" TopLine="1"/>
       </Position27>
       <Position28>
-        <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
-        <Caret Line="450" Column="48" TopLine="437"/>
+        <Filename Value="Graph/u_form_graph_paintbox.pas"/>
+        <Caret Line="373" Column="12" TopLine="352"/>
       </Position28>
       <Position29>
-        <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
-        <Caret Line="451" Column="28" TopLine="438"/>
+        <Filename Value="Graph/u_form_graph_paintbox.pas"/>
+        <Caret Line="635" Column="21" TopLine="615"/>
       </Position29>
       <Position30>
-        <Filename Value="../Packages/AncestroComponents/components/u_ancestroarc.pas"/>
-        <Caret Line="128" Column="3" TopLine="103"/>
+        <Filename Value="Graph/u_form_graph_paintbox.pas"/>
+        <Caret Line="373" Column="12" TopLine="360"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
