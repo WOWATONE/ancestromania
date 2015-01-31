@@ -119,9 +119,13 @@ inherited FtvAscendance: TFtvAscendance
           Width = 741
           Align = alClient
           Header.AutoSizeIndex = 0
-          Header.Columns = <>
+          Header.Columns = <          
+            item
+              Position = 0
+              Width = 737
+            end>
           Header.DefaultHeight = 17
-          Header.MainColumn = -1
+          Header.Options = [hoAutoResize, hoColumnResize, hoDrag, hoShowSortGlyphs, hoFullRepaintOnResize]
           Images = dm.ImgCouple
           ParentColor = True
           ParentShowHint = False
@@ -517,6 +521,10 @@ inherited FtvAscendance: TFtvAscendance
       Caption = 'Avec mariages'
       Checked = True
       OnClick = AvecmariagesClick
+    end
+    object FullFamily: TMenuItem
+      Caption = 'Avec frères et sœurs'
+      OnClick = FullFamilyClick
     end
     object mIdentImplexes: TMenuItem
       Caption = 'Identification implexes'
