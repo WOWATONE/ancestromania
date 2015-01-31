@@ -38,6 +38,7 @@ type
     fpBoutons: TPanel;
     Label2: TLabel;
     Label3: TLabel;
+    FullFamily: TMenuItem;
     OnFormInfoIni: TOnFormInfoIni;
     Panel4: TPanel;
     Panel5: TPanel;
@@ -72,6 +73,7 @@ type
     N3: TMenuItem;
     NbrAscendants: TMenuItem;
     Panel2: TPanel;
+    procedure FullFamilyClick(Sender: TObject);
     procedure SuperFormCreate(Sender:TObject);
     procedure btnReconstruireClick(Sender:TObject);
     procedure mExportClick(Sender:TObject);
@@ -141,6 +143,11 @@ begin
   p_ReadReportsViewFromIni(f_GetMemIniFile);
 end;
 
+procedure TFtvAscendance.FullFamilyClick(Sender: TObject);
+begin
+
+end;
+
 procedure TFtvAscendance.Init_Arbre;
 begin
   fCleIndiDepart:=dm.individu_clef;
@@ -178,6 +185,31 @@ var
        Then p_FindNodeWithOrder(ATree,NextSibling, aindex,FoundNode);
      end;
   End;
+  procedure p_addInfos ( var as_text : String );
+  Begin
+    with IBQ_SQL do
+     Begin
+      if (AvecSOSA.Checked)and(FieldByName('NUM_SOSA').AsFloat>0) then
+        AppendStr(as_text,'['+FloatToStr(FieldByName('NUM_SOSA').AsFloat)+'] ');
+      AppendStr(as_text,FieldByName('NOM').AsString);
+      if length(FieldByName('PRENOM').AsString)>0 then
+      begin
+        AppendStr(as_text,', '+FieldByName('PRENOM').AsString);
+      end;
+      if Avecvilles.Checked then
+      begin
+        AppendStr(as_text,GetStringNaissanceDeces(FaitDateVille(FieldByName('DATE_NAISSANCE').AsString
+          ,FieldByName('VILLE_NAISSANCE').AsString),FaitDateVille(FieldByName('DATE_DECES').AsString
+          ,FieldByName('VILLE_DECES').AsString)));
+      end
+      else
+      begin
+        AppendStr(as_text,GetStringNaissanceDeces(FieldByName('DATE_NAISSANCE').AsString
+          ,FieldByName('DATE_DECES').AsString));
+      end;
+     end;
+  end;
+
 begin
   Screen.Cursor:=crHourglass;
   TreeView1.Visible:=false;
@@ -194,13 +226,17 @@ begin
   with IBQ_SQL do
   begin
     close;
-    SQL.Clear;
-    SQL.Add('select t.indi'
+    SQL.Text:='select t.indi'
       +',i.nom'
       +',i.prenom'
       +',i.sexe'
-      +',i.num_sosa'
-      +',t.enfant'
+      +',i.num_sosa';
+   if FullFamily.Checked then
+   begin
+     SQL.Add( ',i.cle_pere'
+             +',i.cle_mere');
+   end;
+   SQL.Add(',t.enfant'
       +',t.ordre'
       +',t.sosa'
       +',t.implexe'
@@ -234,6 +270,10 @@ begin
     end;
     SQL.Add('from (select * from proc_ascend_ordonnee(:indi,:max_niveau,:mode_implexe)) t'
       +' inner join individu i on i.cle_fiche=t.indi');
+    if FullFamily.Checked then
+    begin
+      SQL.Add('left join individu e on e.cle_pere=i.cle_fiche');
+    end;
     if Avecvilles.Checked then
     begin
       SQL.Add('left join evenements_ind n on n.ev_ind_kle_fiche=i.cle_fiche and n.ev_ind_type=''BIRT'''
@@ -249,7 +289,8 @@ begin
     ParamByName('mode_implexe').AsInteger:=1;
 
     open;
-    while not Eof do
+    Locate('indi',cleAnc,[]);
+    while true do
     begin
       with TreeView1 do
       begin
@@ -277,6 +318,7 @@ begin
           if FieldByName('implexe').IsNull then
             inc(i);
           libelle:='';
+          famille:='';
           if Avecmariages.Checked then
           begin
             if Avecvilles.Checked then
@@ -286,27 +328,20 @@ begin
             if length(sTemp)>0 then
               libelle:='{X '+sTemp+'} {';
           end;
-          if (AvecSOSA.Checked)and(FieldByName('NUM_SOSA').AsFloat>0) then
-            libelle:=libelle+'['+FloatToStr(FieldByName('NUM_SOSA').AsFloat)+'] ';
-          libelle:=libelle+FieldByName('NOM').AsString;
-          if length(FieldByName('PRENOM').AsString)>0 then
-          begin
-            libelle:=libelle+', '+FieldByName('PRENOM').AsString;
-          end;
-          if Avecvilles.Checked then
-          begin
-            libelle:=libelle+GetStringNaissanceDeces(FaitDateVille(FieldByName('DATE_NAISSANCE').AsString
-              ,FieldByName('VILLE_NAISSANCE').AsString),FaitDateVille(FieldByName('DATE_DECES').AsString
-              ,FieldByName('VILLE_DECES').AsString));
-          end
-          else
-          begin
-            libelle:=libelle+GetStringNaissanceDeces(FieldByName('DATE_NAISSANCE').AsString
-              ,FieldByName('DATE_DECES').AsString);
-          end;
+          p_addInfos ( libelle );
+          Filter:='CLE_PERE='+FieldByName('indi').AsString+' OR CLE_MERE='+FieldByName('indi').AsString;
+          Filtered:=True;
+          if not IsEmpty Then
+           while not eof do
+           Begin
+            AppendStr(famille,' '+FieldByName('PRENOM').AsString);
+            p_addInfos ( famille );
+            Next;
+           end;
          end;
       end;
-      next;
+      if not FieldByName('enfant').IsNull Then
+        Locate('indi',FieldByName('enfant').AsInteger,[]);
     end;
     close;
   end;
@@ -523,7 +558,10 @@ procedure TFtvAscendance.TreeView1GetText(Sender: TBaseVirtualTree;
   Node: PVirtualNode; Column: TColumnIndex; TextType: TVSTTextType;
   var CellText: String);
 begin
-  CellText:=PIndivTree(TreeView1.GetNodeData(Node))^.libelle;
+  case Column of
+    0 : CellText:=PIndivTree(TreeView1.GetNodeData(Node))^.libelle;
+    1 : CellText:=PIndivTree(TreeView1.GetNodeData(Node))^.famille;
+  end;
 end;
 
 procedure TFtvAscendance.TreeView1MouseMove(Sender: TObject;
