@@ -1,7 +1,7 @@
 inherited FtvAscendance: TFtvAscendance
   Left = 232
   Height = 479
-  Top = 144
+  Top = 96
   Width = 755
   Caption = 'Arbre d''ascendance'
   ClientHeight = 479
@@ -14,6 +14,7 @@ inherited FtvAscendance: TFtvAscendance
   KeyPreview = True
   OnClose = SuperFormClose
   OnCreate = SuperFormCreate
+  OnDestroy = FormDestroy
   Position = poScreenCenter
   object pBorder: TPanel[0]
     Left = 0
@@ -100,6 +101,14 @@ inherited FtvAscendance: TFtvAscendance
             ParentColor = False
             TabOrder = 0
           end
+          object Label4: TLabel
+            Left = 404
+            Height = 14
+            Top = 23
+            Width = 37
+            Caption = 'Label4'
+            ParentColor = False
+          end
         end
         object Panel1: TPanel
           Left = 3
@@ -122,7 +131,7 @@ inherited FtvAscendance: TFtvAscendance
           Header.Columns = <          
             item
               Position = 0
-              Width = 737
+              Width = 739
             end>
           Header.DefaultHeight = 17
           Header.Options = [hoAutoResize, hoColumnResize, hoDrag, hoShowSortGlyphs, hoFullRepaintOnResize]
@@ -266,7 +275,7 @@ inherited FtvAscendance: TFtvAscendance
               Left = 177
               Height = 27
               Top = 0
-              Width = 41
+              Width = 57
               Align = alLeft
               OnChange = cxSpinNiveauxPropertiesChange
               ParentFont = False
@@ -546,16 +555,12 @@ inherited FtvAscendance: TFtvAscendance
       Caption = 'Génération'
     end
   end
-  object IBQ_SQL: TIBQuery[2]
+  object IBQ_SQL: TIBSQL[2]
     Database = dm.ibd_BASE
-    Transaction = dm.IBTrans_Courte
-    AutoCalcFields = False
-    BufferChunks = 1000
-    CachedUpdates = False
     GenerateParamNames = False
-    GeneratorField.ApplyOnEvent = gaeOnNewRecord
-    Params = <>
-    UniDirectional = True
+    UniqueParamNames = False
+    ParamCheck = True
+    Transaction = dm.IBTrans_Courte
     left = 200
     top = 88
   end
@@ -577,5 +582,17 @@ inherited FtvAscendance: TFtvAscendance
     SaveForm = [sfSavePos, sfSaveSize, sfSaveSizes]
     left = 170
     top = 253
+  end
+  object IBQ_Family: TIBSQL[6]
+    Database = dm.ibd_BASE
+    GenerateParamNames = False
+    UniqueParamNames = False
+    ParamCheck = True
+    SQL.Strings = (
+      ''
+    )
+    Transaction = dm.IBTrans_Courte
+    left = 228
+    top = 116
   end
 end

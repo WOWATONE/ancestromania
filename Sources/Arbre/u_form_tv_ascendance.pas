@@ -16,7 +16,7 @@ uses
   U_FormAdapt,Forms,
   VirtualTrees,ExtCtrls,StdCtrls,u_buttons_appli,
   ExtJvXPButtons, ExtJvXPCheckCtrls,Dialogs,
-  Controls,IBQuery,Menus,Classes,SysUtils,
+  Controls,IBSQL,Menus,Classes,SysUtils,
   PrintersDlgs, u_ancestropictimages,
   u_reports_components,
   u_framework_components, U_OnFormInfoIni, u_common_tree, Graphics;
@@ -36,9 +36,11 @@ type
     ch_pdf: TJvXPCheckbox;
     cxSpinNiveaux: TFWSpinEdit;
     fpBoutons: TPanel;
+    IBQ_Family: TIBSQL;
     Label2: TLabel;
     Label3: TLabel;
     FullFamily: TMenuItem;
+    Label4: TLabel;
     OnFormInfoIni: TOnFormInfoIni;
     Panel4: TPanel;
     Panel5: TPanel;
@@ -46,7 +48,7 @@ type
     Panel7: TPanel;
     pmArbre:TPopupMenu;
     OpenFiche:TMenuItem;
-    IBQ_SQL:TIBQuery;
+    IBQ_SQL:TIBSQL;
     N2:TMenuItem;
     mExport:TMenuItem;
     SaveDialog1:TSaveDialog;
@@ -73,6 +75,7 @@ type
     N3: TMenuItem;
     NbrAscendants: TMenuItem;
     Panel2: TPanel;
+    procedure FormDestroy(Sender: TObject);
     procedure FullFamilyClick(Sender: TObject);
     procedure SuperFormCreate(Sender:TObject);
     procedure btnReconstruireClick(Sender:TObject);
@@ -141,11 +144,18 @@ begin
   bBloque:=true;
   TreeView1.Images := dm.ImgCouple;
   p_ReadReportsViewFromIni(f_GetMemIniFile);
+  dm.IBTrans_Courte.Active:=True;
 end;
 
 procedure TFtvAscendance.FullFamilyClick(Sender: TObject);
 begin
+  FullFamily.Checked:=not FullFamily.Checked;
+  btnReconstruire.Enabled:=true;
+end;
 
+procedure TFtvAscendance.FormDestroy(Sender: TObject);
+begin
+  dm.IBTrans_Courte.Commit;
 end;
 
 procedure TFtvAscendance.Init_Arbre;
@@ -164,52 +174,169 @@ var
   sTemp:string;
   unIndiv:PIndivTree;
   NoeudAjoute,
+  PreviousNode,
   indiParent:PVirtualNode;
 
-  procedure p_FindNodeWithOrder ( const ATree : TBaseVirtualTree; const ANode : PVirtualNode; const aindex : Integer ; var FoundNode : PVirtualNode );
+  procedure p_FindNodeWithOrder ( const ATree : TBaseVirtualTree; ANode : PVirtualNode; const aindex : Integer ; var FoundNode : PVirtualNode );
   var AData : PIndivTree;
   Begin
-    with ATree,ANode^ do
+    with ATree do
      Begin
       if ANode <> RootNode Then
         Begin
+          while (ANode^.NextSibling<>nil) do
+            Begin
+              AData:=GetNodeData(ANode);
+              if AData^.Sosa > 0
+               Then Break
+               Else ANode:=ANode^.NextSibling;
+            end;
          AData:=GetNodeData(ANode);
          if aindex = acounter Then
            FoundNode:=ANode;
          inc ( acounter );
         end;
-      if FoundNode   <> nil Then Exit;
-      if FirstChild  <> nil Then p_FindNodeWithOrder(ATree,FirstChild, aindex,FoundNode);
-      if (NextSibling <> nil)
-      and ( ANode <> RootNode )
-       Then p_FindNodeWithOrder(ATree,NextSibling, aindex,FoundNode);
+      with ANode^ do
+       Begin
+        if FoundNode   <> nil Then Exit;
+        if FirstChild  <> nil Then p_FindNodeWithOrder(ATree,FirstChild, aindex,FoundNode);
+        if (NextSibling <> nil)
+        and ( ANode <> RootNode )
+         Then p_FindNodeWithOrder(ATree,NextSibling, aindex,FoundNode);
+       end;
      end;
   End;
-  procedure p_addInfos ( var as_text : String );
+  procedure p_addInfos ( const IBQSQL : TIBSQL; const ab_tree : Boolean );
+  var sTemp : String ;
   Begin
-    with IBQ_SQL do
+    with unIndiv^, IBQSQL do
      Begin
+      if ab_tree and Avecmariages.Checked then
+        begin
+          if Avecvilles.Checked then
+            sTemp:=FaitDateVille(FieldByName('date_marr').AsString,FieldByName('ville_marr').AsString)
+          else
+            sTemp:=FieldByName('date_marr').AsString;
+          if length(sTemp)>0 then
+            libelle:='{X '+sTemp+'} {';
+        end;
       if (AvecSOSA.Checked)and(FieldByName('NUM_SOSA').AsFloat>0) then
-        AppendStr(as_text,'['+FloatToStr(FieldByName('NUM_SOSA').AsFloat)+'] ');
-      AppendStr(as_text,FieldByName('NOM').AsString);
+        AppendStr(libelle,'['+FloatToStr(FieldByName('NUM_SOSA').AsFloat)+'] ');
+      AppendStr(libelle,FieldByName('NOM').AsString);
       if length(FieldByName('PRENOM').AsString)>0 then
       begin
-        AppendStr(as_text,', '+FieldByName('PRENOM').AsString);
+        AppendStr(libelle,', '+FieldByName('PRENOM').AsString);
       end;
       if Avecvilles.Checked then
       begin
-        AppendStr(as_text,GetStringNaissanceDeces(FaitDateVille(FieldByName('DATE_NAISSANCE').AsString
+        AppendStr(libelle,GetStringNaissanceDeces(FaitDateVille(FieldByName('DATE_NAISSANCE').AsString
           ,FieldByName('VILLE_NAISSANCE').AsString),FaitDateVille(FieldByName('DATE_DECES').AsString
           ,FieldByName('VILLE_DECES').AsString)));
       end
       else
       begin
-        AppendStr(as_text,GetStringNaissanceDeces(FieldByName('DATE_NAISSANCE').AsString
+        AppendStr(libelle,GetStringNaissanceDeces(FieldByName('DATE_NAISSANCE').AsString
           ,FieldByName('DATE_DECES').AsString));
       end;
      end;
   end;
+  procedure p_createSelect ( const IBSQL : TIBSQL ; const ab_Tree : Boolean );
+  Begin
+    with IBSQL do
+     Begin
+      SQL.Text:='select i.cle_fiche as indi'
+        +',i.nom'
+        +',i.prenom'
+        +',i.sexe'
+        +',i.num_sosa';
+     if ab_Tree Then
+      Begin
+       if FullFamily.Checked then
+         begin
+           SQL.Add( ',i.cle_pere'
+                   +',i.cle_mere');
+         end;
+       SQL.Add(',t.enfant'
+          +',t.ordre'
+          +',t.sosa'
+          +',t.implexe'
+          +',t.niveau');
+      End;
+    if Datescompletes.Checked then
+      begin
+        SQL.Add(',i.date_naissance'
+          +',i.date_deces');
+        if ab_Tree and Avecmariages.Checked then
+          SQL.Add(',(select first(1) ev_fam_date_writen from evenements_fam'
+            +' where ev_fam_kle_famille=u.union_clef and ev_fam_type=''MARR'''
+            +' order by ev_fam_datecode) as date_marr');
+      end
+      else
+      begin
+        SQL.Add(',cast(i.annee_naissance as varchar(6)) as date_naissance'
+          +',cast(i.annee_deces as varchar(6)) as date_deces');
+        if ab_Tree and Avecmariages.Checked then
+          SQL.Add(',(select first(1) cast(ev_fam_date_year as varchar(6)) from evenements_fam'
+            +' where ev_fam_kle_famille=u.union_clef and ev_fam_type=''MARR'''
+            +' order by ev_fam_datecode) as date_marr');
+      end;
+      if Avecvilles.Checked then
+      begin
+        SQL.Add(',n.ev_ind_ville as VILLE_NAISSANCE'
+          +',d.ev_ind_ville as VILLE_DECES');
+        if ab_Tree and Avecmariages.Checked then
+          SQL.Add(',(select first(1) ev_fam_ville from evenements_fam'
+            +' where ev_fam_kle_famille=u.union_clef and ev_fam_type=''MARR'''
+            +' order by ev_fam_datecode,ev_fam_heure) as ville_marr');
+      end;
 
+     end;
+
+  end;
+  procedure p_EndSelect ( const IBSQL : TIBSQL );
+  Begin
+    with IBSQL do
+     Begin
+      if Avecvilles.Checked then
+        SQL.Add(' left join evenements_ind n on n.ev_ind_kle_fiche=i.cle_fiche and n.ev_ind_type=''BIRT'''
+          +' left join evenements_ind d on d.ev_ind_kle_fiche=i.cle_fiche and d.ev_ind_type=''DEAT''');
+
+     end;
+
+  end;
+  procedure p_InformNode( const IbSQL : TIBSQL; const ab_tree : boolean );
+  Begin
+    with TreeView1 do
+     Begin
+      ValidateNode ( NoeudAjoute, False );
+      unIndiv := PIndivTree ( GetNodeData(NoeudAjoute));
+     end;
+
+    with unIndiv^,IbSQL do
+     Begin
+      cle:=FieldByName('indi').AsInteger;
+      if ab_tree Then
+       Begin
+        Sosa:=FieldByName('sosa').AsInteger;
+        Niveau:=FieldByName('niveau').AsInteger;
+        Enfants:=FieldByName('enfant').AsInteger;
+        Implexe:=FieldByName('implexe').AsInteger;
+        Ordre:=FieldByName('ordre').AsInteger;
+        if FieldByName('implexe').IsNull then
+          inc(i);
+       end
+      Else
+        Begin
+         Sosa:=0;
+         Niveau:=0;
+         Enfants:=0;
+         Implexe:=0;
+         Ordre:=0;
+        end;
+      sexe := FieldByName('SEXE').AsInteger;
+      libelle:='';
+     end;
+  End;
 begin
   Screen.Cursor:=crHourglass;
   TreeView1.Visible:=false;
@@ -224,63 +351,22 @@ begin
   TreeView1.Clear;
   i:=-1;//initialisation compteur d'ascendants
   with IBQ_SQL do
-  begin
-    close;
-    SQL.Text:='select t.indi'
-      +',i.nom'
-      +',i.prenom'
-      +',i.sexe'
-      +',i.num_sosa';
-   if FullFamily.Checked then
    begin
-     SQL.Add( ',i.cle_pere'
-             +',i.cle_mere');
-   end;
-   SQL.Add(',t.enfant'
-      +',t.ordre'
-      +',t.sosa'
-      +',t.implexe'
-      +',t.niveau');
-    if Datescompletes.Checked then
-    begin
-      SQL.Add(',i.date_naissance'
-        +',i.date_deces');
-      if Avecmariages.Checked then
-        SQL.Add(',(select first(1) ev_fam_date_writen from evenements_fam'
-          +' where ev_fam_kle_famille=u.union_clef and ev_fam_type=''MARR'''
-          +' order by ev_fam_datecode) as date_marr');
-    end
-    else
-    begin
-      SQL.Add(',cast(i.annee_naissance as varchar(6)) as date_naissance'
-        +',cast(i.annee_deces as varchar(6)) as date_deces');
-      if Avecmariages.Checked then
-        SQL.Add(',(select first(1) cast(ev_fam_date_year as varchar(6)) from evenements_fam'
-          +' where ev_fam_kle_famille=u.union_clef and ev_fam_type=''MARR'''
-          +' order by ev_fam_datecode) as date_marr');
-    end;
-    if Avecvilles.Checked then
-    begin
-      SQL.Add(',n.ev_ind_ville as VILLE_NAISSANCE'
-        +',d.ev_ind_ville as VILLE_DECES');
-      if Avecmariages.Checked then
-        SQL.Add(',(select first(1) ev_fam_ville from evenements_fam'
-          +' where ev_fam_kle_famille=u.union_clef and ev_fam_type=''MARR'''
-          +' order by ev_fam_datecode,ev_fam_heure) as ville_marr');
-    end;
-    SQL.Add('from (select * from proc_ascend_ordonnee(:indi,:max_niveau,:mode_implexe)) t'
-      +' inner join individu i on i.cle_fiche=t.indi');
-    if FullFamily.Checked then
-    begin
-      SQL.Add('left join individu e on e.cle_pere=i.cle_fiche');
-    end;
-    if Avecvilles.Checked then
-    begin
-      SQL.Add('left join evenements_ind n on n.ev_ind_kle_fiche=i.cle_fiche and n.ev_ind_type=''BIRT'''
-        +' left join evenements_ind d on d.ev_ind_kle_fiche=i.cle_fiche and d.ev_ind_type=''DEAT''');
-    end;
+    close;
+    p_createSelect ( ibq_sql   , True  );
+    if fullfamily.checked Then
+     Begin
+      p_createSelect ( ibq_family, False );
+      ibq_family.SQL.Add(' FROM INDIVIDU i');
+      p_EndSelect ( ibq_family );
+      ibq_family.SQL.Add(' WHERE CLE_FICHE<>:indi and (cle_pere=:pere or cle_mere=:mere)');
+      ibq_family.SQL.Add(' order by ANNEE_NAISSANCE ASC, PRENOM ASC');
+     end;
+    SQL.Add(' from (select * from proc_ascend_ordonnee(:indi,:max_niveau,:mode_implexe)) t');
+    SQL.Add(' inner join individu i on i.cle_fiche=t.indi');
+    p_EndSelect ( ibq_sql );
     if Avecmariages.Checked then
-      SQL.Add('left join t_union u on t.conjoint>0'
+      SQL.Add(' left join t_union u on t.conjoint>0'
         +' and ((t.sexe=1 and u.union_mari=t.indi and u.union_femme=t.conjoint)'
         +' or (t.sexe=2 and u.union_mari=t.conjoint and u.union_femme=t.indi))');
 
@@ -288,11 +374,9 @@ begin
     ParamByName('max_niveau').AsInteger:=NiveauMax;
     ParamByName('mode_implexe').AsInteger:=1;
 
-    open;
-    Locate('indi',cleAnc,[]);
-    while true do
-    begin
-      with TreeView1 do
+    ExecQuery;
+    while not eof do
+    with TreeView1 do
       begin
         if FieldByName('enfant').IsNull then
           NoeudAjoute := AddChild(nil,nil)
@@ -303,48 +387,29 @@ begin
             p_FindNodeWithOrder ( TreeView1, RootNode, FieldByName('enfant').AsInteger, indiParent );
             NoeudAjoute := AddChild(indiParent,nil)
           end;
-        ValidateNode ( NoeudAjoute, False );
-        unIndiv := PIndivTree ( GetNodeData(NoeudAjoute));
-
-        with unIndiv^ do
+        if fullfamily.checked Then
          Begin
-          cle:=FieldByName('indi').AsInteger;
-          Sosa:=FieldByName('sosa').AsInteger;
-          Niveau:=FieldByName('niveau').AsInteger;
-          Enfants:=FieldByName('enfant').AsInteger;
-          Implexe:=FieldByName('implexe').AsInteger;
-          Ordre:=FieldByName('ordre').AsInteger;
-          sexe := FieldByName('SEXE').AsInteger;
-          if FieldByName('implexe').IsNull then
-            inc(i);
-          libelle:='';
-          famille:='';
-          if Avecmariages.Checked then
-          begin
-            if Avecvilles.Checked then
-              sTemp:=FaitDateVille(FieldByName('date_marr').AsString,FieldByName('ville_marr').AsString)
-            else
-              sTemp:=FieldByName('date_marr').AsString;
-            if length(sTemp)>0 then
-              libelle:='{X '+sTemp+'} {';
-          end;
-          p_addInfos ( libelle );
-          Filter:='CLE_PERE='+FieldByName('indi').AsString+' OR CLE_MERE='+FieldByName('indi').AsString;
-          Filtered:=True;
-          if not IsEmpty Then
+          ibq_family.Close;
+          ibq_family.ParamByName('indi').AsInteger:=FieldByName('indi').AsInteger;
+          ibq_family.ParamByName('pere').AsInteger:=FieldByName('cle_pere').AsInteger;
+          ibq_family.ParamByName('mere').AsInteger:=FieldByName('cle_mere').AsInteger;
+          ibq_family.ExecQuery;
+          PreviousNode:=nil;
+          with ibq_family do
            while not eof do
-           Begin
-            AppendStr(famille,' '+FieldByName('PRENOM').AsString);
-            p_addInfos ( famille );
-            Next;
-           end;
+             Begin
+              p_InformNode ( IBQ_Family, False );
+              p_addInfos ( ibq_family, False );
+              NoeudAjoute := AddChild(NoeudAjoute^.Parent,nil);
+              Next;
+             end;
          end;
+        p_InformNode ( IBQ_SQL, True );
+        p_addInfos ( IBQ_SQL, True );
+        Next;
       end;
-      if not FieldByName('enfant').IsNull Then
-        Locate('indi',FieldByName('enfant').AsInteger,[]);
-    end;
-    close;
-  end;
+   close;
+   end;
   bBloque:=false;
   TreeView1.FullExpand;
   bBloque:=true;
@@ -558,10 +623,7 @@ procedure TFtvAscendance.TreeView1GetText(Sender: TBaseVirtualTree;
   Node: PVirtualNode; Column: TColumnIndex; TextType: TVSTTextType;
   var CellText: String);
 begin
-  case Column of
-    0 : CellText:=PIndivTree(TreeView1.GetNodeData(Node))^.libelle;
-    1 : CellText:=PIndivTree(TreeView1.GetNodeData(Node))^.famille;
-  end;
+  CellText:=PIndivTree(TreeView1.GetNodeData(Node))^.libelle;
 end;
 
 procedure TFtvAscendance.TreeView1MouseMove(Sender: TObject;
