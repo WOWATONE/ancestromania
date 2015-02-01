@@ -17,7 +17,6 @@ type
     Ordre:Integer;
     Sexe : Integer;
     libelle : String;
-    famille : String;
   end;
   PIndivTree=^TIndivTree;
 
