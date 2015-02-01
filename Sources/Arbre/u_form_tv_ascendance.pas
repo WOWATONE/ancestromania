@@ -36,11 +36,11 @@ type
     ch_pdf: TJvXPCheckbox;
     cxSpinNiveaux: TFWSpinEdit;
     fpBoutons: TPanel;
-    IBQ_Family: TIBSQL;
     Label2: TLabel;
     Label3: TLabel;
     FullFamily: TMenuItem;
     Label4: TLabel;
+    AncestryOfFamily: TMenuItem;
     OnFormInfoIni: TOnFormInfoIni;
     Panel4: TPanel;
     Panel5: TPanel;
@@ -75,6 +75,7 @@ type
     N3: TMenuItem;
     NbrAscendants: TMenuItem;
     Panel2: TPanel;
+    procedure AncestryOfFamilyClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FullFamilyClick(Sender: TObject);
     procedure SuperFormCreate(Sender:TObject);
@@ -113,8 +114,9 @@ type
   private
     fCleIndiDepart,fCleIndi,
     NoeudSelecte,
-    OrdreImplexe,OrdreImplexeSelecte,Xmouse:integer;
+    OrdreImplexe,OrdreImplexeSelecte,Xmouse,NiveauMax,NbImplexes:integer;
     bBloque:boolean;
+    procedure TreeAncestry(const AIBSQL : TIBSQL ; const cleAnc,alevel: Integer; const ARootNode: PVirtualNode;const ab_SubTree : Boolean);
     procedure TreeAncetres(const cleAnc:Integer);
 
   public
@@ -158,6 +160,13 @@ begin
   dm.IBTrans_Courte.Commit;
 end;
 
+procedure TFtvAscendance.AncestryOfFamilyClick(Sender: TObject);
+begin
+  AncestryOfFamily.Checked:=not AncestryOfFamily.Checked;
+  btnReconstruire.Enabled:=true;
+
+end;
+
 procedure TFtvAscendance.Init_Arbre;
 begin
   fCleIndiDepart:=dm.individu_clef;
@@ -169,13 +178,55 @@ begin
 end;
 
 procedure TFtvAscendance.TreeAncetres(const cleAnc:Integer);
+Begin
+  Screen.Cursor:=crHourglass;
+  TreeView1.Visible:=false;
+  label1.Caption:=fs_RemplaceMsg(rs_Ancestry_of,[_CRLF+FMain.NomIndi]);
+  if length(FMain.PrenomIndi)>0 then
+    label1.Caption:=label1.Caption+' '+FMain.PrenomIndi;
+  Application.ProcessMessages;
+  btnReconstruire.Enabled:=false;
+  mIdentImplexes.Checked:=false;
+  NiveauMax:=cxSpinNiveaux.Value;
+  NbImplexes:=-1;
+
+  with TreeView1 do
+   try
+    PopUpMenu:=nil;
+    Clear;
+    TreeAncestry( IBQ_SQL, cleAnc, 0, RootNode, False );
+    bBloque:=false;
+    FullExpand;
+    bBloque:=true;
+    Selected[TreeView1.RootNode^.FirstChild]:=True;
+    Visible:=true;
+
+   finally
+    PopUpMenu:=pmArbre;
+   End;
+
+  if NbImplexes>0 then
+  begin
+    NbrAscendants.Visible:=true;
+    if NbImplexes=1 then
+      NbrAscendants.Caption:=rs_Caption_only_one_ancestry_shown
+    else
+      NbrAscendants.Caption:=IntToStr(NbImplexes)+rs_Caption_ancestries_shown;
+  end
+  else
+    NbrAscendants.Visible:=false;
+  Screen.Cursor:=crDefault;
+end;
+
+procedure TFtvAscendance.TreeAncestry(const AIBSQL : TIBSQL ; const cleAnc,alevel:Integer;const ARootNode : PVirtualNode;const ab_SubTree : Boolean);
 var
-  i,NiveauMax,acounter:Integer;
+  acounter:Integer;
   sTemp:string;
   unIndiv:PIndivTree;
   NoeudAjoute,
   PreviousNode,
   indiParent:PVirtualNode;
+  IBQ_Family,IBQ_AncestryFamily : TIBSQL;
 
   procedure p_FindNodeWithOrder ( const ATree : TBaseVirtualTree; ANode : PVirtualNode; const aindex : Integer ; var FoundNode : PVirtualNode );
   var AData : PIndivTree;
@@ -242,21 +293,21 @@ var
   end;
   procedure p_createSelect ( const IBSQL : TIBSQL ; const ab_Tree : Boolean );
   Begin
-    with IBSQL do
+    with IBSQL,SQL do
      Begin
-      SQL.Text:='select i.cle_fiche as indi'
+      Text:='select i.cle_fiche as indi'
         +',i.nom'
         +',i.prenom'
         +',i.sexe'
         +',i.num_sosa';
+      if FullFamily.Checked then
+        begin
+          Add( ',i.cle_pere'
+              +',i.cle_mere');
+        end;
      if ab_Tree Then
       Begin
-       if FullFamily.Checked then
-         begin
-           SQL.Add( ',i.cle_pere'
-                   +',i.cle_mere');
-         end;
-       SQL.Add(',t.enfant'
+       Add(',t.enfant'
           +',t.ordre'
           +',t.sosa'
           +',t.implexe'
@@ -264,28 +315,28 @@ var
       End;
     if Datescompletes.Checked then
       begin
-        SQL.Add(',i.date_naissance'
+        Add(',i.date_naissance'
           +',i.date_deces');
         if ab_Tree and Avecmariages.Checked then
-          SQL.Add(',(select first(1) ev_fam_date_writen from evenements_fam'
+          Add(',(select first(1) ev_fam_date_writen from evenements_fam'
             +' where ev_fam_kle_famille=u.union_clef and ev_fam_type=''MARR'''
             +' order by ev_fam_datecode) as date_marr');
       end
       else
       begin
-        SQL.Add(',cast(i.annee_naissance as varchar(6)) as date_naissance'
+        Add(',cast(i.annee_naissance as varchar(6)) as date_naissance'
           +',cast(i.annee_deces as varchar(6)) as date_deces');
         if ab_Tree and Avecmariages.Checked then
-          SQL.Add(',(select first(1) cast(ev_fam_date_year as varchar(6)) from evenements_fam'
+          Add(',(select first(1) cast(ev_fam_date_year as varchar(6)) from evenements_fam'
             +' where ev_fam_kle_famille=u.union_clef and ev_fam_type=''MARR'''
             +' order by ev_fam_datecode) as date_marr');
       end;
       if Avecvilles.Checked then
       begin
-        SQL.Add(',n.ev_ind_ville as VILLE_NAISSANCE'
+        Add(',n.ev_ind_ville as VILLE_NAISSANCE'
           +',d.ev_ind_ville as VILLE_DECES');
         if ab_Tree and Avecmariages.Checked then
-          SQL.Add(',(select first(1) ev_fam_ville from evenements_fam'
+          Add(',(select first(1) ev_fam_ville from evenements_fam'
             +' where ev_fam_kle_famille=u.union_clef and ev_fam_type=''MARR'''
             +' order by ev_fam_datecode,ev_fam_heure) as ville_marr');
       end;
@@ -295,14 +346,9 @@ var
   end;
   procedure p_EndSelect ( const IBSQL : TIBSQL );
   Begin
-    with IBSQL do
-     Begin
       if Avecvilles.Checked then
-        SQL.Add(' left join evenements_ind n on n.ev_ind_kle_fiche=i.cle_fiche and n.ev_ind_type=''BIRT'''
+        IBSQL.SQL.Add(' left join evenements_ind n on n.ev_ind_kle_fiche=i.cle_fiche and n.ev_ind_type=''BIRT'''
           +' left join evenements_ind d on d.ev_ind_kle_fiche=i.cle_fiche and d.ev_ind_type=''DEAT''');
-
-     end;
-
   end;
   procedure p_InformNode( const IbSQL : TIBSQL; const ab_tree : boolean );
   Begin
@@ -323,7 +369,7 @@ var
         Implexe:=FieldByName('implexe').AsInteger;
         Ordre:=FieldByName('ordre').AsInteger;
         if FieldByName('implexe').IsNull then
-          inc(i);
+          inc(NbImplexes);
        end
       Else
         Begin
@@ -338,95 +384,102 @@ var
      end;
   End;
 begin
-  Screen.Cursor:=crHourglass;
-  TreeView1.Visible:=false;
-  label1.Caption:=fs_RemplaceMsg(rs_Ancestry_of,[_CRLF+FMain.NomIndi]);
-  if length(FMain.PrenomIndi)>0 then
-    label1.Caption:=label1.Caption+' '+FMain.PrenomIndi;
-  Application.ProcessMessages;
-  btnReconstruire.Enabled:=false;
-  mIdentImplexes.Checked:=false;
-  NiveauMax:=cxSpinNiveaux.Value;
-
-  TreeView1.Clear;
-  i:=-1;//initialisation compteur d'ascendants
-  with IBQ_SQL do
+  acounter:=alevel;
+  with AIBSQL,SQL do
    begin
     close;
-    p_createSelect ( ibq_sql   , True  );
+    p_createSelect ( AIBSQL   , True  );
     if fullfamily.checked Then
      Begin
-      p_createSelect ( ibq_family, False );
-      ibq_family.SQL.Add(' FROM INDIVIDU i');
-      p_EndSelect ( ibq_family );
-      ibq_family.SQL.Add(' WHERE CLE_FICHE<>:indi and (cle_pere=:pere or cle_mere=:mere)');
-      ibq_family.SQL.Add(' order by ANNEE_NAISSANCE ASC, PRENOM ASC');
-     end;
-    SQL.Add(' from (select * from proc_ascend_ordonnee(:indi,:max_niveau,:mode_implexe)) t');
-    SQL.Add(' inner join individu i on i.cle_fiche=t.indi');
-    p_EndSelect ( ibq_sql );
-    if Avecmariages.Checked then
-      SQL.Add(' left join t_union u on t.conjoint>0'
-        +' and ((t.sexe=1 and u.union_mari=t.indi and u.union_femme=t.conjoint)'
-        +' or (t.sexe=2 and u.union_mari=t.conjoint and u.union_femme=t.indi))');
+      IBQ_Family:=TIBSQL.Create ( Self );
+      if AncestryOfFamily.checked Then
+       Begin
+        IBQ_AncestryFamily:=TIBSQL.Create ( Self );
 
-    ParamByName('indi').AsInteger:=cleAnc;
-    ParamByName('max_niveau').AsInteger:=NiveauMax;
-    ParamByName('mode_implexe').AsInteger:=1;
-
-    ExecQuery;
-    while not eof do
-    with TreeView1 do
-      begin
-        if FieldByName('enfant').IsNull then
-          NoeudAjoute := AddChild(nil,nil)
-        else
-          Begin
-            indiParent := nil;
-            acounter:=0;
-            p_FindNodeWithOrder ( TreeView1, RootNode, FieldByName('enfant').AsInteger, indiParent );
-            NoeudAjoute := AddChild(indiParent,nil)
-          end;
-        if fullfamily.checked Then
+        with IBQ_AncestryFamily do
          Begin
-          ibq_family.Close;
-          ibq_family.ParamByName('indi').AsInteger:=FieldByName('indi').AsInteger;
-          ibq_family.ParamByName('pere').AsInteger:=FieldByName('cle_pere').AsInteger;
-          ibq_family.ParamByName('mere').AsInteger:=FieldByName('cle_mere').AsInteger;
-          ibq_family.ExecQuery;
-          PreviousNode:=nil;
-          with ibq_family do
-           while not eof do
-             Begin
-              p_InformNode ( IBQ_Family, False );
-              p_addInfos ( ibq_family, False );
-              NoeudAjoute := AddChild(NoeudAjoute^.Parent,nil);
-              Next;
-             end;
+          Database   :=AIBSQL.Database;
+          Transaction:=AIBSQL.Transaction;
          end;
-        p_InformNode ( IBQ_SQL, True );
-        p_addInfos ( IBQ_SQL, True );
-        Next;
-      end;
-   close;
-   end;
-  bBloque:=false;
-  TreeView1.FullExpand;
-  bBloque:=true;
-  TreeView1.Selected[TreeView1.RootNode^.FirstChild]:=True;
-  TreeView1.Visible:=true;
+       end;
+      with IBQ_Family,SQL do
+       Begin
+        Database   :=AIBSQL.Database;
+        Transaction:=AIBSQL.Transaction;
+        p_createSelect ( ibq_family, False );
+        Add(' FROM INDIVIDU i');
+        p_EndSelect ( ibq_family );
+        Add(' WHERE CLE_FICHE<>:indi and (cle_pere=:pere or cle_mere=:mere)');
+        Add(' order by ANNEE_NAISSANCE ASC, PRENOM ASC');
+       end;
+     end;
+    try
+      Add(' from (select * from proc_ascend_ordonnee(:indi,:max_niveau,:mode_implexe)) t');
+      Add(' inner join individu i on i.cle_fiche=t.indi');
+      p_EndSelect ( AIBSQL );
+      if Avecmariages.Checked then
+        Add(' left join t_union u on t.conjoint>0'
+          +' and ((t.sexe=1 and u.union_mari=t.indi and u.union_femme=t.conjoint)'
+          +' or (t.sexe=2 and u.union_mari=t.conjoint and u.union_femme=t.indi))');
 
-  if i>0 then
-  begin
-    NbrAscendants.Visible:=true;
-    if i=1 then
-      NbrAscendants.Caption:=rs_Caption_only_one_ancestry_shown
-    else
-      NbrAscendants.Caption:=IntToStr(i)+rs_Caption_ancestries_shown;
-  end
-  else
-    NbrAscendants.Visible:=false;
-  Screen.Cursor:=crDefault;
+      ParamByName('indi').AsInteger:=cleAnc;
+      ParamByName('max_niveau').AsInteger:=NiveauMax-alevel;
+      ParamByName('mode_implexe').AsInteger:=1;
+
+      ExecQuery;
+      while not eof do
+      with TreeView1 do
+        begin
+          if FieldByName('enfant').IsNull then
+            NoeudAjoute := AddChild(nil,nil)
+          else
+            Begin
+              indiParent := nil;
+              acounter:=alevel;
+              p_FindNodeWithOrder ( TreeView1, ARootNode, FieldByName('enfant').AsInteger, indiParent );
+              NoeudAjoute := AddChild(indiParent,nil)
+            end;
+          if fullfamily.checked and ((acounter>alevel) or not ab_subTree) Then
+           Begin
+            ibq_family.Close;
+            ibq_family.ParamByName('indi').AsInteger:=FieldByName('indi').AsInteger;
+            ibq_family.ParamByName('pere').AsInteger:=FieldByName('cle_pere').AsInteger;
+            ibq_family.ParamByName('mere').AsInteger:=FieldByName('cle_mere').AsInteger;
+            ibq_family.ExecQuery;
+            PreviousNode:=nil;
+            with ibq_family do
+             while not eof do
+              Begin
+                // add brothers and sisters
+                p_InformNode ( IBQ_Family, False );
+                p_addInfos ( ibq_family, False );
+                if AncestryOfFamily.checked
+                 // add brothers and sisters tree
+                 Then
+                  Begin
+                   if not FieldByName('cle_pere').IsNull Then
+                    TreeAncestry( IBQ_AncestryFamily, FieldByName('cle_pere').AsInteger, acounter+1, NoeudAjoute, True );
+                   if not FieldByName('cle_mere').IsNull Then
+                    TreeAncestry( IBQ_AncestryFamily, FieldByName('cle_mere').AsInteger, acounter+1, NoeudAjoute, True );
+                  end;
+                NoeudAjoute := AddChild(NoeudAjoute^.Parent,nil);
+                Next;
+              End;
+           end;
+          p_InformNode ( AIBSQL, True );
+          p_addInfos ( AIBSQL, True );
+          Next;
+        end;
+       finally
+        close;
+        if FullFamily.checked Then
+         Begin
+          IBQ_Family.Destroy;
+          if AncestryOfFamily.checked Then
+            IBQ_AncestryFamily.Destroy;
+         end;
+       end;
+     end;
 end;
 
 procedure TFtvAscendance.btnReconstruireClick(Sender:TObject);

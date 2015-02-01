@@ -535,6 +535,10 @@ inherited FtvAscendance: TFtvAscendance
       Caption = 'Avec frères et sœurs'
       OnClick = FullFamilyClick
     end
+    object AncestryOfFamily: TMenuItem
+      Caption = 'Ascendance des frères et sœurs'
+      OnClick = AncestryOfFamilyClick
+    end
     object mIdentImplexes: TMenuItem
       Caption = 'Identification implexes'
       OnClick = mIdentImplexesClick
@@ -582,17 +586,5 @@ inherited FtvAscendance: TFtvAscendance
     SaveForm = [sfSavePos, sfSaveSize, sfSaveSizes]
     left = 170
     top = 253
-  end
-  object IBQ_Family: TIBSQL[6]
-    Database = dm.ibd_BASE
-    GenerateParamNames = False
-    UniqueParamNames = False
-    ParamCheck = True
-    SQL.Strings = (
-      ''
-    )
-    Transaction = dm.IBTrans_Courte
-    left = 228
-    top = 116
   end
 end
