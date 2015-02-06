@@ -39,7 +39,6 @@ type
     Label2: TLabel;
     Label3: TLabel;
     FullFamily: TMenuItem;
-    Label4: TLabel;
     AncestryOfFamily: TMenuItem;
     OnFormInfoIni: TOnFormInfoIni;
     Panel4: TPanel;
@@ -76,7 +75,7 @@ type
     NbrAscendants: TMenuItem;
     Panel2: TPanel;
     procedure AncestryOfFamilyClick(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
+    procedure FormTransUnactive(Sender: TObject);
     procedure FullFamilyClick(Sender: TObject);
     procedure SuperFormCreate(Sender:TObject);
     procedure btnReconstruireClick(Sender:TObject);
@@ -116,7 +115,7 @@ type
     NoeudSelecte,
     OrdreImplexe,OrdreImplexeSelecte,Xmouse,NiveauMax,NbImplexes:integer;
     bBloque:boolean;
-    procedure TreeAncestry(const AIBSQL : TIBSQL ; const cleAnc,alevel: Integer; const ARootNode: PVirtualNode;const ab_SubTree : Boolean);
+    function  TreeAncestry(const AIBSQL : TIBSQL ; const cleAnc,alevel: Integer; const ARootNode: PVirtualNode;const ab_SubTree : Boolean):PVirtualNode;
     procedure TreeAncetres(const cleAnc:Integer);
 
   public
@@ -146,23 +145,27 @@ begin
   bBloque:=true;
   TreeView1.Images := dm.ImgCouple;
   p_ReadReportsViewFromIni(f_GetMemIniFile);
-  dm.IBTrans_Courte.Active:=True;
 end;
 
 procedure TFtvAscendance.FullFamilyClick(Sender: TObject);
 begin
   FullFamily.Checked:=not FullFamily.Checked;
+  if not FullFamily.Checked Then
+   AncestryOfFamily.Checked:=False;
   btnReconstruire.Enabled:=true;
 end;
 
-procedure TFtvAscendance.FormDestroy(Sender: TObject);
+procedure TFtvAscendance.FormTransUnactive(Sender: TObject);
 begin
-  dm.IBTrans_Courte.Commit;
+  if dm.IBTrans_Courte.Active Then
+    dm.IBTrans_Courte.Commit;
 end;
 
 procedure TFtvAscendance.AncestryOfFamilyClick(Sender: TObject);
 begin
   AncestryOfFamily.Checked:=not AncestryOfFamily.Checked;
+  if AncestryOfFamily.Checked Then
+   FullFamily.Checked:=True;
   btnReconstruire.Enabled:=true;
 
 end;
@@ -179,6 +182,7 @@ end;
 
 procedure TFtvAscendance.TreeAncetres(const cleAnc:Integer);
 Begin
+  dm.IBTrans_Courte.Active:=True;
   Screen.Cursor:=crHourglass;
   TreeView1.Visible:=false;
   label1.Caption:=fs_RemplaceMsg(rs_Ancestry_of,[_CRLF+FMain.NomIndi]);
@@ -218,7 +222,7 @@ Begin
   Screen.Cursor:=crDefault;
 end;
 
-procedure TFtvAscendance.TreeAncestry(const AIBSQL : TIBSQL ; const cleAnc,alevel:Integer;const ARootNode : PVirtualNode;const ab_SubTree : Boolean);
+function TFtvAscendance.TreeAncestry(const AIBSQL : TIBSQL ; const cleAnc,alevel:Integer;const ARootNode : PVirtualNode;const ab_SubTree : Boolean):PVirtualNode;
 var
   acounter:Integer;
   sTemp:string;
@@ -235,13 +239,14 @@ var
      Begin
       if ANode <> RootNode Then
         Begin
-          while (ANode^.NextSibling<>nil) do
-            Begin
-              AData:=GetNodeData(ANode);
-              if AData^.Sosa > 0
-               Then Break
-               Else ANode:=ANode^.NextSibling;
-            end;
+//          if not AncestryOfFamily.Checked Then
+            while (ANode^.NextSibling<>nil) do
+              Begin
+                AData:=GetNodeData(ANode);
+                if AData^.Sosa > 0
+                 Then Break
+                 Else ANode:=ANode^.NextSibling;
+              end;
          AData:=GetNodeData(ANode);
          if aindex = acounter Then
            FoundNode:=ANode;
@@ -268,7 +273,7 @@ var
             sTemp:=FaitDateVille(FieldByName('date_marr').AsString,FieldByName('ville_marr').AsString)
           else
             sTemp:=FieldByName('date_marr').AsString;
-          if length(sTemp)>0 then
+          if sTemp>'' then
             libelle:='{X '+sTemp+'} {';
         end;
       if (AvecSOSA.Checked)and(FieldByName('NUM_SOSA').AsFloat>0) then
@@ -350,13 +355,17 @@ var
         IBSQL.SQL.Add(' left join evenements_ind n on n.ev_ind_kle_fiche=i.cle_fiche and n.ev_ind_type=''BIRT'''
           +' left join evenements_ind d on d.ev_ind_kle_fiche=i.cle_fiche and d.ev_ind_type=''DEAT''');
   end;
-  procedure p_InformNode( const IbSQL : TIBSQL; const ab_tree : boolean );
+  procedure p_CreateNode ( const ANode : PVirtualNode );
   Begin
     with TreeView1 do
      Begin
-      ValidateNode ( NoeudAjoute, False );
-      unIndiv := PIndivTree ( GetNodeData(NoeudAjoute));
+      ValidateNode ( ANode, False );
+      unIndiv := PIndivTree ( GetNodeData(ANode));
      end;
+  End;
+  procedure p_InformNode( const ANode : PVirtualNode; const IbSQL : TIBSQL; const ab_tree : boolean );
+  Begin
+    p_CreateNode(ANode);
 
     with unIndiv^,IbSQL do
      Begin
@@ -383,8 +392,10 @@ var
       libelle:='';
      end;
   End;
+  var ANodeBrothersSisters,ANodeBrotherSister : PVirtualNode;
 begin
   acounter:=alevel;
+  Result := nil; // for main tree
   with AIBSQL,SQL do
    begin
     close;
@@ -431,13 +442,17 @@ begin
       with TreeView1 do
         begin
           if FieldByName('enfant').IsNull then
-            NoeudAjoute := AddChild(nil,nil)
+           Begin
+            NoeudAjoute := AddChild(ARootNode,nil);
+            if BOF Then // for subtree
+              Result := NoeudAjoute;
+           end
           else
             Begin
               indiParent := nil;
               acounter:=alevel;
               p_FindNodeWithOrder ( TreeView1, ARootNode, FieldByName('enfant').AsInteger, indiParent );
-              NoeudAjoute := AddChild(indiParent,nil)
+              NoeudAjoute := AddChild(indiParent,nil);
             end;
           if fullfamily.checked and ((acounter>alevel) or not ab_subTree) Then
            Begin
@@ -448,26 +463,41 @@ begin
             ibq_family.ExecQuery;
             PreviousNode:=nil;
             with ibq_family do
-             while not eof do
+             if not EOF Then
               Begin
-                // add brothers and sisters
-                p_InformNode ( IBQ_Family, False );
-                p_addInfos ( ibq_family, False );
-                if AncestryOfFamily.checked
-                 // add brothers and sisters tree
-                 Then
-                  Begin
-                   if not FieldByName('cle_pere').IsNull Then
-                    TreeAncestry( IBQ_AncestryFamily, FieldByName('cle_pere').AsInteger, acounter+1, NoeudAjoute, True );
-                   if not FieldByName('cle_mere').IsNull Then
-                    TreeAncestry( IBQ_AncestryFamily, FieldByName('cle_mere').AsInteger, acounter+1, NoeudAjoute, True );
-                  end;
-                NoeudAjoute := AddChild(NoeudAjoute^.Parent,nil);
-                Next;
-              End;
+               ANodeBrothersSisters := AddChild(NoeudAjoute,nil);
+               p_CreateNode(ANodeBrothersSisters);
+               with unIndiv^ do
+                Begin
+                 libelle:=rs_Tree_Brothers_and_Sisters;
+                 Sosa:=0;
+                end;
+               while not eof do
+                Begin
+                  ANodeBrotherSister := AddChild(ANodeBrothersSisters,nil);
+                  // add brothers and sisters
+                  p_InformNode ( ANodeBrotherSister, IBQ_Family, False );
+                  p_addInfos   ( IBQ_Family, False );
+                  if AncestryOfFamily.checked
+                   // add brothers and sisters tree
+                   Then
+                    Begin
+                     if not FieldByName('cle_pere').IsNull
+                     // second father or mother
+                     and ( ParamByName('pere').AsInteger <> FieldByName('cle_pere').AsInteger )
+                      // couple is in a subnode
+                      Then TreeAncestry( IBQ_AncestryFamily, FieldByName('cle_pere').AsInteger, acounter+1, ANodeBrotherSister, True )
+                      else
+                       if not FieldByName('cle_mere').IsNull
+                       and ( ParamByName('mere').AsInteger <> FieldByName('cle_mere').AsInteger )
+                         Then TreeAncestry( IBQ_AncestryFamily, FieldByName('cle_mere').AsInteger, acounter+1, ANodeBrotherSister, True );
+                    end;
+                  Next;
+                End;
+              end;
            end;
-          p_InformNode ( AIBSQL, True );
-          p_addInfos ( AIBSQL, True );
+          p_InformNode ( NoeudAjoute, AIBSQL, True );
+          p_addInfos   ( AIBSQL, True );
           Next;
         end;
        finally
@@ -489,7 +519,7 @@ end;
 
 procedure TFtvAscendance.mExportClick(Sender:TObject);
 begin
-  SaveDialog1.Filter:=' Fichiers TXT|*.TXT';
+  SaveDialog1.Filter:=' Fichiers TXT|*.TXT;*.txt';
   if SaveDialog1.Execute then
     TreeView1.SaveToFile(SaveDialog1.FileName);
 end;
@@ -573,6 +603,7 @@ procedure TFtvAscendance.TreeView1DblClick(Sender:TObject);
 Begin
   // Matthieu : ne sais pas quel colonne utiliser
   fCleIndi:=PIndivTree(TreeView1.GetNodeData(TreeView1.FocusedNode))^.cle;
+  FormTransUnactive(Self);
   OpenFicheClick(Sender)
 end;
 
