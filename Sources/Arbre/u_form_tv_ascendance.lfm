@@ -14,7 +14,7 @@ inherited FtvAscendance: TFtvAscendance
   KeyPreview = True
   OnClose = SuperFormClose
   OnCreate = SuperFormCreate
-  OnDestroy = FormDestroy
+  OnDestroy = FormTransUnactive
   Position = poScreenCenter
   object pBorder: TPanel[0]
     Left = 0
@@ -101,14 +101,6 @@ inherited FtvAscendance: TFtvAscendance
             ParentColor = False
             TabOrder = 0
           end
-          object Label4: TLabel
-            Left = 404
-            Height = 14
-            Top = 23
-            Width = 37
-            Caption = 'Label4'
-            ParentColor = False
-          end
         end
         object Panel1: TPanel
           Left = 3
@@ -131,7 +123,7 @@ inherited FtvAscendance: TFtvAscendance
           Header.Columns = <          
             item
               Position = 0
-              Width = 739
+              Width = 737
             end>
           Header.DefaultHeight = 17
           Header.Options = [hoAutoResize, hoColumnResize, hoDrag, hoShowSortGlyphs, hoFullRepaintOnResize]

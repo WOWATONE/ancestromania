@@ -4560,6 +4560,10 @@ msgstr ""
 msgid "à chercher"
 msgstr ""
 
+#: u_common_ancestro.rs_tree_brothers_and_sisters
+msgid "Frères et sœurs"
+msgstr ""
+
 #: u_common_ancestro.rs_try_later
 msgid "Réessayez plus tard."
 msgstr ""
