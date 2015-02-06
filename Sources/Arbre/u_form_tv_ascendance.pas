@@ -115,7 +115,7 @@ type
     NoeudSelecte,
     OrdreImplexe,OrdreImplexeSelecte,Xmouse,NiveauMax,NbImplexes:integer;
     bBloque:boolean;
-    function  TreeAncestry(const AIBSQL : TIBSQL ; const cleAnc,alevel: Integer; const ARootNode: PVirtualNode;const ab_SubTree : Boolean):PVirtualNode;
+    function  TreeAncestry(const AIBSQL : TIBSQL ; const cleAnc,alevel: Integer; const ARootNode: PVirtualNode;const ab_SubTree : Boolean;const as_IncludingMessage : String = '' ):PVirtualNode;
     procedure TreeAncetres(const cleAnc:Integer);
 
   public
@@ -222,7 +222,11 @@ Begin
   Screen.Cursor:=crDefault;
 end;
 
-function TFtvAscendance.TreeAncestry(const AIBSQL : TIBSQL ; const cleAnc,alevel:Integer;const ARootNode : PVirtualNode;const ab_SubTree : Boolean):PVirtualNode;
+function TFtvAscendance.TreeAncestry ( const AIBSQL : TIBSQL ;
+                                       const cleAnc,alevel:Integer;
+                                       const ARootNode : PVirtualNode;
+                                       const ab_SubTree : Boolean;
+                                       const as_IncludingMessage : String = ''):PVirtualNode;
 var
   acounter:Integer;
   sTemp:string;
@@ -267,7 +271,7 @@ var
   Begin
     with unIndiv^, IBQSQL do
      Begin
-      if ab_tree and Avecmariages.Checked then
+      if Avecmariages.Checked then
         begin
           if Avecvilles.Checked then
             sTemp:=FaitDateVille(FieldByName('date_marr').AsString,FieldByName('ville_marr').AsString)
@@ -294,6 +298,8 @@ var
         AppendStr(libelle,GetStringNaissanceDeces(FieldByName('DATE_NAISSANCE').AsString
           ,FieldByName('DATE_DECES').AsString));
       end;
+      if as_IncludingMessage > '' Then
+       libelle:=fs_RemplaceMsg ( as_IncludingMessage, [libelle] );
      end;
   end;
   procedure p_createSelect ( const IBSQL : TIBSQL ; const ab_Tree : Boolean );
@@ -310,19 +316,17 @@ var
           Add( ',i.cle_pere'
               +',i.cle_mere');
         end;
-     if ab_Tree Then
-      Begin
+      if ab_tree then
        Add(',t.enfant'
           +',t.ordre'
           +',t.sosa'
           +',t.implexe'
           +',t.niveau');
-      End;
     if Datescompletes.Checked then
       begin
         Add(',i.date_naissance'
           +',i.date_deces');
-        if ab_Tree and Avecmariages.Checked then
+        if Avecmariages.Checked then
           Add(',(select first(1) ev_fam_date_writen from evenements_fam'
             +' where ev_fam_kle_famille=u.union_clef and ev_fam_type=''MARR'''
             +' order by ev_fam_datecode) as date_marr');
@@ -331,7 +335,7 @@ var
       begin
         Add(',cast(i.annee_naissance as varchar(6)) as date_naissance'
           +',cast(i.annee_deces as varchar(6)) as date_deces');
-        if ab_Tree and Avecmariages.Checked then
+        if Avecmariages.Checked then
           Add(',(select first(1) cast(ev_fam_date_year as varchar(6)) from evenements_fam'
             +' where ev_fam_kle_famille=u.union_clef and ev_fam_type=''MARR'''
             +' order by ev_fam_datecode) as date_marr');
@@ -340,7 +344,7 @@ var
       begin
         Add(',n.ev_ind_ville as VILLE_NAISSANCE'
           +',d.ev_ind_ville as VILLE_DECES');
-        if ab_Tree and Avecmariages.Checked then
+        if  Avecmariages.Checked then
           Add(',(select first(1) ev_fam_ville from evenements_fam'
             +' where ev_fam_kle_famille=u.union_clef and ev_fam_type=''MARR'''
             +' order by ev_fam_datecode,ev_fam_heure) as ville_marr');
@@ -419,6 +423,10 @@ begin
         Transaction:=AIBSQL.Transaction;
         p_createSelect ( ibq_family, False );
         Add(' FROM INDIVIDU i');
+        if Avecmariages.Checked then
+          Add(' left join t_union u on'
+          +'    (i.sexe=2 and u.union_mari =i.cle_fiche)'
+          +' or (i.sexe=1 and u.union_femme=i.cle_fiche)');
         p_EndSelect ( ibq_family );
         Add(' WHERE CLE_FICHE<>:indi and (cle_pere=:pere or cle_mere=:mere)');
         Add(' order by ANNEE_NAISSANCE ASC, PRENOM ASC');
@@ -486,11 +494,11 @@ begin
                      // second father or mother
                      and ( ParamByName('pere').AsInteger <> FieldByName('cle_pere').AsInteger )
                       // couple is in a subnode
-                      Then TreeAncestry( IBQ_AncestryFamily, FieldByName('cle_pere').AsInteger, acounter+1, ANodeBrotherSister, True )
+                      Then TreeAncestry( IBQ_AncestryFamily, FieldByName('cle_pere').AsInteger, acounter+1, ANodeBrotherSister, True, rs_Father )
                       else
                        if not FieldByName('cle_mere').IsNull
                        and ( ParamByName('mere').AsInteger <> FieldByName('cle_mere').AsInteger )
-                         Then TreeAncestry( IBQ_AncestryFamily, FieldByName('cle_mere').AsInteger, acounter+1, ANodeBrotherSister, True );
+                         Then TreeAncestry( IBQ_AncestryFamily, FieldByName('cle_mere').AsInteger, acounter+1, ANodeBrotherSister, True, rs_Mother );
                     end;
                   Next;
                 End;
