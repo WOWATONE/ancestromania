@@ -8,3 +8,4 @@ cp ./i386-win32/Ancestromania.ini ./i386-linux/
 cp ./i386-win32/Ancestromania.ini ./i386-linux-k/
 cp ./i386-win32/Ancestromania.ini ./x86_64-linux/
 cp ./i386-win32/Ancestromania.ini ./x86_64-linux-k/
+cp ./i386-win32/Ancestromania.ini ./x86_64-win64/
