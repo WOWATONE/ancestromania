@@ -1,10 +1,10 @@
 1	1	FRA	janvier	
 2	1	FRA	janv	
 3	2	FRA	février	
-4	2	FRA	févr	
-5	2	FRA	fevrier	
-6	2	FRA	fevr	
-7	2	FRA	fev	
+303	1	FRA	janvie	
+304	1	FRA	janvi	
+6	2	FRA	févr	
+7	2	FRA	fév	
 8	3	FRA	mars	
 9	4	FRA	avril	
 10	4	FRA	avr	
@@ -13,7 +13,7 @@
 13	7	FRA	juillet	
 14	7	FRA	juil	
 15	8	FRA	août	
-16	8	FRA	aout	
+16	8	FRA	aoû	
 17	9	FRA	septembre	
 18	9	FRA	sept	
 19	10	FRA	octobre	
@@ -21,56 +21,53 @@
 21	11	FRA	novembre	
 22	11	FRA	nov	
 23	12	FRA	décembre	
-24	12	FRA	déc	
-25	12	FRA	decembre	
-26	12	FRA	dec	
+305	1	FRA	jan	
+25	12	FRA	décembr	
+26	12	FRA	déc	
 27	13	FRA	du	D
 28	13	FRA	depuis le	D1
 29	13	FRA	depuis	Y1
 30	13	FRA	de l'année	
-31	13	FRA	de l'annee	
+31	13	FRA	de l'anné	
 32	13	FRA	de l'an	
 33	13	FRA	de	Y
 34	14	FRA	à	Y
 35	14	FRA	à l'année	
-36	14	FRA	à l'annee	
+36	14	FRA	à l'anné	
 37	14	FRA	à l'an	
 38	14	FRA	jusque	
 39	14	FRA	jusqu'en	Y1
 40	14	FRA	jusqu'au	D1
 41	14	FRA	au	D
-42	14	FRA	a l'année	
-43	14	FRA	a l'annee	
-44	14	FRA	a l'an	
-45	14	FRA	a	
+42	14	FRA	à l'ann	
 46	15	FRA	avant le	D
 47	15	FRA	avant l'année	
-48	15	FRA	avant l'annee	
+48	15	FRA	avant l'anné	
 49	15	FRA	avant l'an	
 50	15	FRA	avant	Y
 51	16	FRA	après le	D
 52	16	FRA	après l'année	
-53	16	FRA	après l'annee	
+53	16	FRA	après l'anné	
 54	16	FRA	après l'an	
 55	16	FRA	après	Y
-56	16	FRA	apres le	
-57	16	FRA	apres l'année	
-58	16	FRA	apres l'annee	
-59	16	FRA	apres l'an	
-60	16	FRA	apres	
+56	16	FRA	après l'ann	
+57	16	FRA	après l'a	
+58	16	FRA	après l'	
+59	16	FRA	aprè	
+60	16	FRA	apr	
 61	17	FRA	entre le	D
 62	17	FRA	entre l'année	
 63	17	FRA	entre	Y
 64	18	FRA	et le	D
 65	18	FRA	et l'année	
-66	18	FRA	et l'annee	
+66	18	FRA	et l'anné	
 67	18	FRA	et l'an	
 68	18	FRA	et	Y
 69	19	FRA	calculée	Y
-70	19	FRA	calculee	
+70	19	FRA	calculé	
 71	19	FRA	cal	
 72	20	FRA	estimée	Y
-73	20	FRA	estimee	
+73	20	FRA	estimé	
 74	20	FRA	est	
 75	21	FRA	vers le	D
 76	21	FRA	vers	Y
@@ -297,3 +294,58 @@
 297	23	SPA	DMY	
 298	23	SPA	DMY	
 299	24	SPA	LIT	
+306	1	FRA	ja	
+301	2	FRA	fé	
+302	2	FRA	f	
+308	3	FRA	mar	
+309	7	FRA	juille	
+310	7	FRA	juill	
+311	8	FRA	ao	
+312	9	FRA	septembr	
+313	9	FRA	septemb	
+314	9	FRA	septem	
+315	9	FRA	septe	
+316	9	FRA	sep	
+317	9	FRA	se	
+318	9	FRA	s	
+319	10	FRA	octobr	
+320	10	FRA	octob	
+321	10	FRA	octo	
+322	10	FRA	oc	
+323	10	FRA	o	
+324	11	FRA	novembr	
+325	11	FRA	novemb	
+326	11	FRA	novem	
+327	11	FRA	nove	
+328	11	FRA	no	
+329	11	FRA	n	
+330	12	FRA	décemb	
+331	12	FRA	décem	
+332	12	FRA	déce	
+333	13	FRA	de l'ann	
+334	15	FRA	avant l'ann	
+335	15	FRA	avan	
+336	15	FRA	ava	
+338	16	FRA	ap	
+339	17	FRA	entre l'anné	
+340	17	FRA	entre l'ann	
+341	17	FRA	entre l'an	
+342	17	FRA	entre l'a	
+343	17	FRA	entre l'	
+344	17	FRA	entr	
+345	17	FRA	ent	
+346	17	FRA	en	
+347	18	FRA	et l'ann	
+348	18	FRA	et l'a	
+349	19	FRA	calcul	
+350	19	FRA	calcu	
+351	19	FRA	calc	
+352	19	FRA	ca	
+353	19	FRA	c	
+354	20	FRA	estim	
+355	20	FRA	esti	
+356	20	FRA	es	
+357	21	FRA	ver	
+358	21	FRA	ve	
+359	21	FRA	v	
+360	21	FRA	vers l	
