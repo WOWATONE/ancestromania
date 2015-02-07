@@ -142,11 +142,9 @@ begin
         SetIniString( 'Path', 'PathAppli', PathAppli, IniFile);
       end;
       // 32 bits directory
-    if ( pos ( ExpandConstant('{pf64}'), PathAppli ) > 0 ) then
-     PathAppli:=ExpandConstant('{pf}')+'\Ancestromania\';
     if FileExists(PathAppli+'Ancestromania.exe') then
        ExeOk:=true
-      if  (PathAppli > '')
+     else if  (PathAppli > '')
       and (MsgBox('Ancestromania.exe n''est pas dans le répertoire'+#13#10+PathAppli+#13#10
                   +'Confirmez-vous quand même la mise à jour dans ce répertoire?',mbConfirmation,MB_YESNO)=IDYES) then
          Begin
