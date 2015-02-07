@@ -5,7 +5,7 @@ AppName=Mise à jour de Ancestromania
 ;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ;Versions de la base et du logiciel à actualiser à chaque nouvelle version car utilisées dans le code
 AppVerName=Mise à jour Lazarus v2014.1.b5.180
-VersionInfoVersion=2014.1.3.1
+VersionInfoVersion=2015.1.1.1
 ;Attention, toujours 3 décimales pour la version de la base
 ;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 AppPublisher=André Langlet et Matthieu GIROUX
