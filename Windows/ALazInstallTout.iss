@@ -5,7 +5,7 @@ AppName=Mise à jour de Ancestromania
 ;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ;Versions de la base et du logiciel à actualiser à chaque nouvelle version car utilisées dans le code
 AppVerName=Mise à jour Lazarus v2014.1.b5.180
-VersionInfoVersion=2014.1.3.1
+VersionInfoVersion=2015.1.1.1
 ;Attention, toujours 3 décimales pour la version de la base
 ;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 AppPublisher=André Langlet et Matthieu GIROUX
@@ -15,7 +15,7 @@ DefaultDirName={code:doPathAncestro}
 AppPublisherURL=http://genealogie.liberlog.fr/
 DefaultGroupName=Ancestromania
 DisableProgramGroupPage=yes
-OutputBaseFilename=Install_AncestroIntel
+OutputBaseFilename=Update_AncestroIntel
 Compression=lzma
 SolidCompression=yes
 LicenseFile=LicenceTout.rtf
@@ -142,11 +142,9 @@ begin
         SetIniString( 'Path', 'PathAppli', PathAppli, IniFile);
       end;
       // 32 bits directory
-    if ( pos ( ExpandConstant('{pf64}'), PathAppli ) > 0 ) then
-     PathAppli:=ExpandConstant('{pf}')+'\Ancestromania\';
     if FileExists(PathAppli+'Ancestromania.exe') then
        ExeOk:=true
-      if  (PathAppli > '')
+     else if  (PathAppli > '')
       and (MsgBox('Ancestromania.exe n''est pas dans le répertoire'+#13#10+PathAppli+#13#10
                   +'Confirmez-vous quand même la mise à jour dans ce répertoire?',mbConfirmation,MB_YESNO)=IDYES) then
          Begin
