@@ -143,10 +143,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="u_dm"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="535"/>
-        <CursorPos X="44" Y="556"/>
+        <TopLine Value="207"/>
+        <CursorPos X="66" Y="230"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
@@ -1391,7 +1392,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_tv_ascendance"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="484"/>
@@ -8470,7 +8470,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="137" Y="19"/>
-        <UsageCount Value="101"/>
+        <UsageCount Value="102"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1188>
       <Unit1189>
@@ -8770,7 +8770,7 @@
         <UsageCount Value="10"/>
       </Unit1224>
     </Units>
-    <JumpHistory Count="23" HistoryIndex="22">
+    <JumpHistory Count="24" HistoryIndex="23">
       <Position1>
         <Filename Value="/usr/share/lazarus/1.2.6/lcl/forms.pp"/>
         <Caret Line="702" Column="3" TopLine="689"/>
@@ -8863,6 +8863,10 @@
         <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
         <Caret Line="525" Column="70" TopLine="513"/>
       </Position23>
+      <Position24>
+        <Filename Value="Main/u_dm.pas"/>
+        <Caret Line="556" Column="44" TopLine="535"/>
+      </Position24>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
