@@ -1494,7 +1494,12 @@ resourcestring
   rs_to_every = 'à tous les ';
   rs_to_search = 'à chercher';
   rs_to_ignore = 'à ignorer';
-  rs_Tree_Brothers_and_Sisters = 'Frères et sœurs';
+  rs_Tree_Brothers = 'Frères';
+  rs_Tree_Brother = 'Frère';
+  rs_Tree_and_Sisters = '@ARG et sœurs';
+  rs_Tree_and_Sister  = '@ARG et sœur';
+  rs_Tree_Sisters = 'Sœurs';
+  rs_Tree_Sister  = 'Sœur';
   rs_Try_Later = 'Réessayez plus tard.';
   rs_Try_to_destroy_task_intro = 'Il semble que vous ayez du mal à démarrer le logiciel.';
   rs_Try_to_destroy_task_windows = 'Sur Windows il est possible que des spywares ralentissent le démarrage de l''application.'+_CRLF+
