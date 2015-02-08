@@ -225,9 +225,9 @@ var
 
 const
   sVersionBaseMini:string='5.180';
-  urlMajAutoMain = 'http://ancestromania.net/ancestroupdate';
-  urlMajAutoInstall = 'http://ancestromania.net/ancestroinstall/';
-  urlMajAuto:array[0..1] of string = (urlMajAutoMain,'http://ancestromania.net/ancestroupdate2');
+  urlMajAutoMain = 'http://www.ancestromania.net/ancestroupdate';
+  urlMajAutoInstall = 'http://www.ancestromania.net/ancestroinstall/';
+  urlMajAuto:array[0..1] of string = (urlMajAutoMain,'http://www.ancestromania.net/ancestroupdate2');
 
 function fs_geturlMajAuto ( const ab_testDir : Boolean = False ) : String;
 
