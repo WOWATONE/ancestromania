@@ -368,8 +368,8 @@ end;
 
 procedure TSuperForm.DoSetBounds(ALeft, ATop, AWidth, AHeight: integer);
 begin
-  if ( awidth  > Width  ) Then HorzScrollBar.Position:=0;
-  if ( AHeight > Height ) Then VertScrollBar.Position:=0;
+  if ( AWidth  < Width  ) Then HorzScrollBar.Position:=0;
+  if ( AHeight < Height ) Then VertScrollBar.Position:=0;
   inherited DoSetBounds(ALeft, ATop, AWidth, AHeight);
 end;
 
