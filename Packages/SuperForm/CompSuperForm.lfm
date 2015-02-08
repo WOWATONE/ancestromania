@@ -4,5 +4,5 @@ object SuperForm: TSuperForm
   Top = 336
   Width = 320
   Caption = 'SuperForm'
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.2.5.0'
 end

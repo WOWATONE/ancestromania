@@ -143,13 +143,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="u_dm"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
         <TopLine Value="207"/>
         <CursorPos X="66" Y="230"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1>
       <Unit2>
@@ -205,8 +205,8 @@
         <UnitName Value="u_form_arbre_Hierarchique"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="495"/>
-        <CursorPos X="71" Y="510"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -2760,7 +2760,7 @@
       <Unit318>
         <Filename Value="../../ibx/runtime/IB.pas"/>
         <UnitName Value="IB"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
         <TopLine Value="391"/>
         <CursorPos X="1" Y="411"/>
@@ -6287,10 +6287,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="U_FormAdapt"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit853>
       <Unit854>
         <Filename Value="../../Extended/inicomp/u_formmainini.pas"/>
@@ -8184,10 +8186,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="CompSuperForm"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="360"/>
-        <CursorPos X="5" Y="371"/>
+        <TopLine Value="366"/>
+        <CursorPos X="10" Y="371"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit1153>
       <Unit1154>
         <Filename Value="../Packages/AncestroComponents/objects/u_objet_TMotsClesDate.pas"/>
@@ -8743,6 +8748,7 @@
         <CursorPos X="64" Y="947"/>
         <UsageCount Value="11"/>
         <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1221>
       <Unit1222>
         <Filename Value="/usr/share/lazarus/1.2.6/lcl/lclclasses.pp"/>
@@ -8761,6 +8767,7 @@
         <CursorPos X="27" Y="181"/>
         <UsageCount Value="11"/>
         <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1223>
       <Unit1224>
         <Filename Value="/usr/share/lazarus/1.2.6/lcl/include/scrollingwincontrol.inc"/>
@@ -8770,7 +8777,7 @@
         <UsageCount Value="10"/>
       </Unit1224>
     </Units>
-    <JumpHistory Count="24" HistoryIndex="23">
+    <JumpHistory Count="27" HistoryIndex="26">
       <Position1>
         <Filename Value="/usr/share/lazarus/1.2.6/lcl/forms.pp"/>
         <Caret Line="702" Column="3" TopLine="689"/>
@@ -8867,6 +8874,18 @@
         <Filename Value="Main/u_dm.pas"/>
         <Caret Line="556" Column="44" TopLine="535"/>
       </Position24>
+      <Position25>
+        <Filename Value="Arbre/u_form_arbre_Hierarchique.pas"/>
+        <Caret Line="497" Column="55" TopLine="495"/>
+      </Position25>
+      <Position26>
+        <Filename Value="Arbre/u_form_arbre_Hierarchique.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
+      </Position26>
+      <Position27>
+        <Filename Value="../../Extended/inicomp/u_formadapt.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
+      </Position27>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
