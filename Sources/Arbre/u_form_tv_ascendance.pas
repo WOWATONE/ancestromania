@@ -397,6 +397,18 @@ var
      end;
   End;
   var ANodeBrothersSisters,ANodeBrotherSister : PVirtualNode;
+      li_brothers, li_sisters : Integer;
+  function fs_getBrothersSisterLabel( const as_SistersLabel  : String ) : String;
+   Begin
+     case li_brothers of
+       0 : if li_sisters = 1
+           Then Result := rs_Tree_Sister
+           Else Result := rs_Tree_Sisters;
+       1 : Result := fs_RemplaceMsg ( as_SistersLabel, [rs_Tree_Brother]);
+      else Result := fs_RemplaceMsg ( as_SistersLabel, [rs_Tree_Brothers]);
+     End;
+   end;
+
 begin
   acounter:=alevel;
   Result := nil; // for main tree
@@ -477,15 +489,22 @@ begin
                p_CreateNode(ANodeBrothersSisters);
                with unIndiv^ do
                 Begin
-                 libelle:=rs_Tree_Brothers_and_Sisters;
+                 libelle:=fs_remplaceMsg(rs_Tree_and_Sisters,[rs_Tree_Brothers]);
                  Sosa:=0;
                 end;
+               li_brothers := 0;
+               li_sisters  := 0;
                while not eof do
                 Begin
                   ANodeBrotherSister := AddChild(ANodeBrothersSisters,nil);
                   // add brothers and sisters
                   p_InformNode ( ANodeBrotherSister, IBQ_Family, False );
                   p_addInfos   ( IBQ_Family, False );
+                  case FieldByName('sexe').Asinteger of
+                    1 : inc ( li_brothers );
+                    2 : inc ( li_sisters  );
+                    else Begin inc ( li_brothers ); inc ( li_sisters ); End;
+                  end;
                   if AncestryOfFamily.checked
                    // add brothers and sisters tree
                    Then
@@ -502,6 +521,15 @@ begin
                     end;
                   Next;
                 End;
+               if ( li_sisters < 2 ) or ( li_brothers < 2 ) Then
+                with PIndivTree ( GetNodeData(ANodeBrothersSisters))^ do
+                 case li_sisters of
+                   0 : if li_brothers = 1
+                        Then libelle := rs_Tree_Brother
+                        else libelle := rs_Tree_Brothers;
+                   1 :  libelle := fs_getBrothersSisterLabel ( rs_Tree_and_Sister  );
+                   else libelle := fs_getBrothersSisterLabel ( rs_Tree_and_Sisters );
+                 end;
               end;
            end;
           p_InformNode ( NoeudAjoute, AIBSQL, True );

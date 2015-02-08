@@ -71,6 +71,7 @@ type
     procedure SetcsDisplayDragImage;
 
   protected
+    procedure DoSetBounds(ALeft, ATop, AWidth, AHeight: integer); override;
     procedure CallEventFirstActivate; dynamic;
     procedure CallEventReceiveMessage(theMessage: string); dynamic;
     procedure CallEventShowFirstTime; dynamic;
@@ -363,6 +364,13 @@ begin
   for n := 0 to ComponentCount - 1 do
     if (Components[n] is TControl)
       then TControl(Components[n]).ControlStyle := TControl(Components[n]).ControlStyle + [csDisplayDragImage];
+end;
+
+procedure TSuperForm.DoSetBounds(ALeft, ATop, AWidth, AHeight: integer);
+begin
+  if ( awidth  > Width  ) Then HorzScrollBar.Position:=0;
+  if ( AHeight > Height ) Then VertScrollBar.Position:=0;
+  inherited DoSetBounds(ALeft, ATop, AWidth, AHeight);
 end;
 
 procedure AlignSuperForm ( const Control : TWinControl );

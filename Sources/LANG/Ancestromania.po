@@ -4560,8 +4560,28 @@ msgstr ""
 msgid "à chercher"
 msgstr ""
 
-#: u_common_ancestro.rs_tree_brothers_and_sisters
-msgid "Frères et sœurs"
+#: u_common_ancestro.rs_tree_and_sister
+msgid "@ARG et sœur"
+msgstr ""
+
+#: u_common_ancestro.rs_tree_and_sisters
+msgid "@ARG et sœurs"
+msgstr ""
+
+#: u_common_ancestro.rs_tree_brother
+msgid "Frère"
+msgstr ""
+
+#: u_common_ancestro.rs_tree_brothers
+msgid "Frères"
+msgstr ""
+
+#: u_common_ancestro.rs_tree_sister
+msgid "Sœur"
+msgstr ""
+
+#: u_common_ancestro.rs_tree_sisters
+msgid "Sœurs"
 msgstr ""
 
 #: u_common_ancestro.rs_try_later
