@@ -126,14 +126,16 @@
         <PackageName Value="LCL"/>
       </Item27>
     </RequiredPackages>
-    <Units Count="1225">
+    <Units Count="1227">
       <Unit0>
         <Filename Value="Ancestromania.dpr"/>
         <IsPartOfProject Value="True"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
         <TopLine Value="95"/>
-        <CursorPos X="108" Y="123"/>
+        <CursorPos X="3" Y="133"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit0>
       <Unit1>
@@ -143,7 +145,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="u_dm"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="11"/>
         <WindowIndex Value="0"/>
         <TopLine Value="207"/>
         <CursorPos X="66" Y="230"/>
@@ -203,13 +205,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_arbre_Hierarchique"/>
-        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit6>
       <Unit7>
@@ -566,10 +565,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_individu_identite"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
         <TopLine Value="3683"/>
         <CursorPos X="1" Y="3704"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit38>
       <Unit39>
@@ -589,9 +591,14 @@
         <ComponentName Value="FIndividuRepertoire"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="831"/>
-        <CursorPos X="28" Y="868"/>
+        <UnitName Value="u_form_individu_repertoire"/>
+        <EditorIndex Value="8"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="420"/>
+        <CursorPos X="146" Y="433"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit40>
       <Unit41>
@@ -1033,12 +1040,10 @@
         <Filename Value="Main/u_common_ancestro.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="u_common_ancestro"/>
-        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1488"/>
         <CursorPos X="11" Y="1502"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit89>
       <Unit90>
@@ -1146,10 +1151,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_individu_Saisie_Rapide"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1014"/>
+        <TopLine Value="4"/>
         <CursorPos X="49" Y="4"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit100>
       <Unit101>
@@ -1258,8 +1266,10 @@
         <ComponentName Value="FListeNouveauxIndi"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="u_Form_Liste_Nouveaux_Indi"/>
+        <WindowIndex Value="0"/>
         <TopLine Value="43"/>
-        <CursorPos X="15" Y="59"/>
+        <CursorPos X="110" Y="71"/>
         <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit110>
@@ -1301,9 +1311,14 @@
         <ComponentName Value="FChercheNIP"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="32"/>
-        <CursorPos X="70" Y="74"/>
+        <UnitName Value="u_Form_ChercheNIP"/>
+        <EditorIndex Value="9"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="127" Y="18"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit114>
       <Unit115>
@@ -1392,6 +1407,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_tv_ascendance"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="484"/>
@@ -2760,7 +2776,7 @@
       <Unit318>
         <Filename Value="../../ibx/runtime/IB.pas"/>
         <UnitName Value="IB"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="12"/>
         <WindowIndex Value="0"/>
         <TopLine Value="391"/>
         <CursorPos X="1" Y="411"/>
@@ -6287,11 +6303,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="U_FormAdapt"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit853>
       <Unit854>
@@ -8142,7 +8158,7 @@
         <UnitName Value="ALFcnString"/>
         <TopLine Value="925"/>
         <CursorPos X="50" Y="949"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="73"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1147>
@@ -8186,13 +8202,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="CompSuperForm"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="366"/>
+        <TopLine Value="365"/>
         <CursorPos X="10" Y="371"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit1153>
       <Unit1154>
         <Filename Value="../Packages/AncestroComponents/objects/u_objet_TMotsClesDate.pas"/>
@@ -8475,7 +8491,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="137" Y="19"/>
-        <UsageCount Value="102"/>
+        <UsageCount Value="104"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1188>
       <Unit1189>
@@ -8746,9 +8762,8 @@
         <WindowIndex Value="0"/>
         <TopLine Value="947"/>
         <CursorPos X="64" Y="947"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="12"/>
         <Loaded Value="True"/>
-        <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1221>
       <Unit1222>
         <Filename Value="/usr/share/lazarus/1.2.6/lcl/lclclasses.pp"/>
@@ -8765,9 +8780,8 @@
         <WindowIndex Value="0"/>
         <TopLine Value="168"/>
         <CursorPos X="27" Y="181"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="12"/>
         <Loaded Value="True"/>
-        <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1223>
       <Unit1224>
         <Filename Value="/usr/share/lazarus/1.2.6/lcl/include/scrollingwincontrol.inc"/>
@@ -8776,116 +8790,145 @@
         <CursorPos X="30" Y="34"/>
         <UsageCount Value="10"/>
       </Unit1224>
+      <Unit1225>
+        <Filename Value="/usr/share/lazarus/1.2.6/lcl/interfaces/gtk2/gtk2widgetset.inc"/>
+        <EditorIndex Value="10"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1280"/>
+        <CursorPos X="1" Y="1300"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit1225>
+      <Unit1226>
+        <Filename Value="Individus/u_Form_ChercheNIP.lfm"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="39"/>
+        <CursorPos X="25" Y="71"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit1226>
     </Units>
-    <JumpHistory Count="27" HistoryIndex="26">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="/usr/share/lazarus/1.2.6/lcl/forms.pp"/>
-        <Caret Line="702" Column="3" TopLine="689"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="1075" Column="37" TopLine="1042"/>
       </Position1>
       <Position2>
-        <Filename Value="/usr/share/lazarus/1.2.6/lcl/forms.pp"/>
-        <Caret Line="401" Column="3" TopLine="388"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="1078" Column="25" TopLine="1045"/>
       </Position2>
       <Position3>
-        <Filename Value="/usr/share/lazarus/1.2.6/lcl/forms.pp"/>
-        <Caret Line="165" Column="20" TopLine="152"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="1080" Column="37" TopLine="1047"/>
       </Position3>
       <Position4>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="254" Column="29" TopLine="230"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="1083" Column="25" TopLine="1050"/>
       </Position4>
       <Position5>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="1085" Column="37" TopLine="1052"/>
       </Position5>
       <Position6>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="399" Column="41" TopLine="379"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="1088" Column="25" TopLine="1056"/>
       </Position6>
       <Position7>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="477" Column="23" TopLine="466"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="1090" Column="37" TopLine="1058"/>
       </Position7>
       <Position8>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="480" Column="28" TopLine="466"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="1148" Column="26" TopLine="1115"/>
       </Position8>
       <Position9>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="368" Column="1" TopLine="350"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="1149" Column="26" TopLine="1116"/>
       </Position9>
       <Position10>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="1151" Column="26" TopLine="1118"/>
       </Position10>
       <Position11>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="399" Column="41" TopLine="379"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="1384" Column="26" TopLine="1351"/>
       </Position11>
       <Position12>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="479" Column="26" TopLine="479"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="1574" Column="17" TopLine="1541"/>
       </Position12>
       <Position13>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="233" Column="10" TopLine="220"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="332" Column="128" TopLine="314"/>
       </Position13>
       <Position14>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="272" Column="17" TopLine="252"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position14>
       <Position15>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="367" Column="18" TopLine="347"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="239" Column="22" TopLine="221"/>
       </Position15>
       <Position16>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="374" Column="17" TopLine="354"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="408" Column="13" TopLine="386"/>
       </Position16>
       <Position17>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="403" Column="12" TopLine="395"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="423" Column="42" TopLine="421"/>
       </Position17>
       <Position18>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="529" Column="24" TopLine="509"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="764" Column="19" TopLine="731"/>
       </Position18>
       <Position19>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="403" Column="7" TopLine="397"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="821" Column="19" TopLine="788"/>
       </Position19>
       <Position20>
-        <Filename Value="Main/u_common_ancestro.pas"/>
-        <Caret Line="1500" Column="3" TopLine="1485"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="1293" Column="21" TopLine="1260"/>
       </Position20>
       <Position21>
-        <Filename Value="Main/u_common_ancestro.pas"/>
-        <Caret Line="1502" Column="22" TopLine="1487"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="239" Column="31" TopLine="221"/>
       </Position21>
       <Position22>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="405" Column="6" TopLine="396"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="406" Column="14" TopLine="381"/>
       </Position22>
       <Position23>
-        <Filename Value="Arbre/u_form_tv_ascendance.pas"/>
-        <Caret Line="525" Column="70" TopLine="513"/>
+        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
+        <Caret Line="445" Column="30" TopLine="420"/>
       </Position23>
       <Position24>
-        <Filename Value="Main/u_dm.pas"/>
-        <Caret Line="556" Column="44" TopLine="535"/>
+        <Filename Value="Individus/u_Form_ChercheNIP.pas"/>
+        <Caret Line="70" Column="79" TopLine="40"/>
       </Position24>
       <Position25>
-        <Filename Value="Arbre/u_form_arbre_Hierarchique.pas"/>
-        <Caret Line="497" Column="55" TopLine="495"/>
+        <Filename Value="Individus/u_Form_ChercheNIP.pas"/>
+        <Caret Line="74" Column="79" TopLine="44"/>
       </Position25>
       <Position26>
-        <Filename Value="Arbre/u_form_arbre_Hierarchique.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="Individus/u_Form_ChercheNIP.pas"/>
+        <Caret Line="75" Column="79" TopLine="45"/>
       </Position26>
       <Position27>
-        <Filename Value="../../Extended/inicomp/u_formadapt.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="Individus/u_Form_ChercheNIP.pas"/>
+        <Caret Line="74" Column="79" TopLine="44"/>
       </Position27>
+      <Position28>
+        <Filename Value="Individus/u_Form_ChercheNIP.pas"/>
+        <Caret Line="75" Column="79" TopLine="45"/>
+      </Position28>
+      <Position29>
+        <Filename Value="Individus/u_Form_ChercheNIP.pas"/>
+        <Caret Line="74" Column="79" TopLine="44"/>
+      </Position29>
+      <Position30>
+        <Filename Value="Individus/u_Form_ChercheNIP.pas"/>
+        <Caret Line="55" Column="143" TopLine="45"/>
+      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -8905,7 +8948,6 @@
     </Parsing>
     <Linking>
       <Debugging>
-        <GenerateDebugInfo Value="False"/>
         <UseValgrind Value="True"/>
       </Debugging>
       <LinkSmart Value="True"/>
@@ -8970,7 +9012,7 @@
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="Individus/u_form_individu_repertoire.pas"/>
-        <Line Value="1464"/>
+        <Line Value="1470"/>
       </Item7>
       <Item8>
         <Kind Value="bpkSource"/>

@@ -1,14 +1,14 @@
 object FChercheNIP: TFChercheNIP
-  Left = 1022
+  Left = 984
   Height = 70
   Top = 306
-  Width = 138
+  Width = 176
   AutoSize = True
   BorderIcons = []
   BorderStyle = bsDialog
   Caption = 'Recherche par code'
   ClientHeight = 70
-  ClientWidth = 138
+  ClientWidth = 176
   Color = clWindow
   Font.Color = clWindowText
   Font.Height = -11
@@ -16,12 +16,12 @@ object FChercheNIP: TFChercheNIP
   FormStyle = fsStayOnTop
   OnCreate = FormCreate
   Position = poMainFormCenter
-  LCLVersion = '1.2.0.3'
+  LCLVersion = '1.2.6.0'
   object Label1: TLabel
     Left = 0
     Height = 14
     Top = 0
-    Width = 138
+    Width = 176
     Align = alTop
     Caption = 'Entrez un code NIP'
     Font.Color = clNavy
@@ -30,32 +30,52 @@ object FChercheNIP: TFChercheNIP
     ParentColor = False
     ParentFont = False
   end
-  object bsfbAppliquer: TFWOK
-    Cursor = crHandPoint
-    Left = 0
-    Height = 28
-    Top = 42
-    Width = 138
-    TabStop = False
-    Caption = 'Chercher'
-    TabOrder = 0
-    Default = True
-    Align = alBottom
-    Anchors = [akRight, akBottom]
-    ParentFont = False
-    ParentShowHint = False
-    OnClick = bsfbAppliquerClick
-  end
   object eNIP: TMaskEdit
     Left = 0
-    Height = 28
+    Height = 26
     Top = 14
-    Width = 138
+    Width = 176
     Align = alClient
     CharCase = ecNormal
     MaxLength = 0
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 0
     SpaceChar = '_'
   end
-end
+  object Panel1: TPanel
+    Left = 0
+    Height = 30
+    Top = 40
+    Width = 176
+    Align = alBottom
+    Caption = 'Panel1'
+    ClientHeight = 30
+    ClientWidth = 176
+    TabOrder = 1
+    object bsfbAppliquer: TFWOK
+      Cursor = crHandPoint
+      Left = 1
+      Height = 28
+      Hint = 'Effectuer la recherche'
+      Top = 1
+      Width = 101
+      TabStop = False
+      Caption = 'Chercher'
+      TabOrder = 0
+      Default = True
+      Align = alClient
+      Anchors = [akRight, akBottom]
+      ParentShowHint = False
+      OnClick = bsfbAppliquerClick
+    end
+    object FBClose1: TFWClose
+      Left = 102
+      Height = 28
+      Top = 1
+      Width = 73
+      Caption = 'Fermer'
+      TabOrder = 1
+      Align = alRight
+    end
+  end
+end

@@ -130,7 +130,7 @@ begin
   Application.Run;
   if not dm.ApplicationContinue then //parce qu'on peut arrêter dans le create de dm
     dm.Free;
-  //SetHeapTraceOutput (ExtractFilePath (Application.ExeName) + 'heaptrclog.trc');
+//  SetHeapTraceOutput (ExtractFilePath (Application.ExeName) + 'heaptrclog.trc');
 
 end.
 

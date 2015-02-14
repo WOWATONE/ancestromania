@@ -12,13 +12,18 @@ uses
 {$ELSE}
 {$ENDIF}
   SysUtils,Forms,
-  Dialogs,StdCtrls,u_buttons_appli,IBSQL,MaskEdit;
+  Dialogs,StdCtrls,u_buttons_appli,IBSQL,MaskEdit, ExtCtrls;
 
 type
+
+  { TFChercheNIP }
+
   TFChercheNIP=class(TForm)
-    bsfbAppliquer:TFWOK;
+    bsfbAppliquer: TFWOK;
     eNIP:TMaskEdit;
+    FBClose1: TFWClose;
     Label1:TLabel;
+    Panel1: TPanel;
     procedure FormCreate(Sender:TObject);
     procedure bsfbAppliquerClick(Sender:TObject);
   private
@@ -78,4 +83,4 @@ begin
 end;
 
 end.
-
+

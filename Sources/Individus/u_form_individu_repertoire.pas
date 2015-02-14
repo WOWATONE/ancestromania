@@ -440,7 +440,13 @@ var
   end;
 
 begin
-  if fCanScrollNom then
+  if IBQListeNom.IsEmpty
+    Then
+     Begin
+       IBQListePreNom.Close;
+       Exit;
+     end
+    Else IBQListePreNom.Open;
   begin
     with IBQListePreNom do
     Begin
