@@ -130,7 +130,7 @@
       <Unit0>
         <Filename Value="Ancestromania.dpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
         <TopLine Value="95"/>
         <CursorPos X="3" Y="133"/>
@@ -145,7 +145,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="u_dm"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="13"/>
         <WindowIndex Value="0"/>
         <TopLine Value="207"/>
         <CursorPos X="66" Y="230"/>
@@ -565,7 +565,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_individu_identite"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
         <TopLine Value="3683"/>
         <CursorPos X="1" Y="3704"/>
@@ -592,7 +592,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_individu_repertoire"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="10"/>
         <WindowIndex Value="0"/>
         <TopLine Value="420"/>
         <CursorPos X="146" Y="433"/>
@@ -1151,10 +1151,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_individu_Saisie_Rapide"/>
-        <EditorIndex Value="7"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
         <TopLine Value="4"/>
-        <CursorPos X="49" Y="4"/>
+        <CursorPos X="5" Y="8"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -1312,7 +1313,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_Form_ChercheNIP"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="11"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="127" Y="18"/>
@@ -1407,11 +1408,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_tv_ascendance"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="484"/>
-        <CursorPos X="84" Y="484"/>
+        <TopLine Value="1"/>
+        <CursorPos X="41" Y="490"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -2776,7 +2776,7 @@
       <Unit318>
         <Filename Value="../../ibx/runtime/IB.pas"/>
         <UnitName Value="IB"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="14"/>
         <WindowIndex Value="0"/>
         <TopLine Value="391"/>
         <CursorPos X="1" Y="411"/>
@@ -6303,9 +6303,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="U_FormAdapt"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
+        <TopLine Value="27"/>
         <CursorPos X="1" Y="1"/>
         <UsageCount Value="11"/>
         <Loaded Value="True"/>
@@ -6798,10 +6798,12 @@
       <Unit933>
         <Filename Value="../../Extended/extcomp/u_extsearchedit.pas"/>
         <UnitName Value="u_extsearchedit"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="653"/>
-        <CursorPos X="1" Y="665"/>
+        <TopLine Value="320"/>
+        <CursorPos X="1" Y="333"/>
         <UsageCount Value="20"/>
+        <Loaded Value="True"/>
       </Unit933>
       <Unit934>
         <Filename Value="../../ManFrames/manbase/u_multidonnees.pas"/>
@@ -7844,10 +7846,12 @@
       <Unit1098>
         <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
         <UnitName Value="fonctions_search_edit"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="222"/>
-        <CursorPos X="1" Y="234"/>
+        <TopLine Value="18"/>
+        <CursorPos X="29" Y="26"/>
         <UsageCount Value="18"/>
+        <Loaded Value="True"/>
       </Unit1098>
       <Unit1099>
         <Filename Value="../AncestroComponents/firebird/identfb.pas"/>
@@ -8202,7 +8206,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="CompSuperForm"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
         <TopLine Value="365"/>
         <CursorPos X="10" Y="371"/>
@@ -8491,7 +8495,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="137" Y="19"/>
-        <UsageCount Value="104"/>
+        <UsageCount Value="105"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1188>
       <Unit1189>
@@ -8758,7 +8762,7 @@
       <Unit1221>
         <Filename Value="/usr/share/lazarus/1.2.6/lcl/extctrls.pp"/>
         <UnitName Value="ExtCtrls"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="947"/>
         <CursorPos X="64" Y="947"/>
@@ -8776,7 +8780,7 @@
       <Unit1223>
         <Filename Value="/usr/share/lazarus/1.2.6/lcl/forms.pp"/>
         <UnitName Value="Forms"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="168"/>
         <CursorPos X="27" Y="181"/>
@@ -8792,7 +8796,7 @@
       </Unit1224>
       <Unit1225>
         <Filename Value="/usr/share/lazarus/1.2.6/lcl/interfaces/gtk2/gtk2widgetset.inc"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="12"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1280"/>
         <CursorPos X="1" Y="1300"/>
@@ -8810,124 +8814,124 @@
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="1075" Column="37" TopLine="1042"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="288" Column="1" TopLine="269"/>
       </Position1>
       <Position2>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="1078" Column="25" TopLine="1045"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="295" Column="1" TopLine="283"/>
       </Position2>
       <Position3>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="1080" Column="37" TopLine="1047"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="296" Column="1" TopLine="283"/>
       </Position3>
       <Position4>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="1083" Column="25" TopLine="1050"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="301" Column="1" TopLine="283"/>
       </Position4>
       <Position5>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="1085" Column="37" TopLine="1052"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="302" Column="1" TopLine="283"/>
       </Position5>
       <Position6>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="1088" Column="25" TopLine="1056"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="304" Column="1" TopLine="284"/>
       </Position6>
       <Position7>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="1090" Column="37" TopLine="1058"/>
+        <Filename Value="../../Extended/extcomp/u_extsearchedit.pas"/>
+        <Caret Line="376" Column="1" TopLine="355"/>
       </Position7>
       <Position8>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="1148" Column="26" TopLine="1115"/>
+        <Filename Value="../../Extended/extcomp/u_extsearchedit.pas"/>
+        <Caret Line="333" Column="1" TopLine="320"/>
       </Position8>
       <Position9>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="1149" Column="26" TopLine="1116"/>
+        <Filename Value="../../Extended/extcomp/u_extsearchedit.pas"/>
+        <Caret Line="334" Column="1" TopLine="320"/>
       </Position9>
       <Position10>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="1151" Column="26" TopLine="1118"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="313" Column="1" TopLine="300"/>
       </Position10>
       <Position11>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="1384" Column="26" TopLine="1351"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="314" Column="1" TopLine="300"/>
       </Position11>
       <Position12>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="1574" Column="17" TopLine="1541"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="316" Column="1" TopLine="300"/>
       </Position12>
       <Position13>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="332" Column="128" TopLine="314"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="317" Column="1" TopLine="300"/>
       </Position13>
       <Position14>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="319" Column="1" TopLine="300"/>
       </Position14>
       <Position15>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="239" Column="22" TopLine="221"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="311" Column="1" TopLine="311"/>
       </Position15>
       <Position16>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="408" Column="13" TopLine="386"/>
+        <Filename Value="../../Extended/extcomp/u_extsearchedit.pas"/>
+        <Caret Line="374" Column="1" TopLine="361"/>
       </Position16>
       <Position17>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="423" Column="42" TopLine="421"/>
+        <Filename Value="../../Extended/extcomp/u_extsearchedit.pas"/>
+        <Caret Line="333" Column="1" TopLine="320"/>
       </Position17>
       <Position18>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="764" Column="19" TopLine="731"/>
+        <Filename Value="../../Extended/extcomp/u_extsearchedit.pas"/>
+        <Caret Line="334" Column="1" TopLine="320"/>
       </Position18>
       <Position19>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="821" Column="19" TopLine="788"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="313" Column="1" TopLine="308"/>
       </Position19>
       <Position20>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="1293" Column="21" TopLine="1260"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="314" Column="1" TopLine="308"/>
       </Position20>
       <Position21>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="239" Column="31" TopLine="221"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="316" Column="1" TopLine="308"/>
       </Position21>
       <Position22>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="406" Column="14" TopLine="381"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="124" Column="1" TopLine="111"/>
       </Position22>
       <Position23>
-        <Filename Value="Individus/u_form_individu_repertoire.pas"/>
-        <Caret Line="445" Column="30" TopLine="420"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="125" Column="1" TopLine="111"/>
       </Position23>
       <Position24>
-        <Filename Value="Individus/u_Form_ChercheNIP.pas"/>
-        <Caret Line="70" Column="79" TopLine="40"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="116" Column="1" TopLine="116"/>
       </Position24>
       <Position25>
-        <Filename Value="Individus/u_Form_ChercheNIP.pas"/>
-        <Caret Line="74" Column="79" TopLine="44"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="320" Column="5" TopLine="304"/>
       </Position25>
       <Position26>
-        <Filename Value="Individus/u_Form_ChercheNIP.pas"/>
-        <Caret Line="75" Column="79" TopLine="45"/>
+        <Filename Value="../../Extended/extcomp/u_extsearchedit.pas"/>
+        <Caret Line="374" Column="1" TopLine="361"/>
       </Position26>
       <Position27>
-        <Filename Value="Individus/u_Form_ChercheNIP.pas"/>
-        <Caret Line="74" Column="79" TopLine="44"/>
+        <Filename Value="../../Extended/extcomp/u_extsearchedit.pas"/>
+        <Caret Line="333" Column="1" TopLine="320"/>
       </Position27>
       <Position28>
-        <Filename Value="Individus/u_Form_ChercheNIP.pas"/>
-        <Caret Line="75" Column="79" TopLine="45"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="314" Column="1" TopLine="304"/>
       </Position28>
       <Position29>
-        <Filename Value="Individus/u_Form_ChercheNIP.pas"/>
-        <Caret Line="74" Column="79" TopLine="44"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="321" Column="1" TopLine="304"/>
       </Position29>
       <Position30>
-        <Filename Value="Individus/u_Form_ChercheNIP.pas"/>
-        <Caret Line="55" Column="143" TopLine="45"/>
+        <Filename Value="../../Extended/extcomp/fonctions_search_edit.pas"/>
+        <Caret Line="317" Column="61" TopLine="304"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
