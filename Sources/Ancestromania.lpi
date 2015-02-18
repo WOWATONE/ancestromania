@@ -8952,6 +8952,7 @@
     </Parsing>
     <Linking>
       <Debugging>
+        <GenerateDebugInfo Value="False"/>
         <UseValgrind Value="True"/>
       </Debugging>
       <LinkSmart Value="True"/>
