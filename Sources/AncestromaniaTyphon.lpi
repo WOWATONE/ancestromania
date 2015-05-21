@@ -113,7 +113,7 @@
         <PackageName Value="LCL"/>
       </Item23>
     </RequiredPackages>
-    <Units Count="1159">
+    <Units Count="1161">
       <Unit0>
         <Filename Value="Ancestromania.dpr"/>
         <IsPartOfProject Value="True"/>
@@ -142,9 +142,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_form_main"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="726"/>
-        <CursorPos X="69" Y="742"/>
+        <TopLine Value="721"/>
+        <CursorPos Y="727"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
@@ -4190,9 +4191,10 @@
       </Unit545>
       <Unit546>
         <Filename Value="../../Extended/extends.inc"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="8" Y="18"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="8"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit546>
       <Unit547>
         <Filename Value="../../Extended/composants/U_ExtNumEdits.pas"/>
@@ -6557,9 +6559,12 @@
       </Unit917>
       <Unit918>
         <Filename Value="../../Extended/extcomp/u_framework_dbcomponents.pas"/>
-        <TopLine Value="1350"/>
-        <CursorPos X="48" Y="1391"/>
-        <UsageCount Value="8"/>
+        <UnitName Value="u_framework_dbcomponents"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="104"/>
+        <CursorPos X="44" Y="122"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit918>
       <Unit919>
         <Filename Value="../../../Lazarus/ccr/components/rx/rxlookup.pas"/>
@@ -8040,10 +8045,15 @@
       </Unit1155>
       <Unit1156>
         <Filename Value="../Packages/SuperForm/CompSuperForm.pas"/>
-        <EditorIndex Value="-1"/>
+        <ComponentName Value="SuperForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="CompSuperForm"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="164"/>
         <CursorPos Y="185"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit1156>
       <Unit1157>
         <Filename Value="../../ibx/design/IBDBReg.pas"/>
@@ -8057,16 +8067,31 @@
       <Unit1158>
         <Filename Value="/usr/lib/codetyphon/typhon/components/pl_ORCA/source/orca_scene2d.pas"/>
         <UnitName Value="orca_scene2d"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <TopLine Value="9"/>
         <CursorPos X="36" Y="25"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
-        <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1158>
+      <Unit1159>
+        <Filename Value="/usr/lib/codetyphon/typhon/packager/registration/lazaruspackageintf.pas"/>
+        <UnitName Value="LazarusPackageIntf"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="72"/>
+        <CursorPos Y="102"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit1159>
+      <Unit1160>
+        <Filename Value="/usr/lib/codetyphon/typhon/components/pl_RX/source/dbdateedit.pas"/>
+        <UnitName Value="dbdateedit"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="33"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit1160>
     </Units>
-    <JumpHistory Count="8" HistoryIndex="7">
+    <JumpHistory Count="13" HistoryIndex="12">
       <Position1>
         <Filename Value="../../ibx/design/IBDBReg.pas"/>
       </Position1>
@@ -8097,6 +8122,25 @@
       <Position8>
         <Filename Value="/usr/lib/codetyphon/typhon/components/pl_ORCA/source/orca_scene2d.pas"/>
       </Position8>
+      <Position9>
+        <Filename Value="/usr/lib/codetyphon/typhon/packager/registration/lazaruspackageintf.pas"/>
+      </Position9>
+      <Position10>
+        <Filename Value="../../Extended/extcomp/u_framework_dbcomponents.pas"/>
+        <Caret Line="1391" Column="48" TopLine="1350"/>
+      </Position10>
+      <Position11>
+        <Filename Value="../../Extended/extcomp/u_framework_dbcomponents.pas"/>
+        <Caret Line="122" Column="79" TopLine="33"/>
+      </Position11>
+      <Position12>
+        <Filename Value="../../Extended/extcomp/u_framework_dbcomponents.pas"/>
+        <Caret Line="37" Column="7" TopLine="33"/>
+      </Position12>
+      <Position13>
+        <Filename Value="../../Extended/extcomp/u_framework_dbcomponents.pas"/>
+        <Caret Line="122" Column="44" TopLine="104"/>
+      </Position13>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

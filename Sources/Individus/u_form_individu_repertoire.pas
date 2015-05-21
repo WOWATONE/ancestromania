@@ -1,7 +1,7 @@
 {-----------------------------------------------------------------------}
 {                                                                       }
 {           Subprogram Name:                                            }
-{           Purpose:          Ancestromania LGPL                             }
+{           Purpose:          Ancestromania GPL                             }
 {           Source Language:  Francais                                  }
 {           Auteurs :                                                   }
 {           Matthieu Giroux (LAZARUS), André Langlet (2003 to 2013),    }
@@ -1696,4 +1696,4 @@ end;
 
 
 end.
-
+

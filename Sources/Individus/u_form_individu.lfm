@@ -680,13 +680,13 @@ inherited FIndividu: TFIndividu
         Options = [nboMultiLine]
         object cxTabSheet1: TTabSheet
           Caption = 'Identité'
-          ClientHeight = 432
-          ClientWidth = 732
+          ClientHeight = 430
+          ClientWidth = 730
           object PanelIdentite: TPanel
             Left = 0
-            Height = 432
+            Height = 430
             Top = 0
-            Width = 732
+            Width = 730
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 0
@@ -694,8 +694,8 @@ inherited FIndividu: TFIndividu
         end
         object cxTabSheet2: TTabSheet
           Caption = 'Unions'
-          ClientHeight = 432
-          ClientWidth = 732
+          ClientHeight = 430
+          ClientWidth = 730
           ImageIndex = 1
           object PanelUnions: TPanel
             Left = 0
@@ -709,8 +709,8 @@ inherited FIndividu: TFIndividu
         end
         object cxTabSheet3: TTabSheet
           Caption = 'Arbre'
-          ClientHeight = 432
-          ClientWidth = 732
+          ClientHeight = 430
+          ClientWidth = 730
           ImageIndex = 2
           object PanelArbre: TPanel
             Left = 0
@@ -724,8 +724,8 @@ inherited FIndividu: TFIndividu
         end
         object cxTabSheet4: TTabSheet
           Caption = 'Médias'
-          ClientHeight = 432
-          ClientWidth = 732
+          ClientHeight = 430
+          ClientWidth = 730
           ImageIndex = 3
           object PanelMedias: TPanel
             Left = 0
@@ -739,8 +739,8 @@ inherited FIndividu: TFIndividu
         end
         object cxTabSheet5: TTabSheet
           Caption = 'Infos'
-          ClientHeight = 432
-          ClientWidth = 732
+          ClientHeight = 430
+          ClientWidth = 730
           ImageIndex = 4
           object PanelInfos: TPanel
             Left = 0
@@ -754,8 +754,8 @@ inherited FIndividu: TFIndividu
         end
         object cxTabSheet6: TTabSheet
           Caption = 'Domiciles'
-          ClientHeight = 432
-          ClientWidth = 732
+          ClientHeight = 430
+          ClientWidth = 730
           ImageIndex = 5
           object PanelDomiciles: TPanel
             Left = 0
@@ -769,8 +769,8 @@ inherited FIndividu: TFIndividu
         end
         object cxTabSheet7: TTabSheet
           Caption = 'Actes'
-          ClientHeight = 432
-          ClientWidth = 732
+          ClientHeight = 430
+          ClientWidth = 730
           ImageIndex = 6
           object PanelActes: TPanel
             Left = 0
@@ -784,8 +784,8 @@ inherited FIndividu: TFIndividu
         end
         object cxTabSheet8: TTabSheet
           Caption = 'Sa vie'
-          ClientHeight = 432
-          ClientWidth = 732
+          ClientHeight = 430
+          ClientWidth = 730
           ImageIndex = 7
           object PanelSaVie: TPanel
             Left = 0
@@ -956,6 +956,7 @@ inherited FIndividu: TFIndividu
     OnNewRecord = QueryIndividuNewRecord
     BufferChunks = 2
     CachedUpdates = False
+    GenerateParamNames = False
     GeneratorField.ApplyOnEvent = gaeOnNewRecord
     SQL.Strings = (
       '    select '
@@ -3818,6 +3819,8 @@ inherited FIndividu: TFIndividu
   end
   object QueryGetDatesInd: TIBSQL[9]
     Database = dm.ibd_BASE
+    GenerateParamNames = False
+    UniqueParamNames = False
     ParamCheck = True
     SQL.Strings = (
       'select'
@@ -3859,6 +3862,7 @@ inherited FIndividu: TFIndividu
     Transaction = dm.IBTransParam
     BufferChunks = 1000
     CachedUpdates = False
+    GenerateParamNames = False
     GeneratorField.ApplyOnEvent = gaeOnNewRecord
     SQL.Strings = (
       'SELECT v.RCV_CODE as code'
@@ -3887,6 +3891,7 @@ inherited FIndividu: TFIndividu
     OnNewRecord = QueryIndividuNewRecord
     BufferChunks = 2
     CachedUpdates = False
+    GenerateParamNames = False
     GeneratorField.ApplyOnEvent = gaeOnNewRecord
     SQL.Strings = (
       'select '
@@ -3924,6 +3929,7 @@ inherited FIndividu: TFIndividu
     Transaction = dm.IBTransParam
     BufferChunks = 1000
     CachedUpdates = False
+    GenerateParamNames = False
     GeneratorField.ApplyOnEvent = gaeOnNewRecord
     SQL.Strings = (
       'SELECT RPA_CODE,RPA_LIBELLE as pays  FROM REF_PAYS'
