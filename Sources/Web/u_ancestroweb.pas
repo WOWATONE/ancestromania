@@ -11,7 +11,7 @@ unit U_AncestroWeb;
 // AncestroWeb
 // Plugin libre de création d'un site web généalogique statique en HTML et PHP
 // Pour Freelogy et Ancestrologie
-// Licence : LGPL
+// Licence : GPL
 // LIBERLOG 2011
 // Auteur : Matthieu GIROUX
 // Descriptions

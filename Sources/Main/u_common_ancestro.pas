@@ -1,7 +1,7 @@
 {-----------------------------------------------------------------------}
 {                                                                       }
 {           Subprogram Name:                                            }
-{           Purpose:          Ancestromania LGPL                             }
+{           Purpose:          Ancestromania GPL                             }
 {           Source Language:  Francais                                  }
 {           Auteurs :                                                   }
 {           Matthieu Giroux (LAZARUS), André Langlet (2003 to 2013),    }
@@ -48,7 +48,7 @@ const IBQ_DLL_DOSSIER = 'dll_DOSSIER';
       CST_PROGRESS_COUNTER_COPY = 1;
       SQL_OR = ' OR ';
       CST_AncestroWeb = 'AncestroWeb';
-      CST_AncestroWeb_WithLicense = CST_AncestroWeb + ' LGPL';
+      CST_AncestroWeb_WithLicense = CST_AncestroWeb + ' GPL';
 
       IBQ_CLE_FICHE = 'CLE_FICHE';
       IBQ_CLE_PERE = 'CLE_PERE';
